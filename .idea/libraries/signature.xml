@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="signature">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/signature.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

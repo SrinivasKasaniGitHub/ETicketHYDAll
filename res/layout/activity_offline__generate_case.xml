@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        style="@style/header_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            style="@style/header_images_style_left"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            style="@style/header_images_style_right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/textView1"
+            style="@style/header_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/header_txt" />
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/cust_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="26dp"
+            android:text="@string/app_version"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold" />
+        
+        <TextView
+            android:id="@+id/textView_header_spot_challan_xml"
+            style="@style/cust_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imageView2"
+            android:layout_centerHorizontal="true"
+            android:text="@string/spot_challan"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/header_grnt_padding_five" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <LinearLayout
+                android:id="@+id/ll_main_root_spotchallan_xml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textview_camera_capture_spotchallan_xml"
+                    style="@style/navi_text_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="Capture Image" />
+
+                <ImageButton
+                    android:id="@+id/imgv_camera_capture_spotchallan_xml"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/header_grnt_padding_ten"
+                    android:background="@drawable/capture" />
+
+                <ImageButton
+                    android:id="@+id/imgv_gallery_spotchallan_xml"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/header_grnt_padding_ten"
+                    android:background="@drawable/gallery" />
+            </LinearLayout>
+
+        <!--     <WebView
+                android:id="@+id/webView_image_spotchallan_xml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_main_root_spotchallan_xml"
+                android:layout_centerInParent="true"
+                android:background="@null" />
+             -->
+
+            <ImageView
+                android:id="@+id/image_data"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_below="@+id/ll_main_root_spotchallan_xml"
+                android:layout_marginLeft="200dp"
+                android:src="@drawable/photo" />
+
+            <TextView
+                android:id="@+id/textView3"
+                style="@style/navi_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/image_data"
+                android:layout_marginBottom="@dimen/header_grnt_padding_five"
+                android:text="@string/regno" />
+
+            <LinearLayout
+                android:id="@+id/ll_regno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView3"
+                android:layout_centerHorizontal="true" >
+
+                <EditText
+                    android:id="@+id/edt_regncid_spotchallan_xml"
+                    style="@style/edt_custom_style"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/header_grnt_padding_five"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapCharacters"
+                    android:maxLength="4" >
+                </EditText>
+
+                <EditText
+                    android:id="@+id/edt_regncidname_spotchallan_xml"
+                    style="@style/edt_custom_style"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/header_grnt_padding_five"
+                    android:layout_weight="1"
+                    android:imeOptions="actionNext"
+                    android:gravity="center"
+                    android:inputType="text|textCapCharacters"
+                    android:maxLength="4" >
+                </EditText>
+
+                <EditText
+                    android:id="@+id/edt_regncid_lastnum_spotchallan_xml"
+                    style="@style/edt_custom_style"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:imeOptions="actionNext"
+                    android:maxLength="4" >
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_driver_challans"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_regno"
+                android:layout_marginTop="@dimen/header_grnt_padding_ten" >
+
+                <TextView
+                    android:id="@+id/textView4"
+                    style="@style/navi_text_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.19"
+                    android:text="@string/driver_lcnce_no" />
+
+                <EditText
+                    android:id="@+id/edt_driverdlno_spotchallan_xml"
+                    style="@style/edt_custom_style"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.17"
+                    android:gravity="center"
+                     android:inputType="text|textCapCharacters"
+                    android:maxLength="25" >
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_adhar_spotchallan_xml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_driver_challans"
+                android:layout_marginTop="@dimen/header_grnt_padding_ten" >
+
+                <TextView
+                    android:id="@+id/textView6"
+                    style="@style/navi_text_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.19"
+                    android:text="@string/aadhar_no_eid" />
+
+                <EditText
+                    android:id="@+id/edt_aadharno_spotchallan_xml"
+                    style="@style/edt_custom_style"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.00"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="12" >
+                </EditText>
+            </LinearLayout>
+
+            <!-- driver type start -->
+
+           <!--  <LinearLayout
+                android:id="@+id/ll_drivertype_spot_xml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_adhar_spotchallan_xml"
+                android:layout_marginTop="@dimen/header_grnt_padding_ten"
+                android:orientation="horizontal"
+                android:visibility="visible" >
+
+                <RadioGroup
+                    android:id="@+id/radioGroup_isOwner_isDriver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/radioGroupButton_isOwner"
+                        style="@style/dd_custom_radio_btn_style_isDriver_isOwner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/header_grnt_padding_ten"
+                        android:text="@string/is_owner" />
+
+                    <RadioButton
+                        android:id="@+id/radioGroupButton_isDriver"
+                        style="@style/dd_custom_radio_btn_style_isDriver_isOwner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/header_grnt_padding_ten"
+                        android:text="@string/is_driver" />
+                </RadioGroup>
+            </LinearLayout> -->
+            <!-- driver type end -->
+
+
+            <!-- isOD details start -->
+
+            <LinearLayout
+                android:id="@+id/ll_isOwner_isDriver"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_violation_spotchallan_xml"
+                android:orientation="vertical"
+                android:visibility="visible" >
+                
+                    <TextView
+                        style="@style/navi_text_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="5dp"
+                        android:text="@string/driver_details" />
+
+                <LinearLayout
+                    android:id="@+id/ll_drivername_isOD"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/header_grnt_padding_ten"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/navi_text_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight=".30"
+                        android:text="@string/driver_name_only" />
+
+                    <EditText
+                        android:id="@+id/edt_driverdname_isOD"
+                        style="@style/edt_custom_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".70"
+                        android:gravity="center"
+                        android:hint="Enter Driver Name"
+                        android:inputType="text|textCapCharacters" >
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_driverfathername_isOD"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/header_grnt_padding_ten"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/navi_text_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight=".30"
+                        android:text="@string/driver_father_name" />
+
+                    <EditText
+                        android:id="@+id/edt_driverfathername_isOD"
+                        style="@style/edt_custom_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".70"
+                        android:gravity="center"
+                        android:hint="Enter Driver Father Name"
+                        android:inputType="text|textCapCharacters" >
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_address_isOD"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/header_grnt_padding_ten"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/navi_text_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight=".30"
+                        android:text="@string/address_res" />
+
+                    <EditText
+                        android:id="@+id/edt_address_isOD"
+                        style="@style/edt_custom_style"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_weight=".70"
+                        android:gravity="center"
+                        android:hint="Enter Address"
+                        android:inputType="textCapCharacters" >
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_city_isOD"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/header_grnt_padding_ten"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/navi_text_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight=".30"
+                        android:text="@string/city_or_district" />
+
+                    <EditText
+                        android:id="@+id/edt_city_isOD"
+                        style="@style/edt_custom_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".70"
+                        android:gravity="center"
+                        android:hint="Enter City"
+                        android:inputType="textCapCharacters" >
+                    </EditText>
+                </LinearLayout>
+            </LinearLayout>
+            <!-- isOD details end -->
+            <LinearLayout
+                android:id="@+id/ll_contactnum_spotchallantwo_xml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_isOwner_isDriver"
+                android:layout_marginTop="@dimen/header_grnt_padding_five"
+                android:orientation="horizontal" >
+                
+                 <TextView
+                        style="@style/navi_text_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight=".30"
+                        android:text="Contact No :" />
+
+                <EditText
+                    android:id="@+id/edt_drvr_cnctno_spotchallantwo_xml"
+                    style="@style/edt_custom_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.70"
+                    android:hint="@string/driver_contact_no"
+                    android:inputType="number"
+                    android:gravity="center"
+                    android:maxLength="11" >
+                </EditText>
+
+            </LinearLayout>
+            
+            <LinearLayout
+                android:id="@+id/ll_idproof_spotchallantwo_xml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_contactnum_spotchallantwo_xml"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/header_grnt_padding_five" >
+
+                <Button
+                    android:id="@+id/btn_select_idproff_spotchallantwo_xml"
+                    style="@style/dd_custom_blue_btn_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/header_grnt_padding_five"
+                    android:layout_weight="1"
+                    android:text="@string/select_idproof" />
+
+                <EditText
+                    android:id="@+id/edt_idproff_spotchallantwo_xml"
+                    style="@style/edt_custom_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" >
+                </EditText>
+            </LinearLayout>
+            
+            
+            <EditText
+                android:id="@+id/edt_remarks_spotchallantwo_xml"
+                style="@style/edt_custom_style"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@+id/ll_idproof_spotchallantwo_xml"
+                android:layout_marginTop="@dimen/header_grnt_padding_five"
+                android:gravity="top"
+                android:inputType="textCapCharacters"
+                android:hint="@string/remarks" >
+            </EditText>
+            
+            <RelativeLayout
+                android:id="@+id/rl_detaineditems_spotchallantwo_xml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edt_remarks_spotchallantwo_xml" >
+
+                <TextView
+                    android:id="@+id/tv_detaineditems_name_spotchallantwo_xml"
+                    style="@style/navi_text_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="@dimen/header_grnt_padding_five"
+                    android:layout_marginTop="@dimen/header_grnt_padding_five"
+                    android:text="@string/detained_items" />
+
+                <LinearLayout
+                    android:id="@+id/ll_detaineditems1_spotchallantwo_xml"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_detaineditems_name_spotchallantwo_xml"
+                    android:layout_centerHorizontal="true" >
+
+                    <CheckBox
+                        android:id="@+id/checkBox_dt_rc_spotchallantwo_xml"
+                        style="@style/dd_custom_check_box_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.95"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="@string/detained_items_rc" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox_dt_vchle_spotchallantwo_xml"
+                        style="@style/dd_custom_check_box_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="@string/detained_items_vhcle" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_detaineditems2_spotchallantwo_xml"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ll_detaineditems1_spotchallantwo_xml"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/header_grnt_padding_five" >
+
+                    <CheckBox
+                        android:id="@+id/checkBox_dt_lcns_spotchallantwo_xml"
+                        style="@style/dd_custom_check_box_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.95"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="@string/detained_items_licence" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox_dt_permit_spotchallantwo_xml"
+                        style="@style/dd_custom_check_box_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="@string/detained_items_permit" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_detaineditems3_spotchallantwo_xml"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/ll_detaineditems2_spotchallantwo_xml"
+                    android:layout_marginTop="@dimen/header_grnt_padding_five" >
+
+                    <CheckBox
+                        android:id="@+id/checkBox_dt_none_spotchallantwo_xml"
+                        style="@style/dd_custom_check_box_style"
+                        android:layout_width="270dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="@string/none" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btn_whlr_code_spotchallan_xml"
+                style="@style/dd_custom_blue_btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_adhar_spotchallan_xml"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/header_grnt_padding_five"
+                android:text="@string/select_wheeler_code" />
+
+            <Button
+                android:id="@+id/btn_violation_spotchallan_xml"
+                style="@style/dd_custom_blue_btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_whlr_code_spotchallan_xml"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/header_grnt_padding_five"
+                android:text="@string/select_violation" />
+
+            <LinearLayout
+                android:id="@+id/ll_4_spot_challan_xml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_violation_spotchallan_xml"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/header_grnt_padding_five"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_detaineditems_spotchallantwo_xml"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/margin_twenty"
+                android:layout_marginTop="@dimen/margin_twenty" >
+
+                <Button
+                    android:id="@+id/btn_cancel_spotchallan_xml"
+                    style="@style/naviblue_custom_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cancel" />
+
+               <Button
+                    android:id="@+id/btn_finalsubmit_spotchallantwo_xml"
+                    style="@style/naviblue_custom_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/header_grnt_padding_five"
+                    android:layout_weight="1"
+                    android:text="@string/submit" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

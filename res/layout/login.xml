@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        style="@style/header_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            style="@style/header_images_style_left"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@null" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            style="@style/header_images_style_right"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@null" />
+
+        <TextView
+            android:id="@+id/textView1"
+            style="@style/header_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/header_txt" />
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/cust_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imageView2"
+            android:layout_centerHorizontal="true"
+            android:text="@string/app_version"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/relativeLayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"
+        android:isScrollContainer="true" >
+
+        <RelativeLayout
+            android:id="@+id/rl_scroll"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/imageViewlogo"
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/header_grnt_padding_ten"
+                android:drawableTop="@drawable/logo_hyd"
+                android:gravity="center_horizontal"
+                android:text="@string/logIn"
+                android:textColor="@color/navi_color"
+                android:textSize="30sp" />
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageViewlogo"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="@dimen/header_grnt_padding_ten" >
+
+                <EditText
+                    android:id="@+id/edtpidcode_login_xml"
+                    style="@style/edt_custom_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:hint="@string/enter_pid"
+                    android:inputType="number"
+                    android:text="" >
+                </EditText>
+                <!-- 23001004 -->
+                <!-- Mtpv123 -->
+
+                <EditText
+                    android:id="@+id/edtpidpwd_login_xml"
+                    style="@style/edt_custom_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/edtpidcode_login_xml"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/header_grnt_padding_five"
+                    android:hint="@string/enter_pwd"
+                    android:inputType="textPassword"
+                    android:text="" >
+                </EditText>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_remember_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relativeLayout2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/header_grnt_padding_five"
+                android:layout_marginTop="@dimen/header_grnt_padding_five"
+                android:gravity="end"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <CheckBox
+                    android:id="@+id/checkBox_rememberdetails_login_xml"
+                    style="@style/dd_custom_check_box_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_twenty"
+                    android:text="@string/remember_details"
+                    android:textSize="22sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_btns"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_remember_details"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="@dimen/header_grnt_padding_five" >
+
+                <Button
+                    android:id="@+id/btncancel_login_xml"
+                    style="@style/naviblue_custom_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/header_grnt_padding_five"
+                    android:layout_weight="1"
+                    android:text="@string/cancel" />
+
+                <Button
+                    android:id="@+id/btnsubmit_login_xml"
+                    style="@style/naviblue_custom_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/submit" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView4"
+                style="@style/navi_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_btns"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/tv_ipsettings"
+                style="@style/navi_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/textView4"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="20dp"
+                android:drawableTop="@drawable/ipsettings"
+                android:text="@string/ip_settings_header" />
+        </RelativeLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textView3"
+        style="@style/footer_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg"
+    android:padding="@dimen/activity_vertical_margin">
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Bluetooth Devices"
+        android:textColor="#000000"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+    
+    <ListView
+        android:id="@+id/lv_paired"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:cacheColorHint="#00000000" />
+
+    <TextView
+           android:id="@+id/tv_device"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:gravity="center"
+           android:text="Bluetooth Devices Found"
+           android:textColor="#ffffff"
+           android:textSize="35sp"
+           android:visibility="gone"
+           android:textStyle="bold" />
+    
+    <TextView
+           android:id="@+id/bt_device_Address"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:gravity="center"
+           android:text=""
+           android:textColor="#ffffff"
+           android:textSize="35sp"
+           android:visibility="gone"
+           android:textStyle="bold" />
+</LinearLayout>

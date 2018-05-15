@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\xml\\provider_paths.xml",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\xml\\provider_paths.xml"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\xml\\provider_paths.xml",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\xml\\provider_paths.xml"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\xml\\file_paths.xml",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\xml\\file_paths.xml"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\xml\\file_paths.xml",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\xml\\file_paths.xml"
+    }
+]

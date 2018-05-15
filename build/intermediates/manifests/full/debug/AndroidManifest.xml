@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mtpv.mobilee_ticket"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="18"
+        android:targetSdkVersion="25" />
+
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.DELETE_PACKAGES" />
+
+    <meta-data
+        android:name="android.support.VERSION"
+        android:value="25.3.1" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@drawable/logo_hyd"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:theme="@style/AppTheme" >
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.mtpv.mobilee_ticket.provider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name="com.mtpv.mobilee_ticket.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.GenerateDrunkDriveCase"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.Dashboard"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.Settings_New"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.DrunkResponse"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.PendingChallans"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.Drunk_Drive"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+
+            <!--  -->
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.DuplicatePrint"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.IPSettings"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.SpotChallan"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.SpotResponse"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.VehicleHistoryPendingChallans"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.OfflineDashboardActivity"
+            android:label="@string/title_activity_offline_dashboard"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.Offline_GenerateCase"
+            android:label="@string/title_activity_offline__generate_case"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.Offline_Settings"
+            android:label="@string/title_activity_offline__settings"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.Respone_Print"
+            android:label="@string/title_activity_respone__print"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.Fake_NO_Dialog"
+            android:label="@string/title_activity_Fake_NO_Dialog"
+            android:theme="@android:style/Theme.Dialog"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.OTP_input"
+            android:label="@string/title_activity_otp_input"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.ExtraPassengers"
+            android:label="title_activity_extra_passenger"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.E_Challan"
+            android:label="@string/title_activity_e__challan"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.E_Challan_Reports"
+            android:label="@string/title_activity_e__challan__reports"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.MinorActivity"
+            android:label="@string/title_activity_minor"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.DD_Print"
+            android:label="@string/title_activity_dd__print" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.PopupDetails"
+            android:label="paymentDetails"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.DeviceListActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Dialog" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.pinpad.mtpv.PinPad_ListActivity"
+            android:label="@string/title_activity_pin_pad__list"
+            android:theme="@android:style/Theme.Dialog" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.pinpad.mtpv.PinPadList"
+            android:label="@string/title_activity_pin_pad_list" >
+        </activity>
+        <activity
+            android:name="com.pinpad.mtpv.GetPinPad"
+            android:label="@string/title_activity_get_pin_pad" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.Bluetooth"
+            android:label="@string/title_activity_blue_tooth_list" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.BluetoothListActivity"
+            android:label="@string/title_activity_bluetooth_list" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.Settings_Old"
+            android:label="@string/title_activity_settings__old" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.Dashboard_Old"
+            android:label="@string/title_activity_dashboard__old" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.DD_Response_Print"
+            android:label="@string/title_activity_dd__response__print" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.AadhaarUpdate"
+            android:label="@string/title_activity_aadhaar_update" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.Aadhaar_Update_Print"
+            android:label="@string/title_activity_aadhaar__update__print" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.DateOfBirth_Update"
+            android:label="@string/title_activity_date_of_birth__update"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.ChangePassword"
+            android:label="@string/title_activity_change_password"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.ReleaseversionActivity"
+            android:label="@string/title_activity_releaseversion" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.Dashboard_PC"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.Login_otp"
+            android:label="@string/title_activity_otp_input"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity
+            android:name="com.mtpv.mobilee_ticket.Drunk_Drive_Fake_Dialog"
+            android:label="@string/title_activity_drunk__drive__fake__dialog" >
+        </activity>
+        <activity android:name="com.mtpv.mobilee_ticket.mtpv_SpecialDrive" />
+        <activity android:name="com.mtpv.mobilee_ticket.SpecialDriveResponse_Print" />
+        <activity android:name="com.mtpv.mobilee_ticket.E_Challan_Non_ContactModule" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="2cdc37f0ea9fc03062bf6c77c47b64d3bb01fda8" />
+
+        <activity
+            android:name="ru.bartwell.exfilepicker.ui.activity.ExFilePickerActivity"
+            android:theme="@style/ExFilePickerThemeLight" />
+    </application>
+
+</manifest>

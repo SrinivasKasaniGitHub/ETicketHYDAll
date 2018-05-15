@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg" >
+
+    <!-- Header aligned to top -->
+
+    <RelativeLayout
+        android:id="@+id/header"
+        style="@style/header_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center" >
+
+        <!--         <RelativeLayout
+                    android:id="@+id/relativeLayout1"
+                    style="@style/header_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" > -->
+
+        <ImageView
+            android:id="@+id/imageView1"
+            style="@style/header_images_style_left"
+            android:layout_alignParentStart="true"
+            android:contentDescription="@null"
+            android:layout_centerVertical="true" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            style="@style/header_images_style_right"
+            android:layout_alignParentEnd="true"
+            android:contentDescription="@null"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/textView1"
+            style="@style/header_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/header_txt" />
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/cust_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="23dp"
+            android:text="@string/app_version"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView_header_spot_challan_xml"
+            style="@style/cust_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imageView2"
+            android:layout_centerHorizontal="true"
+            android:text="@string/ip_settings"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        <!-- </RelativeLayout> -->
+    </RelativeLayout>
+
+    <!-- Footer aligned to bottom -->
+
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center" >
+
+        <ImageView
+            android:id="@+id/imagefd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:contentDescription="@null"
+            android:src="@drawable/footer" />
+    </RelativeLayout>
+
+    <!-- Scrollable Content below header and above footer -->
+    <!--
+    <ScrollView
+    android:id="@+id/container"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_above="@id/footer"
+    android:layout_below="@id/header" >
+    -->
+
+    <ScrollView
+        android:id="@+id/container"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/footer"
+        android:layout_below="@id/header"
+        android:layout_margin="10dp" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/header_grnt_padding_ten" >
+
+            <TextView
+                android:id="@+id/textView3"
+                style="@style/navi_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="@dimen/header_grnt_padding_ten"
+                android:text="@string/ip_settings_header"
+                android:textSize="@dimen/thirty_sp" />
+
+            <!--             <LinearLayout
+                            android:id="@+id/ll_rg_ipsettings_xml"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/textView3"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="@dimen/header_grnt_padding_five"
+                            android:layout_marginTop="@dimen/header_grnt_padding_five" > -->
+
+            <RadioGroup
+                android:id="@+id/radioGroup_live_test"
+                android:layout_below="@+id/textView3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/header_grnt_padding_five"
+                android:layout_marginTop="@dimen/header_grnt_padding_five"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/radioButton_live"
+                    style="@style/dd_custom_radio_btn_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/header_grnt_padding_five"
+                    android:paddingEnd="@dimen/header_grnt_padding_five"
+                    android:text="@string/open" />
+
+                <RadioButton
+                    android:id="@+id/radioButton_test"
+                    style="@style/dd_custom_radio_btn_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/header_grnt_padding_five"
+                    android:paddingEnd="@dimen/header_grnt_padding_five"
+                    android:checked="true"
+
+
+                    android:text="@string/mpls" />
+            </RadioGroup>
+            <!-- </LinearLayout> -->
+
+            <LinearLayout
+                android:id="@+id/ll_ipsetting"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_below="@+id/radioGroup_live_test"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/header_grnt_padding_five"
+                android:layout_marginTop="@dimen/header_grnt_padding_five" >
+
+                <TextView
+                    android:id="@+id/textView4"
+                    style="@style/navi_text_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.16"
+                    android:text="@string/service_url" />
+
+                <EditText
+                    android:id="@+id/edt_service_ipsettings_xml"
+                    android:labelFor="@+id/edt_service_ipsettings_xml"
+                    style="@style/edt_custom_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.97" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_ftpurl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_ipsetting"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/header_grnt_padding_ten"
+                android:layout_marginTop="@dimen/header_grnt_padding_five" >
+
+                <TextView
+                    android:id="@+id/textView5"
+                    style="@style/navi_text_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.25"
+                    android:text="@string/ftp_url" />
+
+                <EditText
+                    android:id="@+id/edt_ftpurl_xml"
+                    android:labelFor="@+id/edt_ftpurl_xml"
+                    style="@style/edt_custom_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.97" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_btns"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_ftpurl"
+                android:layout_marginTop="@dimen/header_grnt_padding_ten"
+                android:layout_centerHorizontal="true" >
+
+                <Button
+                    android:id="@+id/btnback_ipsettings_xml"
+                    style="@style/naviblue_custom_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/header_grnt_padding_five"
+                    android:layout_weight="1"
+                    android:text="@string/back" />
+
+                <Button
+                    android:id="@+id/btnsubmit_ipsettings_xml"
+                    style="@style/naviblue_custom_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/save" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

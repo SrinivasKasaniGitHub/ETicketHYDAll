@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" 
+    android:background="#D6DDFF">
+    
+     <TextView
+         android:id="@+id/heading"
+         style="@style/TextColor"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center"
+         android:layout_marginTop="5dp"
+         android:text="Enter Following Details "
+         android:textAppearance="?android:attr/textAppearanceLarge"
+         android:textSize="30sp"
+         android:textStyle="bold" />
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+
+    <TextView
+        android:id="@+id/textView1"
+        style="@style/TextColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Mobile No : "
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/et_mobileNo"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edittextstyle"
+        android:hint="Enter Mobile Number"
+        android:paddingLeft="5dp" >
+
+        <requestFocus />
+
+    </EditText>
+    
+    
+    <TextView
+        android:id="@+id/two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Email Id : "
+        style="@style/TextColor"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/et_emailid"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edittextstyle"
+        android:hint="Enter Email ID"
+        android:paddingLeft="5dp" >
+
+    </EditText>
+    </LinearLayout>
+     <LinearLayout 
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:layout_marginTop="30dp"
+              android:layout_marginBottom="30dp"
+              android:weightSum="1">
+              
+              <ImageView
+                  android:id="@+id/cancel"
+                  android:layout_width="200dp"
+                  android:layout_height="65dp"
+                  android:layout_weight="0.5"
+                  android:contentDescription="@null"
+                  android:src="@drawable/cancel"
+                  android:text="@string/mobile" />
+              
+              <ImageView
+                  android:id="@+id/submit"
+                  android:layout_width="200dp"
+                  android:layout_height="65dp"
+                  android:layout_weight="0.5"
+                  android:contentDescription="@null"
+                  android:src="@drawable/submit"
+                  android:text="@string/mobile" />
+              
+          </LinearLayout>
+
+</LinearLayout>

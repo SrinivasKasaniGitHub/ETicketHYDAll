@@ -1,0 +1,94 @@
+AP09CC3014
+ WHEELER :4!
+ CHERUKUPALLY SUNEETHA!
+ 1-8-726/41 G-1,SHANTI NILAYAM,ACHAIAH NAGAR NEW NALLAKUNTA HYD!
+ HYD!
+ MARUTI SUZUKI INDIA LTD.,!
+ MARUTI ALTO K10 VXI BS IV!
+ M F RED!
+ K10BN4121940!
+ MA3EADE1S00114983HA!
+ 4!
+ FAKE NO. PLATE 
+
+VEHICLE BASED VIOLATION HISTORY
+ --------------------------------------- 
+
+LICENSE BASED VIOLATION HISTORY
+ ---------------------------------------
+Without Helmet / Not wearing Helmet Cases : 8 
+
+RTA VALIDITIES 
+ ---------------------------------------
+Insurance Expired on :28/11/2016
+Vehicle Type :Non Transport
+$RC:0@DL:8@ADR:0
+
+
+
+
+
+
+ WHEELER :4!
+ CHERUKUPALLY SUNEETHA!
+ 1-8-726/41 G-1,SHANTI NILAYAM,ACHAIAH NAGAR NEW NALLAKUNTA HYD!
+ HYD!
+ MARUTI SUZUKI INDIA LTD.,!
+ MARUTI ALTO K10 VXI BS IV!
+ M F RED!
+ K10BN4121940!
+ MA3EADE1S00114983HA!
+ 4!
+ LICENSE BASED VIOLATION HISTORY
+ ---------------------------------------
+Without Helmet / Not wearing Helmet Cases : 8 
+
+RTA VALIDITIES 
+ ---------------------------------------
+Insurance Expired on :28/11/2016
+Vehicle Type :Non Transport
+$RC:0@DL:8@ADR:0
+
+
+
+LICENSE BASED VIOLATION HISTORY
+ ---------------------------------------
+Without Helmet / Not wearing Helmet Cases : 8 
+
+RTA VALIDITIES 
+ ---------------------------------------
+Insurance Expired on :28/11/2016
+Vehicle Type :Non Transport
+$RC:0@DL:8@ADR:0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[AP09CC3014
+ WHEELER :4, CHERUKUPALLY SUNEETHA, 1-8-726/41 G-1,SHANTI NILAYAM,ACHAIAH NAGAR NEW NALLAKUNTA HYD, HYD, MARUTI SUZUKI INDIA LTD.,, MARUTI ALTO K10 VXI BS IV, M F RED, K10BN4121940, MA3EADE1S00114983HA, 4, FAKE NO. PLATE 
+
+VEHICLE BASED VIOLATION HISTORY
+ --------------------------------------- 
+
+LICENSE BASED VIOLATION HISTORY
+ ---------------------------------------
+Without Helmet / Not wearing Helmet Cases : 8 
+
+RTA VALIDITIES 
+ ---------------------------------------
+Insurance Expired on :28/11/2016
+Vehicle Type :Non Transport
+$RC:0@DL:8@ADR:0]

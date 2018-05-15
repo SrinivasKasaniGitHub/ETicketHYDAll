@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="AnalogicsVersa3TBTPrinterAPI">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/AnalogicsVersa3TBTPrinterAPI.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

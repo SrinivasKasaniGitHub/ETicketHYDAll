@@ -1,0 +1,890 @@
+[
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\sync.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\sync.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\settings.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\settings.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\offline.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\offline.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\notification_bg_low_normal.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\print.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\print.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_star_black_48dp.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_star_black_48dp.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_dark__ic_action_ok.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_dark__ic_action_ok.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_light__ic_action_grid.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_light__ic_action_grid.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_000.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\right_arrow.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\right_arrow.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_longpressed_holo.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_list_longpressed_holo.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\header_icon.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\header_icon.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\design_ic_visibility.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\7359d251c151d249938c600954db948bd3421f0d\\output\\res\\drawable-hdpi-v4\\design_ic_visibility.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_star_half_black_48dp.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_48dp.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\vhcle_history.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\vhcle_history.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_star_black_16dp.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_star_black_16dp.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\generate_ticket.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\generate_ticket.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_000.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\capture.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\capture.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\hcp_right.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\hcp_right.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ddwithoutdloraadhar.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\ddwithoutdloraadhar.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\gallery.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\gallery.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_star_half_black_16dp.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_16dp.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_spinner_mtrl_am_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_spinner_mtrl_am_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_light__ic_action_deselect.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_light__ic_action_deselect.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_dark__ic_action_ok.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_dark__ic_action_ok.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp__ic_folder.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp__ic_folder.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_text_select_handle_middle_mtrl_light.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_middle_mtrl_light.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp__ic_file.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp__ic_file.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp__ic_up.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp__ic_up.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_popup_background_mtrl_mult.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_popup_background_mtrl_mult.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\photo.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\photo.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\offline.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\offline.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_light__ic_action_cancel.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_light__ic_action_cancel.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\sp_drive.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\sp_drive.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_star_black_16dp.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_star_black_16dp.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\header_icon.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\header_icon.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\reports.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\reports.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp__ic_folder.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp__ic_folder.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_dark__ic_action_select_all.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_dark__ic_action_select_all.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\htp_left.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\htp_left.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\checked_uncheckbox.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\checked_uncheckbox.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_text_select_handle_middle_mtrl_dark.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_middle_mtrl_dark.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_light__ic_action_deselect.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_light__ic_action_deselect.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\hcp_right.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\hcp_right.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_015.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_dark__ic_action_sort.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_dark__ic_action_sort.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_dark.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_dark.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\about.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\about.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\notification_bg_normal_pressed.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\capture.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\capture.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\gallery.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\gallery.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_light__ic_action_sort.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_light__ic_action_sort.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\design_ic_visibility_off.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\7359d251c151d249938c600954db948bd3421f0d\\output\\res\\drawable-hdpi-v4\\design_ic_visibility_off.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\upload.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\upload.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_textfield_default_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_textfield_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_menu_share_mtrl_alpha.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_textfield_activated_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_textfield_activated_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\generate_ticket1.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\generate_ticket1.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_dark__ic_action_select_all.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_dark__ic_action_select_all.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\vhcle_history.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\vhcle_history.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_divider_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_list_divider_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\generate_ticket.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\generate_ticket.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_015.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\releasedocument.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\releasedocument.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\noncontact.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\noncontact.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\htp_left.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\htp_left.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_light__ic_action_list.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_light__ic_action_list.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\about.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\about.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_star_half_black_36dp.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_36dp.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_text_select_handle_middle_mtrl_light.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_middle_mtrl_light.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_pressed_holo_dark.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_list_pressed_holo_dark.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_star_black_36dp.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_star_black_36dp.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_000.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_dark.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_dark.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp__ic_up.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp__ic_up.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_text_select_handle_middle_mtrl_dark.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_middle_mtrl_dark.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_dark__ic_action_new_folder.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_dark__ic_action_new_folder.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_textfield_default_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_textfield_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\print.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\print.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\notification_bg_normal.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\notification_bg_normal.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_pressed_holo_light.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_list_pressed_holo_light.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_light.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_light.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\checked_checkbox.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\checked_checkbox.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_pressed_holo_dark.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_list_pressed_holo_dark.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ipsettings.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\ipsettings.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\right_arrow.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\right_arrow.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\dialog_logo.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\dialog_logo.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_light__ic_action_invert_selection.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_light__ic_action_invert_selection.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_dark__ic_action_deselect.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_dark__ic_action_deselect.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_015.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp__ic_file.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp__ic_file.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\sp_drive.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\sp_drive.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_015.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\logout.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\logout.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\settings.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\settings.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\notification_bg_low_pressed.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_dark__ic_action_cancel.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_dark__ic_action_cancel.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\notification_bg_low_pressed.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_menu_share_mtrl_alpha.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\generate_ticket1.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\generate_ticket1.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_text_select_handle_left_mtrl_light.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_left_mtrl_light.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_pressed_holo_light.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_list_pressed_holo_light.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\exit_logo.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\exit_logo.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_text_select_handle_left_mtrl_dark.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_left_mtrl_dark.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_focused_holo.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_list_focused_holo.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_text_select_handle_left_mtrl_light.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_left_mtrl_light.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_switch_track_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_switch_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\sync.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\sync.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_text_select_handle_right_mtrl_dark.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_right_mtrl_dark.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_dark__ic_action_invert_selection.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_dark__ic_action_invert_selection.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\radiobutton_unchecked_md.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\radiobutton_unchecked_md.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_text_select_handle_right_mtrl_light.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_right_mtrl_light.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_divider_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_list_divider_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_dark__ic_action_deselect.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_dark__ic_action_deselect.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_light__ic_action_list.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_light__ic_action_list.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\checked_uncheckbox.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\checked_uncheckbox.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\releasedocument.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\releasedocument.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_dark__ic_action_list.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_dark__ic_action_list.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\radiobutton_unchecked_md.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\radiobutton_unchecked_md.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_popup_background_mtrl_mult.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_popup_background_mtrl_mult.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_light__ic_action_ok.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_light__ic_action_ok.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_light__ic_action_ok.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_light__ic_action_ok.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_dark__ic_action_new_folder.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_dark__ic_action_new_folder.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_dark__ic_action_sort.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_dark__ic_action_sort.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\design_ic_visibility_off.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\7359d251c151d249938c600954db948bd3421f0d\\output\\res\\drawable-hdpi-v4\\design_ic_visibility_off.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_light__ic_action_cancel.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_light__ic_action_cancel.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\checked_checkbox.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\checked_checkbox.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\mptvlogo.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\mptvlogo.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_text_select_handle_left_mtrl_dark.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_left_mtrl_dark.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\radiobutton_checked_md.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\radiobutton_checked_md.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_light__ic_action_grid.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_light__ic_action_grid.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_star_half_black_36dp.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_36dp.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\towing.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\towing.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\notification_bg_normal_pressed.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\notification_bg_normal.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\notification_bg_normal.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_light.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_light.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_000.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_switch_track_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_switch_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_text_select_handle_right_mtrl_dark.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_right_mtrl_dark.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_text_select_handle_right_mtrl_light.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_right_mtrl_light.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\towing.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\towing.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_light__ic_action_select_all.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_light__ic_action_select_all.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\notification_bg_low_normal.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\design_ic_visibility.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\7359d251c151d249938c600954db948bd3421f0d\\output\\res\\drawable-hdpi-v4\\design_ic_visibility.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_dark__ic_action_grid.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_dark__ic_action_grid.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_dark__ic_action_list.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_dark__ic_action_list.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_light__ic_action_select_all.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_light__ic_action_select_all.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_spinner_mtrl_am_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_spinner_mtrl_am_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\dialog_logo.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\dialog_logo.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_textfield_activated_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_textfield_activated_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\logo.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\logo.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_dark__ic_action_cancel.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_dark__ic_action_cancel.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_light__ic_action_new_folder.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_light__ic_action_new_folder.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_light__ic_action_new_folder.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_light__ic_action_new_folder.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\radiobutton_checked_md.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\radiobutton_checked_md.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\alert.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\alert.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\mptvlogo.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\mptvlogo.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\spot_challan.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\spot_challan.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\noncontact.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\noncontact.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\spot_challan.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\spot_challan.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_light__ic_action_invert_selection.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_light__ic_action_invert_selection.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ipsettings.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\ipsettings.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\alert.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\alert.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_dark__ic_action_invert_selection.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_dark__ic_action_invert_selection.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\down.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\down.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\logout.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\logout.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_star_black_36dp.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_star_black_36dp.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ddwithoutdloraadhar.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\ddwithoutdloraadhar.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_star_half_black_16dp.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_16dp.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\exit_logo.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\exit_logo.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\logo.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\logo.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\upload.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\upload.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_dark__ic_action_grid.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_dark__ic_action_grid.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\photo.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\photo.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\reports.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-hdpi\\reports.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_longpressed_holo.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_list_longpressed_holo.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_star_half_black_48dp.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_48dp.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\efp_light__ic_action_sort.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\drawable-hdpi-v4\\efp_light__ic_action_sort.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\down.png",
+        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-hdpi\\down.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_focused_holo.9.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_list_focused_holo.9.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_star_black_48dp.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_star_black_48dp.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable-hdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
+    }
+]

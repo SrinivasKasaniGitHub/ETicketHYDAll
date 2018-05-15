@@ -1,0 +1,5 @@
+ Changes done On Instructions by Madhusudhan Anna:
+1. Removed Extra parameters like String imei,String simNo,String gpsLattitude,String gpsLongitude
+	for Service Methods named getRTADetailsByVehicleNO, getRTADetailsByLicenceNo, getAADHARData.
+2. In Spot Module, if spot call yes and cash is selected flag should be 1. and if card then it should be 0.
+3. In spot Module if spot call no then send 0.	

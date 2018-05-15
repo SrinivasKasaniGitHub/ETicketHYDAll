@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="@dimen/header_grnt_padding_five" >
+
+        <TextView
+            android:id="@+id/tv_eticketno_cust_pend_xml"
+            style="@style/navi_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="eticketNo" />
+
+        <TextView
+            android:id="@+id/tv_amnt_cust_pend_xml"
+            style="@style/navi_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_eticketno_cust_pend_xml"
+            android:text="Amnt" />
+
+        <TextView
+            android:id="@+id/tv_datetime_cust_pend_xml"
+            style="@style/navi_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/tv_amnt_cust_pend_xml"
+            android:text="DateTime"
+            android:layout_marginTop="@dimen/header_grnt_padding_ten"
+            android:textSize="12dp" />
+        
+        <TextView
+            android:id="@+id/tv_pointname_cust_pend_xml"
+            style="@style/navi_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_datetime_cust_pend_xml"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="@dimen/header_grnt_padding_ten"
+            android:text="TextView"
+            android:textSize="12dp" />
+
+        
+    </RelativeLayout>
+
+</RelativeLayout>
