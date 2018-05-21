@@ -1,9 +1,5 @@
 [
     {
-        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_launcher.png",
-        "source": "D:\\Android\\ETicketHydJIO\\res\\drawable-ldpi\\ic_launcher.png"
-    },
-    {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_launcher.png",
         "source": "D:\\Android\\ETicketHYDAll\\res\\drawable-ldpi\\ic_launcher.png"
     }

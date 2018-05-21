@@ -1,15 +1,7 @@
 [
     {
-        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action.xml",
-        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout-v21\\notification_action.xml"
-    },
-    {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action.xml",
         "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout-v21\\notification_action.xml"
-    },
-    {
-        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action_tombstone.xml",
-        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout-v21\\notification_action_tombstone.xml"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action_tombstone.xml",
@@ -18,14 +10,6 @@
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_icon_group.xml",
         "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout-v21\\notification_template_icon_group.xml"
-    },
-    {
-        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_icon_group.xml",
-        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout-v21\\notification_template_icon_group.xml"
-    },
-    {
-        "merged": "D:\\Android\\ETicketHydJIO\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_custom_big.xml",
-        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout-v21\\notification_template_custom_big.xml"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_custom_big.xml",

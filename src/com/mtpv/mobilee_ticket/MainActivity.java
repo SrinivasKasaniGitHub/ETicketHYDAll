@@ -116,6 +116,9 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
 
     TextView textView2;
 
+
+    //private String url_to_fix = "/services/MobileEticketServiceImpl?wsdl";
+
     private String url_to_fix = "/services/MobileEticketServiceImpl?wsdl";
     @SuppressWarnings("unused")
     private String test_service_url = "http://192.168.11.55:8080/eTicketMobileHyd";
@@ -142,6 +145,8 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
 
     private static final int REQUEST_PERMISSIONS = 20;
     private SparseIntArray mErrorString;
+
+    public static String psName,cadre_name,pidName,uintCode;
 
     @SuppressWarnings("deprecation")
     @SuppressLint("NewApi")
@@ -624,12 +629,13 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                             SharedPreferences.Editor editors = sharedPreferences.edit();
 
                             String pidCode = "" + arr_logindetails[0];
+                            uintCode=pidCode.substring(0,2);
                             pidCodestatic = "" + arr_logindetails[0];
-                            String pidName = "" + arr_logindetails[1];
+                            pidName = "" + arr_logindetails[1];
                             String psCd = "" + arr_logindetails[2];
-                            String psName = "" + arr_logindetails[3];
+                            psName = "" + arr_logindetails[3];
                             String cadre_code = "" + arr_logindetails[4];
-                            String cadre_name = "" + arr_logindetails[5];
+                            cadre_name = "" + arr_logindetails[5];
                             String pass_word = "" + user_pwd;
                             String off_phone_no = "" + arr_logindetails[6];
                             String current_version = "" + arr_logindetails[7];

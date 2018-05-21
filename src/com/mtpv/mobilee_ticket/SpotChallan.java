@@ -17,6 +17,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.location.Location;
@@ -45,6 +46,7 @@ import android.text.format.DateFormat;
 import android.text.format.Time;
 import android.util.Base64;
 import android.util.Log;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -357,6 +359,9 @@ public class SpotChallan extends Activity
 
     Button dob_input;
 
+    ImageView img_logo;
+    TextView officer_Name,officer_Cadre,officer_PS;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -372,6 +377,25 @@ public class SpotChallan extends Activity
 
         final_image_data_tosend = null;
         ver = new VerhoeffCheckDigit();
+        getLocation();
+
+        img_logo=(ImageView)findViewById(R.id.img_logo);
+        if (MainActivity.uintCode.equals("22")){
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.cyb_logo));
+        }else if (MainActivity.uintCode.equals("23")){
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+        }else if (MainActivity.uintCode.equals("24")){
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
+        }else{
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+        }
+        officer_Name=(TextView)findViewById(R.id.officer_Name);
+        officer_Cadre=(TextView)findViewById(R.id.officer_cadre);
+        officer_PS=(TextView)findViewById(R.id.officer_PS);
+
+        officer_Name.setText(MainActivity.pidName+"("+MainActivity.cadre_name+")");
+        officer_Cadre.setText(MainActivity.cadre_name);
+        officer_PS.setText(MainActivity.psName);
 
         newtimer = new CountDownTimer(1000000000, 50) {
 
@@ -2079,7 +2103,15 @@ public class SpotChallan extends Activity
                         canvas.drawText("Lat :" + latitude, xPos, yPos + 400, paint);
                         canvas.drawText("Long :" + longitude, xPos, yPos + 500, paint);
 
+                        Display d = getWindowManager().getDefaultDisplay();
+                        int x = d.getWidth();
+                        int y = d.getHeight();
+                        Bitmap scaledBitmap = Bitmap.createScaledBitmap(mutableBitmap, y, x, true);
+                        Matrix matrix = new Matrix();
+                        matrix.postRotate(90);
+                        mutableBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
                         mutableBitmap.compress(Bitmap.CompressFormat.JPEG, 20, outFile);
+
                         outFile.flush();
                         outFile.close();
                         new SingleMediaScanner(this, file);
@@ -2121,9 +2153,17 @@ public class SpotChallan extends Activity
                         canvas.rotate(90);
                         canvas.restore();
 
+                        Display d = getWindowManager().getDefaultDisplay();
+                        int x = d.getWidth();
+                        int y = d.getHeight();
+                        Bitmap scaledBitmap = Bitmap.createScaledBitmap(mutableBitmap, y, x, true);
+                        Matrix matrix = new Matrix();
+                        matrix.postRotate(90);
+                        mutableBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
+
                         offender_image.setVisibility(View.VISIBLE);
                         offender_image.setImageBitmap(mutableBitmap);
-                        offender_image.setRotation(offender_image.getRotation() + 90);
+                        offender_image.setRotation(0);
 
                         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                         mutableBitmap.compress(Bitmap.CompressFormat.JPEG, 20, bytes);
@@ -6671,7 +6711,10 @@ public class SpotChallan extends Activity
                         && (!chck_detainedItems_none.isChecked())) {
                     showToast("Check Detained Items");
 
-                } else if (!Dashboard.check_vhleHistory_or_Spot.equals("towing")) {
+                }else if (licence_no!=null && licence_no.equals("")&& chck_detainedItems_licence.isChecked() ){
+                    showToast("Cannot detain Licence \n Please detain the Vehicle !");
+                }
+                else if (!Dashboard.check_vhleHistory_or_Spot.equals("towing")) {
 
                     String tempContactNumber = et_driver_contact_spot.getText().toString().trim();
                     if (et_driver_contact_spot.getText().toString().trim().equals("")) {

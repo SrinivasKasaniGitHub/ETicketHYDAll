@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="D:\Android\ETicketHYDAll\libs\commons-net-3.5.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="342fc284019f590e1308056990fdb24a08f06318">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\2\commons-net-3.5_832c0d55392c0ac9c5790896f58c42451e01b36d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Srinivas\.android\build-cache\6b5519f352c5812c72fdd5cc70b6aadb13e5a3cf\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\10\classes_bc1d2b3300ee08b74f108f237edb4449c893e390\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Srinivas\.android\build-cache\9ff635c7d3853ba48fc17e00903ad880db1560c7\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\10\classes_166c96ca12bbc74c71d9ba673d81747af2b2c3ea\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\ETicketHYDAll\libs\common-lang3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="70d0d4ddef60cfa67f28fd3382fc631119380030">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\2\common-lang3_32dc2c56e72b389849521d56234aa093939827bb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Srinivas\.android\build-cache\a53240c5f75f19270e348bed3da580346f845afc\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\10\classes_122ac3b2548b9299e22c309c57b9e61998ccda32\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\ETicketHYDAll\libs\ksoap2-android-assembly-2.4-jar-with-dependencies.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="e8796346a9191a019e936210a2dc50662c57594b">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\2\ksoap2-android-assembly-2.4-jar-with-dependencies_fb25fb42dc74140bf9e80750b07aa405ef0a54fa\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\ETicketHYDAll\libs\signature.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="9ef58d22656775f6234ae5a7a619eaf3a9388223">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\2\signature_acc2617600453d73b5e4148c90285db64521840a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Srinivas\.android\build-cache\0c482315375a629789b2ec67783426d4ebef864b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8be173e36da2f0410193170aa5b989b1d0f12128\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\ETicketHYDAll\libs\securityJar.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="6addea9b025d2f1a7d9150cae451aab7d2739065">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\2\securityJar_6632ff1670e4f6d8bb4e68d43fa9d355444df700\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\ETicketHYDAll\libs\core-3.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="e019d15a13a9786f881141d2df6654b8510bce8b">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\2\core-3.2.0_935b3b081ec63b8bd74291578c148680c82fbeb3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\ETicketHYDAll\libs\org-apache-commons-codec.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d9c6412a9f19fc03760ca0cf4708bca50f57a80c">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\2\org-apache-commons-codec_1cd7ca5774b9870ae8753ef849e3b21af59f18b3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\ETicketHYDAll\libs\universal-image-loader-1.9.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="a85588bec3e2c4584d593d3f15df1677321bca72">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\2\universal-image-loader-1.9.3_638a7c73f67a16d7eb41e8d0a867336f939e74e6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\ETicketHYDAll\libs\commons-validator-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="42fa1046955ade59f5354a1876cfc523cea33815">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\2\commons-validator-1.4.0_89e17987531c9e2a61f729138bf9b18b508e09e2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\ETicketHYDAll\libs\sun.misc.BASE64Decoder.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="acd93e3727886196f9b8434279ff445ba8611186">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\2\sun.misc.BASE64Decoder_65b905aa170cd5595d6267fffc0460fe86dbbb07\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\ETicketHYDAll\libs\ftp4j-1.6.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="5587b19a4527cf8e0e53a58aff649e06dbd869d9">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\2\ftp4j-1.6_4eff8e9cc612e4c5c1e5614e4cabe209ce530db8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Srinivas\.android\build-cache\fa21b4d5e8b18f621ba8594a450ed4b54f4f9696\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a9354dcb376c75f6da37ec9abf93fe9e98630706\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\ETicketHYDAll\libs\commons-net-examples-3.5.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="6272d80e897347c3c5f3691c8d76eae5deb764e1">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\2\commons-net-examples-3.5_25fdd76ccab1528223994c6ca9bcc271dac6b4ec\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Srinivas\.android\build-cache\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\10\classes_384d28ab1ab55d9934430f898e66da5eeabf1423\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\ETicketHYDAll\libs\mail.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="931fcfbb26a7f24a7a8a252e804889cae1b6fb21">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\2\mail_c6d23e6962564c22ea2d379ebd3e2814a16e8a3e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\ETicketHYDAll\libs\opencv_library-2.4.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="e92dfaeacc97afc46002172e0d0d55b33838715b">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\2\opencv_library-2.4.3_e9b5b097808ca5d55b9b0201a17552bc1ed812b2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\ETicketHYDAll\libs\AnalogicsVersa3TBTPrinterAPI.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="8f335fd581184b2160164d065f0ecd3c4f2b7df0">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\2\AnalogicsVersa3TBTPrinterAPI_c6008b86568f45a5f15f98e9d67e8214e0e24312\classes.dex" />
+    </item>
+
+</items>

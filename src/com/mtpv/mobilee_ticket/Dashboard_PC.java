@@ -1328,7 +1328,10 @@ public class Dashboard_PC extends Activity implements OnClickListener {
 		@Override
 		protected String doInBackground(Void... params) {
 			// TODO Auto-generated method stub
-			ServiceHelper.getPsNames();
+            if (null!=MainActivity.arr_logindetails[0]) {
+                String unitCode=MainActivity.arr_logindetails[0].substring(0,2);
+                ServiceHelper.getPsNames(unitCode);
+            }
 			return null;
 		}
 

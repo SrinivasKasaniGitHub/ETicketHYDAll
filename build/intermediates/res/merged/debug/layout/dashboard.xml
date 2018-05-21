@@ -4,7 +4,13 @@
     android:layout_height="match_parent"
     android:background="@color/bg" >
 
-    <RelativeLayout
+    <include
+        android:id="@+id/relativeLayout1"
+        layout="@layout/activity_header">
+
+    </include>
+
+    <!--<RelativeLayout
         android:id="@+id/relativeLayout1"
         style="@style/header_style"
         android:layout_width="match_parent"
@@ -48,7 +54,7 @@
             android:layout_centerHorizontal="true"
             android:text="@string/app_version"
             android:textAppearance="?android:attr/textAppearanceSmall" />
-    </RelativeLayout>
+    </RelativeLayout>-->
 
     <ImageButton
         android:id="@+id/imgbtn_logout_dashboard_xml"
@@ -124,9 +130,11 @@
         android:id="@+id/textView3"
         style="@style/footer_style"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="center"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"/>
 
     <LinearLayout
         android:id="@+id/linearLayout1"

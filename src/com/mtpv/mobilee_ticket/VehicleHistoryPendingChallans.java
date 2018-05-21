@@ -66,6 +66,9 @@ public class VehicleHistoryPendingChallans extends Activity {
 
 	public static String pending_challans_to_send;
 
+	ImageView img_logo;
+	TextView officer_Name,officer_Cadre,officer_PS;
+
 	@SuppressWarnings("deprecation")
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -73,6 +76,24 @@ public class VehicleHistoryPendingChallans extends Activity {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.vhcle_hstry_pchallans);
 		LoadUIComponents();
+
+		img_logo=(ImageView)findViewById(R.id.img_logo);
+		if (MainActivity.uintCode.equals("22")){
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.cyb_logo));
+		}else if (MainActivity.uintCode.equals("23")){
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+		}else if (MainActivity.uintCode.equals("24")){
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
+		}else{
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+		}
+		officer_Name=(TextView)findViewById(R.id.officer_Name);
+		officer_Cadre=(TextView)findViewById(R.id.officer_cadre);
+		officer_PS=(TextView)findViewById(R.id.officer_PS);
+
+		officer_Name.setText(MainActivity.pidName+"("+MainActivity.cadre_name+")");
+		officer_Cadre.setText(MainActivity.cadre_name);
+		officer_PS.setText(MainActivity.psName);
 
 		sb_selected_penlist = new ArrayList<String>();
 		/*

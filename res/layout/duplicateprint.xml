@@ -12,8 +12,12 @@
     android:layout_height="wrap_content"
     android:layout_alignParentTop="true"
     android:gravity="center" >
+      <include
+          android:id="@+id/relativeLayout1"
+          layout="@layout/activity_header">
 
-   <RelativeLayout
+      </include>
+   <!--<RelativeLayout
         android:id="@+id/relativeLayout1"
         style="@style/header_style"
         android:layout_width="match_parent"
@@ -63,7 +67,7 @@
             android:layout_centerHorizontal="true"
             android:text="Duplicate Print"
             android:textAppearance="?android:attr/textAppearanceSmall" />
-    </RelativeLayout>
+    </RelativeLayout>-->
   </RelativeLayout>
 
   <!-- Footer aligned to bottom -->
@@ -79,7 +83,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
-        android:src="@drawable/footer"/>
+        android:src="@drawable/footer"
+        android:visibility="gone"/>
+
+      <TextView
+          android:id="@+id/textView"
+          style="@style/footer_style"
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          android:gravity="center"
+          android:layout_centerHorizontal="true"
+          android:textStyle="bold"/>
   </RelativeLayout>
 
   <!-- Scrollable Content below header and above footer -->

@@ -37,6 +37,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -116,12 +117,16 @@ public class DuplicatePrint extends Activity implements OnClickListener {
 	Button btn_dp_date_selection;
 	Button btn_dp_get_onlinedetials;
 	Button btn_dp_apptype_selection;
-	TextView tv_dp_text;
+	TextView tv_dp_text,textView_header_spot_challan_xml;
 	Button btn_print_dp;
 
 	/*-------------------------------------------------------------*/
 
 	public static String printer_addrss, printer_name;
+
+
+	ImageView img_logo;
+	TextView officer_Name,officer_Cadre,officer_PS;
 
 	@SuppressWarnings("deprecation")
 	@SuppressLint("WorldReadableFiles")
@@ -134,9 +139,47 @@ public class DuplicatePrint extends Activity implements OnClickListener {
 		if (Dashboard.check_vhleHistory_or_Spot.equals("reports")) {
 			setContentView(R.layout.reports);
 			loadReportComponents();
+			textView_header_spot_challan_xml=(TextView)findViewById(R.id.textView_header_spot_challan_xml);
+			textView_header_spot_challan_xml.setText("reports");
+			img_logo=(ImageView)findViewById(R.id.img_logo);
+			if (MainActivity.uintCode.equals("22")){
+				img_logo.setImageDrawable(getResources().getDrawable(R.drawable.cyb_logo));
+			}else if (MainActivity.uintCode.equals("23")){
+				img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+			}else if (MainActivity.uintCode.equals("24")){
+				img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
+			}else{
+				img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+			}
+			officer_Name=(TextView)findViewById(R.id.officer_Name);
+			officer_Cadre=(TextView)findViewById(R.id.officer_cadre);
+			officer_PS=(TextView)findViewById(R.id.officer_PS);
+
+			officer_Name.setText(MainActivity.pidName+"("+MainActivity.cadre_name+")");
+			officer_Cadre.setText(MainActivity.cadre_name);
+			officer_PS.setText(MainActivity.psName);
 		} else {
 			setContentView(R.layout.duplicateprint);
 			loadDuplicateComponents();
+			textView_header_spot_challan_xml=(TextView)findViewById(R.id.textView_header_spot_challan_xml);
+			textView_header_spot_challan_xml.setText("Duplicate print");
+			img_logo=(ImageView)findViewById(R.id.img_logo);
+			if (MainActivity.uintCode.equals("22")){
+				img_logo.setImageDrawable(getResources().getDrawable(R.drawable.cyb_logo));
+			}else if (MainActivity.uintCode.equals("23")){
+				img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+			}else if (MainActivity.uintCode.equals("24")){
+				img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
+			}else{
+				img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+			}
+			officer_Name=(TextView)findViewById(R.id.officer_Name);
+			officer_Cadre=(TextView)findViewById(R.id.officer_cadre);
+			officer_PS=(TextView)findViewById(R.id.officer_PS);
+
+			officer_Name.setText(MainActivity.pidName+"("+MainActivity.cadre_name+")");
+			officer_Cadre.setText(MainActivity.cadre_name);
+			officer_PS.setText(MainActivity.psName);
 		}
 
 		bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();

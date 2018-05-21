@@ -18,6 +18,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.location.Location;
@@ -42,6 +43,7 @@ import android.text.format.DateFormat;
 import android.text.format.Time;
 import android.util.Base64;
 import android.util.Log;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -349,6 +351,9 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
     public static String Current_Date;
     public static String image_data = null;
 
+    ImageView img_logo;
+    TextView officer_Name,officer_Cadre,officer_PS;
+
     @SuppressLint({"NewApi", "WorldReadableFiles"})
     @Override
 
@@ -360,6 +365,25 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         liquorFLG = false;
         professionFLG = false;
         et_age = (EditText) findViewById(R.id.edt_age_reading_dd2_xml);
+        getLocation();
+
+        img_logo=(ImageView)findViewById(R.id.img_logo);
+        if (MainActivity.uintCode.equals("22")){
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.cyb_logo));
+        }else if (MainActivity.uintCode.equals("23")){
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+        }else if (MainActivity.uintCode.equals("24")){
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
+        }else{
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+        }
+        officer_Name=(TextView)findViewById(R.id.officer_Name);
+        officer_Cadre=(TextView)findViewById(R.id.officer_cadre);
+        officer_PS=(TextView)findViewById(R.id.officer_PS);
+
+        officer_Name.setText(MainActivity.pidName+"("+MainActivity.cadre_name+")");
+        officer_Cadre.setText(MainActivity.cadre_name);
+        officer_PS.setText(MainActivity.psName);
 
         otpStatus = null;
         final_image_data_tosend = null;
@@ -1809,9 +1833,33 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                         int xPos = (canvas.getWidth() / 2);
                         int yPos = (int) ((canvas.getHeight() / 2) - ((paint.descent() + paint.ascent()) / 2));
 
-                        canvas.drawText("Date & Time: " + Current_Date, xPos, yPos + 300, paint);
+                        canvas.save();
+                        canvas.rotate(270f, xPos, yPos);
+                        canvas.drawText("Date & Time: " + Current_Date, xPos + 10, yPos, paint);
+                        canvas.restore();
+
+                        canvas.save();
+                        canvas.rotate(270f, xPos, yPos);
                         canvas.drawText("Lat :" + latitude, xPos, yPos + 400, paint);
+                        canvas.restore();
+
+                        canvas.save();
+                        canvas.rotate(270f, xPos, yPos);
                         canvas.drawText("Long :" + longitude, xPos, yPos + 500, paint);
+                        canvas.rotate(90);
+                        canvas.restore();
+
+                       /* canvas.drawText("Date & Time: " + Current_Date, xPos, yPos + 300, paint);
+                        canvas.drawText("Lat :" + latitude, xPos, yPos + 400, paint);
+                        canvas.drawText("Long :" + longitude, xPos, yPos + 500, paint);*/
+
+                        Display d = getWindowManager().getDefaultDisplay();
+                        int x = d.getWidth();
+                        int y = d.getHeight();
+                        Bitmap scaledBitmap = Bitmap.createScaledBitmap(mutableBitmap, y, x, true);
+                        Matrix matrix = new Matrix();
+                        matrix.postRotate(90);
+                        mutableBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
 
                         mutableBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outFile);
                         outFile.flush();
@@ -1838,9 +1886,33 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     int xPos = (canvas.getWidth() / 2);
                     int yPos = (int) ((canvas.getHeight() / 2) - ((paint.descent() + paint.ascent()) / 2));
 
-                    canvas.drawText("Date & Time: " + Current_Date, xPos, yPos + 300, paint);
+                    canvas.save();
+                    canvas.rotate(270f, xPos, yPos);
+                    canvas.drawText("Date & Time: " + Current_Date, xPos + 10, yPos, paint);
+                    canvas.restore();
+
+                    canvas.save();
+                    canvas.rotate(270f, xPos, yPos);
                     canvas.drawText("Lat :" + latitude, xPos, yPos + 400, paint);
+                    canvas.restore();
+
+                    canvas.save();
+                    canvas.rotate(270f, xPos, yPos);
                     canvas.drawText("Long :" + longitude, xPos, yPos + 500, paint);
+                    canvas.rotate(90);
+                    canvas.restore();
+
+                   /* canvas.drawText("Date & Time: " + Current_Date, xPos, yPos + 300, paint);
+                    canvas.drawText("Lat :" + latitude, xPos, yPos + 400, paint);
+                    canvas.drawText("Long :" + longitude, xPos, yPos + 500, paint);*/
+
+                    Display d = getWindowManager().getDefaultDisplay();
+                    int x = d.getWidth();
+                    int y = d.getHeight();
+                    Bitmap scaledBitmap = Bitmap.createScaledBitmap(mutableBitmap, y, x, true);
+                    Matrix matrix = new Matrix();
+                    matrix.postRotate(90);
+                    mutableBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
 
                     offender_image.setImageBitmap(mutableBitmap);
 

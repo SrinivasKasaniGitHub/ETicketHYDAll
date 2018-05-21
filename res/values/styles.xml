@@ -40,6 +40,11 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="cust_text_style_Label" parent="text_style">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
     <style name="navi_text_style" parent="text_style">
         <item name="android:textColor">@color/navi_color</item>
     </style>
@@ -133,11 +138,10 @@
 
     <!-- FOOTER STYLE -->
     <style name="footer_style">
-        <item name="android:drawableRight">@drawable/mptvlogo</item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:text">@string/footer_txt</item>
-        <item name="android:background">#365285</item>
+        <item name="android:background">#ce72c6</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:paddingLeft">@dimen/header_grnt_padding_ten</item>
     </style>

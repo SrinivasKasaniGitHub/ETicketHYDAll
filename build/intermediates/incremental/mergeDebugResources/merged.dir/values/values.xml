@@ -48,7 +48,7 @@
     <color name="background_floating_material_light">@android:color/white</color>
     <color name="background_material_dark">@color/material_grey_850</color>
     <color name="background_material_light">@color/material_grey_50</color>
-    <color name="bg">#c6d8f7</color>
+    <color name="bg">#fffdfd</color>
     <color name="black">#000000</color>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
     <color name="bright_foreground_disabled_material_light">#80000000</color>
@@ -681,7 +681,7 @@
     <string name="age">Enter Age</string>
     <string name="alcohol_reading">Enter Alcohol Reading</string>
     <string name="amnt">Amount</string>
-    <string name="app_name">Hyderabad\nE-Ticket</string>
+    <string name="app_name">TS Traffic Challan</string>
     <string name="app_version">Version-2.3.4</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="back">Back</string>
@@ -707,7 +707,7 @@
     <string name="city_res">City</string>
     <string name="colon">:</string>
     <string name="color">Color</string>
-    <string name="com.crashlytics.android.build_id" ns1:ignore="UnusedResources,TypographyDashes" translatable="false">03e42146-2654-4b47-ad1b-1e43d9c630b4</string>
+    <string name="com.crashlytics.android.build_id" ns1:ignore="UnusedResources,TypographyDashes" translatable="false">c43bdb5e-5742-4631-8683-2b488119413f</string>
     <string name="confirm">Confirm</string>
     <string name="counselling_date">Counselling Date</string>
     <string name="dates">Date</string>
@@ -771,7 +771,7 @@
     <string name="fined_by">Fined by</string>
     <string name="finedby_court">Court</string>
     <string name="finedby_policestation">Police Station</string>
-    <string name="footer_txt">Invented And Developed By \nMother Technologies Project Ventures</string>
+    <string name="footer_txt"> Telangana Integrated eChallan System</string>
     <string name="ftp_url">FTP URL</string>
     <string name="gen_female">Female</string>
     <string name="gen_male">Male</string>
@@ -781,7 +781,7 @@
     <string name="generate_ticket">Drunk &amp; Drive</string>
     <string name="get_details">Get Details</string>
     <string name="get_pending_challans">GET PENDING CHALLANS</string>
-    <string name="header_txt">Mobile E-Ticket</string>
+    <string name="header_txt">eTicket</string>
     <string name="hello_world">Hello world!</string>
     <string name="hindi">Hindi</string>
     <string name="hint_mail">Enter E-mail ID</string>
@@ -2521,6 +2521,10 @@
     <style name="cust_text_style" parent="text_style">
         <item name="android:textSize">16sp</item>
     </style>
+    <style name="cust_text_style_Label" parent="text_style">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
     <style name="custom_blue_btn_style" parent="dd_custom_blue_btn_style">
         <item name="android:drawableRight">@null</item>
     </style>
@@ -2559,11 +2563,10 @@
         <item name="android:textSize">25dp</item>
     </style>
     <style name="footer_style">
-        <item name="android:drawableRight">@drawable/mptvlogo</item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:text">@string/footer_txt</item>
-        <item name="android:background">#365285</item>
+        <item name="android:background">#ce72c6</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:paddingLeft">@dimen/header_grnt_padding_ten</item>
     </style>

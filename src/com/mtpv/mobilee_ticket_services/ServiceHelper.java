@@ -348,9 +348,10 @@ public class ServiceHelper {
         }
     }
 
-    public static void getPsNames() {
+    public static void getPsNames(String unit_Code) {
         try {
             SoapObject request = new SoapObject(NAMESPACE, "" + GET_PS_NAMES_MEHOD_NAME);
+            request.addProperty("UNIT_CODE", unit_Code);
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.dotNet = true;
             envelope.setOutputSoapObject(request);

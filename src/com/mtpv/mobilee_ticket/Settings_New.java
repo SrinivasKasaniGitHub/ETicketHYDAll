@@ -151,6 +151,10 @@ public class Settings_New extends Activity implements OnClickListener {
 
 	public static boolean bluetoothFLG = false, pinpadFLG = false;
 
+	ImageView img_logo;
+	TextView officer_Name,officer_Cadre,officer_PS,textView_header_spot_challan_xml;
+
+
 	@SuppressWarnings("deprecation")
 	@SuppressLint("WorldReadableFiles")
 	@Override
@@ -171,6 +175,27 @@ public class Settings_New extends Activity implements OnClickListener {
 		apkurl = "ftp://192.168.11.9:99/23/TabAPK/" + version;
 
 		LoadUIComponents();
+
+		textView_header_spot_challan_xml=(TextView)findViewById(R.id.textView_header_spot_challan_xml);
+		textView_header_spot_challan_xml.setText("Settings");
+
+		img_logo=(ImageView)findViewById(R.id.img_logo);
+		if (MainActivity.uintCode.equals("22")){
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.cyb_logo));
+		}else if (MainActivity.uintCode.equals("23")){
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+		}else if (MainActivity.uintCode.equals("24")){
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
+		}else{
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+		}
+		officer_Name=(TextView)findViewById(R.id.officer_Name);
+		officer_Cadre=(TextView)findViewById(R.id.officer_cadre);
+		officer_PS=(TextView)findViewById(R.id.officer_PS);
+
+		officer_Name.setText(MainActivity.pidName+"("+MainActivity.cadre_name+")");
+		officer_Cadre.setText(MainActivity.cadre_name);
+		officer_PS.setText(MainActivity.psName);
 
 		dashboard = new GenerateDrunkDriveCase();
 		db = new DBHelper(getApplicationContext());
@@ -286,7 +311,14 @@ public class Settings_New extends Activity implements OnClickListener {
 			if (isOnline()) {
 				selected_pointby_psname = -1;
 				btn_pointby_ps_name.setText(""+ getResources().getString(R.string.select_pointbypsname));
-				new Async_getPointNameByPsName().execute();
+				if (psname_code.length >=selected_ps_name) {
+					new Async_getPointNameByPsName().execute();
+				}else{
+					showToast("Please check the Download Masters!");
+					dashboard.editor.clear();
+
+
+				}
 			} else {
 				showToast("Please check your network connection!");
 			}

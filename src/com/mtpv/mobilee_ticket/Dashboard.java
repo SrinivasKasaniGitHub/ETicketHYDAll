@@ -114,7 +114,7 @@ public class Dashboard extends Activity implements OnClickListener {
 
     public static String modified_url = "";
 
-    public static String UNIT_CODE = "23";
+    public static String UNIT_CODE = "";
     public static String UNIT_NAME = "Hyderabad";
     public static String VEH_CAT_FIX = "99";
     public static String VEH_MAINCAT_FIX = "99";
@@ -173,6 +173,9 @@ public class Dashboard extends Activity implements OnClickListener {
 
     public static String CHALLAN_TYPE=null,CASES_LIMIT=null,CASES_BOOKED=null;
 
+    ImageView img_logo;
+    TextView officer_Name,officer_Cadre,officer_PS;
+
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -181,6 +184,7 @@ public class Dashboard extends Activity implements OnClickListener {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dashboard);
 
+        UNIT_CODE = MainActivity.arr_logindetails[0].substring(0,2);
 
         LoadUIComponents();
 
@@ -194,6 +198,28 @@ public class Dashboard extends Activity implements OnClickListener {
 
         SharedPreferences sharedPreference = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         current_version = sharedPreference.getString("CURRENT_VERSION", "");
+
+        img_logo=(ImageView)findViewById(R.id.img_logo);
+        if (MainActivity.uintCode.equals("22")){
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.cyb_logo));
+        }else if (MainActivity.uintCode.equals("23")){
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+        }else if (MainActivity.uintCode.equals("24")){
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
+        }else{
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+        }
+        officer_Name=(TextView)findViewById(R.id.officer_Name);
+        officer_Cadre=(TextView)findViewById(R.id.officer_cadre);
+        officer_PS=(TextView)findViewById(R.id.officer_PS);
+
+        officer_Name.setText(MainActivity.pidName+"("+MainActivity.cadre_name+")");
+        officer_Cadre.setText(MainActivity.cadre_name);
+        officer_PS.setText(MainActivity.psName);
+
+
+
+
 
         if (current_version.equals("N")) {
 
@@ -1448,7 +1474,11 @@ public class Dashboard extends Activity implements OnClickListener {
         @Override
         protected String doInBackground(Void... params) {
             // TODO Auto-generated method stub
-            ServiceHelper.getPsNames();
+
+            if (null!=MainActivity.arr_logindetails[0]) {
+                String unitCode=MainActivity.arr_logindetails[0].substring(0,2);
+                ServiceHelper.getPsNames(unitCode);
+            }
             return null;
         }
 

@@ -20,6 +20,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +54,9 @@ public class Respone_Print extends Activity {
 	final AnalogicsThermalPrinter actual_printer = new AnalogicsThermalPrinter();
 	final Bluetooth_Printer_3inch_ThermalAPI bth_printer = new Bluetooth_Printer_3inch_ThermalAPI();
 	String challan_detail;
+	ImageView img_logo;
+	TextView officer_Name,officer_Cadre,officer_PS;
+
 
 	@SuppressWarnings({ "static-access", "deprecation" })
 	@Override
@@ -63,6 +67,24 @@ public class Respone_Print extends Activity {
 
 		text_to_print = (TextView) findViewById(R.id.text_to_print);
 		text_to_print.setText("");
+
+		img_logo=(ImageView)findViewById(R.id.img_logo);
+		if (MainActivity.uintCode.equals("22")){
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.cyb_logo));
+		}else if (MainActivity.uintCode.equals("23")){
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+		}else if (MainActivity.uintCode.equals("24")){
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
+		}else{
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+		}
+		officer_Name=(TextView)findViewById(R.id.officer_Name);
+		officer_Cadre=(TextView)findViewById(R.id.officer_cadre);
+		officer_PS=(TextView)findViewById(R.id.officer_PS);
+
+		officer_Name.setText(MainActivity.pidName+"("+MainActivity.cadre_name+")");
+		officer_Cadre.setText(MainActivity.cadre_name);
+		officer_PS.setText(MainActivity.psName);
 
 		tv_sucess_text_header = (TextView) findViewById(R.id.textView_header_success_text);
 

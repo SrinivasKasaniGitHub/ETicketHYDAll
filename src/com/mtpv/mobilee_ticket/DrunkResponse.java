@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -74,6 +75,9 @@ public class DrunkResponse extends Activity implements OnClickListener {
 	String address_spot = "";
 	public static String printTicket ;
 
+	ImageView img_logo;
+	TextView officer_Name,officer_Cadre,officer_PS;
+
 	@SuppressLint({ "DefaultLocale", "WorldReadableFiles" })
 	@SuppressWarnings({ "static-access", "deprecation" })
 	@Override
@@ -83,6 +87,24 @@ public class DrunkResponse extends Activity implements OnClickListener {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.drunk_drive_response);
 		loadUiComponents();
+
+		img_logo=(ImageView)findViewById(R.id.img_logo);
+		if (MainActivity.uintCode.equals("22")){
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.cyb_logo));
+		}else if (MainActivity.uintCode.equals("23")){
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+		}else if (MainActivity.uintCode.equals("24")){
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
+		}else{
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+		}
+		officer_Name=(TextView)findViewById(R.id.officer_Name);
+		officer_Cadre=(TextView)findViewById(R.id.officer_cadre);
+		officer_PS=(TextView)findViewById(R.id.officer_PS);
+
+		officer_Name.setText(MainActivity.pidName+"("+MainActivity.cadre_name+")");
+		officer_Cadre.setText(MainActivity.cadre_name);
+		officer_PS.setText(MainActivity.psName);
 		db = new DBHelper(getApplicationContext());
 
 		try {

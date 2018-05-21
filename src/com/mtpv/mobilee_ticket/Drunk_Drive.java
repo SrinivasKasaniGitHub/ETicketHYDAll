@@ -263,6 +263,10 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
     String bookedPScode_send_from_settings, bookedPSname_send_from_settings, point_code_send_from_settings, point_name_send_from_settings,
             exact_location_send_from_settings;
 
+    ImageView img_logo;
+    TextView officer_Name,officer_Cadre,officer_PS;
+    TextView textView_header_spot_challan_xml;
+
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -270,6 +274,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setContentView(R.layout.drunkdrive);
+
         dd_dobFLG = false;
         dd_dob_DL = null;
         date = (DateFormat.format("dd/MM/yyyy hh:mm:ss", new java.util.Date()).toString());
@@ -285,28 +290,27 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
         // id_date.setText(strdate1);
         Current_Date = strdate1;
 
+        textView_header_spot_challan_xml=(TextView)findViewById(R.id.textView_header_spot_challan_xml);
+        textView_header_spot_challan_xml.setText("Drunk drive");
 
-        //DD Basic Changes
+        img_logo=(ImageView)findViewById(R.id.img_logo);
+        if (MainActivity.uintCode.equals("22")){
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.cyb_logo));
+        }else if (MainActivity.uintCode.equals("23")){
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+        }else if (MainActivity.uintCode.equals("24")){
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
+        }else{
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+        }
 
-/*        try
-        {
+        officer_Name=(TextView)findViewById(R.id.officer_Name);
+        officer_Cadre=(TextView)findViewById(R.id.officer_cadre);
+        officer_PS=(TextView)findViewById(R.id.officer_PS);
 
-            challantype=Integer.parseInt(Dashboard.CHALLAN_TYPE);
-            casesBooked=Integer.parseInt(Dashboard.CASES_BOOKED);
-            casesLimit=Integer.parseInt(Dashboard.CASES_LIMIT);
-
-
-        }catch (NumberFormatException e)
-        {
-            e.printStackTrace();
-        }*/
-
-       /* if(Dashboard.check_vhleHistory_or_Spot.equalsIgnoreCase("drunkdrive_withourDlAadhar") && casesBooked>0)
-        {
-            ShowMessage("Total DD Cases Without Dl And Aadhar Since 24 Hours :"+casesBooked+"\n"+"Total Limit is "+casesLimit);
-        }*/
-
-
+        officer_Name.setText(MainActivity.pidName+"("+MainActivity.cadre_name+")");
+        officer_Cadre.setText(MainActivity.cadre_name);
+        officer_PS.setText(MainActivity.psName);
 
         LoadUIComponents();
 
@@ -329,8 +333,6 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
         otp_no_flg = sharedPreferences.getString("OTP_NO_FLAG", "");
         cashless_flg = sharedPreferences.getString("CASHLESS_FLAG", "");
         mobileNo_flg = sharedPreferences.getString("MOBILE_NO_FLAG", "");
-
-
 
         preferences = getSharedPreferences("preferences", Context.MODE_PRIVATE);
         editor = preferences.edit();
