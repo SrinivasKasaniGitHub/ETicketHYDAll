@@ -26,6 +26,7 @@ import android.os.Handler;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.support.v4.content.FileProvider;
+import android.support.v7.widget.AppCompatImageView;
 import android.telephony.TelephonyManager;
 import android.view.Gravity;
 import android.view.View;
@@ -67,23 +68,23 @@ import java.util.Date;
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class Dashboard extends Activity implements OnClickListener {
 
-    String server = "192.168.11.9", username = "ftpuser", password = "Dk0r$l1qMp6", filename = "Version-1.5.1.apk", netwrk_info_txt = "" ;
+    String server = "192.168.11.9", username = "ftpuser", password = "Dk0r$l1qMp6", filename = "Version-1.5.1.apk", netwrk_info_txt = "";
     int port = 99;
 
-    public static  String otpbuttoncheckinspldrive=null;
+    public static String otpbuttoncheckinspldrive = null;
     @SuppressWarnings("unused")
     private static final int BUFFER_SIZE = 4096;
     ProgressBar progress;
     Dialog dialog;
-    int downloadedSize = 0 , totalSize = 0;
+    int downloadedSize = 0, totalSize = 0;
     TextView cur_val;
 
-    TextView tv_login_username, echallan, echallan_reports, tv_drunk_and_drive , tv_spot_challan, tv_vehicle_history,tv_echallannon;
-    TextView tv_towing_cp_act , tv_release_document, tv_reports, tv_duplicate_print, tv_settings, tv_sync;
+    TextView tv_login_username, echallan, echallan_reports, tv_drunk_and_drive, tv_spot_challan, tv_vehicle_history, tv_echallannon;
+    TextView tv_towing_cp_act, tv_release_document, tv_reports, tv_duplicate_print, tv_settings, tv_sync;
     ImageButton ibtn_logout;
     ImageView offline_btn, aadhaar;
 
-    TextView tv_about_version,tv_special_drive;
+    TextView tv_about_version, tv_special_drive;
 
     final int EXIT_DIALOG = 0, ALERT_USER = 1, PROGRESS_DIALOG = 2, MASTER_DOWNLOAD = 3;
 
@@ -137,7 +138,7 @@ public class Dashboard extends Activity implements OnClickListener {
 
     String psname_settings = "";
     String pointnameBycode_settings = "";
-    String psResName_settings="";
+    String psResName_settings = "";
 
     public static String rta_details_request_from = "";
     public static String licence_details_request_from = "";
@@ -171,10 +172,13 @@ public class Dashboard extends Activity implements OnClickListener {
     TextView versin_txt;
     static String current_version = "Y";
 
-    public static String CHALLAN_TYPE=null,CASES_LIMIT=null,CASES_BOOKED=null;
+    public static String CHALLAN_TYPE = null, CASES_LIMIT = null, CASES_BOOKED = null;
+
+    AppCompatImageView img_DD, img_Spot, img_VehcleHis, img_CraneAct, img_ReleaseDoc, img_Reports, img_DuplctePrint,
+            img_DwldMasters, img_Settings, img_About;
 
     ImageView img_logo;
-    TextView officer_Name,officer_Cadre,officer_PS;
+    TextView officer_Name, officer_Cadre, officer_PS;
 
     @SuppressLint("NewApi")
     @Override
@@ -182,9 +186,9 @@ public class Dashboard extends Activity implements OnClickListener {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.dashboard);
+        setContentView(R.layout.activity_dashboard);
 
-        UNIT_CODE = MainActivity.arr_logindetails[0].substring(0,2);
+        UNIT_CODE = MainActivity.arr_logindetails[0].substring(0, 2);
 
         LoadUIComponents();
 
@@ -199,26 +203,23 @@ public class Dashboard extends Activity implements OnClickListener {
         SharedPreferences sharedPreference = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         current_version = sharedPreference.getString("CURRENT_VERSION", "");
 
-        img_logo=(ImageView)findViewById(R.id.img_logo);
-        if (MainActivity.uintCode.equals("22")){
+        img_logo = (ImageView) findViewById(R.id.img_logo);
+        if (MainActivity.uintCode.equals("22")) {
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.cyb_logo));
-        }else if (MainActivity.uintCode.equals("23")){
+        } else if (MainActivity.uintCode.equals("23")) {
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
-        }else if (MainActivity.uintCode.equals("24")){
+        } else if (MainActivity.uintCode.equals("24")) {
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
-        }else{
+        } else {
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
         }
-        officer_Name=(TextView)findViewById(R.id.officer_Name);
-        officer_Cadre=(TextView)findViewById(R.id.officer_cadre);
-        officer_PS=(TextView)findViewById(R.id.officer_PS);
+        officer_Name = (TextView) findViewById(R.id.officer_Name);
+        officer_Cadre = (TextView) findViewById(R.id.officer_cadre);
+        officer_PS = (TextView) findViewById(R.id.officer_PS);
 
-        officer_Name.setText(MainActivity.pidName+"("+MainActivity.cadre_name+")");
+        officer_Name.setText(MainActivity.pidName + "(" + MainActivity.cadre_name + ")");
         officer_Cadre.setText(MainActivity.cadre_name);
         officer_PS.setText(MainActivity.psName);
-
-
-
 
 
         if (current_version.equals("N")) {
@@ -270,22 +271,10 @@ public class Dashboard extends Activity implements OnClickListener {
 
         }
 
-
-
         if (Build.VERSION.SDK_INT > 11) {
             StrictMode.ThreadPolicy polocy = new StrictMode.ThreadPolicy.Builder().build();
             StrictMode.setThreadPolicy(polocy);
         }
-
-
-//        tv_about_version.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                new Async_About_Version().execute();
-//            }
-//        });
-
 
     }
 
@@ -310,7 +299,7 @@ public class Dashboard extends Activity implements OnClickListener {
             try {
                 if (null != MainActivity.services_url && MainActivity.services_url.equals("https://www.echallan.org/eTicketMobileHyd")) {
                     server = "125.16.1.69";
-                }else{
+                } else {
                     server = "192.168.11.9";
                 }
                 ftpClient.connect(server, port);
@@ -457,7 +446,6 @@ public class Dashboard extends Activity implements OnClickListener {
                         startActivity(intent);*/
 
 
-
                         if (Build.VERSION.SDK_INT <= 23) {
 
                             Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -466,9 +454,7 @@ public class Dashboard extends Activity implements OnClickListener {
                                     "application/vnd.android.package-archive");
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
-                        }
-
-                        else {
+                        } else {
 
                             Uri apkUri = FileProvider.getUriForFile(Dashboard.this, BuildConfig.APPLICATION_ID +
                                     ".provider", new File(Environment.getExternalStorageDirectory() + "/download/" + "ETicketHYD.apk"));
@@ -541,10 +527,9 @@ public class Dashboard extends Activity implements OnClickListener {
         tv_sync = (TextView) findViewById(R.id.tv_sync_dashboard_xml);
 
         tv_about_version = (TextView) findViewById(R.id.tv_about_version);
-        tv_special_drive=(TextView)findViewById(R.id.tv_special_drive);
-       // tv_dd_basic=(TextView)findViewById(R.id.tv_dd_basic);
-        tv_echallannon=(TextView)findViewById(R.id.tv_echallannon);
-
+        tv_special_drive = (TextView) findViewById(R.id.tv_special_drive);
+        // tv_dd_basic=(TextView)findViewById(R.id.tv_dd_basic);
+        tv_echallannon = (TextView) findViewById(R.id.tv_echallannon);
 
 
         aadhaar = (ImageView) findViewById(R.id.aadhaar);
@@ -552,19 +537,45 @@ public class Dashboard extends Activity implements OnClickListener {
         echallan = (TextView) findViewById(R.id.echallan);
         echallan_reports = (TextView) findViewById(R.id.echallan_reports);
 
+
+        img_DD = (AppCompatImageView) findViewById(R.id.img_DrunkDrive);
+        img_Spot = (AppCompatImageView) findViewById(R.id.img_Spot);
+        img_VehcleHis = (AppCompatImageView) findViewById(R.id.img_VehicleHistory);
+        img_CraneAct = (AppCompatImageView) findViewById(R.id.img_CraneAct);
+        img_ReleaseDoc = (AppCompatImageView) findViewById(R.id.img_ReleaseDoc);
+        img_Reports = (AppCompatImageView) findViewById(R.id.img_Reports);
+        img_DuplctePrint = (AppCompatImageView) findViewById(R.id.img_DuplicatePrint);
+        img_DwldMasters = (AppCompatImageView) findViewById(R.id.img_DownldMastr);
+        img_Settings = (AppCompatImageView) findViewById(R.id.img_Settings);
+        img_About = (AppCompatImageView) findViewById(R.id.img_About);
+
+
         ibtn_logout = (ImageButton) findViewById(R.id.imgbtn_logout_dashboard_xml);
         ibtn_logout.setOnClickListener(this);
-        tv_drunk_and_drive.setOnClickListener(this);
-        tv_settings.setOnClickListener(this);
-        tv_sync.setOnClickListener(this);
-        tv_duplicate_print.setOnClickListener(this);
-        tv_spot_challan.setOnClickListener(this);
-        tv_vehicle_history.setOnClickListener(this);
-        tv_towing_cp_act.setOnClickListener(this);
-        tv_release_document.setOnClickListener(this);
-        tv_reports.setOnClickListener(this);
+
+        img_DD.setOnClickListener(this);
+        img_Spot.setOnClickListener(this);
+        img_VehcleHis.setOnClickListener(this);
+        img_CraneAct.setOnClickListener(this);
+        img_ReleaseDoc.setOnClickListener(this);
+        img_Reports.setOnClickListener(this);
+        img_DuplctePrint.setOnClickListener(this);
+        img_Settings.setOnClickListener(this);
+        img_DwldMasters.setOnClickListener(this);
+        img_About.setOnClickListener(this);
+
+
+        //tv_drunk_and_drive.setOnClickListener(this);
+        //tv_settings.setOnClickListener(this);
+        //tv_sync.setOnClickListener(this);
+       // tv_duplicate_print.setOnClickListener(this);
+       // tv_spot_challan.setOnClickListener(this);
+       // tv_vehicle_history.setOnClickListener(this);
+        //tv_towing_cp_act.setOnClickListener(this);
+       // tv_release_document.setOnClickListener(this);
+       // tv_reports.setOnClickListener(this);
         tv_special_drive.setOnClickListener(this);
-        tv_about_version.setOnClickListener(this);
+       // tv_about_version.setOnClickListener(this);
         //tv_dd_basic.setOnClickListener(this);
         tv_echallannon.setOnClickListener(this);
 
@@ -590,10 +601,10 @@ public class Dashboard extends Activity implements OnClickListener {
     public void onClick(View v) {
         // TODO Auto-generated method stub
         switch (v.getId()) {
-            case R.id.tv_generateticket_dashboard_xml:
+            case R.id.img_DrunkDrive:
 
                 check_vhleHistory_or_Spot = "drunkdrive";
-                Dashboard.otpbuttoncheckinspldrive="dd";
+                Dashboard.otpbuttoncheckinspldrive = "dd";
                 ddCommonMethod();
 
                 break;
@@ -621,8 +632,6 @@ public class Dashboard extends Activity implements OnClickListener {
                 address_spot = preferences.getString("btaddress", "btaddr");
 
                 try {
-
-
 
 
                     db.open();
@@ -663,7 +672,7 @@ public class Dashboard extends Activity implements OnClickListener {
                 break;
 
 
-            case R.id.tv_settings_dashboard_xml:
+            case R.id.img_Settings:
                 try {
 
                     db.open();
@@ -686,14 +695,14 @@ public class Dashboard extends Activity implements OnClickListener {
                 showDialog(EXIT_DIALOG);
                 break;
 
-            case R.id.tv_sync_dashboard_xml:
+            case R.id.img_DownldMastr:
 
 
                 showDialog(ALERT_USER);
 
                 break;
 
-            case R.id.tvduplicateprint_dashboad_xml:
+            case R.id.img_DuplicatePrint:
                 check_vhleHistory_or_Spot = "";
 
                 getPreferenceValues();
@@ -739,7 +748,7 @@ public class Dashboard extends Activity implements OnClickListener {
                 db.close();
                 break;
 
-            case R.id.tv_spot_dashboard_xml:
+            case R.id.img_Spot:
                 rtaFLG = true;
                 check_vhleHistory_or_Spot = "spot";
                 getPreferenceValues();
@@ -749,8 +758,6 @@ public class Dashboard extends Activity implements OnClickListener {
                 address_spot = preferences.getString("btaddress", "btaddr");
 
                 try {
-
-
 
 
                     db.open();
@@ -770,7 +777,7 @@ public class Dashboard extends Activity implements OnClickListener {
                         showToast("Configure BlueTooth Settings!");
                     } else {
                         if (isOnline()) {
-                            Dashboard.otpbuttoncheckinspldrive="Spot";
+                            Dashboard.otpbuttoncheckinspldrive = "Spot";
                             startActivity(new Intent(Dashboard.this, SpotChallan.class));
                         } else {
                             showToast("" + netwrk_info_txt);
@@ -789,7 +796,7 @@ public class Dashboard extends Activity implements OnClickListener {
                 db.close();
                 break;
 
-            case R.id.tv_vhclehistory_dashboard_xml:
+            case R.id.img_VehicleHistory:
                 check_vhleHistory_or_Spot = "vehiclehistory";
                 getPreferenceValues();
 
@@ -828,7 +835,7 @@ public class Dashboard extends Activity implements OnClickListener {
                 db.close();
                 break;
 
-            case R.id.tv_towing_dashboard_xml:
+            case R.id.img_CraneAct:
                 check_vhleHistory_or_Spot = "towing";
                 getPreferenceValues();
 
@@ -847,7 +854,7 @@ public class Dashboard extends Activity implements OnClickListener {
                         showToast("Please download master's !");
                     } else if ((psname_settings.equals("psname")) && (pointnameBycode_settings.equals("pointname"))) {
                         showToast("Configure Settings!");
-                    }else if (address_spot.trim() != null && address_spot.trim().length() < 15) {
+                    } else if (address_spot.trim() != null && address_spot.trim().length() < 15) {
                         showToast("Configure BlueTooth Settings!");
                     } else {
                         if (isOnline()) {
@@ -869,7 +876,7 @@ public class Dashboard extends Activity implements OnClickListener {
                 db.close();
                 break;
 
-            case R.id.tv_releasedocuments_dashboard_xml:
+            case R.id.img_ReleaseDoc:
                 check_vhleHistory_or_Spot = "releasedocuments";
 
                 getPreferenceValues();
@@ -911,7 +918,7 @@ public class Dashboard extends Activity implements OnClickListener {
 
                 break;
 
-            case R.id.tv_reports_dashboard_xml:
+            case R.id.img_Reports:
                 check_vhleHistory_or_Spot = "reports";
 
                 getPreferenceValues();
@@ -954,12 +961,10 @@ public class Dashboard extends Activity implements OnClickListener {
 
                 break;
 
-            case R.id.tv_about_version:
-                if(isOnline())
-                {
+            case R.id.img_About:
+                if (isOnline()) {
                     new Async_About_Version().execute();
-                }else
-                {
+                } else {
                     showToast("Please Check Your Network Connection");
                 }
 
@@ -967,7 +972,7 @@ public class Dashboard extends Activity implements OnClickListener {
 
             case R.id.tv_special_drive:
 
-                if(isOnline()) {
+                if (isOnline()) {
 
                     getPreferenceValues();
 
@@ -990,7 +995,7 @@ public class Dashboard extends Activity implements OnClickListener {
                         } else {
                             if (isOnline()) {
 
-                                Dashboard.otpbuttoncheckinspldrive="mtpv_SpecialDrive";
+                                Dashboard.otpbuttoncheckinspldrive = "mtpv_SpecialDrive";
                                 startActivity(new Intent(Dashboard.this, mtpv_SpecialDrive.class));
                             } else {
                                 showToast("" + netwrk_info_txt);
@@ -1008,8 +1013,7 @@ public class Dashboard extends Activity implements OnClickListener {
                     cursor_psnames.close();
                     db.close();
 
-                }else
-                {
+                } else {
                     showToast("" + netwrk_info_txt);
                 }
                 break;
@@ -1060,7 +1064,7 @@ public class Dashboard extends Activity implements OnClickListener {
         protected void onPostExecute(String result) {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
-            if (ServiceHelper.version_response!=null && !ServiceHelper.version_response.equals("NA")) {
+            if (ServiceHelper.version_response != null && !ServiceHelper.version_response.equals("NA")) {
                 Intent i = new Intent(getApplicationContext(), ReleaseversionActivity.class);
                 startActivity(i);
             } else {
@@ -1091,7 +1095,7 @@ public class Dashboard extends Activity implements OnClickListener {
 
         pointnameBycode_settings = preferences.getString("point_name", "pointname");
 
-        psResName_settings=preferences.getString("ps_res_name_name","location");
+        psResName_settings = preferences.getString("ps_res_name_name", "location");
     }
 
     @SuppressWarnings("deprecation")
@@ -1203,20 +1207,18 @@ public class Dashboard extends Activity implements OnClickListener {
                             }
                             db.close();
 
-                            if(isOnline()) {
+                            if (isOnline()) {
                                 Async_wheler_details wheeler_task = new Async_wheler_details();
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                                     wheeler_task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                                 } else {
                                     wheeler_task.execute();
                                 }
-                            }
-                            else
-                            {
+                            } else {
                                 showToast("Please Check Your Network Connection For Downloading Masters Fully Download");
                             }
 
-                            if(isOnline()) {
+                            if (isOnline()) {
                                 Async_getPsDetails ps_task = new Async_getPsDetails();
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                                     ps_task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
@@ -1224,59 +1226,54 @@ public class Dashboard extends Activity implements OnClickListener {
                                     ps_task.execute();
                                 }
 
-                            }else
-                            {
+                            } else {
                                 showToast("Please Check Your Network Connection For Downloading Masters Fully Download");
                             }
-                            if(isOnline()) {
+                            if (isOnline()) {
                                 Async_ocuptn ocptn_task = new Async_ocuptn();
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                                     ocptn_task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                                 } else {
                                     ocptn_task.execute();
                                 }
-                            }else
-                            {
+                            } else {
                                 showToast("Please Check Your Network Connection For Downloading Masters Fully Download");
                             }
 
-                            if(isOnline()) {
+                            if (isOnline()) {
                                 Async_qlfctn qlfcn_task = new Async_qlfctn();
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                                     qlfcn_task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                                 } else {
                                     qlfcn_task.execute();
                                 }
-                            }else
-                            {
+                            } else {
                                 showToast("Please Check Your Network Connection For Downloading Masters Fully Download");
                             }
 
-                            if(isOnline()) {
+                            if (isOnline()) {
                                 Async_BarDetails bar_task = new Async_BarDetails();
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                                     bar_task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                                 } else {
                                     bar_task.execute();
                                 }
-                            }else
-                            {
+                            } else {
                                 showToast("Please Check Your Network Connection For Downloading Masters Fully Download");
                             }
 
-                            if(isOnline()) {
+                            if (isOnline()) {
                                 Async_getViolationPoint_SystemMasterData violation_points_task = new Async_getViolationPoint_SystemMasterData();
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                                     violation_points_task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                                 } else {
                                     violation_points_task.execute();
                                 }
-                            }else
-                            {
+                            } else {
                                 showToast("Please Check Your Network Connection For Downloading Masters Fully Download");
                             }
 
-                            if(isOnline()) {
+                            if (isOnline()) {
 
                                 Async_GetTerminalDetails terminal_details_task = new Async_GetTerminalDetails();
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -1284,8 +1281,7 @@ public class Dashboard extends Activity implements OnClickListener {
                                 } else {
                                     terminal_details_task.execute();
                                 }
-                            }else
-                            {
+                            } else {
                                 showToast("Please Check Your Network Connection For Downloading Masters Fully Download");
                             }
 
@@ -1373,7 +1369,7 @@ public class Dashboard extends Activity implements OnClickListener {
             super.onPostExecute(result);
 
             //  new Async_GetTerminalDetails().execute();
-            if (ServiceHelper.violation_points_masters!=null && ServiceHelper.violation_points_masters.length > 0) {
+            if (ServiceHelper.violation_points_masters != null && ServiceHelper.violation_points_masters.length > 0) {
 
                 vio_points_name_code_arr = new String[ServiceHelper.violation_points_masters.length][2];
                 for (int i = 1; i < ServiceHelper.violation_points_masters.length; i++) {
@@ -1431,9 +1427,9 @@ public class Dashboard extends Activity implements OnClickListener {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
 
-            if (ServiceHelper.Opdata_Chalana != null && ServiceHelper.Opdata_Chalana!="0") {
+            if (ServiceHelper.Opdata_Chalana != null && ServiceHelper.Opdata_Chalana != "0") {
 
-                if (ServiceHelper.whlr_details_master!=null && ServiceHelper.whlr_details_master.length > 0) {
+                if (ServiceHelper.whlr_details_master != null && ServiceHelper.whlr_details_master.length > 0) {
 
                     whlr_code_name = new String[ServiceHelper.whlr_details_master.length][2];
                     whlr_name_arr = new ArrayList<String>();
@@ -1475,8 +1471,8 @@ public class Dashboard extends Activity implements OnClickListener {
         protected String doInBackground(Void... params) {
             // TODO Auto-generated method stub
 
-            if (null!=MainActivity.arr_logindetails[0]) {
-                String unitCode=MainActivity.arr_logindetails[0].substring(0,2);
+            if (null != MainActivity.arr_logindetails[0]) {
+                String unitCode = MainActivity.arr_logindetails[0].substring(0, 2);
                 ServiceHelper.getPsNames(unitCode);
             }
             return null;
@@ -1662,9 +1658,9 @@ public class Dashboard extends Activity implements OnClickListener {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
 
-            if (ServiceHelper.Opdata_Chalana != null && ServiceHelper.Opdata_Chalana!="0") {
+            if (ServiceHelper.Opdata_Chalana != null && ServiceHelper.Opdata_Chalana != "0") {
 
-                if (ServiceHelper.occupation_master != null && ServiceHelper.occupation_master.length > 0 ) {
+                if (ServiceHelper.occupation_master != null && ServiceHelper.occupation_master.length > 0) {
 
                     try {
                         db.open();
@@ -1712,9 +1708,9 @@ public class Dashboard extends Activity implements OnClickListener {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
 
-            if (ServiceHelper.Opdata_Chalana != null && ServiceHelper.Opdata_Chalana!="0") {
+            if (ServiceHelper.Opdata_Chalana != null && ServiceHelper.Opdata_Chalana != "0") {
 
-                if (ServiceHelper.bar_master!=null && ServiceHelper.bar_master.length > 0) {
+                if (ServiceHelper.bar_master != null && ServiceHelper.bar_master.length > 0) {
 
                     try {
                         db.open();
@@ -1995,7 +1991,7 @@ public class Dashboard extends Activity implements OnClickListener {
         editor = preferences.edit();
         psname_settings = preferences.getString("psname_name", "psname");
         pointnameBycode_settings = preferences.getString("point_name", "pointname");
-        psResName_settings=preferences.getString("ps_res_name_name","location");
+        psResName_settings = preferences.getString("ps_res_name_name", "location");
 
     }
 
@@ -2078,8 +2074,7 @@ public class Dashboard extends Activity implements OnClickListener {
     }
 
 
-    public class async_getIDProofsExceptionLimit extends AsyncTask<Void, Void, String>
-    {
+    public class async_getIDProofsExceptionLimit extends AsyncTask<Void, Void, String> {
 
         @Override
         protected void onPreExecute() {
@@ -2089,17 +2084,15 @@ public class Dashboard extends Activity implements OnClickListener {
 
         @Override
         protected String doInBackground(Void... params) {
-            String result=null;
+            String result = null;
 
-            if(MainActivity.arr_logindetails!=null && MainActivity.arr_logindetails.length>0)
-            {
-                result=ServiceHelper.exceptionLimit(MainActivity.arr_logindetails[0],new DateUtil().getTodaysDate());
+            if (MainActivity.arr_logindetails != null && MainActivity.arr_logindetails.length > 0) {
+                result = ServiceHelper.exceptionLimit(MainActivity.arr_logindetails[0], new DateUtil().getTodaysDate());
 
             }
 
             return result;
         }
-
 
 
         @Override
@@ -2119,18 +2112,17 @@ public class Dashboard extends Activity implements OnClickListener {
 
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                        CHALLAN_TYPE = jsonObject.optString("CHALLAN_TYPE").toString()!=null?jsonObject.optString("CHALLAN_TYPE").toString():"0";
-                        CASES_LIMIT = jsonObject.optString("CASES_LIMIT").toString()!=null?jsonObject.optString("CASES_LIMIT").toString():"0";
-                        CASES_BOOKED = jsonObject.optString("CASES_BOOKED").toString()!=null?jsonObject.optString("CASES_BOOKED").toString():"0";
+                        CHALLAN_TYPE = jsonObject.optString("CHALLAN_TYPE").toString() != null ? jsonObject.optString("CHALLAN_TYPE").toString() : "0";
+                        CASES_LIMIT = jsonObject.optString("CASES_LIMIT").toString() != null ? jsonObject.optString("CASES_LIMIT").toString() : "0";
+                        CASES_BOOKED = jsonObject.optString("CASES_BOOKED").toString() != null ? jsonObject.optString("CASES_BOOKED").toString() : "0";
 
                     }
 
-                }catch (JSONException e)
-                {
+                } catch (JSONException e) {
                     e.printStackTrace();
-                    CHALLAN_TYPE="0";
-                    CASES_LIMIT="0";
-                    CASES_BOOKED="0";
+                    CHALLAN_TYPE = "0";
+                    CASES_LIMIT = "0";
+                    CASES_BOOKED = "0";
                 }
 
 
@@ -2141,13 +2133,10 @@ public class Dashboard extends Activity implements OnClickListener {
         }
 
 
-
-
     }
 
 
-    public void ddCommonMethod()
-    {
+    public void ddCommonMethod() {
         getPreferenceValues();
         preferences = getSharedPreferences("preferences", MODE_PRIVATE);
         editor = preferences.edit();

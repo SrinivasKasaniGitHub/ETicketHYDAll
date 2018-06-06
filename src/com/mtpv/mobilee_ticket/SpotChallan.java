@@ -261,7 +261,7 @@ public class SpotChallan extends Activity
 
     StringBuffer present_time_toSend;
 
-    String bookedPScode_send_from_settings,booked_RES_PScode_send_from_settings, bookedPSname_send_from_settings, point_code_send_from_settings, point_name_send_from_settings,
+    String bookedPScode_send_from_settings, booked_RES_PScode_send_from_settings, bookedPSname_send_from_settings, point_code_send_from_settings, point_name_send_from_settings,
             exact_location_send_from_settings, present_date_toSend = "", emailId_to_send = "", pancard_to_send = "", passport_to_send = "",
             VoterId_to_send = "", is_it_spot_send = "0", licStatus_send = "";
 
@@ -360,7 +360,7 @@ public class SpotChallan extends Activity
     Button dob_input;
 
     ImageView img_logo;
-    TextView officer_Name,officer_Cadre,officer_PS;
+    TextView officer_Name, officer_Cadre, officer_PS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -379,21 +379,21 @@ public class SpotChallan extends Activity
         ver = new VerhoeffCheckDigit();
         getLocation();
 
-        img_logo=(ImageView)findViewById(R.id.img_logo);
-        if (MainActivity.uintCode.equals("22")){
+        img_logo = (ImageView) findViewById(R.id.img_logo);
+        if (MainActivity.uintCode.equals("22")) {
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.cyb_logo));
-        }else if (MainActivity.uintCode.equals("23")){
+        } else if (MainActivity.uintCode.equals("23")) {
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
-        }else if (MainActivity.uintCode.equals("24")){
+        } else if (MainActivity.uintCode.equals("24")) {
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
-        }else{
+        } else {
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
         }
-        officer_Name=(TextView)findViewById(R.id.officer_Name);
-        officer_Cadre=(TextView)findViewById(R.id.officer_cadre);
-        officer_PS=(TextView)findViewById(R.id.officer_PS);
+        officer_Name = (TextView) findViewById(R.id.officer_Name);
+        officer_Cadre = (TextView) findViewById(R.id.officer_cadre);
+        officer_PS = (TextView) findViewById(R.id.officer_PS);
 
-        officer_Name.setText(MainActivity.pidName+"("+MainActivity.cadre_name+")");
+        officer_Name.setText(MainActivity.pidName + "(" + MainActivity.cadre_name + ")");
         officer_Cadre.setText(MainActivity.cadre_name);
         officer_PS.setText(MainActivity.psName);
 
@@ -435,6 +435,7 @@ public class SpotChallan extends Activity
         LoadUIcomponents();
 
         getDateAndTime();
+
 
         total_amount = 0;
         grand_total = 0;
@@ -511,9 +512,9 @@ public class SpotChallan extends Activity
         bookedPSname_send_from_settings = preferences.getString("psname_name", "psname");
         point_code_send_from_settings = preferences.getString("point_code", "0");
         point_name_send_from_settings = preferences.getString("point_name", "pointname");
-        booked_RES_PScode_send_from_settings=preferences.getString("ps_res_name_code","0");
-      //  exact_location_send_from_settings = preferences.getString("exact_location", "location");
-        exact_location_send_from_settings=preferences.getString("ps_res_name_code","0");
+        booked_RES_PScode_send_from_settings = preferences.getString("ps_res_name_code", "0");
+        //  exact_location_send_from_settings = preferences.getString("exact_location", "location");
+        exact_location_send_from_settings = preferences.getString("ps_res_name_code", "0");
 
 
     }
@@ -1208,13 +1209,13 @@ public class SpotChallan extends Activity
                 btn_wheller_code.setText(getString(R.string.select_wheeler_code));
                 btn_violation.setText(getString(R.string.select_violation));
 
+
                 String dateofbirthbut = dob_input.getText().toString();
 
                 if (!et_driver_lcnce_num_spot.getText().toString().equalsIgnoreCase("") && et_driver_lcnce_num_spot.getText().toString().length() >= 5) {
 
                     if (dobcheck.equalsIgnoreCase("Yes")) {
                         Asyncallsofmethods();
-
                     } else {
                         showToast("Please Select Date Of Birth !");
                     }
@@ -1774,16 +1775,23 @@ public class SpotChallan extends Activity
                                     ShowMessageDL(
                                             "\nWith out DL Section is not allowed when Offender had Driving License !\n");
                                 } else {
-                                    spotNextCall();
+
+
+                                        spotNextCall();
+
                                 }
                             }
 
                         } else {
-                            spotNextCall();
+
+                                spotNextCall();
+
                         }
 
                     } else {
-                        spotNextCall();
+
+                            spotNextCall();
+
                     }
 
 
@@ -2428,7 +2436,7 @@ public class SpotChallan extends Activity
                         ll_is_owner_driver.setVisibility(View.VISIBLE);
 
 					/*
-					 * if
+                     * if
 					 * ((!rta_details_spot_master[10].toString().trim().equals
 					 * ("NA"))) { showDialog(FAKE_NUMBERPLATE_DIALOG); }
 					 */
@@ -3342,6 +3350,25 @@ public class SpotChallan extends Activity
 
                 Dialog dg_scond = new Dialog(this, android.R.style.Theme_Black_NoTitleBar);
                 dg_scond.setContentView(R.layout.spot_challan_two);
+
+
+                img_logo = (ImageView) dg_scond.findViewById(R.id.img_logo);
+                if (MainActivity.uintCode.equals("22")) {
+                    img_logo.setImageDrawable(getResources().getDrawable(R.drawable.cyb_logo));
+                } else if (MainActivity.uintCode.equals("23")) {
+                    img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+                } else if (MainActivity.uintCode.equals("24")) {
+                    img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
+                } else {
+                    img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+                }
+                officer_Name = (TextView) dg_scond.findViewById(R.id.officer_Name);
+                officer_Cadre = (TextView) dg_scond.findViewById(R.id.officer_cadre);
+                officer_PS = (TextView) dg_scond.findViewById(R.id.officer_PS);
+
+                officer_Name.setText(MainActivity.pidName + "(" + MainActivity.cadre_name + ")");
+                officer_Cadre.setText(MainActivity.cadre_name);
+                officer_PS.setText(MainActivity.psName);
 
 			/* IS IT SPOT DETAILS */
                 ll_spot_payment_root = (LinearLayout) dg_scond.findViewById(R.id.ll_is_spotpayment_spotchallan_two_xml);
@@ -4492,7 +4519,7 @@ public class SpotChallan extends Activity
 
                 TextView tv_sub_header = (TextView) dg_dynmic_violtns.findViewById(R.id.textView_header_spot_challan_xml);
                 TextView tv_title = (TextView) dg_dynmic_violtns.findViewById(R.id.textView_title_header_dynmicvltns_xml);
-                tv_title.setText( getResources().getString(R.string.select_violation));
+                tv_title.setText(getResources().getString(R.string.select_violation));
                 ll_dynamic_violations_root_static = (LinearLayout) dg_dynmic_violtns
                         .findViewById(R.id.ll_dynamic_violations_xml);
 
@@ -4835,7 +4862,7 @@ public class SpotChallan extends Activity
                 title2.setBackgroundColor(Color.RED);
                 title2.setGravity(Gravity.CENTER);
                 title2.setTextColor(Color.WHITE);
-                title2.setTextSize(26);
+                title2.setTextSize(20);
                 title2.setTypeface(title2.getTypeface(), Typeface.BOLD);
                 title2.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dialog_logo, 0, R.drawable.dialog_logo, 0);
                 title2.setPadding(20, 0, 20, 0);
@@ -4873,7 +4900,7 @@ public class SpotChallan extends Activity
                 alertDialog.getWindow().getAttributes();
 
                 TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
-                textView.setTextSize(28);
+                textView.setTextSize(20);
                 textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
                 textView.setGravity(Gravity.CENTER);
 
@@ -6689,8 +6716,8 @@ public class SpotChallan extends Activity
             point_code_send_from_settings = preferences.getString("point_code", "0");
             point_name_send_from_settings = preferences.getString("point_name", "pointname");
 
-            exact_location_send_from_settings=preferences.getString("ps_res_name_code","0");
-          //  exact_location_send_from_settings = preferences.getString("exact_location", "location");
+            exact_location_send_from_settings = preferences.getString("ps_res_name_code", "0");
+            //  exact_location_send_from_settings = preferences.getString("exact_location", "location");
 
 
 
@@ -6711,10 +6738,9 @@ public class SpotChallan extends Activity
                         && (!chck_detainedItems_none.isChecked())) {
                     showToast("Check Detained Items");
 
-                }else if (licence_no!=null && licence_no.equals("")&& chck_detainedItems_licence.isChecked() ){
+                } else if (licence_no != null && licence_no.equals("") && chck_detainedItems_licence.isChecked()) {
                     showToast("Cannot detain Licence \n Please detain the Vehicle !");
-                }
-                else if (!Dashboard.check_vhleHistory_or_Spot.equals("towing")) {
+                } else if (!Dashboard.check_vhleHistory_or_Spot.equals("towing")) {
 
                     String tempContactNumber = et_driver_contact_spot.getText().toString().trim();
                     if (et_driver_contact_spot.getText().toString().trim().equals("")) {

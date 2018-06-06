@@ -156,6 +156,10 @@
         "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\layout\\activity_ex_file_picker.xml"
     },
     {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\dp_example.xml",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\fa62cf159373fd4e2f7274508a8dc6760bd507c4\\output\\res\\layout\\dp_example.xml"
+    },
+    {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\activity_get_pin_pad.xml",
         "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\activity_get_pin_pad.xml"
     },
@@ -214,6 +218,10 @@
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
         "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\sdp_example.xml",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\fa62cf159373fd4e2f7274508a8dc6760bd507c4\\output\\res\\layout\\sdp_example.xml"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\spot_challan_two.xml",
@@ -306,6 +314,10 @@
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
         "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\activity_dashboard.xml",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\activity_dashboard.xml"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",

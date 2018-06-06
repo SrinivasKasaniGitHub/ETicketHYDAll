@@ -29,14 +29,16 @@
             style="@style/header_images_style_left"
             android:layout_alignParentStart="true"
             android:contentDescription="@null"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            android:visibility="invisible"/>
 
         <ImageView
             android:id="@+id/imageView2"
             style="@style/header_images_style_right"
             android:layout_alignParentEnd="true"
             android:contentDescription="@null"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            android:visibility="invisible"/>
 
         <TextView
             android:id="@+id/textView1"
@@ -44,7 +46,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:text="@string/header_txt" />
 
         <TextView
@@ -54,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView1"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="23dp"
+            android:layout_marginTop="5dp"
             android:text="@string/app_version"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textStyle="bold" />

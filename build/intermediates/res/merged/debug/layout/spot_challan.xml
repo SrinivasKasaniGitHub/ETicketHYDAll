@@ -20,59 +20,59 @@
 
         </include>
 
-       <!-- <RelativeLayout
-            android:id="@+id/relativeLayout1"
-            style="@style/header_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true">
+        <!-- <RelativeLayout
+             android:id="@+id/relativeLayout1"
+             style="@style/header_style"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_alignParentTop="true"
+             android:layout_centerHorizontal="true">
 
-            <ImageView
-                android:id="@+id/imageView1"
-                style="@style/header_images_style_left"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:contentDescription="@null" />
+             <ImageView
+                 android:id="@+id/imageView1"
+                 style="@style/header_images_style_left"
+                 android:layout_alignParentStart="true"
+                 android:layout_centerVertical="true"
+                 android:contentDescription="@null" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                style="@style/header_images_style_right"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:contentDescription="@null" />
+             <ImageView
+                 android:id="@+id/imageView2"
+                 style="@style/header_images_style_right"
+                 android:layout_alignParentEnd="true"
+                 android:layout_centerVertical="true"
+                 android:contentDescription="@null" />
 
-            <TextView
-                android:id="@+id/textView1"
-                style="@style/header_text_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="@string/header_txt" />
+             <TextView
+                 android:id="@+id/textView1"
+                 style="@style/header_text_style"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_centerHorizontal="true"
+                 android:layout_centerVertical="true"
+                 android:text="@string/header_txt" />
 
-            <TextView
-                android:id="@+id/textView2"
-                style="@style/cust_text_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textView1"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="23dp"
-                android:text="@string/app_version"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textStyle="bold" />
+             <TextView
+                 android:id="@+id/textView2"
+                 style="@style/cust_text_style"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_below="@+id/textView1"
+                 android:layout_centerHorizontal="true"
+                 android:layout_marginTop="23dp"
+                 android:text="@string/app_version"
+                 android:textAppearance="?android:attr/textAppearanceSmall"
+                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textView_header_spot_challan_xml"
-                style="@style/cust_text_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/imageView2"
-                android:layout_centerHorizontal="true"
-                android:text=""
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-        </RelativeLayout>-->
+             <TextView
+                 android:id="@+id/textView_header_spot_challan_xml"
+                 style="@style/cust_text_style"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_alignBottom="@+id/imageView2"
+                 android:layout_centerHorizontal="true"
+                 android:text=""
+                 android:textAppearance="?android:attr/textAppearanceSmall" />
+         </RelativeLayout>-->
     </RelativeLayout>
 
     <!-- Footer aligned to bottom -->
@@ -90,16 +90,16 @@
             android:layout_height="wrap_content"
             android:contentDescription="@null"
             android:src="@drawable/footer"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/textView3"
             style="@style/footer_style"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center"
+            android:layout_height="@dimen/_30sdp"
             android:layout_centerHorizontal="true"
-            android:textStyle="bold"/>
+            android:gravity="center"
+            android:textStyle="bold|italic" />
 
     </RelativeLayout>
 
@@ -153,16 +153,16 @@
 
                 <ImageButton
                     android:id="@+id/imgv_camera_capture_spotchallan_xml"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
                     android:layout_marginEnd="@dimen/header_grnt_padding_ten"
                     android:background="@drawable/capture"
                     android:contentDescription="@null" />
 
                 <ImageButton
                     android:id="@+id/imgv_gallery_spotchallan_xml"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
                     android:layout_marginEnd="@dimen/header_grnt_padding_ten"
                     android:background="@drawable/gallery"
                     android:contentDescription="@null" />
@@ -195,8 +195,8 @@
 
                 <ImageView
                     android:id="@+id/offender_image"
-                    android:layout_width="380dp"
-                    android:layout_height="400dp"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="@dimen/_200sdp"
                     android:layout_gravity="center"
                     android:contentDescription="@null"
                     android:scaleType="fitXY"
@@ -270,12 +270,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ll_radiotype"
-                android:layout_centerHorizontal="true">
+                android:layout_centerHorizontal="true"
+                android:weightSum="4">
 
                 <EditText
                     android:id="@+id/edt_regncid_spotchallan_xml"
                     style="@style/edt_custom_style"
-                    android:layout_width="80dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/header_grnt_padding_five"
                     android:layout_weight="1"
@@ -283,13 +284,12 @@
                     android:gravity="center"
                     android:imeOptions="actionNext"
                     android:inputType="textCapCharacters"
-                    android:maxLength="4">
-                </EditText>
+                    android:maxLength="4"></EditText>
 
                 <EditText
                     android:id="@+id/edt_regncidname_spotchallan_xml"
                     style="@style/edt_custom_style"
-                    android:layout_width="80dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/header_grnt_padding_five"
                     android:layout_weight="1"
@@ -304,9 +304,9 @@
                 <EditText
                     android:id="@+id/edt_regncid_lastnum_spotchallan_xml"
                     style="@style/edt_custom_style"
-                    android:layout_width="160dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:digits="0123456789"
                     android:gravity="center"
                     android:imeOptions="actionNext"
@@ -402,19 +402,19 @@
 
             <Button
                 android:id="@+id/dob_input"
-                android:layout_below="@+id/ll_driver_challans"
-                android:layout_width="fill_parent"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_marginTop="5dp"
-                android:hint="Select Date of Birth"
-                android:textColorHint="#000000"
-                android:textColor="#000000"
-                android:editable="false"
-                android:visibility="gone"
                 style="@style/dd_custom_blue_btn_style"
-                android:textSize="20sp" />
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_below="@+id/ll_driver_challans"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:editable="false"
+                android:gravity="center"
+                android:hint="Select Date of Birth"
+                android:textColor="#000000"
+                android:textColorHint="#000000"
+                android:textSize="@dimen/_10sdp"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/ll_adhar_spotchallan_xml"
@@ -551,15 +551,15 @@
 
                         <ImageView
                             android:id="@+id/rc_images"
-                            android:layout_width="80dp"
-                            android:layout_height="70dp"
+                            android:layout_width="@dimen/_32sdp"
+                            android:layout_height="@dimen/_32sdp"
                             android:layout_marginTop="5dp"
                             android:src="@drawable/images" />
 
                         <LinearLayout
                             android:id="@+id/rc_header"
                             android:layout_width="fill_parent"
-                            android:layout_height="70dp"
+                            android:layout_height="@dimen/_32sdp"
                             android:layout_marginBottom="10dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
@@ -569,20 +569,20 @@
                             android:orientation="vertical">
 
                             <TextView
+                                style="@style/TextColor"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:text="@string/rc_details"
                                 android:textColor="#ffffff"
-                                android:textSize="18sp"
                                 android:textStyle="bold" />
 
                             <TextView
+                                style="@style/TextColor"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/tsp"
                                 android:textColor="#ffffff"
-                                android:textSize="18sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </LinearLayout>
@@ -612,15 +612,13 @@
                                 android:layout_width="fill_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.7"
-                                android:text="@string/vehicleNo_txt"
-                                android:textSize="20sp" />
+                                android:text="@string/vehicleNo_txt" />
 
                             <TextView
                                 style="@style/TextColor"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text=":"
-                                android:textSize="20sp" />
+                                android:text=":" />
 
                             <TextView
                                 android:id="@+id/tvregno_spotchallan_xml"
@@ -632,7 +630,6 @@
                                 android:layout_weight="0.3"
                                 android:text=""
                                 android:textColor="#ff0000"
-                                android:textSize="20sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
 
@@ -652,15 +649,13 @@
                                 android:layout_width="fill_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.7"
-                                android:text="@string/ownername_txt"
-                                android:textSize="20sp" />
+                                android:text="@string/ownername_txt" />
 
                             <TextView
                                 style="@style/TextColor"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text=":"
-                                android:textSize="20sp" />
+                                android:text=":" />
 
                             <TextView
                                 android:id="@+id/tvownername_spotchallan_xml"
@@ -670,8 +665,7 @@
                                 android:layout_gravity="center"
                                 android:layout_marginStart="10dp"
                                 android:layout_weight="0.3"
-                                android:text=""
-                                android:textSize="20sp" />
+                                android:text="" />
                         </LinearLayout>
 
 
@@ -691,15 +685,13 @@
                                 android:layout_width="fill_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.7"
-                                android:text="@string/Address_txt"
-                                android:textSize="20sp" />
+                                android:text="@string/Address_txt" />
 
                             <TextView
                                 style="@style/TextColor"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text=":"
-                                android:textSize="20sp" />
+                                android:text=":" />
 
                             <TextView
                                 android:id="@+id/tv_addr_spotchallan_xml"
@@ -709,10 +701,8 @@
                                 android:layout_gravity="center"
                                 android:layout_marginStart="10dp"
                                 android:layout_weight="0.3"
-                                android:text=""
-                                android:textSize="20sp" />
+                                android:text="" />
                         </LinearLayout>
-
 
 
                         <LinearLayout
@@ -731,15 +721,13 @@
                                 android:layout_width="fill_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.7"
-                                android:text="@string/vtype_txt"
-                                android:textSize="20sp" />
+                                android:text="@string/vtype_txt" />
 
                             <TextView
                                 style="@style/TextColor"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text=":"
-                                android:textSize="20sp" />
+                                android:text=":" />
 
                             <TextView
                                 android:id="@+id/tv_makername_spotchallan_xml"
@@ -750,8 +738,7 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_weight="0.3"
                                 android:singleLine="false"
-                                android:text=""
-                                android:textSize="20sp" />
+                                android:text="" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -770,15 +757,13 @@
                                 android:layout_width="fill_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.7"
-                                android:text="@string/Chasisno_txt"
-                                android:textSize="20sp" />
+                                android:text="@string/Chasisno_txt" />
 
                             <TextView
                                 style="@style/TextColor"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text=":"
-                                android:textSize="20sp" />
+                                android:text=":" />
 
                             <TextView
                                 android:id="@+id/tv_chasis_spotchallan_xml"
@@ -789,8 +774,7 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_weight="0.3"
                                 android:singleLine="false"
-                                android:text=""
-                                android:textSize="20sp" />
+                                android:text="" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -810,15 +794,13 @@
                                 android:layout_width="fill_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.7"
-                                android:text="@string/Engno_txt"
-                                android:textSize="20sp" />
+                                android:text="@string/Engno_txt" />
 
                             <TextView
                                 style="@style/TextColor"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text=":"
-                                android:textSize="20sp" />
+                                android:text=":" />
 
                             <TextView
                                 android:id="@+id/tv_engineno_spotchallan_xml"
@@ -829,8 +811,7 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_weight="0.3"
                                 android:singleLine="false"
-                                android:text=""
-                                android:textSize="20sp" />
+                                android:text="" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -877,8 +858,8 @@
 
                         <ImageView
                             android:id="@+id/images"
-                            android:layout_width="80dp"
-                            android:layout_height="70dp"
+                            android:layout_width="@dimen/_32sdp"
+                            android:layout_height="@dimen/_32sdp"
                             android:layout_marginTop="10dp"
                             android:src="@drawable/images" />
 
@@ -893,20 +874,20 @@
                             android:orientation="vertical">
 
                             <TextView
+                                style="@style/TextColor"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:text="INDIAN UNION DRIVING LICENCE"
                                 android:textColor="#ffffff"
-                                android:textSize="20sp"
                                 android:textStyle="bold" />
 
                             <TextView
+                                style="@style/TextColor"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="TELANGANA STATE POLICE"
                                 android:textColor="#ffffff"
-                                android:textSize="20sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </LinearLayout>
@@ -920,6 +901,7 @@
 
                         <TextView
                             android:id="@+id/dl_no"
+                            style="@style/TextColor"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
@@ -927,7 +909,6 @@
                             android:gravity="center"
                             android:text=""
                             android:textColor="#ff0000"
-                            android:textSize="28sp"
                             android:textStyle="bold" />
 
                         <LinearLayout
@@ -949,6 +930,7 @@
 
                                 <TextView
                                     android:id="@+id/tvlcnceownername_spotchallan_xml"
+                                    style="@style/TextColor"
                                     android:layout_width="fill_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
@@ -956,11 +938,11 @@
                                     android:layout_marginTop="5dp"
                                     android:text=""
                                     android:textColor="#000000"
-                                    android:textSize="20sp"
                                     android:textStyle="normal" />
 
                                 <TextView
                                     android:id="@+id/tvlcnce_fname_spotchallan_xml"
+                                    style="@style/TextColor"
                                     android:layout_width="fill_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
@@ -968,11 +950,11 @@
                                     android:layout_marginTop="5dp"
                                     android:text=""
                                     android:textColor="#000000"
-                                    android:textSize="20sp"
                                     android:textStyle="normal" />
 
                                 <TextView
                                     android:id="@+id/tv_lcnce_Address_spotchallan_xml"
+                                    style="@style/TextColor"
                                     android:layout_width="fill_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
@@ -980,11 +962,11 @@
                                     android:layout_marginTop="5dp"
                                     android:text=""
                                     android:textColor="#000000"
-                                    android:textSize="20sp"
                                     android:textStyle="normal" />
 
                                 <TextView
                                     android:id="@+id/tv_lcnce_mobnum_spotchallan_xml"
+                                    style="@style/TextColor"
                                     android:layout_width="fill_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
@@ -993,10 +975,11 @@
                                     android:layout_weight="0.3"
                                     android:text=""
                                     android:textColor="#000000"
-                                    android:textSize="20sp"
                                     android:textStyle="normal" />
+
                                 <TextView
                                     android:id="@+id/tv_dlpoints_spotchallan_xml"
+                                    style="@style/TextColor"
                                     android:layout_width="fill_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
@@ -1005,7 +988,6 @@
                                     android:layout_weight="0.3"
                                     android:text=""
                                     android:textColor="#ff0000"
-                                    android:textSize="20sp"
                                     android:textStyle="bold" />
                             </LinearLayout>
 
@@ -1020,13 +1002,12 @@
 
                                 <ImageView
                                     android:id="@+id/imgv_licence_spotchallan_xml"
-                                    android:layout_width="200dp"
-                                    android:layout_height="150dp"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_80sdp"
                                     android:layout_marginLeft="15dp"
                                     android:layout_marginRight="15dp"
                                     android:src="@drawable/empty_profile_img" />
                             </LinearLayout>
-
 
 
                         </LinearLayout>
@@ -1091,21 +1072,21 @@
                                 -->
 
                                 <TextView
+                                    style="@style/TextColor"
                                     android:layout_width="fill_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="40dp"
                                     android:text="Licencing Authority"
-                                    android:textColor="#e51616"
-                                    android:textSize="15sp" />
+                                    android:textColor="#e51616" />
 
                                 <TextView
+                                    style="@style/TextColor"
                                     android:id="@+id/rta_name"
                                     android:layout_width="fill_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="40dp"
                                     android:text=""
-                                    android:textColor="#000000"
-                                    android:textSize="15sp" />
+                                    android:textColor="#000000" />
                             </LinearLayout>
                         </LinearLayout>
 
@@ -1327,19 +1308,19 @@
 
                     <LinearLayout
                         android:layout_width="fill_parent"
-                        android:layout_height="80dp"
+                        android:layout_height="@dimen/_50sdp"
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="70dp"
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="@dimen/_45sdp"
                             android:layout_gravity="center"
                             android:layout_marginLeft="5dp"
                             android:src="@drawable/images" />
 
                         <ImageView
-                            android:layout_width="400dp"
-                            android:layout_height="75dp"
+                            android:layout_width="@dimen/_200sdp"
+                            android:layout_height="@dimen/_45sdp"
                             android:layout_gravity="center"
                             android:src="@drawable/thiranga_edit" />
                     </LinearLayout>
@@ -1354,7 +1335,7 @@
                         <ImageView
                             android:id="@+id/imgv_aadhar_photo_spotchallan_xml"
                             android:layout_width="fill_parent"
-                            android:layout_height="150dp"
+                            android:layout_height="@dimen/_100sdp"
                             android:layout_weight="0.6" />
 
                         <LinearLayout
@@ -1364,6 +1345,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                                style="@style/TextColor"
                                 android:id="@+id/tvaadharname_spotchallan_xml"
                                 android:layout_width="fill_parent"
                                 android:layout_height="wrap_content"
@@ -1372,10 +1354,10 @@
                                 android:layout_marginTop="5dp"
                                 android:text="kranthi kumar "
                                 android:textColor="#000000"
-                                android:textSize="20sp"
                                 android:textStyle="normal" />
 
                             <TextView
+                                style="@style/TextColor"
                                 android:id="@+id/tvcareof_spotchallan_xml"
                                 android:layout_width="fill_parent"
                                 android:layout_height="wrap_content"
@@ -1384,7 +1366,6 @@
                                 android:layout_marginTop="5dp"
                                 android:text="srinivas"
                                 android:textColor="#000000"
-                                android:textSize="20sp"
                                 android:textStyle="normal" />
 
                             <LinearLayout
@@ -1409,20 +1390,21 @@
                                         android:weightSum="1">
 
                                         <TextView
+                                            style="@style/TextColor"
                                             android:layout_width="fill_parent"
                                             android:layout_height="wrap_content"
                                             android:layout_weight="0.45"
                                             android:text="@string/tv_age"
-                                            android:textColor="#000000"
-                                            android:textSize="20sp" />
+                                            android:textColor="#000000"/>
 
                                         <TextView
-                                            android:layout_width="25dp"
+                                            android:layout_width="@dimen/_15sdp"
                                             android:layout_height="wrap_content"
                                             android:text="@string/colon"
                                             android:textStyle="bold" />
 
                                         <TextView
+                                            style="@style/TextColor"
                                             android:id="@+id/tvdob_spotchallan_xml"
                                             android:layout_width="fill_parent"
                                             android:layout_height="wrap_content"
@@ -1430,7 +1412,6 @@
                                             android:layout_marginRight="10dp"
                                             android:text=""
                                             android:textColor="#000000"
-                                            android:textSize="20sp"
                                             android:textStyle="normal" />
                                     </LinearLayout>
 
@@ -1444,20 +1425,21 @@
                                         android:weightSum="1">
 
                                         <TextView
+                                            style="@style/TextColor"
                                             android:layout_width="fill_parent"
                                             android:layout_height="wrap_content"
                                             android:layout_weight="0.45"
                                             android:text="@string/tv_gender"
-                                            android:textColor="#000000"
-                                            android:textSize="20sp" />
+                                            android:textColor="#000000" />
 
                                         <TextView
-                                            android:layout_width="25dp"
+                                            android:layout_width="@dimen/_15sdp"
                                             android:layout_height="wrap_content"
                                             android:text=":"
                                             android:textStyle="bold" />
 
                                         <TextView
+                                            style="@style/TextColor"
                                             android:id="@+id/tvgender_spotchallan_xml"
                                             android:layout_width="fill_parent"
                                             android:layout_height="wrap_content"
@@ -1466,7 +1448,6 @@
                                             android:layout_weight="0.55"
                                             android:text=""
                                             android:textColor="#000000"
-                                            android:textSize="20sp"
                                             android:textStyle="normal" />
                                     </LinearLayout>
 
@@ -1475,7 +1456,7 @@
                                 <ImageView
                                     android:id="@+id/qr_code"
                                     android:layout_width="fill_parent"
-                                    android:layout_height="80dp"
+                                    android:layout_height="@dimen/_50sdp"
                                     android:layout_weight="0.6" />
                             </LinearLayout>
                         </LinearLayout>

@@ -299,7 +299,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_bluetoothState"
-                android:layout_marginBottom="20dp"
+                android:layout_margin="20dp"
                 android:text="@string/scan_bluetooth" />
             
             <Button
@@ -363,23 +363,25 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/listview_devicesfound"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="2">
 
             <ImageView
                 android:id="@+id/change_pswd"
-                android:layout_width="250dp"
-                android:layout_height="100dp"
-                android:layout_marginLeft="40dp"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
                 android:layout_marginTop="35dp"
+                android:layout_weight="1"
                 android:src="@drawable/changepassword" />
             
             <ImageView
                 android:id="@+id/update_apk"
-                android:layout_width="250dp"
-                android:layout_height="100dp"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_weight="1"
                 android:layout_below="@+id/listview_devicesfound"
-                android:layout_marginLeft="25dp"
                 android:layout_marginTop="35dp"
+                android:layout_marginLeft="5dp"
                 android:layout_toRightOf="@+id/change_pswd"
                 android:src="@drawable/updte_btn"
                 android:visibility="visible"/>

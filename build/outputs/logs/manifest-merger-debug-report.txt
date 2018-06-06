@@ -15,6 +15,7 @@ ADDED from D:\Android\ETicketHYDAll\AndroidManifest.xml:2:1-284:12
 		ADDED from D:\Android\ETicketHYDAll\AndroidManifest.xml:2:11-69
 uses-sdk
 ADDED from D:\Android\ETicketHYDAll\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:multidex:1.0.1] C:\Users\Srinivas\.android\build-cache\94e39d7a72cff0ffb9de46b4d30d4a15bb802093\output\AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:design:25.3.1] C:\Users\Srinivas\.android\build-cache\7359d251c151d249938c600954db948bd3421f0d\output\AndroidManifest.xml:21:5-23:62
 MERGED from [com.android.support:transition:25.3.1] C:\Users\Srinivas\.android\build-cache\ba62f52a6834ec19f7fe35885a573b1a47ec3970\output\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\Srinivas\.android\build-cache\fa21b4d5e8b18f621ba8594a450ed4b54f4f9696\output\AndroidManifest.xml:21:5-23:61
@@ -26,6 +27,7 @@ MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\Srinivas\.andr
 MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\Srinivas\.android\build-cache\9ff635c7d3853ba48fc17e00903ad880db1560c7\output\AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:support-compat:25.3.1] C:\Users\Srinivas\.android\build-cache\a53240c5f75f19270e348bed3da580346f845afc\output\AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:cardview-v7:25.2.0] C:\Users\Srinivas\.android\build-cache\3690635ce39d7555c8327bcb31958d363d180c7a\output\AndroidManifest.xml:20:5-43
+MERGED from [com.intuit.sdp:sdp-android:1.0.5] C:\Users\Srinivas\.android\build-cache\fa62cf159373fd4e2f7274508a8dc6760bd507c4\output\AndroidManifest.xml:7:5-9:41
 MERGED from [com.crashlytics.sdk.android:crashlytics:2.6.8] C:\Users\Srinivas\.android\build-cache\7f0bd9c9ea10eef7ac8c3f4a45f561bfe4e6398f\output\AndroidManifest.xml:7:5-43
 MERGED from [com.crashlytics.sdk.android:beta:1.2.5] C:\Users\Srinivas\.android\build-cache\4a574231f8684997f3c6f69a73e95070d6a2c8e3\output\AndroidManifest.xml:7:5-43
 MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.3.17] C:\Users\Srinivas\.android\build-cache\f656766385d572972ca71da47b94e3be2df55e70\output\AndroidManifest.xml:50:5-43

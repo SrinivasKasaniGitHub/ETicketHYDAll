@@ -3,10 +3,10 @@
     android:shape="rectangle" >
 
     <gradient
-        android:angle="270"
-        android:centerColor="#dc90d6"
-        android:endColor="#ce72c6"
-        android:startColor="#ce72c6" />
+        android:startColor="#2c647e"
+        android:centerColor="#32689c"
+        android:endColor="#2c647e"
+        android:angle="90"/> />
 
     <padding
         android:bottom="@dimen/header_grnt_padding_five"

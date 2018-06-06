@@ -92,10 +92,10 @@
             android:id="@+id/textView3"
             style="@style/footer_style"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/_30sdp"
             android:gravity="center"
             android:layout_centerHorizontal="true"
-            android:textStyle="bold"/>
+            android:textStyle="bold|italic"/>
     </RelativeLayout>
 
     <!-- Scrollable Content below header and above footer -->

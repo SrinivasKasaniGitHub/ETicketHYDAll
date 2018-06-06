@@ -57,7 +57,7 @@ public class IPSettings extends Activity implements OnClickListener {
 
 
     //    private String live_service_url = "http://192.168.11.4/eTicketMobileHyd";
-    private String live_service_url = "https://www.echallan.org/eTicketMobileHyd";
+    private String live_service_url = "https://www.echallan.org/TSeTicketMobile";
 
     //url for test purpose
     // private String live_service_url="http://192.168.11.4/Test_eTicketMobileHyd";

@@ -81,10 +81,10 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
     TextView tv_ip_settings;
     TextView cur_val;
 
-    int downloadedSize = 0 , totalSize = 0;
+    int downloadedSize = 0, totalSize = 0;
     Dialog dialog;
 
-    String server = "192.168.11.9", username = "ftpuser", password = "Dk0r$l1qMp6", filename = "Version-1.5.1.apk" ;
+    String server = "192.168.11.9", username = "ftpuser", password = "Dk0r$l1qMp6", filename = "Version-1.5.1.apk";
     int port = 99;
 
 
@@ -97,7 +97,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
     LocationManager m_locationlistner;
     android.location.Location location;
 
-    String officerLogin_Otp=null;
+    String officerLogin_Otp = null;
 
     public static double latitude = 0.0, longitude = 0.0;
 
@@ -146,7 +146,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
     private static final int REQUEST_PERMISSIONS = 20;
     private SparseIntArray mErrorString;
 
-    public static String psName,cadre_name,pidName,uintCode;
+    public static String psName, cadre_name, pidName, uintCode;
 
     @SuppressWarnings("deprecation")
     @SuppressLint("NewApi")
@@ -256,9 +256,8 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
         btn_submit = (Button) findViewById(R.id.btnsubmit_login_xml);
         tv_ip_settings = (TextView) findViewById(R.id.tv_ipsettings);
 
-        /*et_pid.setText("23001004");
-        et_pid_pwd.setText("DcHyd");*/
-
+       /* et_pid.setText("23001004");
+        et_pid_pwd.setText("12345");*/
         btn_cancel.setOnClickListener(this);
         btn_submit.setOnClickListener(this);
         tv_ip_settings.setOnClickListener(this);
@@ -486,9 +485,9 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
                         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 
-                            if (isOnline()){
+                            if (isOnline()) {
                                 new Async_task_login().execute();
-                            }else {
+                            } else {
                                 showToast("Please check your network connection !");
                             }
 
@@ -572,11 +571,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
         protected String doInBackground(Void... params) {
             // TODO Auto-generated method stub
 
-
-
-
             String[] version_split = appVersion.split("\\-");
-
             ServiceHelper.login("" + user_id, "" + e_user_tmp, "" + IMEI, "" + sim_No, "" + latitude, "" + longitude,
                     "" + version_split[1]);
             return null;
@@ -600,7 +595,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
             try {
 
 
-                if (ServiceHelper.Opdata_Chalana != null && "0"!=ServiceHelper.Opdata_Chalana.toString()) {
+                if (ServiceHelper.Opdata_Chalana != null && "0" != ServiceHelper.Opdata_Chalana.toString()) {
                     if (ServiceHelper.Opdata_Chalana.toString().trim().equals("1")) {
                         showToast("Invalid Login ID");
                     } else if (ServiceHelper.Opdata_Chalana.toString().trim().equals("2")) {
@@ -629,7 +624,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                             SharedPreferences.Editor editors = sharedPreferences.edit();
 
                             String pidCode = "" + arr_logindetails[0];
-                            uintCode=pidCode.substring(0,2);
+                            uintCode = pidCode.substring(0, 2);
                             pidCodestatic = "" + arr_logindetails[0];
                             pidName = "" + arr_logindetails[1];
                             String psCd = "" + arr_logindetails[2];
@@ -640,20 +635,20 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                             String off_phone_no = "" + arr_logindetails[6];
                             String current_version = "" + arr_logindetails[7];
                             String rta_data_flg = "" + arr_logindetails[8];
-                            Log.i("",""+rta_data_flg);
+                            Log.i("", "" + rta_data_flg);
                             String dl_data_flg = "" + arr_logindetails[9];
-                            Log.i("",""+dl_data_flg);
+                            Log.i("", "" + dl_data_flg);
                             String aadhaar_data_flg = "" + arr_logindetails[10];
-                            Log.i("",""+aadhaar_data_flg);
+                            Log.i("", "" + aadhaar_data_flg);
                             String otp_no_flg = "" + arr_logindetails[11];
                             String cashless_flg = "" + arr_logindetails[12];
                             String mobileNo_flg = "" + arr_logindetails[13];
 
                             MainActivity.otpno = "" + arr_logindetails[14];
 
-                            Log.i("Otp for Login",""+MainActivity.otpno);
+                            Log.i("Otp for Login", "" + MainActivity.otpno);
 
-                            if (arr_logindetails != null && arr_logindetails.length == 16){
+                            if (arr_logindetails != null && arr_logindetails.length == 16) {
                                 officerLogin_Otp = "" + arr_logindetails[15];
                             }
                             editors.putString("PID_CODE", pidCode);
@@ -674,25 +669,21 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                             editors.putString("officerLogin_Otp", officerLogin_Otp);
                             editors.commit();
 
-                        }catch (ArrayIndexOutOfBoundsException e)
-                        {
+                        } catch (ArrayIndexOutOfBoundsException e) {
                             e.printStackTrace();
                         }
 
 
-                        if(!"null".equals(officerLogin_Otp)&&officerLogin_Otp.equalsIgnoreCase("Y"))
-                        {
+                        if (!"null".equals(officerLogin_Otp) && officerLogin_Otp.equalsIgnoreCase("Y")) {
 
-                            Intent i=new Intent(MainActivity.this,Login_otp.class);
+                            Intent i = new Intent(MainActivity.this, Login_otp.class);
                             startActivity(i);
 
-                        }else
-                        {
+                        } else {
 
                             startActivity(new Intent(getApplicationContext(), Dashboard.class));
                             finish();
                         }
-
 
 
                     }
@@ -900,8 +891,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
     }
 
 
-    public class asyn_Version_Check extends AsyncTask<Void, Void, String>
-    {
+    public class asyn_Version_Check extends AsyncTask<Void, Void, String> {
 
         @Override
         protected void onPreExecute() {
@@ -914,11 +904,10 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
 
             String[] version_split = appVersion.split("\\-");
 
-            String result=ServiceHelper.VersionCheck(version_split[1]);
+            String result = ServiceHelper.VersionCheck(version_split[1]);
 
             return result;
         }
-
 
 
         @Override
@@ -926,11 +915,9 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
             super.onPostExecute(current_version);
             removeDialog(PROGRESS_DIALOG);
 
-            if(current_version!=null && current_version!="0")
-            {
+            if (current_version != null && current_version != "0") {
 
-                if(current_version.equalsIgnoreCase("N"))
-                {
+                if (current_version.equalsIgnoreCase("N")) {
                     showMessageforUpdatePatch();
                 }
             }
@@ -939,8 +926,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
         }
     }
 
-    public void showMessageforUpdatePatch()
-    {
+    public void showMessageforUpdatePatch() {
 
         TextView title = new TextView(this);
         title.setText("Hyderabad E-Ticket");
@@ -968,7 +954,6 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                 // TODO Auto-generated method stub
 
                 new Async_UpdateApk().execute();
-
 
 
             }
@@ -1014,10 +999,10 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
             try {
                 if (null != MainActivity.services_url && MainActivity.services_url.equals("https://www.echallan.org/eTicketMobileHyd")) {
                     server = "125.16.1.69";
-                }else{
+                } else {
                     server = "192.168.11.9";
                 }
-                Log.i("server URL ::", ""+server);
+                Log.i("server URL ::", "" + server);
                 ftpClient.connect(server, port);
                 ftpClient.login(username, password);
                 ftpClient.enterLocalPassiveMode();

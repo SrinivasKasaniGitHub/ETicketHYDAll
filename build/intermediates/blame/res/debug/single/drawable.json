@@ -104,6 +104,10 @@
         "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable\\abc_item_background_holo_dark.xml"
     },
     {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable\\generate_tktdd.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable\\generate_tktdd.png"
+    },
+    {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
         "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
     },
