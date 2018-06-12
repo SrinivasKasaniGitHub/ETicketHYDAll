@@ -15,7 +15,6 @@ ADDED from D:\Android\ETicketHYDAll\AndroidManifest.xml:2:1-284:12
 		ADDED from D:\Android\ETicketHYDAll\AndroidManifest.xml:2:11-69
 uses-sdk
 ADDED from D:\Android\ETicketHYDAll\AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:multidex:1.0.1] C:\Users\Srinivas\.android\build-cache\94e39d7a72cff0ffb9de46b4d30d4a15bb802093\output\AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:design:25.3.1] C:\Users\Srinivas\.android\build-cache\7359d251c151d249938c600954db948bd3421f0d\output\AndroidManifest.xml:21:5-23:62
 MERGED from [com.android.support:transition:25.3.1] C:\Users\Srinivas\.android\build-cache\ba62f52a6834ec19f7fe35885a573b1a47ec3970\output\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\Srinivas\.android\build-cache\fa21b4d5e8b18f621ba8594a450ed4b54f4f9696\output\AndroidManifest.xml:21:5-23:61

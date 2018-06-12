@@ -24,12 +24,12 @@
         "source": "D:\\Android\\ETicketHYDAll\\res\\drawable\\login_orange_btn_style.xml"
     },
     {
-        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable\\right.png",
-        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable\\right.png"
-    },
-    {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable\\forgot.png",
         "source": "D:\\Android\\ETicketHYDAll\\res\\drawable\\forgot.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable\\right.png",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\drawable\\right.png"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable\\custom_chec_box.xml",

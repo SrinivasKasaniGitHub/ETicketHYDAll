@@ -4,16 +4,16 @@
         "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\notification_template_part_chronometer.xml"
     },
     {
-        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
-        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\notification_template_icon_group.xml"
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\abc_dialog_title_material.xml"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\activity_special_drive.xml",
         "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\activity_special_drive.xml"
     },
     {
-        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
-        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\abc_dialog_title_material.xml"
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\notification_template_icon_group.xml"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
@@ -56,12 +56,12 @@
         "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\abc_alert_dialog_material.xml"
     },
     {
-        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\ip_setting.xml",
-        "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\ip_setting.xml"
-    },
-    {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\activity_respone__print.xml",
         "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\activity_respone__print.xml"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\ip_setting.xml",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\ip_setting.xml"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\activity_e__challan.xml",
@@ -100,12 +100,12 @@
         "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\select_dialog_multichoice_material.xml"
     },
     {
-        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
-        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\abc_list_menu_item_checkbox.xml"
-    },
-    {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu.xml",
         "source": "C:\\Users\\Srinivas\\.android\\build-cache\\7359d251c151d249938c600954db948bd3421f0d\\output\\res\\layout\\design_navigation_menu.xml"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\abc_list_menu_item_checkbox.xml"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\settings.xml",

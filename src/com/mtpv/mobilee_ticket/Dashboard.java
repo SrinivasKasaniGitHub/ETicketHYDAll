@@ -297,7 +297,7 @@ public class Dashboard extends Activity implements OnClickListener {
             FTPClient ftpClient = new FTPClient();
 
             try {
-                if (null != MainActivity.services_url && MainActivity.services_url.equals("https://www.echallan.org/eTicketMobileHyd")) {
+                if (null != MainActivity.services_url && MainActivity.services_url.contains("https://www.echallan.org/")) {
                     server = "125.16.1.69";
                 } else {
                     server = "192.168.11.9";
