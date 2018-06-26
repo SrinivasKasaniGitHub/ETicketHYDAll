@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">TS Traffic Challan</string>
+    <string name="app_name">TS-eTicket</string>
     <string name="hello_world">Hello world!</string>
     <string name="logIn">Login</string>
     <string name="welcome">Welcome</string>
@@ -14,7 +14,7 @@
     <string name="towing">Crane \n41 CP ACT</string>
     <string name="towing_one_line">Crane 41 CP ACT</string>
     <string name="reports">Reports</string>
-    <string name="app_version">Version-2.3.4</string>
+    <string name="app_version">Version-3.0.0</string>
     <string name="regNo">Regn.No</string>
     <string name="engine">Engine No</string>
     <string name="chasis">Chasis No</string>

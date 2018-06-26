@@ -1835,7 +1835,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
                         canvas.save();
                         canvas.rotate(270f, xPos, yPos);
-                        canvas.drawText("Date & Time: " + Current_Date, xPos + 10, yPos, paint);
+                        canvas.drawText("Date & Time: " + Current_Date, xPos + 10, yPos+300, paint);
                         canvas.restore();
 
                         canvas.save();

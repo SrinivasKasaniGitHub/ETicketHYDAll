@@ -297,7 +297,7 @@ public class Dashboard extends Activity implements OnClickListener {
             FTPClient ftpClient = new FTPClient();
 
             try {
-                if (null != MainActivity.services_url && MainActivity.services_url.contains("https://www.echallan.org/")) {
+                if (null != MainActivity.service_type&& MainActivity.service_type.contains("live")) {
                     server = "125.16.1.69";
                 } else {
                     server = "192.168.11.9";
@@ -1345,6 +1345,24 @@ public class Dashboard extends Activity implements OnClickListener {
         }
         return super.onCreateDialog(id);
     }
+
+    /*private void unused() {
+        SimpleDateFormat dates = new SimpleDateFormat("dd-MM-yyyy");
+        Date dateB;
+        Date dateA;
+        try {
+            dateA = dates.parse("29-06-2018");
+            dateB = dates.parse(date);
+            if (dateA.after(dateB)) {
+
+                spotNextCall();
+            } else {
+                showToast("Please check your Network and Try again! ");
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }*/
 
     public class Async_getViolationPoint_SystemMasterData extends AsyncTask<Void, Void, String> {
         @Override

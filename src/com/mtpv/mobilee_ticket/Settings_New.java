@@ -888,7 +888,7 @@ public class Settings_New extends Activity implements OnClickListener {
 
 			try {
 
-				if (null != MainActivity.services_url && MainActivity.services_url.contains("https://www.echallan.org")) {
+				if (null != MainActivity.service_type&& MainActivity.service_type.contains("live")) {
 					server = IPSettings.open_ftp_fix;
 				}else{
 					server = IPSettings.ftp_fix;

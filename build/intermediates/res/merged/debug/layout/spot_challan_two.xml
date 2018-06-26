@@ -158,7 +158,6 @@
                         style="@style/dd_custom_radio_btn_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checked="true"
                         android:paddingLeft="@dimen/header_grnt_padding_ten"
                         android:text="@string/licence_no" />
                 </RadioGroup>
@@ -171,7 +170,8 @@
                 android:layout_below="@+id/ll_is_spotpayment_spotchallan_two_xml"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="@dimen/header_grnt_padding_five"
-                android:layout_marginTop="@dimen/header_grnt_padding_five" >
+                android:layout_marginTop="@dimen/header_grnt_padding_five"
+                android:visibility="gone">
 
                 <RadioGroup
                     android:id="@+id/radioGroup_cash_card"
@@ -279,7 +279,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/edt_cardpin_spotchallantwo_xml"
                 android:layout_centerHorizontal="true"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:id="@+id/ll_gender_spotchallan_two_xml"

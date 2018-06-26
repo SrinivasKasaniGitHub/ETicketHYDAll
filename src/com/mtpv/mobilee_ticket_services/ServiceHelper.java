@@ -52,6 +52,7 @@ public class ServiceHelper {
     public static String GET_TERMINAL_DETAILS = "getTerminalDetails", GET_CHALLAN_DETAILS_FOR_AADHAAR = "getChallanDetailsForAadharUpdate";
     public static String GET_AADHAAR_UPDATE = "aadharUpdateForChallanGeneration", OCCUPATIONS = "getOccupations", QUALIFICATIONS = "getQualifications";
     public static String GET_CHANGE_PSWD_OTP = "aadharUpdateForChallanGeneration", GET_AADHAAR_TICKET = "checkAadharTicket";
+    public static String get_OffenceDetailsbyWheelerChallanType="getOffenceDetailsbyWheelerChallanType";
 
     public static String[] login_details_arr, whlr_details_master, psNames_master, violation_points_masters, violation_points_masters_split,
             occupationlist_master, PointNamesBypsNames_master, occupation_master, qualification_master, bar_master, vchle_cat_master,
@@ -1350,6 +1351,7 @@ public class ServiceHelper {
     }
 
     public static void getViolationDetails(String whlr_code) {
+        //String challanType
         try {
             SoapObject request = new SoapObject(NAMESPACE, VIOLATION_DETAILS_METHOD_NAME);
             request.addProperty("wheelercode", whlr_code);
@@ -1360,6 +1362,67 @@ public class ServiceHelper {
             httpTransportSE.call(SOAP_ACTION, envelope);
             Object result = envelope.getResponse();
             System.out.println(" getviolations by wheeler response :" + result.toString());
+            try {
+
+                if(result!=null) {
+                    Opdata_Chalana = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
+
+                    if (Opdata_Chalana != null && Opdata_Chalana.toString().trim().equals("0")) {
+                        Opdata_Chalana = "0";
+                        violation_details_master = new String[0];
+                        violation_detailed_views = new String[0][0];
+                    } else if (Opdata_Chalana != null && !"0".equals(Opdata_Chalana.toString().trim())) {
+
+                        violation_details_master = new String[0];
+                        violation_detailed_views = new String[0][0];
+                        violation_details_master = (Opdata_Chalana.substring(1, Opdata_Chalana.length())).split("!");
+
+                        if (violation_details_master != null && violation_details_master.length > 0) {
+
+                            violation_detailed_views = new String[violation_details_master.length][6];
+                            for (int i = 0; i < violation_details_master.length; i++) {
+                                violation_detailed_views[i] = violation_details_master[i].toString().trim().split("@");
+                            }
+                        } else {
+                            violation_detailed_views = new String[0][0];
+                        }
+                    }
+                }else {
+                    Opdata_Chalana = "0";
+                    violation_details_master = new String[0];
+                    violation_detailed_views = new String[0][0];
+                }
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                Opdata_Chalana = "0";
+                violation_details_master = new String[0];
+                violation_detailed_views = new String[0][0];
+            }
+
+        } catch (SoapFault fault) {
+            Opdata_Chalana = "0";
+            violation_details_master = new String[0];
+            violation_detailed_views = new String[0][0];
+        } catch (Exception e) {
+            Opdata_Chalana = "0";
+            violation_details_master = new String[0];
+            violation_detailed_views = new String[0][0];
+        }
+    }
+
+    public static void getOffenceDetailsbyWheelerChallanType(String wheelercode,String chllanType) {
+        //String challanType
+        try {
+            SoapObject request = new SoapObject(NAMESPACE, get_OffenceDetailsbyWheelerChallanType);
+            request.addProperty("wheelercode", wheelercode);
+            request.addProperty("challanType", chllanType);
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+            envelope.dotNet = true;
+            envelope.setOutputSoapObject(request);
+            HttpTransportSE httpTransportSE = new HttpTransportSE(MainActivity.URL);
+            httpTransportSE.call(SOAP_ACTION, envelope);
+            Object result = envelope.getResponse();
             try {
 
                 if(result!=null) {
@@ -3097,7 +3160,6 @@ public class ServiceHelper {
             request.addProperty("unit_code", unit_code);
             request.addProperty("app_type", app_type);
             request.addProperty("version_code", version);
-
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.dotNet = true;
             envelope.setOutputSoapObject(request);
@@ -3212,6 +3274,7 @@ public class ServiceHelper {
 
 
     public static  String  getOtpStatusNTime(String unitcode)
+
     {
         try {
             SoapObject request = new SoapObject(NAMESPACE, "getOtpStatusNTime");

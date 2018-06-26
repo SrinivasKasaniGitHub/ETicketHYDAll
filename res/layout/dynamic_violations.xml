@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:gravity="center">
+        >
 
 
          <RelativeLayout
@@ -28,14 +28,14 @@
                   style="@style/header_images_style_left"
                   android:layout_alignParentLeft="true"
                   android:layout_centerVertical="true"
-                  android:visibility="invisible"/>
+                  android:visibility="visible"/>
 
               <ImageView
                   android:id="@+id/imageView2"
                   style="@style/header_images_style_right"
                   android:layout_alignParentRight="true"
                   android:layout_centerVertical="true"
-                  android:visibility="invisible"/>
+                  android:visibility="visible"/>
 
               <TextView
                   android:id="@+id/textView1"
@@ -43,7 +43,6 @@
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_centerHorizontal="true"
-                  android:layout_centerVertical="true"
                   android:text="@string/header_txt" />
 
               <TextView
@@ -53,7 +52,7 @@
                   android:layout_height="wrap_content"
                   android:layout_below="@+id/textView1"
                   android:layout_centerHorizontal="true"
-                  android:layout_marginTop="23dp"
+                  android:layout_marginTop="@dimen/_3sdp"
                   android:text="@string/app_version"
                   android:textAppearance="?android:attr/textAppearanceSmall"
                   android:textStyle="bold" />
