@@ -1426,6 +1426,7 @@ public class ServiceHelper {
             try {
 
                 if(result!=null) {
+                    Opdata_Chalana="";
                     Opdata_Chalana = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
 
                     if (Opdata_Chalana != null && Opdata_Chalana.toString().trim().equals("0")) {
@@ -1488,6 +1489,7 @@ public class ServiceHelper {
             Object result = envelope.getResponse();
             try {
                 if(result!=null) {
+
                     Opdata_Chalana = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
 
                     if(Opdata_Chalana!=null) {

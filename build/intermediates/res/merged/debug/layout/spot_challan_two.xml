@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg" >
+    android:background="@color/bg">
 
     <!-- Header aligned to top -->
     <RelativeLayout
@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:gravity="center" >
+        android:gravity="center">
 
         <include
             android:id="@+id/relativeLayout1"
@@ -19,57 +19,57 @@
 
         </include>
 
-       <!-- <RelativeLayout
-            android:id="@+id/relativeLayout1"
-            style="@style/header_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" >
+        <!-- <RelativeLayout
+             android:id="@+id/relativeLayout1"
+             style="@style/header_style"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_alignParentTop="true"
+             android:layout_centerHorizontal="true" >
 
-            <ImageView
-                android:id="@+id/imageView1"
-                style="@style/header_images_style_left"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true" />
+             <ImageView
+                 android:id="@+id/imageView1"
+                 style="@style/header_images_style_left"
+                 android:layout_alignParentLeft="true"
+                 android:layout_centerVertical="true" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                style="@style/header_images_style_right"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true" />
+             <ImageView
+                 android:id="@+id/imageView2"
+                 style="@style/header_images_style_right"
+                 android:layout_alignParentRight="true"
+                 android:layout_centerVertical="true" />
 
-            <TextView
-                android:id="@+id/textView1"
-                style="@style/header_text_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="@string/header_txt" />
+             <TextView
+                 android:id="@+id/textView1"
+                 style="@style/header_text_style"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_centerHorizontal="true"
+                 android:layout_centerVertical="true"
+                 android:text="@string/header_txt" />
 
-            <TextView
-                android:id="@+id/textView2"
-                style="@style/cust_text_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textView1"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="23dp"
-                android:text="@string/app_version"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textStyle="bold" />
+             <TextView
+                 android:id="@+id/textView2"
+                 style="@style/cust_text_style"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_below="@+id/textView1"
+                 android:layout_centerHorizontal="true"
+                 android:layout_marginTop="23dp"
+                 android:text="@string/app_version"
+                 android:textAppearance="?android:attr/textAppearanceSmall"
+                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textView_header_spot_challan_xml"
-                style="@style/cust_text_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/imageView2"
-                android:layout_centerHorizontal="true"
-                android:text=""
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-        </RelativeLayout>-->
+             <TextView
+                 android:id="@+id/textView_header_spot_challan_xml"
+                 style="@style/cust_text_style"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_alignBottom="@+id/imageView2"
+                 android:layout_centerHorizontal="true"
+                 android:text=""
+                 android:textAppearance="?android:attr/textAppearanceSmall" />
+         </RelativeLayout>-->
     </RelativeLayout>
 
     <!-- Footer aligned to bottom -->
@@ -78,7 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:gravity="center" >
+        android:gravity="center">
 
         <ImageView
             android:id="@+id/imagefd"
@@ -86,16 +86,16 @@
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
             android:src="@drawable/footer"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/textView3"
             style="@style/footer_style"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
-            android:gravity="center"
             android:layout_centerHorizontal="true"
-            android:textStyle="bold|italic"/>
+            android:gravity="center"
+            android:textStyle="bold|italic" />
     </RelativeLayout>
 
     <!-- Scrollable Content below header and above footer -->
@@ -110,15 +110,15 @@
         android:id="@+id/container"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_below="@+id/header"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/header_grnt_padding_ten" >
+            android:layout_margin="@dimen/header_grnt_padding_ten">
 
             <LinearLayout
                 android:id="@+id/ll_is_spotpayment_spotchallan_two_xml"
@@ -127,7 +127,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="@dimen/header_grnt_padding_five"
-                android:layout_marginTop="@dimen/header_grnt_padding_five" >
+                android:layout_marginTop="@dimen/header_grnt_padding_five">
 
                 <TextView
                     android:id="@+id/tv_spotpymnt_name"
@@ -143,7 +143,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/radioGroupButton_spotpayment0"
@@ -179,7 +179,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:clickable="true"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/radioGroupButton_cashcard0"
@@ -204,8 +204,8 @@
                 android:id="@+id/rl_card_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:layout_below="@+id/ll_cashorcard_spotchallan_two_xml" >
+                android:layout_below="@+id/ll_cashorcard_spotchallan_two_xml"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tv_cardtype_name"
@@ -222,14 +222,14 @@
                     android:layout_below="@+id/tv_cardtype_name"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="@dimen/header_grnt_padding_five"
-                    android:layout_marginTop="@dimen/header_grnt_padding_five" >
+                    android:layout_marginTop="@dimen/header_grnt_padding_five">
 
                     <RadioGroup
                         android:id="@+id/radioGroup_card_type"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <RadioButton
                             android:id="@+id/radioGroupButton_card_type0"
@@ -269,9 +269,8 @@
                 android:layout_marginBottom="@dimen/header_grnt_padding_five"
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
                 android:hint="@string/enter_pin"
-                android:visibility="gone"
-                android:inputType="textPassword" >
-            </EditText>
+                android:inputType="textPassword"
+                android:visibility="gone"></EditText>
 
             <LinearLayout
                 android:id="@+id/ll_detaineditems_root_spotchallan_two_xml"
@@ -288,7 +287,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="@dimen/header_grnt_padding_five"
-                    android:layout_marginTop="@dimen/header_grnt_padding_five" >
+                    android:layout_marginTop="@dimen/header_grnt_padding_five">
 
                     <TextView
                         android:id="@+id/tv_gendername"
@@ -303,7 +302,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <RadioButton
                             android:id="@+id/radioGroupButton_detaineditems_yes"
@@ -330,15 +329,14 @@
                     android:layout_height="match_parent"
                     android:layout_below="@+id/ll_gender_spotchallan_two_xml"
                     android:layout_centerHorizontal="true"
-                    android:orientation="vertical" >
-                </LinearLayout>
+                    android:orientation="vertical"></LinearLayout>
             </LinearLayout>
 
             <RelativeLayout
                 android:id="@+id/rl_detaineditems_spotchallantwo_xml"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/ll_detaineditems_root_spotchallan_two_xml" >
+                android:layout_below="@+id/ll_detaineditems_root_spotchallan_two_xml">
 
                 <TextView
                     android:id="@+id/tv_detaineditems_name_spotchallantwo_xml"
@@ -355,7 +353,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_detaineditems_name_spotchallantwo_xml"
-                    android:layout_centerHorizontal="true" >
+                    android:layout_centerHorizontal="true">
 
                     <CheckBox
                         android:id="@+id/checkBox_dt_rc_spotchallantwo_xml"
@@ -381,7 +379,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/ll_detaineditems1_spotchallantwo_xml"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/header_grnt_padding_five" >
+                    android:layout_marginTop="@dimen/header_grnt_padding_five">
 
                     <CheckBox
                         android:id="@+id/checkBox_dt_lcns_spotchallantwo_xml"
@@ -407,7 +405,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_below="@+id/ll_detaineditems2_spotchallantwo_xml"
-                    android:layout_marginTop="@dimen/header_grnt_padding_five" >
+                    android:layout_marginTop="@dimen/header_grnt_padding_five">
 
                     <CheckBox
                         android:id="@+id/checkBox_dt_none_spotchallantwo_xml"
@@ -418,6 +416,22 @@
                         android:gravity="center_horizontal|center_vertical"
                         android:text="@string/none" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/detained_lyt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ll_detaineditems3_spotchallantwo_xml"
+                    android:padding="@dimen/_3sdp">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/detained_Txt"
+                        style="@style/detained_text_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="hsdhfgdhgfdhg" />
+                </LinearLayout>
+
             </RelativeLayout>
 
             <LinearLayout
@@ -426,7 +440,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rl_detaineditems_spotchallantwo_xml"
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/edt_drvr_cnctno_spotchallantwo_xml"
@@ -437,8 +451,7 @@
                     android:layout_weight="1"
                     android:hint="@string/driver_contact_no"
                     android:inputType="number"
-                    android:maxLength="10" >
-                </EditText>
+                    android:maxLength="10"></EditText>
 
                 <Button
                     android:id="@+id/btn_sendOTPtoMobile_spotchallantwo_xml"
@@ -458,8 +471,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="@dimen/header_grnt_padding_five"
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
-                android:visibility="gone"
-                >
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tv_language"
@@ -470,13 +482,14 @@
                     android:layout_marginBottom="@dimen/header_grnt_padding_five"
                     android:layout_marginTop="@dimen/header_grnt_padding_five"
                     android:text="@string/languageselect" />
+
                 <RadioGroup
                     android:id="@+id/group_language"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:clickable="true"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/rd_Telugu"
@@ -494,6 +507,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="@dimen/header_grnt_padding_ten"
                         android:text="@string/english" />
+
                     <RadioButton
                         android:id="@+id/rd_Urdu"
                         style="@style/dd_custom_radio_btn_style"
@@ -501,6 +515,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="@dimen/header_grnt_padding_ten"
                         android:text="@string/urdu" />
+
                     <RadioButton
                         android:id="@+id/rd_Hindi"
                         style="@style/dd_custom_radio_btn_style"
@@ -512,26 +527,26 @@
             </LinearLayout>
 
 
-
             <LinearLayout
                 android:id="@+id/proffession_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/layout_language"
                 android:layout_centerHorizontal="true"
-                android:visibility="gone"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical"
-                android:layout_marginTop="10dp" >
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/txt"
+                    style="@style/navi_text_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/navi_text_style"
-                    android:textStyle="bold"
-                    android:textSize="30sp"
                     android:layout_marginBottom="5dp"
-                    android:text="Occupation Details :"/>
+                    android:text="Occupation Details :"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
                 <Button
                     android:id="@+id/btn_select_profession"
                     style="@style/dd_custom_blue_btn_style"
@@ -539,9 +554,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="8dp"
                     android:layout_weight="1"
-                    android:text="@string/proffession"
                     android:entries="@array/profession_arrays"
-                    android:prompt="@string/profession_prompt"/>
+                    android:prompt="@string/profession_prompt"
+                    android:text="@string/proffession" />
 
                 <EditText
                     android:id="@+id/edt_candidate_name"
@@ -550,8 +565,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/header_grnt_padding_five"
                     android:hint="@string/dd_name"
-                    android:inputType="textCapCharacters" >
-                </EditText>
+                    android:inputType="textCapCharacters"></EditText>
 
                 <EditText
                     android:id="@+id/edt_candidate_Address"
@@ -560,8 +574,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/header_grnt_padding_five"
                     android:hint="@string/dd_address"
-                    android:inputType="textCapCharacters">
-                </EditText>
+                    android:inputType="textCapCharacters"></EditText>
 
                 <EditText
                     android:id="@+id/edt_email_ID"
@@ -570,8 +583,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/header_grnt_padding_five"
                     android:hint="@string/email"
-                    android:inputType="textEmailAddress">
-                </EditText>
+                    android:inputType="textEmailAddress"></EditText>
             </LinearLayout>
 
             <LinearLayout
@@ -581,7 +593,7 @@
                 android:layout_below="@+id/proffession_layout"
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
                 android:orientation="horizontal"
-                android:visibility="gone" >
+                android:visibility="gone">
 
                 <EditText
                     android:id="@+id/edt_confrmotp_spotchallantwo_xml"
@@ -592,8 +604,7 @@
                     android:layout_weight="1"
                     android:hint="@string/enter_otp"
                     android:inputType="number"
-                    android:maxLength="10" >
-                </EditText>
+                    android:maxLength="10"></EditText>
 
                 <Button
                     android:id="@+id/btn_confrmotp_spotchallantwo_xml"
@@ -620,16 +631,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/header_grnt_padding_five"
                     android:layout_weight="1"
-                    android:text="@string/select_idproof"
-                    />
+                    android:text="@string/select_idproof" />
 
                 <EditText
                     android:id="@+id/edt_idproff_spotchallantwo_xml"
                     style="@style/edt_custom_style"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" >
-                </EditText>
+                    android:layout_weight="1"></EditText>
             </LinearLayout>
 
             <EditText
@@ -640,9 +649,8 @@
                 android:layout_below="@+id/ll_idproof_spotchallantwo_xml"
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
                 android:gravity="top"
-                android:inputType="textCapCharacters"
-                android:hint="@string/remarks" >
-            </EditText>
+                android:hint="@string/remarks"
+                android:inputType="textCapCharacters"></EditText>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -650,7 +658,7 @@
                 android:layout_below="@+id/edt_remarks_spotchallantwo_xml"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="@dimen/margin_twenty"
-                android:layout_marginTop="@dimen/margin_twenty" >
+                android:layout_marginTop="@dimen/margin_twenty">
 
                 <Button
                     android:id="@+id/btn_cancel_spotchallantwo_xml"

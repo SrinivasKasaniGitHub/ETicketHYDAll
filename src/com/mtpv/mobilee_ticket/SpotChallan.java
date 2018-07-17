@@ -36,6 +36,7 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
+import android.support.v7.widget.AppCompatTextView;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.Html;
@@ -365,6 +366,8 @@ public class SpotChallan extends Activity
     TextView officer_Name, officer_Cadre, officer_PS;
     String otherStateVehicle = "NO";
     String otherStateVehiclePayment = "N";
+    String detainAlertFlag = "N";
+    AppCompatTextView detained_Txt;
 
 
     @Override
@@ -1800,7 +1803,7 @@ public class SpotChallan extends Activity
                                         otherStateVehicleAlert(" This is an Other State Vehicle \n Do you want to collect Amount!");
                                     } else {
 
-                                        spotNextCall();
+                                         spotNextCall();
 
 
                                     }
@@ -1813,6 +1816,7 @@ public class SpotChallan extends Activity
                             if (otherStateVehicle.equals("YES")) {
                                 otherStateVehicleAlert(" This is an Other State Vehicle \n Do you want to collect Amount!");
                             } else {
+
                                 spotNextCall();
 
 
@@ -1826,8 +1830,8 @@ public class SpotChallan extends Activity
                         if (otherStateVehicle.equals("YES")) {
                             otherStateVehicleAlert(" This is an Other State Vehicle \n Do you want to collect Amount!");
                         } else {
-                            spotNextCall();
 
+                             spotNextCall();
 
 
                         }
@@ -2097,7 +2101,6 @@ public class SpotChallan extends Activity
 
         //   imgSelected = "1";
     }
-
 
 
     @Override
@@ -2786,7 +2789,7 @@ public class SpotChallan extends Activity
 
                         soldOut = 1;
 
-                        //showDialog(SOLD_OUT_DIALOG);
+                       // showDialog(SOLD_OUT_DIALOG);
 
                     }
 
@@ -2967,6 +2970,7 @@ public class SpotChallan extends Activity
             super.onPostExecute(result);
             removeDialog(PROGRESS_DIALOG);
 
+            Log.i("service1", ServiceHelper.Opdata_Chalana);
 
             if (ServiceHelper.Opdata_Chalana != null) {
                 detained_items_status = new ArrayList<Boolean>();
@@ -3071,6 +3075,8 @@ public class SpotChallan extends Activity
 
                     } else if ((Dashboard.check_vhleHistory_or_Spot.equals("spot"))
                             || (Dashboard.check_vhleHistory_or_Spot.equals("towing"))) {
+                        removeDialog(SECOND_SPOTSCREEN_DIALOG);
+                        showDialog(SECOND_SPOTSCREEN_DIALOG);
 
                     }
 
@@ -3512,6 +3518,8 @@ public class SpotChallan extends Activity
 			/* MOBILE OTP */
                 et_driver_contact_spot = (EditText) dg_scond.findViewById(R.id.edt_drvr_cnctno_spotchallantwo_xml);
                 btn_send_otp_to_mobile = (Button) dg_scond.findViewById(R.id.btn_sendOTPtoMobile_spotchallantwo_xml);
+                detained_Txt=(AppCompatTextView)dg_scond.findViewById(R.id.detained_Txt);
+                detained_Txt.setVisibility(View.GONE);
 
 
 
@@ -3812,10 +3820,14 @@ public class SpotChallan extends Activity
                         radioGroupButton_spotpaymentNo.setChecked(false);
                         ll_detained_itemlist_layout.setVisibility(View.VISIBLE);
                         // radioGroupButton_spotpaymentNo.setEnabled(false);
-                    } else {
+                    }
+                    else if ("YES".equals(otherStateVehicle) && "N".equals(otherStateVehiclePayment)){
                         radioGroupButton_spotpaymentYes.setChecked(false);
                         radioGroupButton_spotpaymentNo.setChecked(true);
                         radioGroupButton_spotpaymentYes.setEnabled(false);
+                        chck_detainedItems_vhcle.setChecked(true);
+                        chck_detainedItems_none.setChecked(false);
+                        chck_detainedItems_none.setEnabled(false);
                         if (radioGroupButton_spotpaymentNo.isChecked()) {
 
                             rl_detained_items.setVisibility(View.VISIBLE);
@@ -3827,6 +3839,17 @@ public class SpotChallan extends Activity
                             chck_detainedItems_none.setEnabled(false);
 
                         }
+                    }else {
+                        radioGroupButton_spotpaymentYes.setChecked(false);
+                        radioGroupButton_spotpaymentNo.setChecked(true);
+                        radioGroupButton_spotpaymentYes.setEnabled(false);
+                        rl_detained_items.setVisibility(View.VISIBLE);
+                        ll_detained_items_root.setVisibility(View.GONE);
+                        ll_cash_or_card.setVisibility(View.GONE);
+                        ll_detained_itemlist_layout.setVisibility(View.GONE);
+                        chck_detainedItems_vhcle.setChecked(false);
+                        chck_detainedItems_none.setChecked(true);
+                        chck_detainedItems_none.setEnabled(false);
                     }
 
                     int presentviolatedpoints = 0;
@@ -3997,15 +4020,69 @@ public class SpotChallan extends Activity
                             }
                         });
 
-                    } else if (vioDetainCheckFlag.equalsIgnoreCase("1")
+                    }
+                   /* else if (vioDetainCheckFlag.equalsIgnoreCase("1")
                             || ServiceHelper.pending_challans_details.length >= 10 || soldOut == 1 || penaltypointsreachedFlag == 1 || "D".equals(DLvalidFLG)) {
                         sb_detained_items.append("02:VEHICLE@");
                         chck_detainedItems_vhcle.setChecked(true);
-                        chck_detainedItems_vhcle.setEnabled(false);
+                        chck_detainedItems_vhcle.setEnabled(true);
                         chck_detainedItems_none.setEnabled(false);
+                        chck_detainedItems_none.setChecked(false);
+                        detainAlertFlag = "Y";
 
-//35300515272
+                    }*/
+                    else if ("NO".equals(otherStateVehicle) && (vioDetainCheckFlag.equalsIgnoreCase("1")
+                        || ServiceHelper.pending_challans_details.length >= 10 || soldOut == 1 || penaltypointsreachedFlag == 1 || "D".equals(DLvalidFLG))) {
+                    sb_detained_items.append("02:VEHICLE@");
+                    chck_detainedItems_vhcle.setChecked(true);
+                    chck_detainedItems_vhcle.setEnabled(true);
+                    chck_detainedItems_none.setEnabled(false);
+                        chck_detainedItems_none.setChecked(false);
+                    detainAlertFlag = "Y";
+                        detained_Txt.setVisibility(View.VISIBLE);
+                        if (vioDetainCheckFlag.equalsIgnoreCase("1")){
+                            detained_Txt.setText("The Challan has been Charge Sheeted !");
+                        }else if (ServiceHelper.pending_challans_details.length >= 10 ){
+                            detained_Txt.setText("The Challan has been Top violated !");
+                        }else if (soldOut == 1){
+                            detained_Txt.setText("This is Sold Out Vehicle!");
+                        }else if (penaltypointsreachedFlag==1){
+                            detained_Txt.setText("Penalty points crossed on DL!");
+                        }else if ( "D".equals(DLvalidFLG)){
+                            detained_Txt.setText("DL suspended!");
+                        }else {
+                            detained_Txt.setVisibility(View.GONE);
+                        }
+
+
+                    //showToast("Vehicle has been detained");
+
+                } else if ("Y".equals(otherStateVehiclePayment) && (vioDetainCheckFlag.equalsIgnoreCase("1")
+                        || ServiceHelper.pending_challans_details.length >= 10 || soldOut == 1 || penaltypointsreachedFlag == 1 || "D".equals(DLvalidFLG))) {
+                    radioGroupButton_spotpaymentNo.setChecked(true);
+                    radioGroupButton_spotpaymentYes.setEnabled(false);
+                    radioGroupButton_spotpaymentYes.setChecked(false);
+
+                    rl_detained_items.setVisibility(View.VISIBLE);
+                    ll_detained_items_root.setVisibility(View.GONE);
+                    ll_detained_itemlist_layout.setVisibility(View.GONE);
+                    ll_cash_or_card.setVisibility(View.GONE);
+
+                    for (int i = 0; i < cb.length; i++) {
+                        cb[i].setChecked(false);
+                        cb[i].setEnabled(false);
                     }
+                    sb_detained_items.append("");
+                    setCheckedValues(false, "donotedit");
+                    chck_detainedItems_none.setChecked(false);
+                    chck_detainedItems_vhcle.setChecked(true);
+                    chck_detainedItems_none.setEnabled(false);
+                    detainAlertFlag = "Y";
+
+
+                    showToast("This other State Vehicle has been Chargesheeted");
+                }
+
 //                    else if(soldOut==3)
 //                    {
 //                        sb_detained_items.append("02:VEHICLE@");
@@ -4041,14 +4118,16 @@ public class SpotChallan extends Activity
                     else {
                         try {
                             // sb_detained_items.append("");
-                            if (!"YES".equals(otherStateVehicle)) {
+                            if ("Y".equals(otherStateVehiclePayment)) {
                                 setCheckedValues(false, "donotedit");
                                 chck_detainedItems_none.setChecked(true);
-                            } else {
+                                sb_detained_items.append("");
+                            }
+                            /*else {
                                 chck_detainedItems_none.setChecked(false);
                                 chck_detainedItems_none.setEnabled(false);
                                 chck_detainedItems_vhcle.setChecked(true);
-                            }
+                            }*/
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -4185,6 +4264,7 @@ public class SpotChallan extends Activity
 
                     } else {
                         dlDetainFlag = "0";
+
                     }
                     tv_spotChallanTwo_header.setText("" + getResources().getString(R.string.release_documents_one_line));
 
@@ -4489,16 +4569,25 @@ public class SpotChallan extends Activity
 //                                detainAlert();
 //                            }
 //                        }else {
-                        if ((Dashboard.check_vhleHistory_or_Spot.equals("releasedocuments") && dlDetainFlag.equalsIgnoreCase("1"))) {
-                            pointsAlertForReleaseDocs();
-                        } else if ((Dashboard.check_vhleHistory_or_Spot.equals("releasedocuments") && dlDetainFlag.equalsIgnoreCase("0"))) {
-                            finalsubmit();
-                        } else if (licence_no != null && (totaldl_points != 0 && totaldl_points > 0)) {
-                            pointsAlert();
+
+                        if ("Y".equals(detainAlertFlag) && !chck_detainedItems_vhcle.isChecked() && !chck_detainedItems_licence.isChecked() &&
+                                !chck_detainedItems_rc.isChecked() && !chck_detainedItems_permit.isChecked()) {
+                            showToast("Please Detain any one of item !");
 
                         } else {
 
-                            finalsubmit();
+
+                            if ((Dashboard.check_vhleHistory_or_Spot.equals("releasedocuments") && dlDetainFlag.equalsIgnoreCase("1"))) {
+                                pointsAlertForReleaseDocs();
+                            } else if ((Dashboard.check_vhleHistory_or_Spot.equals("releasedocuments") && dlDetainFlag.equalsIgnoreCase("0"))) {
+                                finalsubmit();
+                            } else if (licence_no != null && (totaldl_points != 0 && totaldl_points > 0)) {
+                                pointsAlert();
+
+                            } else {
+
+                                finalsubmit();
+                            }
                         }
                         // }
 
@@ -4798,7 +4887,7 @@ public class SpotChallan extends Activity
                         check_dynamic_vltn[i].setLayoutParams(params1);
 
 					/*// default 41(CP) enable for towing
-					if (Dashboard.check_vhleHistory_or_Spot.equals("towing")) {
+                    if (Dashboard.check_vhleHistory_or_Spot.equals("towing")) {
 						check_dynamic_vltn[0].setChecked(true);
 						violation_checked_violations.add("" +check_dynamic_vltn[0]);
 					}*/
@@ -4814,7 +4903,7 @@ public class SpotChallan extends Activity
                         ll_dynamic_violations_root_static.addView(ll_dynamic_vltns[i]);
 
 					/* DYNAMIC RADIO BUTTONS CLICK EVENT END */
-					/*----------------------------------------------------------*/
+                    /*----------------------------------------------------------*/
 
                         check_dynamic_vltn[i].setOnClickListener(new OnClickListener() {
 
@@ -5054,7 +5143,8 @@ public class SpotChallan extends Activity
 
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-                        removeDialog(FAKE_NUMBERPLATE_DIALOG);
+                        removeDialog(FAKE_NUMBERPLATE_DIALOG);//2306130009 ljsr9090
+
 
                         if (offender_remarks_resp_master[10] != null
                                 && offender_remarks_resp_master[10].contains("FAKE NO")) {
@@ -5062,6 +5152,7 @@ public class SpotChallan extends Activity
                             fake_veh_chasisNo = (offender_remarks_resp_master.length > 0
                                     && offender_remarks_resp_master[8] != null
                                     && !"".equals(offender_remarks_resp_master[8].trim()))
+                                    //&& !"NA".equals(offender_remarks_resp_master[8].trim()))
                                     ? offender_remarks_resp_master[8]
                                     .substring(offender_remarks_resp_master[8].length() - 5)
                                     : "";
@@ -5349,6 +5440,8 @@ public class SpotChallan extends Activity
         btn.setTypeface(btn.getTypeface(), Typeface.BOLD);
         btn.setBackgroundColor(Color.RED);
     }
+
+
 
     public static String getMonthName(int month) {
 
@@ -6688,7 +6781,6 @@ public class SpotChallan extends Activity
             @Override
             public void onClick(DialogInterface arg0, int arg1) {
                 otherStateVehiclePayment = "Y";
-
                 spotNextCall();
             }
         });
@@ -6696,8 +6788,7 @@ public class SpotChallan extends Activity
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 otherStateVehiclePayment = "N";
-
-                 spotNextCall();
+                spotNextCall();
 
             }
         });
@@ -7729,11 +7820,15 @@ public class SpotChallan extends Activity
         @Override
         protected void onPostExecute(String result) {
 
+
+
+
             removeDialog(PROGRESS_DIALOG);
 
             if (result != null && !result.equalsIgnoreCase("") && !result.equalsIgnoreCase("NA|NA|NA|NA|NA")) {
                 String rta = null;
 
+                Log.i("service2", result);
 
                 try {
 
@@ -7797,6 +7892,7 @@ public class SpotChallan extends Activity
                 rta_task.execute();
             }
         } else {
+            Log.i("vvv", "vvv-othrt");
             showToast("Please Check Network Connection");
         }
     }
@@ -7804,6 +7900,8 @@ public class SpotChallan extends Activity
 
     public void spotNextCall() {
         // 64@500@500@W/o Driving Licence ( S 181/177 )!
+
+
         String dlCheck = "0";
         if (violations_details_send != null && violations_details_send.toString().trim().length() > 2) {
             System.out.println(">>>>>>>>1");
@@ -7855,6 +7953,7 @@ public class SpotChallan extends Activity
                 if (Dashboard.check_vhleHistory_or_Spot.equals("spot")) {
 
 
+                    Log.i("vvv", "vvv");
                     if ((et_driver_lcnce_num_spot.getText().toString().trim().equals(""))
                             && (btn_violation.getText().toString().equals("" + getResources().getString(R.string.select_violation)))
                             || ((dl_points != null && !"".equalsIgnoreCase(dl_points) && Integer.parseInt(dl_points) > 12) && ("C".equals(DLvalidFLG) || "S".equals(DLvalidFLG)))
@@ -8000,7 +8099,7 @@ public class SpotChallan extends Activity
                                         if (DLvalidFLG.equals("V")) {
                                             commomAsync();
                                         } else if ("C".equals(DLvalidFLG) || "S".equals(DLvalidFLG)) {
-                                            ShowMessage("\n Driving Licence has been Expired \n Please Add Without DL Violation\n ");
+                                            ShowMessage("\n Driving Licence has been Cancelled or Suspended \n Please Add Without DL Violation\n ");
                                         } else if ("D".equals(DLvalidFLG)) {
                                             showDLRevokeMessage("\nVEHICLE DETAINED -- REVOKE YOUR DL SUSPENSION \n YOU ARE EXEMPTED FROM CHARGE SHEET\n");
                                         } else {
@@ -8025,7 +8124,7 @@ public class SpotChallan extends Activity
                                         if (DLvalidFLG.equals("V")) {
                                             commomAsync();
                                         } else if ("C".equals(DLvalidFLG) || "S".equals(DLvalidFLG)) {
-                                            ShowMessage("\n Driving Licence has been Expired \n Please Add Without DL Violation\n ");
+                                            ShowMessage("\n Driving Licence has been Cancelled or Suspended \n Please Add Without DL Violation\n ");
                                         } else if ("D".equals(DLvalidFLG)) {
                                             showDLRevokeMessage("\nVEHICLE DETAINED -- REVOKE YOUR DL SUSPENSION \n YOU ARE EXEMPTED FROM CHARGE SHEET\n");
                                         } else {
@@ -8125,7 +8224,7 @@ public class SpotChallan extends Activity
                                         if (DLvalidFLG.equals("V")) {
                                             commomAsync();
                                         } else if ("C".equals(DLvalidFLG) || "S".equals(DLvalidFLG)) {
-                                            ShowMessage("\n Driving Licence has been Expired \n Please Add Without DL Violation\n ");
+                                            ShowMessage("\n Driving Licence has been Cancelled or Suspended \n Please Add Without DL Violation\n ");
                                         } else if ("D".equals(DLvalidFLG)) {
                                             showDLRevokeMessage("\nVEHICLE DETAINED -- REVOKE YOUR DL SUSPENSION \n YOU ARE EXEMPTED FROM CHARGE SHEET\n");
                                         } else {
@@ -8150,7 +8249,7 @@ public class SpotChallan extends Activity
                                         if (DLvalidFLG.equals("V")) {
                                             rtaApproveFlg = true;
                                         } else if ("C".equals(DLvalidFLG) || "S".equals(DLvalidFLG)) {
-                                            ShowMessage("\n Driving Licence has been Expired \n Please Add Without DL Violation\n ");
+                                            ShowMessage("\n Driving Licence has been Cancelled or Suspended \n Please Add Without DL Violation\n ");
                                         } else if ("D".equals(DLvalidFLG)) {
                                             showDLRevokeMessage("\nVEHICLE DETAINED -- REVOKE YOUR DL SUSPENSION \n YOU ARE EXEMPTED FROM CHARGE SHEET\n");
                                         } else {
@@ -8199,7 +8298,7 @@ public class SpotChallan extends Activity
                                         if (DLvalidFLG.equals("V")) {
                                             rtaApproveFlg = true;
                                         } else if ("C".equals(DLvalidFLG) || "S".equals(DLvalidFLG)) {
-                                            ShowMessage("\n Driving Licence has been Expired \n Please Add Without DL Violation\n ");
+                                            ShowMessage("\n Driving Licence has been Cancelled or Suspended \n Please Add Without DL Violation\n ");
                                         } else if ("D".equals(DLvalidFLG)) {
                                             showDLRevokeMessage("\nVEHICLE DETAINED -- REVOKE YOUR DL SUSPENSION \n YOU ARE EXEMPTED FROM CHARGE SHEET\n");
                                         } else {
@@ -8224,7 +8323,7 @@ public class SpotChallan extends Activity
                                         if (DLvalidFLG.equals("V")) {
                                             rtaApproveFlg = true;
                                         } else if ("C".equals(DLvalidFLG) || "S".equals(DLvalidFLG)) {
-                                            ShowMessage("\n Driving Licence has been Expired \n Please Add Without DL Violation\n ");
+                                            ShowMessage("\n Driving Licence has been Cancelled or Suspended \n Please Add Without DL Violation\n ");
                                         } else if ("D".equals(DLvalidFLG)) {
                                             showDLRevokeMessage("\nVEHICLE DETAINED -- REVOKE YOUR DL SUSPENSION \n YOU ARE EXEMPTED FROM CHARGE SHEET\n");
                                         } else {
@@ -8232,9 +8331,7 @@ public class SpotChallan extends Activity
                                         }
                                     }
                                 } else if (Fake_NO_Dialog.fake_action == "fake") {
-
                                     ShowMessage("\n It's a Fake Vehicle !!! \n");
-
                                 }
                             } else {
                                 status = 1;
@@ -8245,12 +8342,12 @@ public class SpotChallan extends Activity
                         if (rtaApproveFlg) {
                             commomAsync();
                         }
-                        if (status == 1) {
+                      /*  if (status == 1) {
                             licence_details_spot_master = new String[0];
                             otp_msg = "Please select  violation -without driving license";
                             removeDialog(OTP_CNFRMTN_DIALOG);
                             showDialog(OTP_CNFRMTN_DIALOG);
-                        }
+                        }*/
 
 								/* 19_APRIL_2017 */
                     } else {
@@ -8286,7 +8383,7 @@ public class SpotChallan extends Activity
                                 if (DLvalidFLG.equals("V")) {
                                     commomAsync();
                                 } else if ("C".equals(DLvalidFLG) || "S".equals(DLvalidFLG)) {
-                                    ShowMessage("\n Driving Licence has been Expired \n Please Add Without DL Violation\n ");
+                                    ShowMessage("\n Driving Licence has been Cancelled or Suspended \n Please Add Without DL Violation\n ");
                                 } else if ("D".equals(DLvalidFLG)) {
                                     showDLRevokeMessage("\nVEHICLE DETAINED -- REVOKE YOUR DL SUSPENSION \n YOU ARE EXEMPTED FROM CHARGE SHEET\n");
                                 } else {
@@ -8312,7 +8409,7 @@ public class SpotChallan extends Activity
                                 if (DLvalidFLG.equals("V")) {
                                     commomAsync();
                                 } else if ("C".equals(DLvalidFLG) || "S".equals(DLvalidFLG)) {
-                                    ShowMessage("\n Driving Licence has been Expired \n Please Add Without DL Violation\n ");
+                                    ShowMessage("\n Driving Licence has been Cancelled or Suspended \n Please Add Without DL Violation\n ");
                                 } else if ("D".equals(DLvalidFLG)) {
                                     showDLRevokeMessage("\nVEHICLE DETAINED -- REVOKE YOUR DL SUSPENSION \n YOU ARE EXEMPTED FROM CHARGE SHEET\n");
                                 } else {
@@ -8357,7 +8454,7 @@ public class SpotChallan extends Activity
                             if (DLvalidFLG.equals("V")) {
                                 commomAsync();
                             } else if ("C".equals(DLvalidFLG) || "S".equals(DLvalidFLG)) {
-                                ShowMessage("\n Driving Licence has been Expired \n Please Add Without DL Violation\n ");
+                                ShowMessage("\n Driving Licence has been Cancelled or Suspended \n Please Add Without DL Violation\n ");
                             } else if ("D".equals(DLvalidFLG)) {
                                 showDLRevokeMessage("\nVEHICLE DETAINED -- REVOKE YOUR DL SUSPENSION \n YOU ARE EXEMPTED FROM CHARGE SHEET\n");
                             } else {
@@ -8382,7 +8479,7 @@ public class SpotChallan extends Activity
                             if (DLvalidFLG.equals("V")) {
                                 commomAsync();
                             } else if ("C".equals(DLvalidFLG) || "S".equals(DLvalidFLG)) {
-                                ShowMessage("\n Driving Licence has been Expired \n Please Add Without DL Violation\n ");
+                                ShowMessage("\n Driving Licence has been Cancelled or Suspended \n Please Add Without DL Violation\n ");
                             } else if ("D".equals(DLvalidFLG)) {
                                 showDLRevokeMessage("\nVEHICLE DETAINED -- REVOKE YOUR DL SUSPENSION \n YOU ARE EXEMPTED FROM CHARGE SHEET\n");
                             } else {

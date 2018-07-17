@@ -905,10 +905,8 @@ public class Settings_New extends Activity implements OnClickListener {
 				File downloadFile1 = new File("/sdcard/Download/ETicketHYD.apk");
 				//String remoteFile1 = "/23/TabAPK" + "/" + version;
 				String remoteFile1 = "/23/TabAPK" + "/ETicketHYD.apk";
-
 				OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(downloadFile1));
 				boolean success = ftpClient.retrieveFile(remoteFile1, outputStream);
-
 				FileOutputStream fileOutput = new FileOutputStream(downloadFile1);
 				InputStream inputStream = ftpClient.retrieveFileStream(remoteFile1);
 
@@ -1072,12 +1070,18 @@ public class Settings_New extends Activity implements OnClickListener {
 			} catch (SocketException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+                removeDialog(PROGRESS_DIALOG);
+                showToast("Please contact e-Challan team !");
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+                removeDialog(PROGRESS_DIALOG);
+                showToast("Please contact e-Challan team !");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+                removeDialog(PROGRESS_DIALOG);
+                showToast("Please contact e-Challan team !");
 			}
 			return null;
 		}

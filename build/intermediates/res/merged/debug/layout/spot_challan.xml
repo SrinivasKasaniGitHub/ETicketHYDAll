@@ -404,7 +404,7 @@
                 android:id="@+id/dob_input"
                 style="@style/dd_custom_blue_btn_style"
                 android:layout_width="fill_parent"
-                android:layout_height="@dimen/_27sdp"
+                android:layout_height="@dimen/_30sdp"
                 android:layout_below="@+id/ll_driver_challans"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"

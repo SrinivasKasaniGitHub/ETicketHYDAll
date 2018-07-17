@@ -81,7 +81,7 @@ public class IPSettings extends Activity implements OnClickListener {
         editor = preference.edit();
 
         //This is main varible to set ipsettings defaultly if we change to live then ipsettings live set default one
-        SERVICE_TYPE_PREf = preference.getString("servicetype", "test");
+        SERVICE_TYPE_PREf = preference.getString("servicetype", "live");
 
         SERVICE_URL_PREF = preference.getString("serviceurl", "url1");
         FTP_URL_PREF = preference.getString("ftpurl", "url2");

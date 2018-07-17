@@ -191,6 +191,8 @@ public class Dashboard extends Activity implements OnClickListener {
         UNIT_CODE = MainActivity.arr_logindetails[0].substring(0, 2);
 
         LoadUIComponents();
+       
+
 
         db = new DBHelper(getApplicationContext());
 
@@ -469,10 +471,16 @@ public class Dashboard extends Activity implements OnClickListener {
 
             } catch (SocketException e) {
                 e.printStackTrace();
+                removeDialog(PROGRESS_DIALOG);
+                showToast("Please contact e-Challan team !");
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
+                removeDialog(PROGRESS_DIALOG);
+                showToast("Please contact e-Challan team !");
             } catch (IOException e) {
                 e.printStackTrace();
+                removeDialog(PROGRESS_DIALOG);
+                showToast("Please contact e-Challan team !");
             }
             return null;
         }
@@ -1043,7 +1051,7 @@ public class Dashboard extends Activity implements OnClickListener {
         }
     }
 
-    public class Async_About_Version extends AsyncTask<Void, Void, String> {
+    private class Async_About_Version extends AsyncTask<Void, Void, String> {
 
         @SuppressWarnings("deprecation")
         @Override
@@ -1346,23 +1354,6 @@ public class Dashboard extends Activity implements OnClickListener {
         return super.onCreateDialog(id);
     }
 
-    /*private void unused() {
-        SimpleDateFormat dates = new SimpleDateFormat("dd-MM-yyyy");
-        Date dateB;
-        Date dateA;
-        try {
-            dateA = dates.parse("29-06-2018");
-            dateB = dates.parse(date);
-            if (dateA.after(dateB)) {
-
-                spotNextCall();
-            } else {
-                showToast("Please check your Network and Try again! ");
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-    }*/
 
     public class Async_getViolationPoint_SystemMasterData extends AsyncTask<Void, Void, String> {
         @Override

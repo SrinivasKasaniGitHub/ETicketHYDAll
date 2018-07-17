@@ -14,7 +14,7 @@
     <string name="towing">Crane \n41 CP ACT</string>
     <string name="towing_one_line">Crane 41 CP ACT</string>
     <string name="reports">Reports</string>
-    <string name="app_version">Version-3.0.0</string>
+    <string name="app_version">Version-3.0.1</string>
     <string name="regNo">Regn.No</string>
     <string name="engine">Engine No</string>
     <string name="chasis">Chasis No</string>
@@ -276,6 +276,7 @@
     <color name="footer_txt_color">#374175</color>
     <color name="dialog_title">#fb0000</color>
     <color name="black">#000000</color>
+    <color name="red">#e40404</color>
 
     <!-- DUPLICATE PRINT -->
     <string name="dup_drunk_drive">Drunk &amp; Drive</string>

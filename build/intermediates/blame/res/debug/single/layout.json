@@ -4,16 +4,16 @@
         "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\notification_template_part_chronometer.xml"
     },
     {
-        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
-        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\notification_template_icon_group.xml"
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\abc_dialog_title_material.xml"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\activity_special_drive.xml",
         "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\activity_special_drive.xml"
     },
     {
-        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
-        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\abc_dialog_title_material.xml"
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\notification_template_icon_group.xml"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
@@ -24,16 +24,16 @@
         "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\pinpad_list_item_device.xml"
     },
     {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\activity_pin_pad__list.xml",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\activity_pin_pad__list.xml"
+    },
+    {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
         "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\abc_list_menu_item_layout.xml"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
         "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\abc_action_mode_bar.xml"
-    },
-    {
-        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\activity_pin_pad__list.xml",
-        "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\activity_pin_pad__list.xml"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\drunk_drive_response.xml",
@@ -84,12 +84,12 @@
         "source": "C:\\Users\\Srinivas\\.android\\build-cache\\7359d251c151d249938c600954db948bd3421f0d\\output\\res\\layout\\design_menu_item_action_area.xml"
     },
     {
-        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\activity_offline_dashboard.xml",
-        "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\activity_offline_dashboard.xml"
-    },
-    {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\activity_offline__settings.xml",
         "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\activity_offline__settings.xml"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\activity_offline_dashboard.xml",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\activity_offline_dashboard.xml"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_icon.xml",
@@ -112,12 +112,12 @@
         "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\settings.xml"
     },
     {
-        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
-        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\abc_action_mode_close_item_material.xml"
-    },
-    {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\layout_files_list_item.xml",
         "source": "C:\\Users\\Srinivas\\.android\\build-cache\\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\\output\\res\\layout\\layout_files_list_item.xml"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\abc_action_mode_close_item_material.xml"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\activity_pin_pad_list.xml",
@@ -184,16 +184,16 @@
         "source": "C:\\Users\\Srinivas\\.android\\build-cache\\7359d251c151d249938c600954db948bd3421f0d\\output\\res\\layout\\design_navigation_item_subheader.xml"
     },
     {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_title_material.xml",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\abc_alert_dialog_title_material.xml"
+    },
+    {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\generate_dd.xml",
         "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\generate_dd.xml"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\drunkdrive.xml",
         "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\drunkdrive.xml"
-    },
-    {
-        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_title_material.xml",
-        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\abc_alert_dialog_title_material.xml"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\efp__new_folder.xml",
@@ -204,12 +204,12 @@
         "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\drunk__drive__fake__dialog.xml"
     },
     {
-        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\list_item_device.xml",
-        "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\list_item_device.xml"
-    },
-    {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
         "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\list_item_device.xml",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\list_item_device.xml"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action.xml",
@@ -228,12 +228,12 @@
         "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\spot_challan_two.xml"
     },
     {
-        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\spot_challan.xml",
-        "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\spot_challan.xml"
-    },
-    {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\spinner_item.xml",
         "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\spinner_item.xml"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\spot_challan.xml",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\spot_challan.xml"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
@@ -268,16 +268,16 @@
         "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\blutooth_list_devices.xml"
     },
     {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar_include.xml",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\7359d251c151d249938c600954db948bd3421f0d\\output\\res\\layout\\design_layout_snackbar_include.xml"
+    },
+    {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
         "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\abc_activity_chooser_view.xml"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\version_details.xml",
         "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\version_details.xml"
-    },
-    {
-        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar_include.xml",
-        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\7359d251c151d249938c600954db948bd3421f0d\\output\\res\\layout\\design_layout_snackbar_include.xml"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
@@ -356,20 +356,20 @@
         "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\activity_offline__generate_case.xml"
     },
     {
-        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
-        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\abc_action_menu_layout.xml"
-    },
-    {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
         "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
     },
     {
-        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\activity_aadhaar_update.xml",
-        "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\activity_aadhaar_update.xml"
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\abc_action_menu_layout.xml"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\drunk_drive_three.xml",
         "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\drunk_drive_three.xml"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\activity_aadhaar_update.xml",
+        "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\activity_aadhaar_update.xml"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
