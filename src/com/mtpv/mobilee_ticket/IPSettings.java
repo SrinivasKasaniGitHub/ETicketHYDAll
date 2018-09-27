@@ -25,10 +25,8 @@ public class IPSettings extends Activity implements OnClickListener {
     Button btn_back_ip, btn_save;
     RadioGroup rg_live_test;
     RadioButton rbtn_live, rbtn_test;
-
     SharedPreferences preference;
     SharedPreferences.Editor editor;
-
     String SERVICE_URL_PREF = "", FTP_URL_PREF = "", SERVICE_TYPE_PREf = "";
 
     // private String test_service_url3 = "http://192.168.11.55:8080/eTicketMobileHyd";
@@ -38,13 +36,9 @@ public class IPSettings extends Activity implements OnClickListener {
     //private String test_service_url = "http://192.168.11.97:8080/eTicketMobileHyd";
 
     //private String local_network_url = "http://192.168.11.4/eTicketMobileHyd";
-    private String local_network_url = "http://192.168.11.10:8080/TSeTicketMobile/";
-
-
-
-
+   // private String local_network_url = "http://192.168.11.10:8080/TSeTicketMobile/";
     //Connecting_sunilsys
-    // private String local_network_url="http://125.16.1.70:8080/eTicketMobileHyd";
+    private String local_network_url="http://125.16.1.70:8080/TSeTicketMobile_Staging";
 
     //Connecting_madhusys
     //   private String local_network_url="http://192.168.11.97:8080/eTicketMobileHyd";
@@ -54,14 +48,11 @@ public class IPSettings extends Activity implements OnClickListener {
 
     //url for test purpose
     //  private String local_network_url="http://192.168.11.4/Test_eTicketMobileHyd";
-
-
     //    private String live_service_url = "http://192.168.11.4/eTicketMobileHyd";
-    private String live_service_url = "https://www.echallan.org/TSeTicketMobile";
+    private String live_service_url = "https://www.echallan.org/TSeTicketMobile_Staging";
 
     //url for test purpose
     // private String live_service_url="http://192.168.11.4/Test_eTicketMobileHyd";
-
     public static String ftp_fix = "192.168.11.9";
     public static String open_ftp_fix = "125.16.1.69";
     String service_type = "";
@@ -81,19 +72,13 @@ public class IPSettings extends Activity implements OnClickListener {
         editor = preference.edit();
 
         //This is main varible to set ipsettings defaultly if we change to live then ipsettings live set default one
-        SERVICE_TYPE_PREf = preference.getString("servicetype", "live");
-
+        SERVICE_TYPE_PREf = preference.getString("servicetype", "test");
         SERVICE_URL_PREF = preference.getString("serviceurl", "url1");
         FTP_URL_PREF = preference.getString("ftpurl", "url2");
-
         rbtn_live = (RadioButton) findViewById(R.id.radioButton_live);
         rbtn_test = (RadioButton) findViewById(R.id.radioButton_test);
-
         rbtn_test.setChecked(true);
-
         // rbtn_live.setChecked(true);
-
-
         if (SERVICE_TYPE_PREf.equals("live")) {
             rbtn_live.setChecked(true);
             et_service_url.setText("" + live_service_url);
@@ -107,8 +92,6 @@ public class IPSettings extends Activity implements OnClickListener {
             rbtn_test.setChecked(true);
             service_type = "test";
         }
-
-
     }
 
     private void LoadUIComponents() {

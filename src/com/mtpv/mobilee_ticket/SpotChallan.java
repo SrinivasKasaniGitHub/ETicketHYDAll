@@ -111,37 +111,26 @@ import mother.com.test.PidSecEncrypt;
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 public class SpotChallan extends Activity
         implements OnClickListener, LocationListener, android.widget.CompoundButton.OnCheckedChangeListener {
-    //ts08cb0009
-
     //public static String btn_otp_flag = "0";
     public static String helemt_rc_value, helemt_adhar_value, helemt_dl_value, dl_points = "0", spot_Lic_Flag = "", imgSelected = "0",
             is_govt_police = "9", extraPassengers = "1", aadhaar, licence_no, otp_number = "", driver_mobileNo = "", minor_valueCode = "", violation_code,
             Current_Date, final_image_data_tosend = null, DLvalidFLG = "V";
 
     int edt_regncid_spotchallanMAX_LENGTH = 4, edt_regncidname_spotchallanLENGTH = 4, edt_regncid_lastnum_spotchallanMAX_LENGTH = 4, selected_ocuptn = -1;
-
     public static Double total = 0.0;
     TextView star;
-
     Context context;
-
     public static String[] temp_violations_ids;
-
     public static LinearLayout vehicle_type;
     public static CheckBox police_vehcle, govt_vehcle, check;
-
-
     public static boolean passngerFLG = false, spotPamentFLG = false;
-
     public static EditText et_regcid_spot, et_vchl_num_spot, et_last_num_spot, et_driver_lcnce_num_spot, et_id_proof_spot, et_driver_contact_spot,
             et_remarks_spot, et_aadharnumber_spot, et_drivername_iOD, et_driverFatherName_iOD, et_driver_address_iOD, et_driver_city_iOD;
-
     public static TextView tv_spot_or_vhclehistory_header, tv_vehicle_details_header_spot, tv_licence_details_header_spot,
             tv_spotChallanTwo_header, tv_vhle_no_spot, tv_owner_name_spot, tv_address_spot, tv_maker_name_spot, tv_engine_no_spot, tv_chasis_no_spot,
             tv_licnce_ownername_spot, tv_lcnce_father_name_spot, tv_lcnce_phone_number_spot, tv_lcnce_address_spot, dl_no, tv_total_pending_challans,
             tv_toal_amount_pending_challans, tv_grand_total_spot, tv_aadhar_header, tv_aadhar_user_name, tv_aadhar_care_off, tv_aadhar_address,
             tv_aadhar_mobile_number, tv_aadhar_gender, tv_aadhar_dob, tv_aadhar_uid, tv_violation_amnt, tv_dlpoints_spotchallan_xml;
-
     public static ImageView licence_image;
     int totaldl_points = 0;
     String dlcheckflag = "0";
@@ -151,103 +140,60 @@ public class SpotChallan extends Activity
     byte[] byteArray;
     long start = 0, end = 0, res = 0;
     public static String OtpStatus, OtpResponseDelayTime;
-
     static String date;
-
     public static ImageView offender_image;
-
     ImageButton ibtn_camera;
     ImageButton ibtn_gallery;
-
     RelativeLayout rl_rta_details_layout;
     RelativeLayout rl_card_details;
     RelativeLayout rl_detained_items;
-
     LinearLayout rl_licence_details_layout, ll_pending_challans, ll_cash_or_card, ll_aadhar_layout, ll_camera_gallery,
             ll_detained_items_root, ll_spot_payment_root, ll_is_owner_driver, ll_drivertype_rgbtn;
-
     TelephonyManager telephonyManager;
-
     Utils utils;
-
     LocationManager m_locationlistner;
-
     android.location.Location location;
-
     public static double latitude = 0.0, longitude = 0.0, total_amount = 0, grand_total = 0;
-
     DBHelper db;
     Cursor c_whlr, c_occptn;
-
     public static String completeVehicle_num_send = "", regncode_send = "", regnName_send = "", vehicle_num_send = "",
             fake_veh_chasisNo = "", whlr_code_send = "", mobilenumber = "";
-
     String NETWORK_TXT = "", imei_send = "", simid_send = "", macAddress = "", cam_imag = "";
-
     public static String[] rta_details_spot_master, offender_remarks_resp_master, helmet_remarks, Wheeler_check,
             licence_details_spot_master, rtaAprroved_Master;
-
-
     String[] wheeler_code_arr_spot, wheeler_name_arr_spot;
-
     ArrayList<String> violation_list, violation_description, violation_section, violation_offence_Code, violation_min_amount,
             violation_max_amount, violation_avg_amount, violation_positions, violation_rg_ids, violation_checked_violations;
-
     LinkedHashMap<String, String> check_map;
-
     HashMap<String, String> check_all_ids, vioCodeDescMap;
     static HashMap<String, String> vioDetainFlags;
-
     int j = 1;
-
-
     int selected_wheller_code = -1, selected_id_proof = -1, sold_out_string = -1;
-
     public static final int PROGRESS_DIALOG = 0;
-
     final int WHEELER_CODE = 1, VIOLATIONS_DIALOG = 2, SECOND_SPOTSCREEN_DIALOG = 3, ID_PROOF_DIALOG = 4, DYNAMIC_VIOLATIONS = 5,
             FAKE_NUMBERPLATE_DIALOG = 6, OTP_CNFRMTN_DIALOG = 7, OCCUPATION_DIALOG = 10, SOLD_OUT_DIALOG = 11;
-
     StringBuffer message = new StringBuffer();
-
     StringBuffer pointsreachedviolation;
-
     boolean isGPSEnabled = false;
-
     public static String aadhr_Points, DL_Points, aadhr_point_frm_json, dl_point_frm_json, aadhaar_offence_year,
             dl_offence_year, dlDetainFlag = "0";
-
     boolean isNetworkEnabled = false, canGetLocation = false;
-
     ArrayList<Boolean> detained_items_status;
     ArrayList<String> releasedDetained_items_list;
     StringBuffer releasedDetained_items_list_toSend;
-
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10, MIN_TIME_BW_UPDATES = 1000 * 60 * 1;
-
     private int mYear, mMonth, mDay;
-
     RadioGroup radiogrp_release_detained_items;
     RadioButton radioGroupButton_isOwner, radioGroupButton_isDriver, radioGroupButton_detaineditems_yes, radioGroupButton_detaineditems_no;
-
     RadioGroup radiogrp_spot_payment, radiogrp_cash_or_card;
-
     public static RadioButton radioGroupButton_spotpaymentNo, radioGroupButton_spotpaymentYes, radioGroupButton_cashcard1, radioGroupButton_cashcard0;
-
     public static boolean cardFLG = false;
-
     LinearLayout ll_detained_itemlist_layout, ll_grand_total;
-
     LinearLayout[] ll;
-
     CheckBox[] cb;
-
     CheckBox chck_detainedItems_rc, chck_detainedItems_vhcle, chck_detainedItems_licence, chck_detainedItems_permit, chck_detainedItems_none;
-
     static StringBuilder sb_detained_items;
-
     TextView textView_header_spot_challan_xml;
-
     AlertDialog alertDialogforotp;
     String picturePath = "";
     WebView wv_generate;
@@ -255,80 +201,53 @@ public class SpotChallan extends Activity
     String[] id_proof_arr = {"Email ID", "Pancard Number", "Passport Number", "VoterId Number"},
             id_proof_hints_arr = {"Enter Email ID", "Enter Pancard Number", "Enter Passport Number", "Enter VoterId Number"};
     String MODULE_CODE_FIX = "0", CHALLAN_NUM_FIX = "", SERVICE_CODE_FIX = "", ONLINE_MODE_FIX = "0", imgEvidence = "0";
-
     SimpleDateFormat date_format, date_format2;
     Calendar calendar;
     int present_date, present_month, present_year, present_hour, present_minutes;
-
     StringBuffer present_time_toSend;
-
     String bookedPScode_send_from_settings, booked_RES_PScode_send_from_settings, bookedPSname_send_from_settings, point_code_send_from_settings, point_name_send_from_settings,
             exact_location_send_from_settings, present_date_toSend = "", emailId_to_send = "", pancard_to_send = "", passport_to_send = "",
             VoterId_to_send = "", is_it_spot_send = "0", licStatus_send = "";
-
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
-
     StringBuffer violations_details_send, violation_desc_append;
-
     static String vioDetainCheckFlag = null;
-
     public static StringBuffer sb_selected_penlist_send;
-
     public static ArrayList<String> sb_selected_penlist, sb_selected_penlist_positions;
-
     FTPClient client;
-
     String[] FTP_HOST_PORT_SPOT;
-
     LinearLayout ll_dynamic_violations_root_static;
     LinearLayout[] ll_dynamic_vltns;
     Spinner[] spinner_violation;
-
     TextView[] tv_dynamic_vltn_name;
     CheckBox[] check_dynamic_vltn;
-
     LinearLayout ll_extra_people;
     EditText et_extra_people;
-
     public static String otp_status = "", otp_msg = "", otpValue = "", vStatusConfirmationYN = "", ll_validationString = "";
-
     RadioGroup rg_isOwner_isDriver, nationality_status;
-
     RadioButton rb_indian, rb_nri;
-
     LinearLayout passport_layout;
     public static EditText et_passport;
     public static String citizen_status = "indian", helmetcases = "0";
-
     public static RadioGroup radioGrp_regNo_EngnNo_Chasis;
     public static RadioButton radioGroupButton_regNo, radioGroupButton_engineNo, radioGroupButton_chasisNo;
     public static LinearLayout ll_mainsub_root, ll_engineNo, ll_chasisNo, ll_regno;
     public static EditText et_engineNo, et_chasisNo;
-
     public static boolean EngneFLG = false, regNoFLG = false, chasisFLG = false, veh_HisFLG = false;
     public static int isitTr = 1, soldOut = 0, penaltypointsreachedFlag = 0;
-
     public static Button btn_select_profession;
     public static EditText edt_prfession_name, edt_prfession_Address, edt_email_ID;
-
     String ocuptn_title = "Select Occupation";
     String[] occup_code_arr, occup_name_arr;
     LinearLayout proffession_layout;
     String violation_code_value;
     int presentviolatedpoints = 0;
-
     public static String profession_code = "";
-
     VerhoeffCheckDigit ver;
-
     public static String dob_DL = null, pending_challans_amount;
-
     public static int INVOKE_LASTMILE_PAY = 20;
-
     private CountDownTimer countDownTimer;
     public boolean timerStopped;
-
     @SuppressWarnings("unused")
     private boolean isValidEmaillId(String email) {
 
@@ -339,36 +258,26 @@ public class SpotChallan extends Activity
                         + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$")
                 .matcher(email).matches();
     }
-
     public static String Compleate_address;
-
     public static String pidCode = null, pidName = null, psCd = null, psName = null, cadre_code = null,
             cadre_name = null, pass_word = null, off_phone_no = null, current_version = null, rta_data_flg = null,
             dl_data_flg = null, aadhaar_data_flg = null, otp_no_flg = null, cashless_flg = null, mobileNo_flg = null;
-
     CountDownTimer newtimer;
-
     public static int WHITE = 0xFFFFFFFF, BLACK = 0xFF000000;
     public final static int width = 500;
-
     @SuppressWarnings("unused")
     private Calendar cal;
     @SuppressWarnings("unused")
     private int day, month, year;
-
     String dobcheck = "No";
-
     Button dob_input;
-
     public String challan_Type = "TE";
-
     ImageView img_logo;
     TextView officer_Name, officer_Cadre, officer_PS;
     String otherStateVehicle = "NO";
     String otherStateVehiclePayment = "N";
     String detainAlertFlag = "N";
     AppCompatTextView detained_Txt;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -1803,7 +1712,7 @@ public class SpotChallan extends Activity
                                         otherStateVehicleAlert(" This is an Other State Vehicle \n Do you want to collect Amount!");
                                     } else {
 
-                                         spotNextCall();
+                                        spotNextCall();
 
 
                                     }
@@ -1831,7 +1740,7 @@ public class SpotChallan extends Activity
                             otherStateVehicleAlert(" This is an Other State Vehicle \n Do you want to collect Amount!");
                         } else {
 
-                             spotNextCall();
+                            spotNextCall();
 
 
                         }
@@ -2101,7 +2010,6 @@ public class SpotChallan extends Activity
 
         //   imgSelected = "1";
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -2789,7 +2697,7 @@ public class SpotChallan extends Activity
 
                         soldOut = 1;
 
-                       // showDialog(SOLD_OUT_DIALOG);
+                        // showDialog(SOLD_OUT_DIALOG);
 
                     }
 
@@ -2895,7 +2803,6 @@ public class SpotChallan extends Activity
 
         }
     }
-
 
     public class getOffenceDetailsbyWheelerChallanType extends AsyncTask<Void, Void, String> {
 
@@ -3518,7 +3425,7 @@ public class SpotChallan extends Activity
 			/* MOBILE OTP */
                 et_driver_contact_spot = (EditText) dg_scond.findViewById(R.id.edt_drvr_cnctno_spotchallantwo_xml);
                 btn_send_otp_to_mobile = (Button) dg_scond.findViewById(R.id.btn_sendOTPtoMobile_spotchallantwo_xml);
-                detained_Txt=(AppCompatTextView)dg_scond.findViewById(R.id.detained_Txt);
+                detained_Txt = (AppCompatTextView) dg_scond.findViewById(R.id.detained_Txt);
                 detained_Txt.setVisibility(View.GONE);
 
 
@@ -3820,8 +3727,7 @@ public class SpotChallan extends Activity
                         radioGroupButton_spotpaymentNo.setChecked(false);
                         ll_detained_itemlist_layout.setVisibility(View.VISIBLE);
                         // radioGroupButton_spotpaymentNo.setEnabled(false);
-                    }
-                    else if ("YES".equals(otherStateVehicle) && "N".equals(otherStateVehiclePayment)){
+                    } else if ("YES".equals(otherStateVehicle) && "N".equals(otherStateVehiclePayment)) {
                         radioGroupButton_spotpaymentYes.setChecked(false);
                         radioGroupButton_spotpaymentNo.setChecked(true);
                         radioGroupButton_spotpaymentYes.setEnabled(false);
@@ -3839,7 +3745,7 @@ public class SpotChallan extends Activity
                             chck_detainedItems_none.setEnabled(false);
 
                         }
-                    }else {
+                    } else {
                         radioGroupButton_spotpaymentYes.setChecked(false);
                         radioGroupButton_spotpaymentNo.setChecked(true);
                         radioGroupButton_spotpaymentYes.setEnabled(false);
@@ -4004,10 +3910,13 @@ public class SpotChallan extends Activity
                             chck_detainedItems_vhcle.setEnabled(false);
                             chck_detainedItems_none.setEnabled(false);
                             chck_detainedItems_none.setChecked(false);
+                            detained_Txt.setVisibility(View.VISIBLE);
+                            detained_Txt.setText("The Challan has been Charge Sheeted !");
 
                         } else {
                             sb_detained_items.append("donotedit");
                             chck_detainedItems_none.setChecked(true);
+
                         }
 
                         chck_detainedItems_none.setOnClickListener(new OnClickListener() {
@@ -4032,56 +3941,56 @@ public class SpotChallan extends Activity
 
                     }*/
                     else if ("NO".equals(otherStateVehicle) && (vioDetainCheckFlag.equalsIgnoreCase("1")
-                        || ServiceHelper.pending_challans_details.length >= 10 || soldOut == 1 || penaltypointsreachedFlag == 1 || "D".equals(DLvalidFLG))) {
-                    sb_detained_items.append("02:VEHICLE@");
-                    chck_detainedItems_vhcle.setChecked(true);
-                    chck_detainedItems_vhcle.setEnabled(true);
-                    chck_detainedItems_none.setEnabled(false);
+                            || ServiceHelper.pending_challans_details.length >= 10 || soldOut == 1 || penaltypointsreachedFlag == 1 || "D".equals(DLvalidFLG))) {
+                        sb_detained_items.append("02:VEHICLE@");
+                        chck_detainedItems_vhcle.setChecked(true);
+                        chck_detainedItems_vhcle.setEnabled(true);
+                        chck_detainedItems_none.setEnabled(false);
                         chck_detainedItems_none.setChecked(false);
-                    detainAlertFlag = "Y";
+                        detainAlertFlag = "Y";
                         detained_Txt.setVisibility(View.VISIBLE);
-                        if (vioDetainCheckFlag.equalsIgnoreCase("1")){
+                        if (vioDetainCheckFlag.equalsIgnoreCase("1")) {
                             detained_Txt.setText("The Challan has been Charge Sheeted !");
-                        }else if (ServiceHelper.pending_challans_details.length >= 10 ){
+                        } else if (ServiceHelper.pending_challans_details.length >= 10) {
                             detained_Txt.setText("The Challan has been Top violated !");
-                        }else if (soldOut == 1){
+                        } else if (soldOut == 1) {
                             detained_Txt.setText("This is Sold Out Vehicle!");
-                        }else if (penaltypointsreachedFlag==1){
+                        } else if (penaltypointsreachedFlag == 1) {
                             detained_Txt.setText("Penalty points crossed on DL!");
-                        }else if ( "D".equals(DLvalidFLG)){
+                        } else if ("D".equals(DLvalidFLG)) {
                             detained_Txt.setText("DL suspended!");
-                        }else {
+                        } else {
                             detained_Txt.setVisibility(View.GONE);
                         }
 
 
-                    //showToast("Vehicle has been detained");
+                        //showToast("Vehicle has been detained");
 
-                } else if ("Y".equals(otherStateVehiclePayment) && (vioDetainCheckFlag.equalsIgnoreCase("1")
-                        || ServiceHelper.pending_challans_details.length >= 10 || soldOut == 1 || penaltypointsreachedFlag == 1 || "D".equals(DLvalidFLG))) {
-                    radioGroupButton_spotpaymentNo.setChecked(true);
-                    radioGroupButton_spotpaymentYes.setEnabled(false);
-                    radioGroupButton_spotpaymentYes.setChecked(false);
+                    } else if ("Y".equals(otherStateVehiclePayment) && (vioDetainCheckFlag.equalsIgnoreCase("1")
+                            || ServiceHelper.pending_challans_details.length >= 10 || soldOut == 1 || penaltypointsreachedFlag == 1 || "D".equals(DLvalidFLG))) {
+                        radioGroupButton_spotpaymentNo.setChecked(true);
+                        radioGroupButton_spotpaymentYes.setEnabled(false);
+                        radioGroupButton_spotpaymentYes.setChecked(false);
 
-                    rl_detained_items.setVisibility(View.VISIBLE);
-                    ll_detained_items_root.setVisibility(View.GONE);
-                    ll_detained_itemlist_layout.setVisibility(View.GONE);
-                    ll_cash_or_card.setVisibility(View.GONE);
+                        rl_detained_items.setVisibility(View.VISIBLE);
+                        ll_detained_items_root.setVisibility(View.GONE);
+                        ll_detained_itemlist_layout.setVisibility(View.GONE);
+                        ll_cash_or_card.setVisibility(View.GONE);
 
-                    for (int i = 0; i < cb.length; i++) {
-                        cb[i].setChecked(false);
-                        cb[i].setEnabled(false);
+                        for (int i = 0; i < cb.length; i++) {
+                            cb[i].setChecked(false);
+                            cb[i].setEnabled(false);
+                        }
+                        sb_detained_items.append("");
+                        setCheckedValues(false, "donotedit");
+                        chck_detainedItems_none.setChecked(false);
+                        chck_detainedItems_vhcle.setChecked(true);
+                        chck_detainedItems_none.setEnabled(false);
+                        detainAlertFlag = "Y";
+
+
+                        showToast("This other State Vehicle has been Chargesheeted");
                     }
-                    sb_detained_items.append("");
-                    setCheckedValues(false, "donotedit");
-                    chck_detainedItems_none.setChecked(false);
-                    chck_detainedItems_vhcle.setChecked(true);
-                    chck_detainedItems_none.setEnabled(false);
-                    detainAlertFlag = "Y";
-
-
-                    showToast("This other State Vehicle has been Chargesheeted");
-                }
 
 //                    else if(soldOut==3)
 //                    {
@@ -5059,7 +4968,7 @@ public class SpotChallan extends Activity
                                 }
                             }
                             removeDialog(DYNAMIC_VIOLATIONS);
-						/* NO OF PEOPLE CALCULATING */
+                        /* NO OF PEOPLE CALCULATING */
                             removeDialog(DYNAMIC_VIOLATIONS);
 
 						/*---------TO ENABLE EDITEXT WHEN EXTRA PASSENGERS : 07 IS SELECTED---------*/
@@ -5081,7 +4990,7 @@ public class SpotChallan extends Activity
                         return true;
                     }
                 });
-			/* DYNAMIC LAYOUTS END */
+            /* DYNAMIC LAYOUTS END */
                 return dg_dynmic_violtns;
 
             /******************************
@@ -5441,8 +5350,6 @@ public class SpotChallan extends Activity
         btn.setBackgroundColor(Color.RED);
     }
 
-
-
     public static String getMonthName(int month) {
 
         switch (month + 1) {
@@ -5487,8 +5394,7 @@ public class SpotChallan extends Activity
         return "";
     }
 
-	/*---------------------------------------------------------------*/
-
+    /*---------------------------------------------------------------*/
     public class MyAdapter extends ArrayAdapter<String> {
 
         public MyAdapter(Context ctx, int txtViewResourceId, String[] objects) {
@@ -6014,7 +5920,6 @@ public class SpotChallan extends Activity
     }
 
     /******* Used to file upload and show progress **********/
-
     public class MyTransferListener implements FTPDataTransferListener {
 
         public void started() {
@@ -6128,7 +6033,6 @@ public class SpotChallan extends Activity
         toastView.setBackgroundResource(R.drawable.toast_background);
         toast.show();
     }
-
 
     public class Async_vhcleHistory extends AsyncTask<Void, Void, String> {
 
@@ -6345,8 +6249,7 @@ public class SpotChallan extends Activity
         }
     }
 
-	/* VEHICLE HISTROY ASYNC END */
-
+    /* VEHICLE HISTROY ASYNC END */
     public void getLocation() {
 
         try {
@@ -6629,7 +6532,6 @@ public class SpotChallan extends Activity
 
     }
 
-
     public void ShowMessageDL(String Message) {
 
         /******* data and time alert start **********/
@@ -6864,7 +6766,6 @@ public class SpotChallan extends Activity
 
     }
 
-
     public void pointsAlert() {
 
         TextView title = new TextView(SpotChallan.this);
@@ -6939,7 +6840,6 @@ public class SpotChallan extends Activity
 
     }
 
-
     public void pointsAlertForReleaseDocs() {
 
         TextView title = new TextView(SpotChallan.this);
@@ -7010,9 +6910,7 @@ public class SpotChallan extends Activity
 
     }
 
-
     public void finalsubmit() {
-
 
         try {
 
@@ -7662,7 +7560,6 @@ public class SpotChallan extends Activity
         }
     }
 
-
     @SuppressLint("SimpleDateFormat")
     private void showDate(int year, int month, int day) {
 
@@ -7676,7 +7573,6 @@ public class SpotChallan extends Activity
 
         dob_input.setText(present_date_toSend);
     }
-
 
     public void Asyncallsofmethods() {
         if (isitTr == 1 || regNoFLG == true) {
@@ -7786,8 +7682,7 @@ public class SpotChallan extends Activity
         }
     }
 
-
-    public class Async_getApprovefromRtaforPoint extends AsyncTask<Void, Void, String> {
+    private class Async_getApprovefromRtaforPoint extends AsyncTask<Void, Void, String> {
         @Override
         protected String doInBackground(Void... params) {
 
@@ -7819,8 +7714,6 @@ public class SpotChallan extends Activity
 
         @Override
         protected void onPostExecute(String result) {
-
-
 
 
             removeDialog(PROGRESS_DIALOG);
@@ -7869,7 +7762,6 @@ public class SpotChallan extends Activity
 
     public void commomAsync() {
 
-
         if (isOnline()) {
             Async_getDetainedItems detained_task = new Async_getDetainedItems();
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -7896,7 +7788,6 @@ public class SpotChallan extends Activity
             showToast("Please Check Network Connection");
         }
     }
-
 
     public void spotNextCall() {
         // 64@500@500@W/o Driving Licence ( S 181/177 )!
@@ -8497,6 +8388,5 @@ public class SpotChallan extends Activity
             }
         }
     }
-
 
 }

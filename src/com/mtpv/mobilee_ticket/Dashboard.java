@@ -206,13 +206,13 @@ public class Dashboard extends Activity implements OnClickListener {
         current_version = sharedPreference.getString("CURRENT_VERSION", "");
 
         img_logo = (ImageView) findViewById(R.id.img_logo);
-        if (MainActivity.uintCode.equals("22")) {
+        if (MainActivity.uintCode.equals("22")) { //Cyberabad
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.cyb_logo));
-        } else if (MainActivity.uintCode.equals("23")) {
+        } else if (MainActivity.uintCode.equals("23")) { //Hyderabad
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
-        } else if (MainActivity.uintCode.equals("24")) {
+        } else if (MainActivity.uintCode.equals("24")) { //RachaKonda
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
-        } else {
+        } else {// 44 Warangal  69 Siddipet
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
         }
         officer_Name = (TextView) findViewById(R.id.officer_Name);
