@@ -300,8 +300,10 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
         }else if (MainActivity.uintCode.equals("24")){
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
-        }else{
-            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+        }else if (MainActivity.uintCode.equals("44")) { //44 Warangal
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.wgl_logo));
+        }else {//  69 Siddipet
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
         }
 
         officer_Name=(TextView)findViewById(R.id.officer_Name);
@@ -2061,8 +2063,6 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                     rtaAprroved_Master = new String[0];
 
                     rtaAprroved_Master = ServiceHelper.rtaapproovedresponse.split("\\|");
-
-
 
                     SpotChallan.OtpStatus=rtaAprroved_Master[3].toString()!= null ? rtaAprroved_Master[3].toString().trim() : "N";
                     SpotChallan.OtpResponseDelayTime=rtaAprroved_Master[4].toString()!= null ? rtaAprroved_Master[4].toString().trim(): "0";

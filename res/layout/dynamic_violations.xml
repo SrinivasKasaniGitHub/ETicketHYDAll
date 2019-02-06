@@ -5,6 +5,9 @@
     android:layout_height="match_parent"
     android:background="@color/bg">
 
+
+
+
     <!-- Header aligned to top -->
     <RelativeLayout
         android:id="@+id/header"
@@ -14,6 +17,12 @@
         android:layout_alignParentTop="true"
         >
 
+        <include
+            android:id="@+id/relativeLayout1"
+            layout="@layout/activity_header">
+
+        </include>
+
 
          <RelativeLayout
               android:id="@+id/relativeLayout1"
@@ -21,7 +30,8 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_alignParentTop="true"
-              android:layout_centerHorizontal="true" >
+              android:layout_centerHorizontal="true"
+             android:visibility="gone">
 
               <ImageView
                   android:id="@+id/imageView1"

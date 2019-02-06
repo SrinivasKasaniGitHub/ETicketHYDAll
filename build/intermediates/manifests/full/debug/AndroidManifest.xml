@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="18"
+        android:minSdkVersion="19"
         android:targetSdkVersion="25" />
 
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
@@ -28,6 +28,9 @@
     <meta-data
         android:name="android.support.VERSION"
         android:value="25.3.1" />
+
+    <uses-permission android:name="android.permission.CLOUDPOS_PRINTER" />
+    <uses-permission android:name="android.permission.WIZARPOS_PRINTER" />
 
     <application
         android:allowBackup="false"
@@ -276,6 +279,12 @@
         <activity
             android:name="ru.bartwell.exfilepicker.ui.activity.ExFilePickerActivity"
             android:theme="@style/ExFilePickerThemeLight" />
+        <activity
+            android:name="com.digitsecure.pymnt.SampleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.digitsecure.camera.CameraActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

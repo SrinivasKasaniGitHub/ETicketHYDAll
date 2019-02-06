@@ -9,6 +9,6 @@
         android:layout_height="wrap_content"
         android:text="test"
         android:textColor="#ffffff"
-        android:textSize="14sp" />
+        android:textSize="10sp" />
 
 </RelativeLayout>

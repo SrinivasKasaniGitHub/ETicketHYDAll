@@ -39,8 +39,10 @@ public class ReleaseversionActivity extends Activity {
 			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
 		}else if (MainActivity.uintCode.equals("24")){
 			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
-		}else{
-			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+		}else if (MainActivity.uintCode.equals("44")) { //44 Warangal
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.wgl_logo));
+		}else {//  69 Siddipet
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
 		}
 		officer_Name=(TextView)findViewById(R.id.officer_Name);
 		officer_Cadre=(TextView)findViewById(R.id.officer_cadre);

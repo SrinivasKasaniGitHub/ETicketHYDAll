@@ -212,8 +212,10 @@ public class Dashboard extends Activity implements OnClickListener {
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
         } else if (MainActivity.uintCode.equals("24")) { //RachaKonda
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
-        } else {// 44 Warangal  69 Siddipet
-            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+        } else if (MainActivity.uintCode.equals("44")) { //44 Warangal
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.wgl_logo));
+        }else {//  69 Siddipet
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
         }
         officer_Name = (TextView) findViewById(R.id.officer_Name);
         officer_Cadre = (TextView) findViewById(R.id.officer_cadre);

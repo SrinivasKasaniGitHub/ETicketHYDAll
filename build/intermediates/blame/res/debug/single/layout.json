@@ -144,6 +144,10 @@
         "source": "D:\\Android\\ETicketHYDAll\\res\\layout\\splash.xml"
     },
     {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\camera_layout.xml",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\11cb09290709470337c9475c7abce202cf42b9e8\\output\\res\\layout\\camera_layout.xml"
+    },
+    {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
         "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\layout\\abc_expanded_menu_layout.xml"
     },

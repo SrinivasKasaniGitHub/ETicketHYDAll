@@ -186,8 +186,10 @@ public class Settings_New extends Activity implements OnClickListener {
 			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
 		}else if (MainActivity.uintCode.equals("24")){
 			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
-		}else{
-			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+		}else if (MainActivity.uintCode.equals("44")) { //44 Warangal
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.wgl_logo));
+		}else {//  69 Siddipet
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
 		}
 		officer_Name=(TextView)findViewById(R.id.officer_Name);
 		officer_Cadre=(TextView)findViewById(R.id.officer_cadre);
@@ -775,7 +777,7 @@ public class Settings_New extends Activity implements OnClickListener {
 				final ProgressDialog progressDialog = new ProgressDialog(
 						Settings_New.this);
 				progressDialog
-						.setMessage("Please wait BlueTooth Scan is in Process!!!");
+						.setMessage("Please wait \n BlueTooth Scan is in Process!!!");
 				progressDialog.setCancelable(false);
 				progressDialog.show();
 
@@ -793,7 +795,7 @@ public class Settings_New extends Activity implements OnClickListener {
 					public void run() {
 						super.run();
 						try {
-							Thread.sleep(6000);
+							Thread.sleep(5000);
 							if (progressDialog.isShowing())
 								progressDialog.dismiss();
 

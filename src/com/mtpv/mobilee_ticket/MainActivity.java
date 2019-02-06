@@ -64,6 +64,7 @@ import java.io.OutputStream;
 import java.net.SocketException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 import io.fabric.sdk.android.BuildConfig;
 import io.fabric.sdk.android.Fabric;
@@ -73,57 +74,36 @@ import mother.com.test.PidSecEncrypt;
 public class MainActivity extends Activity implements OnClickListener, LocationListener {
 
     final int SPLASH_DIALOG = 0, PROGRESS_DIALOG = 1;
-
     EditText et_pid, et_pid_pwd;
-
     Button btn_cancel, btn_submit;
-
     TextView tv_ip_settings;
     TextView cur_val;
-
     int downloadedSize = 0, totalSize = 0;
     Dialog dialog;
-
     String server = "192.168.11.9", username = "ftpuser", password = "Dk0r$l1qMp6", filename = "Version-1.5.1.apk";
     int port = 99;
-
-
     DBHelper db;
-
     public static String otpno = null, pidCodestatic = null;
-
     public static String[] arr_logindetails;
-
     LocationManager m_locationlistner;
     android.location.Location location;
-
     String officerLogin_Otp = null;
-
     public static double latitude = 0.0, longitude = 0.0;
-
-    public static String UNIT_CODE = "", UNIT_NAME = "", IMEI = "", URL = "", user_id = "", appVersion = null,
+    public static String UNIT_CODE = "", UNIT_NAME = "", IMEI = "", dev_Model = "", URL = "", user_id = "", appVersion = null,
             user_pwd = "", e_user_id = null, sim_No = null, e_user_tmp = "";
-
     ProgressBar progress;
-
     boolean isGPSEnabled = false, isNetworkEnabled = false, canGetLocation = false;
-
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10, MIN_TIME_BW_UPDATES = 1000 * 60 * 1;
-
     SharedPreferences preference;
     SharedPreferences.Editor editor;
     public static String service_type = "", services_url = "", ftps_url = "";
-
     TextView textView2;
-
-
-    //private String url_to_fix = "/services/MobileEticketServiceImpl?wsdl";
-
     private String url_to_fix = "/services/MobileEticketServiceImpl?wsdl";
     @SuppressWarnings("unused")
     private String test_service_url = "http://192.168.11.55:8080/eTicketMobileHyd";
     @SuppressWarnings("unused")
     private String live_service_url = "http://192.168.11.4/eTicketMobileHyd";
+
     public String open_NW_URL = "https://www.echallan.org/eTicketMobileHyd";
 
     private static final String[] requiredPermissions = new String[]{
@@ -145,7 +125,6 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
 
     private static final int REQUEST_PERMISSIONS = 20;
     private SparseIntArray mErrorString;
-
     public static String psName, cadre_name, pidName, uintCode;
 
     @SuppressWarnings("deprecation")
@@ -352,6 +331,9 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
 
         TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         IMEI = getDeviceID(telephonyManager);
+        dev_Model = android.os.Build.MODEL;
+        Log.d("Device Model",""+dev_Model);
+
         if (telephonyManager.getSimState() != TelephonyManager.SIM_STATE_ABSENT) {
             sim_No = "" + telephonyManager.getSimSerialNumber();
 //            String phone_Number=""+telephonyManager.getLine1Number();
@@ -371,7 +353,6 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
             longitude = 0.0;
         }
     }
-
 
     @Override
     public void onProviderDisabled(String provider) {
@@ -565,7 +546,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
         et_pid_pwd.setText("");
     }
 
-    public class Async_task_login extends AsyncTask<Void, Void, String> {
+    private class Async_task_login extends AsyncTask<Void, Void, String> {
 
         @Override
         protected String doInBackground(Void... params) {
@@ -588,21 +569,18 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
         @SuppressWarnings("deprecation")
         @Override
         protected void onPostExecute(String result) {
-            // TODO Auto-generated method stub
             super.onPostExecute(result);
             removeDialog(PROGRESS_DIALOG);
-
             try {
 
+                if (ServiceHelper.Opdata_Chalana != null && !Objects.equals("0", ServiceHelper.Opdata_Chalana)) {
 
-                if (ServiceHelper.Opdata_Chalana != null && "0" != ServiceHelper.Opdata_Chalana.toString()) {
                     if (ServiceHelper.Opdata_Chalana.toString().trim().equals("1")) {
                         showToast("Invalid Login ID");
                     } else if (ServiceHelper.Opdata_Chalana.toString().trim().equals("2")) {
                         showToast("Invalid Password");
                     } else if (ServiceHelper.Opdata_Chalana.toString().trim().equals("3")) {
                         showToast("Unauthorized Device");
-
                     } else if (ServiceHelper.Opdata_Chalana.toString().trim().equals("4")) {
                         showToast("Error, Please Contact E Challan Team at 040-27852721");
                     } else if (ServiceHelper.Opdata_Chalana.toString().trim().equals("5")) {
@@ -616,7 +594,6 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
 
                         for (int i = 0; i < MainActivity.arr_logindetails.length; i++) {
                         }
-
 
                         try {
                             SharedPreferences sharedPreferences = PreferenceManager
@@ -635,22 +612,17 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                             String off_phone_no = "" + arr_logindetails[6];
                             String current_version = "" + arr_logindetails[7];
                             String rta_data_flg = "" + arr_logindetails[8];
-                            Log.i("", "" + rta_data_flg);
                             String dl_data_flg = "" + arr_logindetails[9];
-                            Log.i("", "" + dl_data_flg);
                             String aadhaar_data_flg = "" + arr_logindetails[10];
-                            Log.i("", "" + aadhaar_data_flg);
                             String otp_no_flg = "" + arr_logindetails[11];
                             String cashless_flg = "" + arr_logindetails[12];
                             String mobileNo_flg = "" + arr_logindetails[13];
-
                             MainActivity.otpno = "" + arr_logindetails[14];
-
-                            Log.i("Otp for Login", "" + MainActivity.otpno);
 
                             if (arr_logindetails != null && arr_logindetails.length == 16) {
                                 officerLogin_Otp = "" + arr_logindetails[15];
                             }
+
                             editors.putString("PID_CODE", pidCode);
                             editors.putString("PID_NAME", pidName);
                             editors.putString("PS_CODE", psCd);
@@ -667,12 +639,11 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                             editors.putString("CASHLESS_FLAG", cashless_flg);
                             editors.putString("MOBILE_NO_FLAG", mobileNo_flg);
                             editors.putString("officerLogin_Otp", officerLogin_Otp);
-                            editors.commit();
+                            editors.apply();
 
                         } catch (ArrayIndexOutOfBoundsException e) {
                             e.printStackTrace();
                         }
-
 
                         if (!"null".equals(officerLogin_Otp) && officerLogin_Otp.equalsIgnoreCase("Y")) {
 
@@ -890,7 +861,6 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
         return true;
     }
 
-
     public class asyn_Version_Check extends AsyncTask<Void, Void, String> {
 
         @Override
@@ -977,8 +947,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
 
     }
 
-
-    public class Async_UpdateApk extends AsyncTask<Void, Void, String> {
+    private class Async_UpdateApk extends AsyncTask<Void, Void, String> {
 
         @SuppressWarnings("deprecation")
         @Override
@@ -1166,7 +1135,6 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
         }
 
     }
-
 
     @SuppressWarnings("deprecation")
     private void showProgress(String server) {
