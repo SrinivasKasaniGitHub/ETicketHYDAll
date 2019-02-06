@@ -5061,7 +5061,7 @@ public class SpotChallan extends Activity
                 title2.setTypeface(title2.getTypeface(), Typeface.BOLD);
                 title2.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dialog_logo, 0, R.drawable.dialog_logo, 0);
                 title2.setPadding(20, 0, 20, 0);
-                title2.setHeight(70);
+                title2.setHeight(85);
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT);
                 alertDialogBuilder.setCustomTitle(title2);
@@ -5117,11 +5117,11 @@ public class SpotChallan extends Activity
                 title3.setBackgroundColor(Color.RED);
                 title3.setGravity(Gravity.CENTER);
                 title3.setTextColor(Color.WHITE);
-                title3.setTextSize(26);
+                title3.setTextSize(20);
                 title3.setTypeface(title3.getTypeface(), Typeface.BOLD);
                 title3.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dialog_logo, 0, R.drawable.dialog_logo, 0);
                 title3.setPadding(20, 0, 20, 0);
-                title3.setHeight(70);
+                title3.setHeight(85);
 
                 AlertDialog.Builder alertDialog_Builder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT);
                 alertDialog_Builder.setCustomTitle(title3);

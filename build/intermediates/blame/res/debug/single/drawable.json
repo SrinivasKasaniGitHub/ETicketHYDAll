@@ -64,12 +64,12 @@
         "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable\\abc_ic_voice_search_api_material.xml"
     },
     {
-        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background.xml",
-        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable\\abc_dialog_material_background.xml"
-    },
-    {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable\\footer.png",
         "source": "D:\\Android\\ETicketHYDAll\\res\\drawable\\footer.png"
+    },
+    {
+        "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background.xml",
+        "source": "C:\\Users\\Srinivas\\.android\\build-cache\\974101f1dea352e552f56f8fcc4c8c51ada5e7c9\\output\\res\\drawable\\abc_dialog_material_background.xml"
     },
     {
         "merged": "D:\\Android\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable\\ll_style.xml",

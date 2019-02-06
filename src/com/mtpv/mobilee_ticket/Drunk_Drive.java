@@ -1595,7 +1595,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                 title.setBackgroundColor(Color.parseColor("#007300"));
                 title.setGravity(Gravity.CENTER);
                 title.setTextColor(Color.WHITE);
-                title.setTextSize(26);
+                title.setTextSize(20);
                 title.setTypeface(title.getTypeface(), Typeface.BOLD);
                 title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dialog_logo, 0, R.drawable.dialog_logo, 0);
                 title.setPadding(20, 0, 20, 0);
@@ -1642,11 +1642,11 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                 title2.setBackgroundColor(Color.RED);
                 title2.setGravity(Gravity.CENTER);
                 title2.setTextColor(Color.WHITE);
-                title2.setTextSize(26);
+                title2.setTextSize(22);
                 title2.setTypeface(title2.getTypeface(), Typeface.BOLD);
                 title2.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dialog_logo, 0, R.drawable.dialog_logo, 0);
                 title2.setPadding(20, 0, 20, 0);
-                title2.setHeight(70);
+                title2.setHeight(80);
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT);
                 alertDialogBuilder.setCustomTitle(title2);

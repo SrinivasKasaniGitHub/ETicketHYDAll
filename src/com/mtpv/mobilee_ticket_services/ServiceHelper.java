@@ -2010,8 +2010,6 @@ public class ServiceHelper {
             // if (Dashboard.check_vhleHistory_or_Spot.equals("spot")) {
             request.addProperty(utils.TOWING_DOB, "" + dl_dob);
 
-            Log.i("SPOT AND TOWING",""+dl_dob);
-
             //}
 
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);

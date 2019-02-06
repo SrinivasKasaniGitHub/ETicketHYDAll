@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layout_root"
-    android:layout_width="@dimen/_280sdp"
+    android:layout_width="@dimen/_220sdp"
     android:layout_height="wrap_content"
     android:background="@android:color/white"
     android:gravity="top"
@@ -17,8 +17,8 @@
         android:weightSum="1">
 
         <ImageView
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_width="@dimen/_16sdp"
+            android:layout_height="@dimen/_16sdp"
             android:layout_weight="0.05"
             android:gravity="left"
             android:contentDescription="@string/app_name"
@@ -35,8 +35,8 @@
             android:textStyle="bold"/>
 
         <ImageView
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_width="@dimen/_16sdp"
+            android:layout_height="@dimen/_16sdp"
             android:layout_weight="0.05"
             android:contentDescription="@string/app_name"
             android:src="@drawable/exit_logo" />
@@ -52,7 +52,7 @@
         android:text="Enter OTP For "
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#000000"
-        android:textSize="@dimen/_12sdp"
+        android:textSize="@dimen/_10sdp"
         android:textStyle="bold" />
 
     <EditText
@@ -65,7 +65,7 @@
         android:inputType="number"
         android:maxLength="4"
         android:textColor="#000000"
-        android:textSize="@dimen/_12sdp">
+        android:textSize="@dimen/_10sdp">
         <requestFocus />
     </EditText>
 
@@ -78,7 +78,7 @@
         android:text=""
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#FC0303"
-        android:textSize="@dimen/_12sdp"
+        android:textSize="@dimen/_10sdp"
         android:textStyle="bold" />
 
     <LinearLayout
@@ -97,7 +97,7 @@
             android:background="#FFFF0000"
             android:text="Cancel"
             android:textColor="#ffffff"
-            android:textSize="@dimen/_12sdp"
+            android:textSize="@dimen/_10sdp"
             android:textStyle="bold" />
 
         <TextView
@@ -105,7 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.02"
             android:text=""
-            android:textSize="@dimen/_12sdp"/>
+            android:textSize="@dimen/_10sdp"/>
 
         <Button
             android:id="@+id/ok_dialog"
@@ -115,7 +115,7 @@
             android:background="#FFFF0000"
             android:text="OK"
             android:textColor="#ffffff"
-            android:textSize="@dimen/_12sdp"
+            android:textSize="@dimen/_10sdp"
             android:textStyle="bold" />
 
     </LinearLayout>
