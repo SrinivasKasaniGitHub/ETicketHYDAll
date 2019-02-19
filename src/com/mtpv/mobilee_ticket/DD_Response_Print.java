@@ -27,8 +27,10 @@ import android.widget.Toast;
 
 import com.analogics.thermalAPI.Bluetooth_Printer_3inch_ThermalAPI;
 import com.analogics.thermalprinter.AnalogicsThermalPrinter;
+import com.digitsecure.dsprint.PrintHandler;
 import com.mtpv.mobilee_ticket_services.DBHelper;
 import com.mtpv.mobilee_ticket_services.ServiceHelper;
+import com.mtpv.mobilee_ticket_services.Utils;
 
 public class DD_Response_Print extends Activity {
 
@@ -247,17 +249,21 @@ public class DD_Response_Print extends Activity {
 					showToast("Please set bluetooth address in setting");
 				} else {
 					try {
-						/*String printdata = bth_printer.font_Courier_41("" + printTicket);
-						actual_printer.Call_PrintertoPrint("" + address_spot, "" + printdata);*/
-						
-						Bluetooth_Printer_3inch_ThermalAPI printer = new Bluetooth_Printer_3inch_ThermalAPI();
 
-		                String print_data = printer.font_Courier_41(""+ printTicket);
-		                actual_printer.openBT(address_spot);
-		                
-		                actual_printer.printData(print_data);
-		                 Thread.sleep(5000);
-		                actual_printer.closeBT();
+						if (MainActivity.dev_Model.equalsIgnoreCase(Utils.dev_Model)) {
+							PrintHandler printHandler = new PrintHandler();
+							printHandler.printChallan(printTicket.split("\\*")[1]);
+						} else {
+							Bluetooth_Printer_3inch_ThermalAPI printer = new Bluetooth_Printer_3inch_ThermalAPI();
+
+							String print_data = printer.font_Courier_41("" + printTicket);
+							actual_printer.openBT(address_spot);
+
+							actual_printer.printData(print_data);
+							Thread.sleep(5000);
+							actual_printer.closeBT();
+						}
+
 					} catch (Exception e) {
 						// TODO: handle exception
 						runOnUiThread(new Runnable(){

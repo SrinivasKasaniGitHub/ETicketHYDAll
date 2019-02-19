@@ -438,7 +438,7 @@ public class SpotChallan extends Activity
         title.setBackgroundColor(Color.RED);
         title.setGravity(Gravity.CENTER);
         title.setTextColor(Color.WHITE);
-        title.setTextSize(26);
+        title.setTextSize(22);
         title.setTypeface(title.getTypeface(), Typeface.BOLD);
         title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dialog_logo, 0, R.drawable.dialog_logo, 0);
         title.setPadding(20, 0, 20, 0);
@@ -462,7 +462,7 @@ public class SpotChallan extends Activity
         alertDialog.getWindow().getAttributes();
 
         TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
-        textView.setTextSize(28);
+        textView.setTextSize(20);
         textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
         textView.setGravity(Gravity.CENTER);
 
@@ -2086,7 +2086,7 @@ public class SpotChallan extends Activity
 
                         Paint paint = new Paint();
                         paint.setColor(Color.RED);
-                        paint.setTextSize(60);
+                        paint.setTextSize(80);
                         paint.setTextAlign(Paint.Align.CENTER);
                         int xPos = (canvas.getWidth() / 2);
                         int yPos = (int) ((canvas.getHeight() / 2) - ((paint.descent() + paint.ascent()) / 2));
@@ -2150,7 +2150,7 @@ public class SpotChallan extends Activity
 
                     Paint paint = new Paint();
                     paint.setColor(Color.RED);
-                    paint.setTextSize(60);
+                    paint.setTextSize(80);
                     paint.setTextAlign(Paint.Align.CENTER);
                     int xPos = (canvas.getWidth() / 2);
                     int yPos = (int) ((canvas.getHeight() / 2) - ((paint.descent() + paint.ascent()) / 2));
@@ -3244,7 +3244,7 @@ public class SpotChallan extends Activity
                 title.setBackgroundColor(Color.parseColor("#007300"));
                 title.setGravity(Gravity.CENTER);
                 title.setTextColor(Color.WHITE);
-                title.setTextSize(26);
+                title.setTextSize(22);
                 title.setTypeface(title.getTypeface(), Typeface.BOLD);
                 title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dialog_logo, 0, R.drawable.dialog_logo, 0);
                 title.setPadding(20, 0, 20, 0);
@@ -3284,14 +3284,14 @@ public class SpotChallan extends Activity
                 title5.setBackgroundColor(Color.parseColor("#007300"));
                 title5.setGravity(Gravity.CENTER);
                 title5.setTextColor(Color.WHITE);
-                title5.setTextSize(26);
+                title5.setTextSize(22);
                 title5.setTypeface(title5.getTypeface(), Typeface.BOLD);
                 title5.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dialog_logo, 0, R.drawable.dialog_logo, 0);
                 title5.setPadding(20, 0, 20, 0);
                 title5.setHeight(70);
 
                 TextView title6 = new TextView(this);
-                title6.setTextSize(22);
+                title6.setTextSize(20);
                 title6.setText("Ok");
                 title6.setTextColor(Color.WHITE);
                 title6.setTypeface(title6.getTypeface(), Typeface.BOLD);
@@ -4473,6 +4473,7 @@ public class SpotChallan extends Activity
 //                                detainAlert();
 //                            }
 //                        }else {
+                        //6301585902
 
                         if ("Y".equals(detainAlertFlag) && !chck_detainedItems_vhcle.isChecked() && !chck_detainedItems_licence.isChecked() &&
                                 !chck_detainedItems_rc.isChecked() && !chck_detainedItems_permit.isChecked()) {
@@ -4585,7 +4586,7 @@ public class SpotChallan extends Activity
                 title4.setBackgroundColor(Color.parseColor("#007300"));
                 title4.setGravity(Gravity.CENTER);
                 title4.setTextColor(Color.WHITE);
-                title4.setTextSize(26);
+                title4.setTextSize(22);
                 title4.setTypeface(title4.getTypeface(), Typeface.BOLD);
                 title4.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dialog_logo, 0, R.drawable.dialog_logo, 0);
                 title4.setPadding(20, 0, 20, 0);
@@ -6048,7 +6049,7 @@ public class SpotChallan extends Activity
 
         ViewGroup group = (ViewGroup) toast.getView();
         TextView messageTextView = (TextView) group.getChildAt(0);
-        messageTextView.setTextSize(24);
+        messageTextView.setTextSize(20);
 
         toastView.setBackgroundResource(R.drawable.toast_background);
         toast.show();
@@ -6408,7 +6409,7 @@ public class SpotChallan extends Activity
                 title.setBackgroundColor(Color.RED);
                 title.setGravity(Gravity.CENTER);
                 title.setTextColor(Color.WHITE);
-                title.setTextSize(26);
+                title.setTextSize(22);
                 title.setTypeface(title.getTypeface(), Typeface.BOLD);
                 title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dialog_logo, 0, R.drawable.dialog_logo, 0);
                 title.setPadding(20, 0, 20, 0);
@@ -6433,7 +6434,7 @@ public class SpotChallan extends Activity
                 alertDialog.getWindow().getAttributes();
 
                 TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
-                textView.setTextSize(28);
+                textView.setTextSize(20);
                 textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
                 textView.setGravity(Gravity.CENTER);
 
@@ -6483,7 +6484,7 @@ public class SpotChallan extends Activity
                 alertDialog.getWindow().getAttributes();
 
                 TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
-                textView.setTextSize(28);
+                textView.setTextSize(20);
                 textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
                 textView.setGravity(Gravity.CENTER);
 
@@ -6508,7 +6509,7 @@ public class SpotChallan extends Activity
                 title.setBackgroundColor(Color.RED);
                 title.setGravity(Gravity.CENTER);
                 title.setTextColor(Color.WHITE);
-                title.setTextSize(26);
+                title.setTextSize(22);
                 title.setTypeface(title.getTypeface(), Typeface.BOLD);
                 title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dialog_logo, 0, R.drawable.dialog_logo, 0);
                 title.setPadding(20, 0, 20, 0);
@@ -6537,7 +6538,7 @@ public class SpotChallan extends Activity
                 alertDialog.getWindow().getAttributes();
 
                 TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
-                textView.setTextSize(28);
+                textView.setTextSize(20);
                 textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
                 textView.setGravity(Gravity.CENTER);
 
@@ -6560,7 +6561,7 @@ public class SpotChallan extends Activity
         title.setBackgroundColor(Color.RED);
         title.setGravity(Gravity.CENTER);
         title.setTextColor(Color.WHITE);
-        title.setTextSize(26);
+        title.setTextSize(22);
         title.setTypeface(title.getTypeface(), Typeface.BOLD);
         title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dialog_logo, 0, R.drawable.dialog_logo, 0);
         title.setPadding(20, 0, 20, 0);
@@ -6626,7 +6627,7 @@ public class SpotChallan extends Activity
         alertDialog.getWindow().getAttributes();
 
         TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
-        textView.setTextSize(28);
+        textView.setTextSize(20);
         textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
         textView.setGravity(Gravity.CENTER);
 
@@ -6645,7 +6646,7 @@ public class SpotChallan extends Activity
         title.setBackgroundColor(Color.RED);
         title.setGravity(Gravity.CENTER);
         title.setTextColor(Color.WHITE);
-        title.setTextSize(26);
+        title.setTextSize(22);
         title.setTypeface(title.getTypeface(), Typeface.BOLD);
         title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dialog_logo, 0, R.drawable.dialog_logo, 0);
         title.setPadding(20, 0, 20, 0);
@@ -6669,7 +6670,7 @@ public class SpotChallan extends Activity
         alertDialog.getWindow().getAttributes();
 
         TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
-        textView.setTextSize(28);
+        textView.setTextSize(20);
         textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
         textView.setGravity(Gravity.CENTER);
 
@@ -6687,7 +6688,7 @@ public class SpotChallan extends Activity
         title.setBackgroundColor(Color.RED);
         title.setGravity(Gravity.CENTER);
         title.setTextColor(Color.WHITE);
-        title.setTextSize(26);
+        title.setTextSize(22);
         title.setTypeface(title.getTypeface(), Typeface.BOLD);
         title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dialog_logo, 0, R.drawable.dialog_logo, 0);
         title.setPadding(20, 0, 20, 0);
@@ -6720,7 +6721,7 @@ public class SpotChallan extends Activity
         alertDialog.getWindow().getAttributes();
 
         TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
-        textView.setTextSize(28);
+        textView.setTextSize(20);
         textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
         textView.setGravity(Gravity.CENTER);
 
@@ -6744,7 +6745,7 @@ public class SpotChallan extends Activity
         title.setBackgroundColor(Color.RED);
         title.setGravity(Gravity.CENTER);
         title.setTextColor(Color.WHITE);
-        title.setTextSize(26);
+        title.setTextSize(22);
         title.setTypeface(title.getTypeface(), Typeface.BOLD);
         title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dialog_logo, 0, R.drawable.dialog_logo, 0);
         title.setPadding(20, 0, 20, 0);
@@ -6774,7 +6775,7 @@ public class SpotChallan extends Activity
         alertDialog.getWindow().getAttributes();
 
         TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
-        textView.setTextSize(28);
+        textView.setTextSize(20);
         textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
         textView.setGravity(Gravity.CENTER);
 
@@ -6793,7 +6794,7 @@ public class SpotChallan extends Activity
         title.setBackgroundColor(Color.BLUE);
         title.setGravity(Gravity.CENTER);
         title.setTextColor(Color.WHITE);
-        title.setTextSize(26f);
+        title.setTextSize(22);
         title.setTypeface(title.getTypeface(), Typeface.BOLD);
         title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dialog_logo, 0, R.drawable.dialog_logo, 0);
         title.setPadding(20, 0, 20, 0);
@@ -6847,12 +6848,12 @@ public class SpotChallan extends Activity
         alertDialog.getWindow().getAttributes();
 
         TextView textView1 = (TextView) alertDialog.findViewById(android.R.id.message);
-        textView1.setTextSize(28f);
+        textView1.setTextSize(20);
         textView1.setTypeface(textView1.getTypeface(), Typeface.BOLD);
         textView1.setGravity(Gravity.CENTER);
 
         Button btn1 = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
-        btn1.setTextSize(22f);
+        btn1.setTextSize(22);
         btn1.setTextColor(Color.WHITE);
         btn1.setTypeface(btn1.getTypeface(), Typeface.BOLD);
         btn1.setBackgroundColor(Color.BLUE);
@@ -6867,7 +6868,7 @@ public class SpotChallan extends Activity
         title.setBackgroundColor(Color.BLUE);
         title.setGravity(Gravity.CENTER);
         title.setTextColor(Color.WHITE);
-        title.setTextSize(26f);
+        title.setTextSize(22);
         title.setTypeface(title.getTypeface(), Typeface.BOLD);
         title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dialog_logo, 0, R.drawable.dialog_logo, 0);
         title.setPadding(20, 0, 20, 0);
@@ -6917,7 +6918,7 @@ public class SpotChallan extends Activity
         alertDialog.getWindow().getAttributes();
 
         TextView textView1 = (TextView) alertDialog.findViewById(android.R.id.message);
-        textView1.setTextSize(28f);
+        textView1.setTextSize(20);
         textView1.setTypeface(textView1.getTypeface(), Typeface.BOLD);
         textView1.setGravity(Gravity.CENTER);
 
@@ -7804,7 +7805,6 @@ public class SpotChallan extends Activity
                 rta_task.execute();
             }
         } else {
-            Log.i("vvv", "vvv-othrt");
             showToast("Please Check Network Connection");
         }
     }

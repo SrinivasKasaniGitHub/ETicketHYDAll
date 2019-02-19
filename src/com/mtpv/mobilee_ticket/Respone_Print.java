@@ -224,7 +224,7 @@ public class Respone_Print extends Activity {
 		}else
 		{*/
 
-        text_to_print.setText(ServiceHelper.spot_final_res_status.split("\\^")[0].split("\\*")[0]);
+        text_to_print.setText(ServiceHelper.spot_final_res_status.split("\\^")[0].split("\\$")[0]);
 
         if (text_to_print.getText().toString().length() > 15) {
             tv_sucess_text_header.setText("" + getResources().getString(R.string.ticket_generated_successfully));
@@ -320,11 +320,13 @@ public class Respone_Print extends Activity {
                     try {
 
                         if (MainActivity.dev_Model.equalsIgnoreCase(Utils.dev_Model)) {
+                          //  String prtText=printTicket.split("\\$")[1];
                             PrintHandler printHandler = new PrintHandler();
-                            printHandler.printChallan(printTicket.split("\\*")[1]);
+                            printHandler.printChallan(printTicket.split("\\$")[1]);
+
                         } else {
                             Bluetooth_Printer_3inch_ThermalAPI printer = new Bluetooth_Printer_3inch_ThermalAPI();
-                            String print_data = printer.font_Courier_41(printTicket.split("\\*")[0]);
+                            String print_data = printer.font_Courier_41(printTicket.split("\\$")[0]);
                             actual_printer.openBT(address_spot);
                             actual_printer.printData(print_data);
                             Thread.sleep(5000);

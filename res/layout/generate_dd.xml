@@ -250,10 +250,10 @@
                 <EditText
                     android:id="@+id/edt_drvr_cnctno_dd_xml"
                     style="@style/edt_custom_style"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:hint="@string/driver_contact_no"
                     android:inputType="number"
                     android:maxLength="10"></EditText>
@@ -261,11 +261,11 @@
                 <Button
                     android:id="@+id/btn_sendOTPtoMobile_dd_xml"
                     style="@style/naviblue_custom_style"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/header_grnt_padding_five"
                     android:text="@string/send_otp"
-                    android:layout_weight="1"/>
+                    android:layout_weight="2"/>
             </LinearLayout>
 
 

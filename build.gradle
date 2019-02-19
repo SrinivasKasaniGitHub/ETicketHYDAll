@@ -31,6 +31,11 @@ dependencies {
         transitive = true;
     }
     compile project(':dsprint')
+    compile (
+            [group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.4.1'],
+            [group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.4.1'],
+            [group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.4.1']
+    )
 }
 configurations {
     all*.exclude group: 'com.android.support', module: 'support-v4'
@@ -89,5 +94,17 @@ android {
         debug {
             signingConfig signingConfigs.config
         }
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
     }
 }

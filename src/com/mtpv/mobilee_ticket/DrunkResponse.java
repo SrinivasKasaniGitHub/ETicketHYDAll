@@ -26,10 +26,12 @@ import android.widget.Toast;
 
 import com.analogics.thermalAPI.Bluetooth_Printer_3inch_ThermalAPI;
 import com.analogics.thermalprinter.AnalogicsThermalPrinter;
+import com.digitsecure.dsprint.PrintHandler;
 import com.mtpv.mobilee_ticket.R;
 import com.mtpv.mobilee_ticket.DD_Response_Print.Async_Print;
 import com.mtpv.mobilee_ticket_services.DBHelper;
 import com.mtpv.mobilee_ticket_services.ServiceHelper;
+import com.mtpv.mobilee_ticket_services.Utils;
 
 @SuppressWarnings("unused")
 public class DrunkResponse extends Activity implements OnClickListener {
@@ -148,7 +150,7 @@ public class DrunkResponse extends Activity implements OnClickListener {
 
 		try {
 			if (ServiceHelper.final_reponse_split.length > 0) {
-				Tv_printresponse.setText(ServiceHelper.final_reponse_split[0]);
+				Tv_printresponse.setText(ServiceHelper.final_reponse_split[0].split("\\^")[0]);
 			}
 		}catch (ArrayIndexOutOfBoundsException e)
 		{
@@ -279,18 +281,23 @@ public class Async_Print extends AsyncTask<Void, Void, String>{
 					
 				} else {
 					try {
-						/*printdata = bth_printer.font_Courier_41(""+ ServiceHelper.final_reponse_split[0]);
-						actual_printer.Call_PrintertoPrint("" + address, ""+ printdata);*/
+
 
 						if(ServiceHelper.final_reponse_split!=null && ServiceHelper.final_reponse_split.length>0)  {
-							Bluetooth_Printer_3inch_ThermalAPI printer = new Bluetooth_Printer_3inch_ThermalAPI();
 
-							String print_data = printer.font_Courier_41("" + ServiceHelper.final_reponse_split[0]);
-							actual_printer.openBT(address);
+							if (MainActivity.dev_Model.equalsIgnoreCase(Utils.dev_Model)) {
+								PrintHandler printHandler = new PrintHandler();
+								printHandler.printChallan(""+ServiceHelper.final_reponse_split[0].split("\\^")[1]);
+							} else {
+								Bluetooth_Printer_3inch_ThermalAPI printer = new Bluetooth_Printer_3inch_ThermalAPI();
 
-							actual_printer.printData(print_data);
-							Thread.sleep(5000);
-							actual_printer.closeBT();
+								String print_data = printer.font_Courier_41(""+ServiceHelper.final_reponse_split[0].split("\\^")[0]);
+								actual_printer.openBT(address);
+
+								actual_printer.printData(print_data);
+								Thread.sleep(5000);
+								actual_printer.closeBT();
+							}
 						}
 					} catch (Exception e) {
 						// TODO: handle exception

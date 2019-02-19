@@ -190,7 +190,7 @@
 
                 <ImageView
                     android:id="@+id/offender_image"
-                    android:layout_width="@dimen/_200sdp"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/_200sdp"
                     android:layout_gravity="center"
                     android:contentDescription="@null"
@@ -399,11 +399,10 @@
                 android:id="@+id/dob_input"
                 style="@style/dd_custom_blue_btn_style"
                 android:layout_width="fill_parent"
-                android:layout_height="@dimen/_40sdp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/ll_driver_challans"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:editable="false"
                 android:gravity="center"
                 android:hint="Select Date of Birth"
                 android:textColor="#000000"
@@ -1546,11 +1545,13 @@
 
                     <TextView
                         android:id="@+id/star"
+                        style="@style/navi_text_style"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.03"
                         android:text="*"
                         android:textColor="#ff0000"/>
+
 
                     <EditText
                         android:id="@+id/edt_driverdname_isOD"

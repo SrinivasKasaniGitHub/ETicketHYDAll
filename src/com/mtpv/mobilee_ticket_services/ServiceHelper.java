@@ -733,7 +733,7 @@ public class ServiceHelper {
                                              String vehMain_Category, String vehSub_Category, String user_address, String user_city, String user_unitCd,
                                              String user_unitName, String cadre_Cd, String cadre_only, String imgEncoded_String, String device_imei,
                                              String gps_Lattitude, String gps_Longitude, String mob_macId, String sim_Id, String breath_AnalyserId,
-                                             String lcnce_status) {
+                                             String lcnce_status)  {
 
         Utils utils = new Utils();
 
@@ -2026,6 +2026,7 @@ public class ServiceHelper {
                spot_final_res_status = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
                 /*spot_final_res_status=resPrint.split("\\*")[0];
                 spot_finalPrintNDevice=resPrint.split("\\*")[1];*/
+
 
             } catch (Exception e) {
                 // TODO Auto-generated catch block

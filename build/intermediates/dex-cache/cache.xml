@@ -3,6 +3,15 @@
 
     <item
         is-multidex="true"
+        jar="C:\Users\Srinivas\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-annotations\2.4.1\55605135bd7b836612e0bba7037c9669f6ccf89f\jackson-annotations-2.4.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="55605135bd7b836612e0bba7037c9669f6ccf89f">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\10\jackson-annotations-2.4.1_47416b8a186b4e7b18b4999e2296dba725be284a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\Srinivas\.android\build-cache\7491ac9a07b345174c7d34a8fc8f0a085615a16f\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
@@ -54,6 +63,15 @@
         revision="25.0.3"
         sha1="e019d15a13a9786f881141d2df6654b8510bce8b">
         <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\2\core-3.2.0_935b3b081ec63b8bd74291578c148680c82fbeb3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Srinivas\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-core\2.4.1\b130bcfb5a9c410c3cbd2e0adec9437e69a39e2c\jackson-core-2.4.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="b130bcfb5a9c410c3cbd2e0adec9437e69a39e2c">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\10\jackson-core-2.4.1_3b5830040e10e8e5b4d0a73b2716823a499098b3\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -129,21 +147,21 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Srinivas\.android\build-cache\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.3"
-        sha1="ab862dcbfb32b0dbd623685a0bce8539be7c4bb7">
-        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\10\classes_22185832b558e4dae5492ba17e3103c3d1c77a28\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Srinivas\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.7.0\9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4\glide-3.7.0.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.3"
         sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
         <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\10\glide-3.7.0_7390340cc79262bca45fea17dae01ce59d1267ec\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Srinivas\.android\build-cache\bf29cc1757da7e464081bc1c294abb3db9b3ae0b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="ab862dcbfb32b0dbd623685a0bce8539be7c4bb7">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\10\classes_22185832b558e4dae5492ba17e3103c3d1c77a28\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -183,21 +201,21 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Srinivas\.android\build-cache\7f0bd9c9ea10eef7ac8c3f4a45f561bfe4e6398f\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.3"
-        sha1="646439081688c43e04ec4aa7ba6915ddfdcc337f">
-        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\10\classes_dc50f95ada20fd1363ee017a562a4b6b725aa544\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Srinivas\.android\build-cache\a53240c5f75f19270e348bed3da580346f845afc\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.3"
         sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
         <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\10\classes_122ac3b2548b9299e22c309c57b9e61998ccda32\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Srinivas\.android\build-cache\7f0bd9c9ea10eef7ac8c3f4a45f561bfe4e6398f\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="646439081688c43e04ec4aa7ba6915ddfdcc337f">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\10\classes_dc50f95ada20fd1363ee017a562a4b6b725aa544\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -228,6 +246,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\Srinivas\.android\build-cache\1f36ccafdaa46df5d3a74547935ad2a0ff2d3396\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d24cd269000fd059fd35becf95ca02c7c4827ee3">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\10\classes_aeb57afc15319e8d83109120c9ad83a3e889a744\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="D:\Android\ETicketHYDAll\libs\commons-validator-1.4.0.jar"
         jumboMode="false"
         optimize="true"
@@ -243,15 +270,6 @@
         revision="25.0.3"
         sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
         <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a9354dcb376c75f6da37ec9abf93fe9e98630706\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Srinivas\.android\build-cache\11cb09290709470337c9475c7abce202cf42b9e8\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.3"
-        sha1="d347c4abed70106dc65b7145ccf7a02a1173c491">
-        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e6139f928e2bf32c39bff8318d35b375b98fff67\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -288,6 +306,15 @@
         revision="25.0.3"
         sha1="7045152f3bd1870740b9bcb1cddff495e189774e">
         <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\10\classes_984892db8615191c232bac2651c313366423e60d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Srinivas\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-databind\2.4.1\f07c773f7b3a03c3801d405cadbdc93f7548e321\jackson-databind-2.4.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="f07c773f7b3a03c3801d405cadbdc93f7548e321">
+        <dex dex="D:\Android\ETicketHYDAll\build\intermediates\transforms\dex\debug\folders\1000\10\jackson-databind-2.4.1_12832ea2906b71a47d5c0ff8841a62128cf63d00\classes.dex" />
     </item>
     <item
         is-multidex="true"

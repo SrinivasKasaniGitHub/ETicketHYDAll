@@ -29,30 +29,29 @@ public class IPSettings extends Activity implements OnClickListener {
     SharedPreferences.Editor editor;
     String SERVICE_URL_PREF = "", FTP_URL_PREF = "", SERVICE_TYPE_PREf = "";
 
-    // private String test_service_url3 = "http://192.168.11.55:8080/eTicketMobileHyd";
-    // private String test_service_url4 = "http://192.168.11.55:8080/eTicketMobileHyd";
+    //  private String test_service_url3 = "http://192.168.11.55:8080/eTicketMobileHyd";
+    //  private String test_service_url4 = "http://192.168.11.55:8080/eTicketMobileHyd";
 
-    //private String test_service_url = "http://192.168.11.10:8080/eTicketMobileHyd";
-    //private String test_service_url = "http://192.168.11.97:8080/eTicketMobileHyd";
+    //  private String test_service_url = "http://192.168.11.10:8080/eTicketMobileHyd";
+    //  private String test_service_url = "http://192.168.11.97:8080/eTicketMobileHyd";
 
-    //private String local_network_url = "http://192.168.11.4/eTicketMobileHyd";
-    //private String local_network_url = "http://192.168.11.10:8080/TSeTicketMobile/";
-    //Connecting_sunilsys
+    //  private String local_network_url = "http://192.168.11.4/eTicketMobileHyd";
+    //  private String local_network_url = "http://192.168.11.10:8080/TSeTicketMobile/";
+    //  Connecting_sunilsys
     private String local_network_url="http://125.16.1.70:8080/TSeTicketMobile_Staging";
 
-    //Connecting_madhusys
-    //   private String local_network_url="http://192.168.11.97:8080/eTicketMobileHyd";
-
+    //  Connecting_madhusys
+    //  private String local_network_url="http://192.168.11.97:8080/eTicketMobileHyd";
 
     //  private String local_network_url="http://192.168.11.10:8080/eTicketMobileHyd";
 
-    //url for test purpose
+    //  url for test purpose
     //  private String local_network_url="http://192.168.11.4/Test_eTicketMobileHyd";
-    //    private String live_service_url = "http://192.168.11.4/eTicketMobileHyd";
+    //  private String live_service_url = "http://192.168.11.4/eTicketMobileHyd";
     private String live_service_url = "https://www.echallan.org/TSeTicketMobile";
 
-    //url for test purpose
-    // private String live_service_url="http://192.168.11.4/Test_eTicketMobileHyd";
+    //  url for test purpose
+    //  private String live_service_url="http://192.168.11.4/Test_eTicketMobileHyd";
     public static String ftp_fix = "192.168.11.9";
     public static String open_ftp_fix = "125.16.1.69";
     String service_type = "";

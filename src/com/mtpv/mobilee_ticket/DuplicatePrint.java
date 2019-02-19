@@ -194,7 +194,7 @@ public class DuplicatePrint extends Activity implements OnClickListener {
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         cal = Calendar.getInstance();
-		/* FOR DATE PICKER */
+        /* FOR DATE PICKER */
         present_year = cal.get(Calendar.YEAR);
         present_month = cal.get(Calendar.MONTH);
         present_day = cal.get(Calendar.DAY_OF_MONTH);
@@ -326,16 +326,16 @@ public class DuplicatePrint extends Activity implements OnClickListener {
 		/* REPORT PRINT */
             case R.id.btnprint_report_xml:
 
-                printHandler.printChallan("" + ServiceHelper.Opdata_Chalana);
-                //new Aysnc_Print().execute();
+                //printHandler.printChallan("" + ServiceHelper.Opdata_Chalana);
+                new Aysnc_Print().execute();
                 // printResponse();
                 break;
 
 		/* DUPLICATE PRINT */
             case R.id.btnprint_dup_res_xml:
 
-                printHandler.printChallan("" + ServiceHelper.Opdata_Chalana);
-                //new Aysnc_Print().execute();
+                //printHandler.printChallan("" + ServiceHelper.Opdata_Chalana);
+                new Aysnc_Print().execute();
                 // printResponse();
                 break;
 
