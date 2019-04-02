@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/relativeLayout1"
+            layout="@layout/activity_header">
+
+        </include>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/dd_Img"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_gravity="center"/>
+
+        <ListView
+            android:layout_margin="@dimen/_10sdp"
+            android:id="@+id/listDDImgmatch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+    </LinearLayout>
+
+</RelativeLayout>

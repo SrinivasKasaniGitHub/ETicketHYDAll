@@ -98,6 +98,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 import it.sauronsoftware.ftp4j.FTPClient;
@@ -3356,6 +3357,7 @@ public class SpotChallan extends Activity
 
                 Dialog dg_scond = new Dialog(this, android.R.style.Theme_Black_NoTitleBar);
                 dg_scond.setContentView(R.layout.spot_challan_two);
+                Objects.requireNonNull(dg_scond.getWindow()).setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
                 img_logo = (ImageView) dg_scond.findViewById(R.id.img_logo);
                 if (MainActivity.uintCode.equals("22")) {

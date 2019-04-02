@@ -183,7 +183,7 @@
     <string name="sync">Download\nMasters</string>
     <string name="sp_drive">Special Drive</string>
     <string name="reset">Reset</string>
-    <string name="footer_txt"> Telangana Integrated eChallan System</string>
+    <string name="footer_txt"> OBEY THE TRAFFIC RULES</string>
     <string name="licence_owner_name">Licence Owner Name</string>
     <string name="father_name_only">Father Name</string>
     <string name="licence_status">Licence Exit</string>
@@ -241,9 +241,9 @@
     <string name="live">LIVE</string>
     <string name="test">TEST</string>
     <string name="local">LOCAL NETWORK</string>
-    <string name="mpls">MPLS NETWORK</string>
+    <string name="mpls">TEST</string>
 
-    <string name="open">OPEN NETWORK</string>
+    <string name="open">LIVE</string>
 
     <!-- AADHAR DETAILS -->
     <string name="aadhar_no_eid">Aadhar No/EID</string>
@@ -267,12 +267,12 @@
     <string name="day_report">Day Report</string>
     <string name="no_day_report">No Reports Found!</string>
 
-    <color name="bg">#fffdfd</color>
+    <color name="bg">#F1F1F1</color>
     <!-- <color name="bg">#58D3F7</color> -->
     <color name="header_bg">#81BEF7</color>
     <color name="orange_color">#FFBF00</color>
-    <color name="dd_btn_blue_color">#58ACFA</color>
-    <color name="navi_color">#001e59</color>
+    <color name="dd_btn_blue_color">#5F75F3</color>
+    <color name="navi_color">#090101</color>
     <color name="footer_txt_color">#374175</color>
     <color name="dialog_title">#fb0000</color>
     <color name="black">#000000</color>

@@ -186,14 +186,12 @@ public class Dashboard extends Activity implements OnClickListener {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_dashboard);
+        setContentView(R.layout.activity_dashboard_new);
 
         UNIT_CODE = MainActivity.arr_logindetails[0].substring(0, 2);
 
         LoadUIComponents();
        
-
-
         db = new DBHelper(getApplicationContext());
 
         netwrk_info_txt = "" + getResources().getString(R.string.newtork_txt);

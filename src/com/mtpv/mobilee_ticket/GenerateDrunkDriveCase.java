@@ -1,5 +1,6 @@
 package com.mtpv.mobilee_ticket;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -36,7 +37,11 @@ import android.os.Environment;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.CursorLoader;
 import android.support.v4.content.FileProvider;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatImageView;
 import android.telephony.TelephonyManager;
 import android.text.Html;
 import android.text.format.DateFormat;
@@ -45,6 +50,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -62,6 +68,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -69,9 +76,29 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+
+import com.android.volley.error.VolleyError;
+import com.android.volley.request.SimpleMultiPartRequest;
+import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mtpv.imagematch.ImageMatchAdapter;
+import com.mtpv.imagematch.ImageMatchPojo;
+import com.mtpv.imagematch.Results;
+import com.mtpv.imagematch.Telangana;
 import com.mtpv.mobilee_ticket_services.DBHelper;
 import com.mtpv.mobilee_ticket_services.ServiceHelper;
 import com.mtpv.mobilee_ticket_services.Utils;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -85,6 +112,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 import it.sauronsoftware.ftp4j.FTPClient;
@@ -147,7 +176,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
     EditText et_dd_address;
     EditText et_dd_city;
 
-	/* END FIRST SCREEEN */
+    /* END FIRST SCREEEN */
 
     //RadioGroup radiogrp_finedBy;// radiogroup for court or policesatation
     //RadioButton radio_finedBy_subcat;// court or policesatation
@@ -155,10 +184,10 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
     RadioGroup radiogrp_gender;
     RadioButton radio_male_female;
 
-	/*
-	 * CheckBox chck_detainedItems_rc; CheckBox chck_detainedItems_vhcle;
-	 * CheckBox chck_detainedItems_licence; CheckBox chck_detainedItems_permit;
-	 */
+    /*
+     * CheckBox chck_detainedItems_rc; CheckBox chck_detainedItems_vhcle;
+     * CheckBox chck_detainedItems_licence; CheckBox chck_detainedItems_permit;
+     */
 
     CheckBox chck_detainedItems_rc;
     CheckBox chck_detainedItems_vhcle;
@@ -249,7 +278,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
     String psnameby_point_code;
     String bluetooth_address = "";
 
-	/* SHARED PREF END */
+    /* SHARED PREF END */
 
     String netwrk_info_txt = "";
     /* OFFENCE CODE TO SEND TO SERVICE */
@@ -352,7 +381,24 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
     public static String image_data = null;
 
     ImageView img_logo;
-    TextView officer_Name,officer_Cadre,officer_PS;
+    TextView officer_Name, officer_Cadre, officer_PS;
+
+    RequestQueue requestQueue;
+    ProgressDialog progressDialog;
+    File file;
+    String mimeType;
+    String boundary = "apiclient-" + System.currentTimeMillis();
+
+    ImageMatchPojo imageMatchPojo;
+
+    public static List<Telangana> telanganaList;
+
+    private Dialog dialog;
+
+    AppCompatImageView dd_Img,imgFromCapture,imgFromLink;
+    ListView listDDImgmatch;
+    public Bitmap imgMatchBitmap;
+    AppCompatButton btn_ImgMatchCancel,btn_ImgMatchOk;
 
     @SuppressLint({"NewApi", "WorldReadableFiles"})
     @Override
@@ -362,28 +408,31 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.generate_dd);
+
+        requestQueue = Volley.newRequestQueue(this);
+        progressDialog = new ProgressDialog(this);
         liquorFLG = false;
         professionFLG = false;
         et_age = (EditText) findViewById(R.id.edt_age_reading_dd2_xml);
         getLocation();
 
-        img_logo=(ImageView)findViewById(R.id.img_logo);
-        if (MainActivity.uintCode.equals("22")){
+        img_logo = (ImageView) findViewById(R.id.img_logo);
+        if (MainActivity.uintCode.equals("22")) {
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.cyb_logo));
-        }else if (MainActivity.uintCode.equals("23")){
+        } else if (MainActivity.uintCode.equals("23")) {
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
-        }else if (MainActivity.uintCode.equals("24")){
+        } else if (MainActivity.uintCode.equals("24")) {
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
-        }else if (MainActivity.uintCode.equals("44")) { //44 Warangal
+        } else if (MainActivity.uintCode.equals("44")) { //44 Warangal
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.wgl_logo));
-        }else {//  69 Siddipet
+        } else {//  69 Siddipet
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
         }
-        officer_Name=(TextView)findViewById(R.id.officer_Name);
-        officer_Cadre=(TextView)findViewById(R.id.officer_cadre);
-        officer_PS=(TextView)findViewById(R.id.officer_PS);
+        officer_Name = (TextView) findViewById(R.id.officer_Name);
+        officer_Cadre = (TextView) findViewById(R.id.officer_cadre);
+        officer_PS = (TextView) findViewById(R.id.officer_PS);
 
-        officer_Name.setText(MainActivity.pidName+"("+MainActivity.cadre_name+")");
+        officer_Name.setText(MainActivity.pidName + "(" + MainActivity.cadre_name + ")");
         officer_Cadre.setText(MainActivity.cadre_name);
         officer_PS.setText(MainActivity.psName);
 
@@ -428,24 +477,24 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
             StrictMode.ThreadPolicy polocy = new StrictMode.ThreadPolicy.Builder().build();
             StrictMode.setThreadPolicy(polocy);
         }
-		/* FIRST IT WILL MOVE TO RTADETAILS.CLASS */
+        /* FIRST IT WILL MOVE TO RTADETAILS.CLASS */
 
         preferences = getSharedPreferences("preferences", Context.MODE_PRIVATE);
         editor = preferences.edit();
-		/* FOR CHECKING FTP DETAILS */
-		/*
-		 * ftp_host = preferences.getString("ftpurl", "host"); if
-		 * (!ftp_host.equals("host")) { FTP_HOST_PORT = ftp_host.split("\\:");
-		 * Log.i("DYNAMIC FTP DETAILS", "" + FTP_HOST_PORT[0] + "\nPort : "+
-		 * FTP_HOST_PORT[1]); }
-		 */
+        /* FOR CHECKING FTP DETAILS */
+        /*
+         * ftp_host = preferences.getString("ftpurl", "host"); if
+         * (!ftp_host.equals("host")) { FTP_HOST_PORT = ftp_host.split("\\:");
+         * Log.i("DYNAMIC FTP DETAILS", "" + FTP_HOST_PORT[0] + "\nPort : "+
+         * FTP_HOST_PORT[1]); }
+         */
 
         db = new DBHelper(getApplicationContext());
         Log.i("****WHELLER DETAILS GEN CLASS***", "" + Drunk_Drive.whlr_code_send);
 
         m_locationlistner = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-		/* TO GET OCCUPATION CODE DETAILS */
+        /* TO GET OCCUPATION CODE DETAILS */
         try {
             db.open();
             // WHEELER CODE
@@ -472,7 +521,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         c_occptn.close();
         db.close();
 
-		/* TO GET BAR TYPE CODE DETAILS */
+        /* TO GET BAR TYPE CODE DETAILS */
         try {
             db.open();
             // WHEELER CODE
@@ -500,6 +549,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         db.close();
 
     }
+
     @SuppressLint({"DefaultLocale", "SimpleDateFormat"})
 
     private void LoadUIComponents() {
@@ -539,7 +589,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         offender_image = (ImageView) findViewById(R.id.offender_image);
         offender_image.setVisibility(View.GONE);
 
-		/* second screen */
+        /* second screen */
         sb_detaneditems_send = new StringBuilder();
         et_alcohol_reading = (EditText) findViewById(R.id.edt_alchl_reading_dd2_xml);
         et_age = (EditText) findViewById(R.id.edt_age_reading_dd2_xml);
@@ -570,13 +620,13 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         // btn_veh_sub_cat = (Button)
         // findViewById(R.id.btn_vchle_mainsub_dd2_xml);
 
-		/* THIRD SCREEN START */
+        /* THIRD SCREEN START */
         // wv_generate = (WebView) findViewById(R.id.wv_image_dd3_xml);
         ImageButton ibtn_gallery = (ImageButton) findViewById(R.id.imgbtn_browseimage_dd3_xml);
         ImageButton ibtn_capture = (ImageButton) findViewById(R.id.imgbtn_capture_dd3_xml);
         btn_cancel_final = (Button) findViewById(R.id.btn_cancel_dd3_xml);
         btn_final_submittion = (Button) findViewById(R.id.btn_finalsubmit_dd3_xml);
-		/* THIRS SCREEN SNED */
+        /* THIRS SCREEN SNED */
 
         btn_select_bar = (Button) findViewById(R.id.btn_select_bar);
 
@@ -586,11 +636,11 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
         // drunk_location = (RelativeLayout)findViewById(R.id.drunk_location);
         // bar = (RadioButton)findViewById(R.id.bar);
-		/*
-		 * permit_room = (RadioButton)findViewById(R.id.permit_room); wine_shop
-		 * = (RadioButton)findViewById(R.id.wine_shop); others =
-		 * (RadioButton)findViewById(R.id.others);
-		 */
+        /*
+         * permit_room = (RadioButton)findViewById(R.id.permit_room); wine_shop
+         * = (RadioButton)findViewById(R.id.wine_shop); others =
+         * (RadioButton)findViewById(R.id.others);
+         */
 
         bar_name = (EditText) findViewById(R.id.edt_bar_name);
         barAddress = (EditText) findViewById(R.id.edt_bar_Address);
@@ -615,24 +665,24 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         btn_select_profession.setOnClickListener(this);
         btn_select_bar.setOnClickListener(this);
 
-		/* CHECK BOX ONXHANGE LISTENERS */
+        /* CHECK BOX ONXHANGE LISTENERS */
         chck_detainedItems_rc.setOnCheckedChangeListener(this);
         chck_detainedItems_licence.setOnCheckedChangeListener(this);
         chck_detainedItems_permit.setOnCheckedChangeListener(this);
 
-		/*
-		 * bar.setOnClickListener(this); permit_room.setOnClickListener(this);
-		 * wine_shop.setOnClickListener(this); others.setOnClickListener(this);
-		 */
+        /*
+         * bar.setOnClickListener(this); permit_room.setOnClickListener(this);
+         * wine_shop.setOnClickListener(this); others.setOnClickListener(this);
+         */
 
-		/* first screen */
+        /* first screen */
         btn_idproof.setOnClickListener(this);
         btn_offence_date.setOnClickListener(this);
         btn_offence_time.setOnClickListener(this);
         btn_final_submittion.setOnClickListener(this);
         btn_send_otp_to_mobile.setOnClickListener(this);
         btn_verify_otp_from_mobile.setOnClickListener(this);
-		/* second screen */
+        /* second screen */
         btn_cancel_final.setOnClickListener(this);
         // btn_counselling_date.setOnClickListener(this);
         // btn_occupation.setOnClickListener(this);
@@ -641,14 +691,14 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         // btn_vhcle_cat.setOnClickListener(this);
         // btn_veh_main_cat.setOnClickListener(this);
         // btn_veh_sub_cat.setOnClickListener(this);
-		/* Third Screen */
+        /* Third Screen */
         ibtn_gallery.setOnClickListener(this);
         ibtn_capture.setOnClickListener(this);
 
         Log.i("Bar Name :::", "" + bar_name);
         Log.i("Address :::", "" + barAddress);
 
-		/* VALUES FROM RTA ENTRY DETAILS */
+        /* VALUES FROM RTA ENTRY DETAILS */
         et_regn_cid.setText("" + (Drunk_Drive.details_regncid.toUpperCase()));
         et_regn_cid_name.setText("" + (Drunk_Drive.details_regncid_name.toUpperCase()));
         et_regn_last_num.setText("" + (Drunk_Drive.details_regn_last_num.toUpperCase()));
@@ -744,7 +794,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         }
 
         try {
-		/* CITY */
+            /* CITY */
             if (Drunk_Drive.rta_details_master != null && Drunk_Drive.rta_details_master.length > 0 && Drunk_Drive.rta_details_master.length == 1) {
                 et_city.setText("");
             } else if (Drunk_Drive.rta_details_master != null && Drunk_Drive.rta_details_master.length == 0) {
@@ -762,25 +812,26 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         getInitialDetails();
 
 
-		/* FOR DEFAULT DATE TO BUTTON */
+        /* FOR DEFAULT DATE TO BUTTON */
         format = new SimpleDateFormat("dd-MMM-yyyy");
 
         String inspectiondate = format.format(new Date(offnce_year - 1900, (offnce_month), offnce_day));
 
         btn_offence_date.setText("" + inspectiondate.toUpperCase());
 
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("HH:mm");
-        String time=simpleDateFormat.format(new Date());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+        String time = simpleDateFormat.format(new Date());
 
         btn_offence_time.setText(time);
 
-		/* SET IMAGE FROM RTA DETAILS CLASS */
+        /* SET IMAGE FROM RTA DETAILS CLASS */
         picturePath_dd = "0";
         Log.i("LOADUICOMPONENT IMAGE", "" + picturePath_dd);
         Log.i(" Oncreate RTA IMAGE", "" + Drunk_Drive.picturePath);
         // attachImageFromRta();
 
     }
+
     @SuppressWarnings("unused")
 
     private void updateDisplay() {
@@ -808,6 +859,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
             person_age = year - y;
         }
     }
+
     @SuppressWarnings("unused")
 
     private void addItemsOnSpinner2() {
@@ -877,23 +929,33 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         try {
 
             cal = Calendar.getInstance();
-		/* FOR DATE PICKER */
+            /* FOR DATE PICKER */
             offnce_year = cal.get(Calendar.YEAR);
             offnce_month = cal.get(Calendar.MONTH);
             offnce_day = cal.get(Calendar.DAY_OF_MONTH);
 
-		/* FOR TIME PICKER */
+            /* FOR TIME PICKER */
             hour = String.valueOf(cal.get(Calendar.HOUR_OF_DAY));
-            if (hour.length()<2){
-                hour="0"+hour;
+            if (hour.length() < 2) {
+                hour = "0" + hour;
             }
             minute = String.valueOf(cal.get(Calendar.MINUTE));
 
-            if (minute.length()<2){
-                minute="0"+minute;
+            if (minute.length() < 2) {
+                minute = "0" + minute;
             }
 
             telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
             IMEI_send = telephonyManager.getDeviceId();// TO GET IMEI NUMBER
             // String simId=telephonyManager.getSimSerialNumber();
 
@@ -937,26 +999,26 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     barAddress.setHint("Enter Address of Bar/Restaurant");
                 }
                 break;
-		/*
-		 * case R.id.permit_room: permit_room.setChecked(true); if
-		 * (permit_room.isChecked()) { bar.setChecked(false);
-		 * wine_shop.setChecked(false); others.setChecked(false);
-		 * 
-		 * bar_name.setHint("Enter Permit Room Name");
-		 * barAddress.setHint("Enter Address of Permit Room"); } break; case
-		 * R.id.wine_shop: wine_shop.setChecked(true); if
-		 * (wine_shop.isChecked()) { bar.setChecked(false);
-		 * permit_room.setChecked(false); others.setChecked(false);
-		 * 
-		 * bar_name.setHint("Enter Wine Shop Name");
-		 * barAddress.setHint("Enter Address of Wine Shop"); } break; case
-		 * R.id.others: others.setChecked(true); if (others.isChecked()) {
-		 * bar.setChecked(false); permit_room.setChecked(false);
-		 * wine_shop.setChecked(false);
-		 * 
-		 * bar_name.setHint("Enter Name of Others");
-		 * barAddress.setHint("Enter Address of Others"); } break;
-		 */
+            /*
+             * case R.id.permit_room: permit_room.setChecked(true); if
+             * (permit_room.isChecked()) { bar.setChecked(false);
+             * wine_shop.setChecked(false); others.setChecked(false);
+             *
+             * bar_name.setHint("Enter Permit Room Name");
+             * barAddress.setHint("Enter Address of Permit Room"); } break; case
+             * R.id.wine_shop: wine_shop.setChecked(true); if
+             * (wine_shop.isChecked()) { bar.setChecked(false);
+             * permit_room.setChecked(false); others.setChecked(false);
+             *
+             * bar_name.setHint("Enter Wine Shop Name");
+             * barAddress.setHint("Enter Address of Wine Shop"); } break; case
+             * R.id.others: others.setChecked(true); if (others.isChecked()) {
+             * bar.setChecked(false); permit_room.setChecked(false);
+             * wine_shop.setChecked(false);
+             *
+             * bar_name.setHint("Enter Name of Others");
+             * barAddress.setHint("Enter Address of Others"); } break;
+             */
 
             case R.id.btn_select_profession:
 
@@ -1006,7 +1068,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                 break;
 
             case R.id.btn_finalsubmit_dd3_xml:
-			/* PS_NAME AND POINT_NAME FROM SETTINGS */
+                /* PS_NAME AND POINT_NAME FROM SETTINGS */
 
                 finalsubmit();
 
@@ -1020,16 +1082,16 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                 finish();
                 break;
             case R.id.imgbtn_browseimage_dd3_xml:
-			/*
-			 * cam_imag = ""; cam_imag = "browse"; picturePath_dd = "0";
-			 * 
-			 * TO CLEAR BITMAP FILEDS clearBitmapFields();
-			 * 
-			 * Intent in_gallery = new
-			 * Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.
-			 * Media.EXTERNAL_CONTENT_URI); startActivityForResult(in_gallery,
-			 * RESULT_LOAD_IMAGE);
-			 */
+                /*
+                 * cam_imag = ""; cam_imag = "browse"; picturePath_dd = "0";
+                 *
+                 * TO CLEAR BITMAP FILEDS clearBitmapFields();
+                 *
+                 * Intent in_gallery = new
+                 * Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.
+                 * Media.EXTERNAL_CONTENT_URI); startActivityForResult(in_gallery,
+                 * RESULT_LOAD_IMAGE);
+                 */
                 if (Drunk_Drive.image_data_tosend != null) {
                     showToast("Already Captured image in first Screen");
                 } else {
@@ -1040,17 +1102,17 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
                 break;
             case R.id.imgbtn_capture_dd3_xml:
-			/*
-			 * cam_imag = ""; cam_imag = "camera"; picturePath_dd = "0"; if
-			 * (isDeviceSupportCamera()) {
-			 * 
-			 * TO CLEAR BITMAP FILEDS clearBitmapFields();
-			 * 
-			 * Intent cameraIntent = new
-			 * Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-			 * startActivityForResult(cameraIntent, CAMERA_REQUEST); } else {
-			 * showToast("Sorry! Your device doesn't support camera"); }
-			 */
+                /*
+                 * cam_imag = ""; cam_imag = "camera"; picturePath_dd = "0"; if
+                 * (isDeviceSupportCamera()) {
+                 *
+                 * TO CLEAR BITMAP FILEDS clearBitmapFields();
+                 *
+                 * Intent cameraIntent = new
+                 * Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                 * startActivityForResult(cameraIntent, CAMERA_REQUEST); } else {
+                 * showToast("Sorry! Your device doesn't support camera"); }
+                 */
                 if (Drunk_Drive.image_data_tosend != null) {
                     showToast("Already Captured image in first Screen");
                 } else {
@@ -1060,7 +1122,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                 break;
             case R.id.btn_sendOTPtoMobile_dd_xml:
 
-			/*---------------------------------------------------------*/
+                /*---------------------------------------------------------*/
                 String tempContactNumber = et_driver_contact_no.getText().toString().trim();
                 if (tempContactNumber.equals("")) {
                     et_driver_contact_no
@@ -1075,7 +1137,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     // 7/8/9
                     // Length=11 case starting digit should start with 0
                     if ((tempContactNumber.charAt(0) == '7') || (tempContactNumber.charAt(0) == '8')
-                            || (tempContactNumber.charAt(0) == '9')||(tempContactNumber.charAt(0) == '6')) {
+                            || (tempContactNumber.charAt(0) == '9') || (tempContactNumber.charAt(0) == '6')) {
                         if (isOnline()) {
                             otp_status = "send";
                             if (isOnline()) {
@@ -1108,7 +1170,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                         et_driver_contact_no.setError(Html.fromHtml("<font color='black'>Check Contact Number!</font>"));
                     }
                 }
-			/*-------------------------------------------------------------*/
+                /*-------------------------------------------------------------*/
                 break;
             case R.id.btn_confrmotp_dd_xml:
                 if (et_verify_otp_from_mobile.getText().toString().equals("")) {
@@ -1150,16 +1212,16 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         startActivityForResult(intent, 1);*/
 
 
-        if (Build.VERSION.SDK_INT<=23) {
+        if (Build.VERSION.SDK_INT <= 23) {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
             intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
             startActivityForResult(intent, 1);
-        }else{
+        } else {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
             intent.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(GenerateDrunkDriveCase.this,
-                    BuildConfig.APPLICATION_ID + ".provider",f));
+                    BuildConfig.APPLICATION_ID + ".provider", f));
             intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             startActivityForResult(intent, 1);
         }
@@ -1275,7 +1337,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         return "";
     }
 
-	/*---------------------------------------------------------------*/
+    /*---------------------------------------------------------------*/
 
     private void clearBitmapFields() {
         // TODO Auto-generated method stub
@@ -1375,12 +1437,12 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                         } else {
                             professionFLG = false;
                             profession_code = "";
-						/*
-						 * edt_prfession_name.setHint("Enter Name of Profession"
-						 * ); edt_prfession_Address.
-						 * setHint("Enter Address of Profession");
-						 * edt_email_ID.setHint("Enter Email ID of Profession");
-						 */
+                            /*
+                             * edt_prfession_name.setHint("Enter Name of Profession"
+                             * ); edt_prfession_Address.
+                             * setHint("Enter Address of Profession");
+                             * edt_email_ID.setHint("Enter Email ID of Profession");
+                             */
                             removeDialog(OCCUPATION_DIALOG);
                         }
                     }
@@ -1442,12 +1504,12 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                         } else {
                             liquorFLG = false;
                             profession_code = "";
-						/*
-						 * bar_name.setHint("Enter Name of "+
-						 * btn_select_bar.getText().toString());
-						 * barAddress.setHint("Enter Address of "+
-						 * btn_select_bar.getText().toString());
-						 */
+                            /*
+                             * bar_name.setHint("Enter Name of "+
+                             * btn_select_bar.getText().toString());
+                             * barAddress.setHint("Enter Address of "+
+                             * btn_select_bar.getText().toString());
+                             */
                             removeDialog(BAR_DIALOG);
                         }
                     }
@@ -1629,17 +1691,17 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
     }
 
     // 00
-	/*
-	 * private OnCheckedChangeListener listener = new OnCheckedChangeListener()
-	 * {
-	 * 
-	 * public void onCheckedChanged(CompoundButton arg0, boolean isChecked) {
-	 * 
-	 * 
-	 * 
-	 * } };
-	 */
-	/* FOR OFFENSE DATE */
+    /*
+     * private OnCheckedChangeListener listener = new OnCheckedChangeListener()
+     * {
+     *
+     * public void onCheckedChanged(CompoundButton arg0, boolean isChecked) {
+     *
+     *
+     *
+     * } };
+     */
+    /* FOR OFFENSE DATE */
     DatePickerDialog.OnDateSetListener md1 = new DatePickerDialog.OnDateSetListener() {
 
         @Override
@@ -1716,82 +1778,17 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         }
     };
 
-    /* ACTIVITYRESULT FOR ACCESSING IMAGES FROM GALLERY AND CAMERA */
+    /* ACTIVITY RESULT FOR ACCESSING IMAGES FROM GALLERY AND CAMERA */
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-		/*
-		 * if (cam_imag == "browse") { if (requestCode == RESULT_LOAD_IMAGE &&
-		 * resultCode == RESULT_OK && null != data) {
-		 * 
-		 * Uri selectedImage = data.getData(); String[] filePathColumn = {
-		 * MediaStore.Images.Media.DATA };
-		 * 
-		 * Cursor cursor = getContentResolver().query(selectedImage,
-		 * filePathColumn, null, null, null); cursor.moveToFirst(); int
-		 * columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-		 * 
-		 * picturePath_dd = "0"; picturePath_dd = cursor.getString(columnIndex);
-		 * cursor.close();
-		 * 
-		 * Log.i("pic path", "" + img_found); img_found = 1; webviewloader = new
-		 * WebviewLoader(); wv_generate.setBackgroundColor(0x00000000);
-		 * wv_generate.setHorizontalScrollBarEnabled(true);
-		 * wv_generate.setVerticalScrollBarEnabled(true); WebSettings
-		 * webSettings = wv_generate.getSettings();
-		 * wv_generate.setInitialScale(10);
-		 * webSettings.setJavaScriptEnabled(true);
-		 * wv_generate.getSettings().setLoadWithOverviewMode(true);
-		 * wv_generate.getSettings().setUseWideViewPort(true);
-		 * wv_generate.getSettings().setBuiltInZoomControls(true);
-		 * wv_generate.getSettings().setLayoutAlgorithm(
-		 * LayoutAlgorithm.SINGLE_COLUMN); webviewloader.DisplayImage("file://"
-		 * + picturePath_dd, wv_generate);
-		 * 
-		 * Log.i("WEBVIEW IMAGE :::::", ""+picturePath_dd);
-		 * Log.i("WEBVIEW wv_generate :::::", ""+wv_generate);
-		 * 
-		 * } } else if (cam_imag == "camera") { if (resultCode == RESULT_OK) {
-		 * if (requestCode == CAMERA_REQUEST) { Bitmap photo = (Bitmap)
-		 * data.getExtras().get("data"); ByteArrayOutputStream bytes = new
-		 * ByteArrayOutputStream(); photo.compress(Bitmap.CompressFormat.JPEG,
-		 * 100, bytes); Random randomGenerator = new Random(); int num =
-		 * randomGenerator.nextInt(100); String newimagename = num + ".jpg";
-		 * File f = null; f = new File(Environment.getExternalStorageDirectory()
-		 * + File.separator + newimagename); try { f.createNewFile(); } catch
-		 * (IOException e) { // TODO Auto-generated catch block
-		 * e.printStackTrace(); }
-		 * 
-		 * try { fo = new FileOutputStream(f.getAbsoluteFile()); } catch
-		 * (FileNotFoundException e) { // TODO Auto-generated catch block
-		 * e.printStackTrace(); } try { fo.write(bytes.toByteArray()); } catch
-		 * (IOException e) { // TODO Auto-generated catch block
-		 * e.printStackTrace(); }
-		 * 
-		 * 
-		 * picturePath_dd = "0"; picturePath_dd = f.getAbsolutePath();
-		 * Log.i("pic path", "" + img_found); img_found = 1;
-		 * 
-		 * webviewloader = new WebviewLoader();
-		 * wv_generate.setBackgroundColor(0x00000000);
-		 * wv_generate.setHorizontalScrollBarEnabled(true);
-		 * wv_generate.setVerticalScrollBarEnabled(true); WebSettings
-		 * webSettings = wv_generate.getSettings();
-		 * wv_generate.setInitialScale(50);
-		 * webSettings.setJavaScriptEnabled(true);
-		 * wv_generate.getSettings().setLoadWithOverviewMode(true);
-		 * wv_generate.getSettings().setUseWideViewPort(true);
-		 * wv_generate.getSettings().setBuiltInZoomControls(true);
-		 * wv_generate.getSettings().setLayoutAlgorithm(
-		 * LayoutAlgorithm.SINGLE_COLUMN); webviewloader.DisplayImage("file://"
-		 * + picturePath_dd, wv_generate);
-		 * 
-		 * } }
-		 * 
-		 * }
-		 */
         if (resultCode == RESULT_OK) {
             if (requestCode == 1) {
+
+               /* Uri picUri = data.getData();
+
+                String filePath = getPath(picUri);
+                UploadFile(filePath);*/
 
                 File f = new File(Environment.getExternalStorageDirectory().toString());
 
@@ -1817,16 +1814,16 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     }
                     f.delete();
                     OutputStream outFile = null;
-                    File file = new File(path, String.valueOf(System.currentTimeMillis()) + ".jpg");
+                    file = new File(path, String.valueOf(System.currentTimeMillis()) + ".jpg");
                     try {
                         Log.i("Camera Path :::", "" + file.getAbsolutePath());
 
+                        UploadFile(file.getAbsolutePath());
+
                         outFile = new FileOutputStream(file);
                         Bitmap mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
-                        Canvas canvas = new Canvas(mutableBitmap); // bmp is the
-                        // bitmap to
-                        // dwaw into
-
+                        imgMatchBitmap = mutableBitmap;
+                        Canvas canvas = new Canvas(mutableBitmap);
                         Paint paint = new Paint();
                         paint.setColor(Color.RED);
                         paint.setTextSize(80);
@@ -1837,7 +1834,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
                         canvas.save();
                         canvas.rotate(270f, xPos, yPos);
-                        canvas.drawText("Date & Time: " + Current_Date, xPos + 10, yPos+300, paint);
+                        canvas.drawText("Date & Time: " + Current_Date, xPos + 10, yPos + 300, paint);
                         canvas.restore();
 
                         canvas.save();
@@ -1923,6 +1920,9 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                     mutableBitmap.compress(Bitmap.CompressFormat.JPEG, 20, bytes);
 
+                    // imageUploadForMatch(compressImage(mutableBitmap));
+
+
                     byteArray = bytes.toByteArray();
 
                     final_image_data_tosend = Base64.encodeToString(byteArray, Base64.NO_WRAP);
@@ -1983,6 +1983,197 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
             }
         }
 
+    }
+
+    private Bitmap compressImage(Bitmap image) {
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        int options = 90;
+        while (baos.toByteArray().length / 1024 > 500) {
+            baos.reset();
+            image.compress(Bitmap.CompressFormat.JPEG, options, baos);
+            options -= 10;
+        }
+        ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());
+        return BitmapFactory.decodeStream(isBm, null, null);
+    }
+
+  /*  public void imageUploadForMatch(final Bitmap bitmap) {
+        progressDialog.setMessage("Loading");
+        progressDialog.show();
+        String url = "http://54.91.91.117:50146/match";
+        VolleyMultipartRequest spotGenReq = new VolleyMultipartRequest(Request.Method.POST, url, new Response.Listener<NetworkResponse>() {
+            @Override
+            public void onResponse(NetworkResponse response) {
+                progressDialog.dismiss();
+
+                try {
+                    String resPonse = new String(response.data);
+                    Log.d("ResImg", resPonse);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("user", "telangana");
+                params.put("auth_token", "23easd12wedf34f3hjkbnaaa1");
+                return params;
+            }
+
+            @Override
+            protected Map<String, DataPart> getByteData() {
+                Map<String, DataPart> params = new HashMap<>();
+                long imagename = System.currentTimeMillis();
+                params.put("file", new DataPart("img_name.jpg", getFileDataFromDrawable(bitmap), "image/jpeg"));
+                return params;
+            }
+
+        };
+        requestQueue.add(spotGenReq);
+    }*/
+
+    public byte[] getFileDataFromDrawable(Bitmap bitmap) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 80, byteArrayOutputStream);
+        return byteArrayOutputStream.toByteArray();
+    }
+
+    public void UploadFile(final String imagePath) {
+        imageMatchPojo = new ImageMatchPojo();
+        telanganaList = new ArrayList<>();
+
+        String requestURL = "http://54.91.91.117:50146/match";
+        showDialog(PROGRESS_DIALOG);
+
+        SimpleMultiPartRequest smr = new SimpleMultiPartRequest(Request.Method.POST, requestURL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("Response", response);
+                        removeDialog(PROGRESS_DIALOG);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            int status_Code = jsonObject.getInt("status");
+                            if (1 == status_Code) {
+                                JSONObject object = jsonObject.getJSONObject("results");
+                                JSONArray jsonArray = new JSONArray(object.getString("telangana"));
+                                telanganaList = new Gson().fromJson(String.valueOf(jsonArray), Results.class);
+                                ShowImageMatchDialog();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                removeDialog(PROGRESS_DIALOG);
+            }
+        });
+
+        smr.addFile("file", imagePath);
+        smr.addStringParam("user", "telangana");
+        smr.addStringParam("auth_token", "23easd12wedf34f3hjkbnaaa1");
+        requestQueue.add(smr);
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void ShowImageMatchDialog() {
+
+        try {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT);
+            LayoutInflater inflater = this.getLayoutInflater();
+
+            View dialogView = inflater.inflate(R.layout.imagematch_dialog, null);
+            builder.setView(dialogView);
+
+            dd_Img = dialogView.findViewById(R.id.dd_Img);
+            officer_Name = dialogView.findViewById(R.id.officer_Name);
+            officer_Cadre = dialogView.findViewById(R.id.officer_cadre);
+            officer_PS = dialogView.findViewById(R.id.officer_PS);
+
+            officer_Name.setText(MainActivity.pidName + "(" + MainActivity.cadre_name + ")");
+            officer_Cadre.setText(MainActivity.cadre_name);
+            officer_PS.setText(MainActivity.psName);
+            dd_Img.setRotation(0);
+            dd_Img.setImageBitmap(imgMatchBitmap);
+            dd_Img.setRotation((float) 90.0);
+            listDDImgmatch = dialogView.findViewById(R.id.listDDImgmatch);
+            ImageMatchAdapter imageMatchAdapter = new ImageMatchAdapter(GenerateDrunkDriveCase.this, (ArrayList<Telangana>) telanganaList);
+            listDDImgmatch.setAdapter(imageMatchAdapter);
+            builder.show();
+            listDDImgmatch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String imgLink = telanganaList.get(position).getLink();
+                    Log.d("imgLink",""+imgLink);
+                    imgComparisionDialog(imgLink);
+                }
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+            showToast("Please check the Network And try Again! ");
+        }
+    }
+
+    private void imgComparisionDialog(final String imgLink){
+        try {
+            final AlertDialog builder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT).create();
+            LayoutInflater inflater = this.getLayoutInflater();
+            View dView = inflater.inflate(R.layout.imagecomparision_dialog, null);
+            builder.setView(dView);
+            imgFromCapture = dView.findViewById(R.id.imgFromCapture);
+            imgFromLink = dView.findViewById(R.id.imgFromLink);
+            btn_ImgMatchCancel = dView.findViewById(R.id.btn_ImgMatchCancel);
+            btn_ImgMatchOk = dView.findViewById(R.id.btn_ImgMatchOk);
+            imgFromCapture.setRotation(0);
+            imgFromCapture.setImageBitmap(imgMatchBitmap);
+            Glide.with(this).load(imgLink).into(imgFromLink);
+            builder.show();
+            btn_ImgMatchCancel.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    builder.dismiss();
+                }
+            });
+
+            btn_ImgMatchOk.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    builder.dismiss();
+                }
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+            showToast("Please check the Network And try Again! ");
+        }
+
+
+    }
+
+    private String getPath(Uri contentUri) {
+        String[] proj = {MediaStore.Images.Media.DATA};
+        CursorLoader loader = new CursorLoader(getApplicationContext(), contentUri, proj, null, null, null);
+        Cursor cursor = loader.loadInBackground();
+        int column_index = Objects.requireNonNull(cursor).getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        String result = cursor.getString(column_index);
+        cursor.close();
+        return result;
     }
 
     public static Bitmap decodeSampledBitmapFromFile(String path, int reqWidth, int reqHeight) { // BEST
@@ -2209,7 +2400,6 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
     }
 
-
     protected boolean validateMobileNo(String mobileNo) {
         boolean flg = false;
         try {
@@ -2237,11 +2427,11 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
             // String actual_image_name = "";
             String replacing_image_name = "";
 
-			/* WHICH IS GETTING FROM MOBILE AS IMG_09_123 */
+            /* WHICH IS GETTING FROM MOBILE AS IMG_09_123 */
             // actual_image_name = (image_ToBe_renamed.substring(0,
             // image_ToBe_renamed.length()));
 
-			/* GETTING ONLY IMAGE NAME FROM SERVICE AFTER SPLITTING */
+            /* GETTING ONLY IMAGE NAME FROM SERVICE AFTER SPLITTING */
             replacing_image_name = ServiceHelper.final_response_master[18].toString().trim().substring(0,
                     ServiceHelper.final_response_master[18].toString().trim().length());
 
@@ -2321,7 +2511,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                 if (!Drunk_Drive.picturePath.equals("")) {
                     Drunk_Drive.picturePath = "";
                 }
-				/* TO LOGOUT THE FTP */
+                /* TO LOGOUT THE FTP */
                 try {
                     client.logout();
                     client.disconnect(true);
@@ -2351,7 +2541,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
             // Transfer aborted
             removeDialog(PROGRESS_DIALOG);
 
-			/* TO LOGOUT THE FTP */
+            /* TO LOGOUT THE FTP */
             try {
                 client.logout();
                 client.disconnect(true);
@@ -2376,7 +2566,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
             // Transfer failed
             removeDialog(PROGRESS_DIALOG);
-			/* TO LOGOUT THE FTP */
+            /* TO LOGOUT THE FTP */
             try {
                 client.logout();
                 client.disconnect(true);
@@ -2461,6 +2651,16 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                 this.canGetLocation = true;
                 // First get location from Network Provider
                 if (isNetworkEnabled) {
+                    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        // TODO: Consider calling
+                        //    ActivityCompat#requestPermissions
+                        // here to request the missing permissions, and then overriding
+                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                        //                                          int[] grantResults)
+                        // to handle the case where the user grants the permission. See the documentation
+                        // for ActivityCompat#requestPermissions for more details.
+                        return;
+                    }
                     m_locationlistner.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, MIN_TIME_BW_UPDATES,
                             MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
                     Log.d("Network", "Network");
@@ -2478,6 +2678,16 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                 // if GPS Enabled get lat/long using GPS Services
                 if (isGPSEnabled) {
                     if (location == null) {
+                        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                            // TODO: Consider calling
+                            //    ActivityCompat#requestPermissions
+                            // here to request the missing permissions, and then overriding
+                            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                            //                                          int[] grantResults)
+                            // to handle the case where the user grants the permission. See the documentation
+                            // for ActivityCompat#requestPermissions for more details.
+                            return;
+                        }
                         m_locationlistner.requestLocationUpdates(LocationManager.GPS_PROVIDER, MIN_TIME_BW_UPDATES,
                                 MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
                         Log.d("GPS Enabled", "GPS Enabled");
@@ -2611,13 +2821,13 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     if (isChecked) {
                         chck_detainedItems_licence.setChecked(true);
 
-					/*
-					 * if
-					 * (!sb_detaneditems_send.toString().contains("03:LICENCE@")
-					 * ) { sb_detaneditems_send.append("03:LICENCE@");
-					 * 
-					 * }
-					 */
+                        /*
+                         * if
+                         * (!sb_detaneditems_send.toString().contains("03:LICENCE@")
+                         * ) { sb_detaneditems_send.append("03:LICENCE@");
+                         *
+                         * }
+                         */
 
                     } else {
 
@@ -2659,7 +2869,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 			/*	selected_finedBy_sub = radiogrp_finedBy.getCheckedRadioButtonId();
 				radio_finedBy_subcat = (RadioButton) findViewById(selected_finedBy_sub);*/
 
-				/* GENDER VALUES */
+            /* GENDER VALUES */
             val_gender = radiogrp_gender.getCheckedRadioButtonId();
             radio_male_female = (RadioButton) findViewById(val_gender);
             Log.i("GENDER", "" + radio_male_female.getText().toString().trim());
@@ -2673,7 +2883,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                 driver_fname = "" + et_driver_fname.getText().toString();
             }
 
-				/* CHEKING ID PROOF */
+            /* CHEKING ID PROOF */
             if (btn_idproof.getText().toString().trim()
                     .equals("" + getResources().getString(R.string.select_idproof))) {
                 aadhar = "";
@@ -2714,7 +2924,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 					finedby_val_send = "1";
 				}*/
 
-				/* GENDER DETAILS TO SEND */
+            /* GENDER DETAILS TO SEND */
 
             if (radio_male_female.getText().toString().trim()
                     .equals("" + getResources().getString(R.string.gen_male))) {
@@ -2727,13 +2937,13 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                 gender_send = "3";
             }
 
-				/* SCECOND SCREEN VALUES */
+            /* SCECOND SCREEN VALUES */
             sb_detaneditems_send = new StringBuilder();
 
-				/*
-				 * DISABLE CHECKED DETAINED ITEMS AND ONLY SENDING VECHILE
-				 * DETAILS START
-				 */
+            /*
+             * DISABLE CHECKED DETAINED ITEMS AND ONLY SENDING VECHILE
+             * DETAILS START
+             */
             // sb_detaneditems_send.append("02:VEHICLE@").append("03:LICENCE@");
 
             sb_detaneditems_send.delete(0, sb_detaneditems_send.length());
@@ -2753,20 +2963,20 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                 sb_detaneditems_send.append("04:PERMIT@");
             }
 
-				/* THIRD SCREEN VALUES */
+            /* THIRD SCREEN VALUES */
             ps_name = preferences.getString("psname_name", "psname");
             point_name = preferences.getString("point_name", "pointname");
             exact_location = preferences.getString("ps_res_name_code", "location");
             breath_anlysr = preferences.getLong("analyser_id", 0);
 
-				/* FOR CHECKING THE PREF VALUES TO PUSH */
+            /* FOR CHECKING THE PREF VALUES TO PUSH */
             if (exact_location.equals("location")) {
                 exct_lctn_send = "";
             } else {
                 exct_lctn_send = preferences.getString("ps_res_name_code", "location");
             }
 
-				/* FOR CHECKING THE PREF VALUES TO PUSH */
+            /* FOR CHECKING THE PREF VALUES TO PUSH */
             if (breath_anlysr == 0) {
                 anlyser_id_send = "";
             } else {
