@@ -1734,6 +1734,7 @@ public class ServiceHelper {
         }
     }
 
+
     public static void mobileSpotChallanPayingNew1_5_2(String selectedPendingChallans, String regnCd, String vehicleNo,
                                                        String regnNo, String gtwyCd, String dOfPay, String pmtTime, String unitCode, String unitName,
                                                        String psCode, String psName, String bookedPsCd, String bookedPsName, String pointCode, String pointName,
