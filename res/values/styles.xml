@@ -181,7 +181,7 @@
 
     <style name="style_ImgHdr_Txt" style="@style/Widget.AppCompat.TextView">
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">#000000</item>
+        <item name="android:textColor">#040666</item>
         <item name="android:textSize">18sp</item>
         <item name="android:padding">2dp</item>
         <item name="android:gravity">center_vertical</item>
@@ -192,8 +192,7 @@
 
 
     <style name="style_ImgData_Txt" style="@style/Widget.AppCompat.TextView">
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">#000000</item>
+        <item name="android:textColor">#4E10BB</item>
         <item name="android:textSize">18sp</item>
         <item name="android:padding">2dp</item>
         <item name="android:gravity">center_vertical</item>

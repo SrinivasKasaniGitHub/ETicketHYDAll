@@ -1,6 +1,12 @@
 package com.mtpv.mobilee_ticket_services;
 
+import android.content.Context;
+import android.os.Build;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.widget.EditText;
+
+import static android.support.v4.content.ContextCompat.getSystemService;
 
 public class Utils {
 
@@ -166,5 +172,7 @@ public class Utils {
 		// TODO Auto-generated method stub
 		et.setError("" + msg);
 	}
+
+
 
 }

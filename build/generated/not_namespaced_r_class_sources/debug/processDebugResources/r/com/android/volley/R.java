@@ -26,12 +26,12 @@ public final class R {
     public static final class string {
         private string() {}
 
-        public static final int auth_failed = 0x7f0e0045;
-        public static final int generic_error = 0x7f0e00a7;
-        public static final int generic_server_down = 0x7f0e00a8;
-        public static final int generic_server_timeout = 0x7f0e00a9;
-        public static final int no_internet = 0x7f0e00d1;
-        public static final int no_network_connection = 0x7f0e00d2;
-        public static final int parsing_failed = 0x7f0e00e6;
+        public static final int auth_failed = 0x7f0f0045;
+        public static final int generic_error = 0x7f0f00a7;
+        public static final int generic_server_down = 0x7f0f00a8;
+        public static final int generic_server_timeout = 0x7f0f00a9;
+        public static final int no_internet = 0x7f0f00d1;
+        public static final int no_network_connection = 0x7f0f00d2;
+        public static final int parsing_failed = 0x7f0f00e6;
     }
 }

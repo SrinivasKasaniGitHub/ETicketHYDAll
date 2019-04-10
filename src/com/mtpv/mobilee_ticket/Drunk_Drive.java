@@ -90,6 +90,7 @@ import java.util.Random;
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 @SuppressLint("DefaultLocale")
 public class Drunk_Drive extends Activity implements OnClickListener, LocationListener {
+
     @SuppressWarnings("unused")
     private String HALLOWEEN_ORANGE = "#FF7F27";
 

@@ -27,10 +27,10 @@ public class ServiceHelper {
             aadhaarVehicle_resp, UpdateAadhaar_resp, aadhaarDetailsCheck_resp, changePswd_otp, changePSWDconfirm,
             version_response, offender_remarks,
             rta_data, license_data, aadhar_data, result = "", output = "", rc_send, dl_send, adhr_send,
-            versionData,getOfficerLimit,spot_finalPrintNDevice;
+            versionData, getOfficerLimit, spot_finalPrintNDevice;
 
     public static Map<String, String> viodetMap = null;
-    public static String  rtaapproovedresponse,validregnoresponse,insertDetainItemsresponse,remarksresult,otpStatusnTime,noncontactresponse;
+    public static String rtaapproovedresponse, validregnoresponse, insertDetainItemsresponse, remarksresult, otpStatusnTime, noncontactresponse;
 
 
     static String WHEELER_MEHOD_NAME = "getWheelerDetails", GET_PS_NAMES_MEHOD_NAME = "getPsNames", GET_POINTNAME_BY_PSNAME_MEHOD_NAME = "getPointNamesByPsName";
@@ -52,7 +52,7 @@ public class ServiceHelper {
     public static String GET_TERMINAL_DETAILS = "getTerminalDetails", GET_CHALLAN_DETAILS_FOR_AADHAAR = "getChallanDetailsForAadharUpdate";
     public static String GET_AADHAAR_UPDATE = "aadharUpdateForChallanGeneration", OCCUPATIONS = "getOccupations", QUALIFICATIONS = "getQualifications";
     public static String GET_CHANGE_PSWD_OTP = "aadharUpdateForChallanGeneration", GET_AADHAAR_TICKET = "checkAadharTicket";
-    public static String get_OffenceDetailsbyWheelerChallanType="getOffenceDetailsbyWheelerChallanType";
+    public static String get_OffenceDetailsbyWheelerChallanType = "getOffenceDetailsbyWheelerChallanType";
 
     public static String[] login_details_arr, whlr_details_master, psNames_master, violation_points_masters, violation_points_masters_split,
             occupationlist_master, PointNamesBypsNames_master, occupation_master, qualification_master, bar_master, vchle_cat_master,
@@ -85,9 +85,9 @@ public class ServiceHelper {
             Object result = envelope.getResponse();
 
             try {
-               // result="U2FsdGVkX194WNCETuiOfxswmwgvecv9ok4AlMFJ+EMEhJuhu0dxEPoer6z56s383MXZF9cT4G7EPxk3TOsuLDjL1/eaBD++9mxxABWqu8v4U21qpKjHMsY4DIvuOqb8+gcm/4iXUZM=";
+                // result="U2FsdGVkX194WNCETuiOfxswmwgvecv9ok4AlMFJ+EMEhJuhu0dxEPoer6z56s383MXZF9cT4G7EPxk3TOsuLDjL1/eaBD++9mxxABWqu8v4U21qpKjHMsY4DIvuOqb8+gcm/4iXUZM=";
                 Opdata_Chalana = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
-                Log.d("PrintDecodedData",""+Opdata_Chalana);
+                Log.d("PrintDecodedData", "" + Opdata_Chalana);
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -112,7 +112,7 @@ public class ServiceHelper {
         try {
             SoapObject request = new SoapObject(NAMESPACE, "appVersion");
 
-            request.addProperty("appVersion",appVersion);
+            request.addProperty("appVersion", appVersion);
 
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.dotNet = true;
@@ -124,27 +124,27 @@ public class ServiceHelper {
                 versionData = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
             } catch (Exception e) {
                 // TODO Auto-generated catch block
-                versionData="0";
+                versionData = "0";
                 e.printStackTrace();
             }
 
 
         } catch (SoapFault fault) {
-            versionData="0";
+            versionData = "0";
             fault.printStackTrace();
         } catch (Exception E) {
             E.printStackTrace();
-            versionData="0";
+            versionData = "0";
         }
         return versionData;
     }
 
-    public static String exceptionLimit(String pidCd,String OffenceDt) {
+    public static String exceptionLimit(String pidCd, String OffenceDt) {
         try {
             SoapObject request = new SoapObject(NAMESPACE, "getIDProofsExemptionLimit");
 
-            request.addProperty("pidCd",pidCd);
-            request.addProperty("OffenceDt",OffenceDt);
+            request.addProperty("pidCd", pidCd);
+            request.addProperty("OffenceDt", OffenceDt);
 
 
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
@@ -157,17 +157,17 @@ public class ServiceHelper {
                 getOfficerLimit = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
             } catch (Exception e) {
                 // TODO Auto-generated catch block
-                getOfficerLimit="0";
+                getOfficerLimit = "0";
                 e.printStackTrace();
             }
 
 
         } catch (SoapFault fault) {
-            getOfficerLimit="0";
+            getOfficerLimit = "0";
             fault.printStackTrace();
         } catch (Exception E) {
             E.printStackTrace();
-            getOfficerLimit="0";
+            getOfficerLimit = "0";
         }
         return getOfficerLimit;
     }
@@ -238,7 +238,7 @@ public class ServiceHelper {
             envelope.dotNet = true;
             envelope.setOutputSoapObject(request);
             HttpTransportSE androidHttpTransport = new HttpTransportSE(MainActivity.URL);
-            androidHttpTransport.call(NAMESPACE+"confirmLoginOTP", envelope);
+            androidHttpTransport.call(NAMESPACE + "confirmLoginOTP", envelope);
             Object result = envelope.getResponse();
             Opdata_Chalana = "";
             try {
@@ -268,7 +268,7 @@ public class ServiceHelper {
                 if (result != null) {
                     Opdata_Chalana = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
 
-                    if (Opdata_Chalana!=null && Opdata_Chalana!="0") {
+                    if (Opdata_Chalana != null && Opdata_Chalana != "0") {
 
                         whlr_details_master = new String[0];
                         whlr_details_master = Opdata_Chalana.split("!");
@@ -279,15 +279,13 @@ public class ServiceHelper {
                         whlr_details_master = new String[0];
 
                     }
-                }
-                else
-                {
+                } else {
                     Opdata_Chalana = "0";
                     whlr_details_master = new String[0];
                 }
 
 
-            } catch(Exception e){
+            } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
                 Opdata_Chalana = "0";
@@ -323,31 +321,30 @@ public class ServiceHelper {
                     getViolationPoint_resp = new com.mtpv.mobilee_ticket_services.PidSecEncrypt()
                             .decrypt(result.toString());
 
-                    if(getViolationPoint_resp!=null && getViolationPoint_resp!="0" && getViolationPoint_resp.length()>0) {
+                    if (getViolationPoint_resp != null && getViolationPoint_resp != "0" && getViolationPoint_resp.length() > 0) {
 
                         violation_points_masters = new String[0];
                         violation_points_masters = getViolationPoint_resp.split("\\@");
                     }
 
-                }else
-                {
-                    getViolationPoint_resp="0";
+                } else {
+                    getViolationPoint_resp = "0";
                     violation_points_masters = new String[0];
                 }
             } catch (Exception e) {
                 // TODO Auto-generated catch block
-                getViolationPoint_resp="0";
+                getViolationPoint_resp = "0";
                 violation_points_masters = new String[0];
                 e.printStackTrace();
             }
 
         } catch (SoapFault fault) {
-            getViolationPoint_resp="0";
+            getViolationPoint_resp = "0";
             violation_points_masters = new String[0];
         } catch (Exception e) {
             // TODO: handle exception
             bar_master = new String[0];
-            getViolationPoint_resp="0";
+            getViolationPoint_resp = "0";
             violation_points_masters = new String[0];
         }
     }
@@ -366,33 +363,33 @@ public class ServiceHelper {
 
             try {
 
-                if(result!=null) {
+                if (result != null) {
 
                     Opdata_Chalana = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
 
-                    if(Opdata_Chalana!=null && Opdata_Chalana!="0") {
+                    if (Opdata_Chalana != null && Opdata_Chalana != "0") {
 
                         psNames_master = new String[0];
                         psNames_master = Opdata_Chalana.split("!");
                     }
 
-                }else {
-                    Opdata_Chalana="0";
+                } else {
+                    Opdata_Chalana = "0";
                     psNames_master = new String[0];
                 }
             } catch (Exception e) {
                 // TODO Auto-generated catch block
-                Opdata_Chalana="0";
+                Opdata_Chalana = "0";
                 psNames_master = new String[0];
                 e.printStackTrace();
             }
 
         } catch (SoapFault fault) {
-            Opdata_Chalana="0";
+            Opdata_Chalana = "0";
             psNames_master = new String[0];
         } catch (Exception e) {
             // TODO: handle exception
-            Opdata_Chalana="0";
+            Opdata_Chalana = "0";
             psNames_master = new String[0];
         }
     }
@@ -517,33 +514,32 @@ public class ServiceHelper {
             httpTransportSE.call(SOAP_ACTION, envelope);
             Object result = envelope.getResponse();
             try {
-                if(result!=null) {
+                if (result != null) {
                     Opdata_Chalana = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
 
-                    if(Opdata_Chalana!=null && Opdata_Chalana!="0") {
+                    if (Opdata_Chalana != null && Opdata_Chalana != "0") {
 
                         ServiceHelper.bar_master = new String[0];
                         ServiceHelper.bar_master = Opdata_Chalana.split("!");
                     }
 
-                }else
-                {
-                    Opdata_Chalana="0";
+                } else {
+                    Opdata_Chalana = "0";
                     ServiceHelper.bar_master = new String[0];
                 }
             } catch (Exception e) {
                 // TODO Auto-generated catch block
-                Opdata_Chalana="0";
+                Opdata_Chalana = "0";
                 ServiceHelper.bar_master = new String[0];
                 e.printStackTrace();
             }
 
         } catch (SoapFault fault) {
-            Opdata_Chalana="0";
+            Opdata_Chalana = "0";
             ServiceHelper.bar_master = new String[0];
         } catch (Exception e) {
             // TODO: handle exception
-            Opdata_Chalana="0";
+            Opdata_Chalana = "0";
             ServiceHelper.bar_master = new String[0];
         }
     }
@@ -559,7 +555,7 @@ public class ServiceHelper {
             Object result = envelope.getResponse();
             try {
 
-                if(result!=null) {
+                if (result != null) {
 
                     Opdata_Chalana = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
 
@@ -569,26 +565,25 @@ public class ServiceHelper {
                         occupation_master = Opdata_Chalana.split("!");
 
                     }
-                }else
-                {
-                    Opdata_Chalana="0";
+                } else {
+                    Opdata_Chalana = "0";
                     occupation_master = new String[0];
                 }
 
             } catch (Exception e) {
                 // TODO Auto-generated catch block
-                Opdata_Chalana="0";
+                Opdata_Chalana = "0";
                 occupation_master = new String[0];
                 e.printStackTrace();
             }
 
 
         } catch (SoapFault fault) {
-            Opdata_Chalana="0";
+            Opdata_Chalana = "0";
             occupation_master = new String[0];
         } catch (Exception e) {
             // TODO: handle exception
-            Opdata_Chalana="0";
+            Opdata_Chalana = "0";
             occupation_master = new String[0];
             qualification_master = new String[0];
         }
@@ -608,33 +603,31 @@ public class ServiceHelper {
 
             try {
 
-                if(result!=null)
-                {
+                if (result != null) {
                     Opdata_Chalana = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
 
-                    if(Opdata_Chalana!=null && Opdata_Chalana!="0") {
+                    if (Opdata_Chalana != null && Opdata_Chalana != "0") {
                         qualification_master = new String[0];
                         qualification_master = Opdata_Chalana.split("!");
                     }
-                }else
-                {
-                    Opdata_Chalana="0";
+                } else {
+                    Opdata_Chalana = "0";
                     qualification_master = new String[0];
                 }
 
             } catch (Exception e) {
                 // TODO Auto-generated catch block
-                Opdata_Chalana="0";
+                Opdata_Chalana = "0";
                 qualification_master = new String[0];
                 e.printStackTrace();
             }
 
         } catch (SoapFault fault) {
-            Opdata_Chalana="0";
+            Opdata_Chalana = "0";
             qualification_master = new String[0];
         } catch (Exception e) {
             // TODO: handle exception
-            Opdata_Chalana="0";
+            Opdata_Chalana = "0";
             qualification_master = new String[0];
         }
     }
@@ -733,7 +726,7 @@ public class ServiceHelper {
                                              String vehMain_Category, String vehSub_Category, String user_address, String user_city, String user_unitCd,
                                              String user_unitName, String cadre_Cd, String cadre_only, String imgEncoded_String, String device_imei,
                                              String gps_Lattitude, String gps_Longitude, String mob_macId, String sim_Id, String breath_AnalyserId,
-                                             String lcnce_status)  {
+                                             String lcnce_status) {
 
         Utils utils = new Utils();
 
@@ -925,7 +918,7 @@ public class ServiceHelper {
             httpTransportSE.call(SOAP_ACTION, envelope);
             Object result = envelope.getResponse();
             try {
-                if(result!=null) {
+                if (result != null) {
                     Opdata_Chalana = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
 
                     if (Opdata_Chalana.toString().trim().equals("0")) {
@@ -948,29 +941,27 @@ public class ServiceHelper {
                         }
                     }
 
-                }else
-                {
-                    Opdata_Chalana="0";
+                } else {
+                    Opdata_Chalana = "0";
                     final_reponse_split = new String[0];
                     final_response_master = new String[0];
                 }
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
-                Opdata_Chalana="0";
+                Opdata_Chalana = "0";
                 final_reponse_split = new String[0];
                 final_response_master = new String[0];
             }
 
 
-
         } catch (SoapFault fault) {
-            Opdata_Chalana="0";
+            Opdata_Chalana = "0";
             final_reponse_split = new String[0];
             final_response_master = new String[0];
         } catch (Exception e) {
             // TODO: handle exception
-            Opdata_Chalana="0";
+            Opdata_Chalana = "0";
             //   if (final_reponse_split.length == 0) {
             final_reponse_split = new String[0];
             // }
@@ -996,19 +987,19 @@ public class ServiceHelper {
             offender_remarks = "";
 
             try {
-                if(result!=null) {
+                if (result != null) {
                     offender_remarks = result.toString();
                     offender_remarks = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(offender_remarks);
-                }else {
-                    offender_remarks="0";
+                } else {
+                    offender_remarks = "0";
                 }
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
-                offender_remarks="0";
+                offender_remarks = "0";
             }
         } catch (SoapFault fault) {
-            offender_remarks="0";
+            offender_remarks = "0";
         } catch (Exception e) {
             // TODO: handle exception
             offender_remarks = "0";
@@ -1033,25 +1024,24 @@ public class ServiceHelper {
             offender_remarks = "";
 
             try {
-                if(result!=null) {
+                if (result != null) {
                     offender_remarks = result.toString();
                     // offender_remarks = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(offender_remarks);
-                }else {
-                    offender_remarks="0";
+                } else {
+                    offender_remarks = "0";
                 }
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
-                offender_remarks="0";
+                offender_remarks = "0";
             }
         } catch (SoapFault fault) {
-            offender_remarks="0";
+            offender_remarks = "0";
         } catch (Exception e) {
             // TODO: handle exception
             offender_remarks = "0";
         }
     }
-
 
     public static void getRTADetails(String vhle_num) {
         try {
@@ -1065,11 +1055,11 @@ public class ServiceHelper {
             Object result = envelope.getResponse();
             try {
 
-                if(result!=null) {
+                if (result != null) {
                     rta_data = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
                     rc_send = "1|" + rta_data;
 
-                    if ( rta_data!=null && !rta_data.equalsIgnoreCase("0")) {
+                    if (rta_data != null && !rta_data.equalsIgnoreCase("0")) {
                         try {
                             if (Dashboard.rta_details_request_from.equals("RTACLASS")) {
                                 Drunk_Drive.rta_details_master = new String[0];
@@ -1095,8 +1085,8 @@ public class ServiceHelper {
                             }*/
                         }
                     }
-                }else {
-                    rta_data="0";
+                } else {
+                    rta_data = "0";
                     if (Dashboard.rta_details_request_from.equals("RTACLASS")) {
                         Drunk_Drive.rta_details_master = new String[0];
                     } else if (Dashboard.rta_details_request_from.equals("SPOT")) {
@@ -1109,7 +1099,7 @@ public class ServiceHelper {
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
-                rta_data="0";
+                rta_data = "0";
                 if (Dashboard.rta_details_request_from.equals("RTACLASS")) {
                     Drunk_Drive.rta_details_master = new String[0];
                 } else if (Dashboard.rta_details_request_from.equals("SPOT")) {
@@ -1122,7 +1112,7 @@ public class ServiceHelper {
 
         } catch (SoapFault fault) {
 
-            rta_data="0";
+            rta_data = "0";
             if (Dashboard.rta_details_request_from.equals("RTACLASS")) {
                 Drunk_Drive.rta_details_master = new String[0];
             } else if (Dashboard.rta_details_request_from.equals("SPOT")) {
@@ -1134,7 +1124,7 @@ public class ServiceHelper {
         } catch (Exception e) {
             // TODO: handle exception
             // Opdata_Chalana = "0";
-            rta_data="0";
+            rta_data = "0";
             if (Dashboard.rta_details_request_from.equals("RTACLASS")) {
                 Drunk_Drive.rta_details_master = new String[0];
             } else if (Dashboard.rta_details_request_from.equals("SPOT")) {
@@ -1178,7 +1168,7 @@ public class ServiceHelper {
                 Opdata_Chalana = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
             } catch (Exception e) {
                 // TODO Auto-generated catch block
-                Opdata_Chalana="0";
+                Opdata_Chalana = "0";
 
                 e.printStackTrace();
             }
@@ -1216,7 +1206,7 @@ public class ServiceHelper {
             httpTransportSE.call(SOAP_ACTION, envelope);
             Object result = envelope.getResponse();
             try {
-                if(result!=null) {
+                if (result != null) {
                     license_data = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
                     if (license_data != null || license_data.trim().length() > 4) {
                         dl_send = lcnce_num + "|" + license_data;
@@ -1231,7 +1221,7 @@ public class ServiceHelper {
                             SpotChallan.licence_details_spot_master = new String[0];
                         }
                     }
-                }else {
+                } else {
                     license_data = "0";
                     if (Dashboard.licence_details_request_from.equals("RTACLASS")) {
                         Drunk_Drive.licene_details_master = new String[0];
@@ -1250,8 +1240,7 @@ public class ServiceHelper {
                 }
             }
 
-        }catch (SoapFault f)
-        {
+        } catch (SoapFault f) {
             f.printStackTrace();
 
             license_data = "0";
@@ -1272,10 +1261,10 @@ public class ServiceHelper {
         }
     }
 
-    public static void generateNonContactChallan(String regnCD,String vehicleNo,String wheelerCode,String rtaoName,String rtaAddr,String city,String mobileNo,
-                                                 String offenceDtTime,String pidCD,String pidName,String cadre_code,String cadre_name,String psCode,String psName,
-                                                 String unitCode,String unitName,String pointCD,String pointName, String vioCode,String vehRemak,
-                                                 String evidenceData,String imeiNo,String macID,String gpsLatti,String gpsLong) {
+    public static void generateNonContactChallan(String regnCD, String vehicleNo, String wheelerCode, String rtaoName, String rtaAddr, String city, String mobileNo,
+                                                 String offenceDtTime, String pidCD, String pidName, String cadre_code, String cadre_name, String psCode, String psName,
+                                                 String unitCode, String unitName, String pointCD, String pointName, String vioCode, String vehRemak,
+                                                 String evidenceData, String imeiNo, String macID, String gpsLatti, String gpsLong) {
         try {
             SoapObject request = new SoapObject(NAMESPACE, "eChallanMobile");
             request.addProperty("regnCD", "" + regnCD);
@@ -1315,16 +1304,16 @@ public class ServiceHelper {
             try {
                 //  points_resp = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
 
-                ServiceHelper.noncontactresponse="0";
+                ServiceHelper.noncontactresponse = "0";
                 noncontactresponse = result.toString();
             } catch (Exception e) {
                 // TODO Auto-generated catch block
-                ServiceHelper.noncontactresponse="0";
+                ServiceHelper.noncontactresponse = "0";
                 e.printStackTrace();
             }
         } catch (Exception e) {
             e.printStackTrace();
-            ServiceHelper.noncontactresponse="0";
+            ServiceHelper.noncontactresponse = "0";
         }
     }
 
@@ -1366,7 +1355,7 @@ public class ServiceHelper {
             System.out.println(" getviolations by wheeler response :" + result.toString());
             try {
 
-                if(result!=null) {
+                if (result != null) {
                     Opdata_Chalana = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
 
                     if (Opdata_Chalana != null && Opdata_Chalana.toString().trim().equals("0")) {
@@ -1389,7 +1378,7 @@ public class ServiceHelper {
                             violation_detailed_views = new String[0][0];
                         }
                     }
-                }else {
+                } else {
                     Opdata_Chalana = "0";
                     violation_details_master = new String[0];
                     violation_detailed_views = new String[0][0];
@@ -1414,74 +1403,12 @@ public class ServiceHelper {
     }
 
     //Challan Type
-   public static void getOffenceDetailsbyWheelerChallanTypeUnit(String wheelercode,String chllanType,String pidCode){
-       try {
-           SoapObject request = new SoapObject(NAMESPACE, "getOffenceDetailsbyWheelerChallanTypeUnit");
-           request.addProperty("wheelercode", wheelercode);
-           request.addProperty("challanType", chllanType);
-           request.addProperty("pidCode", pidCode);
-           SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
-           envelope.dotNet = true;
-           envelope.setOutputSoapObject(request);
-           HttpTransportSE httpTransportSE = new HttpTransportSE(MainActivity.URL);
-           httpTransportSE.call(SOAP_ACTION, envelope);
-           Object result = envelope.getResponse();
-           try {
-
-               if(result!=null) {
-                   Opdata_Chalana="";
-                   Opdata_Chalana = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
-
-                   if (Opdata_Chalana != null && Opdata_Chalana.toString().trim().equals("0")) {
-                       Opdata_Chalana = "0";
-                       violation_details_master = new String[0];
-                       violation_detailed_views = new String[0][0];
-                   } else if (Opdata_Chalana != null && !"0".equals(Opdata_Chalana.toString().trim())) {
-
-                       violation_details_master = new String[0];
-                       violation_detailed_views = new String[0][0];
-                       violation_details_master = (Opdata_Chalana.substring(1, Opdata_Chalana.length())).split("!");
-
-                       if (violation_details_master != null && violation_details_master.length > 0) {
-
-                           violation_detailed_views = new String[violation_details_master.length][6];
-                           for (int i = 0; i < violation_details_master.length; i++) {
-                               violation_detailed_views[i] = violation_details_master[i].toString().trim().split("@");
-                           }
-                       } else {
-                           violation_detailed_views = new String[0][0];
-                       }
-                   }
-               }else {
-                   Opdata_Chalana = "0";
-                   violation_details_master = new String[0];
-                   violation_detailed_views = new String[0][0];
-               }
-           } catch (Exception e) {
-               // TODO Auto-generated catch block
-               e.printStackTrace();
-               Opdata_Chalana = "0";
-               violation_details_master = new String[0];
-               violation_detailed_views = new String[0][0];
-           }
-
-       } catch (SoapFault fault) {
-           Opdata_Chalana = "0";
-           violation_details_master = new String[0];
-           violation_detailed_views = new String[0][0];
-       } catch (Exception e) {
-           Opdata_Chalana = "0";
-           violation_details_master = new String[0];
-           violation_detailed_views = new String[0][0];
-       }
-    }
-
-    public static void getOffenceDetailsbyWheelerChallanType(String wheelercode,String chllanType) {
-        //String challanType
+    public static void getOffenceDetailsbyWheelerChallanTypeUnit(String wheelercode, String chllanType, String pidCode) {
         try {
-            SoapObject request = new SoapObject(NAMESPACE, get_OffenceDetailsbyWheelerChallanType);
+            SoapObject request = new SoapObject(NAMESPACE, "getOffenceDetailsbyWheelerChallanTypeUnit");
             request.addProperty("wheelercode", wheelercode);
             request.addProperty("challanType", chllanType);
+            request.addProperty("pidCode", pidCode);
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.dotNet = true;
             envelope.setOutputSoapObject(request);
@@ -1490,6 +1417,68 @@ public class ServiceHelper {
             Object result = envelope.getResponse();
             try {
 
+                if (result != null) {
+                    Opdata_Chalana = "";
+                    Opdata_Chalana = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
+
+                    if (Opdata_Chalana != null && Opdata_Chalana.toString().trim().equals("0")) {
+                        Opdata_Chalana = "0";
+                        violation_details_master = new String[0];
+                        violation_detailed_views = new String[0][0];
+                    } else if (Opdata_Chalana != null && !"0".equals(Opdata_Chalana.toString().trim())) {
+
+                        violation_details_master = new String[0];
+                        violation_detailed_views = new String[0][0];
+                        violation_details_master = (Opdata_Chalana.substring(1, Opdata_Chalana.length())).split("!");
+
+                        if (violation_details_master != null && violation_details_master.length > 0) {
+
+                            violation_detailed_views = new String[violation_details_master.length][6];
+                            for (int i = 0; i < violation_details_master.length; i++) {
+                                violation_detailed_views[i] = violation_details_master[i].toString().trim().split("@");
+                            }
+                        } else {
+                            violation_detailed_views = new String[0][0];
+                        }
+                    }
+                } else {
+                    Opdata_Chalana = "0";
+                    violation_details_master = new String[0];
+                    violation_detailed_views = new String[0][0];
+                }
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                Opdata_Chalana = "0";
+                violation_details_master = new String[0];
+                violation_detailed_views = new String[0][0];
+            }
+
+        } catch (SoapFault fault) {
+            Opdata_Chalana = "0";
+            violation_details_master = new String[0];
+            violation_detailed_views = new String[0][0];
+        } catch (Exception e) {
+            Opdata_Chalana = "0";
+            violation_details_master = new String[0];
+            violation_detailed_views = new String[0][0];
+        }
+    }
+
+    public static void getOffenceDetailsbyWheelerChallanTypeUnitRemark(String wheelercode,String chllanType,String pidCode,String remark){
+        try {
+            SoapObject request = new SoapObject(NAMESPACE, "getOffenceDetailsbyWheelerChallanTypeUnitRemark");
+            request.addProperty("wheelercode", wheelercode);
+            request.addProperty("challanType", chllanType);
+            request.addProperty("pidCode", pidCode);
+            request.addProperty("remark", remark);
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+            envelope.dotNet = true;
+            envelope.setOutputSoapObject(request);
+            HttpTransportSE httpTransportSE = new HttpTransportSE(MainActivity.URL);
+            httpTransportSE.call(SOAP_ACTION, envelope);
+            Object result = envelope.getResponse();
+            try {
                 if(result!=null) {
                     Opdata_Chalana="";
                     Opdata_Chalana = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
@@ -1538,6 +1527,68 @@ public class ServiceHelper {
         }
     }
 
+    public static void getOffenceDetailsbyWheelerChallanType(String wheelercode, String chllanType) {
+        //String challanType
+        try {
+            SoapObject request = new SoapObject(NAMESPACE, get_OffenceDetailsbyWheelerChallanType);
+            request.addProperty("wheelercode", wheelercode);
+            request.addProperty("challanType", chllanType);
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+            envelope.dotNet = true;
+            envelope.setOutputSoapObject(request);
+            HttpTransportSE httpTransportSE = new HttpTransportSE(MainActivity.URL);
+            httpTransportSE.call(SOAP_ACTION, envelope);
+            Object result = envelope.getResponse();
+            try {
+
+                if (result != null) {
+                    Opdata_Chalana = "";
+                    Opdata_Chalana = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
+
+                    if (Opdata_Chalana != null && Opdata_Chalana.toString().trim().equals("0")) {
+                        Opdata_Chalana = "0";
+                        violation_details_master = new String[0];
+                        violation_detailed_views = new String[0][0];
+                    } else if (Opdata_Chalana != null && !"0".equals(Opdata_Chalana.toString().trim())) {
+
+                        violation_details_master = new String[0];
+                        violation_detailed_views = new String[0][0];
+                        violation_details_master = (Opdata_Chalana.substring(1, Opdata_Chalana.length())).split("!");
+
+                        if (violation_details_master != null && violation_details_master.length > 0) {
+
+                            violation_detailed_views = new String[violation_details_master.length][6];
+                            for (int i = 0; i < violation_details_master.length; i++) {
+                                violation_detailed_views[i] = violation_details_master[i].toString().trim().split("@");
+                            }
+                        } else {
+                            violation_detailed_views = new String[0][0];
+                        }
+                    }
+                } else {
+                    Opdata_Chalana = "0";
+                    violation_details_master = new String[0];
+                    violation_detailed_views = new String[0][0];
+                }
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                Opdata_Chalana = "0";
+                violation_details_master = new String[0];
+                violation_detailed_views = new String[0][0];
+            }
+
+        } catch (SoapFault fault) {
+            Opdata_Chalana = "0";
+            violation_details_master = new String[0];
+            violation_detailed_views = new String[0][0];
+        } catch (Exception e) {
+            Opdata_Chalana = "0";
+            violation_details_master = new String[0];
+            violation_detailed_views = new String[0][0];
+        }
+    }
+
     /* TO GET DETAINED ITEMS LIST */
     public static void getDetainedItemsList(String v_num, String unt_code) {
         try {
@@ -1553,11 +1604,11 @@ public class ServiceHelper {
             httpTransportSE.call(SOAP_ACTION, envelope);
             Object result = envelope.getResponse();
             try {
-                if(result!=null) {
+                if (result != null) {
 
                     Opdata_Chalana = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
 
-                    if(Opdata_Chalana!=null) {
+                    if (Opdata_Chalana != null) {
 
                         detained_items_list_master = new String[0];
                         detained_items_list_details = new String[0][0];
@@ -1565,7 +1616,7 @@ public class ServiceHelper {
                         if (Opdata_Chalana != null && Opdata_Chalana.trim().length() > 3) {
                             detained_items_list_master = Opdata_Chalana.split("@");
 
-                            if (detained_items_list_master!=null && detained_items_list_master.length > 0) {
+                            if (detained_items_list_master != null && detained_items_list_master.length > 0) {
                                 detained_items_list_details = new String[detained_items_list_master.length][3];
 
                                 for (int i = 0; i < detained_items_list_master.length; i++) {
@@ -1613,12 +1664,11 @@ public class ServiceHelper {
             Object result = envelope.getResponse();
 
 
-
             try {
-                if(result!=null) {
+                if (result != null) {
 
                     aadhar_data = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
-                    if (aadhar_data!=null && !"NA".equals(aadhar_data.toString().trim()) && !"0".equals(aadhar_data.toString().trim())) {
+                    if (aadhar_data != null && !"NA".equals(aadhar_data.toString().trim()) && !"0".equals(aadhar_data.toString().trim())) {
                         aadhar_details = new String[0];
                         aadhar_details = aadhar_data.split("@");
 
@@ -1626,7 +1676,7 @@ public class ServiceHelper {
                         aadhar_details = new String[0];
                     }
 
-                }else{
+                } else {
                     aadhar_data = "0";
                     aadhar_details = new String[0];
 
@@ -1639,7 +1689,6 @@ public class ServiceHelper {
             }
 
 
-
         } catch (SoapFault fault) {
             fault.printStackTrace();
             aadhar_data = "0";
@@ -1647,7 +1696,7 @@ public class ServiceHelper {
 
         } catch (Exception e) {
             // TODO: handle exception
-            Log.i("AAdhar NA........","NACatch");
+            Log.i("AAdhar NA........", "NACatch");
             aadhar_data = "0";
             aadhar_details = new String[0];
         }
@@ -1870,50 +1919,38 @@ public class ServiceHelper {
             if ((!drvierLicNo.equals("") && !"NA".equals(drvierLicNo)) && (!aadharNo.equals("") && !"NA".equals(aadharNo))) {
 
 
-                if(license_data!="null" && !license_data.equals("0") && aadharNo!="null" && !aadharNo.equals("0")) {
+                if (license_data != "null" && !license_data.equals("0") && aadharNo != "null" && !aadharNo.equals("0")) {
                     onlinebuff = onlinebuff.append(rc_send + "^" + "2" + "|" + license_data + "^" + "3" + "|" + aadhar_data);
-                }
-                else  if(license_data.equals("0") && !aadhar_data.equals("0"))
-                {
+                } else if (license_data.equals("0") && !aadhar_data.equals("0")) {
                     onlinebuff = onlinebuff.append(rc_send + "^" + "2" + "|" + drvierLicNo + "^" + "3" + "|" + aadhar_data);
 
-                }
-                else  if(!license_data.equals("0") && aadhar_data.equals("0"))
-                {
+                } else if (!license_data.equals("0") && aadhar_data.equals("0")) {
                     onlinebuff = onlinebuff.append(rc_send + "^" + "2" + "|" + license_data + "^" + "3" + "|" + aadharNo);
 
-                }
-                else  if(license_data.equals("0") && aadhar_data.equals("0"))
-                {
+                } else if (license_data.equals("0") && aadhar_data.equals("0")) {
                     onlinebuff = onlinebuff.append(rc_send + "^" + "2" + "|" + drvierLicNo + "^" + "3" + "|" + aadharNo);
 
                 }
 
             } else if ((!drvierLicNo.equals("") && !"NA".equals(drvierLicNo))
-                    && (aadharNo.equals("")|| "NA".equals(aadharNo))) {
+                    && (aadharNo.equals("") || "NA".equals(aadharNo))) {
 
-                if(license_data!="null" && !license_data.equals("0")) {
+                if (license_data != "null" && !license_data.equals("0")) {
                     onlinebuff = onlinebuff.append(rc_send + "^" + "2" + "|" + license_data + "^" + "3" + "|" + "NA");
-                }else
-                {
+                } else {
                     onlinebuff = onlinebuff.append(rc_send + "^" + "2" + "|" + drvierLicNo + "^" + "3" + "|" + "NA");
 
                 }
-            }
-
-            else if ((drvierLicNo.equals("")|| "NA".equals(drvierLicNo))
+            } else if ((drvierLicNo.equals("") || "NA".equals(drvierLicNo))
                     && (!aadharNo.equals("") && !"NA".equals(aadharNo))) {
 
-                if(aadhar_data!="null" && !aadhar_data.equals("0")) {
+                if (aadhar_data != "null" && !aadhar_data.equals("0")) {
                     onlinebuff = onlinebuff.append(rc_send + "^" + "2" + "|" + "NA" + "^" + "3" + "|" + aadhar_data);
-                }else
-                {
+                } else {
                     onlinebuff = onlinebuff.append(rc_send + "^" + "2" + "|" + "NA" + "^" + "3" + "|" + aadharNo);
 
                 }
-            }
-
-            else if ((drvierLicNo.equals("") )
+            } else if ((drvierLicNo.equals(""))
                     && (aadharNo.equals(""))) {
 
 
@@ -1921,7 +1958,7 @@ public class ServiceHelper {
 
             }
 
-            Log.i("Online Buffer Spot Challan",onlinebuff.toString());
+            Log.i("Online Buffer Spot Challan", onlinebuff.toString());
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -2020,10 +2057,10 @@ public class ServiceHelper {
             httpTransportSE.call(SOAP_ACTION, envelope);
             Object result = envelope.getResponse();
             try {
-                spot_final_res_status="";
-                spot_finalPrintNDevice="";
-               // String resPrint=new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
-               spot_final_res_status = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
+                spot_final_res_status = "";
+                spot_finalPrintNDevice = "";
+                // String resPrint=new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
+                spot_final_res_status = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
                 /*spot_final_res_status=resPrint.split("\\*")[0];
                 spot_finalPrintNDevice=resPrint.split("\\*")[1];*/
 
@@ -2031,7 +2068,7 @@ public class ServiceHelper {
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
-                spot_final_res_status="0";
+                spot_final_res_status = "0";
             }
 
 
@@ -2056,7 +2093,7 @@ public class ServiceHelper {
                 final_spot_reponse_violations = new String[0][0];
                 // }
 
-            } else if(spot_final_res_status.toString().trim()!=null && !"0".equals(spot_final_res_status.toString())){
+            } else if (spot_final_res_status.toString().trim() != null && !"0".equals(spot_final_res_status.toString())) {
 
                 final_spot_reponse_master = spot_final_res_status.split("\\^");
 
@@ -2087,10 +2124,10 @@ public class ServiceHelper {
             }
 
         } catch (SoapFault fault) {
-            spot_final_res_status="0";
+            spot_final_res_status = "0";
         } catch (Exception e) {
             // TODO: handle exception
-            spot_final_res_status="0";
+            spot_final_res_status = "0";
 
             // if (  final_spot_reponse_master.length == 0) {
             final_spot_reponse_master = new String[0];
@@ -2376,9 +2413,9 @@ public class ServiceHelper {
 
                         }
                     }
-                }else {
+                } else {
 
-                    spot_final_res_status="0";
+                    spot_final_res_status = "0";
                     final_spot_reponse_master = new String[0];
                     final_spot_reponse_violations_master = new String[0];
                     final_spot_reponse_details = new String[0];
@@ -2389,10 +2426,9 @@ public class ServiceHelper {
                 }
 
 
-
             } catch (Exception e) {
                 // TODO Auto-generated catch block
-                spot_final_res_status="0";
+                spot_final_res_status = "0";
                 final_spot_reponse_master = new String[0];
                 final_spot_reponse_violations_master = new String[0];
                 final_spot_reponse_details = new String[0];
@@ -2405,7 +2441,7 @@ public class ServiceHelper {
 
 
             if (Dashboard.check_vhleHistory_or_Spot.equals("vehiclehistory")) {
-                if (final_spot_reponse_master[3].toString()!=null && !final_spot_reponse_master[3].toString().trim().equals("NA")
+                if (final_spot_reponse_master[3].toString() != null && !final_spot_reponse_master[3].toString().trim().equals("NA")
                         && (final_spot_reponse_master[3].toString().trim().length() > 0)) {
 
                     selected_paid_challans_master = final_spot_reponse_master[3].split("!");
@@ -2420,7 +2456,7 @@ public class ServiceHelper {
             }
 
         } catch (SoapFault fault) {
-            spot_final_res_status="0";
+            spot_final_res_status = "0";
             final_spot_reponse_master = new String[0];
             final_spot_reponse_violations_master = new String[0];
             final_spot_reponse_details = new String[0];
@@ -2432,7 +2468,7 @@ public class ServiceHelper {
 
         } catch (Exception E) {
 
-            spot_final_res_status="0";
+            spot_final_res_status = "0";
             final_spot_reponse_master = new String[0];
             final_spot_reponse_violations_master = new String[0];
             final_spot_reponse_details = new String[0];
@@ -2445,13 +2481,11 @@ public class ServiceHelper {
     }
 
 
-
-    public static String insertDetainItems(String eticketNo,String challanNo,String regnNo,String offenceDate,
-                                           String detainItems,String detainDate,String detainTime,String detainPid,
-                                           String detainPidName,String stateCd,String unitCd,String unitName,String chasisNo,
-                                           String engineNo,String fakeStatus,String drivingLicense,String aadhaarNO ,
-                                           String psName,String pointName,String onlineMode ) {
-
+    public static String insertDetainItems(String eticketNo, String challanNo, String regnNo, String offenceDate,
+                                           String detainItems, String detainDate, String detainTime, String detainPid,
+                                           String detainPidName, String stateCd, String unitCd, String unitName, String chasisNo,
+                                           String engineNo, String fakeStatus, String drivingLicense, String aadhaarNO,
+                                           String psName, String pointName, String onlineMode) {
 
 
         try {
@@ -2464,57 +2498,45 @@ public class ServiceHelper {
             if ((!drivingLicense.equals("") && !"NA".equals(drivingLicense)) && (!aadhaarNO.equals("") && !"NA".equals(aadhaarNO))) {
 
 
-                if(license_data!="null" && !license_data.equals("0") && aadhaarNO!="null" && !aadhaarNO.equals("0")) {
+                if (license_data != "null" && !license_data.equals("0") && aadhaarNO != "null" && !aadhaarNO.equals("0")) {
                     onlinebuff = onlinebuff.append(rc_send + "^" + "2" + "|" + license_data + "^" + "3" + "|" + aadhar_data);
-                }
-                else  if(license_data.equals("0") && !aadhar_data.equals("0"))
-                {
+                } else if (license_data.equals("0") && !aadhar_data.equals("0")) {
                     onlinebuff = onlinebuff.append(rc_send + "^" + "2" + "|" + drivingLicense + "^" + "3" + "|" + aadhar_data);
 
-                }
-                else  if(!license_data.equals("0") && aadhar_data.equals("0"))
-                {
+                } else if (!license_data.equals("0") && aadhar_data.equals("0")) {
                     onlinebuff = onlinebuff.append(rc_send + "^" + "2" + "|" + license_data + "^" + "3" + "|" + aadhaarNO);
 
-                }
-                else  if(license_data.equals("0") && aadhar_data.equals("0"))
-                {
+                } else if (license_data.equals("0") && aadhar_data.equals("0")) {
                     onlinebuff = onlinebuff.append(rc_send + "^" + "2" + "|" + drivingLicense + "^" + "3" + "|" + aadhaarNO);
 
                 }
 
             } else if ((!drivingLicense.equals("") && !"NA".equals(drivingLicense))
-                    && (aadhaarNO.equals("")|| "NA".equals(aadhaarNO))) {
+                    && (aadhaarNO.equals("") || "NA".equals(aadhaarNO))) {
 
-                if(license_data!="null" && !license_data.equals("0")) {
+                if (license_data != "null" && !license_data.equals("0")) {
                     onlinebuff = onlinebuff.append(rc_send + "^" + "2" + "|" + license_data + "^" + "3" + "|" + "NA");
-                }else
-                {
+                } else {
                     onlinebuff = onlinebuff.append(rc_send + "^" + "2" + "|" + drivingLicense + "^" + "3" + "|" + "NA");
 
                 }
-            }
-
-            else if ((drivingLicense.equals("")|| "NA".equals(drivingLicense))
+            } else if ((drivingLicense.equals("") || "NA".equals(drivingLicense))
                     && (!aadhaarNO.equals("") && !"NA".equals(aadhaarNO))) {
 
-                if(aadhar_data!="null" && !aadhar_data.equals("0")) {
+                if (aadhar_data != "null" && !aadhar_data.equals("0")) {
                     onlinebuff = onlinebuff.append(rc_send + "^" + "2" + "|" + "NA" + "^" + "3" + "|" + aadhar_data);
-                }else
-                {
+                } else {
                     onlinebuff = onlinebuff.append(rc_send + "^" + "2" + "|" + "NA" + "^" + "3" + "|" + aadhaarNO);
 
                 }
-            }
-
-            else if ((drivingLicense.equals("") )
+            } else if ((drivingLicense.equals(""))
                     && (aadhaarNO.equals(""))) {
 
                 onlinebuff = onlinebuff.append(rc_send + "^" + "2" + "|" + "NA" + "^" + "3" + "|" + "NA");
 
             }
 
-            Log.i("Online Buffer Specail Drive",onlinebuff.toString());
+            Log.i("Online Buffer Specail Drive", onlinebuff.toString());
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -2534,15 +2556,15 @@ public class ServiceHelper {
             request.addProperty("detainPidName", detainPidName);
             request.addProperty("stateCd", stateCd);
             request.addProperty("unitCd", unitCd);
-            request.addProperty("unitName",unitName);
+            request.addProperty("unitName", unitName);
             request.addProperty("chasisNo", chasisNo);
             request.addProperty("engineNo", engineNo);
-            request.addProperty("fakeStatus",fakeStatus);
-            request.addProperty("drivingLicense",drivingLicense);
-            request.addProperty("aadhaarNO",aadhaarNO);
-            request.addProperty("psName",psName);
-            request.addProperty("pointName",pointName);
-            request.addProperty("onlineMode",onlinebuff.toString());
+            request.addProperty("fakeStatus", fakeStatus);
+            request.addProperty("drivingLicense", drivingLicense);
+            request.addProperty("aadhaarNO", aadhaarNO);
+            request.addProperty("psName", psName);
+            request.addProperty("pointName", pointName);
+            request.addProperty("onlineMode", onlinebuff.toString());
 
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.dotNet = true;
@@ -2571,9 +2593,9 @@ public class ServiceHelper {
     }
 
 
-    public static String validateRegno(String regnNo,String drivingLicense,String aadhaarNO,String
-            chasisNo,String engineNo,String pidCd, String unitCode,
-                                       String imei,String simNo,String gpsLattitude,String gpsLongitude,String pidName) {
+    public static String validateRegno(String regnNo, String drivingLicense, String aadhaarNO, String
+            chasisNo, String engineNo, String pidCd, String unitCode,
+                                       String imei, String simNo, String gpsLattitude, String gpsLongitude, String pidName) {
         try {
             SoapObject request = new SoapObject(NAMESPACE, "validateRegnNo");
             request.addProperty("regnNo", regnNo);
@@ -2583,11 +2605,11 @@ public class ServiceHelper {
             request.addProperty("engineNo", engineNo);
             request.addProperty("pidCd", pidCd);
             request.addProperty("unitCode", unitCode);
-            request.addProperty("imei",imei);
-            request.addProperty("simNo",simNo);
-            request.addProperty("gpsLattitude",gpsLattitude);
-            request.addProperty("gpsLongitude",gpsLongitude);
-            request.addProperty("pidName",pidName);
+            request.addProperty("imei", imei);
+            request.addProperty("simNo", simNo);
+            request.addProperty("gpsLattitude", gpsLattitude);
+            request.addProperty("gpsLongitude", gpsLongitude);
+            request.addProperty("pidName", pidName);
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.dotNet = true;
             envelope.setOutputSoapObject(request);
@@ -2595,12 +2617,10 @@ public class ServiceHelper {
             androidHttpTransport.call(SOAP_ACTION, envelope);
             Object result = envelope.getResponse();
             try {
-                if(result!=null) {
+                if (result != null) {
                     validregnoresponse = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
-                    Log.d("hgdgeuihuijy",""+validregnoresponse);
-                }
-                else
-                {
+                    Log.d("hgdgeuihuijy", "" + validregnoresponse);
+                } else {
                     validregnoresponse = "2";
                 }
             } catch (Exception e) {
@@ -2634,11 +2654,9 @@ public class ServiceHelper {
             androidHttpTransport.call(SOAP_ACTION, envelope);
             Object result = envelope.getResponse();
             try {
-                if(result!=null) {
+                if (result != null) {
                     remarksresult = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
-                }
-                else
-                {
+                } else {
                     remarksresult = "2";
                 }
             } catch (Exception e) {
@@ -2657,7 +2675,6 @@ public class ServiceHelper {
 
         return remarksresult;
     }
-
 
 
     public static void releaserDocumentsModule(String vhle_hist_penchallans, String pen_challans, String regn_No,
@@ -2713,7 +2730,7 @@ public class ServiceHelper {
             request.addProperty(utils.SPOT_AADHAR_NO, "" + aadhar_num);
             request.addProperty(utils.TOWING_DOB, "" + dl_dob);
 
-            Log.i("RELEASE DOCUMENTS",""+dl_dob);
+            Log.i("RELEASE DOCUMENTS", "" + dl_dob);
 
             request.addProperty(utils.SPOT_PASSPORT, "" + pasprt);
             request.addProperty(utils.SPOT_EMAIL, "" + mailid);
@@ -2733,11 +2750,10 @@ public class ServiceHelper {
             httpTransportSE.call(SOAP_ACTION, envelope);
             Object result = envelope.getResponse();
             try {
-                if(result!=null) {
+                if (result != null) {
                     spot_final_res_status = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
 
-                    if(spot_final_res_status!=null && spot_final_res_status!="0")
-                    {
+                    if (spot_final_res_status != null && spot_final_res_status != "0") {
 
                         // final_spot_reponse_master = new String[0];
                         final_spot_reponse_violations_master = new String[0];
@@ -2748,16 +2764,16 @@ public class ServiceHelper {
 
                         final_spot_reponse_master = spot_final_res_status.split("\\^");
 
-                        if (final_spot_reponse_master!=null && final_spot_reponse_master[1].toString().trim().length() > 0) {
+                        if (final_spot_reponse_master != null && final_spot_reponse_master[1].toString().trim().length() > 0) {
                             final_spot_reponse_details = final_spot_reponse_master[1].split("!");
                         }
-                        if ((final_spot_reponse_master!=null && final_spot_reponse_master[2] != null)
+                        if ((final_spot_reponse_master != null && final_spot_reponse_master[2] != null)
                                 && (!final_spot_reponse_master[2].toString().trim().equals("NA"))
                                 && (final_spot_reponse_master[2].toString().trim().length() > 0)) {
 
                             final_spot_reponse_violations_master = final_spot_reponse_master[2].split("!");
 
-                            if(final_spot_reponse_violations_master!=null) {
+                            if (final_spot_reponse_violations_master != null) {
                                 final_spot_reponse_violations = new String[final_spot_reponse_violations_master.length][3];
 
                                 for (int i = 0; i < final_spot_reponse_violations_master.length; i++) {
@@ -2784,7 +2800,7 @@ public class ServiceHelper {
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
-                spot_final_res_status="0";
+                spot_final_res_status = "0";
                 final_spot_reponse_master = new String[0];
                 final_spot_reponse_violations_master = new String[0];
                 final_spot_reponse_details = new String[0];
@@ -2795,7 +2811,7 @@ public class ServiceHelper {
 
         } catch (SoapFault fault) {
 
-            spot_final_res_status="0";
+            spot_final_res_status = "0";
             final_spot_reponse_master = new String[0];
             final_spot_reponse_violations_master = new String[0];
             final_spot_reponse_details = new String[0];
@@ -2805,7 +2821,7 @@ public class ServiceHelper {
         } catch (Exception e) {
             // TODO: handle exception
 
-            spot_final_res_status="0";
+            spot_final_res_status = "0";
             final_spot_reponse_master = new String[0];
             final_spot_reponse_violations_master = new String[0];
             final_spot_reponse_details = new String[0];
@@ -3240,11 +3256,9 @@ public class ServiceHelper {
             Object result = envelope.getResponse();
 
             try {
-                if(result!=null) {
+                if (result != null) {
                     version_response = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
-                }
-                else
-                {
+                } else {
                     version_response = "NA";
 
                 }
@@ -3266,15 +3280,14 @@ public class ServiceHelper {
     }
 
 
-    public static  String  getApprovefromRtaforPoint(String eticketNO, String regnNo,
-                                                     String offenceDt, String offenceTime, String stateCd, String unitCode,
-                                                     String bookedPsCd, String location, String vioCodes,
-                                                     String curruntVioAmount, String licNo, String driverName,
-                                                     String driverAddress, String driverCity, String paymentStatus,
-                                                     String dOfPay, String driverContactNo, String dl_dob, String pointName,
-                                                     String dlImpoundFlg, String bookedPsName, String pidName, String cadre,
-                                                     String impndPerd, String pointCode, String totalVioPoints)
-    {
+    public static String getApprovefromRtaforPoint(String eticketNO, String regnNo,
+                                                   String offenceDt, String offenceTime, String stateCd, String unitCode,
+                                                   String bookedPsCd, String location, String vioCodes,
+                                                   String curruntVioAmount, String licNo, String driverName,
+                                                   String driverAddress, String driverCity, String paymentStatus,
+                                                   String dOfPay, String driverContactNo, String dl_dob, String pointName,
+                                                   String dlImpoundFlg, String bookedPsName, String pidName, String cadre,
+                                                   String impndPerd, String pointCode, String totalVioPoints) {
         try {
             SoapObject request = new SoapObject(NAMESPACE, "getApprovefromRtaforPoint");
 
@@ -3307,7 +3320,6 @@ public class ServiceHelper {
             request.addProperty("totalVioPoints", totalVioPoints);
 
 
-
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.dotNet = true;
             envelope.setOutputSoapObject(request);
@@ -3318,11 +3330,10 @@ public class ServiceHelper {
             Object result = envelope.getResponse();
 
             try {
-                if(result!=null) {
+                if (result != null) {
                     //rtaapproovedresponse = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
                     rtaapproovedresponse = result.toString().trim();
-                }else
-                {
+                } else {
                     rtaapproovedresponse = "NA|NA|NA";
                 }
             } catch (Exception e) {
@@ -3344,14 +3355,11 @@ public class ServiceHelper {
     }
 
 
-    public static  String  getOtpStatusNTime(String unitcode)
-
-    {
+    public static String getOtpStatusNTime(String unitcode) {
         try {
             SoapObject request = new SoapObject(NAMESPACE, "getOtpStatusNTime");
 
             request.addProperty("unitcCode", unitcode);
-
 
 
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
@@ -3364,10 +3372,9 @@ public class ServiceHelper {
             Object result = envelope.getResponse();
 
             try {
-                if(result!=null) {
-                    otpStatusnTime =  new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString().trim());
-                }else
-                {
+                if (result != null) {
+                    otpStatusnTime = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString().trim());
+                } else {
                     otpStatusnTime = "NA|NA";
                 }
             } catch (Exception e) {

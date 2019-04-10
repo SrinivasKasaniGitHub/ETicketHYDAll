@@ -83,6 +83,7 @@ import com.android.volley.Response;
 import com.android.volley.error.VolleyError;
 import com.android.volley.request.SimpleMultiPartRequest;
 import com.android.volley.toolbox.Volley;
+import com.bogdwellers.pinchtozoom.ImageMatrixTouchHandler;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -92,6 +93,7 @@ import com.mtpv.imagematch.ImageMatchAdapter;
 import com.mtpv.imagematch.ImageMatchPojo;
 import com.mtpv.imagematch.Results;
 import com.mtpv.imagematch.Telangana;
+import com.mtpv.imagematch.Touch;
 import com.mtpv.mobilee_ticket_services.DBHelper;
 import com.mtpv.mobilee_ticket_services.ServiceHelper;
 import com.mtpv.mobilee_ticket_services.Utils;
@@ -103,6 +105,7 @@ import org.json.JSONObject;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -395,14 +398,15 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
     private Dialog dialog;
 
-    AppCompatImageView dd_Img,imgFromCapture,imgFromLink;
+    AppCompatImageView dd_Img, imgFromCapture, imgFromLink;
     ListView listDDImgmatch;
     public Bitmap imgMatchBitmap;
-    AppCompatButton btn_ImgMatchCancel,btn_ImgMatchOk;
+    AppCompatButton btn_ImgMatchCancel, btn_ImgMatchOk;
+    AlertDialog imgMatchBuilder;
+    String imgMatchingData;
 
     @SuppressLint({"NewApi", "WorldReadableFiles"})
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
@@ -551,7 +555,6 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
     }
 
     @SuppressLint({"DefaultLocale", "SimpleDateFormat"})
-
     private void LoadUIComponents() {
         // TODO Auto-generated method stub
         netwrk_info_txt = "" + getResources().getString(R.string.newtork_txt);
@@ -831,9 +834,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         // attachImageFromRta();
 
     }
-
     @SuppressWarnings("unused")
-
     private void updateDisplay() {
         if (!Drunk_Drive.tv_aadhar_dob.getText().toString().trim().equals("")) {
             String age_by_date = Drunk_Drive.tv_aadhar_dob.getText().toString().trim();
@@ -1818,7 +1819,6 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     try {
                         Log.i("Camera Path :::", "" + file.getAbsolutePath());
 
-                        UploadFile(file.getAbsolutePath());
 
                         outFile = new FileOutputStream(file);
                         Bitmap mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
@@ -1865,6 +1865,11 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                         outFile.close();
 
                         new SingleMediaScanner(this, file);
+
+                        /*File compresedFile=compressedToFile(file);
+                        Log.d("MathcnigFile",""+compresedFile.getAbsolutePath());*/
+                        UploadFile(file.getAbsolutePath());
+
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
@@ -1920,8 +1925,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                     mutableBitmap.compress(Bitmap.CompressFormat.JPEG, 20, bytes);
 
-                    // imageUploadForMatch(compressImage(mutableBitmap));
-
+                    // imageUploadForMatch(compressImage(mutableBitmap));2201130007 0007
 
                     byteArray = bytes.toByteArray();
 
@@ -1940,6 +1944,8 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                 c.moveToFirst();
                 int columnIndex = c.getColumnIndex(filePath[0]);
                 picturePath = c.getString(columnIndex);
+                file = new File(picturePath, String.valueOf(System.currentTimeMillis()) + ".jpg");
+                UploadFile(picturePath);
                 c.close();
 
                 Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
@@ -1972,6 +1978,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
                 ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                 mutableBitmap.compress(Bitmap.CompressFormat.JPEG, 20, bytes);
+                imgMatchBitmap = mutableBitmap;
 
                 byteArray = bytes.toByteArray();
 
@@ -1983,6 +1990,59 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
             }
         }
 
+    }
+
+    public File compressedToFile(File file) {
+
+        try {
+
+            String path = android.os.Environment.getExternalStorageDirectory() + File.separator + "Hyd-E Ticket"
+                    + File.separator + "Drunk&Drive" + File.separator + Drunk_Drive.date;
+
+            // BitmapFactory options to downsize the image
+            BitmapFactory.Options o = new BitmapFactory.Options();
+            o.inJustDecodeBounds = true;
+            o.inSampleSize = 6;
+            // factor of downsizing the image
+
+            FileInputStream inputStream = new FileInputStream(file);
+            //Bitmap selectedBitmap = null;
+            BitmapFactory.decodeStream(inputStream, null, o);
+            inputStream.close();
+
+            // The new size we want to scale to
+            final int REQUIRED_SIZE = 200;        // x............
+
+            // Find the correct scale value. It should be the power of 2.
+            int scale = 1;
+            while (o.outWidth / scale / 2 >= REQUIRED_SIZE &&
+                    o.outHeight / scale / 2 >= REQUIRED_SIZE) {
+                scale *= 2;
+            }
+
+            BitmapFactory.Options o2 = new BitmapFactory.Options();
+            o2.inSampleSize = scale;
+            inputStream = new FileInputStream(file);
+
+            Bitmap selectedBitmap = BitmapFactory.decodeStream(inputStream, null, o2);
+            inputStream.close();
+
+            // here i override the original image file
+            // File outPutFile = File.createTempFile("abc","image");
+            File outPutFile = new File(path, String.valueOf(System.currentTimeMillis()) + ".png");
+            Log.i("Camera Path outPutFile:::", "" + outPutFile.getAbsolutePath());
+            FileOutputStream outputStream = new FileOutputStream(outPutFile);
+            // y.......
+            Objects.requireNonNull(selectedBitmap).compress(Bitmap.CompressFormat.JPEG, 95, outputStream);
+
+            outputStream.flush();
+            outputStream.close();
+            new SingleMediaScanner(this, outPutFile);
+            return outPutFile;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     private Bitmap compressImage(Bitmap image) {
@@ -2095,54 +2155,58 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
         try {
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT);
+            imgMatchBuilder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT).create();
             LayoutInflater inflater = this.getLayoutInflater();
 
             View dialogView = inflater.inflate(R.layout.imagematch_dialog, null);
-            builder.setView(dialogView);
-
+            imgMatchBuilder.setView(dialogView);
             dd_Img = dialogView.findViewById(R.id.dd_Img);
             officer_Name = dialogView.findViewById(R.id.officer_Name);
             officer_Cadre = dialogView.findViewById(R.id.officer_cadre);
             officer_PS = dialogView.findViewById(R.id.officer_PS);
-
             officer_Name.setText(MainActivity.pidName + "(" + MainActivity.cadre_name + ")");
             officer_Cadre.setText(MainActivity.cadre_name);
             officer_PS.setText(MainActivity.psName);
             dd_Img.setRotation(0);
             dd_Img.setImageBitmap(imgMatchBitmap);
-            dd_Img.setRotation((float) 90.0);
+            dd_Img.setRotation(90);
             listDDImgmatch = dialogView.findViewById(R.id.listDDImgmatch);
             ImageMatchAdapter imageMatchAdapter = new ImageMatchAdapter(GenerateDrunkDriveCase.this, (ArrayList<Telangana>) telanganaList);
             listDDImgmatch.setAdapter(imageMatchAdapter);
-            builder.show();
+            imgMatchBuilder.show();
             listDDImgmatch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     String imgLink = telanganaList.get(position).getLink();
-                    Log.d("imgLink",""+imgLink);
+                    Telangana telangana = telanganaList.get(position);
+                    imgMatchingData = new Gson().toJson(telangana);
                     imgComparisionDialog(imgLink);
                 }
             });
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             showToast("Please check the Network And try Again! ");
         }
     }
 
-    private void imgComparisionDialog(final String imgLink){
+    @SuppressLint("ClickableViewAccessibility")
+    private void imgComparisionDialog(final String imgLink) {
         try {
             final AlertDialog builder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT).create();
             LayoutInflater inflater = this.getLayoutInflater();
             View dView = inflater.inflate(R.layout.imagecomparision_dialog, null);
             builder.setView(dView);
+            builder.setCancelable(false);
             imgFromCapture = dView.findViewById(R.id.imgFromCapture);
             imgFromLink = dView.findViewById(R.id.imgFromLink);
             btn_ImgMatchCancel = dView.findViewById(R.id.btn_ImgMatchCancel);
             btn_ImgMatchOk = dView.findViewById(R.id.btn_ImgMatchOk);
             imgFromCapture.setRotation(0);
             imgFromCapture.setImageBitmap(imgMatchBitmap);
+            imgFromCapture.setRotation(90);
+            imgFromCapture.setOnTouchListener(new ImageMatrixTouchHandler(dView.getContext()));
             Glide.with(this).load(imgLink).into(imgFromLink);
+            imgFromLink.setOnTouchListener(new ImageMatrixTouchHandler(dView.getContext()));
             builder.show();
             btn_ImgMatchCancel.setOnClickListener(new OnClickListener() {
                 @Override
@@ -2155,13 +2219,13 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                 @Override
                 public void onClick(View v) {
                     builder.dismiss();
+                    imgMatchBuilder.dismiss();
                 }
             });
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             showToast("Please check the Network And try Again! ");
         }
-
 
     }
 
@@ -2323,7 +2387,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     rtaresponse = ServiceHelper.rtaapproovedresponse.trim().toString();
 
                 }
-
+                passport=imgMatchingData;
 
                 ServiceHelper.generateDrunDriveCase_1_5_2(
                         "" + "" + et_regn_cid.getText().toString() + "" + et_regn_cid_name.getText().toString(),
