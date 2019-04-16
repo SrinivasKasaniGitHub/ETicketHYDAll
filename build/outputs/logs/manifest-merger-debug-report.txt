@@ -1,8 +1,8 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:2:1-286:12
-INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:2:1-286:12
-INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:2:1-286:12
+ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:2:1-283:12
+INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:2:1-283:12
+INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:2:1-283:12
 MERGED from [com.android.support:design:28.0.0] C:\Users\srinivas\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\101c55514b1f5a1626306d9be48d1bc0\AndroidManifest.xml:17:1-24:12
 MERGED from [ru.bartwell:exfilepicker:2.1] C:\Users\srinivas\.gradle\caches\transforms-1\files-1.1\exfilepicker-2.1.aar\31207581aa53eeb97454cb216ea1c14c\AndroidManifest.xml:2:1-20:12
 MERGED from [com.bogdwellers:pinchtozoom:0.1] C:\Users\srinivas\.gradle\caches\transforms-1\files-1.1\pinchtozoom-0.1.aar\f45ed7f0f091f281189a73de33c83c4d\AndroidManifest.xml:2:1-17:12
@@ -45,8 +45,8 @@ MERGED from [com.android.support:interpolator:28.0.0] C:\Users\srinivas\.gradle\
 MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\srinivas\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\bf80388eef82fb9219a0408ce0f6a13d\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\srinivas\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\91a27145fe9fd4e8810e2396a2440c03\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\srinivas\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\97a87bcf84d95fd71821576fa430f376\AndroidManifest.xml:17:1-22:12
-INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:2:1-286:12
-INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:2:1-286:12
+INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:2:1-283:12
+INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:2:1-283:12
 	package
 		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:4:5-38
 	android:versionName
@@ -150,7 +150,7 @@ ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:25:5-74
 	android:name
 		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:25:22-71
 application
-ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:27:5-284:19
+ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:27:5-281:19
 MERGED from [com.android.support:design:28.0.0] C:\Users\srinivas\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\101c55514b1f5a1626306d9be48d1bc0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:28.0.0] C:\Users\srinivas\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\101c55514b1f5a1626306d9be48d1bc0\AndroidManifest.xml:22:5-20
 MERGED from [ru.bartwell:exfilepicker:2.1] C:\Users\srinivas\.gradle\caches\transforms-1\files-1.1\exfilepicker-2.1.aar\31207581aa53eeb97454cb216ea1c14c\AndroidManifest.xml:14:5-18:19
@@ -569,15 +569,19 @@ ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:269:9-73
 	android:name
 		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:269:19-61
 activity#com.mtpv.mobilee_ticket.E_Challan_Non_ContactModule
-ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:270:9-273:25
+ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:270:9-74
 	android:name
 		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:270:19-62
 meta-data#io.fabric.ApiKey
-ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:278:9-280:72
+ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:275:9-277:72
 	android:value
-		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:280:13-69
+		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:277:13-69
 	android:name
-		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:279:13-44
+		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:276:13-44
+service#com.mtpv.mobilee_ticket_services.RingToneService
+ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:280:9-84
+	android:name
+		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:280:18-81
 uses-sdk
 INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml

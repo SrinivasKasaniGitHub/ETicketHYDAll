@@ -35,6 +35,7 @@ import android.os.CountDownTimer;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
+import android.speech.tts.TextToSpeech;
 import android.support.v4.content.FileProvider;
 import android.support.v7.widget.AppCompatTextView;
 import android.telephony.TelephonyManager;
@@ -98,6 +99,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Locale;
 import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.regex.Pattern;
@@ -291,6 +293,7 @@ public class SpotChallan extends Activity
     String otherStateVehiclePayment = "N";
     String detainAlertFlag = "N", theftRemarkFlag = "N";
     AppCompatTextView detained_Txt;
+    TextToSpeech textToSpeech;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -432,6 +435,7 @@ public class SpotChallan extends Activity
         //  exact_location_send_from_settings = preferences.getString("exact_location", "location");
         exact_location_send_from_settings = preferences.getString("ps_res_name_code", "0");
     }
+
 
     @SuppressWarnings("unused")
     private void dateNTimeDialog() {
@@ -2684,9 +2688,9 @@ public class SpotChallan extends Activity
                 try {
 
                     offender_remarks_resp_master = new String[0];
+                    theftRemarkFlag = ServiceHelper.offender_remarks.split("\\^")[1];
+                    ServiceHelper.offender_remarks = ServiceHelper.offender_remarks.split("\\^")[0];
                     offender_remarks_resp_master = ServiceHelper.offender_remarks.split("!");
-                    // SpotChallan.helmet_remarks = SpotChallan.offender_remarks_resp_master[10].split("\\$");
-
 
                     if (offender_remarks_resp_master != null && offender_remarks_resp_master.length > 10 &&
                             !offender_remarks_resp_master[10].toString().trim().equals("NA") &&
@@ -2809,7 +2813,7 @@ public class SpotChallan extends Activity
 
             //ServiceHelper.getOffenceDetailsbyWheelerChallanType("" + whlr_code_send, challan_Type);
 
-            ServiceHelper.getOffenceDetailsbyWheelerChallanTypeUnitRemark("" + whlr_code_send, challan_Type, MainActivity.pidCodestatic,theftRemarkFlag);
+            ServiceHelper.getOffenceDetailsbyWheelerChallanTypeUnitRemark("" + whlr_code_send, challan_Type, MainActivity.pidCodestatic, theftRemarkFlag);
 
             return null;
         }
@@ -4643,46 +4647,6 @@ public class SpotChallan extends Activity
                 Dialog dg_proof = ad_proof.create();
                 return dg_proof;
 
-
-//            case SOLD_OUT_DIALOG:
-//                TextView Tv_soldout = new TextView(this);
-//                Tv_soldout.setText("TRANSFER OF OWNERSHIP");
-//                Tv_soldout.setBackgroundColor(Color.parseColor("#007300"));
-//                Tv_soldout.setGravity(Gravity.CENTER);
-//                Tv_soldout.setTextColor(Color.WHITE);
-//                Tv_soldout.setTextSize(20);
-//                Tv_soldout.setTypeface(Tv_soldout.getTypeface(), Typeface.BOLD);
-//                Tv_soldout.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dialog_logo, 0, R.drawable.dialog_logo, 0);
-//                Tv_soldout.setPadding(20, 0, 20, 0);
-//                Tv_soldout.setHeight(70);
-//
-//                final AlertDialog.Builder sold_out = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT);
-//                sold_out.setCustomTitle(Tv_soldout);
-//                sold_out.setSingleChoiceItems(sold_out_arr, sold_out_string, new DialogInterface.OnClickListener() {
-//
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int position) {
-//                        // TODO Auto-generated method stub
-//                        sold_out_string = position;
-//
-//                        if(sold_out_string==0)
-//                        {
-//                            soldOut=2;
-//                        }
-//                        else if(sold_out_string==1)
-//                        {
-//                            soldOut=3;
-//
-//                        }
-//
-//                        removeDialog(SOLD_OUT_DIALOG);
-//                    }
-//                });
-//                Dialog soldout = sold_out.create();
-//
-//                return soldout;
-
-
             case DYNAMIC_VIOLATIONS:
 
                 Dialog dg_dynmic_violtns = new Dialog(this, android.R.style.Theme_Black_NoTitleBar);
@@ -4789,12 +4753,6 @@ public class SpotChallan extends Activity
                                 + " ( " + ServiceHelper.violation_detailed_views[i][1] + " ) ");
                         vioDetainFlags.put("" + spinner_violation[i].getId(), ServiceHelper.violation_detailed_views[i][7]);
 
-
-                        //  if(ServiceHelper.violation_detailed_views!=null && ServiceHelper.violation_detailed_views.length==8) {
-                        //     vioDetainFlags.put("" + spinner_violation[i].getId(), ServiceHelper.violation_detailed_views[i][7]);
-                        //   }
-
-                        /* CHECKBOX START */
                         int identifier = getResources().getIdentifier(
                                 getApplicationContext().getPackageName() + ":drawable/custom_chec_box", null, null);
                         LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
@@ -4802,23 +4760,16 @@ public class SpotChallan extends Activity
                         params1.weight = 1.0f;
                         params1.setMargins(0, 15, 5, 15);
 
-                        check_dynamic_vltn[i].setText("  " + ServiceHelper.violation_detailed_views[i][2] + " ( "
+                        check_dynamic_vltn[i].setText(" " + ServiceHelper.violation_detailed_views[i][2] + " ( "
                                 + ServiceHelper.violation_detailed_views[i][1] + " ) ");
 
                         check_dynamic_vltn[i].setTextAppearance(getApplicationContext(), R.style.navi_text_style);
 
                         check_dynamic_vltn[i].setId(Integer.parseInt(violation_offence_Code.get(i)));
 
-
                         check_dynamic_vltn[i].setButtonDrawable(identifier);
 
                         check_dynamic_vltn[i].setLayoutParams(params1);
-
-					/*// default 41(CP) enable for towing
-                    if (Dashboard.check_vhleHistory_or_Spot.equals("towing")) {
-						check_dynamic_vltn[0].setChecked(true);
-						violation_checked_violations.add("" +check_dynamic_vltn[0]);
-					}*/
 
                         ll_dynamic_vltns[i].addView(check_dynamic_vltn[i]);
 
@@ -4883,15 +4834,11 @@ public class SpotChallan extends Activity
                     @Override
                     public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
                         // TODO Auto-generated method stub
-
                         if (KeyEvent.KEYCODE_BACK == keyCode) {
-
-                            for (String key : violation_checked_violations) {// 77,01,02
-                                // getting key for offence code from all
-                                for (Entry<String, String> entry : check_all_ids.entrySet()) {// all
+                            for (String key : violation_checked_violations) {
+                                for (Entry<String, String> entry : check_all_ids.entrySet()) {
 
                                     if (entry.getValue().equals(key)) {
-
                                         String selectedId = spinner_violation[Integer.parseInt(entry.getKey())]
                                                 .getSelectedItem().toString();
 
@@ -4967,7 +4914,6 @@ public class SpotChallan extends Activity
                                             }
                                         }
 
-
                                         for (String offenceCodes : vioDetainFlags.keySet()) {
 
                                             for (String code : violation_checked_violations) {
@@ -4980,7 +4926,6 @@ public class SpotChallan extends Activity
                                                 }
                                             }
                                         }
-
 
                                         violations_details_send.append("!");
                                         btn_violation.setText(violation_desc_append);
@@ -5010,12 +4955,8 @@ public class SpotChallan extends Activity
                         return true;
                     }
                 });
-                /* DYNAMIC LAYOUTS END */
                 return dg_dynmic_violtns;
 
-            /******************************
-             * REMARKS DIALOG
-             ********************************/
             case FAKE_NUMBERPLATE_DIALOG:
 
 
@@ -5049,6 +4990,9 @@ public class SpotChallan extends Activity
 
                 } else {
                     message.append("" + offender_remarks_resp_master[10]);
+                }
+
+                if ("Y".equalsIgnoreCase(theftRemarkFlag)) {
                     new VibratorUtils(getApplicationContext()).vibratePhone(10000);
                 }
 
@@ -5072,12 +5016,12 @@ public class SpotChallan extends Activity
 
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-                        removeDialog(FAKE_NUMBERPLATE_DIALOG);//2306130009 ljsr9090
-                        new VibratorUtils(getApplicationContext()).vibrateStopPhone();
-                        theftRemarkFlag = "N";
+                        removeDialog(FAKE_NUMBERPLATE_DIALOG);
+                        if ("Y".equalsIgnoreCase(theftRemarkFlag)) {
+                            new VibratorUtils(getApplicationContext()).vibrateStopPhone();
+                        }
                         if (offender_remarks_resp_master[10] != null
                                 && offender_remarks_resp_master[10].contains("FAKE NO")) {
-
                             fake_veh_chasisNo = (offender_remarks_resp_master.length > 0
                                     && offender_remarks_resp_master[8] != null
                                     && !"".equals(offender_remarks_resp_master[8].trim()))
@@ -5088,11 +5032,11 @@ public class SpotChallan extends Activity
                             Intent intent = new Intent(getApplicationContext(), Fake_NO_Dialog.class);
                             intent.putExtra("Flagkey", "S");
                             startActivity(intent);
-                        } else if ((offender_remarks_resp_master[10] != null
+                        } /*else if ((offender_remarks_resp_master[10] != null
                                 && offender_remarks_resp_master[10].contains("THEFT")) || (offender_remarks_resp_master[10] != null
                                 && offender_remarks_resp_master[10].contains("WANTED"))) {
-                            theftRemarkFlag = "Y";//ts10amtr8995
-                        }
+                            theftRemarkFlag = "Y";
+                        }*/
                     }
                 });
                 alertDialogBuilder.setCancelable(false);

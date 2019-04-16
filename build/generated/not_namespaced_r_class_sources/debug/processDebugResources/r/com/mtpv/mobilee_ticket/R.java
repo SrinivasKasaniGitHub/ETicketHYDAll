@@ -6463,7 +6463,8 @@ public final class R {
     public static final int main=0x7f0d0002;
   }
   public static final class raw {
-    public static final int musicm=0x7f0e0000;
+    public static final int alertsound=0x7f0e0000;
+    public static final int musicm=0x7f0e0001;
   }
   public static final class string {
     public static final int Address_txt=0x7f0f0000;

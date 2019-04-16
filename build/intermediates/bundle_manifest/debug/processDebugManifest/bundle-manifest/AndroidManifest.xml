@@ -276,6 +276,8 @@
             android:name="io.fabric.ApiKey"
             android:value="2cdc37f0ea9fc03062bf6c77c47b64d3bb01fda8" />
 
+        <service android:name="com.mtpv.mobilee_ticket_services.RingToneService" />
+
         <activity
             android:name="ru.bartwell.exfilepicker.ui.activity.ExFilePickerActivity"
             android:theme="@style/ExFilePickerThemeLight" />

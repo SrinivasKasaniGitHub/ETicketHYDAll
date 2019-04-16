@@ -349,9 +349,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
     String image_ToBe_renamed = "";
     String ftp_host = "";
     String ftp_port = "";
-    /* THESE ARE USED AFTER SPLITTING */
     String[] FTP_HOST_PORT;
-
     Button btn_select_profession, btn_select_bar;
     EditText edt_prfession_name, edt_prfession_Address;
 
@@ -450,7 +448,6 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String strdate1 = sdf1.format(c1.getTime());
         date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-        // id_date.setText(strdate1);
         Current_Date = strdate1;
 
         offender_image = (ImageView) findViewById(R.id.offender_image);
@@ -1868,7 +1865,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
                         /*File compresedFile=compressedToFile(file);
                         Log.d("MathcnigFile",""+compresedFile.getAbsolutePath());*/
-                        UploadFile(file.getAbsolutePath());
+                       // UploadFile(file.getAbsolutePath());
 
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -1945,7 +1942,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                 int columnIndex = c.getColumnIndex(filePath[0]);
                 picturePath = c.getString(columnIndex);
                 file = new File(picturePath, String.valueOf(System.currentTimeMillis()) + ".jpg");
-                UploadFile(picturePath);
+              //  UploadFile(picturePath);
                 c.close();
 
                 Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
@@ -2157,7 +2154,6 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
             imgMatchBuilder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT).create();
             LayoutInflater inflater = this.getLayoutInflater();
-
             View dialogView = inflater.inflate(R.layout.imagematch_dialog, null);
             imgMatchBuilder.setView(dialogView);
             dd_Img = dialogView.findViewById(R.id.dd_Img);
@@ -2387,7 +2383,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     rtaresponse = ServiceHelper.rtaapproovedresponse.trim().toString();
 
                 }
-                passport=imgMatchingData;
+               // passport=imgMatchingData;
 
                 ServiceHelper.generateDrunDriveCase_1_5_2(
                         "" + "" + et_regn_cid.getText().toString() + "" + et_regn_cid_name.getText().toString(),

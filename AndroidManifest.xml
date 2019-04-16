@@ -267,10 +267,7 @@
 
         <activity android:name=".mtpv_SpecialDrive"></activity>
         <activity android:name=".SpecialDriveResponse_Print"></activity>
-        <activity android:name=".E_Challan_Non_ContactModule"
-
-
-            ></activity>
+        <activity android:name=".E_Challan_Non_ContactModule"></activity>
 
 
 
@@ -280,7 +277,7 @@
             android:value="2cdc37f0ea9fc03062bf6c77c47b64d3bb01fda8" />
 
 
-
+        <service android:name="com.mtpv.mobilee_ticket_services.RingToneService" />
     </application>
 
 </manifest>
