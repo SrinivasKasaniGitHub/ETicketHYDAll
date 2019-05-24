@@ -1124,17 +1124,14 @@ public class SpotChallan extends Activity
                 dl_points = "";
                 totaldl_points = 0;
 
-                // EXAMPLE AP09CC3014
                 completeVehicle_num_send = "";
                 completeVehicle_num_send = ("" + et_regcid_spot.getText().toString() + ""
                         + et_vchl_num_spot.getText().toString() + "" + et_last_num_spot.getText().toString());
 
                 getLocation();
                 total_amount = 0;
-
                 btn_wheller_code.setText(getString(R.string.select_wheeler_code));
                 btn_violation.setText(getString(R.string.select_violation));
-
 
                 String dateofbirthbut = dob_input.getText().toString();
 
@@ -1175,7 +1172,6 @@ public class SpotChallan extends Activity
                 /*------is_driver/is_owner only for spot_challan : 29-01-2015------*/
                 if (et_regcid_spot.getText().toString().equals("") || et_last_num_spot.getText().toString().equals("")) {
                     showToast("Please Enter Proper Vehicle Number");
-
                 } else {
                     if (isOnline()) {
                         SpotChallan.tv_grand_total_spot.setText("");
@@ -1405,8 +1401,7 @@ public class SpotChallan extends Activity
                                             commomAsync();
                                         }
                                         // }
-                                    } else if (Fake_NO_Dialog.fake_action == "fake") {
-
+                                    } else if (Fake_NO_Dialog.fake_action.equals("fake")) {
                                         ShowMessage("\n It's a Fake Vehicle !!! \n");
                                     }
                                 }
@@ -2225,7 +2220,6 @@ public class SpotChallan extends Activity
             // If bigger SampSize..
             inSampleSize = Math.round((float) width / (float) reqWidth);
         }
-
         options.inSampleSize = inSampleSize;
         // Decode bitmap with inSampleSize set
         options.inJustDecodeBounds = false;
@@ -2348,10 +2342,6 @@ public class SpotChallan extends Activity
                         whlr_code_send = rta_details_spot_master[9] != null ? rta_details_spot_master[9] : "NA";// WHEELER CODE
                         if (whlr_code_send != null) {
                             btn_wheller_code.setText("" + whlr_code_send);
-//                            start = System.currentTimeMillis();
-//                            Log.i("TIME>>>END>>>Async_getViolations",String.valueOf(start));
-
-
                             if (isOnline()) {
                                 //   new Async_getViolations().execute();
 
@@ -2362,12 +2352,14 @@ public class SpotChallan extends Activity
                         } else {
                             btn_wheller_code.setClickable(true);
                         }
+                        //
+
                     }
 
                     if ((Dashboard.check_vhleHistory_or_Spot.equals("spot"))) {
                         if (et_driver_lcnce_num_spot.getText().toString().trim().equals("")) {
                             licence_details_spot_master = new String[0];
-                            otp_msg = "Please Enter driving license number (or)\nAdd violation - without driving license/\n Add violation-Without Carrying DL";
+                            otp_msg = "Please Enter driving license number (or)\n Add violation - without driving license/\n Add violation-Without Carrying DL";
                             removeDialog(OTP_CNFRMTN_DIALOG);
                             showDialog(OTP_CNFRMTN_DIALOG);
                         }
@@ -3444,13 +3436,6 @@ public class SpotChallan extends Activity
                 detained_Txt.setVisibility(View.GONE);
 
 
-
-/*                if(otp_no_flg.equalsIgnoreCase("Y"))
-                {
-                    btn_send_otp_to_mobile.setVisibility(View.VISIBLE);
-                }else {
-                    btn_send_otp_to_mobile.setVisibility(View.GONE);
-                }*/
 
 
                 if (SpotChallan.OtpStatus.equalsIgnoreCase("Y")) {
@@ -7819,16 +7804,17 @@ public class SpotChallan extends Activity
                             || ((dl_points != null && !"".equalsIgnoreCase(dl_points) && Integer.parseInt(dl_points) > 12) && ("C".equals(DLvalidFLG) || "S".equals(DLvalidFLG)))
                             || (et_driver_lcnce_num_spot.getText().length() <= 5 && !btn_violation.getText().toString().contains("W/o Driving Licence")
                             && !btn_violation.getText().toString().contains("Minor driving the vehicle")
-                            && !btn_violation.getText().toString().contains("W/o Carring Driving License"))) {
+                            && !btn_violation.getText().toString().contains("W/o Carring Driving License")) && ("N".equalsIgnoreCase(theftRemarkFlag))) {
 
                         licence_details_spot_master = new String[0];
                         otp_msg = "\n Please select  violation -without driving license \n";
                         removeDialog(OTP_CNFRMTN_DIALOG);
                         showDialog(OTP_CNFRMTN_DIALOG);
 
+
                     } else if ((et_driver_lcnce_num_spot.getText().toString().trim().equals(""))
                             && (!btn_violation.getText().toString()
-                            .equals("" + getResources().getString(R.string.select_violation)))) {
+                            .equals("" + getResources().getString(R.string.select_violation))) && ("N".equalsIgnoreCase(theftRemarkFlag))) {
 
                         temp_violations_ids = new String[violation_checked_violations.size()];
                         int status = 0;
@@ -8010,12 +7996,15 @@ public class SpotChallan extends Activity
                             }
                         }
 
-                        if (status == 1) {
+                        if (status == 1 && ("N".equalsIgnoreCase(theftRemarkFlag))) {
+
 
                             licence_details_spot_master = new String[0];
+
                             otp_msg = "Please select  violation -without driving license";
                             removeDialog(OTP_CNFRMTN_DIALOG);
                             showDialog(OTP_CNFRMTN_DIALOG);
+
                             // }
 
                         }
@@ -8200,6 +8189,9 @@ public class SpotChallan extends Activity
                         }
 
                         if (rtaApproveFlg) {
+                            commomAsync();
+                        }
+                        if ("Y".equalsIgnoreCase(theftRemarkFlag)) {
                             commomAsync();
                         }
                       /*  if (status == 1) {

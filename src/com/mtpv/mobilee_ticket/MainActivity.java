@@ -244,6 +244,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
         db = new DBHelper(getApplicationContext());
     }
 
+    @SuppressLint({"MissingPermission", "HardwareIds"})
     @SuppressWarnings("unused")
     public void getLocation() {
 

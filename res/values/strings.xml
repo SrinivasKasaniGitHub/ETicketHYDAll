@@ -14,7 +14,7 @@
     <string name="towing">Crane \n41 CP ACT</string>
     <string name="towing_one_line">Crane 41 CP ACT</string>
     <string name="reports">Reports</string>
-    <string name="app_version">Version-3.0.2</string>
+    <string name="app_version">Version-3.1.1</string>
     <string name="regNo">Regn.No</string>
     <string name="engine">Engine No</string>
     <string name="chasis">Chasis No</string>
@@ -238,12 +238,12 @@
     <string name="ip_settings_header">IP Settings</string>
     <string name="service_url">Service URL</string>
     <string name="ftp_url">FTP URL</string>
-    <string name="live">LIVE</string>
-    <string name="test">TEST</string>
+    <string name="live">Live</string>
+    <string name="test">Trace</string>
     <string name="local">LOCAL NETWORK</string>
-    <string name="mpls">TEST</string>
+    <string name="mpls">Trace</string>
 
-    <string name="open">LIVE</string>
+    <string name="open">Live</string>
 
     <!-- AADHAR DETAILS -->
     <string name="aadhar_no_eid">Aadhar No/EID</string>

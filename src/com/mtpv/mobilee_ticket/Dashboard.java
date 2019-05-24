@@ -191,7 +191,7 @@ public class Dashboard extends Activity implements OnClickListener {
         UNIT_CODE = MainActivity.arr_logindetails[0].substring(0, 2);
 
         LoadUIComponents();
-       
+
         db = new DBHelper(getApplicationContext());
 
         netwrk_info_txt = "" + getResources().getString(R.string.newtork_txt);
@@ -212,7 +212,7 @@ public class Dashboard extends Activity implements OnClickListener {
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
         } else if (MainActivity.uintCode.equals("44")) { //44 Warangal
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.wgl_logo));
-        }else {//  69 Siddipet
+        } else {//  69 Siddipet
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
         }
         officer_Name = (TextView) findViewById(R.id.officer_Name);
@@ -299,10 +299,10 @@ public class Dashboard extends Activity implements OnClickListener {
             FTPClient ftpClient = new FTPClient();
 
             try {
-                if (null != MainActivity.service_type&& MainActivity.service_type.contains("live")) {
+                if (null != MainActivity.service_type && MainActivity.service_type.contains("live")) {
                     server = "125.16.1.69";
                 } else {
-                    server = "192.168.11.9";
+                    server = "125.16.1.69";
                 }
                 ftpClient.connect(server, port);
                 ftpClient.login(username, password);
@@ -411,11 +411,11 @@ public class Dashboard extends Activity implements OnClickListener {
                             public void run() {
                                 progress.setProgress(downloadedSize);
                                 float per = ((float) downloadedSize / totalSize) * 100;
-
-                                cur_val.setText((int) per / 225000 + "%");
+                                cur_val.setText((int) per / 460000 + "%");
                             }
                         });
                     }
+                    dialog.dismiss();
                     fileOutput.close();
                     outputStream.close();
 
@@ -457,15 +457,14 @@ public class Dashboard extends Activity implements OnClickListener {
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
                         } else {
-
                             Uri apkUri = FileProvider.getUriForFile(Dashboard.this, BuildConfig.APPLICATION_ID +
                                     ".provider", new File(Environment.getExternalStorageDirectory() + "/download/" + "ETicketHYD.apk"));
                             Intent intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
                             intent.setData(apkUri);
-                            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                            //intent.setDataAndType(apkUri,"application/vnd.android.package-archive");
+                            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                             startActivity(intent);
                         }
-
                     }
                 }
 
@@ -477,7 +476,7 @@ public class Dashboard extends Activity implements OnClickListener {
                 e.printStackTrace();
                 removeDialog(PROGRESS_DIALOG);
                 showToast("Please contact e-Challan team !");
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 removeDialog(PROGRESS_DIALOG);
                 showToast("Please contact e-Challan team !");
@@ -576,14 +575,14 @@ public class Dashboard extends Activity implements OnClickListener {
         //tv_drunk_and_drive.setOnClickListener(this);
         //tv_settings.setOnClickListener(this);
         //tv_sync.setOnClickListener(this);
-       // tv_duplicate_print.setOnClickListener(this);
-       // tv_spot_challan.setOnClickListener(this);
-       // tv_vehicle_history.setOnClickListener(this);
+        // tv_duplicate_print.setOnClickListener(this);
+        // tv_spot_challan.setOnClickListener(this);
+        // tv_vehicle_history.setOnClickListener(this);
         //tv_towing_cp_act.setOnClickListener(this);
-       // tv_release_document.setOnClickListener(this);
-       // tv_reports.setOnClickListener(this);
+        // tv_release_document.setOnClickListener(this);
+        // tv_reports.setOnClickListener(this);
         tv_special_drive.setOnClickListener(this);
-       // tv_about_version.setOnClickListener(this);
+        // tv_about_version.setOnClickListener(this);
         //tv_dd_basic.setOnClickListener(this);
         tv_echallannon.setOnClickListener(this);
 
@@ -1081,6 +1080,7 @@ public class Dashboard extends Activity implements OnClickListener {
         }
     }
 
+    @SuppressLint("MissingPermission")
     @SuppressWarnings("unused")
     private void getSimImeiNo() {
         // TODO Auto-generated method stub

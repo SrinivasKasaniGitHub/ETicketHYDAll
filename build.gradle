@@ -18,6 +18,7 @@ apply plugin: 'com.android.application'
 repositories {
     maven { url 'https://maven.fabric.io/public' }
 }
+
 repositories {
     jcenter()
     maven {
@@ -25,7 +26,6 @@ repositories {
         name 'Google'
     }
 }
-
 
 dependencies {
     implementation fileTree(include: '*.jar', dir: 'libs')
