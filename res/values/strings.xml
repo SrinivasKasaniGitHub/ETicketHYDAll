@@ -14,7 +14,7 @@
     <string name="towing">Crane \n41 CP ACT</string>
     <string name="towing_one_line">Crane 41 CP ACT</string>
     <string name="reports">Reports</string>
-    <string name="app_version">Version-3.1.1</string>
+    <string name="app_version">Version-3.1.2</string>
     <string name="regNo">Regn.No</string>
     <string name="engine">Engine No</string>
     <string name="chasis">Chasis No</string>
@@ -27,7 +27,7 @@
 
     <!-- <string name="header_txt">Hyderabad Traffic Police</string> -->
     <string name="header_txt">eTicket</string>
-    <string name="sub_header_txt">Drunk &amp; Drive  V 1.0</string>
+    <string name="sub_header_txt">Drunk &amp; Drive</string>
     <string name="login">LOGIN</string>
     <string name="enter_pid">Enter PID</string>
     <string name="enter_pwd">Enter Password</string>
@@ -66,7 +66,7 @@
     <string name="driver_contact_no">Enter Driver Contact No</string>
     <string name="detained_items">Detained Items</string>
     <string name="languageselect">Select Language</string>
-    <string name="detained_items_rc">RC&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</string>
+    <string name="detained_items_rc">RC</string>
     <string name="detained_items_vhcle">Vehicle</string>
     <string name="detained_items_licence">Licence</string>
     <string name="detained_items_permit">Permit</string>
@@ -291,7 +291,7 @@
     <!-- 23dbbd green button style -->
 
     <color name="tranparent_color">#80ffffff</color>
-    <color name="tranparent_color_black">#80000000</color>
+    <color name="tranparent_color_black">#80888787</color>
     <color name="transparent">#00000000</color>
     <color name="green">#568e3a</color>
 

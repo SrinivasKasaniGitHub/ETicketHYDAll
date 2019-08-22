@@ -184,7 +184,7 @@ public class SpotChallan extends Activity
     int selected_wheller_code = -1, selected_id_proof = -1, sold_out_string = -1;
     public static final int PROGRESS_DIALOG = 0;
     final int WHEELER_CODE = 1, VIOLATIONS_DIALOG = 2, SECOND_SPOTSCREEN_DIALOG = 3, ID_PROOF_DIALOG = 4, DYNAMIC_VIOLATIONS = 5,
-            FAKE_NUMBERPLATE_DIALOG = 6, OTP_CNFRMTN_DIALOG = 7, OCCUPATION_DIALOG = 10, SOLD_OUT_DIALOG = 11;
+            FAKE_NUMBERPLATE_DIALOG = 6, OTP_CNFRMTN_DIALOG = 7, OCCUPATION_DIALOG = 10, SOLD_OUT_DIALOG = 11, PENALTYPOINTSDLG = 12;
     StringBuffer message = new StringBuffer();
     StringBuffer pointsreachedviolation;
     boolean isGPSEnabled = false;
@@ -1685,7 +1685,7 @@ public class SpotChallan extends Activity
                     String vehicle_split = et_regcid_spot.getText().toString().trim().substring(0, 2);
 
                     if (!vehicle_split.equals("AP") && !vehicle_split.equals("TS")) {
-                        otherStateVehicle = "YES";
+                        otherStateVehicle = "NO";
                     } else {
                         otherStateVehicle = "NO";
                     }
@@ -2427,6 +2427,7 @@ public class SpotChallan extends Activity
             }
         }
     }
+
 
     /* LICENCE DETAILS */
     public class Async_getLicenceDetails extends AsyncTask<Void, Void, String> {
@@ -3227,7 +3228,7 @@ public class SpotChallan extends Activity
     }
 
     @SuppressWarnings("unused")
-    @SuppressLint({"ResourceAsColor", "CutPasteId"})
+    @SuppressLint({"ResourceAsColor", "CutPasteId", "SetTextI18n"})
     @Override
     protected Dialog onCreateDialog(int id) {
         // TODO Auto-generated method stub
@@ -3436,8 +3437,6 @@ public class SpotChallan extends Activity
                 detained_Txt.setVisibility(View.GONE);
 
 
-
-
                 if (SpotChallan.OtpStatus.equalsIgnoreCase("Y")) {
                     btn_send_otp_to_mobile.setVisibility(View.VISIBLE);
                 } else {
@@ -3536,7 +3535,7 @@ public class SpotChallan extends Activity
                     }
                 }
 
-                /*** KIRAN CODING START ***/
+
                 if (Dashboard.check_vhleHistory_or_Spot.equals("towing")) {
 
                     rl_detained_items.setVisibility(View.VISIBLE);
@@ -3739,6 +3738,7 @@ public class SpotChallan extends Activity
                     } else {
                         radioGroupButton_spotpaymentYes.setChecked(false);
                         radioGroupButton_spotpaymentNo.setChecked(true);
+                        radioGroupButton_spotpaymentNo.setEnabled(false);//OtherStateEdit
                         radioGroupButton_spotpaymentYes.setEnabled(false);
                         rl_detained_items.setVisibility(View.VISIBLE);
                         ll_detained_items_root.setVisibility(View.GONE);
@@ -3801,6 +3801,15 @@ public class SpotChallan extends Activity
 
                     }
 
+                  /*  runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (licence_no != null && (totaldl_points != 0 && totaldl_points > 0)) {
+                                showDialog(PENALTYPOINTSDLG);
+                            }
+                        }
+                    });*/
+
 
 //                    if (violation_checked_violations.contains("64") || violation_checked_violations.contains("6")
 //                            || ServiceHelper.pending_challans_details.length >= 10) {
@@ -3830,6 +3839,7 @@ public class SpotChallan extends Activity
                         } else {
                             radioGroupButton_spotpaymentYes.setEnabled(false);
                             radioGroupButton_spotpaymentNo.setChecked(true);
+                            radioGroupButton_spotpaymentNo.setEnabled(false);//OtherStateEdit
                             radioGroupButton_spotpaymentYes.setClickable(false);
                         }
 
@@ -3848,7 +3858,7 @@ public class SpotChallan extends Activity
                         }
 
                     } else if (!vehicle_split.equals("AP") || !vehicle_split.equals("TS")) {
-
+                        otherStateVehicle = "NO";
                         if (otherStateVehiclePayment.equals("Y")) {
                             radioGroupButton_spotpaymentYes.setChecked(true);
                             radioGroupButton_spotpaymentNo.setEnabled(true);
@@ -3865,9 +3875,10 @@ public class SpotChallan extends Activity
                             sb_detained_items.append("");
                             setCheckedValues(false, "donotedit");
                             chck_detainedItems_none.setChecked(true);
-                            otherStateVehicle = "YES";
+
                         } else {
                             radioGroupButton_spotpaymentNo.setChecked(true);
+                            radioGroupButton_spotpaymentNo.setEnabled(false);//OtherStateEdit
                             radioGroupButton_spotpaymentYes.setEnabled(false);
                             radioGroupButton_spotpaymentYes.setChecked(false);
 
@@ -3904,10 +3915,19 @@ public class SpotChallan extends Activity
                             detained_Txt.setVisibility(View.VISIBLE);
                             detained_Txt.setText("The Challan has been Charge Sheeted !");
 
+                        } else if ("Y".equals(otherStateVehiclePayment)) {
+                            setCheckedValues(false, "donotedit");
+                            chck_detainedItems_none.setChecked(true);
+                            sb_detained_items.append("");
+                        } else if ("N".equals(otherStateVehiclePayment) && "NO".equalsIgnoreCase(otherStateVehicle)) { //OtherStateEdit YES--NO
+                            sb_detained_items.append("02:VEHICLE@");
+                            chck_detainedItems_vhcle.setChecked(true);
+                            chck_detainedItems_vhcle.setEnabled(true);
+                            chck_detainedItems_none.setEnabled(false);
+                            chck_detainedItems_none.setChecked(false);
                         } else {
                             sb_detained_items.append("donotedit");
                             chck_detainedItems_none.setChecked(true);
-
                         }
 
                         chck_detainedItems_none.setOnClickListener(new OnClickListener() {
@@ -3929,10 +3949,10 @@ public class SpotChallan extends Activity
                         chck_detainedItems_none.setEnabled(false);
                         chck_detainedItems_none.setChecked(false);
                         detainAlertFlag = "Y";
-
                     }*/
                     else if ("NO".equals(otherStateVehicle) && (vioDetainCheckFlag.equalsIgnoreCase("1")
                             || ServiceHelper.pending_challans_details.length >= 10 || soldOut == 1 || penaltypointsreachedFlag == 1 || "D".equals(DLvalidFLG))) {
+
                         sb_detained_items.append("02:VEHICLE@");
                         chck_detainedItems_vhcle.setChecked(true);
                         chck_detainedItems_vhcle.setEnabled(true);
@@ -3941,21 +3961,18 @@ public class SpotChallan extends Activity
                         detainAlertFlag = "Y";
                         detained_Txt.setVisibility(View.VISIBLE);
                         if (vioDetainCheckFlag.equalsIgnoreCase("1")) {
-                            detained_Txt.setText("The Challan has been Charge Sheeted !");
+                            detained_Txt.setText("The Vehicle has been Detained !");
                         } else if (ServiceHelper.pending_challans_details.length >= 10) {
-                            detained_Txt.setText("The Challan has been Top violated !");
+                            detained_Txt.setText("The Vehicle has been Top violated !");
                         } else if (soldOut == 1) {
-                            detained_Txt.setText("This is Sold Out Vehicle!");
+                            detained_Txt.setText("This is Sold Out Vehicle !");
                         } else if (penaltypointsreachedFlag == 1) {
-                            detained_Txt.setText("Penalty points crossed on DL!");
+                            detained_Txt.setText("Penalty points crossed on DL !");
                         } else if ("D".equals(DLvalidFLG)) {
-                            detained_Txt.setText("DL suspended!");
+                            detained_Txt.setText("DL suspended !");
                         } else {
                             detained_Txt.setVisibility(View.GONE);
-                        }
-
-
-                        //showToast("Vehicle has been detained");
+                        } //showToast("Vehicle has been detained");
 
                     } else if ("Y".equals(otherStateVehiclePayment) && (vioDetainCheckFlag.equalsIgnoreCase("1")
                             || ServiceHelper.pending_challans_details.length >= 10 || soldOut == 1 || penaltypointsreachedFlag == 1 || "D".equals(DLvalidFLG))) {
@@ -4022,6 +4039,12 @@ public class SpotChallan extends Activity
                                 setCheckedValues(false, "donotedit");
                                 chck_detainedItems_none.setChecked(true);
                                 sb_detained_items.append("");
+                            } else if ("N".equals(otherStateVehiclePayment) && "YES".equalsIgnoreCase(otherStateVehicle)) {
+                                sb_detained_items.append("02:VEHICLE@");
+                                chck_detainedItems_vhcle.setChecked(true);
+                                chck_detainedItems_vhcle.setEnabled(true);
+                                chck_detainedItems_none.setEnabled(false);
+                                chck_detainedItems_none.setChecked(false);
                             } else {
                                 chck_detainedItems_none.setChecked(true);
                                 chck_detainedItems_none.setEnabled(true);
@@ -5085,6 +5108,57 @@ public class SpotChallan extends Activity
                 btn2.setBackgroundColor(Color.RED);
                 return alert_Dialog;
 
+            case PENALTYPOINTSDLG:
+
+                String plty_message = "";
+                if (totaldl_points > 12) {
+                    plty_message = "\nTotal Penalty Points on Driving License are " + totaldl_points +
+                            ", Detain the Original Driving License\n";
+                    new VibratorUtils(getApplicationContext()).vibratePhone(10000);
+                } else if (totaldl_points > 0) {
+                    plty_message = "\nTotal Penalty Points on Driving License are " + totaldl_points + "\n";
+                }
+
+                TextView ttle = new TextView(this);
+                ttle.setText("ALERT");
+                ttle.setBackgroundColor(Color.RED);
+                ttle.setGravity(Gravity.CENTER);
+                ttle.setTextColor(Color.WHITE);
+                ttle.setTextSize(20);
+                ttle.setTypeface(ttle.getTypeface(), Typeface.BOLD);
+                ttle.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dialog_logo, 0, R.drawable.dialog_logo, 0);
+                ttle.setPadding(20, 0, 20, 0);
+                ttle.setHeight(85);
+
+                AlertDialog.Builder alrtDialog_Builder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT);
+                alrtDialog_Builder.setCustomTitle(ttle);
+                alrtDialog_Builder.setIcon(R.drawable.dialog_logo);
+                alrtDialog_Builder.setMessage(plty_message);
+                alrtDialog_Builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        new VibratorUtils(getApplicationContext()).vibrateStopPhone();
+                        removeDialog(PENALTYPOINTSDLG);
+                    }
+                });
+                alrtDialog_Builder.setCancelable(false);
+
+                AlertDialog alt_Dialog = alrtDialog_Builder.create();
+                alt_Dialog.show();
+                alt_Dialog.getWindow().getAttributes();
+
+                TextView tV = (TextView) alt_Dialog.findViewById(android.R.id.message);
+                tV.setTextSize(28);
+                tV.setGravity(Gravity.CENTER);
+                tV.setTypeface(tV.getTypeface(), Typeface.BOLD);
+
+                Button btns = alt_Dialog.getButton(DialogInterface.BUTTON_POSITIVE);
+                btns.setTextSize(22);
+                btns.setTextColor(Color.WHITE);
+                btns.setTypeface(btns.getTypeface(), Typeface.BOLD);
+                btns.setBackgroundColor(Color.RED);
+                return alt_Dialog;
             default:
                 break;
         }
@@ -5607,11 +5681,6 @@ public class SpotChallan extends Activity
             super.onPostExecute(result);
 
             removeDialog(PROGRESS_DIALOG);
-            //  end = System.currentTimeMillis();
-            // Log.i("TIME>>>END>>>Async_getViolations",String.valueOf(end));
-
-            //   res=end-start;
-            // Log.i("TIME>>>Async_getViolations :  Taken in seconds>> ", String.valueOf(res/1000));
 
             if (ServiceHelper.spot_final_res_status != null && !"0".equals(ServiceHelper.spot_final_res_status.toString()) &&
                     ServiceHelper.final_spot_reponse_master.length > 0) {
@@ -5632,11 +5701,8 @@ public class SpotChallan extends Activity
 
                 } else {
 
-
                     removeDialog(PROGRESS_DIALOG);
                     removeDialog(SECOND_SPOTSCREEN_DIALOG);
-
-
                     try {
                         if (ServiceHelper.final_spot_reponse_master.length > 0) {
 
@@ -6264,7 +6330,7 @@ public class SpotChallan extends Activity
             simid_send = "";
         }
 
-        WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+        @SuppressLint("WifiManagerLeak") WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         WifiInfo wInfo = wifiManager.getConnectionInfo();
         macAddress = wInfo.getMacAddress();
 
@@ -6636,7 +6702,7 @@ public class SpotChallan extends Activity
 
             @Override
             public void onClick(DialogInterface arg0, int arg1) {
-                otherStateVehiclePayment = "Y";
+                otherStateVehiclePayment = "N";
                 spotNextCall();
             }
         });
@@ -6742,7 +6808,7 @@ public class SpotChallan extends Activity
         if (totaldl_points > 12) {
             alertDialogBuilder.setMessage("\nTotal Penalty Points on Driving License are " + totaldl_points +
                     ", Detain the Original Driving License\n");
-
+            new VibratorUtils(getApplicationContext()).vibratePhone(10000);
         } else if (totaldl_points > 0) {
             alertDialogBuilder.setMessage("\nTotal Penalty Points on Driving License are " + totaldl_points + "\n");
         }
@@ -6753,10 +6819,9 @@ public class SpotChallan extends Activity
             @Override
             public void onClick(DialogInterface arg0, int arg1) {
 
-
+                new VibratorUtils(getApplicationContext()).vibrateStopPhone();
                 if (totaldl_points > 12) {
                     if (chck_detainedItems_licence.isChecked()) {
-
                         finalsubmit();
                     } else if (!chck_detainedItems_licence.isChecked() && chck_detainedItems_vhcle.isChecked()) {
                         finalsubmit();
@@ -6772,7 +6837,7 @@ public class SpotChallan extends Activity
         alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                new VibratorUtils(getApplicationContext()).vibrateStopPhone();
             }
         });
         alertDialogBuilder.setCancelable(false);
@@ -7004,7 +7069,7 @@ public class SpotChallan extends Activity
                                 }
                                 if ("Y".equals(SpotChallan.OtpStatus.trim())
                                         && (!Dashboard.check_vhleHistory_or_Spot.equals("towing"))
-                                        && otp_status != "verify") {
+                                        && !otp_status .equalsIgnoreCase( "verify")) {
                                     showToast("Please Verify OTP");
                                 } else {
                                     if (isOnline()) {
@@ -7756,9 +7821,6 @@ public class SpotChallan extends Activity
 
                     String[] violations = vio.split("\\@");
                     if (64 == Integer.parseInt(violations[0].trim())) {
-                        // et_regcid_spot.setError(Html.fromHtml("<font
-                        // color='black'>Please select Driver
-                        // Photo</font>")); //00
                         dlCheck = "1";
 
                     }
@@ -7782,12 +7844,10 @@ public class SpotChallan extends Activity
 
         } else if (btn_wheller_code.getText().toString().trim()
                 .equals("" + getString(R.string.select_wheeler_code))) {
-            System.out.println(">>>>>>>>4");
             showToast("Select Wheeler Code");
 
         } else if (et_drivername_iOD.getText().toString().trim().equals("")
                 && !Dashboard.check_vhleHistory_or_Spot.equals("towing")) {
-            System.out.println(">>>>>>>>5");
             ShowMessage("\n Please Enter Driver Name...! \n");
 
         } else {
@@ -7797,20 +7857,17 @@ public class SpotChallan extends Activity
 
                 if (Dashboard.check_vhleHistory_or_Spot.equals("spot")) {
 
-
-                    Log.i("vvv", "vvv");
                     if ((et_driver_lcnce_num_spot.getText().toString().trim().equals(""))
                             && (btn_violation.getText().toString().equals("" + getResources().getString(R.string.select_violation)))
                             || ((dl_points != null && !"".equalsIgnoreCase(dl_points) && Integer.parseInt(dl_points) > 12) && ("C".equals(DLvalidFLG) || "S".equals(DLvalidFLG)))
-                            || (et_driver_lcnce_num_spot.getText().length() <= 5 && !btn_violation.getText().toString().contains("W/o Driving Licence")
-                            && !btn_violation.getText().toString().contains("Minor driving the vehicle")
-                            && !btn_violation.getText().toString().contains("W/o Carring Driving License")) && ("N".equalsIgnoreCase(theftRemarkFlag))) {
+                            || (et_driver_lcnce_num_spot.getText().length() <= 5 && (64) != check.getId()&& !dlCheck.equals("1")
+                            && (30) != check.getId()
+                            && (123) != check.getId()) && ("N".equalsIgnoreCase(theftRemarkFlag))) {
 
                         licence_details_spot_master = new String[0];
                         otp_msg = "\n Please select  violation -without driving license \n";
                         removeDialog(OTP_CNFRMTN_DIALOG);
                         showDialog(OTP_CNFRMTN_DIALOG);
-
 
                     } else if ((et_driver_lcnce_num_spot.getText().toString().trim().equals(""))
                             && (!btn_violation.getText().toString()

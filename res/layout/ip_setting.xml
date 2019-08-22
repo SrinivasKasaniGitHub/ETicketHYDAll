@@ -169,7 +169,8 @@
                     android:paddingStart="@dimen/header_grnt_padding_five"
                     android:paddingEnd="@dimen/header_grnt_padding_five"
                     android:checked="true"
-                    android:text="IP" />
+                    android:text="IP"
+                    android:visibility="gone"/>
 
                 <RadioButton
                     android:id="@+id/radioButton_test"

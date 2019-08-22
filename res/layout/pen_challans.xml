@@ -30,7 +30,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:text="@string/header_txt" />
         
         <TextView
@@ -40,17 +39,17 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView1"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="23dp"
             android:text="@string/app_version"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            />
 
         <TextView
             android:id="@+id/textViewheader_pen_challans_xml"
             style="@style/cust_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imageView2"
+            android:layout_below="@+id/textView2"
             android:layout_centerHorizontal="true"
             android:text="@string/sub_header_txt"
             android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -102,7 +101,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
-        android:layout_below="@id/lvpendingchallans_xml"
-        android:src="@drawable/footer"/>
+        android:layout_below="@id/lvpendingchallans_xml" />
 
 </RelativeLayout>

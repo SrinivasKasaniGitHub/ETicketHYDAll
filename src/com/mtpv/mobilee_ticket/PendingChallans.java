@@ -144,7 +144,7 @@ public class PendingChallans extends Activity implements OnClickListener {
 			Log.i("**ADAPTER**", ""
 					+ ServiceHelper.pending_challans_details[position][1]);
 
-			tv_eticket_num.setText("E-TicketNo : "
+			tv_eticket_num.setText("Challan No : "
 					+ ServiceHelper.pending_challans_details[position][1]);
 			// tv_point_name.setText("Offence Date & Time : "
 			// + ServiceHelper.pending_challans_details[position][2]

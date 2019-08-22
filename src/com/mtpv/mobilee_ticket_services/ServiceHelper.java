@@ -14,7 +14,9 @@ import org.ksoap2.SoapFault;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
+import org.xmlpull.v1.XmlPullParserException;
 
+import java.io.IOException;
 import java.util.Map;
 
 @SuppressWarnings("unused")
@@ -27,7 +29,7 @@ public class ServiceHelper {
             aadhaarVehicle_resp, UpdateAadhaar_resp, aadhaarDetailsCheck_resp, changePswd_otp, changePSWDconfirm,
             version_response, offender_remarks,
             rta_data, license_data, aadhar_data, result = "", output = "", rc_send, dl_send, adhr_send,
-            versionData, getOfficerLimit, spot_finalPrintNDevice;
+            versionData, getOfficerLimit, spot_finalPrintNDevice,str_imgDDInfo;
 
     public static Map<String, String> viodetMap = null;
     public static String rtaapproovedresponse, validregnoresponse, insertDetainItemsresponse, remarksresult, otpStatusnTime, noncontactresponse;
@@ -52,7 +54,7 @@ public class ServiceHelper {
     public static String GET_TERMINAL_DETAILS = "getTerminalDetails", GET_CHALLAN_DETAILS_FOR_AADHAAR = "getChallanDetailsForAadharUpdate";
     public static String GET_AADHAAR_UPDATE = "aadharUpdateForChallanGeneration", OCCUPATIONS = "getOccupations", QUALIFICATIONS = "getQualifications";
     public static String GET_CHANGE_PSWD_OTP = "aadharUpdateForChallanGeneration", GET_AADHAAR_TICKET = "checkAadharTicket";
-    public static String get_OffenceDetailsbyWheelerChallanType = "getOffenceDetailsbyWheelerChallanType";
+    public static String get_OffenceDetailsbyWheelerChallanType = "getOffenceDetailsbyWheelerChallanType",getPrevFRSInfo="getPrevFRSInfo";
 
     public static String[] login_details_arr, whlr_details_master, psNames_master, violation_points_masters, violation_points_masters_split,
             occupationlist_master, PointNamesBypsNames_master, occupation_master, qualification_master, bar_master, vchle_cat_master,
@@ -449,7 +451,7 @@ public class ServiceHelper {
                 PointNamesBypsNames_master = new String[0];
                 PointNamesBypsNames_master = Opdata_Chalana.split("!");
                 for (int i = 0; i < ServiceHelper.PointNamesBypsNames_master.length; i++) {
-                    Log.i("**POINTNAMEBYPSNAMES MASTER***", "" + ServiceHelper.PointNamesBypsNames_master[i]);
+                    Log.i("**POINTPSNAMES MAS", "" + ServiceHelper.PointNamesBypsNames_master[i]);
                 }
             }
         } catch (SoapFault fault) {
@@ -667,7 +669,7 @@ public class ServiceHelper {
 
                     vchle_mainCat_master = Opdata_Chalana.split("!");
                     for (int i = 0; i < ServiceHelper.vchle_mainCat_master.length; i++) {
-                        Log.i("**VCHLE MIAN CAT MASTER***", "" + ServiceHelper.vchle_mainCat_master[i]);
+                        Log.i("CAT MASTER***", "" + ServiceHelper.vchle_mainCat_master[i]);
                     }
                 }
             }
@@ -705,13 +707,38 @@ public class ServiceHelper {
                 vchle_subCat_master = new String[0];
                 vchle_subCat_master = Opdata_Chalana.split("!");
                 for (int i = 0; i < ServiceHelper.vchle_subCat_master.length; i++) {
-                    Log.i("**VCHLE SUB CAT MASTER***", "" + ServiceHelper.vchle_subCat_master[i]);
+                    Log.i("**VCHLE SUB", "" + ServiceHelper.vchle_subCat_master[i]);
                 }
             }
         } catch (SoapFault fault) {
         } catch (Exception e) {
             // TODO: handle exception
             vchle_subCat_master = new String[0];
+        }
+    }
+
+    public static void getPrevFRSInfo(String driverBase64ImgData){
+        try {
+            SoapObject request = new SoapObject(NAMESPACE, ""+getPrevFRSInfo);
+            request.addProperty("driverBase64ImgData", "" + driverBase64ImgData);
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+            envelope.dotNet = true;
+            envelope.setOutputSoapObject(request);
+            HttpTransportSE httpTransportSE = new HttpTransportSE(MainActivity.URL);
+            httpTransportSE.call(SOAP_ACTION, envelope);
+            Object result = envelope.getResponse();
+            try{
+                str_imgDDInfo=result.toString();
+            }catch (Exception e){
+                e.printStackTrace();
+                str_imgDDInfo="";
+            }
+        }catch (SoapFault soapFault){
+            soapFault.printStackTrace();
+            str_imgDDInfo="";
+        } catch (Exception e) {
+            e.printStackTrace();
+            str_imgDDInfo="";
         }
     }
 
@@ -1959,7 +1986,7 @@ public class ServiceHelper {
 
             }
 
-            Log.i("Online Buffer Spot Challan", onlinebuff.toString());
+            Log.i("Online Buffer", onlinebuff.toString());
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -2537,7 +2564,7 @@ public class ServiceHelper {
 
             }
 
-            Log.i("Online Buffer Specail Drive", onlinebuff.toString());
+            Log.d("Online Buf", onlinebuff.toString());
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

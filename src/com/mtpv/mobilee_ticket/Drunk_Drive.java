@@ -73,6 +73,7 @@ import com.mtpv.mobilee_ticket_services.DBHelper;
 import com.mtpv.mobilee_ticket_services.DateUtil;
 import com.mtpv.mobilee_ticket_services.ServiceHelper;
 import com.mtpv.mobilee_ticket_services.Utils;
+import com.mtpv.mobilee_ticket_services.VibratorUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -254,7 +255,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
 
     public static byte[] owner_imageByteArray = null;
 
-    public static String dd_dob_DL = null;
+    public static String dd_dob_DL = null,theftRemarkFlag = "N";;
 
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
@@ -268,14 +269,13 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
     TextView officer_Name,officer_Cadre,officer_PS;
     TextView textView_header_spot_challan_xml;
 
-    @SuppressLint("NewApi")
+    @SuppressLint({"NewApi", "MissingPermission", "ObsoleteSdkInt", "SimpleDateFormat"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setContentView(R.layout.drunkdrive);
-
         dd_dobFLG = false;
         dd_dob_DL = null;
         date = (DateFormat.format("dd/MM/yyyy hh:mm:ss", new java.util.Date()).toString());
@@ -290,10 +290,8 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
         date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
         // id_date.setText(strdate1);
         Current_Date = strdate1;
-
         textView_header_spot_challan_xml=(TextView)findViewById(R.id.textView_header_spot_challan_xml);
         textView_header_spot_challan_xml.setText("Drunk drive");
-
         img_logo=(ImageView)findViewById(R.id.img_logo);
         if (MainActivity.uintCode.equals("22")){
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.cyb_logo));
@@ -303,7 +301,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
         }else if (MainActivity.uintCode.equals("44")) { //44 Warangal
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.wgl_logo));
-        }else {//  69 Siddipet
+        }else { //  69 Siddipet
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
         }
 
@@ -356,7 +354,6 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
             StrictMode.setThreadPolicy(policy);
         }
 
-		/* TO GET SIM ID */
         telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         imei_send = telephonyManager.getDeviceId();// TO GET IMEI NUMBER
 
@@ -367,7 +364,6 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
         }
 
         db = new DBHelper(getApplicationContext());
-        /* TO GET WHEELER CODE DETAILS */
         try {
             db.open();
             // WHEELER CODE
@@ -378,7 +374,6 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
 
                 wheeler_code_arr_spot = new String[c_whlr.getCount()];
                 wheeler_name_arr_spot = new String[c_whlr.getCount()];
-
                 int count = 0;
                 while (c_whlr.moveToNext()) {
                     wheeler_code_arr_spot[count] = c_whlr.getString(1);
@@ -402,16 +397,12 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                 switch (checkedId) {
 
                     case R.id.radioGroupButton_licenceyes:
-                        // TODO Something
-                        // Exits
                         licence_status = "";
                         licence_status = "1";
                         et_driver_lcnce_num.setEnabled(true);
                         break;
 
                     case R.id.radioGroupButton_licenceno:
-                        // TODO Something
-                        // Does Not Exits
                         licence_status = "";
                         licence_status = "0";
                         et_driver_lcnce_num.setText("");
@@ -1243,6 +1234,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
 
                 try {
                     Drunk_Drive.offender_remarks_resp_master = new String[0];
+                    theftRemarkFlag = ServiceHelper.offender_remarks.split("\\^")[1];
 
                     Drunk_Drive.offender_remarks_resp_master = ServiceHelper.offender_remarks.split("!");
 
@@ -1631,11 +1623,12 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                     massge = "\n" + offender_remarks_resp_master[10] + "\n";
 
                 } catch (Exception e) {
-                    // TODO: handle exception
                     e.printStackTrace();
-
                     massge = "OFFENDER REMARKS NOT FOUND PLEASE TRY AGAIN";
+                }
 
+                if ("Y".equalsIgnoreCase(theftRemarkFlag)) {
+                    new VibratorUtils(getApplicationContext()).vibratePhone(10000);
                 }
 
                 TextView title2 = new TextView(this);
@@ -1658,12 +1651,13 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
                         removeDialog(FAKE_NUMBERPLATE_DIALOG);
+                        if ("Y".equalsIgnoreCase(theftRemarkFlag)) {
+                            new VibratorUtils(getApplicationContext()).vibrateStopPhone();
+                        }
                         if (offender_remarks_resp_master[10].contains("FAKE NO")) {
-                            Log.i("FAke  ::::", "Yes it's Fake");
-                            Log.i("fake_veh_chasisNo  ::::", fake_veh_chasisNo);
                             fake_veh_chasisNo = offender_remarks_resp_master[8]
                                     .substring(offender_remarks_resp_master[8].length() - 5);
-                            Log.i("Spot ***fake_veh_chasisNo :::", "" + fake_veh_chasisNo);
+                            Log.i("Spot chasis No :::", "" + fake_veh_chasisNo);
                             Intent intent = new Intent(getApplicationContext(), Fake_NO_Dialog.class);
                             intent.putExtra("Flagkey", "D");
                             startActivity(intent);

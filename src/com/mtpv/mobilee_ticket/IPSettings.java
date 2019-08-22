@@ -72,11 +72,13 @@ public class IPSettings extends Activity implements OnClickListener {
             rbtn_live.setChecked(true);
             et_service_url.setText("" + live_service_url);
             et_ftp_url.setText("");
+            et_service_url.setTextColor(getResources().getColor(R.color.tranparent_color_black));
             et_ftp_url.setText(open_ftp_fix);
             service_type = "live";
         } else if (SERVICE_TYPE_PREf.equals("test")) {
             et_service_url.setText("" + local_network_url);
             et_ftp_url.setText("");
+            et_service_url.setTextColor(getResources().getColor(R.color.black));
             et_ftp_url.setText(ftp_fix);
             rbtn_test.setChecked(true);
             service_type = "test";
@@ -112,6 +114,7 @@ public class IPSettings extends Activity implements OnClickListener {
 
                         service_type = "live";
                         et_service_url.setText(live_service_url);
+                        et_service_url.setTextColor(getResources().getColor(R.color.tranparent_color_black));
                         et_ftp_url.setText(open_ftp_fix);
                         et_service_url.setEnabled(false);
                         break;
@@ -120,6 +123,7 @@ public class IPSettings extends Activity implements OnClickListener {
                         service_type = "test";
                         et_service_url.setText(local_network_url);
                         et_ftp_url.setText(ftp_fix);
+                        et_service_url.setTextColor(getResources().getColor(R.color.black));
                         et_service_url.setEnabled(true);
                         break;
                     case R.id.radioButton_IPAdress:
@@ -194,7 +198,7 @@ public class IPSettings extends Activity implements OnClickListener {
     @SuppressWarnings("unused")
     private void clearFields() {
         // TODO Auto-generated method stub
-        preference.edit().clear().commit();
+        preference.edit().clear().apply();
         et_service_url.setText("");
         et_ftp_url.setText("");
 

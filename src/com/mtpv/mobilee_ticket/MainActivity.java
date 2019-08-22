@@ -61,7 +61,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.net.SocketException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
@@ -126,6 +128,15 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
     private static final int REQUEST_PERMISSIONS = 20;
     private SparseIntArray mErrorString;
     public static String psName, cadre_name, pidName, uintCode;
+
+    private String local_url = "http://125.16.1.70:8080/TSeTicketMobile";
+
+    private String ip_url = "http://125.16.1.78:8080/TSeTicketMobile";
+
+    //  url for test purpose
+    //  private String local_network_url="http://192.168.11.4/Test_eTicketMobileHyd";
+    private String live_url = "https://echallan.tspolice.gov.in/TSeTicketMobile";
+    boolean isLive = false;
 
     @SuppressWarnings("deprecation")
     @SuppressLint("NewApi")
@@ -203,10 +214,33 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
 
         if ((!services_url.equals("url1") && (service_type.equals("live")))) {
             URL = "" + services_url + "" + url_to_fix;
+            isLive = true;
         } else if ((!services_url.equals("url1") && (service_type.equals("test")))) {
             URL = "" + services_url + "" + url_to_fix;
+            isLive = false;
         }
     }
+
+    public boolean isAvailable(String wsdlUrl) {
+
+        boolean result = false;
+        try {
+            java.net.URL url = new URL(wsdlUrl);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestProperty("Connection", "close");
+            connection.setConnectTimeout(10000); // Timeout 10 seconds
+            connection.connect();
+            if (connection.getResponseCode() == 200) {
+                result = true;
+            }
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            result = false;
+        }
+        return result;
+    }
+
 
     private void addShortcut() {
         Intent shortcutIntent = new Intent(getApplicationContext(), MainActivity.class);
@@ -333,7 +367,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
         TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         IMEI = getDeviceID(telephonyManager);
         dev_Model = android.os.Build.MODEL;
-        Log.d("Device Model",""+dev_Model);
+        Log.d("Device Model", "" + dev_Model);
 
         if (telephonyManager.getSimState() != TelephonyManager.SIM_STATE_ABSENT) {
             sim_No = "" + telephonyManager.getSimSerialNumber();
@@ -373,7 +407,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
 
     String getDeviceID(TelephonyManager phonyManager) {
 
-        String id = phonyManager.getDeviceId();
+        @SuppressLint("MissingPermission") String id = phonyManager.getDeviceId();
         if (id == null) {
             id = "not available";
         }
@@ -408,6 +442,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                 break;
 
             case R.id.btnsubmit_login_xml:
+
                 String pidcode = et_pid.getText().toString();
                 String password = et_pid_pwd.getText().toString();
 
@@ -468,6 +503,8 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 
                             if (isOnline()) {
+
+
                                 new Async_task_login().execute();
                             } else {
                                 showToast("Please check your network connection !");
@@ -506,6 +543,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                 break;
         }
     }
+
 
     protected void showGPSDisabledAlertToUser() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -552,6 +590,15 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
         @Override
         protected String doInBackground(Void... params) {
             // TODO Auto-generated method stub
+            if (isLive) {
+                if (isAvailable(URL)) {
+                    URL = "" + services_url + "" + url_to_fix;
+                } else if (isAvailable("" + live_url + "" + url_to_fix)) {
+                    URL = "" + live_url + "" + url_to_fix;
+                } else {
+                    URL = "" + ip_url + "" + url_to_fix;
+                }
+            }
 
             String[] version_split = appVersion.split("\\-");
             ServiceHelper.login("" + user_id, "" + e_user_tmp, "" + IMEI, "" + sim_No, "" + latitude, "" + longitude,
@@ -680,9 +727,15 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                 return dg_splash;
 
             case PROGRESS_DIALOG:
-                ProgressDialog pd = ProgressDialog.show(this, "", "", true);
+                final ProgressDialog pd = ProgressDialog.show(this, "", "", true);
                 pd.setContentView(R.layout.custom_progress_dialog);
                 pd.setCancelable(false);
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        pd.dismiss();
+                    }
+                }, 30000);
                 return pd;
 
 
