@@ -1789,7 +1789,8 @@ int drawable vehiclehistory 0x7f0800e3
 int drawable vhcle_history 0x7f0800e4
 int drawable watermark 0x7f0800e5
 int drawable wgl_logo 0x7f0800e6
-int drawable white 0x7f0800e7
+int drawable wgl_logow 0x7f0800e7
+int drawable white 0x7f0800e8
 int id ALT 0x7f090000
 int id CTRL 0x7f090001
 int id FUNCTION 0x7f090002

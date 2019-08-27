@@ -408,6 +408,7 @@ public class Dashboard extends Activity implements OnClickListener {
                         downloadedSize += bufferLength;
 
                         runOnUiThread(new Runnable() {
+                            @SuppressLint("SetTextI18n")
                             public void run() {
                                 progress.setProgress(downloadedSize);
                                 float per = ((float) downloadedSize / totalSize) * 100;

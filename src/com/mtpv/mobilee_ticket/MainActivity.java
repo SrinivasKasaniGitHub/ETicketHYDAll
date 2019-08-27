@@ -179,7 +179,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
             }
         }, 2500);
 
-        textView2 = (TextView) findViewById(R.id.textView2);
+        textView2 = findViewById(R.id.textView2);
         appVersion = textView2.getText().toString().trim();
 
 /*      if(isOnline()) {
@@ -263,11 +263,11 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
     private void LoadUIcomponents() {
         // TODO Auto-generated method stub
 
-        et_pid = (EditText) findViewById(R.id.edtpidcode_login_xml);
-        et_pid_pwd = (EditText) findViewById(R.id.edtpidpwd_login_xml);
-        btn_cancel = (Button) findViewById(R.id.btncancel_login_xml);
-        btn_submit = (Button) findViewById(R.id.btnsubmit_login_xml);
-        tv_ip_settings = (TextView) findViewById(R.id.tv_ipsettings);
+        et_pid = findViewById(R.id.edtpidcode_login_xml);
+        et_pid_pwd = findViewById(R.id.edtpidpwd_login_xml);
+        btn_cancel = findViewById(R.id.btncancel_login_xml);
+        btn_submit = findViewById(R.id.btnsubmit_login_xml);
+        tv_ip_settings = findViewById(R.id.tv_ipsettings);
 
        /* et_pid.setText("23001004");
         et_pid_pwd.setText("Ranga2018");*/
@@ -567,10 +567,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
     public Boolean isOnline() {
         ConnectivityManager conManager = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo nwInfo = conManager.getActiveNetworkInfo();
-        if (nwInfo != null && nwInfo.isConnected()) {
-            return true;
-        }
-        return false;
+        return nwInfo != null && nwInfo.isConnected();
     }
 
     public Boolean dataConnection() {
@@ -623,18 +620,18 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
 
                 if (ServiceHelper.Opdata_Chalana != null && !Objects.equals("0", ServiceHelper.Opdata_Chalana)) {
 
-                    if (ServiceHelper.Opdata_Chalana.toString().trim().equals("1")) {
+                    if (ServiceHelper.Opdata_Chalana.trim().equals("1")) {
                         showToast("Invalid Login ID");
-                    } else if (ServiceHelper.Opdata_Chalana.toString().trim().equals("2")) {
+                    } else if (ServiceHelper.Opdata_Chalana.trim().equals("2")) {
                         showToast("Invalid Password");
-                    } else if (ServiceHelper.Opdata_Chalana.toString().trim().equals("3")) {
+                    } else if (ServiceHelper.Opdata_Chalana.trim().equals("3")) {
                         showToast("Unauthorized Device");
-                    } else if (ServiceHelper.Opdata_Chalana.toString().trim().equals("4")) {
+                    } else if (ServiceHelper.Opdata_Chalana.trim().equals("4")) {
                         showToast("Error, Please Contact E Challan Team at 040-27852721");
-                    } else if (ServiceHelper.Opdata_Chalana.toString().trim().equals("5")) {
+                    } else if (ServiceHelper.Opdata_Chalana.trim().equals("5")) {
                         showToast(
                                 "You have Exceeded Number of \n Attempts with Wrong Password,\n Please Contact E Challan Team at 040-27852721 ");
-                    } else if (ServiceHelper.Opdata_Chalana.toString().trim().equals("0")) {
+                    } else if (ServiceHelper.Opdata_Chalana.trim().equals("0")) {
                         showToast("Please Check Your Network And Try Again");
                     } else {
 
@@ -831,7 +828,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
 
         alertDialog.getWindow().getAttributes();
 
-        TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+        TextView textView = alertDialog.findViewById(android.R.id.message);
         textView.setTextSize(28);
         textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
         textView.setGravity(Gravity.CENTER);
@@ -988,7 +985,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
 
         alertDialog.getWindow().getAttributes();
 
-        TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+        TextView textView = alertDialog.findViewById(android.R.id.message);
         textView.setTextSize(28);
         textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
         textView.setGravity(Gravity.CENTER);
@@ -1085,7 +1082,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
 
                             alertDialog.getWindow().getAttributes();
 
-                            TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+                            TextView textView = alertDialog.findViewById(android.R.id.message);
                             textView.setTextSize(28);
                             textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
                             textView.setGravity(Gravity.CENTER);
@@ -1199,13 +1196,13 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
         dialog.setTitle("Download Progress");
         dialog.setCancelable(false);
 
-        TextView text = (TextView) dialog.findViewById(R.id.tv1);
+        TextView text = dialog.findViewById(R.id.tv1);
         text.setText("Downloading file ... ");
-        cur_val = (TextView) dialog.findViewById(R.id.cur_pg_tv);
+        cur_val = dialog.findViewById(R.id.cur_pg_tv);
         cur_val.setText("It may Take Few Minutes.....");
         dialog.show();
 
-        progress = (ProgressBar) dialog.findViewById(R.id.progress_bar);
+        progress = dialog.findViewById(R.id.progress_bar);
         progress.setProgress(0);
         progress.setMax(100);
         progress.setIndeterminate(true);

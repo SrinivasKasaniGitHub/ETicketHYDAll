@@ -893,7 +893,7 @@ public class Settings_New extends Activity implements OnClickListener {
 				if (null != MainActivity.service_type&& MainActivity.service_type.contains("live")) {
 					server = IPSettings.open_ftp_fix;
 				}else{
-					server = IPSettings.ftp_fix;
+					server = IPSettings.open_ftp_fix;
 				}
 				Log.i("server URL ::", ""+server);
 
@@ -1012,10 +1012,11 @@ public class Settings_New extends Activity implements OnClickListener {
 						downloadedSize += bufferLength;
 						// update the progressbar //
 						runOnUiThread(new Runnable() {
+							@SuppressLint("SetTextI18n")
 							public void run() {
 								progress.setProgress(downloadedSize);
 								float per = ((float) downloadedSize / totalSize) * 100;
-								cur_val.setText((int) per / 225000 + "%");
+								cur_val.setText((int) per / 460000 + "%");
 							}
 						});
 					}
@@ -1265,7 +1266,8 @@ public class Settings_New extends Activity implements OnClickListener {
 	}
 
 	/* TO GET POINT NAME BY PS-NAME */
-	public class Async_getPointNameByPsName extends AsyncTask<Void, Void, String> {
+	@SuppressLint("StaticFieldLeak")
+	private class Async_getPointNameByPsName extends AsyncTask<Void, Void, String> {
 
 		@Override
 		protected String doInBackground(Void... params) {

@@ -1860,7 +1860,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     final_image_data_tosend = Base64.encodeToString(byteArray, Base64.NO_WRAP);
                     Log.i("final_image:", "" + final_image_data_tosend);
                     //new Async_getPrevFRSInfo().execute();
-                    getPrevFRSInfo(final_image_data_tosend);
+                   // getPrevFRSInfo(final_image_data_tosend);
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -1913,7 +1913,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
                 final_image_data_tosend = Base64.encodeToString(byteArray, Base64.NO_WRAP);
                 //new Async_getPrevFRSInfo().execute();
-                getPrevFRSInfo(final_image_data_tosend);
+              //  getPrevFRSInfo(final_image_data_tosend);
 
             } else {
                 final_image_data_tosend = "";

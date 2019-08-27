@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.mtpv.mobilee_ticket"
     android:versionCode="2"
-    android:versionName="1.2">
+    android:versionName="1.2"
+    tools:ignore="GradleOverrides">
 
 
     <uses-permission android:name="android.permission.VIBRATE" />

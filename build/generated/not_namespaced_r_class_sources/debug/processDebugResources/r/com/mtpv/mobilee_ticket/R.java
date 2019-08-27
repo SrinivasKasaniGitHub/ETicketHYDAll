@@ -5447,7 +5447,8 @@ public final class R {
     public static final int vhcle_history=0x7f0800e4;
     public static final int watermark=0x7f0800e5;
     public static final int wgl_logo=0x7f0800e6;
-    public static final int white=0x7f0800e7;
+    public static final int wgl_logow=0x7f0800e7;
+    public static final int white=0x7f0800e8;
   }
   public static final class id {
     public static final int ALT=0x7f090000;

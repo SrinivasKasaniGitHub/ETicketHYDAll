@@ -2874,8 +2874,6 @@ public class SpotChallan extends Activity
             super.onPostExecute(result);
             removeDialog(PROGRESS_DIALOG);
 
-            Log.i("service1", ServiceHelper.Opdata_Chalana);
-
             if (ServiceHelper.Opdata_Chalana != null) {
                 detained_items_status = new ArrayList<Boolean>();
                 detained_items_status.clear();
@@ -3577,8 +3575,6 @@ public class SpotChallan extends Activity
 
                                 totaldl_points = 0;
                             }
-
-                            //  dl_points=dl_points;
                         }
                     } else {
                         try {
@@ -3632,12 +3628,13 @@ public class SpotChallan extends Activity
                         }
 
                     } else if (!vehicle_split.equals("AP") || !vehicle_split.equals("TS")) {
-                        radioGroupButton_spotpaymentYes.setChecked(true);
-                        radioGroupButton_spotpaymentNo.setEnabled(true);
+                        radioGroupButton_spotpaymentYes.setChecked(false);
+                        radioGroupButton_spotpaymentYes.setEnabled(false);
+                        radioGroupButton_spotpaymentNo.setChecked(true);
 
-                        rl_detained_items.setVisibility(View.GONE);
-                        ll_detained_items_root.setVisibility(View.VISIBLE);
-                        ll_detained_itemlist_layout.setVisibility(View.VISIBLE);
+                        rl_detained_items.setVisibility(View.VISIBLE);
+                        ll_detained_items_root.setVisibility(View.GONE);
+                        ll_detained_itemlist_layout.setVisibility(View.GONE);
                         ll_cash_or_card.setVisibility(View.GONE);
 
                         for (int i = 0; i < cb.length; i++) {
@@ -3646,13 +3643,15 @@ public class SpotChallan extends Activity
                         }
                         sb_detained_items.append("");
                         setCheckedValues(false, "donotedit");
-                        chck_detainedItems_none.setChecked(true);
+                        chck_detainedItems_none.setChecked(false);
+                        sb_detained_items.append("02:VEHICLE@");
+                        chck_detainedItems_vhcle.setChecked(true);
                     }
 
 
                     if (et_driver_lcnce_num_spot.getText().toString().equals("")) {
                         sb_detained_items.delete(0, sb_detained_items.length());
-                        if (vehicle_split.equals("AP") || vehicle_split.equals("TS")) {
+                        if (vehicle_split.equals("AP") || vehicle_split.equals("TS")||!vehicle_split.equals("AP") || !vehicle_split.equals("TS")) {
                             sb_detained_items.append("02:VEHICLE@");
                             chck_detainedItems_vhcle.setChecked(true);
                         } else {
@@ -3673,7 +3672,7 @@ public class SpotChallan extends Activity
 
                     } else if (et_aadharnumber_spot.getText().toString().equals("")) {
                         sb_detained_items.delete(0, sb_detained_items.length());
-                        if (vehicle_split.equals("AP") || vehicle_split.equals("TS")) {
+                        if (vehicle_split.equals("AP") || vehicle_split.equals("TS")||!vehicle_split.equals("AP") || !vehicle_split.equals("TS")) {
                             sb_detained_items.append("02:VEHICLE@");
                             chck_detainedItems_vhcle.setChecked(true);
                         } else {
@@ -3682,7 +3681,6 @@ public class SpotChallan extends Activity
                         }
 
                         chck_detainedItems_none.setOnClickListener(new OnClickListener() {
-
                             @Override
                             public void onClick(View arg0) {
                                 // TODO Auto-generated method stub
@@ -5700,7 +5698,6 @@ public class SpotChallan extends Activity
 
 
                 } else {
-
                     removeDialog(PROGRESS_DIALOG);
                     removeDialog(SECOND_SPOTSCREEN_DIALOG);
                     try {
@@ -5795,9 +5792,12 @@ public class SpotChallan extends Activity
                     }
                     // }
                 }
-            } else {
+            } else if (Objects.requireNonNull(ServiceHelper.spot_final_res_status).equals("SF")){
+                removeDialog(PROGRESS_DIALOG);
+                ShowMessage("\n Challan Already Generated ! \n Take print from Dupicate print module !");
+            }else {
 
-                showToast("Ticket Failed Due to Network \n Please Relogin Again !");
+                showToast("Ticket Generation Failed Due to Network");
 
             }
         }
@@ -7069,7 +7069,7 @@ public class SpotChallan extends Activity
                                 }
                                 if ("Y".equals(SpotChallan.OtpStatus.trim())
                                         && (!Dashboard.check_vhleHistory_or_Spot.equals("towing"))
-                                        && !otp_status .equalsIgnoreCase( "verify")) {
+                                        && !otp_status.equalsIgnoreCase("verify")) {
                                     showToast("Please Verify OTP");
                                 } else {
                                     if (isOnline()) {
@@ -7820,7 +7820,7 @@ public class SpotChallan extends Activity
                 for (String vio : selvio) {
 
                     String[] violations = vio.split("\\@");
-                    if (64 == Integer.parseInt(violations[0].trim())) {
+                    if (64 == Integer.parseInt(violations[0].trim()) || 123 == Integer.parseInt(violations[0].trim())) {
                         dlCheck = "1";
 
                     }
@@ -7854,13 +7854,12 @@ public class SpotChallan extends Activity
 
             if (isOnline()) {
 
-
                 if (Dashboard.check_vhleHistory_or_Spot.equals("spot")) {
 
                     if ((et_driver_lcnce_num_spot.getText().toString().trim().equals(""))
                             && (btn_violation.getText().toString().equals("" + getResources().getString(R.string.select_violation)))
                             || ((dl_points != null && !"".equalsIgnoreCase(dl_points) && Integer.parseInt(dl_points) > 12) && ("C".equals(DLvalidFLG) || "S".equals(DLvalidFLG)))
-                            || (et_driver_lcnce_num_spot.getText().length() <= 5 && (64) != check.getId()&& !dlCheck.equals("1")
+                            || (et_driver_lcnce_num_spot.getText().length() <= 5 && (64) != check.getId() && !dlCheck.equals("1")
                             && (30) != check.getId()
                             && (123) != check.getId()) && ("N".equalsIgnoreCase(theftRemarkFlag))) {
 
