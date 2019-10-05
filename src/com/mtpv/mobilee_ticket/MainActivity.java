@@ -95,18 +95,12 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
             user_pwd = "", e_user_id = null, sim_No = null, e_user_tmp = "";
     ProgressBar progress;
     boolean isGPSEnabled = false, isNetworkEnabled = false, canGetLocation = false;
-    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10, MIN_TIME_BW_UPDATES = 1000 * 60 * 1;
+    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10, MIN_TIME_BW_UPDATES = 1000 * 60;
     SharedPreferences preference;
     SharedPreferences.Editor editor;
     public static String service_type = "", services_url = "", ftps_url = "";
     TextView textView2;
     private String url_to_fix = "/services/MobileEticketServiceImpl?wsdl";
-    @SuppressWarnings("unused")
-    private String test_service_url = "http://192.168.11.55:8080/eTicketMobileHyd";
-    @SuppressWarnings("unused")
-    private String live_service_url = "http://192.168.11.4/eTicketMobileHyd";
-
-    public String open_NW_URL = "https://www.echallan.org/eTicketMobileHyd";
 
     private static final String[] requiredPermissions = new String[]{
             Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -124,17 +118,11 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
             Manifest.permission.CAMERA,
             Manifest.permission.INSTALL_SHORTCUT
     };
-
     private static final int REQUEST_PERMISSIONS = 20;
     private SparseIntArray mErrorString;
     public static String psName, cadre_name, pidName, uintCode;
-
     private String local_url = "http://125.16.1.70:8080/TSeTicketMobile";
-
-    private String ip_url = "http://125.16.1.78:8080/TSeTicketMobile";
-
-    //  url for test purpose
-    //  private String local_network_url="http://192.168.11.4/Test_eTicketMobileHyd";
+    private String ip_url = "https://www.echallan.org/TSeTicketMobile"; // Two years from 09-09-2019
     private String live_url = "https://echallan.tspolice.gov.in/TSeTicketMobile";
     boolean isLive = false;
 
@@ -181,23 +169,12 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
 
         textView2 = findViewById(R.id.textView2);
         appVersion = textView2.getText().toString().trim();
-
-/*      if(isOnline()) {
-            asyn_Version_Check asyn_version_check = new asyn_Version_Check();
-            asyn_version_check.execute();
-        }else {
-            showToast("Please Check Your Network Connection For Checking Patch Details");
-        }*/
-
-
         LoadUIcomponents();
-
 
         if (android.os.Build.VERSION.SDK_INT > 11) {
             StrictMode.ThreadPolicy polocy = new StrictMode.ThreadPolicy.Builder().build();
             StrictMode.setThreadPolicy(polocy);
         }
-
 
         preference = getSharedPreferences("preferences", Context.MODE_PRIVATE);
         service_type = preference.getString("servicetype", "test");
@@ -240,7 +217,6 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
         }
         return result;
     }
-
 
     private void addShortcut() {
         Intent shortcutIntent = new Intent(getApplicationContext(), MainActivity.class);
@@ -664,9 +640,9 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                             String mobileNo_flg = "" + arr_logindetails[13];
                             MainActivity.otpno = "" + arr_logindetails[14];
 
-                            if (arr_logindetails != null && arr_logindetails.length == 16) {
+                            //if (arr_logindetails != null && arr_logindetails.length == 16) {
                                 officerLogin_Otp = "" + arr_logindetails[15];
-                            }
+                            //}
 
                             editors.putString("PID_CODE", pidCode);
                             editors.putString("PID_NAME", pidName);
@@ -983,7 +959,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
 
-        alertDialog.getWindow().getAttributes();
+        Objects.requireNonNull(alertDialog.getWindow()).getAttributes();
 
         TextView textView = alertDialog.findViewById(android.R.id.message);
         textView.setTextSize(28);

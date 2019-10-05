@@ -223,7 +223,7 @@ public class SpotChallan extends Activity
             VoterId_to_send = "", is_it_spot_send = "0", licStatus_send = "";
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
-    StringBuffer violations_details_send, violation_desc_append;
+    StringBuffer violations_details_send, violation_desc_append, violationCodes;
     static String vioDetainCheckFlag = null;
     public static StringBuffer sb_selected_penlist_send;
     public static ArrayList<String> sb_selected_penlist, sb_selected_penlist_positions;
@@ -261,6 +261,7 @@ public class SpotChallan extends Activity
     public static int INVOKE_LASTMILE_PAY = 20;
     private CountDownTimer countDownTimer;
     public boolean timerStopped;
+    public String google_MapKey;
 
     @SuppressWarnings("unused")
     private boolean isValidEmaillId(String email) {
@@ -294,6 +295,7 @@ public class SpotChallan extends Activity
     String detainAlertFlag = "N", theftRemarkFlag = "N";
     AppCompatTextView detained_Txt;
     TextToSpeech textToSpeech;
+    public static boolean isDuplicatePrint = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -302,17 +304,15 @@ public class SpotChallan extends Activity
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setContentView(R.layout.spot_challan);
-
         imgSelected = "0";
-
-        sb_selected_penlist_positions = new ArrayList<String>();
+        sb_selected_penlist_positions = new ArrayList<>();
         sb_selected_penlist_send = new StringBuffer("");
-
         final_image_data_tosend = null;
         ver = new VerhoeffCheckDigit();
+        google_MapKey = ServiceHelper.api_key;
         getLocation();
 
-        img_logo = (ImageView) findViewById(R.id.img_logo);
+        img_logo = findViewById(R.id.img_logo);
         if (MainActivity.uintCode.equals("22")) {
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.cyb_logo));
         } else if (MainActivity.uintCode.equals("23")) {
@@ -435,7 +435,6 @@ public class SpotChallan extends Activity
         //  exact_location_send_from_settings = preferences.getString("exact_location", "location");
         exact_location_send_from_settings = preferences.getString("ps_res_name_code", "0");
     }
-
 
     @SuppressWarnings("unused")
     private void dateNTimeDialog() {
@@ -1135,6 +1134,7 @@ public class SpotChallan extends Activity
 
                 String dateofbirthbut = dob_input.getText().toString();
 
+
                 if (!et_driver_lcnce_num_spot.getText().toString().equalsIgnoreCase("") && et_driver_lcnce_num_spot.getText().toString().length() >= 5) {
 
                     if (dobcheck.equalsIgnoreCase("Yes")) {
@@ -1144,6 +1144,8 @@ public class SpotChallan extends Activity
                     }
                 } else {
                     Asyncallsofmethods();
+                    et_driver_lcnce_num_spot.setText("");
+
                 }
                 break;
 
@@ -1228,6 +1230,9 @@ public class SpotChallan extends Activity
                         /* TO APPEND THE SLECTED VILATIONS TO BUTTON */
                         violation_desc_append = new StringBuffer();
                         violation_desc_append.delete(0, violation_desc_append.length());
+
+                        violationCodes = new StringBuffer();
+                        violationCodes.delete(0, violationCodes.length());
 
                         removeDialog(DYNAMIC_VIOLATIONS);
                         showDialog(DYNAMIC_VIOLATIONS);
@@ -1967,28 +1972,12 @@ public class SpotChallan extends Activity
     }
 
     private void selectImagefrom_Gallery() {
-        // TODO Auto-generated method stub
         Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, 2);
         imgSelected = "1";
     }
 
     private void selectImagefrom_Camera() {
-        // TODO Auto-generated method stub
-/*        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");*/
-
-/*        ContentValues values = new ContentValues(1);
-        values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpg");
-        fileUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);*/
-//            if (fileTemp != null) {
-//            fileUri = Uri.fromFile(fileTemp);
-        // intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-
-/*        intent.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(getApplicationContext(),
-                BuildConfig.APPLICATION_ID + ".provider",f));
-        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);*/
-
 
         if (Build.VERSION.SDK_INT <= 23) {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -2005,7 +1994,6 @@ public class SpotChallan extends Activity
             startActivityForResult(intent, 1);
             imgSelected = "1";
         }
-
         //   imgSelected = "1";
     }
 
@@ -2057,9 +2045,9 @@ public class SpotChallan extends Activity
                         int xPos = (canvas.getWidth() / 2);
                         int yPos = (int) ((canvas.getHeight() / 2) - ((paint.descent() + paint.ascent()) / 2));
 
-                        canvas.drawText("Date & Time: " + Current_Date, xPos, yPos + 300, paint);
-                        canvas.drawText("Lat :" + latitude, xPos, yPos + 400, paint);
-                        canvas.drawText("Long :" + longitude, xPos, yPos + 500, paint);
+                        canvas.drawText("Date & Time: " + Current_Date, xPos, yPos + 1000, paint);
+                        canvas.drawText("Lat :" + latitude, xPos, yPos + 1100, paint);
+                        canvas.drawText("Long :" + longitude, xPos, yPos + 1200, paint);
 
                         Display d = getWindowManager().getDefaultDisplay();
                         int x = d.getWidth();
@@ -2097,17 +2085,17 @@ public class SpotChallan extends Activity
 
                         canvas.save();
                         canvas.rotate(270f, xPos, yPos);
-                        canvas.drawText("Date & Time: " + Current_Date, xPos + 10, yPos + 300, paint);
+                        canvas.drawText("Date & Time: " + Current_Date, xPos + 10, yPos + 1200, paint);
                         canvas.restore();
 
                         canvas.save();
                         canvas.rotate(270f, xPos, yPos);
-                        canvas.drawText("Lat :" + latitude, xPos, yPos + 400, paint);
+                        canvas.drawText("Lat :" + latitude, xPos, yPos + 1300, paint);
                         canvas.restore();
 
                         canvas.save();
                         canvas.rotate(270f, xPos, yPos);
-                        canvas.drawText("Long :" + longitude, xPos, yPos + 500, paint);
+                        canvas.drawText("Long :" + longitude, xPos, yPos + 1400, paint);
                         canvas.rotate(90);
                         canvas.restore();
 
@@ -2197,15 +2185,10 @@ public class SpotChallan extends Activity
     }
 
     public static Bitmap decodeSampledBitmapFromFile(String path, int reqWidth, int reqHeight) { // BEST
-        // QUALITY
-        // MATCH
 
-        // First decode with inJustDecodeBounds=true to check dimensions
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeFile(path, options);
-
-        // Calculate inSampleSize, Raw height and width of image
         final int height = options.outHeight;
         final int width = options.outWidth;
         options.inPreferredConfig = Bitmap.Config.RGB_565;
@@ -2213,15 +2196,11 @@ public class SpotChallan extends Activity
         if (height > reqHeight) {
             inSampleSize = Math.round((float) height / (float) reqHeight);
         }
-
         int expectedWidth = width / inSampleSize;
         if (expectedWidth > reqWidth) {
-            // if(Math.round((float)width / (float)reqWidth) > inSampleSize) //
-            // If bigger SampSize..
             inSampleSize = Math.round((float) width / (float) reqWidth);
         }
         options.inSampleSize = inSampleSize;
-        // Decode bitmap with inSampleSize set
         options.inJustDecodeBounds = false;
         return BitmapFactory.decodeFile(path, options);
     }
@@ -2427,7 +2406,6 @@ public class SpotChallan extends Activity
             }
         }
     }
-
 
     /* LICENCE DETAILS */
     public class Async_getLicenceDetails extends AsyncTask<Void, Void, String> {
@@ -2804,8 +2782,6 @@ public class SpotChallan extends Activity
         @Override
         protected String doInBackground(Void... params) {
 
-            //ServiceHelper.getOffenceDetailsbyWheelerChallanType("" + whlr_code_send, challan_Type);
-
             ServiceHelper.getOffenceDetailsbyWheelerChallanTypeUnitRemark("" + whlr_code_send, challan_Type, MainActivity.pidCodestatic, theftRemarkFlag);
 
             return null;
@@ -3026,18 +3002,9 @@ public class SpotChallan extends Activity
             super.onPostExecute(result);
             removeDialog(PROGRESS_DIALOG);
 
-//            end = System.currentTimeMillis();
-//            Log.i("TIME>>>END>>>Async_getAadharDetails",String.valueOf(end));
-//
-//            res=end-start;
-//            Log.i("TIME>>>Async_getAadharDetails :  Taken in seconds>> ", String.valueOf(res/1000));
-
-
             if (!"null".equals(ServiceHelper.aadhar_data) && !"0".equals(ServiceHelper.aadhar_data) && ServiceHelper.aadhar_details.length > 0) {
-
                 ll_aadhar_layout.setVisibility(View.VISIBLE);
                 tv_aadhar_header.setVisibility(View.VISIBLE);
-
                 String date_birth = "";
                 String service_year = "";
                 tv_aadhar_header.setText("AADHAR DETAILS");
@@ -3651,7 +3618,7 @@ public class SpotChallan extends Activity
 
                     if (et_driver_lcnce_num_spot.getText().toString().equals("")) {
                         sb_detained_items.delete(0, sb_detained_items.length());
-                        if (vehicle_split.equals("AP") || vehicle_split.equals("TS")||!vehicle_split.equals("AP") || !vehicle_split.equals("TS")) {
+                        if (vehicle_split.equals("AP") || vehicle_split.equals("TS") || !vehicle_split.equals("AP") || !vehicle_split.equals("TS")) {
                             sb_detained_items.append("02:VEHICLE@");
                             chck_detainedItems_vhcle.setChecked(true);
                         } else {
@@ -3672,7 +3639,7 @@ public class SpotChallan extends Activity
 
                     } else if (et_aadharnumber_spot.getText().toString().equals("")) {
                         sb_detained_items.delete(0, sb_detained_items.length());
-                        if (vehicle_split.equals("AP") || vehicle_split.equals("TS")||!vehicle_split.equals("AP") || !vehicle_split.equals("TS")) {
+                        if (vehicle_split.equals("AP") || vehicle_split.equals("TS") || !vehicle_split.equals("AP") || !vehicle_split.equals("TS")) {
                             sb_detained_items.append("02:VEHICLE@");
                             chck_detainedItems_vhcle.setChecked(true);
                         } else {
@@ -4877,28 +4844,20 @@ public class SpotChallan extends Activity
                                         if (("7".equals(key) || "07".equals(key))
                                                 || ("9".equals(key) || "09".equals(key))) {
                                             passngerFLG = true;
-
                                             grand_total = grand_total
-                                                    + ((Integer.parseInt(selectedId.substring(5, selectedId.length()))))
-                                                    + (Integer.parseInt(extraPassengers) * 100);
-
-
+                                                    + (Integer.parseInt(extraPassengers) * (Integer.parseInt(selectedId.substring(5, selectedId.length()))));
                                             total = 0.0;
                                             total = grand_total
                                                     + VehicleHistoryPendingChallans.total_amount_selected_challans;
                                             tv_violation_amnt.setText("Rs . " + grand_total);
                                             tv_grand_total_spot.setText("Rs . " + total);
-
                                         } else {
                                             passngerFLG = false;
-
                                             grand_total = grand_total
                                                     + (Integer.parseInt(selectedId.substring(5, selectedId.length())));
-
                                             total = 0.0;
                                             total = grand_total
                                                     + VehicleHistoryPendingChallans.total_amount_selected_challans;
-
                                             tv_violation_amnt.setText("Rs . " + grand_total);
                                             tv_grand_total_spot.setText("Rs . " + total);
                                         }
@@ -4913,10 +4872,11 @@ public class SpotChallan extends Activity
                                             if (offenceCodes.trim().equals(key.trim())) {
                                                 violations_details_send
                                                         .append("" + vioCodeDescMap.get(offenceCodes.trim()).trim());
-
                                                 violation_desc_append
                                                         .append("" + vioCodeDescMap.get(offenceCodes.trim()).trim());
                                                 violation_desc_append.append(",");
+                                                violationCodes.append(key.trim());
+                                                violationCodes.append(",");
                                             }
                                         }
 
@@ -4939,19 +4899,15 @@ public class SpotChallan extends Activity
                                 }
                             }
                             removeDialog(DYNAMIC_VIOLATIONS);
-                            /* NO OF PEOPLE CALCULATING */
                             removeDialog(DYNAMIC_VIOLATIONS);
-
-                            /*---------TO ENABLE EDITEXT WHEN EXTRA PASSENGERS : 07 IS SELECTED---------*/
                             int status = 0;
                             for (int i = 0; i < violation_checked_violations.size(); i++) {
                                 violation_code_value = violation_checked_violations.get(i);
-                                // String ccc =
-                                // ""+violationPoints_offnce_code[count];
                                 if ((violation_checked_violations.get(i).toString().equals("7"))) {
                                     status = 1;
                                 }
                             }
+
                             if (status == 1) {
                                 ll_extra_people.setVisibility(View.GONE);
                             } else {
@@ -4965,9 +4921,7 @@ public class SpotChallan extends Activity
 
             case FAKE_NUMBERPLATE_DIALOG:
 
-
                 message = new StringBuffer();
-
                 if (aadhr_point_frm_json != null && dl_point_frm_json != null && !aadhr_point_frm_json.equals("NA")
                         && !dl_point_frm_json.equals("NA")) {
 
@@ -4987,7 +4941,7 @@ public class SpotChallan extends Activity
                     message.append("" + rta_details_spot_master[10]);
 
                 } else if (dl_point_frm_json != null && !dl_point_frm_json.equals("NA")) {
-                    // message.append("VIOLATION BASED POINTS \n");
+
                     message.append("VIOLATION BASED POINTS \n");
                     message.append("------------------------------\n");
                     message.append("DL POINTS \t: " + dl_point_frm_json + "\n");
@@ -5271,8 +5225,6 @@ public class SpotChallan extends Activity
         protected String doInBackground(Void... params) {
             // TODO Auto-generated method stub
             otp_status = "verify";
-
-
             return null;
         }
 
@@ -5792,14 +5744,105 @@ public class SpotChallan extends Activity
                     }
                     // }
                 }
-            } else if (Objects.requireNonNull(ServiceHelper.spot_final_res_status).equals("SF")){
+            } else if (Objects.requireNonNull(ServiceHelper.spot_final_res_status).equals("SF")) {
                 removeDialog(PROGRESS_DIALOG);
                 ShowMessage("\n Challan Already Generated ! \n Take print from Dupicate print module !");
-            }else {
+            } else {
 
-                showToast("Ticket Generation Failed Due to Network");
+                showToast("Ticket Generation Failed Due to Network !");
 
             }
+        }
+    }
+
+
+    public class Async_VerifyDuplicateChallan extends AsyncTask<Void, Void, String> {
+
+        @Override
+        protected String doInBackground(Void... params) {
+            // TODO Auto-generated method stub
+            String viltnCodes = violationCodes.toString().substring(0, violationCodes.toString().length() - 1);
+            SharedPreferences sharedPreference = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            String pidCd = sharedPreference.getString("PID_CODE", "");
+            ServiceHelper.checkSameChallan(completeVehicle_num_send, present_date_toSend.toUpperCase(), point_code_send_from_settings,
+                    viltnCodes, pidCd);
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            // TODO Auto-generated method stub
+            super.onPreExecute();
+            showDialog(PROGRESS_DIALOG);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+
+            removeDialog(PROGRESS_DIALOG);
+            if (!ServiceHelper.duplicateChaln_Data.equals("NA") && null != ServiceHelper.duplicateChaln_Data &&
+                    "false".equalsIgnoreCase(ServiceHelper.duplicateChaln_Data)) {
+                isDuplicatePrint = false;
+                new Async_spot_challan().execute();
+            } else {
+                isDuplicatePrint = true;
+                // showToast("Challan Already Generated On this Vehicle \n Please check it from Duplicate Print");
+                new Async_getSameChlnDuplicatePrint().execute();
+            }
+
+        }
+    }
+
+
+    public class Async_getSameChlnDuplicatePrint extends AsyncTask<Void, Void, String> {
+        @SuppressLint("DefaultLocale")
+        @SuppressWarnings("unused")
+        @Override
+        protected String doInBackground(Void... params) {
+            // TODO Auto-generated method stub
+            //getSimImeiNo();
+            SharedPreferences sharedPreference2 = PreferenceManager
+                    .getDefaultSharedPreferences(getApplicationContext());
+            String psCd = sharedPreference2.getString("PS_CODE", "");
+            String psName = sharedPreference2.getString("PS_NAME", "");
+            String pidCd = sharedPreference2.getString("PID_CODE", "");
+            String pidName = sharedPreference2.getString("PID_NAME", "");
+            String cadre = sharedPreference2.getString("CADRE_NAME", "");
+            String cadreCd = sharedPreference2.getString("CADRE_CODE", "");
+
+            ServiceHelper.getSameChlnDuplicatePrint("" + Dashboard.UNIT_CODE, "" + pidCd, "" + pidName,
+                    "" + completeVehicle_num_send, "" + present_date_toSend,
+                    "" + simid_send, "" + imei_send);
+
+            return null;
+        }
+
+        @SuppressWarnings("deprecation")
+        @Override
+        protected void onPreExecute() {
+            // TODO Auto-generated method stub
+            super.onPreExecute();
+            showDialog(PROGRESS_DIALOG);
+        }
+
+        @SuppressWarnings("deprecation")
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            removeDialog(PROGRESS_DIALOG);
+            removeDialog(SECOND_SPOTSCREEN_DIALOG);
+            if (!"".equals(ServiceHelper.str_SameChlnDuplicatePrint) && !"NA".equals(ServiceHelper.str_SameChlnDuplicatePrint) &&
+                    null != ServiceHelper.str_SameChlnDuplicatePrint) {
+                isDuplicatePrint = true;
+                Intent print = new Intent(getApplicationContext(), Respone_Print.class);
+                startActivity(print);
+            } else {
+                showToast("Please check the Network & Try again!");
+            }
+
         }
     }
 
@@ -6608,6 +6651,9 @@ public class SpotChallan extends Activity
                         violation_desc_append = new StringBuffer();
                         violation_desc_append.delete(0, violation_desc_append.length());
 
+                        violationCodes = new StringBuffer();
+                        violationCodes.delete(0, violationCodes.length());
+
                         removeDialog(DYNAMIC_VIOLATIONS);
                         showDialog(DYNAMIC_VIOLATIONS);
 
@@ -7073,12 +7119,13 @@ public class SpotChallan extends Activity
                                     showToast("Please Verify OTP");
                                 } else {
                                     if (isOnline()) {
-                                        new Async_spot_challan().execute();
+
+                                        new Async_VerifyDuplicateChallan().execute();
+                                        // new Async_spot_challan().execute();
                                     } else {
                                         showToast("Please Check Your Network");
                                     }
                                 }
-
                             } else {
                                 showToast("" + NETWORK_TXT);
                             }
@@ -7106,7 +7153,8 @@ public class SpotChallan extends Activity
                                     btn_final_submit.setEnabled(false);
 
                                     if (isOnline()) {
-                                        new Async_spot_challan().execute();
+                                        new Async_VerifyDuplicateChallan().execute();
+                                        //new Async_spot_challan().execute();
                                     } else {
                                         showToast("Please Check Your Network");
                                     }

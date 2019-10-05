@@ -1428,6 +1428,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
             showDialog(PROGRESS_DIALOG);
         }
 
+        @SuppressLint("SetTextI18n")
         @SuppressWarnings("deprecation")
         @Override
         protected void onPostExecute(String result) {
@@ -1499,17 +1500,15 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
 
                 } else {
                     Drunk_Drive.licFLG = false;
-                    Log.i("NO LICENCE DETAILS FOUND", "" + licFLG);
+                    Log.i("NO LICENCE", "" + licFLG);
                     tv_licence_details.setText("LICENCE DETAILS NOT FOUND!");
                     rl_lcnce_Details.setVisibility(View.GONE);
-
                 }
             }catch (Exception e)
             {
                 e.printStackTrace();
 
                 Drunk_Drive.licFLG = false;
-                Log.i("NO LICENCE DETAILS FOUND", "" + licFLG);
                 tv_licence_details.setText("LICENCE DETAILS NOT FOUND!");
                 rl_lcnce_Details.setVisibility(View.GONE);
 

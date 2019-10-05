@@ -146,8 +146,13 @@ public class Respone_Print extends Activity {
                 db.open();
                 db.deleteDuplicateRecords(DBHelper.duplicatePrint_table, "" + ""
                         + getResources().getString(R.string.dup_vhcle_hstry));
-                db.insertDuplicatePrintDetails("" + ServiceHelper.final_spot_reponse_master[0], ""
-                        + getResources().getString(R.string.dup_vhcle_hstry));
+                if (SpotChallan.isDuplicatePrint) {
+                    db.insertDuplicatePrintDetails("" + ServiceHelper.str_SameChlnDuplicatePrint, ""
+                            + getResources().getString(R.string.dup_vhcle_hstry));
+                } else {
+                    db.insertDuplicatePrintDetails("" + ServiceHelper.final_spot_reponse_master[0], ""
+                            + getResources().getString(R.string.dup_vhcle_hstry));
+                }
                 db.close();
 
             } catch (SQLException e) {
@@ -160,9 +165,15 @@ public class Respone_Print extends Activity {
                 db.open();
                 db.deleteDuplicateRecords(DBHelper.duplicatePrint_table, ""
                         + getResources().getString(R.string.dup_spot_challan));
-                db.insertDuplicatePrintDetails(""
-                        + ServiceHelper.final_spot_reponse_master[0], ""
-                        + getResources().getString(R.string.dup_spot_challan));
+                if (SpotChallan.isDuplicatePrint) {
+                    db.insertDuplicatePrintDetails(""
+                            + ServiceHelper.str_SameChlnDuplicatePrint, ""
+                            + getResources().getString(R.string.dup_spot_challan));
+                } else {
+                    db.insertDuplicatePrintDetails(""
+                            + ServiceHelper.final_spot_reponse_master[0], ""
+                            + getResources().getString(R.string.dup_spot_challan));
+                }
                 db.close();
 
             } catch (SQLException e) {
@@ -175,9 +186,16 @@ public class Respone_Print extends Activity {
                 db.open();
                 db.deleteDuplicateRecords(DBHelper.duplicatePrint_table, ""
                         + getResources().getString(R.string.towing_one_line));
-                db.insertDuplicatePrintDetails(""
-                        + ServiceHelper.final_spot_reponse_master[0], ""
-                        + getResources().getString(R.string.towing_one_line));
+                if (SpotChallan.isDuplicatePrint) {
+                    db.insertDuplicatePrintDetails(""
+                            + ServiceHelper.str_SameChlnDuplicatePrint, ""
+                            + getResources().getString(R.string.towing_one_line));
+
+                } else {
+                    db.insertDuplicatePrintDetails(""
+                            + ServiceHelper.final_spot_reponse_master[0], ""
+                            + getResources().getString(R.string.towing_one_line));
+                }
                 db.close();
 
             } catch (SQLException e) {
@@ -223,15 +241,21 @@ public class Respone_Print extends Activity {
 			printTicket = text_to_print.getText().toString();
 		}else
 		{*/
-
-        text_to_print.setText(ServiceHelper.spot_final_res_status.split("\\^")[0].split("\\$")[0]);
-
         if (text_to_print.getText().toString().length() > 15) {
             tv_sucess_text_header.setText("" + getResources().getString(R.string.ticket_generated_successfully));
         }
+        if (SpotChallan.isDuplicatePrint) {
+            text_to_print.setText(ServiceHelper.str_SameChlnDuplicatePrint);
+            printTicket = ServiceHelper.str_SameChlnDuplicatePrint;
+        } else {
+            text_to_print.setText(ServiceHelper.spot_final_res_status.split("\\^")[0].split("\\$")[0]);
+            printTicket = ServiceHelper.spot_final_res_status.split("\\^")[0].split("\\$")[0];
+        }
 
 
-        printTicket = ServiceHelper.spot_final_res_status.split("\\^")[0];
+
+
+
 
         //	}
 
@@ -320,13 +344,13 @@ public class Respone_Print extends Activity {
                     try {
 
                         if (MainActivity.dev_Model.equalsIgnoreCase(Utils.dev_Model)) {
-                          //  String prtText=printTicket.split("\\$")[1];
+                            //  String prtText=printTicket.split("\\$")[1];
                             PrintHandler printHandler = new PrintHandler();
                             printHandler.printChallan(printTicket.split("\\$")[1]);
 
                         } else {
                             Bluetooth_Printer_3inch_ThermalAPI printer = new Bluetooth_Printer_3inch_ThermalAPI();
-                            String print_data = printer.font_Courier_41(printTicket.split("\\$")[0]);
+                            String print_data = printer.font_Courier_41(printTicket);
                             actual_printer.openBT(address_spot);
                             actual_printer.printData(print_data);
                             Thread.sleep(5000);
@@ -384,7 +408,7 @@ public class Respone_Print extends Activity {
                 if (bluetoothAdapter.isDiscovering()) {
                     showToast("Bluetooth is currently in device discovery process.");
                 } else {
-                   // showToast("Bluetooth is Enabled.");
+                    // showToast("Bluetooth is Enabled.");
                 }
             } else {
                 showToast("Bluetooth is NOT Enabled!");

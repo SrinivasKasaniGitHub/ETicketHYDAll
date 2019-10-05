@@ -138,6 +138,7 @@ import mother.com.test.PidSecEncrypt;
 @SuppressWarnings("deprecation")
 @SuppressLint({"NewApi", "SetJavaScriptEnabled", "DefaultLocale"})
 @TargetApi(Build.VERSION_CODES.GINGERBREAD)
+
 public class GenerateDrunkDriveCase extends Activity implements OnClickListener, LocationListener,
         OnItemSelectedListener, android.widget.CompoundButton.OnCheckedChangeListener {
 
@@ -145,9 +146,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
     TextView tv_ticket_generate;
     TextView tv_settings;
     ImageButton ibtn_logout;
-
     LinearLayout ll_verify;
-
     final int OFFENCE_DATE = 1;
     final int OFFENCE_TIME_PICKER = 2;
     final int PROGRESS_DIALOG = 4;
@@ -161,24 +160,17 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
     final int ID_PROOF_DIALOG = 12;
     final int ERROR_DIALOG = 13;
     final int OTP_CNFRMTN_DIALOG = 14;
-
     public static boolean liquorFLG = false, professionFLG = false;
 
-    /* FOR GENERATING E-TICKET */
-    /* FOR REG.NO START */
     EditText et_regn_cid;
     EditText et_regn_cid_name;
     EditText et_regn_last_num;
-    /* FOR REG.NO END */
-
-    /* START OFF FIRST SCREEEN */
     EditText et_owner_dl_no;
     EditText et_driver_dl_no;
     EditText et_driver_name;
     EditText et_driver_fname;
     EditText et_driver_contact_no;
     EditText et_id_proof;
-
     EditText et_alcohol_reading;
     EditText et_age;
     EditText edt_identification_mark;
@@ -188,15 +180,12 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
     EditText et_verify_otp_from_mobile;
     EditText et_dd_address;
     EditText et_dd_city;
-
     RadioGroup radiogrp_gender;
     RadioButton radio_male_female;
-
     CheckBox chck_detainedItems_rc;
     CheckBox chck_detainedItems_vhcle;
     CheckBox chck_detainedItems_licence;
     CheckBox chck_detainedItems_permit;
-
     Button btn_offence_date;
     Button btn_offence_time;
     Button btn_idproof;
@@ -223,7 +212,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
     /* FOR TIME PICKER */
     String hour, minute;
-    String date_from;// like offence_date and counselling_date
+    String date_from;  // like offence_date and counselling_date
 
     Context context;
     int selected_qlfctn = -1;
@@ -280,9 +269,6 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
     String ps_code;
     String psnameby_point_code;
     String bluetooth_address = "";
-
-    /* SHARED PREF END */
-
     String netwrk_info_txt = "";
     /* OFFENCE CODE TO SEND TO SERVICE */
     String offence_code_send = "33";
@@ -316,28 +302,16 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
     DBHelper db;
     Cursor c_whlr, c_qlfctn, c_occptn, c_vhlecat, c_vhleMainCat, c_bartype;
-
-    // String[] wheeler_code_arr, wheeler_name_arr;
     String[] occuptn_code_arr, occuptn_name_arr;
     String[] qlfctn_code_arr, qlfctn_name_arr;
     String[] vhlecat_code_arr, vhlecat_name_arr;
     String[] vhleMaincat_code_arr, vhleMaincat_name_arr;
-
     String[][] vchle_SubCat_code_name;
     ArrayList<String> vchle_SubCat_name_arr_list;
-
-    /* TO SHOW SUCESS OR FAILURE TICKET GENERATIONS */
-
     String ticket_response = "";
-
-    /* GPS VALUES */
-    // flag for GPS status
     boolean isGPSEnabled = false;
-
-    // flag for network status
     boolean isNetworkEnabled = false;
     boolean canGetLocation = false;
-    // The minimum distance to change Updates in meters
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; // 10 meters
 
     private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1; // 1 minute
@@ -402,9 +376,11 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
     AppCompatImageView dd_Img, imgFromCapture, imgFromLink;
     ListView listDDImgmatch;
     public Bitmap imgMatchBitmap;
-    AppCompatButton btn_ImgMatchCancel, btn_ImgMatchOk,btn_imgSubmit;
+    AppCompatButton btn_ImgMatchCancel, btn_ImgMatchOk, btn_imgSubmit;
     AlertDialog imgMatchBuilder;
     String imgMatchingData;
+    public String google_MapKey;
+    public static boolean isDuplicatePrint = false;
 
     @SuppressLint({"NewApi", "WorldReadableFiles"})
     @Override
@@ -419,6 +395,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         liquorFLG = false;
         professionFLG = false;
         et_age = (EditText) findViewById(R.id.edt_age_reading_dd2_xml);
+        google_MapKey = ServiceHelper.api_key;
         getLocation();
 
         img_logo = (ImageView) findViewById(R.id.img_logo);
@@ -866,9 +843,6 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
     private void attachImageFromRta() {
         // TODO Auto-generated method stub
-
-        Log.i("LOADING IMAGE...", "FROM RTA CLASS");
-        // wv_generate.loadUrl("about:blank");
         webviewloader = new WebviewLoader();
         wv_generate.setBackgroundColor(0x00000000);
         wv_generate.setHorizontalScrollBarEnabled(true);
@@ -880,9 +854,6 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         wv_generate.getSettings().setUseWideViewPort(true);
         wv_generate.getSettings().setBuiltInZoomControls(true);
         wv_generate.getSettings().setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN);
-
-        // Log.i("RTA IMAGE INGENRATION", "" + RtaDetails.picturePath);
-
         if (!Drunk_Drive.picturePath.equals("")) {
             Log.i("GD RtaDetails", "" + img_found);
             img_found = 1;
@@ -898,6 +869,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         Log.i("attachImageFromRta", "" + img_found);
     }
 
+    @SuppressLint("HardwareIds")
     private void getInitialDetails() {
         // TODO Auto-generated method stub
         try {
@@ -931,8 +903,6 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                 return;
             }
             IMEI_send = telephonyManager.getDeviceId();// TO GET IMEI NUMBER
-            // String simId=telephonyManager.getSimSerialNumber();
-
             if (telephonyManager.getSimState() != TelephonyManager.SIM_STATE_ABSENT) {
                 simID = "" + telephonyManager.getSimSerialNumber();
             } else {
@@ -1762,17 +1732,17 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
                         canvas.save();
                         canvas.rotate(270f, xPos, yPos);
-                        canvas.drawText("Date & Time: " + Current_Date, xPos + 10, yPos + 300, paint);
+                        canvas.drawText("Date & Time: " + Current_Date, xPos + 10, yPos + 1000, paint);
                         canvas.restore();
 
                         canvas.save();
                         canvas.rotate(270f, xPos, yPos);
-                        canvas.drawText("Lat :" + latitude, xPos, yPos + 400, paint);
+                        canvas.drawText("Lat :" + latitude, xPos, yPos + 1100, paint);
                         canvas.restore();
 
                         canvas.save();
                         canvas.rotate(270f, xPos, yPos);
-                        canvas.drawText("Long :" + longitude, xPos, yPos + 500, paint);
+                        canvas.drawText("Long :" + longitude, xPos, yPos + 1200, paint);
                         canvas.rotate(90);
                         canvas.restore();
 
@@ -1820,17 +1790,17 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
                     canvas.save();
                     canvas.rotate(270f, xPos, yPos);
-                    canvas.drawText("Date & Time: " + Current_Date, xPos + 10, yPos, paint);
+                    canvas.drawText("Date & Time: " + Current_Date, xPos + 10, yPos + 1200, paint);
                     canvas.restore();
 
                     canvas.save();
                     canvas.rotate(270f, xPos, yPos);
-                    canvas.drawText("Lat :" + latitude, xPos, yPos + 400, paint);
+                    canvas.drawText("Lat :" + latitude, xPos, yPos + 1300, paint);
                     canvas.restore();
 
                     canvas.save();
                     canvas.rotate(270f, xPos, yPos);
-                    canvas.drawText("Long :" + longitude, xPos, yPos + 500, paint);
+                    canvas.drawText("Long :" + longitude, xPos, yPos + 1400, paint);
                     canvas.rotate(90);
                     canvas.restore();
 
@@ -1860,7 +1830,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     final_image_data_tosend = Base64.encodeToString(byteArray, Base64.NO_WRAP);
                     Log.i("final_image:", "" + final_image_data_tosend);
                     //new Async_getPrevFRSInfo().execute();
-                   // getPrevFRSInfo(final_image_data_tosend);
+                    // getPrevFRSInfo(final_image_data_tosend);
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -1913,7 +1883,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
                 final_image_data_tosend = Base64.encodeToString(byteArray, Base64.NO_WRAP);
                 //new Async_getPrevFRSInfo().execute();
-              //  getPrevFRSInfo(final_image_data_tosend);
+                //  getPrevFRSInfo(final_image_data_tosend);
 
             } else {
                 final_image_data_tosend = "";
@@ -2108,7 +2078,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
             dd_Img.setRotation(0);
             dd_Img.setImageBitmap(imgMatchBitmap);
             listDDImgmatch = dialogView.findViewById(R.id.listDDImgmatch);
-            btn_imgSubmit=dialogView.findViewById(R.id.btn_imgSubmit);
+            btn_imgSubmit = dialogView.findViewById(R.id.btn_imgSubmit);
             ImageMatchAdapter imageMatchAdapter = new ImageMatchAdapter(GenerateDrunkDriveCase.this, (ArrayList<ImageModel>) imageModelList);
             listDDImgmatch.setAdapter(imageMatchAdapter);
             imgMatchBuilder.show();
@@ -2125,7 +2095,6 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     }
                 }
             });
-
 
 
             listDDImgmatch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -2250,6 +2219,98 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
             e.printStackTrace();
         }
         return null;
+    }
+
+    public class Async_VerifyDuplicateChallan extends AsyncTask<Void, Void, String> {
+
+        @Override
+        protected String doInBackground(Void... params) {
+            // TODO Auto-generated method stub
+            String regNo = et_regn_cid.getText().toString().trim() + "" + et_regn_cid_name.getText().toString().trim() + ""
+                    + et_regn_last_num.getText().toString().trim();
+            SharedPreferences sharedPreference = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            String pidCd = sharedPreference.getString("PID_CODE", "");
+            ServiceHelper.checkSameChallan(regNo, btn_offence_date.getText().toString().trim().toUpperCase(),
+                    psnameby_point_code,
+                    "33", pidCd);
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            // TODO Auto-generated method stub
+            super.onPreExecute();
+            showDialog(PROGRESS_DIALOG);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+
+            removeDialog(PROGRESS_DIALOG);
+            if (!ServiceHelper.duplicateChaln_Data.equals("NA") && null != ServiceHelper.duplicateChaln_Data &&
+                    "false".equalsIgnoreCase(ServiceHelper.duplicateChaln_Data)) {
+                isDuplicatePrint = false;
+                new Async_generate_dd_case().execute();
+            } else {
+                isDuplicatePrint = true;
+                // showToast("Challan Already Generated On this Vehicle \n Please check it from Duplicate Print");
+                new Async_getSameChlnDuplicatePrint().execute();
+            }
+
+        }
+    }
+
+    public class Async_getSameChlnDuplicatePrint extends AsyncTask<Void, Void, String> {
+        @SuppressLint("DefaultLocale")
+        @SuppressWarnings("unused")
+        @Override
+        protected String doInBackground(Void... params) {
+            // TODO Auto-generated method stub
+            //getSimImeiNo();
+            String regNo = et_regn_cid.getText().toString().trim() + "" + et_regn_cid_name.getText().toString().trim() + ""
+                    + et_regn_last_num.getText().toString().trim();
+            SharedPreferences sharedPreference2 = PreferenceManager
+                    .getDefaultSharedPreferences(getApplicationContext());
+            String psCd = sharedPreference2.getString("PS_CODE", "");
+            String psName = sharedPreference2.getString("PS_NAME", "");
+            String pidCd = sharedPreference2.getString("PID_CODE", "");
+            String pidName = sharedPreference2.getString("PID_NAME", "");
+            String cadre = sharedPreference2.getString("CADRE_NAME", "");
+            String cadreCd = sharedPreference2.getString("CADRE_CODE", "");
+
+            ServiceHelper.getSameChlnDuplicatePrint("" + Dashboard.UNIT_CODE, "" + pidCd, "" + pidName,
+                    "" + regNo, "" + btn_offence_date.getText().toString().trim().toUpperCase(),
+                    "" + simID, "" + IMEI_send);
+
+            return null;
+        }
+
+        @SuppressWarnings("deprecation")
+        @Override
+        protected void onPreExecute() {
+            // TODO Auto-generated method stub
+            super.onPreExecute();
+            showDialog(PROGRESS_DIALOG);
+        }
+
+        @SuppressWarnings("deprecation")
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            removeDialog(PROGRESS_DIALOG);
+            if (!"".equals(ServiceHelper.str_SameChlnDuplicatePrint) && !"NA".equals(ServiceHelper.str_SameChlnDuplicatePrint) &&
+                    null != ServiceHelper.str_SameChlnDuplicatePrint) {
+                isDuplicatePrint = true;
+                Intent print = new Intent(getApplicationContext(), DrunkResponse.class);
+                startActivity(print);
+            } else {
+                showToast("Please check the Network & Try again!");
+            }
+
+        }
     }
 
     public class Async_generate_dd_case extends AsyncTask<Void, Void, String> {
@@ -2749,12 +2810,9 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        // On selecting a spinner item
+
         String item = parent.getItemAtPosition(position).toString();
 
-        // Showing selected spinner item
-        // Toast.makeText(parent.getContext(), "Selected: " + item,
-        // Toast.LENGTH_LONG).show();
         if (item.equals("STUDENT")) {
             profession_code = "1";
             edt_prfession_name.setHint("Enter Name of " + btn_select_profession.getText().toString());
@@ -3123,7 +3181,8 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                             } else {
 
                                 if (isOnline()) {
-                                    new Async_generate_dd_case().execute();
+                                    // new Async_generate_dd_case().execute();
+                                    new Async_VerifyDuplicateChallan().execute();
                                 } else {
                                     showToast("Please Check Your Network Connection");
                                 }
@@ -3151,7 +3210,8 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
                             } else {
                                 if (isOnline()) {
-                                    new Async_generate_dd_case().execute();
+                                    // new Async_generate_dd_case().execute();
+                                    new Async_VerifyDuplicateChallan().execute();
                                 } else {
                                     showToast("Please Check Your Network Connection");
                                 }
@@ -3226,7 +3286,8 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                         } else {
 
                             if (isOnline()) {
-                                new Async_generate_dd_case().execute();
+                                // new Async_generate_dd_case().execute();
+                                new Async_VerifyDuplicateChallan().execute();
                             }
                         }
                     }
@@ -3274,13 +3335,15 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     if (chck_detainedItems_licence.isChecked()) {
 
                         if (isOnline()) {
-                            new Async_generate_dd_case().execute();
+                            // new Async_generate_dd_case().execute();
+                            new Async_VerifyDuplicateChallan().execute();
                         } else {
                             showToast("Please Check Your Network Connection");
                         }
                     } else if (!chck_detainedItems_licence.isChecked() && chck_detainedItems_vhcle.isChecked()) {
                         if (isOnline()) {
-                            new Async_generate_dd_case().execute();
+                            // new Async_generate_dd_case().execute();
+                            new Async_VerifyDuplicateChallan().execute();
                         } else {
                             showToast("Please Check Your Network Connection");
                         }
@@ -3289,7 +3352,8 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     }
                 } else {
                     if (isOnline()) {
-                        new Async_generate_dd_case().execute();
+                        // new Async_generate_dd_case().execute();
+                        new Async_VerifyDuplicateChallan().execute();
                     } else {
                         showToast("Please Check Your Network Connection");
                     }

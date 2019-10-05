@@ -42,7 +42,7 @@ public class ExtraPassengers extends Activity {
 					SpotChallan.extraPassengers = passngrCount_input.getText().toString() != null
 							? passngrCount_input.getText().toString() : "1";
 
-					Log.i("extraPassengers****************** ::", SpotChallan.extraPassengers);
+					Log.i("extraPassenger::", SpotChallan.extraPassengers);
 					finish();
 				}
 			}
