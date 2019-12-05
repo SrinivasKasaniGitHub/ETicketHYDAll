@@ -196,10 +196,10 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
     public static Button btn_send_otp_to_mobile;
     Button btn_verify_otp_from_mobile;
 
-    String[] id_proof_arr = {"Aadhar Number", "Pancard Number", "Passport Number", "VoterId Number"};
+    String[] id_proof_arr = {"Aadhar Number", "Pancard Number", "Passport Number", "VoterId Number","None"};
 
     String[] id_proof_hints_arr = {"Enter Aadhar Number", "Enter Pancard Number", "Enter Passport Number",
-            "Enter VoterId Number"};
+            "Enter VoterId Number",""};
 
     int selected_finedBy_sub;// for getting finedby value by radio_group
     int val_gender;// for getting male or female value by radio_group
@@ -1732,17 +1732,17 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
                         canvas.save();
                         canvas.rotate(270f, xPos, yPos);
-                        canvas.drawText("Date & Time: " + Current_Date, xPos + 10, yPos + 1000, paint);
+                        canvas.drawText("Date & Time: " + Current_Date, xPos + 10, yPos + 800, paint);
                         canvas.restore();
 
                         canvas.save();
                         canvas.rotate(270f, xPos, yPos);
-                        canvas.drawText("Lat :" + latitude, xPos, yPos + 1100, paint);
+                        canvas.drawText("Lat :" + latitude, xPos, yPos + 900, paint);
                         canvas.restore();
 
                         canvas.save();
                         canvas.rotate(270f, xPos, yPos);
-                        canvas.drawText("Long :" + longitude, xPos, yPos + 1200, paint);
+                        canvas.drawText("Long :" + longitude, xPos, yPos + 1000, paint);
                         canvas.rotate(90);
                         canvas.restore();
 
@@ -1790,17 +1790,17 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
                     canvas.save();
                     canvas.rotate(270f, xPos, yPos);
-                    canvas.drawText("Date & Time: " + Current_Date, xPos + 10, yPos + 1200, paint);
+                    canvas.drawText("Date & Time: " + Current_Date, xPos + 10, yPos + 900, paint);
                     canvas.restore();
 
                     canvas.save();
                     canvas.rotate(270f, xPos, yPos);
-                    canvas.drawText("Lat :" + latitude, xPos, yPos + 1300, paint);
+                    canvas.drawText("Lat :" + latitude, xPos, yPos + 1000, paint);
                     canvas.restore();
 
                     canvas.save();
                     canvas.rotate(270f, xPos, yPos);
-                    canvas.drawText("Long :" + longitude, xPos, yPos + 1400, paint);
+                    canvas.drawText("Long :" + longitude, xPos, yPos + 1100, paint);
                     canvas.rotate(90);
                     canvas.restore();
 
@@ -2970,6 +2970,11 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     pan_no = "";
                     passport = "";
                     voterid = "" + et_id_proof.getText().toString().trim();
+                }else  {
+                    aadhar = "";
+                    pan_no = "";
+                    passport = "";
+                    voterid = "";
                 }
             }
 

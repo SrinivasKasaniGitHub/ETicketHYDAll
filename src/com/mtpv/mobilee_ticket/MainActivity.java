@@ -118,6 +118,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
             Manifest.permission.CAMERA,
             Manifest.permission.INSTALL_SHORTCUT
     };
+
     private static final int REQUEST_PERMISSIONS = 20;
     private SparseIntArray mErrorString;
     public static String psName, cadre_name, pidName, uintCode;
@@ -519,7 +520,6 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                 break;
         }
     }
-
 
     protected void showGPSDisabledAlertToUser() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);

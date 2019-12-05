@@ -1982,6 +1982,7 @@ id ed_date
 id ed_engine
 id ed_time
 id edit_query
+id edt_Age
 id edt_aadharno_rtadetails_xml
 id edt_aadharno_spotchallan_xml
 id edt_address_dd2_xml
@@ -2232,6 +2233,8 @@ id location
 id locaton_layout
 id lv_paired
 id lvpendingchallans_xml
+id lyt_Age
+id lyt_GetDtls
 id make_paymnt
 id masked
 id message
@@ -2305,6 +2308,9 @@ id progress_horizontal
 id prompt
 id ps_name
 id qr_code
+id rBtn_FeMale
+id rBtn_Male
+id rBtn_Others
 id radio
 id radioButton_IPAdress
 id radioButton_live
@@ -2621,6 +2627,7 @@ id tvuid_rtadetails_xml
 id tvuid_spotchallan_xml
 id two
 id txt
+id txtAge
 id txt_Age
 id txt_FName
 id txt_FirNo
@@ -3132,6 +3139,7 @@ string towing_one_line
 string tsp
 string tv_age
 string tv_gender
+string txt_DRName
 string uid
 string update_aadhar
 string urdu

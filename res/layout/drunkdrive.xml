@@ -245,7 +245,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/dob_input"
-                android:layout_marginTop="@dimen/header_grnt_padding_ten" >
+                android:layout_marginTop="@dimen/header_grnt_padding_ten"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/textViewss"

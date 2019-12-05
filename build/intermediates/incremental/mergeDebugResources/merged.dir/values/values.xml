@@ -1195,7 +1195,7 @@
     <string name="alcohol_reading">Enter Alcohol Reading</string>
     <string name="amnt">Amount</string>
     <string name="app_name">TS-eTicket</string>
-    <string name="app_version">Version-3.1.3</string>
+    <string name="app_version">Version-3.1.5</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="auth_failed" translatable="false">Authentication Failure</string>
     <string name="back">Back</string>
@@ -1460,6 +1460,7 @@
     <string name="tsp">TELANGANA STATE POLICE</string>
     <string name="tv_age">Age</string>
     <string name="tv_gender">Gender</string>
+    <string name="txt_DRName">Driver Age<font fgcolor="#ed0404">*</font></string>
     <string name="uid">UID</string>
     <string name="update_aadhar">Update Aadhar</string>
     <string name="urdu">Urdu</string>

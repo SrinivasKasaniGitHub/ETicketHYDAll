@@ -40,7 +40,7 @@ public class ServiceHelper {
     public static String rtaapproovedresponse, validregnoresponse, insertDetainItemsresponse, remarksresult, otpStatusnTime, noncontactresponse;
 
 
-    static String WHEELER_MEHOD_NAME = "getWheelerDetails", GET_PS_NAMES_MEHOD_NAME = "getPsNames", GET_POINTNAME_BY_PSNAME_MEHOD_NAME = "getPointNamesByPsName";
+    public static String WHEELER_MEHOD_NAME = "getWheelerDetails", GET_PS_NAMES_MEHOD_NAME = "getPsNames", GET_POINTNAME_BY_PSNAME_MEHOD_NAME = "getPointNamesByPsName";
 
     public static String OCUPTN_METHOD_NAME = "getOccupations", QLFCTION_METHOD_NAME = "getQualifications", BAR_DETAILS_METHOD_NAME = "getWineSellerDetails";
     public static String VECHILE_CATEGORY = "getVehicleCategory", VECHILE_MAIN_CAT_METHOD_NAME = "getVehicleMainCategory";
@@ -372,7 +372,7 @@ public class ServiceHelper {
         }
     }
 
-    public static void getPsNames(String unit_Code) {
+    public static  void getPsNames(String unit_Code) {
         try {
             SoapObject request = new SoapObject(NAMESPACE, "" + GET_PS_NAMES_MEHOD_NAME);
             request.addProperty("UNIT_CODE", unit_Code);
@@ -651,11 +651,7 @@ public class ServiceHelper {
                 e.printStackTrace();
             }
 
-        } catch (SoapFault fault) {
-            Opdata_Chalana = "0";
-            qualification_master = new String[0];
-        } catch (Exception e) {
-            // TODO: handle exception
+        } catch (Exception fault) {
             Opdata_Chalana = "0";
             qualification_master = new String[0];
         }
@@ -667,43 +663,32 @@ public class ServiceHelper {
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.dotNet = true;
             envelope.setOutputSoapObject(request);
-
             HttpTransportSE httpTransportSE = new HttpTransportSE(MainActivity.URL,timeLimit);
             httpTransportSE.call(SOAP_ACTION, envelope);
             Object result = envelope.getResponse();
-
             try {
                 Opdata_Chalana = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-
             if (Opdata_Chalana == null) {
-
             } else {
-
                 if (mName.equals("" + VECHILE_CATEGORY)) {
                     vchle_cat_master = new String[0];
-
                     vchle_cat_master = Opdata_Chalana.split("!");
                     for (int i = 0; i < ServiceHelper.vchle_cat_master.length; i++) {
                         Log.i("**VCHLE CAT MASTER***", "" + ServiceHelper.vchle_cat_master[i]);
-
                     }
                 } else if (mName.equals("" + VECHILE_MAIN_CAT_METHOD_NAME)) {
                     vchle_mainCat_master = new String[0];
-
                     vchle_mainCat_master = Opdata_Chalana.split("!");
                     for (int i = 0; i < ServiceHelper.vchle_mainCat_master.length; i++) {
                         Log.i("CAT MASTER***", "" + ServiceHelper.vchle_mainCat_master[i]);
                     }
                 }
             }
-
-        } catch (SoapFault fault) {
         } catch (Exception e) {
-            // TODO: handle exception
             if (mName.equals("" + VECHILE_CATEGORY)) {
                 vchle_cat_master = new String[0];
             } else if (mName.equals("" + VECHILE_MAIN_CAT_METHOD_NAME)) {
@@ -725,7 +710,6 @@ public class ServiceHelper {
             try {
                 Opdata_Chalana = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
             } catch (Exception e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
 
@@ -781,9 +765,7 @@ public class ServiceHelper {
                                              String user_unitName, String cadre_Cd, String cadre_only, String imgEncoded_String, String device_imei,
                                              String gps_Lattitude, String gps_Longitude, String mob_macId, String sim_Id, String breath_AnalyserId,
                                              String lcnce_status) {
-
         Utils utils = new Utils();
-
         try {
             SoapObject request = new SoapObject(NAMESPACE, "" + GENERATE_DRUNK_DRIVE_CASE);
             request.addProperty(utils.REG_CD, "" + regn_Cd);
@@ -840,22 +822,18 @@ public class ServiceHelper {
             request.addProperty(utils.SIM_ID, "" + sim_Id);
             request.addProperty(utils.BREATHE_ANYLSR_ID, "" + breath_AnalyserId);
             request.addProperty(utils.LICENCE_STATUS, "" + lcnce_status);
-
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.dotNet = true;
             envelope.setOutputSoapObject(request);
-
             HttpTransportSE httpTransportSE = new HttpTransportSE(MainActivity.URL,timeLimit);
             httpTransportSE.call(SOAP_ACTION, envelope);
             Object result = envelope.getResponse();
-
             try {
                 Opdata_Chalana = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-
             if (Opdata_Chalana.toString().trim().equals("0")) {
                 Opdata_Chalana = "0";
                 final_reponse_split = new String[0];
@@ -919,9 +897,7 @@ public class ServiceHelper {
                                                    String gps_Lattitude, String gps_Longitude, String mob_macId, String sim_Id, String breath_AnalyserId,
                                                    String lcnce_status, String nameOfBar_WineShop, String addressOfBar_WineShop, String occupation_Name,
                                                    String occupation_Address) {
-
         Utils utils = new Utils();
-
         try {
             SoapObject request = new SoapObject(NAMESPACE, "" + GENERATE_DRUNK_DRIVE_CASE1_5_2);
             request.addProperty(utils.REG_CD, "" + regn_Cd);
@@ -1230,8 +1206,6 @@ public class ServiceHelper {
     public static void getpendingChallansByRegNo(String regno, String drvr_lcno, String ownr_lcnce_no, String pid,
                                                  String pidname, String pwd, String simid, String imei, String lat, String logn, String ip_val,
                                                  String unit_code) {
-
-
         try {
             SoapObject request = new SoapObject(NAMESPACE, "" + PENDING_CHALLANS_BY_REGNO);
             request.addProperty("regnNo", "" + regno);
@@ -1250,7 +1224,6 @@ public class ServiceHelper {
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.dotNet = true;
             envelope.setOutputSoapObject(request);
-
             HttpTransportSE httpTransportSE = new HttpTransportSE(MainActivity.URL,timeLimit);
             httpTransportSE.call(SOAP_ACTION, envelope);
             Object result = envelope.getResponse();
@@ -1507,7 +1480,6 @@ public class ServiceHelper {
         }
     }
 
-    //Challan Type
     public static void getOffenceDetailsbyWheelerChallanTypeUnit(String wheelercode, String chllanType, String pidCode) {
         try {
             SoapObject request = new SoapObject(NAMESPACE, "getOffenceDetailsbyWheelerChallanTypeUnit");
@@ -2015,7 +1987,6 @@ public class ServiceHelper {
             }
         }
     }
-
 
     public static void checkSameChallan(String regnNo, String offenceDt, String pointCode,String selectedVioCodes,String pidCd) {
         try {
@@ -2755,8 +2726,7 @@ public class ServiceHelper {
         return insertDetainItemsresponse;
     }
 
-    public static String validateRegno(String regnNo, String drivingLicense, String aadhaarNO, String
-            chasisNo, String engineNo, String pidCd, String unitCode,
+    public static String validateRegno(String regnNo, String drivingLicense, String aadhaarNO, String chasisNo, String engineNo, String pidCd, String unitCode,
                                        String imei, String simNo, String gpsLattitude, String gpsLongitude, String pidName) {
         try {
             SoapObject request = new SoapObject(NAMESPACE, "validateRegnNo");
@@ -3440,7 +3410,6 @@ public class ServiceHelper {
     }
 
     public static void getViolationDetails() {
-        // TODO Auto-generated method stub
 
     }
 
@@ -3483,18 +3452,14 @@ public class ServiceHelper {
         }
     }
 
-    public static String getApprovefromRtaforPoint(String eticketNO, String regnNo,
-                                                   String offenceDt, String offenceTime, String stateCd, String unitCode,
-                                                   String bookedPsCd, String location, String vioCodes,
-                                                   String curruntVioAmount, String licNo, String driverName,
-                                                   String driverAddress, String driverCity, String paymentStatus,
-                                                   String dOfPay, String driverContactNo, String dl_dob, String pointName,
-                                                   String dlImpoundFlg, String bookedPsName, String pidName, String cadre,
-                                                   String impndPerd, String pointCode, String totalVioPoints) {
+    public static String getApprovefromRtaforPoint(String eticketNO, String regnNo, String offenceDt, String offenceTime, String stateCd,
+                                                   String unitCode, String bookedPsCd, String location, String vioCodes, String curruntVioAmount,
+                                                   String licNo, String driverName, String driverAddress, String driverCity, String paymentStatus,
+                                                   String dOfPay, String driverContactNo, String dl_dob, String pointName, String dlImpoundFlg,
+                                                   String bookedPsName, String pidName, String cadre, String impndPerd, String pointCode,
+                                                   String totalVioPoints) {
         try {
             SoapObject request = new SoapObject(NAMESPACE, "getApprovefromRtaforPoint");
-
-
             request.addProperty("eticketNO", eticketNO);
             request.addProperty("regnNo", regnNo);
             request.addProperty("offenceDt", offenceDt);
@@ -3521,63 +3486,46 @@ public class ServiceHelper {
             request.addProperty("impndPerd", impndPerd);
             request.addProperty("pointCode", pointCode);
             request.addProperty("totalVioPoints", totalVioPoints);
-
-
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.dotNet = true;
             envelope.setOutputSoapObject(request);
-
-
             HttpTransportSE androidHttpTransport = new HttpTransportSE(MainActivity.URL,timeLimit);
             androidHttpTransport.call(SOAP_ACTION, envelope);
             Object result = envelope.getResponse();
-
             try {
                 if (result != null) {
-                    //rtaapproovedresponse = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
                     rtaapproovedresponse = result.toString().trim();
                 } else {
                     rtaapproovedresponse = "NA|NA|NA";
                 }
             } catch (Exception e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
                 rtaapproovedresponse = "NA|NA|NA";
             }
         } catch (SoapFault fault) {
-
             fault.printStackTrace();
             rtaapproovedresponse = "NA|NA|NA";
-
         }catch (SocketTimeoutException fault) {
-
             fault.printStackTrace();
             rtaapproovedresponse = "NA|NA|NA";
-
         } catch (Exception E) {
             E.printStackTrace();
             rtaapproovedresponse = "NA|NA|NA";
         }
-
         return rtaapproovedresponse;
     }
 
     public static String getOtpStatusNTime(String unitcode) {
+
         try {
             SoapObject request = new SoapObject(NAMESPACE, "getOtpStatusNTime");
-
             request.addProperty("unitcCode", unitcode);
-
-
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.dotNet = true;
             envelope.setOutputSoapObject(request);
-
-
             HttpTransportSE androidHttpTransport = new HttpTransportSE(MainActivity.URL);
             androidHttpTransport.call(SOAP_ACTION, envelope);
             Object result = envelope.getResponse();
-
             try {
                 if (result != null) {
                     otpStatusnTime = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString().trim());
@@ -3590,10 +3538,8 @@ public class ServiceHelper {
                 otpStatusnTime = "NA|NA";
             }
         } catch (SoapFault fault) {
-
             fault.printStackTrace();
             otpStatusnTime = "NA|NA";
-
         } catch (Exception E) {
             E.printStackTrace();
             otpStatusnTime = "NA|NA";
@@ -3601,4 +3547,5 @@ public class ServiceHelper {
 
         return otpStatusnTime;
     }
+
 }

@@ -365,7 +365,7 @@
                 android:layout_below="@+id/edt_checkslno_dd2_xml"
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
                 android:hint="@string/alcohol_reading"
-                android:inputType="numberDecimal"
+                android:inputType="number"
                 android:maxLength="4"></EditText>
 
             <TextView

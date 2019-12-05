@@ -38,7 +38,6 @@
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -127,21 +126,6 @@
             android:name="com.mtpv.mobilee_ticket.VehicleHistoryPendingChallans"
             android:excludeFromRecents="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" >
-        </activity>
-        <activity
-            android:name="com.mtpv.mobilee_ticket.OfflineDashboardActivity"
-            android:label="@string/title_activity_offline_dashboard"
-            android:windowSoftInputMode="adjustPan" >
-        </activity>
-        <activity
-            android:name="com.mtpv.mobilee_ticket.Offline_GenerateCase"
-            android:label="@string/title_activity_offline__generate_case"
-            android:windowSoftInputMode="adjustPan" >
-        </activity>
-        <activity
-            android:name="com.mtpv.mobilee_ticket.Offline_Settings"
-            android:label="@string/title_activity_offline__settings"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity

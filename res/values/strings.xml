@@ -15,7 +15,7 @@
     <string name="towing">Crane \n41 CP ACT</string>
     <string name="towing_one_line">Crane 41 CP ACT</string>
     <string name="reports">Reports</string>
-    <string name="app_version">Version-3.1.4</string>
+    <string name="app_version">Version-3.1.5</string>
     <string name="regNo">Regn.No</string>
     <string name="engine">Engine No</string>
     <string name="chasis">Chasis No</string>
@@ -51,6 +51,7 @@
     <string name="driver_dl_no">Enter Driver DL No      </string>
     <string name="driver_name">Enter Driver Name</string>
     <string name="driver_name_only">Driver\'s Name    </string>
+    <string name="txt_DRName">Driver Age<font fgcolor="#ed0404">*</font></string>
     <string name="driver_details">DRIVER DETAILS</string>
     <string name="driver_father_name">Driver\'s Father Name</string>
     <string name="aadhar_no">Aadhar No    </string>
