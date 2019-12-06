@@ -299,14 +299,11 @@ public class SpotChallan extends Activity
     AppCompatTextView detained_Txt;
     TextToSpeech textToSpeech;
     public static boolean isDuplicatePrint = false;
-
     private Timer timer;
-
     RadioGroup radioGroup_gender;
     RadioButton rBtn_Male, rBtn_FeMale, rBtn_Others;
     EditText edt_Age;
     int age = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -2032,6 +2029,8 @@ public class SpotChallan extends Activity
         startActivityForResult(intent, 2);
         imgSelected = "1";
     }
+
+    // Changed
 
     private void selectImagefrom_Camera() {
 
