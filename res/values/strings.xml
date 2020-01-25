@@ -10,12 +10,12 @@
     <string name="slogan">Stay Alive, don’t drink and drive</string>
 
     <!-- DASHBOARD -->
-    <string name="release_documents">Release\nDocuments</string>
+    <string name="release_documents">Release\nItems</string>
     <string name="release_documents_one_line">Release Documents</string>
     <string name="towing">Crane \n41 CP ACT</string>
     <string name="towing_one_line">Crane 41 CP ACT</string>
     <string name="reports">Reports</string>
-    <string name="app_version">Version-3.1.5</string>
+    <string name="app_version">Version-3.1.7</string>
     <string name="regNo">Regn.No</string>
     <string name="engine">Engine No</string>
     <string name="chasis">Chasis No</string>

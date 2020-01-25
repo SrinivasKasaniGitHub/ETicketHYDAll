@@ -74,7 +74,7 @@ import mother.com.test.PidSecEncrypt;
 
 @SuppressLint({"WorldReadableFiles", "NewApi", "SimpleDateFormat"})
 public class MainActivity extends Activity implements OnClickListener, LocationListener {
-
+    //9502703304 e jalapathi
     final int SPLASH_DIALOG = 0, PROGRESS_DIALOG = 1;
     EditText et_pid, et_pid_pwd;
     Button btn_cancel, btn_submit;
@@ -238,7 +238,6 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
     }
 
     private void LoadUIcomponents() {
-        // TODO Auto-generated method stub
 
         et_pid = findViewById(R.id.edtpidcode_login_xml);
         et_pid_pwd = findViewById(R.id.edtpidpwd_login_xml);
@@ -246,8 +245,9 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
         btn_submit = findViewById(R.id.btnsubmit_login_xml);
         tv_ip_settings = findViewById(R.id.tv_ipsettings);
 
-       /* et_pid.setText("23001004");
-        et_pid_pwd.setText("Ranga2018");*/
+        et_pid.setText("23001004");
+        et_pid_pwd.setText("TstS@2020");
+
         btn_cancel.setOnClickListener(this);
         btn_submit.setOnClickListener(this);
         tv_ip_settings.setOnClickListener(this);
@@ -558,7 +558,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
         et_pid_pwd.setText("");
     }
 
-    private class Async_task_login extends AsyncTask<Void, Void, String> {
+    public class Async_task_login extends AsyncTask<Void, Void, String> {
 
         @Override
         protected String doInBackground(Void... params) {
@@ -572,7 +572,6 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                     URL = "" + ip_url + "" + url_to_fix;
                 }
             }
-
             String[] version_split = appVersion.split("\\-");
             ServiceHelper.login("" + user_id, "" + e_user_tmp, "" + IMEI, "" + sim_No, "" + latitude, "" + longitude,
                     "" + version_split[1]);

@@ -635,7 +635,7 @@ public class Settings_New extends Activity implements OnClickListener {
 	}
 
 	@SuppressWarnings("deprecation")
-	@SuppressLint({ "CommitPrefEdits", "WorldReadableFiles" })
+    @SuppressLint({"CommitPrefEdits", "WorldReadableFiles", "SetTextI18n"})
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
@@ -666,7 +666,7 @@ public class Settings_New extends Activity implements OnClickListener {
 				break;
 
 			case R.id.btncancel_settings_xml:
-				dashboard.preferences.edit().clear().commit();
+				dashboard.preferences.edit().clear().apply();
 				btn_ps_name.setText(""+ getResources().getString(R.string.select_ps_name));
 				btn_pointby_ps_name.setText(""+ getResources().getString(R.string.select_pointbypsname));
 				btn_ResponsiblePSName.setText("Responsible PS Name");
@@ -676,11 +676,8 @@ public class Settings_New extends Activity implements OnClickListener {
 				et_pinpad.setText("");
 				selected_ps_name = -1;
 				selected_pointby_psname = -1;
-
-				Log.i("B4 RESET pointNameBy_PsName_arr", ""+ pointNameBy_PsName_arr.size());
 				pointNameBy_PsName_code_arr.clear();
 				pointNameBy_PsName_arr.clear();
-				Log.i("RESET pointNameBy_PsName_arr","" + pointNameBy_PsName_arr.size());
 				break;
 
 			case R.id.btnback_settings_xml:
@@ -695,7 +692,6 @@ public class Settings_New extends Activity implements OnClickListener {
 				} else {
 					startActivity(new Intent(getApplicationContext(), Dashboard_PC.class));
 				}
-				//startActivity(new Intent(this, Dashboard.class));
 				break;
 
 			case R.id.btnsubmit_settings_xml:
@@ -710,21 +706,12 @@ public class Settings_New extends Activity implements OnClickListener {
 					// et_bt_address.setError("Check Bluetooth Details Properly");
 					et_bt_address.setError(Html.fromHtml("<font color='black'>Check Bluetooth Details Properly</font>"));
 					et_bt_address.requestFocus();
-				} /*
-			 * else if ((et_pinpad.getText().toString().trim().equals("")) &&
-			 * (et_pinpad.getText().toString().trim().length() < 10)) {
-			 * //edt_pinpad_xml
-			 * .setError("Check PIN pad Bluetooth Details Properly");
-			 * et_pinpad.setError(Html.fromHtml(
-			 * "<font color='black'>Check PIN pad Bluetooth Details Properly</font>"
-			 * )); et_pinpad.requestFocus(); }
-			 */
+				}
 				else {
 					dashboard.preferences = getSharedPreferences("preferences",
 							Context.MODE_PRIVATE);
 					dashboard.editor = dashboard.preferences.edit();
 
-				/* FOR EXACT LOCATION PREF VALUES */
 				//Changed to edt TExt to BTn
 					if (btn_ResponsiblePSName.getText().toString().trim().equals("")) {
 						dashboard.editor.putString("exact_location", "");
@@ -850,7 +837,7 @@ public class Settings_New extends Activity implements OnClickListener {
 
 	@SuppressWarnings("deprecation")
 	private void showProgress(String server) {
-		// TODO Auto-generated method stub
+
 		dialog = new Dialog(Settings_New.this);
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		dialog.setContentView(R.layout.myprogressdialog);
@@ -864,7 +851,7 @@ public class Settings_New extends Activity implements OnClickListener {
 		dialog.show();
 
 		progress = (ProgressBar) dialog.findViewById(R.id.progress_bar);
-		progress.setProgress(0);// initially progress is 0
+		progress.setProgress(0);
 		progress.setMax(100);
 		progress.setIndeterminate(true);
 		progress.setProgressDrawable(getResources().getDrawable(

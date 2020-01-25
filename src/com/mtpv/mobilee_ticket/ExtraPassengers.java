@@ -19,6 +19,7 @@ public class ExtraPassengers extends Activity {
 	public static EditText passngrCount_input;
 	Button cancel_dialog, ok_dialog;
 
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub

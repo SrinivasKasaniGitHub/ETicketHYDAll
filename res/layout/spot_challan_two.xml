@@ -127,7 +127,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="@dimen/header_grnt_padding_five"
-                android:layout_marginTop="@dimen/header_grnt_padding_five">
+                android:layout_marginTop="@dimen/header_grnt_padding_five"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tv_spotpymnt_name"
@@ -336,7 +337,8 @@
                 android:id="@+id/rl_detaineditems_spotchallantwo_xml"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/ll_detaineditems_root_spotchallan_two_xml">
+                android:layout_below="@+id/ll_detaineditems_root_spotchallan_two_xml"
+                android:layout_marginTop="@dimen/_8sdp">
 
                 <TextView
                     android:id="@+id/tv_detaineditems_name_spotchallantwo_xml"

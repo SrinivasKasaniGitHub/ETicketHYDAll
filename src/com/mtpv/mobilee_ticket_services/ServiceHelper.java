@@ -38,10 +38,7 @@ public class ServiceHelper {
 
     public static Map<String, String> viodetMap = null;
     public static String rtaapproovedresponse, validregnoresponse, insertDetainItemsresponse, remarksresult, otpStatusnTime, noncontactresponse;
-
-
     public static String WHEELER_MEHOD_NAME = "getWheelerDetails", GET_PS_NAMES_MEHOD_NAME = "getPsNames", GET_POINTNAME_BY_PSNAME_MEHOD_NAME = "getPointNamesByPsName";
-
     public static String OCUPTN_METHOD_NAME = "getOccupations", QLFCTION_METHOD_NAME = "getQualifications", BAR_DETAILS_METHOD_NAME = "getWineSellerDetails";
     public static String VECHILE_CATEGORY = "getVehicleCategory", VECHILE_MAIN_CAT_METHOD_NAME = "getVehicleMainCategory";
     public static String VECHILE_SUB_CAT_METHOD_NAME = "getVehicleSubCategory", GENERATE_DRUNK_DRIVE_CASE = "generateDrunDriveCase";
@@ -102,9 +99,9 @@ public class ServiceHelper {
                 Opdata_Chalana = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
                 Log.d("PrintDecodedData", "" + Opdata_Chalana);
             } catch (Exception e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+
             if (Opdata_Chalana == "0") {
             } else {
                 if (Opdata_Chalana != null && !Opdata_Chalana.equals("NA")) {
@@ -545,13 +542,10 @@ public class ServiceHelper {
             try {
                 if (result != null) {
                     Opdata_Chalana = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
-
                     if (Opdata_Chalana != null && Opdata_Chalana != "0") {
-
                         ServiceHelper.bar_master = new String[0];
                         ServiceHelper.bar_master = Opdata_Chalana.split("!");
                     }
-
                 } else {
                     Opdata_Chalana = "0";
                     ServiceHelper.bar_master = new String[0];
@@ -1051,7 +1045,8 @@ public class ServiceHelper {
                 e.printStackTrace();
                 offender_remarks = "0";
             }
-        } catch (SoapFault fault) {
+        }
+        catch (SoapFault fault) {
             offender_remarks = "0";
         }catch (SocketTimeoutException fault) {
             offender_remarks = "0";
@@ -1236,13 +1231,11 @@ public class ServiceHelper {
 
                 e.printStackTrace();
             }
-
             if (Opdata_Chalana.toString().equals("0")) {
                 Opdata_Chalana = "0";
                 pending_challans_master = new String[0];
                 pending_challans_details = new String[0][0];
             } else {
-
                 pending_challans_master = new String[0];
                 pending_challans_master = Opdata_Chalana.split("@");
                 pending_challans_details = new String[pending_challans_master.length][8];
@@ -2130,7 +2123,7 @@ public class ServiceHelper {
             request.addProperty(utils.SPOT_LONG, "" + longitude);
             request.addProperty(utils.SPOT_GPS_DATE, "" + gpsDt);
             request.addProperty(utils.SPOT_GPS_TIME, "" + gpsTime);
-            request.addProperty(utils.SPOT_ONLINE_MODE, "" + onlinebuff); // v
+            request.addProperty(utils.SPOT_ONLINE_MODE, "" + onlinebuff);
             request.addProperty(utils.SPOT_MODULE_CODE, "" + moduleCd);
             request.addProperty(utils.SPOT_RELEASE_ITEM, "" + releasedItem);
             request.addProperty(utils.SPOT_CHALLAN_NO, "" + challanNo);
@@ -2173,12 +2166,10 @@ public class ServiceHelper {
             request.addProperty(utils.SPOT_DRIVER_CITY, "" + driverCity);
             // if (Dashboard.check_vhleHistory_or_Spot.equals("spot")) {
             request.addProperty(utils.TOWING_DOB, "" + dl_dob);
-
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.dotNet = true;
             envelope.implicitTypes = true;
             envelope.setOutputSoapObject(request);
-
 
             try {
                 HttpTransportSE httpTransportSE = new HttpTransportSE(MainActivity.URL, timeLimit);
@@ -2191,7 +2182,6 @@ public class ServiceHelper {
                 spot_final_res_status = new com.mtpv.mobilee_ticket_services.PidSecEncrypt().decrypt(result.toString());
                 /*spot_final_res_status=resPrint.split("\\*")[0];
                 spot_finalPrintNDevice=resPrint.split("\\*")[1];*/
-
 
             }catch (SoapFault fault) {
                 Log.d("SoapaultExp: ", "" + fault.getMessage());
@@ -2209,7 +2199,6 @@ public class ServiceHelper {
                 e.printStackTrace();
                 spot_final_res_status = "0";
             }
-
 
             final_spot_reponse_master = new String[0];
             final_spot_reponse_violations_master = new String[0];
@@ -2236,11 +2225,8 @@ public class ServiceHelper {
 
                 final_spot_reponse_master = spot_final_res_status.split("\\^");
 
-
                 for (int i = 0; i < final_spot_reponse_master.length; i++) {
-
                 }
-
                 if (final_spot_reponse_master[1].trim().length() > 0) {
                     final_spot_reponse_details = final_spot_reponse_master[1].split("!");
 
@@ -2250,10 +2236,8 @@ public class ServiceHelper {
                 }
 
                 if (final_spot_reponse_master[2].trim().length() > 0) {
-
                     final_spot_reponse_violations_master = final_spot_reponse_master[2].split("!");
                     final_spot_reponse_violations = new String[final_spot_reponse_violations_master.length][3];
-
                     for (int i = 0; i < final_spot_reponse_violations_master.length; i++) {
                         final_spot_reponse_violations[i] = final_spot_reponse_violations_master[i].split("\\@");
                     }
@@ -2756,11 +2740,9 @@ public class ServiceHelper {
                     validregnoresponse = "2";
                 }
             } catch (Exception e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
                 validregnoresponse = "2";
             }
-
         } catch (SoapFault fault) {
             validregnoresponse = "2";
             fault.printStackTrace();
@@ -2768,7 +2750,6 @@ public class ServiceHelper {
             E.printStackTrace();
             validregnoresponse = "2";
         }
-
         return validregnoresponse;
     }
 
@@ -3079,7 +3060,6 @@ public class ServiceHelper {
     public static void getTransactionNo(String all_challans, String imei_No, String email_ID, String contact_No,
                                         String ter_ID, String bt_ID, String bt_Name, String sim_no, String gps_Latti, String gps_Longi,
                                         String gps_Date) {
-
         try {
 
             SoapObject request = new SoapObject(NAMESPACE, "" + GET_TRANSACTION_NO);

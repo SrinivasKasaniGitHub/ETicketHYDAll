@@ -96,6 +96,10 @@
         "source": "D:\\AndroidWorkSpace\\ETicketHYDAll\\res\\drawable-hdpi\\settings.png"
     },
     {
+        "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable_ic_logo_result.png.flat",
+        "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\bleoperator.aar\\b0a81e34774cffadd22cd7cacf903f8b\\res\\drawable\\ic_logo_result.png"
+    },
+    {
         "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\color_mtrl_btn_text_color_selector.xml.flat",
         "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\101c55514b1f5a1626306d9be48d1bc0\\res\\color\\mtrl_btn_text_color_selector.xml"
     },
@@ -456,6 +460,10 @@
         "source": "D:\\AndroidWorkSpace\\ETicketHYDAll\\res\\layout\\imagecomparision_dialog.xml"
     },
     {
+        "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout_blescandevice_dialog.xml.flat",
+        "source": "D:\\AndroidWorkSpace\\ETicketHYDAll\\res\\layout\\blescandevice_dialog.xml"
+    },
+    {
         "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable_notification_bg.xml.flat",
         "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\7f3e525b8c5fcb50d2c46eb9139a98f8\\res\\drawable\\notification_bg.xml"
     },
@@ -618,6 +626,10 @@
     {
         "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
         "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\85eac74e9bd87ba22eba8463f1f68559\\res\\drawable-mdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_ic_check_black.png.flat",
+        "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\bleoperator.aar\\b0a81e34774cffadd22cd7cacf903f8b\\res\\drawable-xxhdpi-v4\\ic_check_black.png"
     },
     {
         "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable_cyb_logo.png.flat",
@@ -836,6 +848,10 @@
         "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\exfilepicker-2.1.aar\\31207581aa53eeb97454cb216ea1c14c\\res\\drawable-xxxhdpi-v4\\efp_light__ic_action_list.png"
     },
     {
+        "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4_ic_check_black.png.flat",
+        "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\bleoperator.aar\\b0a81e34774cffadd22cd7cacf903f8b\\res\\drawable-ldpi-v4\\ic_check_black.png"
+    },
+    {
         "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable_ts_logo.jpg.flat",
         "source": "D:\\AndroidWorkSpace\\ETicketHYDAll\\res\\drawable\\ts_logo.jpg"
     },
@@ -882,6 +898,10 @@
     {
         "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxxhdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",
         "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\85eac74e9bd87ba22eba8463f1f68559\\res\\drawable-ldrtl-xxxhdpi-v17\\abc_ic_menu_cut_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_ic_check_black.png.flat",
+        "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\bleoperator.aar\\b0a81e34774cffadd22cd7cacf903f8b\\res\\drawable-mdpi-v4\\ic_check_black.png"
     },
     {
         "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_efp_light__ic_action_select_all.png.flat",
@@ -1172,6 +1192,10 @@
         "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\exfilepicker-2.1.aar\\31207581aa53eeb97454cb216ea1c14c\\res\\drawable-hdpi-v4\\efp_light__ic_action_grid.png"
     },
     {
+        "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout_activity_operator_initial.xml.flat",
+        "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\bleoperator.aar\\b0a81e34774cffadd22cd7cacf903f8b\\res\\layout\\activity_operator_initial.xml"
+    },
+    {
         "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_star_black_16dp.png.flat",
         "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\85eac74e9bd87ba22eba8463f1f68559\\res\\drawable-hdpi-v4\\abc_ic_star_black_16dp.png"
     },
@@ -1360,12 +1384,12 @@
         "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\exfilepicker-2.1.aar\\31207581aa53eeb97454cb216ea1c14c\\res\\drawable-xxxhdpi-v4\\efp_light__ic_action_deselect.png"
     },
     {
-        "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
-        "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\85eac74e9bd87ba22eba8463f1f68559\\res\\drawable-xhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
-    },
-    {
         "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
         "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\85eac74e9bd87ba22eba8463f1f68559\\res\\drawable-xxhdpi-v4\\abc_popup_background_mtrl_mult.9.png"
+    },
+    {
+        "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
+        "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\85eac74e9bd87ba22eba8463f1f68559\\res\\drawable-xhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
     },
     {
         "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_efp_dark__ic_action_deselect.png.flat",
@@ -1478,6 +1502,10 @@
     {
         "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\animator_mtrl_fab_transformation_sheet_collapse_spec.xml.flat",
         "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\101c55514b1f5a1626306d9be48d1bc0\\res\\animator\\mtrl_fab_transformation_sheet_collapse_spec.xml"
+    },
+    {
+        "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_ic_check_black.png.flat",
+        "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\bleoperator.aar\\b0a81e34774cffadd22cd7cacf903f8b\\res\\drawable-hdpi-v4\\ic_check_black.png"
     },
     {
         "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout_version_details.xml.flat",
@@ -1928,6 +1956,10 @@
         "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\85eac74e9bd87ba22eba8463f1f68559\\res\\drawable-xhdpi-v4\\abc_ic_star_black_16dp.png"
     },
     {
+        "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_ic_check_black.png.flat",
+        "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\bleoperator.aar\\b0a81e34774cffadd22cd7cacf903f8b\\res\\drawable-xhdpi-v4\\ic_check_black.png"
+    },
+    {
         "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_efp_dark__ic_action_deselect.png.flat",
         "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\exfilepicker-2.1.aar\\31207581aa53eeb97454cb216ea1c14c\\res\\drawable-mdpi-v4\\efp_dark__ic_action_deselect.png"
     },
@@ -2108,6 +2140,10 @@
         "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\85eac74e9bd87ba22eba8463f1f68559\\res\\drawable-hdpi-v4\\abc_text_select_handle_right_mtrl_dark.png"
     },
     {
+        "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout_item_listbledevice.xml.flat",
+        "source": "D:\\AndroidWorkSpace\\ETicketHYDAll\\res\\layout\\item_listbledevice.xml"
+    },
+    {
         "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_list_pressed_holo_light.9.png.flat",
         "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\85eac74e9bd87ba22eba8463f1f68559\\res\\drawable-xxhdpi-v4\\abc_list_pressed_holo_light.9.png"
     },
@@ -2194,6 +2230,10 @@
     {
         "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_efp_dark__ic_action_new_folder.png.flat",
         "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\exfilepicker-2.1.aar\\31207581aa53eeb97454cb216ea1c14c\\res\\drawable-xhdpi-v4\\efp_dark__ic_action_new_folder.png"
+    },
+    {
+        "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout_refusaltofly_dialog.xml.flat",
+        "source": "D:\\AndroidWorkSpace\\ETicketHYDAll\\res\\layout\\refusaltofly_dialog.xml"
     },
     {
         "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\interpolator_mtrl_linear.xml.flat",
@@ -2632,6 +2672,10 @@
         "source": "D:\\AndroidWorkSpace\\ETicketHYDAll\\res\\drawable\\progress_to_update_apk.xml"
     },
     {
+        "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_check_black.xml.flat",
+        "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\bleoperator.aar\\b0a81e34774cffadd22cd7cacf903f8b\\res\\drawable-anydpi-v21\\ic_check_black.xml"
+    },
+    {
         "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
         "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\85eac74e9bd87ba22eba8463f1f68559\\res\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
     },
@@ -2850,6 +2894,10 @@
     {
         "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_efp_light__ic_action_deselect.png.flat",
         "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\exfilepicker-2.1.aar\\31207581aa53eeb97454cb216ea1c14c\\res\\drawable-hdpi-v4\\efp_light__ic_action_deselect.png"
+    },
+    {
+        "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_ic_check_black.png.flat",
+        "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\bleoperator.aar\\b0a81e34774cffadd22cd7cacf903f8b\\res\\drawable-xxxhdpi-v4\\ic_check_black.png"
     },
     {
         "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ratingbar_indicator_material.xml.flat",

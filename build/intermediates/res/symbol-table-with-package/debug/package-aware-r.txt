@@ -1717,7 +1717,9 @@ drawable header_grdnt
 drawable header_icon
 drawable htp_left
 drawable hyd_city_small
+drawable ic_check_black
 drawable ic_launcher
+drawable ic_logo_result
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
@@ -1840,11 +1842,13 @@ id bar
 id bar_address
 id beginning
 id blocking
+id blue_name
 id bottom
 id breath_details
 id bt_device_Address
 id btn_ImgMatchCancel
 id btn_ImgMatchOk
+id btn_Refsl_OK
 id btn_cancel
 id btn_cancel_dd3_xml
 id btn_cancel_spotchallan_xml
@@ -1872,6 +1876,7 @@ id btn_pinpadscan_xml
 id btn_qlfctn_dd2_xml
 id btn_responsiblePS_settings_xml
 id btn_scan
+id btn_scan_dd_xml
 id btn_select_bar
 id btn_select_idproff_dd_xml
 id btn_select_idproff_spotchallantwo_xml
@@ -2062,6 +2067,7 @@ id fill_horizontal
 id fill_vertical
 id filled
 id fixed
+id fl_connect_success
 id fl_web
 id footer
 id forever
@@ -2086,6 +2092,8 @@ id homeAsUp
 id icon
 id icon_group
 id ifRoom
+id im_device
+id im_state
 id image
 id imageView1
 id imageView2
@@ -2139,6 +2147,7 @@ id linearLayout3
 id linearLayout4
 id listDDImgmatch
 id listMode
+id list_BleDevice
 id list_item
 id listview_devicesfound
 id ll_1
@@ -2164,6 +2173,7 @@ id ll_adhaar_details
 id ll_adhar_rtadetails_xml
 id ll_adhar_spotchallan_xml
 id ll_bottom_xml
+id ll_breath_dd_xml
 id ll_btns
 id ll_cash_Detailsspotchallan_two_xml
 id ll_cashorcard_spotchallan_two_xml
@@ -2282,6 +2292,8 @@ id owner_layout
 id parallax
 id parentPanel
 id parent_matrix
+id pass_RefsalCtntNo
+id pass_RefsalName
 id passngrCount_input
 id passport
 id passport_layout
@@ -2535,6 +2547,9 @@ id tv_cardtype_name
 id tv_chasis_pchallans_details_xml
 id tv_chasis_rtadetails_xml
 id tv_chasis_spotchallan_xml
+id tv_current_device
+id tv_current_device_name
+id tv_current_device_status
 id tv_datetime_cust_pend_xml
 id tv_detaineditems_name
 id tv_detaineditems_name_spotchallantwo_xml
@@ -2720,6 +2735,7 @@ layout activity_noncontactmodule
 layout activity_offline__generate_case
 layout activity_offline__settings
 layout activity_offline_dashboard
+layout activity_operator_initial
 layout activity_otp
 layout activity_otp_input
 layout activity_paired_devices
@@ -2733,6 +2749,7 @@ layout activity_special__drive
 layout activity_special_drive
 layout activity_specialdrive
 layout apk_progressbar
+layout blescandevice_dialog
 layout blutooth_list_devices
 layout camera_layout
 layout cust_pen_challans
@@ -2770,6 +2787,7 @@ layout generate_dd
 layout imagecomparision_dialog
 layout imagematch_dialog
 layout ip_setting
+layout item_listbledevice
 layout layout_files_grid_item
 layout layout_files_list_item
 layout list_imgmatch
@@ -2787,6 +2805,7 @@ layout notification_template_part_time
 layout pen_challans
 layout pending_challans_details
 layout pinpad_list_item_device
+layout refusaltofly_dialog
 layout reports
 layout sdp_example
 layout select_dialog_item_material
@@ -2880,6 +2899,8 @@ string auth_failed
 string back
 string bar
 string bar_type
+string ble_data_error_empty_or_destory
+string ble_data_init_loding
 string bluetooth_address
 string bottom_sheet_behavior
 string breathe_analyser
@@ -2902,12 +2923,17 @@ string city_res
 string colon
 string color
 string confirm
+string connected_device_unknown
 string counselling_date
+string data_parse_command_complete
+string data_record_error_empty
+string data_record_limit_count_error
 string dates
 string day_report
 string dd_address
 string dd_name
 string ddbasic_drive
+string deceode_data_not_null
 string detained_items
 string detained_items_licence
 string detained_items_permit
@@ -2990,6 +3016,8 @@ string ip_settings
 string ip_settings_header
 string is_driver
 string is_owner
+string label_current_device_name
+string label_current_device_status
 string languageselect
 string licence_no
 string licence_owner_name
@@ -3089,6 +3117,13 @@ string select_report_type
 string select_time
 string select_violation
 string select_wheeler_code
+string send_command_ble_charactersitic_empty
+string send_command_ble_charactersitic_uuid_empty
+string send_command_ble_command_not_null
+string send_command_ble_device_empty
+string send_command_ble_service_empty
+string send_command_ble_service_uuid_empty
+string send_command_com_empty
 string send_otp
 string service_url
 string settings

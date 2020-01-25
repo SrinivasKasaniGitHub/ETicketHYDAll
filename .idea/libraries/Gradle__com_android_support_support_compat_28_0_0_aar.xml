@@ -4,8 +4,8 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/7f3e525b8c5fcb50d2c46eb9139a98f8/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/7f3e525b8c5fcb50d2c46eb9139a98f8/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/7f3e525b8c5fcb50d2c46eb9139a98f8/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/7f3e525b8c5fcb50d2c46eb9139a98f8/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

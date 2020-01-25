@@ -88,26 +88,26 @@ import java.util.Map;
  */
 
 @SuppressWarnings("ResourceAsColor")
-public class E_Challan_Non_ContactModule extends Activity  implements LocationListener {
+public class E_Challan_Non_ContactModule extends Activity implements LocationListener {
 
-    String current_date=null,filenameselected,dateselected;
+    String current_date = null, filenameselected, dateselected;
     public static final int PROGRESS_DIALOG = 0;
     ImageView encroachment_image;
-    Button next_image,btngetrtadetails,btn_cancel,btn_submit,btn_whlr_code,btn_violation,ed_date,ed_time;
-    TextView tvregno_spotchallan_xml,tvownername_spotchallan_xml,tv_addr_spotchallan_xml,tv_makername_spotchallan_xml,tv_chasis_spotchallan_xml,
-            tv_engineno_spotchallan_xml,tv_vehicle_details_header_spot;
+    Button next_image, btngetrtadetails, btn_cancel, btn_submit, btn_whlr_code, btn_violation, ed_date, ed_time;
+    TextView tvregno_spotchallan_xml, tvownername_spotchallan_xml, tv_addr_spotchallan_xml, tv_makername_spotchallan_xml, tv_chasis_spotchallan_xml,
+            tv_engineno_spotchallan_xml, tv_vehicle_details_header_spot;
     CheckBox cb_fake;
-    EditText edt_regncid_spotchallan_xml,edt_regncidname_spotchallan_xml,edt_regncid_lastnum_spotchallan_xml;
+    EditText edt_regncid_spotchallan_xml, edt_regncidname_spotchallan_xml, edt_regncid_lastnum_spotchallan_xml;
     public static double latitude = 0.0;
     public static double longitude = 0.0, grand_total = 0;
     byte[] byteArray;
-    String imgString=null ;
+    String imgString = null;
     RelativeLayout rl_rta_details_layout;
     DatePickerDialog datePickerDialog;
     /* GPS VALUES */
     // flag for GPS status
-    public static String completeVehicle_num_send = "",regncode_send = "",
-            regnName_send = "", vehicle_num_send = "", whlr_code_send = "",extraPassengers = "1";
+    public static String completeVehicle_num_send = "", regncode_send = "",
+            regnName_send = "", vehicle_num_send = "", whlr_code_send = "", extraPassengers = "1";
     boolean isGPSEnabled = false;
     // flag for network status
     boolean isNetworkEnabled = false;
@@ -121,14 +121,14 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
     LocationManager m_locationlistner;
     android.location.Location location;
     StringBuffer message = new StringBuffer();
-    public static String[] rta_details_spot_master,Wheeler_check,vehicle_remarks_resp_master;
-    final int WHEELER_CODE = 1,DYNAMIC_VIOLATIONS = 2;
+    public static String[] rta_details_spot_master, Wheeler_check, vehicle_remarks_resp_master;
+    final int WHEELER_CODE = 1, DYNAMIC_VIOLATIONS = 2;
     private int mYear, mMonth, mDay;
     String[] wheeler_code_arr_spot, wheeler_name_arr_spot;
     Bitmap mutableBitmap;
     DBHelper db;
     Cursor c_whlr, c_occptn;
-    int selected_wheller_code = -1,edt_regncid_spotchallanMAX_LENGTH = 4,
+    int selected_wheller_code = -1, edt_regncid_spotchallanMAX_LENGTH = 4,
             edt_regncidname_spotchallanLENGTH = 4, edt_regncid_lastnum_spotchallanMAX_LENGTH = 4;
     LinkedHashMap<String, String> check_map;
     public static boolean passngerFLG = false;
@@ -138,7 +138,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
     HashMap<String, String> check_all_ids, vioCodeDescMap;
     static String vioDetainCheckFlag = null;
     static HashMap<String, String> vioDetainFlags;
-    StringBuffer violations_details_send, violation_desc_append,pointsreachedviolation;
+    StringBuffer violations_details_send, violation_desc_append, pointsreachedviolation;
     LinearLayout[] ll_dynamic_vltns;
     Spinner[] spinner_violation;
 
@@ -148,14 +148,16 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
     TelephonyManager telephonyManager;
     public static CheckBox check;
 
-    String regCd,vehiclenumber,offenceDateandTime,pidCode=null,pidName=null,psCd=null,psName=null,
-            bookedPScode_send_from_settings,bookedPSname_send_from_settings,point_code_send_from_settings,
-            point_name_send_from_settings,imei_send,simid_send,macAddress=null,vehRemarks,tot = null,cadre_code=null,cadre_name=null,
-            rtaOname,rtaAdres,city,mobileNo;
+    String regCd, vehiclenumber, offenceDateandTime, pidCode = null, pidName = null, psCd = null, psName = null,
+            bookedPScode_send_from_settings, bookedPSname_send_from_settings, point_code_send_from_settings,
+            point_name_send_from_settings, imei_send, simid_send, macAddress = null, vehRemarks, tot = null, cadre_code = null, cadre_name = null,
+            rtaOname, rtaAdres, city, mobileNo;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
 
     String realPath;
+
+    @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -173,7 +175,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
         cadre_code = sharedPreferences.getString("CADRE_CODE", "");
         cadre_name = sharedPreferences.getString("CADRE_NAME", "");
 
-        imgString=null;
+        imgString = null;
 
 
         preferences = getSharedPreferences("preferences", Context.MODE_PRIVATE);
@@ -193,7 +195,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
         }
 
 
-        WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+        @SuppressLint("WifiManagerLeak") WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         WifiInfo wInfo = wifiManager.getConnectionInfo();
         macAddress = wInfo.getMacAddress();
 
@@ -205,15 +207,15 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
             public void onClick(View v) {
 
 
-                regCd=null;
-                vehiclenumber=null;
-                offenceDateandTime=null;
-                vehRemarks=null;
-                tot="0";
+                regCd = null;
+                vehiclenumber = null;
+                offenceDateandTime = null;
+                vehRemarks = null;
+                tot = "0";
 
-                regCd=edt_regncid_spotchallan_xml.getText().toString()+edt_regncidname_spotchallan_xml.getText().toString();
-                vehiclenumber=edt_regncid_lastnum_spotchallan_xml.getText().toString();
-                offenceDateandTime=ed_date.getText().toString()+" "+ed_time.getText().toString();
+                regCd = edt_regncid_spotchallan_xml.getText().toString() + edt_regncidname_spotchallan_xml.getText().toString();
+                vehiclenumber = edt_regncid_lastnum_spotchallan_xml.getText().toString();
+                offenceDateandTime = ed_date.getText().toString() + " " + ed_time.getText().toString();
 
 
                 try {
@@ -223,9 +225,8 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                     tot = "0";
                 }
 
-                if(btn_submit.getText().toString().equalsIgnoreCase("Update Fake Info"))
-                {
-                    if ("0".equals(imgString) ) {
+                if (btn_submit.getText().toString().equalsIgnoreCase("Update Fake Info")) {
+                    if ("0".equals(imgString)) {
                         showToast("Please Select Photo !");
                     } else if (edt_regncid_spotchallan_xml.getText().toString().trim().equals("")) {
                         edt_regncid_spotchallan_xml.setError(Html.fromHtml("<font color='black'>Enter Registration Code</font>"));
@@ -233,16 +234,14 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                     } else if (edt_regncid_lastnum_spotchallan_xml.getText().toString().trim().equals("")) {
                         edt_regncid_lastnum_spotchallan_xml.setError(Html.fromHtml("<font color='black'>Enter Vehicle Code</font>"));
 
-                    }
-                    else {
+                    } else {
                         vehRemarks = "Y";
                         Async_generateChallan async_generateChallan = new Async_generateChallan();
                         async_generateChallan.execute();
                     }
 
-                }else
-                {
-                    if ("0".equals(imgString) ) {
+                } else {
+                    if ("0".equals(imgString)) {
                         showToast("Please Select Photo !");
                     } else if (edt_regncid_spotchallan_xml.getText().toString().trim().equals("")) {
                         edt_regncid_spotchallan_xml.setError(Html.fromHtml("<font color='black'>Enter Registration Code</font>"));
@@ -254,12 +253,11 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                             .equals("" + getString(R.string.select_wheeler_code))) {
                         showToast("Select Wheeler Code");
 
-                    }else if(btn_violation.getText().toString().equalsIgnoreCase("" + getString(R.string.select_violation)))
-                    {
+                    } else if (btn_violation.getText().toString().equalsIgnoreCase("" + getString(R.string.select_violation))) {
 
                         showToast("Select Violation");
 
-                    }else {
+                    } else {
 
                         vehRemarks = "N";
                         Async_generateChallan async_generateChallan = new Async_generateChallan();
@@ -269,7 +267,6 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                 }
 
 
-
             }
         });
 
@@ -277,14 +274,12 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                if(cb_fake.isChecked())
-                {
+                if (cb_fake.isChecked()) {
                     btn_whlr_code.setVisibility(View.GONE);
                     btn_submit.setText("Update Fake Info");
                     btn_violation.setVisibility(View.GONE);
 
-                }else
-                {
+                } else {
                     btn_whlr_code.setVisibility(View.VISIBLE);
                     btn_submit.setText("Submit");
                     btn_violation.setVisibility(View.VISIBLE);
@@ -343,13 +338,13 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                     if ((!btn_whlr_code.getText().toString().trim().equals("" + getString(R.string.select_wheeler_code)))
                             && (violation_offence_Code.size() > 0)) {
 
-					/* TO CLEAR THE CHECKED & UNC-CHECKED POEISITONS */
+                        /* TO CLEAR THE CHECKED & UNC-CHECKED POEISITONS */
                         violation_positions.removeAll(violation_positions);
                         violation_rg_ids.removeAll(violation_rg_ids);
                         violation_checked_violations.removeAll(violation_checked_violations);
                         grand_total = 0.0;
 
-					/* CHECK MAP INTITALISATION */
+                        /* CHECK MAP INTITALISATION */
                         check_map = new LinkedHashMap<String, String>();
                         check_all_ids = new HashMap<String, String>();
                         check_all_ids.clear();
@@ -370,7 +365,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                         pointsreachedviolation.delete(0, pointsreachedviolation.length());
 
 
-					/* TO APPEND THE SLECTED VILATIONS TO BUTTON */
+                        /* TO APPEND THE SLECTED VILATIONS TO BUTTON */
                         violation_desc_append = new StringBuffer();
                         violation_desc_append.delete(0, violation_desc_append.length());
 
@@ -387,8 +382,6 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
         });
 
 
-
-
         ed_date.setEnabled(false);
         ed_time.setEnabled(false);
 
@@ -396,7 +389,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
             @Override
             public void onClick(View v) {
 
-                if (imgString!=null) {
+                if (imgString != null) {
 
                     {
                         // Get Current Date
@@ -426,7 +419,6 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                                         }
 
 
-
                                         ed_date.setText(dateselected);
                                         String todaysdate = new DateUtil().getTodaysDate();
 
@@ -437,7 +429,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                         datePickerDialog.show();
                     }
 
-                }else {
+                } else {
                     showToast("Please Capture Image to fill date and time As per the image");
                 }
 
@@ -470,7 +462,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                         Calendar c = Calendar.getInstance();
                         datetime.set(Calendar.HOUR_OF_DAY, selectedHour);
                         datetime.set(Calendar.MINUTE, selectedMinute);
-                        ed_time.setText( selectedHour + ":" + selectedMinute);
+                        ed_time.setText(selectedHour + ":" + selectedMinute);
                     }
                 }, hour, minute, true);//Yes 24 hour time
                 mTimePicker.setTitle("Select Time");
@@ -493,14 +485,14 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
         next_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (imgString!=null) {
+                if (imgString != null) {
                     encroachment_image.setRotation(0);
                     encroachment_image.setImageDrawable(getResources().getDrawable(R.drawable.photo));
                     ed_time.setText("SELECT TIME");
                     ed_date.setText("SELECT DATE");
-                    imgString = null ;
+                    imgString = null;
                     showToast("Captured Image Saved Succesufuly !!!");
-                }else {
+                } else {
                     showToast("Please Capture Image to Move to Next Image");
                 }
             }
@@ -537,21 +529,18 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                 regnName_send = "";// CC
                 vehicle_num_send = "";// 3014
 
-                city="";
-                rtaOname="";
-                rtaAdres="";
-                mobileNo="";
+                city = "";
+                rtaOname = "";
+                rtaAdres = "";
+                mobileNo = "";
 
                 cb_fake.setChecked(false);
 
-                if(cb_fake.isChecked())
-                {
+                if (cb_fake.isChecked()) {
                     btn_whlr_code.setVisibility(View.GONE);
                     btn_submit.setText("Update Fake Info");
                     btn_violation.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     btn_whlr_code.setVisibility(View.VISIBLE);
                     btn_submit.setText("Submit");
                     btn_violation.setVisibility(View.VISIBLE);
@@ -677,7 +666,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                         android.widget.LinearLayout.LayoutParams.MATCH_PARENT,
                         android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
 
-			/* DYNAMIC LAYOUTS START */
+                /* DYNAMIC LAYOUTS START */
                 if (violation_offence_Code.size() > 0 && ServiceHelper.violation_detailed_views != null && ServiceHelper.violation_detailed_views.length > 0) {
 
                     ll_dynamic_vltns = new LinearLayout[violation_offence_Code.size()];
@@ -689,7 +678,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                     for (int i = 0; i < violation_offence_Code.size(); i++) {
                         String[] spinner_selectors = new String[3];
 
-					/* TO SHOW IT IN SPINNER DROPDOWN */
+                        /* TO SHOW IT IN SPINNER DROPDOWN */
                         spinner_selectors[0] = "MIN :" + ServiceHelper.violation_detailed_views[i][3];
                         spinner_selectors[1] = "AVG :" + ServiceHelper.violation_detailed_views[i][5];
                         spinner_selectors[2] = "MAX :" + ServiceHelper.violation_detailed_views[i][4];
@@ -717,6 +706,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
 
                         spinner_violation[i].setId(Integer.parseInt(violation_offence_Code.get(i)));
                         spinner_violation[i].setGravity(Gravity.CENTER_VERTICAL);
+                        spinner_violation[i].setVisibility(View.GONE);
 
                         ArrayAdapter<String> ap_adapter = new ArrayAdapter<String>(this, R.layout.spinner_item,
                                 android.R.id.text1, spinner_selectors);
@@ -741,7 +731,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                         //     vioDetainFlags.put("" + spinner_violation[i].getId(), ServiceHelper.violation_detailed_views[i][7]);
                         //   }
 
-					/* CHECKBOX START */
+                        /* CHECKBOX START */
                         int identifier = getResources().getIdentifier(
                                 getApplicationContext().getPackageName() + ":drawable/custom_chec_box", null, null);
                         LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(WindowManager.LayoutParams.MATCH_PARENT,
@@ -768,7 +758,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
 
                         ll_dynamic_vltns[i].addView(check_dynamic_vltn[i]);
 
-					/* CHECKBOX END */
+                        /* CHECKBOX END */
 
                         check_all_ids.put("" + i, "" + spinner_violation[i].getId());
                         //
@@ -776,8 +766,8 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                         //
                         ll_dynamic_violations_root_static.addView(ll_dynamic_vltns[i]);
 
-					/* DYNAMIC RADIO BUTTONS CLICK EVENT END */
-					/*----------------------------------------------------------*/
+                        /* DYNAMIC RADIO BUTTONS CLICK EVENT END */
+                        /*----------------------------------------------------------*/
 
                         check_dynamic_vltn[i].setOnClickListener(new View.OnClickListener() {
 
@@ -895,7 +885,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                                             tv_grand_total_spot.setText("Rs . " + total);*/
                                         }
 
-									/* framing violation buffer */
+                                        /* framing violation buffer */
 
                                         violations_details_send.append(
                                                 key.trim() + "@" + selectedId.substring(5, selectedId.length()).trim() + "@"
@@ -933,10 +923,10 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                                 }
                             }
                             removeDialog(DYNAMIC_VIOLATIONS);
-						/* NO OF PEOPLE CALCULATING */
+                            /* NO OF PEOPLE CALCULATING */
                             removeDialog(DYNAMIC_VIOLATIONS);
 
-						/*---------TO ENABLE EDITEXT WHEN EXTRA PASSENGERS : 07 IS SELECTED---------*/
+                            /*---------TO ENABLE EDITEXT WHEN EXTRA PASSENGERS : 07 IS SELECTED---------*/
                             int status = 0;
                             for (int i = 0; i < violation_checked_violations.size(); i++) {
                                 violation_code_value = violation_checked_violations.get(i);
@@ -955,7 +945,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                         return true;
                     }
                 });
-			/* DYNAMIC LAYOUTS END */
+                /* DYNAMIC LAYOUTS END */
                 return dg_dynmic_violtns;
 
             default:
@@ -969,7 +959,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
         @Override
         protected String doInBackground(Void... params) {
             try {
-                ServiceHelper.getVehRemarks(completeVehicle_num_send,"","");
+                ServiceHelper.getVehRemarks(completeVehicle_num_send, "", "");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -994,8 +984,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
 
                     ShowMessage(ServiceHelper.offender_remarks);
 
-                    if(ServiceHelper.offender_remarks.contains("FAKE NO PLATE"))
-                    {
+                    if (ServiceHelper.offender_remarks.contains("FAKE NO PLATE")) {
                         cb_fake.setChecked(true);
 
                         btn_whlr_code.setVisibility(View.GONE);
@@ -1096,11 +1085,10 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                     tv_engineno_spotchallan_xml.setText("" + rta_details_spot_master[7] != null ? rta_details_spot_master[7] : "NA");
                     tv_chasis_spotchallan_xml.setText("" + rta_details_spot_master[8] != null ? rta_details_spot_master[8] : "NA");
 
-                    rtaOname=tvownername_spotchallan_xml.getText().toString();
-                    rtaAdres=tv_addr_spotchallan_xml.getText().toString();
-                    city=rta_details_spot_master[3] != null ? rta_details_spot_master[3] : "NA";
-                    mobileNo=rta_details_spot_master[14] != null ? rta_details_spot_master[14] : "NA";
-
+                    rtaOname = tvownername_spotchallan_xml.getText().toString();
+                    rtaAdres = tv_addr_spotchallan_xml.getText().toString();
+                    city = rta_details_spot_master[3] != null ? rta_details_spot_master[3] : "NA";
+                    mobileNo = rta_details_spot_master[14] != null ? rta_details_spot_master[14] : "NA";
 
 
                     if (rta_details_spot_master[0].equals("NA")) {
@@ -1128,7 +1116,6 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                     }
 
 
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -1140,6 +1127,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
             }
         }
     }
+
     public class Async_getViolations extends AsyncTask<Void, Void, String> {
 
         @Override
@@ -1196,12 +1184,9 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
         @Override
         protected String doInBackground(Void... params) {
 
-            ServiceHelper.generateNonContactChallan(regCd,vehiclenumber,whlr_code_send,rtaOname,rtaAdres,city,mobileNo,offenceDateandTime,pidCode,pidName,cadre_code,cadre_name,psCd,psName,
-                    Dashboard.UNIT_CODE,Dashboard.UNIT_NAME,point_code_send_from_settings,point_name_send_from_settings,
-                    violations_details_send+"",vehRemarks,imgString,imei_send,macAddress,String.valueOf(latitude),String.valueOf(longitude));
-
-
-
+            ServiceHelper.generateNonContactChallan(regCd, vehiclenumber, whlr_code_send, rtaOname, rtaAdres, city, mobileNo, offenceDateandTime, pidCode, pidName, cadre_code, cadre_name, psCd, psName,
+                    Dashboard.UNIT_CODE, Dashboard.UNIT_NAME, point_code_send_from_settings, point_name_send_from_settings,
+                    violations_details_send + "", vehRemarks, imgString, imei_send, macAddress, String.valueOf(latitude), String.valueOf(longitude));
 
 
             return null;
@@ -1220,23 +1205,17 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
             super.onPostExecute(result);
             removeDialog(PROGRESS_DIALOG);
 
-            Log.i("Final Submit Result",ServiceHelper.noncontactresponse);
-            if (ServiceHelper.noncontactresponse != null  && ServiceHelper.noncontactresponse.length() > 0) {
+            Log.i("Final Submit Result", ServiceHelper.noncontactresponse);
+            if (ServiceHelper.noncontactresponse != null && ServiceHelper.noncontactresponse.length() > 0) {
 
-                if("0".equals(ServiceHelper.noncontactresponse))
-                {
+                if ("0".equals(ServiceHelper.noncontactresponse)) {
                     showToast("Ticket Genration Failed Due to Error");
-                }
-
-                else if("1".equalsIgnoreCase(ServiceHelper.noncontactresponse))
-                {
+                } else if ("1".equalsIgnoreCase(ServiceHelper.noncontactresponse)) {
                     showToast("Fake Number Updated");
                     resetAftersubmit();
-                }
-                else if("2".equalsIgnoreCase(ServiceHelper.noncontactresponse)){
+                } else if ("2".equalsIgnoreCase(ServiceHelper.noncontactresponse)) {
                     showToast("Ticket Generation Failed Due to Image Data error");
-                }
-                else {
+                } else {
                     showToast("Ticket Genereted Successfully");
                     resetAftersubmit();
                 }
@@ -1248,28 +1227,28 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
         }
     }
 
-    public void LoadUIcomponents(){
+    public void LoadUIcomponents() {
 
-        encroachment_image=(ImageView)findViewById(R.id.encroachment_image);
-        next_image=(Button)findViewById(R.id.next_image);
-        btngetrtadetails=(Button)findViewById(R.id.btngetrtadetails);
-        btn_submit=(Button)findViewById(R.id.btn_submit);
-        btn_cancel=(Button)findViewById(R.id.btn_cancel);
-        btn_whlr_code=(Button)findViewById(R.id.btn_whlr_code);
-        btn_violation=(Button)findViewById(R.id.btn_violation);
-        cb_fake=(CheckBox)findViewById(R.id.cb_fake);
-        ed_date=(Button) findViewById(R.id.ed_date);
-        ed_time=(Button) findViewById(R.id.ed_time);
-        edt_regncid_spotchallan_xml=(EditText)findViewById(R.id.edt_regncid_spotchallan_xml);
-        edt_regncidname_spotchallan_xml=(EditText)findViewById(R.id.edt_regncidname_spotchallan_xml);
-        edt_regncid_lastnum_spotchallan_xml=(EditText)findViewById(R.id.edt_regncid_lastnum_spotchallan_xml);
+        encroachment_image = (ImageView) findViewById(R.id.encroachment_image);
+        next_image = (Button) findViewById(R.id.next_image);
+        btngetrtadetails = (Button) findViewById(R.id.btngetrtadetails);
+        btn_submit = (Button) findViewById(R.id.btn_submit);
+        btn_cancel = (Button) findViewById(R.id.btn_cancel);
+        btn_whlr_code = (Button) findViewById(R.id.btn_whlr_code);
+        btn_violation = (Button) findViewById(R.id.btn_violation);
+        cb_fake = (CheckBox) findViewById(R.id.cb_fake);
+        ed_date = (Button) findViewById(R.id.ed_date);
+        ed_time = (Button) findViewById(R.id.ed_time);
+        edt_regncid_spotchallan_xml = (EditText) findViewById(R.id.edt_regncid_spotchallan_xml);
+        edt_regncidname_spotchallan_xml = (EditText) findViewById(R.id.edt_regncidname_spotchallan_xml);
+        edt_regncid_lastnum_spotchallan_xml = (EditText) findViewById(R.id.edt_regncid_lastnum_spotchallan_xml);
 
-        tvregno_spotchallan_xml=(TextView)findViewById(R.id.tvregno_spotchallan_xml);
-        tvownername_spotchallan_xml=(TextView)findViewById(R.id.tvownername_spotchallan_xml);
-        tv_addr_spotchallan_xml=(TextView)findViewById(R.id.tv_addr_spotchallan_xml);
-        tv_makername_spotchallan_xml=(TextView)findViewById(R.id.tv_makername_spotchallan_xml);
-        tv_chasis_spotchallan_xml=(TextView)findViewById(R.id.tv_chasis_spotchallan_xml);
-        tv_engineno_spotchallan_xml=(TextView)findViewById(R.id.tv_engineno_spotchallan_xml);
+        tvregno_spotchallan_xml = (TextView) findViewById(R.id.tvregno_spotchallan_xml);
+        tvownername_spotchallan_xml = (TextView) findViewById(R.id.tvownername_spotchallan_xml);
+        tv_addr_spotchallan_xml = (TextView) findViewById(R.id.tv_addr_spotchallan_xml);
+        tv_makername_spotchallan_xml = (TextView) findViewById(R.id.tv_makername_spotchallan_xml);
+        tv_chasis_spotchallan_xml = (TextView) findViewById(R.id.tv_chasis_spotchallan_xml);
+        tv_engineno_spotchallan_xml = (TextView) findViewById(R.id.tv_engineno_spotchallan_xml);
 
         rl_rta_details_layout = (RelativeLayout) findViewById(R.id.rl_detailsresponse_spotchallan_xml);
         tv_vehicle_details_header_spot = (TextView) findViewById(R.id.textView_regdetails_header_spotchallan_xml);
@@ -1338,9 +1317,10 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
         NetworkInfo nwInfo = conManager.getActiveNetworkInfo();
         return nwInfo != null;
     }
+
     protected void selectImage() {
         // TODO Auto-generated method stub
-        final CharSequence[] options = { "Open Camera","Open FileManager", "Cancel" };
+        final CharSequence[] options = {"Open Camera", "Open FileManager", "Cancel"};
         AlertDialog.Builder builder = new AlertDialog.Builder(E_Challan_Non_ContactModule.this);
         builder.setTitle("Add Photo!");
         builder.setItems(options, new DialogInterface.OnClickListener() {
@@ -1348,26 +1328,22 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
 
             @Override
             public void onClick(DialogInterface dialog, int item) {
-                if (options[item].equals("Open Camera"))
-                {
-                    if (Build.VERSION.SDK_INT<=23) {
+                if (options[item].equals("Open Camera")) {
+                    if (Build.VERSION.SDK_INT <= 23) {
                         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                         File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
                         intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
                         startActivityForResult(intent, 1);
-                    }else{
+                    } else {
                         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                         File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
                         intent.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(E_Challan_Non_ContactModule.this,
-                                BuildConfig.APPLICATION_ID + ".provider",f));
+                                BuildConfig.APPLICATION_ID + ".provider", f));
                         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                         startActivityForResult(intent, 1);
                     }
 
-                }
-
-                else if (options[item].equals("Open FileManager"))
-                {
+                } else if (options[item].equals("Open FileManager")) {
 
               /*      Intent intent = new   Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     startActivityForResult(intent, 2);*/
@@ -1383,10 +1359,10 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                     startActivityForResult(intent, 7);*/
 
 
-                    if (Build.VERSION.SDK_INT<=23) {
+                    if (Build.VERSION.SDK_INT <= 23) {
 
                         File root = new File(Environment.getExternalStorageDirectory() + "/e_challan/");
-                        Uri uri =  Uri.fromFile(root);
+                        Uri uri = Uri.fromFile(root);
 
 
                         Intent intent = new Intent();
@@ -1394,12 +1370,12 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                         intent.setDataAndType(uri, "resource/folder");
                         startActivityForResult(Intent.createChooser(intent, "Open folder"), 7);
 
-                    }else{
+                    } else {
 
 
-                        File root = new File(Environment.getExternalStorageDirectory()+"/e_challan/");
-                        Uri uri =  FileProvider.getUriForFile(E_Challan_Non_ContactModule.this,
-                                BuildConfig.APPLICATION_ID + ".provider",root);
+                        File root = new File(Environment.getExternalStorageDirectory() + "/e_challan/");
+                        Uri uri = FileProvider.getUriForFile(E_Challan_Non_ContactModule.this,
+                                BuildConfig.APPLICATION_ID + ".provider", root);
 
 
                         Intent intent = new Intent();
@@ -1407,15 +1383,14 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                         //   intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
                         intent.setAction(Intent.ACTION_GET_CONTENT);
-                        intent.setDataAndType(uri, "image/*" +"");
+                        intent.setDataAndType(uri, "image/*" + "");
 
                         startActivityForResult(Intent.createChooser(intent, "Open folder"), 7);
 
 
                     }
 
-                }
-                else if (options[item].equals("Cancel")) {
+                } else if (options[item].equals("Cancel")) {
                     dialog.dismiss();
                 }
             }
@@ -1429,7 +1404,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
         if (resultCode == RESULT_OK) {
             LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
-            String picturePath="";
+            String picturePath = "";
             if (requestCode == 1) {
 
                 File f = new File(Environment.getExternalStorageDirectory().toString());
@@ -1444,8 +1419,8 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                 try {
                     //      current_date = new DateUtil().getPresentDateandTime();
 
-                    String presentdate=new DateUtil().getTodaysDate();
-                    String presenttime=new DateUtil().getPresentTime();
+                    String presentdate = new DateUtil().getTodaysDate();
+                    String presenttime = new DateUtil().getPresentTime();
 
                     Bitmap bitmap;
                     BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
@@ -1453,24 +1428,24 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                             bitmapOptions);
 
                     String path = android.os.Environment
-                            .getExternalStorageDirectory()+"/"
-                            + "e_challan"+"/"+new DateUtil().getPresentyear()
-                            +"/"+new DateUtil().getPresentMonth()+"/"+new DateUtil().getPresentDay();
+                            .getExternalStorageDirectory() + "/"
+                            + "e_challan" + "/" + new DateUtil().getPresentyear()
+                            + "/" + new DateUtil().getPresentMonth() + "/" + new DateUtil().getPresentDay();
                     File camerapath = new File(path);
 
-                    if(!camerapath.exists()){
+                    if (!camerapath.exists()) {
                         camerapath.mkdirs();
                     }
                     f.delete();
                     OutputStream outFile = null;
-                    File file = new File(path,new DateUtil().getPresentDateandTime()+ ".jpg");
+                    File file = new File(path, new DateUtil().getPresentDateandTime() + ".jpg");
                     try {
 
                         outFile = new FileOutputStream(file);
                         mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
-                          Canvas canvas = new Canvas(mutableBitmap); //bmp is the bitmap to dwaw into
+                        Canvas canvas = new Canvas(mutableBitmap); //bmp is the bitmap to dwaw into
 
-                        Paint paint= new Paint();
+                        Paint paint = new Paint();
                         paint.setColor(Color.RED);
                         paint.setTextSize(80);
                         paint.setTextAlign(Paint.Align.CENTER);
@@ -1487,7 +1462,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
 */
                         canvas.save();
                         canvas.rotate(270f, xPos, yPos);
-                        canvas.drawText("Date & Time: " +  presentdate+" "+presenttime, xPos + 10, yPos, paint);
+                        canvas.drawText("Date & Time: " + presentdate + " " + presenttime, xPos + 10, yPos, paint);
                         canvas.restore();
 
                         canvas.save();
@@ -1508,7 +1483,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                         Bitmap scaledBitmap = Bitmap.createScaledBitmap(mutableBitmap, y, x, true);
                         Matrix matrix = new Matrix();
                         matrix.postRotate(90);
-                        mutableBitmap = Bitmap.createBitmap(scaledBitmap , 0, 0, scaledBitmap .getWidth(), scaledBitmap .getHeight(), matrix, true);
+                        mutableBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
                         mutableBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outFile);
                         outFile.flush();
                         outFile.close();
@@ -1526,7 +1501,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                     //   Bitmap mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
                     Canvas canvas = new Canvas(mutableBitmap); //bmp is the bitmap to dwaw into
 
-                    Paint paint= new Paint();
+                    Paint paint = new Paint();
                     paint.setColor(Color.RED);
                     paint.setTextSize(80);
                     paint.setTextAlign(Paint.Align.CENTER);
@@ -1557,12 +1532,12 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                     //canvas.drawText("Date & Time: "+Current_Date+"\n"+" Lat :"+latitude+ " Long :"+longitude,1250, 1500, paint);
 
                     encroachment_image.setImageBitmap(mutableBitmap);
-                  //  encroachment_image.setRotation(encroachment_image.getRotation() + 90);
+                    //  encroachment_image.setRotation(encroachment_image.getRotation() + 90);
 
                     //picture1.setRotation(90);
 
                     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                    mutableBitmap.compress(Bitmap.CompressFormat.JPEG,20, bytes);
+                    mutableBitmap.compress(Bitmap.CompressFormat.JPEG, 20, bytes);
 
                     byteArray = bytes.toByteArray();
 
@@ -1614,7 +1589,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                 imgString = Base64.encodeToString(byteArray, Base64.NO_WRAP);
 
             }*/
-            else  if(requestCode==7){
+            else if (requestCode == 7) {
              /*   String[]  filePath = {data.getData().getPath()};
                 Uri selectedImage = data.getData();*/
 
@@ -1667,13 +1642,14 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                     // SDK > 19 (Android 4.4)
                 else
                     realPath = RealPathUtil.getRealPathFromURI_API19(this, data.getData());
-                setTextViews(Build.VERSION.SDK_INT, data.getData().getPath(),realPath);
+                setTextViews(Build.VERSION.SDK_INT, data.getData().getPath(), realPath);
             }
 
         }
 
     }
-    private void setTextViews(int sdk, String uriPath,String realPath){
+
+    private void setTextViews(int sdk, String uriPath, String realPath) {
 
 /*        this.txtSDK.setText("Build.VERSION.SDK_INT: "+sdk);
         this.txtUriPath.setText("URI Path: "+uriPath);
@@ -1697,7 +1673,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
             e.printStackTrace();
         }
 
-        if(realPath.contains("e_challan")) {
+        if (realPath.contains("e_challan")) {
             try {
                 filenameselected = realPath.substring(realPath.lastIndexOf("/") + 1);
 
@@ -1708,12 +1684,10 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
                 ed_date.setEnabled(false);
                 ed_time.setText(time);
                 ed_time.setEnabled(false);
-            }catch (Exception e)
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-        }else
-        {
+        } else {
            /* ed_date.setEnabled(true);
             ed_time.setEnabled(true);*/
 
@@ -1725,10 +1699,10 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
             int xPos = (canvas.getWidth() / 2);
             int yPos = (int) ((canvas.getHeight() / 2) - ((paint.descent() + paint.ascent()) / 2));
 
-            String presentdate=new DateUtil().getTodaysDate();
-            String presenttime=new DateUtil().getPresentTime();
+            String presentdate = new DateUtil().getTodaysDate();
+            String presenttime = new DateUtil().getPresentTime();
 
-            canvas.drawText("Date & Time: " +presentdate +" "+presenttime, xPos, yPos+300 , paint);
+            canvas.drawText("Date & Time: " + presentdate + " " + presenttime, xPos, yPos + 300, paint);
             canvas.drawText("Lat :" + latitude, xPos, yPos + 400, paint);
             canvas.drawText("Long :" + longitude, xPos, yPos + 500, paint);
 
@@ -1739,11 +1713,12 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
         }
         encroachment_image.setImageBitmap(bitmap);
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,20, bytes);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 20, bytes);
         byteArray = bytes.toByteArray();
         imgString = Base64.encodeToString(byteArray, Base64.NO_WRAP);
 
     }
+
     @Override
     public void onLocationChanged(Location location) {
         // TODO Auto-generated method stub
@@ -1877,7 +1852,7 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
     }
 
     public void hideSoftKeyboard() {
-        if(getCurrentFocus()!=null) {
+        if (getCurrentFocus() != null) {
             InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         }
@@ -1931,11 +1906,10 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
 
     }
 
-    public void resetAftersubmit()
-    {
-        File file = new File(realPath);
+    public void resetAftersubmit() {
+       /* File file = new File(realPath);
         boolean deleted = file.delete();
-        Log.d("gdjFsd",""+deleted);
+        Log.d("gdjFsd",""+deleted);*/
 
         completeVehicle_num_send = "";
         edt_regncid_spotchallan_xml.setText("");
@@ -1944,15 +1918,15 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
         regncode_send = "";
         regnName_send = "";
         vehicle_num_send = "";
-        city="";
-        rtaOname="";
-        rtaAdres="";
-        mobileNo="";
-        regCd=null;
-        vehiclenumber=null;
-        offenceDateandTime=null;
-        vehRemarks=null;
-        tot="0";
+        city = "";
+        rtaOname = "";
+        rtaAdres = "";
+        mobileNo = "";
+        regCd = null;
+        vehiclenumber = null;
+        offenceDateandTime = null;
+        vehRemarks = null;
+        tot = "0";
         tvregno_spotchallan_xml.setText("");
         tvownername_spotchallan_xml.setText("");
         tv_addr_spotchallan_xml.setText("");
@@ -1960,19 +1934,16 @@ public class E_Challan_Non_ContactModule extends Activity  implements LocationLi
         tv_chasis_spotchallan_xml.setText("");
         tv_engineno_spotchallan_xml.setText("");
         tv_vehicle_details_header_spot.setText("");
-        ed_date.setText("");
-        ed_time.setText("");
-        cb_fake.setText("");
+        ed_date.setText("DATE");
+        ed_time.setText("TIME");
+        cb_fake.setText("IS IT FAKE VEHICLE");
         cb_fake.setChecked(false);
-        imgString="";
-        btn_whlr_code.setText("");
-        btn_violation.setText("");
+        imgString = "";
+        btn_whlr_code.setText("Select Wheeler Code");
+        btn_violation.setText("Select Violation");
         encroachment_image.setRotation(0);
         encroachment_image.setImageDrawable(getResources().getDrawable(R.drawable.camera));
         rl_rta_details_layout.setVisibility(View.GONE);
     }
 }
-//1 fake number updated
-// 2 no image
-//0 Error
 

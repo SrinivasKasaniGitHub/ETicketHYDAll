@@ -9,6 +9,8 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothGatt;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -44,6 +46,8 @@ import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatImageView;
 import android.telephony.TelephonyManager;
 import android.text.Html;
+import android.text.TextPaint;
+import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.text.format.Time;
 import android.util.Base64;
@@ -93,6 +97,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.mtpv.imagematch.BleAdapter;
 import com.mtpv.imagematch.ImageMatchAdapter;
 import com.mtpv.imagematch.ImageMatchPojo;
 import com.mtpv.imagematch.ImageModel;
@@ -102,9 +107,12 @@ import com.mtpv.imagematch.Results;
 import com.mtpv.imagematch.Telangana;
 import com.mtpv.imagematch.Touch;
 import com.mtpv.mobilee_ticket_services.DBHelper;
+import com.mtpv.mobilee_ticket_services.DateUtil;
 import com.mtpv.mobilee_ticket_services.ServiceHelper;
 import com.mtpv.mobilee_ticket_services.Utils;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -129,6 +137,18 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
+import app.justec.com.bleoperator.BleManager;
+import app.justec.com.bleoperator.callback.BleGattCallback;
+import app.justec.com.bleoperator.callback.BleRssiCallback;
+import app.justec.com.bleoperator.callback.BleScanCallback;
+import app.justec.com.bleoperator.comm.BleDevice;
+import app.justec.com.bleoperator.data.ReceiveFormDataResult;
+import app.justec.com.bleoperator.data.RecordForm;
+import app.justec.com.bleoperator.event.EventManger;
+import app.justec.com.bleoperator.exception.BleException;
+import app.justec.com.bleoperator.helper.DataSource;
+import app.justec.com.bleoperator.helper.RepeatCommand;
+import app.justec.com.bleoperator.scan.BleScanRuleConfig;
 import it.sauronsoftware.ftp4j.FTPClient;
 import it.sauronsoftware.ftp4j.FTPDataTransferListener;
 import it.sauronsoftware.ftp4j.FTPException;
@@ -140,7 +160,8 @@ import mother.com.test.PidSecEncrypt;
 @TargetApi(Build.VERSION_CODES.GINGERBREAD)
 
 public class GenerateDrunkDriveCase extends Activity implements OnClickListener, LocationListener,
-        OnItemSelectedListener, android.widget.CompoundButton.OnCheckedChangeListener {
+        OnItemSelectedListener, android.widget.CompoundButton.OnCheckedChangeListener, DataSource.DataCallBack<ArrayList<RecordForm>>,
+        RepeatCommand {
 
     TextView tv_login_username;
     TextView tv_ticket_generate;
@@ -194,12 +215,12 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
     Button btn_cancel_final;
     Button btn_final_submittion;
     public static Button btn_send_otp_to_mobile;
-    Button btn_verify_otp_from_mobile;
+    Button btn_verify_otp_from_mobile, btn_scan_dd_xml;
 
-    String[] id_proof_arr = {"Aadhar Number", "Pancard Number", "Passport Number", "VoterId Number","None"};
+    String[] id_proof_arr = {"Aadhar Number", "Pancard Number", "Passport Number", "VoterId Number", "None"};
 
     String[] id_proof_hints_arr = {"Enter Aadhar Number", "Enter Pancard Number", "Enter Passport Number",
-            "Enter VoterId Number",""};
+            "Enter VoterId Number", ""};
 
     int selected_finedBy_sub;// for getting finedby value by radio_group
     int val_gender;// for getting male or female value by radio_group
@@ -382,6 +403,15 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
     public String google_MapKey;
     public static boolean isDuplicatePrint = false;
 
+    BluetoothAdapter bluetoothAdapter;
+    private static final int REQUEST_ENABLE_BT = 1;
+    private ListView list_BleDevice;
+    private BleAdapter adapter;
+    private List<BleDevice> dataList = new ArrayList<>();
+    private DataSource.DataCallBack<String> callBack;
+    AlertDialog dlg_BleDevice;
+
+
     @SuppressLint({"NewApi", "WorldReadableFiles"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -397,6 +427,8 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         et_age = (EditText) findViewById(R.id.edt_age_reading_dd2_xml);
         google_MapKey = ServiceHelper.api_key;
         getLocation();
+        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        CheckBlueToothState();
 
         img_logo = (ImageView) findViewById(R.id.img_logo);
         if (MainActivity.uintCode.equals("22")) {
@@ -527,6 +559,59 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         c_bartype.close();
         db.close();
 
+        btn_scan_dd_xml.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                progressDialog
+                        .setMessage("Please wait \n BlueTooth Scan is in Process!!!");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        startScan();
+                        initView();
+                    }
+                });
+
+
+            }
+        });
+        EventBus.getDefault().register(this);
+        initBle();
+        EventManger.getInstance().receieDataCallback(this);
+        EventManger.getInstance().repeatCallback(this);
+        EventManger.getInstance().searchDataCallback(this, 10006);
+        callBack = new DataSource.DataCallBack<String>() {
+            @Override
+            public void onDataNotAvailed(int i) {
+
+            }
+
+            @Override
+            public void onDataLoaded(String s) {
+                Log.i("bleble", s);
+                if (s.equals("1")) {
+                    Toast.makeText(GenerateDrunkDriveCase.this, "initDeviceInfo", Toast.LENGTH_LONG).show();
+                    Log.i("bleble0", "13");
+                    EventManger.getInstance().deviceDisplayConfiger(callBack);
+
+                } else if (s.equals("3")) {
+
+                    Log.i("bleble0", "14");
+                    EventManger.getInstance().fetchDeviceInfo(callBack);
+                } else if (s.equals("4")) {
+
+                    Log.i("bleble0", "15");
+                    EventManger.getInstance().recordFormDisplay(callBack);
+
+
+                }
+            }
+        };
+
     }
 
     @SuppressLint({"DefaultLocale", "SimpleDateFormat"})
@@ -563,6 +648,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         }
 
         btn_verify_otp_from_mobile = (Button) findViewById(R.id.btn_confrmotp_dd_xml);
+        btn_scan_dd_xml = findViewById(R.id.btn_scan_dd_xml);
 
         offender_image = (ImageView) findViewById(R.id.offender_image);
         offender_image.setVisibility(View.GONE);
@@ -862,11 +948,10 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
             webviewloader.DisplayImage("file://" + picturePath_dd, wv_generate);
 
         } else {
-            // img_found = 0;
             picturePath_dd = "0";
             Drunk_Drive.picturePath = "";
         }
-        Log.i("attachImageFromRta", "" + img_found);
+
     }
 
     @SuppressLint("HardwareIds")
@@ -1032,14 +1117,10 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     et_driver_contact_no
                             .setError(Html.fromHtml("<font color='black'>Enter mobile number to send OTP!!</font>"));
                 } else if (tempContactNumber.trim() != null && tempContactNumber.trim().length() > 1
-                        && tempContactNumber.trim().length() != 10) {
-                    // showToast("Enter correct mobile number!!");
+                        && tempContactNumber.trim().length() != 10 || new DateUtil().allCharactersSame(tempContactNumber.trim())) {
                     et_driver_contact_no
                             .setError(Html.fromHtml("<font color='black'>Enter Valid mobile number to send OTP!!</font>"));
                 } else if (tempContactNumber.length() == 10) {
-                    // Length =10 case starting digit should start with
-                    // 7/8/9
-                    // Length=11 case starting digit should start with 0
                     if ((tempContactNumber.charAt(0) == '7') || (tempContactNumber.charAt(0) == '8')
                             || (tempContactNumber.charAt(0) == '9') || (tempContactNumber.charAt(0) == '6')) {
                         if (isOnline()) {
@@ -1082,9 +1163,8 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                 } else if (et_verify_otp_from_mobile.getText().toString().equals("" + otpValue)) {
                     vStatusConfirmationYN = "Y";
                     if (isOnline()) {
-                        Log.i("OTP CONFIRMATION", "" + vStatusConfirmationYN);
-                        otp_status = "verify";
 
+                        otp_status = "verify";
                         new Async_sendOTP_to_mobile().execute();
                     } else {
                         showToast("Please check your network connection!");
@@ -1092,7 +1172,6 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                 } else {
                     vStatusConfirmationYN = "N";
                     if (isOnline()) {
-                        Log.i("CONFIRMATION ENTERED", "" + vStatusConfirmationYN);
                         otp_status = "verify";
                         new Async_sendOTP_to_mobile().execute();
                     } else {
@@ -1121,6 +1200,162 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
             startActivityForResult(intent, 1);
         }
 
+    }
+
+    @Override
+    public void onDataNotAvailed(int i) {
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    public void onDataLoaded(ArrayList<RecordForm> recordForms) {
+        try {
+            if (recordForms.size() > 0 && null!=recordForms) {
+                et_check_sino.setText("" + recordForms.get(0).getRecordFormNum());
+                et_alcohol_reading.setText("" + recordForms.get(0).getRecordFormMeasureNum());
+                // Log.d("DataFromDevice", "" + recordForms.get(0).getRecordFormMeasureNum() + "Serial Number" + recordForms.get(0).getRecordFormNum());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            et_check_sino.setText("");
+            et_alcohol_reading.setText("");
+        }
+
+    }
+
+    @Override
+    public void OnRepeatCommand(String s) {
+
+    }
+
+    private void initBle() {
+
+        BleManager.getInstance().init(getApplication());
+        BleManager.getInstance()
+                .enableLog(true)
+                .setMaxConnectCount(3)
+                .setOperateTimeout(5000);
+        BleScanRuleConfig scanRuleConfig = new BleScanRuleConfig.Builder()
+                .setScanTimeOut(6000)
+                .build();
+        BleManager.getInstance()
+                .initScanRule(scanRuleConfig);
+    }
+
+    private void initView() {
+        dlg_BleDevice = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT).create();
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.blescandevice_dialog, null);
+        dlg_BleDevice.setView(dialogView);
+        list_BleDevice = dialogView.findViewById(R.id.list_BleDevice);
+        adapter = new BleAdapter(this, dataList);
+        list_BleDevice.setAdapter(adapter);
+        progressDialog.dismiss();
+        dlg_BleDevice.show();
+        dlg_BleDevice.setCancelable(false);
+
+        list_BleDevice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                if (!BleManager.getInstance().isConnected((BleDevice) adapter.getItem(position))) {
+                    BleManager.getInstance().cancelScan();
+                    connect((BleDevice) adapter.getItem(position));
+                    dlg_BleDevice.dismiss();
+                }
+            }
+        });
+    }
+
+    private void startScan() {
+        BleManager.getInstance().scan(new BleScanCallback() {
+            @Override
+            public void onScanStarted(boolean success) {
+                dataList.clear();
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onLeScan(BleDevice bleDevice) {
+                super.onLeScan(bleDevice);
+                /*if (!TextUtils.isEmpty(bleDevice.getName())) {
+                    Log.d("Ble Name",""+bleDevice.getName());
+                    adapter.add(bleDevice);
+                }*/
+
+
+            }
+
+            @Override
+            public void onScanning(BleDevice bleDevice) {
+                if (!TextUtils.isEmpty(bleDevice.getName())) {
+                    Log.d("Ble Name", "" + bleDevice.getName());
+                    adapter.add(bleDevice);
+                }
+            }
+
+            @Override
+            public void onScanFinished(List<BleDevice> scanResultList) {
+               /* adapter = new BleAdapter(MainActivity.this, scanResultList);
+                listView.setAdapter(adapter);*/
+            }
+        });
+    }
+
+    private void connect(final BleDevice bleDevice) {
+        BleManager.getInstance().connect(bleDevice, new BleGattCallback() {
+            @Override
+            public void onStartConnect() {
+
+            }
+
+            @Override
+            public void onConnectFail(BleException exception) {
+
+                Toast.makeText(GenerateDrunkDriveCase.this, "fail", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onConnectSuccess(BleDevice bleDevice, BluetoothGatt gatt, int status) {
+                Toast.makeText(GenerateDrunkDriveCase.this, "ConnectSuccess", Toast.LENGTH_LONG).show();
+                readRssi(bleDevice);
+                EventManger.getInstance()
+                        .initDeviceInfo(bleDevice, true, callBack);
+            }
+
+            @Override
+            public void onDisConnected(boolean isActiveDisConnected, BleDevice bleDevice, BluetoothGatt gatt, int status) {
+
+            }
+
+            @Override
+            public void onReConnect(BleDevice bleDevice) {
+
+            }
+        });
+    }
+
+    private void readRssi(BleDevice bleDevice) {
+        BleManager.getInstance().readRssi(bleDevice, new BleRssiCallback() {
+            @Override
+            public void onRssiFailure(BleException exception) {
+                Log.i("bleble", "onRssiFailure" + exception.toString());
+            }
+
+            @Override
+            public void onRssiSuccess(int rssi) {
+                Log.i("bleble", "onRssiSuccess: " + rssi);
+            }
+        });
+    }
+
+    @Subscribe(sticky = true)
+    public void instantRecordData(ReceiveFormDataResult receiveFormDataResult) {
+        //  TAG_INSTANT_RECEIVE=10004;
+        if (receiveFormDataResult != null && receiveFormDataResult.getTag() == 10004) {
+            Log.i("bleble5", "recordFormsReceive=" + receiveFormDataResult.getRecordFormArrayList().size());
+        }
     }
 
     @SuppressLint("StaticFieldLeak")
@@ -1163,12 +1398,10 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                 } else {
                     otpValue = "" + ServiceHelper.Opdata_Chalana;
                     showToast("OTP is sent to your mobile number");
-                    Log.i("****OTP VALUE******", "" + ServiceHelper.Opdata_Chalana);
                     ll_verify.setVisibility(View.GONE);
                     et_verify_otp_from_mobile.setText("");
 
                     Intent dialogbox = new Intent(getApplicationContext(), OTP_input.class);
-
                     dialogbox.putExtra("regNO",
                             "" + et_regn_cid.getText().toString().trim() + et_regn_cid_name.getText().toString().trim()
                                     + et_regn_last_num.getText().toString().trim());
@@ -1673,7 +1906,6 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                 hour = hour;
                 minute = minute;
             }
-
             btn_offence_time.setText((hour + ":" + minute).toString().trim());
             removeDialog(OFFENCE_TIME_PICKER);
         }
@@ -1721,48 +1953,34 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                         outFile = new FileOutputStream(file);
                         Bitmap mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
                         imgMatchBitmap = mutableBitmap;
-                        Canvas canvas = new Canvas(mutableBitmap);
-                        Paint paint = new Paint();
-                        paint.setColor(Color.RED);
-                        paint.setTextSize(80);
-                        paint.setTextAlign(Paint.Align.CENTER);
-
-                        int xPos = (canvas.getWidth() / 2);
-                        int yPos = (int) ((canvas.getHeight() / 2) - ((paint.descent() + paint.ascent()) / 2));
-
-                        canvas.save();
-                        canvas.rotate(270f, xPos, yPos);
-                        canvas.drawText("Date & Time: " + Current_Date, xPos + 10, yPos + 800, paint);
-                        canvas.restore();
-
-                        canvas.save();
-                        canvas.rotate(270f, xPos, yPos);
-                        canvas.drawText("Lat :" + latitude, xPos, yPos + 900, paint);
-                        canvas.restore();
-
-                        canvas.save();
-                        canvas.rotate(270f, xPos, yPos);
-                        canvas.drawText("Long :" + longitude, xPos, yPos + 1000, paint);
-                        canvas.rotate(90);
-                        canvas.restore();
-
-                       /* canvas.drawText("Date & Time: " + Current_Date, xPos, yPos + 300, paint);
-                        canvas.drawText("Lat :" + latitude, xPos, yPos + 400, paint);
-                        canvas.drawText("Long :" + longitude, xPos, yPos + 500, paint);*/
-
-                        Display d = getWindowManager().getDefaultDisplay();
-                        int x = d.getWidth();
-                        int y = d.getHeight();
-                        Bitmap scaledBitmap = Bitmap.createScaledBitmap(mutableBitmap, y, x, true);
                         Matrix matrix = new Matrix();
-                        matrix.postRotate(90);
-                        mutableBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
+                        matrix.postRotate(90f);
+                        mutableBitmap = Bitmap.createBitmap(mutableBitmap, 0, 0, mutableBitmap.getWidth(), mutableBitmap.getHeight(), matrix, true);
+                        Canvas canvas = new Canvas(mutableBitmap); // bmp is the
 
-                        mutableBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outFile);
+                        TextPaint paint = new TextPaint();
+                        paint.setColor(Color.RED);
+                        paint.setTextSize(70);
+                        paint.setTextAlign(Paint.Align.LEFT);
+                        paint.setStyle(Paint.Style.FILL);
+                        paint.setTypeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD));
+                        canvas.save();
+                        canvas.drawText("Date " + Current_Date, 50f, canvas.getHeight() - 150, paint);
+                        canvas.drawText("Lat " + latitude + "  Long " + longitude, 50f, canvas.getHeight() - 70, paint);
+                        canvas.restore();
+
+
+                        offender_image.setVisibility(View.VISIBLE);
+                        offender_image.setImageBitmap(mutableBitmap);
+                        offender_image.setRotation(0);
+
+                        mutableBitmap = Bitmap.createBitmap(mutableBitmap, 0, 0, mutableBitmap.getWidth(), mutableBitmap.getHeight(), matrix, true);
+                        mutableBitmap.compress(Bitmap.CompressFormat.JPEG, 80, outFile);
+
                         outFile.flush();
                         outFile.close();
 
-                        new SingleMediaScanner(this, file);
+                        //new SingleMediaScanner(this, file);
 
                         /*File compresedFile=compressedToFile(file);
                         Log.d("MathcnigFile",""+compresedFile.getAbsolutePath());*/
@@ -1777,59 +1995,31 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     }
 
                     Bitmap mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
-                    Canvas canvas = new Canvas(mutableBitmap); // bmp is the
-                    // bitmap to
-                    // dwaw into
-
-                    Paint paint = new Paint();
-                    paint.setColor(Color.RED);
-                    paint.setTextSize(80);
-                    paint.setTextAlign(Paint.Align.CENTER);
-                    int xPos = (canvas.getWidth() / 2);
-                    int yPos = (int) ((canvas.getHeight() / 2) - ((paint.descent() + paint.ascent()) / 2));
-
-                    canvas.save();
-                    canvas.rotate(270f, xPos, yPos);
-                    canvas.drawText("Date & Time: " + Current_Date, xPos + 10, yPos + 900, paint);
-                    canvas.restore();
-
-                    canvas.save();
-                    canvas.rotate(270f, xPos, yPos);
-                    canvas.drawText("Lat :" + latitude, xPos, yPos + 1000, paint);
-                    canvas.restore();
-
-                    canvas.save();
-                    canvas.rotate(270f, xPos, yPos);
-                    canvas.drawText("Long :" + longitude, xPos, yPos + 1100, paint);
-                    canvas.rotate(90);
-                    canvas.restore();
-
-                   /* canvas.drawText("Date & Time: " + Current_Date, xPos, yPos + 300, paint);
-                    canvas.drawText("Lat :" + latitude, xPos, yPos + 400, paint);
-                    canvas.drawText("Long :" + longitude, xPos, yPos + 500, paint);*/
-
-                    Display d = getWindowManager().getDefaultDisplay();
-                    int x = d.getWidth();
-                    int y = d.getHeight();
-                    Bitmap scaledBitmap = Bitmap.createScaledBitmap(mutableBitmap, y, x, true);
                     Matrix matrix = new Matrix();
-                    matrix.postRotate(90);
-                    mutableBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
+                    matrix.postRotate(90f);
+                    mutableBitmap = Bitmap.createBitmap(mutableBitmap, 0, 0, mutableBitmap.getWidth(), mutableBitmap.getHeight(), matrix, true);
+                    Canvas canvas = new Canvas(mutableBitmap); // bmp is the
+                    TextPaint paint = new TextPaint();
+                    paint.setColor(Color.RED);
+                    paint.setTextSize(30);
+                    paint.setTextAlign(Paint.Align.LEFT);
+                    paint.setStyle(Paint.Style.FILL);
+                    paint.setTypeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD));
+                    canvas.save();
+                    canvas.drawText("Date " + Current_Date, 50f, canvas.getHeight() - 150, paint);
+                    canvas.drawText("Lat " + latitude + "  Long " + longitude, 50f, canvas.getHeight() - 70, paint);
+                    canvas.restore();
 
-                    offender_image.setImageBitmap(mutableBitmap);
+                    // offender_image.setImageBitmap(mutableBitmap);
 
                     offender_image.setVisibility(View.VISIBLE);
-
                     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                     mutableBitmap.compress(Bitmap.CompressFormat.JPEG, 20, bytes);
-
                     // imageUploadForMatch(compressImage(mutableBitmap));2201130007 0007
-
                     byteArray = bytes.toByteArray();
-
                     final_image_data_tosend = Base64.encodeToString(byteArray, Base64.NO_WRAP);
-                    Log.i("final_image:", "" + final_image_data_tosend);
-                    //new Async_getPrevFRSInfo().execute();
+
+                    // new Async_getPrevFRSInfo().execute();
                     // getPrevFRSInfo(final_image_data_tosend);
 
                 } catch (Exception e) {
@@ -1846,45 +2036,34 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                 file = new File(picturePath, String.valueOf(System.currentTimeMillis()) + ".jpg");
                 //  UploadFile(picturePath);
                 c.close();
-
                 Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
-                Log.w("path of image gallery", picturePath + "");
-
                 Bitmap mutableBitmap = thumbnail.copy(Bitmap.Config.ARGB_8888, true);
-                Canvas canvas = new Canvas(mutableBitmap); // bmp is the bitmap
-                // to dwaw into
-
-                Paint paint = new Paint();
+                Canvas canvas = new Canvas(mutableBitmap); // bmp is the
+                TextPaint paint = new TextPaint();
                 paint.setColor(Color.RED);
-                paint.setTextSize(100);
-                paint.setTextAlign(Paint.Align.CENTER);
-                // canvas.drawText("Date & Time: "+Current_Date+"\n"+" Lat
-                // :"+latitude+ " Long :"+longitude,1250, 1500, paint);
-
-                int xPos = (canvas.getWidth() / 2);
-                int yPos = (int) ((canvas.getHeight() / 2) - ((paint.descent() + paint.ascent()) / 2));
-
-                // canvas.drawText("Date & Time: " + Current_Date, xPos,
-                // yPos + 800, paint);
-                // canvas.drawText("Lat :" + latitude , xPos, yPos + 900,
-                // paint);
-                // canvas.drawText("Long :"+ longitude, xPos, yPos + 1000,
-                // paint);
+                paint.setTextSize(30);
+                paint.setTextAlign(Paint.Align.LEFT);
+                paint.setStyle(Paint.Style.FILL);
+                paint.setTypeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD));
+                canvas.save();
+                canvas.drawText("Date " + Current_Date, 50f, canvas.getHeight() - 150, paint);
+                canvas.drawText("Lat " + latitude + "  Long " + longitude, 50f, canvas.getHeight() - 70, paint);
+                canvas.restore();
 
                 offender_image.setImageBitmap(mutableBitmap);
-                // picture1.setRotation(90);
+                offender_image.setRotation(offender_image.getRotation() + 360);
                 offender_image.setVisibility(View.VISIBLE);
-
                 ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                 mutableBitmap.compress(Bitmap.CompressFormat.JPEG, 20, bytes);
                 imgMatchBitmap = mutableBitmap;
-
                 byteArray = bytes.toByteArray();
-
                 final_image_data_tosend = Base64.encodeToString(byteArray, Base64.NO_WRAP);
+
                 //new Async_getPrevFRSInfo().execute();
                 //  getPrevFRSInfo(final_image_data_tosend);
 
+            } else if (requestCode == REQUEST_ENABLE_BT) {
+                CheckBlueToothState();
             } else {
                 final_image_data_tosend = "";
                 final_image_data_tosend = null;
@@ -2057,6 +2236,31 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         smr.addStringParam("user", "telangana");
         smr.addStringParam("auth_token", "23easd12wedf34f3hjkbnaaa1");
         requestQueue.add(smr);
+    }
+
+    private boolean getBlueToothOn() {
+        BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
+        return btAdapter != null && btAdapter.isEnabled();
+    }
+
+    private void CheckBlueToothState() {
+        // TODO Auto-generated method stub
+        if (bluetoothAdapter == null) {
+            showToast("Bluetooth NOT support");
+        } else {
+            if (bluetoothAdapter.isEnabled()) {
+                if (bluetoothAdapter.isDiscovering()) {
+                    showToast("Bluetooth is currently in device discovery process.");
+                } else {
+                    showToast("Bluetooth is Enabled.");
+
+                }
+            } else {
+                Intent enableBtIntent = new Intent(
+                        BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+            }
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -2806,6 +3010,8 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
             bitmap = null;
         }
         super.onDestroy();
+        EventBus.getDefault().unregister(this);
+
     }
 
     @Override
@@ -2923,18 +3129,10 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         if ((ps_name.equals("psname")) && (point_name.equals("pointname"))) {
             showToast("Set PS Details in Settings!");
         } else {
-
-			/*	selected_finedBy_sub = radiogrp_finedBy.getCheckedRadioButtonId();
-				radio_finedBy_subcat = (RadioButton) findViewById(selected_finedBy_sub);*/
-
-            /* GENDER VALUES */
             val_gender = radiogrp_gender.getCheckedRadioButtonId();
             radio_male_female = (RadioButton) findViewById(val_gender);
             Log.i("GENDER", "" + radio_male_female.getText().toString().trim());
             driver_fname = "";
-            // owner_dl_no = "";
-            // driver_dlno = "";
-
             if (et_driver_fname.getText().toString().trim().equals("")) {
                 driver_fname = "";
             } else {
@@ -2970,24 +3168,13 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     pan_no = "";
                     passport = "";
                     voterid = "" + et_id_proof.getText().toString().trim();
-                }else  {
+                } else {
                     aadhar = "";
                     pan_no = "";
                     passport = "";
                     voterid = "";
                 }
             }
-
-			/*	 FOR CHECKING FINED BY VALUES TO PUSH
-				if (radio_finedBy_subcat.getText().toString().trim()
-						.equals("" + getResources().getString(R.string.finedby_policestation))) {
-					finedby_val_send = "2";// police station
-				} else if (radio_finedBy_subcat.getText().toString().trim()
-						.equals("" + getResources().getString(R.string.finedby_court))) {
-					finedby_val_send = "1";
-				}*/
-
-            /* GENDER DETAILS TO SEND */
 
             if (radio_male_female.getText().toString().trim()
                     .equals("" + getResources().getString(R.string.gen_male))) {
@@ -3002,12 +3189,6 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
             /* SCECOND SCREEN VALUES */
             sb_detaneditems_send = new StringBuilder();
-
-            /*
-             * DISABLE CHECKED DETAINED ITEMS AND ONLY SENDING VECHILE
-             * DETAILS START
-             */
-            // sb_detaneditems_send.append("02:VEHICLE@").append("03:LICENCE@");
 
             sb_detaneditems_send.delete(0, sb_detaneditems_send.length());
             if (chck_detainedItems_rc.isChecked()) {

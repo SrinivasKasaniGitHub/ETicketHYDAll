@@ -154,7 +154,7 @@
                     android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:gravity="center"
                     android:inputType="textCapCharacters"
-                    android:maxLength="4"></EditText>
+                    android:maxLength="4"/>
 
                 <EditText
                     android:id="@+id/edt_regncidname_dd_xml"
@@ -166,7 +166,7 @@
                     android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:gravity="center"
                     android:inputType="text|textCapCharacters"
-                    android:maxLength="4"></EditText>
+                    android:maxLength="4" />
 
                 <EditText
                     android:id="@+id/edt_regncid_lastnum_dd_xml"
@@ -177,7 +177,7 @@
                     android:digits="0123456789"
                     android:gravity="center"
                     android:inputType="number"
-                    android:maxLength="4"></EditText>
+                    android:maxLength="4" />
             </LinearLayout>
 
             <LinearLayout
@@ -225,7 +225,7 @@
                 android:layout_below="@+id/drive_details"
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
                 android:hint="@string/driver_name"
-                android:inputType="text|textCapCharacters"></EditText>
+                android:inputType="text|textCapCharacters" />
 
             <EditText
                 android:id="@+id/edt_driver_fname_dd_xml"
@@ -236,7 +236,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
                 android:hint="@string/driver_father_name"
-                android:inputType="text|textCapCharacters"></EditText>
+                android:inputType="text|textCapCharacters" />
 
             <LinearLayout
                 android:id="@+id/ll_contactnum_dd_xml"
@@ -256,7 +256,7 @@
                     android:layout_weight="1"
                     android:hint="@string/driver_contact_no"
                     android:inputType="number"
-                    android:maxLength="10"></EditText>
+                    android:maxLength="10" />
 
                 <Button
                     android:id="@+id/btn_sendOTPtoMobile_dd_xml"
@@ -267,7 +267,6 @@
                     android:text="@string/send_otp"
                     android:layout_weight="2"/>
             </LinearLayout>
-
 
             <!--  <RelativeLayout
                  android:id="@+id/drunk_location"
@@ -345,28 +344,48 @@
                 android:text="Breath Analyzer Test Details :"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/edt_checkslno_dd2_xml"
-                style="@style/edt_custom_style"
+            <LinearLayout
+                android:id="@+id/ll_breath_dd_xml"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/breath_details"
-                android:layout_marginTop="15dp"
-                android:hint="@string/check_sino"
-                android:inputType="number"
-                android:maxLength="15"></EditText>
+                android:layout_marginTop="@dimen/header_grnt_padding_five"
+                android:orientation="horizontal"
+                android:weightSum="3">
 
+                <EditText
+                    android:id="@+id/edt_checkslno_dd2_xml"
+                    style="@style/edt_custom_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/breath_details"
+                    android:layout_marginTop="15dp"
+                    android:hint="@string/check_sino"
+                    android:inputType="number"
+                    android:maxLength="15"
+                    android:layout_weight="2" />
+
+                <Button
+                    android:id="@+id/btn_scan_dd_xml"
+                    style="@style/naviblue_custom_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="@dimen/header_grnt_padding_five"
+                    android:text="Scan"
+                    android:layout_weight="1"/>
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/edt_alchl_reading_dd2_xml"
                 style="@style/edt_custom_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/edt_checkslno_dd2_xml"
+                android:layout_below="@+id/ll_breath_dd_xml"
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
                 android:hint="@string/alcohol_reading"
                 android:inputType="number"
-                android:maxLength="4"></EditText>
+                android:maxLength="4" />
 
             <TextView
                 android:id="@+id/alcohol_place"
@@ -488,7 +507,7 @@
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
                 android:hint="Enter Address"
                 android:inputType="text|textCapCharacters"
-                android:visibility="gone"></EditText>
+                android:visibility="gone" />
 
             <EditText
                 android:id="@+id/et_dd_city"
@@ -500,7 +519,7 @@
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
                 android:hint="Enter City"
                 android:inputType="text|textCapCharacters"
-                android:visibility="gone"></EditText>
+                android:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/ll_confirmotp_dd_xml"
@@ -520,7 +539,7 @@
                     android:layout_weight="1"
                     android:hint="@string/enter_otp"
                     android:inputType="number"
-                    android:maxLength="10"></EditText>
+                    android:maxLength="10" />
 
                 <Button
                     android:id="@+id/btn_confrmotp_dd_xml"
@@ -530,7 +549,6 @@
                     android:layout_marginLeft="@dimen/header_grnt_padding_five"
                     android:text="@string/confirm" />
             </LinearLayout>
-            <!--  -->
 
             <EditText
                 android:id="@+id/edt_owner_dlno_dd_xml"
@@ -541,7 +559,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
                 android:hint="@string/owner_dl_no"
-                android:visibility="gone"></EditText>
+                android:visibility="gone" />
 
             <EditText
                 android:id="@+id/edt_driver_dlno_dd_xml"
@@ -552,7 +570,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
                 android:hint="@string/driver_dl_no"
-                android:visibility="gone"></EditText>
+                android:visibility="gone" />
 
 
             <EditText
@@ -564,7 +582,7 @@
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
                 android:hint="@string/age"
                 android:inputType="number"
-                android:maxLength="2"></EditText>
+                android:maxLength="2" />
 
             <EditText
                 android:id="@+id/edt_identification_mark"
@@ -574,7 +592,7 @@
                 android:layout_below="@+id/edt_age_reading_dd2_xml"
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
                 android:hint="@string/mole_mark"
-                android:inputType="textCapCharacters"></EditText>
+                android:inputType="textCapCharacters" />
 
             <EditText
                 android:id="@+id/edt_address_dd2_xml"
@@ -585,7 +603,7 @@
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
                 android:gravity="top"
                 android:hint="@string/address"
-                android:visibility="gone"></EditText>
+                android:visibility="gone" />
 
             <EditText
                 android:id="@+id/edt_city_dd2_xml"
@@ -595,7 +613,7 @@
                 android:layout_below="@+id/edt_address_dd2_xml"
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
                 android:hint="@string/city"
-                android:visibility="gone"></EditText>
+                android:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/ll_idproof"
@@ -675,50 +693,6 @@
                         android:text="@string/gen_others" />
                 </RadioGroup>
             </LinearLayout>
-
-
-            <!-- <LinearLayout
-                android:id="@+id/ll_finnedby"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/ll_gender"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/header_grnt_padding_five" >
-
-                <TextView
-                    android:id="@+id/tv_finedbyname"
-                    style="@style/navi_text_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.75"
-                    android:gravity="center_vertical"
-                    android:text="@string/fined_by" />
-
-                <RadioGroup
-                    android:id="@+id/radioGroup_finedby"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal" >
-
-                    <RadioButton
-                        android:id="@+id/radioGroupButton_finedby1"
-                        style="@style/dd_custom_radio_btn_style"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="@dimen/header_grnt_padding_ten"
-                        android:text="@string/finedby_policestation" />
-
-                    <RadioButton
-                        android:id="@+id/radioGroupButton_finedby0"
-                        style="@style/dd_custom_radio_btn_style"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:paddingLeft="@dimen/header_grnt_padding_ten"
-                        android:text="@string/finedby_court" />
-                </RadioGroup>
-            </LinearLayout> -->
 
             <RelativeLayout
                 android:id="@+id/rl_detaineditems_spotchallantwo_xml"
@@ -943,6 +917,7 @@
                     android:text="@string/submit" />
             </LinearLayout>
         </RelativeLayout>
+
     </ScrollView>
 
 </RelativeLayout>
