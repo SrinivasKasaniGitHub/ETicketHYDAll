@@ -342,7 +342,8 @@
                 android:layout_below="@id/ll_contactnum_dd_xml"
                 android:layout_marginTop="15dp"
                 android:text="Breath Analyzer Test Details :"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/ll_breath_dd_xml"
@@ -351,7 +352,8 @@
                 android:layout_below="@+id/breath_details"
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:weightSum="3"
+                android:visibility="gone">
 
                 <EditText
                     android:id="@+id/edt_checkslno_dd2_xml"
@@ -385,7 +387,8 @@
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
                 android:hint="@string/alcohol_reading"
                 android:inputType="number"
-                android:maxLength="4" />
+                android:maxLength="4"
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/alcohol_place"

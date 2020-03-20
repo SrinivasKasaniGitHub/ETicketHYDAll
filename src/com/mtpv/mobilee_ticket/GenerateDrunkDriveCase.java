@@ -1253,7 +1253,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         list_BleDevice.setAdapter(adapter);
         progressDialog.dismiss();
         dlg_BleDevice.show();
-        dlg_BleDevice.setCancelable(false);
+        dlg_BleDevice.setCancelable(true);
 
         list_BleDevice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -2613,9 +2613,9 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                         "" + driver_dlno, "" + et_driver_name.getText().toString().trim(), "" + driver_fname, "" + aadhar,
                         "" + pan_no, "" + passport, "" + dob, "" + et_driver_contact_no.getText().toString().trim(),
                         "" + offence_code_send, "" + offence_Amount_send, "" + sb_detaneditems_send,
-                        "" + counselling_date_send, "" + et_alcohol_reading.getText().toString().trim(),
+                        "" + counselling_date_send, "" + Drunk_Drive.edt_alchl_reading.getText().toString().trim(),
                         "" + et_age.getText().toString().trim(), "" + oocupation_send, "" + qualification_send,
-                        "" + gender_send, "" + et_check_sino.getText().toString().trim(), "" + Drunk_Drive.whlr_code_send,
+                        "" + gender_send, "" + Drunk_Drive.edt_checkslno_.getText().toString().trim(), "" + Drunk_Drive.whlr_code_send,
                         "" + vhle_cat_send, "" + vhle_catMain_send, "" + rtaresponse,
                         "" + et_address.getText().toString().trim(), "" + et_city.getText().toString().trim(),
                         "" + Dashboard.UNIT_CODE, "" + Dashboard.UNIT_NAME, "" + cadreCd, "" + cadre,
@@ -3192,19 +3192,19 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
             sb_detaneditems_send.delete(0, sb_detaneditems_send.length());
             if (chck_detainedItems_rc.isChecked()) {
-                sb_detaneditems_send.append("01:RC@");
+                sb_detaneditems_send.append("2:RC@");
             }
 
             if (chck_detainedItems_vhcle.isChecked()) {
-                sb_detaneditems_send.append("02:VEHICLE@");
+                sb_detaneditems_send.append("3:VEHICLE@");
             }
 
             if (chck_detainedItems_licence.isChecked()) {
-                sb_detaneditems_send.append("03:LICENCE@");
+                sb_detaneditems_send.append("1:LICENCE@");
             }
 
             if (chck_detainedItems_permit.isChecked()) {
-                sb_detaneditems_send.append("04:PERMIT@");
+                sb_detaneditems_send.append("4:PERMIT@");
             }
 
             /* THIRD SCREEN VALUES */
@@ -3256,7 +3256,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     et_driver_contact_no.requestFocus();
                     et_driver_contact_no
                             .setError(Html.fromHtml("<font color='black'>Enter Valid Contact No.</font>"));
-                } else if (et_alcohol_reading.getText().toString().trim().equals("")) {
+                } /*else if (et_alcohol_reading.getText().toString().trim().equals("")) {
                     et_alcohol_reading.requestFocus();
                     et_alcohol_reading.setError(Html.fromHtml("<font color='black'>Enter Alcohol Reading</font>"));
                 } else if (et_alcohol_reading.getText() != null
@@ -3303,7 +3303,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     btn1.setTextColor(Color.WHITE);
                     btn1.setTypeface(title.getTypeface(), Typeface.BOLD);
                     btn1.setBackgroundColor(Color.RED);
-                } else if (et_age.getText().toString().trim().equals("")) {
+                }*/ else if (et_age.getText().toString().trim().equals("")) {
                     Log.i("Calling ", "In Age Validation");
                     et_age.requestFocus();
                     et_age.setError(Html.fromHtml("<font color='black'>Enter Age</font>"));

@@ -1474,6 +1474,9 @@ dimen files_grid_item_thumbnail_size
 dimen files_list_item_height
 dimen files_list_item_thumbnail_margin_right
 dimen files_list_item_thumbnail_size
+dimen font_size_heading
+dimen font_size_normal
+dimen font_size_subheading
 dimen header_grnt_padding_five
 dimen header_grnt_padding_ten
 dimen header_icon_size
@@ -1487,6 +1490,8 @@ dimen hint_pressed_alpha_material_light
 dimen item_touch_helper_max_drag_scroll_per_frame
 dimen item_touch_helper_swipe_escape_max_velocity
 dimen item_touch_helper_swipe_escape_velocity
+dimen layout_margin
+dimen line_margin
 dimen margin_fifteen
 dimen margin_twenty
 dimen mtrl_bottomappbar_fabOffsetEndMode
@@ -1555,6 +1560,10 @@ dimen notification_top_pad_large_text
 dimen photo_crop_stroke_width
 dimen photo_crop_width
 dimen photo_preview_size
+dimen recyclerview_margin
+dimen searchview_margin
+dimen text_button_size
+dimen textview_margin
 dimen thirty_sp
 dimen thirtyfive_sp
 dimen tooltip_corner_radius
@@ -1655,6 +1664,8 @@ drawable about
 drawable alert
 drawable avd_hide_password
 drawable avd_show_password
+drawable btnbg
+drawable btnspinrbg
 drawable camera
 drawable cancel
 drawable capture
@@ -1679,6 +1690,7 @@ drawable drun_drive_btn_style_blue
 drawable drunkdrive
 drawable duplicateprint
 drawable edittextstyle
+drawable edtbg
 drawable efp__ic_file
 drawable efp__ic_folder
 drawable efp__ic_up
@@ -1795,6 +1807,8 @@ drawable wgl_logo
 drawable wgl_logow
 drawable white
 id ALT
+id Btn_ExtraPasCancel
+id Btn_ExtraPasSubmit
 id CTRL
 id FUNCTION
 id Ll_buffer_display_spotresponse_xml
@@ -1844,6 +1858,7 @@ id beginning
 id blocking
 id blue_name
 id bottom
+id breathAn
 id breath_details
 id bt_device_Address
 id btn_ImgMatchCancel
@@ -1911,6 +1926,7 @@ id btnprint_report_xml
 id btnprint_res_xml
 id btnprint_spot_reponse_xml
 id btnpsname_settings_xml
+id btnscan_BreathAnalyser
 id btnscan_settings_xml
 id btnselect_app_type_dup_xml
 id btnselect_dateselection_report_xml
@@ -1974,10 +1990,13 @@ id design_navigation_view
 id detained_Txt
 id detained_items
 id detained_lyt
+id dialog_item_checkbox
+id dialog_item_name
 id disableHome
 id dl_img
 id dl_no
 id dob_input
+id done
 id drive_details
 id e_ticketNo
 id echallan
@@ -1988,11 +2007,13 @@ id ed_engine
 id ed_time
 id edit_query
 id edt_Age
+id edt_Txt_ExtraPass
 id edt_aadharno_rtadetails_xml
 id edt_aadharno_spotchallan_xml
 id edt_address_dd2_xml
 id edt_address_isOD
 id edt_age_reading_dd2_xml
+id edt_alchl_reading
 id edt_alchl_reading_dd2_xml
 id edt_bar_Address
 id edt_bar_name
@@ -2001,6 +2022,7 @@ id edt_breatheanalyser_settings_xml
 id edt_candidate_Address
 id edt_candidate_name
 id edt_cardpin_spotchallantwo_xml
+id edt_checkslno_
 id edt_checkslno_dd2_xml
 id edt_city_dd2_xml
 id edt_city_isOD
@@ -2148,6 +2170,7 @@ id linearLayout4
 id listDDImgmatch
 id listMode
 id list_BleDevice
+id list_empty1
 id list_item
 id listview_devicesfound
 id ll_1
@@ -2244,7 +2267,9 @@ id locaton_layout
 id lv_paired
 id lvpendingchallans_xml
 id lyt_Age
+id lyt_DD_Details
 id lyt_GetDtls
+id main_container
 id make_paymnt
 id masked
 id message
@@ -2413,8 +2438,12 @@ id search_go_btn
 id search_mag_icon
 id search_plate
 id search_src_text
+id search_view
 id search_voice_btn
 id select_all
+id select_all_checkbox
+id select_all_container
+id select_all_text
 id select_dialog_listview
 id selected
 id selected_pointName
@@ -2648,6 +2677,7 @@ id txt_FName
 id txt_FirNo
 id txt_MatchPer
 id txt_Name
+id txt_otp_Hed
 id txtss
 id uniform
 id unlabeled
@@ -2754,6 +2784,7 @@ layout blutooth_list_devices
 layout camera_layout
 layout cust_pen_challans
 layout cust_toast
+layout custom_multi_select
 layout custom_progress_dialog
 layout dashboard
 layout dashboard_pc
@@ -2781,6 +2812,7 @@ layout duplicateprint
 layout dynamic_violations
 layout efp__new_folder
 layout email_mobile_no
+layout extra_passengers_alert
 layout fake_no_alert
 layout fakenoplatealert_specialdrive
 layout generate_dd
@@ -2795,6 +2827,7 @@ layout list_item_device
 layout login
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
+layout multi_select_item
 layout myprogressdialog
 layout notification_action
 layout notification_action_tombstone
@@ -2933,12 +2966,15 @@ string day_report
 string dd_address
 string dd_name
 string ddbasic_drive
+string de_select_all
 string deceode_data_not_null
 string detained_items
 string detained_items_licence
 string detained_items_permit
 string detained_items_rc
 string detained_items_vhcle
+string dialog_cancel_text
+string dialog_done_text
 string dlPoints
 string dob
 string driver_contact_no
@@ -3023,6 +3059,7 @@ string licence_no
 string licence_owner_name
 string licence_status
 string licence_yes
+string list_empty
 string live
 string local
 string logIn
@@ -3059,6 +3096,8 @@ string officer_pid
 string ok
 string okkk
 string open
+string option
+string options
 string others
 string owner_dl_no
 string owner_lcnce_no
@@ -3078,6 +3117,7 @@ string pending_challans
 string permit_room
 string pinpad
 string place_of_violation
+string please_select_atleast
 string point_name
 string police_station
 string previous
@@ -3106,8 +3146,10 @@ string save
 string scan_bluetooth
 string search_menu_title
 string select
+string select_all
 string select_date
 string select_dup_type
+string select_entry
 string select_idproof
 string select_occupation
 string select_pointbypsname
@@ -3175,9 +3217,11 @@ string tsp
 string tv_age
 string tv_gender
 string txt_DRName
+string txt_SlctVltn
 string uid
 string update_aadhar
 string urdu
+string validation_text
 string veh_main_cat
 string veh_sub_cat
 string vehicleNo_txt
@@ -3192,6 +3236,7 @@ string vtype_txt
 string welcome
 string wheller_code
 string wine_shop
+string you_can_only_select_upto
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog
@@ -3714,8 +3759,11 @@ style margin_top_btm_style
 style navi_text_style
 style naviblue_custom_style
 style orange_custom_style
+style style_EditText
 style style_ImgData_Txt
 style style_ImgHdr_Txt
+style style_InputLayout
+style style_TxtHedForm
 style text_style
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
 styleable ActionBarLayout android_layout_gravity

@@ -6,6 +6,8 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.widget.EditText;
 
+import java.util.regex.Pattern;
+
 import static android.support.v4.content.ContextCompat.getSystemService;
 
 public class Utils {
@@ -173,6 +175,25 @@ public class Utils {
 		et.setError("" + msg);
 	}
 
+	public static boolean isValidMobile(String phone) {
+		boolean check = false;
+		if (!Pattern.matches("[a-zA-Z]+", phone)) {
+			if (phone.length() != 10) {
+				// if(phone.length() != 10) {
+				check = false;
+			} else if (phone.length()==10){
+				if (((phone.charAt(0)=='6')) || ((phone.charAt(0)=='7'))|| ((phone.charAt(0)=='8'))
+						|| ((phone.charAt(0)=='9'))) {
+					check = true;
+				}else {
+					check = false;
+				}
+			}
+		} else {
+			check = false;
+		}
+		return check;
+	}
 
 
 

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/dd_btn_blue_color"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/recyclerview_margin"
+            android:layout_marginLeft="@dimen/recyclerview_margin"
+            android:text="Select Violations"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/font_size_heading"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="@dimen/searchview_margin"
+            android:layout_marginBottom="@dimen/searchview_margin"
+            android:background="@drawable/btnspinrbg"
+            android:iconifiedByDefault="true"
+            android:queryHint="Search" />
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/select_all_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_margin"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/select_all_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:buttonTint="@color/colorAccent"
+                android:clickable="false" />
+
+            <TextView
+                android:id="@+id/select_all_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/textview_margin"
+                android:layout_marginLeft="@dimen/textview_margin"
+                android:text="@string/select_all"
+                android:textAllCaps="true"
+                android:textSize="@dimen/font_size_subheading" />
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginStart="@dimen/line_margin"
+            android:layout_marginTop="@dimen/recyclerview_margin"
+            android:layout_marginEnd="@dimen/line_margin"
+            android:layout_marginBottom="@dimen/searchview_margin"
+            android:background="@color/colorPrimary"
+            android:visibility="gone" />
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <view
+                android:id="@+id/recycler_view"
+                class="com.mtpv.spinnermdl.RecyclerViewEmptySupport"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/list_empty1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/list_empty"
+                android:textSize="@dimen/font_size_normal" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/layout_margin"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/cancel"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/navi_blue_btn_style"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/dialog_cancel_text"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/text_button_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/done"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/navi_blue_btn_style"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/dialog_done_text"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/text_button_size"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

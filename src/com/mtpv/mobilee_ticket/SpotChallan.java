@@ -20,6 +20,8 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -37,6 +39,7 @@ import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.content.FileProvider;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatTextView;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
@@ -85,6 +88,9 @@ import com.mtpv.mobilee_ticket_services.DateUtil;
 import com.mtpv.mobilee_ticket_services.ServiceHelper;
 import com.mtpv.mobilee_ticket_services.Utils;
 import com.mtpv.mobilee_ticket_services.VibratorUtils;
+import com.mtpv.spinnermdl.MultiSelectModel;
+import com.mtpv.spinnermdl.MultiSelectSearchSpinnerDlg;
+import com.mtpv.spinnermdl.VltnListModel;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -98,7 +104,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Timer;
@@ -114,8 +123,7 @@ import mother.com.test.PidSecEncrypt;
 
 @SuppressWarnings("deprecation")
 @SuppressLint({"DefaultLocale", "WorldReadableFiles", "SetJavaScriptEnabled", "SimpleDateFormat", "InflateParams"})
-@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-public class SpotChallan extends Activity
+public class SpotChallan extends AppCompatActivity
         implements OnClickListener, LocationListener, android.widget.CompoundButton.OnCheckedChangeListener {
 
     public static String dl_points = "0", spot_Lic_Flag = "", imgSelected = "0", is_govt_police = "9",
@@ -288,6 +296,7 @@ public class SpotChallan extends Activity
     private Calendar cal;
     @SuppressWarnings("unused")
     private int day, month, year;
+
     String dobcheck = "No";
     Button dob_input;
     public String challan_Type = "TE";
@@ -307,13 +316,18 @@ public class SpotChallan extends Activity
     AlertDialog alertDialog;
     public static String refsal_Info = "", refsal_CntctNo = "";
 
+    MultiSelectModel mselectModel;
+    ArrayList<MultiSelectModel> mArrayList_SecVltnNames = new ArrayList<>();
+    ArrayList<MultiSelectModel> mArrayList_SelectedVltnLst = new ArrayList<>();
+    MultiSelectSearchSpinnerDlg multiSelectSearchSpinnerDlg;
+    ArrayList<VltnListModel> vltnListModels = new ArrayList<>();
+    VltnListModel vltnListModel;
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setContentView(R.layout.spot_challan);
         imgSelected = "0";
         sb_selected_penlist_positions = new ArrayList<>();
@@ -323,6 +337,8 @@ public class SpotChallan extends Activity
         google_MapKey = ServiceHelper.api_key;
         getLocation();
         pendChlnsDetain_Flag = "0";
+        mArrayList_SecVltnNames = new ArrayList<>();
+        mArrayList_SelectedVltnLst = new ArrayList<>();
 
         img_logo = findViewById(R.id.img_logo);
         if (MainActivity.uintCode.equals("22")) {
@@ -1270,7 +1286,9 @@ public class SpotChallan extends Activity
                         violationCodes.delete(0, violationCodes.length());
 
                         removeDialog(DYNAMIC_VIOLATIONS);
-                        showDialog(DYNAMIC_VIOLATIONS);
+                        // showDialog(DYNAMIC_VIOLATIONS);
+
+                        showDynamicViolations();
 
                     } else {
                         showToast("Select Wheeler Code");
@@ -1627,9 +1645,40 @@ public class SpotChallan extends Activity
                                 getDateAndTime();
                                 int pos = 0;
 
-                                if (Fake_NO_Dialog.fake_action.equals("not fake")) {
+                                try {
+                                    if (Fake_NO_Dialog.fake_action == null) {
+                                        if (rb_indian.isChecked() == true && passport_layout.getVisibility() == View.GONE) {
+                                           /* if ((et_driver_lcnce_num_spot.getText().toString().trim().equals(""))
+                                                    && (et_aadharnumber_spot.getText().toString().trim().equals(""))) {
+                                                otp_msg = "Please enter driver Licence Number or Aadhar Number";
+                                                removeDialog(OTP_CNFRMTN_DIALOG);
+                                                showDialog(OTP_CNFRMTN_DIALOG);
+                                            } else {*/
+                                            if (isOnline()) {
+                                                new Async_getDetainedItems().execute();
+                                            }
+                                            //}
+                                        } else if (rb_nri.isChecked() == true
+                                                && passport_layout.getVisibility() == View.VISIBLE) {
+                                            if (rb_nri.isChecked() == true
+                                                    && et_driver_lcnce_num_spot.getText().toString().trim().equals("")) {
+                                                et_driver_lcnce_num_spot.setError(
+                                                        Html.fromHtml("<font color='black'>Enter DL Number</font>"));
+                                                et_driver_lcnce_num_spot.requestFocus();
+                                            } else if (rb_nri.isChecked() == true
+                                                    && et_passport.getText().toString().trim().equals("")) {
+                                                et_passport.setError(
+                                                        Html.fromHtml("<font color='black'>Enter Passport Number</font>"));
+                                                et_passport.requestFocus();
+                                            } else {
+                                                if (isOnline()) {
+                                                    new Async_getDetainedItems().execute();
+                                                }
+                                            }
+                                        }
+                                    } else if (Fake_NO_Dialog.fake_action.equals("not fake")) {
 
-                                    if (rb_indian.isChecked() == true && passport_layout.getVisibility() == View.GONE) {
+                                        if (rb_indian.isChecked() == true && passport_layout.getVisibility() == View.GONE) {
 
                                             /*if ((et_driver_lcnce_num_spot.getText().toString().trim().equals(""))
                                                     && (et_aadharnumber_spot.getText().toString().trim().equals(""))) {
@@ -1637,63 +1686,39 @@ public class SpotChallan extends Activity
                                                 removeDialog(OTP_CNFRMTN_DIALOG);
                                                 showDialog(OTP_CNFRMTN_DIALOG);
                                             } else {*/
-                                        if (isOnline()) {
-                                            new Async_getDetainedItems().execute();
-                                        }
-                                        //  }
-
-                                    } else if (rb_nri.isChecked() == true
-                                            && passport_layout.getVisibility() == View.VISIBLE) {
-                                        if (rb_nri.isChecked() == true
-                                                && et_driver_lcnce_num_spot.getText().toString().trim().equals("")) {
-                                            et_driver_lcnce_num_spot.setError(
-                                                    Html.fromHtml("<font color='black'>Enter DL Number</font>"));
-                                            et_driver_lcnce_num_spot.requestFocus();
-                                        } else if (rb_nri.isChecked() == true
-                                                && et_passport.getText().toString().trim().equals("")) {
-                                            et_passport.setError(
-                                                    Html.fromHtml("<font color='black'>Enter Passport Number</font>"));
-                                            et_passport.requestFocus();
-                                        } else {
                                             if (isOnline()) {
                                                 new Async_getDetainedItems().execute();
                                             }
-                                        }
-                                    }
-                                } else if (Fake_NO_Dialog.fake_action == null) {
-                                    if (rb_indian.isChecked() == true && passport_layout.getVisibility() == View.GONE) {
-                                           /* if ((et_driver_lcnce_num_spot.getText().toString().trim().equals(""))
-                                                    && (et_aadharnumber_spot.getText().toString().trim().equals(""))) {
-                                                otp_msg = "Please enter driver Licence Number or Aadhar Number";
-                                                removeDialog(OTP_CNFRMTN_DIALOG);
-                                                showDialog(OTP_CNFRMTN_DIALOG);
-                                            } else {*/
-                                        if (isOnline()) {
-                                            new Async_getDetainedItems().execute();
-                                        }
-                                        //}
-                                    } else if (rb_nri.isChecked() == true
-                                            && passport_layout.getVisibility() == View.VISIBLE) {
-                                        if (rb_nri.isChecked() == true
-                                                && et_driver_lcnce_num_spot.getText().toString().trim().equals("")) {
-                                            et_driver_lcnce_num_spot.setError(
-                                                    Html.fromHtml("<font color='black'>Enter DL Number</font>"));
-                                            et_driver_lcnce_num_spot.requestFocus();
+                                            //  }
+
                                         } else if (rb_nri.isChecked() == true
-                                                && et_passport.getText().toString().trim().equals("")) {
-                                            et_passport.setError(
-                                                    Html.fromHtml("<font color='black'>Enter Passport Number</font>"));
-                                            et_passport.requestFocus();
-                                        } else {
-                                            if (isOnline()) {
-                                                new Async_getDetainedItems().execute();
+                                                && passport_layout.getVisibility() == View.VISIBLE) {
+                                            if (rb_nri.isChecked() == true
+                                                    && et_driver_lcnce_num_spot.getText().toString().trim().equals("")) {
+                                                et_driver_lcnce_num_spot.setError(
+                                                        Html.fromHtml("<font color='black'>Enter DL Number</font>"));
+                                                et_driver_lcnce_num_spot.requestFocus();
+                                            } else if (rb_nri.isChecked() == true
+                                                    && et_passport.getText().toString().trim().equals("")) {
+                                                et_passport.setError(
+                                                        Html.fromHtml("<font color='black'>Enter Passport Number</font>"));
+                                                et_passport.requestFocus();
+                                            } else {
+                                                if (isOnline()) {
+                                                    new Async_getDetainedItems().execute();
+                                                }
                                             }
                                         }
+                                    } else if (Fake_NO_Dialog.fake_action.equals("fake")) {
+
+                                        ShowMessage("\n It's a Fake Vehicle !!! \n");
+
                                     }
-                                } else if (Fake_NO_Dialog.fake_action == "fake") {
-
-                                    ShowMessage("\n It's a Fake Vehicle !!! \n");
-
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                    if (isOnline()) {
+                                        new Async_getDetainedItems().execute();
+                                    }
                                 }
 
                             } else {
@@ -1727,17 +1752,13 @@ public class SpotChallan extends Activity
 
                             } else {
 
-                                if (check.getId() == 64 || check.getId() == 123) {
-                                    ShowMessageDL(
-                                            "\nWith out DL Section is not allowed when Offender had Driving License !\n");
-                                } else {
 
-                                    if (otherStateVehicle.equals("YES")) {
-                                        otherStateVehicleAlert(" This is an Other State Vehicle \n Do you want to collect Amount!");
-                                    } else {
-                                        spotNextCall();
-                                    }
+                                if (otherStateVehicle.equals("YES")) {
+                                    otherStateVehicleAlert(" This is an Other State Vehicle \n Do you want to collect Amount!");
+                                } else {
+                                    spotNextCall();
                                 }
+
                             }
 
                         } else {
@@ -2043,13 +2064,13 @@ public class SpotChallan extends Activity
 
                         TextPaint paint = new TextPaint();
                         paint.setColor(Color.RED);
-                        paint.setTextSize(70);
+                        paint.setTextSize(40);
                         paint.setTextAlign(Paint.Align.LEFT);
                         paint.setStyle(Paint.Style.FILL);
                         paint.setTypeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD));
                         canvas.save();
                         canvas.drawText("Date " + Current_Date, 50f, canvas.getHeight() - 150, paint);
-                        canvas.drawText("Lat " + latitude + "  Long " + longitude, 50f, canvas.getHeight() - 70, paint);
+                        canvas.drawText("" + getAddressFromLatLng(latitude,longitude), 50f, canvas.getHeight() - 70, paint);
                         canvas.restore();
 
 
@@ -2086,16 +2107,16 @@ public class SpotChallan extends Activity
 
                         TextPaint paint = new TextPaint();
                         paint.setColor(Color.RED);
-                        paint.setTextSize(30);
+                        paint.setTextSize(40);
                         paint.setTextAlign(Paint.Align.LEFT);
                         paint.setStyle(Paint.Style.FILL);
                         paint.setTypeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD));
                         canvas.save();
                         canvas.drawText("Date " + Current_Date, 50f, canvas.getHeight() - 150, paint);
-                        canvas.drawText("Lat " + latitude + "  Long " + longitude, 50f, canvas.getHeight() - 70, paint);
+                        canvas.drawText("" + getAddressFromLatLng(latitude,longitude), 50f, canvas.getHeight() - 70, paint);
                         canvas.restore();
 
-                       /* offender_image.setVisibility(View.VISIBLE);
+                        /* offender_image.setVisibility(View.VISIBLE);
                         offender_image.setImageBitmap(mutableBitmap);
                         offender_image.setRotation(0);*/
 
@@ -2129,7 +2150,7 @@ public class SpotChallan extends Activity
                     Canvas canvas = new Canvas(mutableBitmap); // bmp is the
                     TextPaint paint = new TextPaint();
                     paint.setColor(Color.RED);
-                    paint.setTextSize(30);
+                    paint.setTextSize(40);
                     paint.setTextAlign(Paint.Align.LEFT);
                     paint.setStyle(Paint.Style.FILL);
                     paint.setTypeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD));
@@ -2173,12 +2194,35 @@ public class SpotChallan extends Activity
         return BitmapFactory.decodeFile(path, options);
     }
 
+    private String getAddressFromLatLng(double lat, double lng) {
+        String getAddress = "";
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        try {
+            List<Address> addresses = geocoder.getFromLocation(lat, lng, 1);
+            if (addresses != null) {
+                Address address = addresses.get(0);
+                StringBuilder addressBuilder = new StringBuilder();
+                for (int i = 0; i <= address.getMaxAddressLineIndex(); i++) {
+                    addressBuilder.append(address.getAddressLine(i)).append("\n");
+                }
+                getAddress = addressBuilder.toString();
+            } else {
+                getAddress = "";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            getAddress = "";
+        }
+        return getAddress;
+    }
+
     /* @Override
     protected void onStart() {
         super.onStart();
         LogOutTimerUtil.startLogoutTimer(this, this);
         Log.e("Start", "OnStart () &&& Starting timer");
     }*/
+
     @Override
     public void onUserInteraction() {
         super.onUserInteraction();
@@ -2195,13 +2239,6 @@ public class SpotChallan extends Activity
         timer.schedule(logoutTimeTask, 10000); //auto logout in 5 minutes*/
     }
 
-    /* @Override
-    public void doLogout() {
-        Intent i = new Intent(SpotChallan.this, MainActivity.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(i);
-        finish();
-    }*/
     private class LogOutTimerTask extends TimerTask {
 
         @Override
@@ -2219,18 +2256,8 @@ public class SpotChallan extends Activity
 
         @Override
         protected String doInBackground(Void... params) {
-            // TODO Auto-generated method stub
             message = new StringBuffer();
-
-
             completeVehicle_num_send = ("" + regncode_send + "" + regnName_send + "" + vehicle_num_send);
-
-            /*
-             * if (!(ServiceHelper.onlinebuff==null)) { ServiceHelper.onlinebuff
-             * = new StringBuffer(""); ServiceHelper.onlinebuff.delete(0,
-             * ServiceHelper.onlinebuff.length()); //v }
-             */
-
             try {
                 ServiceHelper.getRTADetails("" + completeVehicle_num_send);
             } catch (Exception e) {
@@ -2457,11 +2484,11 @@ public class SpotChallan extends Activity
 
                     ll_validationString = ServiceHelper.license_data;
                     if ("INVALID".equalsIgnoreCase(ServiceHelper.license_data)) {
-                        ShowMessage("Entered DL is : "+licence_no+"\n Invalid Driving Licence !");
+                        ShowMessage("Entered DL is : " + licence_no + "\n Invalid Driving Licence !");
                         et_driver_lcnce_num_spot.setText("");
                         dob_input.setText("Select Date of Birth");
 
-                    }else {
+                    } else {
                         rl_licence_details_layout.setVisibility(View.VISIBLE);
 
                         try {
@@ -2560,7 +2587,7 @@ public class SpotChallan extends Activity
                             et_driver_lcnce_num_spot.setText("");
                             dob_input.setText("Select Date of Birth");
                             lyt_GetDtls.setVisibility(View.VISIBLE);
-                        }else if ("E".equals(DLvalidFLG)){
+                        } else if ("E".equals(DLvalidFLG)) {
                             ShowMessage("\n Driving Licence has Expired \n Please Add Without DL Violation\n ");
                             et_driver_lcnce_num_spot.setText("");
                             dob_input.setText("Select Date of Birth");
@@ -2844,6 +2871,8 @@ public class SpotChallan extends Activity
                 violation_max_amount.removeAll(violation_max_amount);
                 violation_rg_ids.remove(violation_rg_ids);
 
+                mArrayList_SecVltnNames = new ArrayList<>(ServiceHelper.violation_detailed_views.length);
+
                 for (int i = 0; i < ServiceHelper.violation_detailed_views.length; i++) {
 
                     violation_list.add("" + ServiceHelper.violation_detailed_views[i][2].toString().trim() + "("
@@ -2855,9 +2884,32 @@ public class SpotChallan extends Activity
                     violation_min_amount.add("" + ServiceHelper.violation_detailed_views[i][3].toString().trim());
                     violation_max_amount.add("" + ServiceHelper.violation_detailed_views[i][4].toString().trim());
                     violation_avg_amount.add("" + ServiceHelper.violation_detailed_views[i][5].toString().trim());
+
+                    try {
+                        mselectModel = new MultiSelectModel();
+                        mselectModel.setId(i);
+                        mselectModel.setOffence_cd(Integer.valueOf(ServiceHelper.violation_detailed_views[i][0].trim()));
+                        mselectModel.setVltnSec("" + ServiceHelper.violation_detailed_views[i][1].toString().trim());
+                        mselectModel.setVltnDis("" + ServiceHelper.violation_detailed_views[i][2].toString().trim());
+                        mselectModel.setDetainValue(Integer.parseInt("" + ServiceHelper.violation_detailed_views[i][7].toString().trim()));
+
+                        String vilatnText = "(" + Integer.valueOf(ServiceHelper.violation_detailed_views[i][0].trim())
+                                + ")" + ServiceHelper.violation_detailed_views[i][1].toString().trim() + "," +
+                                ServiceHelper.violation_detailed_views[i][2].toString().trim() +
+                                ",  " + ServiceHelper.violation_detailed_views[i][4].toString().trim();
+
+                        mselectModel.setVltnSecName("" + vilatnText);
+                        mselectModel.setFine_max(Integer.parseInt(ServiceHelper.violation_detailed_views[i][4].toString().trim()));
+                        mArrayList_SecVltnNames.add(mselectModel);
+
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             } else {
                 showToast("Violation Data Not Found");
+                mArrayList_SecVltnNames = new ArrayList<>();
             }
 
         }
@@ -4899,6 +4951,8 @@ public class SpotChallan extends Activity
 
                                         /* framing violation buffer */
 
+                                        //22@100@100@Air Horn/no Horn ( CR 119(II)/177 )!83@1000@1000@Allowing unauthorized person to drive ( S 180/177 )!
+
                                         violations_details_send.append(
                                                 key.trim() + "@" + selectedId.substring(5, selectedId.length()).trim() + "@"
                                                         + selectedId.substring(5, selectedId.length()).trim() + "@");
@@ -6669,7 +6723,8 @@ public class SpotChallan extends Activity
                         violationCodes.delete(0, violationCodes.length());
 
                         removeDialog(DYNAMIC_VIOLATIONS);
-                        showDialog(DYNAMIC_VIOLATIONS);
+                        // showDialog(DYNAMIC_VIOLATIONS);
+                        showDynamicViolations();
 
                     } else {
                         showToast("Select Wheeler Code");
@@ -7041,16 +7096,16 @@ public class SpotChallan extends Activity
             }
             sb_detained_items.delete(0, sb_detained_items.length());
             if (chck_detainedItems_rc.isChecked()) {
-                sb_detained_items.append("01:RC@");
+                sb_detained_items.append("2:RC@");
             }
             if (chck_detainedItems_vhcle.isChecked()) {
-                sb_detained_items.append("02:VEHICLE@");
+                sb_detained_items.append("3:VEHICLE@");
             }
             if (chck_detainedItems_licence.isChecked()) {
-                sb_detained_items.append("03:LICENCE@");
+                sb_detained_items.append("1:LICENCE@");
             }
             if (chck_detainedItems_permit.isChecked()) {
-                sb_detained_items.append("04:PERMIT@");
+                sb_detained_items.append("4:PERMIT@");
             }
             if (chck_detainedItems_none.isChecked()) {
                 sb_detained_items.append("");
@@ -7228,7 +7283,11 @@ public class SpotChallan extends Activity
                         && (!chck_detainedItems_none.isChecked())) {
                     showToast("Check Detained Items");
 
-                } else {
+                } else if (!et_driver_contact_spot.getText().toString().trim().isEmpty() && !Utils.isValidMobile(et_driver_contact_spot.getText().toString().trim())){
+                    et_driver_contact_spot.setError(
+                            Html.fromHtml("<font color='black'>Enter Valid mobile number!!!!</font>"));
+                    et_driver_contact_spot.requestFocus();
+                }else {
                     if (isOnline()) {
                         /* to call mobileSpotChallanPayment */
 
@@ -7931,9 +7990,7 @@ public class SpotChallan extends Activity
                     if ((et_driver_lcnce_num_spot.getText().toString().trim().equals(""))
                             && (btn_violation.getText().toString().equals("" + getResources().getString(R.string.select_violation)))
                             || ((dl_points != null && !"".equalsIgnoreCase(dl_points) && Integer.parseInt(dl_points) > 12) && ("C".equals(DLvalidFLG) || "S".equals(DLvalidFLG)))
-                            || (et_driver_lcnce_num_spot.getText().length() <= 5 && (64) != check.getId() && !dlCheck.equals("1")
-                            && (30) != check.getId()
-                            && (123) != check.getId()) && ("N".equalsIgnoreCase(theftRemarkFlag))) {
+                            || (et_driver_lcnce_num_spot.getText().length() <= 5 && !dlCheck.equals("1")) && ("N".equalsIgnoreCase(theftRemarkFlag))) {
 
                         licence_details_spot_master = new String[0];
                         otp_msg = "\n Please select  violation -without driving license \n";
@@ -8473,6 +8530,122 @@ public class SpotChallan extends Activity
                 showToast("" + NETWORK_TXT);
             }
         }
+    }
+
+    public void showDynamicViolations() {
+
+        mArrayList_SelectedVltnLst = new ArrayList<>();
+
+        multiSelectSearchSpinnerDlg = new MultiSelectSearchSpinnerDlg()
+                .title(getResources().getString(R.string.txt_SlctVltn))
+                .titleSize(25)
+                .positiveText("Done")
+                .negativeText("Cancel")
+                .setMinSelectionLimit(0)
+                .setMaxSelectionLimit(mArrayList_SecVltnNames.size())
+                // List of ids that you need to be selected
+                .multiSelectList(mArrayList_SecVltnNames) // the multi select model list with ids and name
+                .onSubmit(new MultiSelectSearchSpinnerDlg.SubmitCallbackListener() {
+                    @SuppressLint("SetTextI18n")
+                    @Override
+                    public void onSelected(final ArrayList<Integer> selectedIds, ArrayList<String> selectedNames, String dataString) {
+                        mArrayList_SelectedVltnLst = new ArrayList<>(selectedIds.size());
+                        violation_checked_violations = new ArrayList<>(selectedIds.size());
+
+                        if (selectedIds.size()>0) {
+
+                            for (int i = 0; i < selectedIds.size(); i++) {
+                                mArrayList_SelectedVltnLst.add(mArrayList_SecVltnNames.get(selectedIds.get(i)));
+                                int of_CD = mArrayList_SelectedVltnLst.get(i).getOffence_cd();
+                                violation_checked_violations.add(String.valueOf(mArrayList_SelectedVltnLst.get(i).getOffence_cd()));
+
+                                if (!et_driver_lcnce_num_spot.getText().toString().equalsIgnoreCase("")
+                                        || !et_driver_lcnce_num_spot.getText().toString().equalsIgnoreCase(null)) {
+
+                                    if (et_driver_lcnce_num_spot.getText().length() >= 5) {
+
+                                        if (of_CD == 64 || of_CD == 123) {
+                                            ShowMessageDL(
+                                                    "\nWith out DL Section is not allowed when Offender had Driving License !\n");
+                                        }
+                                    }
+                                }
+
+                                if (of_CD == 7 || of_CD == 9) {
+
+                                    passngerFLG = true;
+                                    grand_total = grand_total
+                                            + (Integer.parseInt(extraPassengers) * (mArrayList_SelectedVltnLst.get(i).getFine_max()));
+                                    total = 0.0;
+                                    total = grand_total
+                                            + VehicleHistoryPendingChallans.total_amount_selected_challans;
+                                    tv_violation_amnt.setText("Rs . " + grand_total);
+                                    tv_grand_total_spot.setText("Rs . " + total);
+                                } else {
+                                    passngerFLG = false;
+                                    grand_total = grand_total
+                                            + (mArrayList_SelectedVltnLst.get(i).getFine_max());
+                                    total = 0.0;
+                                    total = grand_total
+                                            + VehicleHistoryPendingChallans.total_amount_selected_challans;
+                                    tv_violation_amnt.setText("Rs . " + grand_total);
+                                    tv_grand_total_spot.setText("Rs . " + total);
+                                }
+
+                                if (mArrayList_SelectedVltnLst.get(i).getDetainValue() == 1) {
+                                    vioDetainCheckFlag = "1";
+                                }
+                                violation_desc_append.append("").append(mArrayList_SelectedVltnLst.get(i).getVltnDis()).append("(").append(mArrayList_SelectedVltnLst.get(i).getVltnSec()).append(")");
+                                violation_desc_append.append(",");
+
+                                violationCodes.append(mArrayList_SelectedVltnLst.get(i).getOffence_cd());
+                                violationCodes.append(",");
+
+                                violations_details_send.append(mArrayList_SelectedVltnLst.get(i).getOffence_cd()).append("@").append(mArrayList_SelectedVltnLst.get(i).getFine_max()).append("@").append(mArrayList_SelectedVltnLst.get(i).getFine_max()).append("@").append(mArrayList_SelectedVltnLst.get(i).getVltnDis()).append("@").append(mArrayList_SelectedVltnLst.get(i).getVltnSec()).append("!");
+                            }
+
+                            btn_violation.setText(violation_desc_append);
+
+                            vltnListModels = new ArrayList<>(mArrayList_SelectedVltnLst.size());
+
+                            for (int i = 0; i < mArrayList_SelectedVltnLst.size(); i++) {
+
+                                vltnListModel = new VltnListModel();
+                                vltnListModel.setOffence_cd(mArrayList_SelectedVltnLst.get(i).getOffence_cd());
+                                vltnListModel.setVltnSec(mArrayList_SelectedVltnLst.get(i).getVltnSec());
+                                vltnListModel.setVltnDis(mArrayList_SelectedVltnLst.get(i).getVltnDis());
+                                vltnListModel.setFine_max(mArrayList_SelectedVltnLst.get(i).getFine_max());
+                                vltnListModel.setFine_min(mArrayList_SelectedVltnLst.get(i).getFine_min());
+                                vltnListModel.setPenalty_points(mArrayList_SelectedVltnLst.get(i).getPenalty_points());
+                                vltnListModels.add(vltnListModel);
+
+                            }
+                        }else{
+                            btn_violation.setText(getResources().getString(R.string.select_violation));
+                        }
+
+                       /* for (VltnListModel msmodel : vltnListModels) {
+                            for (VltnListModel msmdl : mArrayList_DetainRules) {
+                                if (Objects.equals(msmodel.getOffence_cd(), msmdl.getOffence_cd())) {
+                                    detainedStatus = "1";
+                                    break;
+                                }
+                            }
+                        }
+*/
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        Log.d("Spot", "Dialog cancelled");
+
+
+                    }
+                });
+
+        multiSelectSearchSpinnerDlg.show(getSupportFragmentManager(), "MultiSelectDlg");
+
+
     }
 
 }

@@ -7,6 +7,8 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothGatt;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -37,11 +39,13 @@ import android.support.v4.content.FileProvider;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.Html;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -50,6 +54,7 @@ import android.view.WindowManager;
 import android.webkit.WebSettings;
 import android.webkit.WebSettings.LayoutAlgorithm;
 import android.webkit.WebView;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -58,6 +63,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -69,11 +75,16 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+import com.mtpv.imagematch.BleAdapter;
 import com.mtpv.mobilee_ticket_services.DBHelper;
 import com.mtpv.mobilee_ticket_services.DateUtil;
 import com.mtpv.mobilee_ticket_services.ServiceHelper;
+import com.mtpv.mobilee_ticket_services.SharedPrefsHelper;
 import com.mtpv.mobilee_ticket_services.Utils;
 import com.mtpv.mobilee_ticket_services.VibratorUtils;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -84,13 +95,30 @@ import java.io.OutputStream;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
+
+import app.justec.com.bleoperator.BleManager;
+import app.justec.com.bleoperator.callback.BleGattCallback;
+import app.justec.com.bleoperator.callback.BleRssiCallback;
+import app.justec.com.bleoperator.callback.BleScanCallback;
+import app.justec.com.bleoperator.comm.BleDevice;
+import app.justec.com.bleoperator.data.ReceiveFormDataResult;
+import app.justec.com.bleoperator.data.RecordForm;
+import app.justec.com.bleoperator.event.EventManger;
+import app.justec.com.bleoperator.exception.BleException;
+import app.justec.com.bleoperator.helper.DataSource;
+import app.justec.com.bleoperator.helper.RepeatCommand;
+import app.justec.com.bleoperator.scan.BleScanRuleConfig;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 @SuppressLint("DefaultLocale")
-public class Drunk_Drive extends Activity implements OnClickListener, LocationListener {
+public class Drunk_Drive extends Activity implements OnClickListener, LocationListener,
+        DataSource.DataCallBack<ArrayList<RecordForm>>,
+        RepeatCommand {
 
     @SuppressWarnings("unused")
     private String HALLOWEEN_ORANGE = "#FF7F27";
@@ -103,8 +131,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
     public static LinearLayout vehicle_type;
     public static CheckBox police_vehcle, govt_vehcle;
 
-    EditText et_regcid, et_vchl_num, et_last_num;
-
+    public static EditText et_regcid, et_vchl_num, et_last_num, edt_checkslno_, edt_alchl_reading;
 
     public static EditText et_driver_lcnce_num, et_aadharnumber;
 
@@ -118,16 +145,16 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
     public static TextView tv_aadhar_address, tv_aadhar_dob;
     ImageView img_aadhar_image;
 
-    String driverName=null, driverAddress=null,driverCity=null;
+    String driverName = null, driverAddress = null, driverCity = null;
     LinearLayout ll_aadhar_layout;
 
     RelativeLayout rl_rta_details_layout, rl_lcnce_Details;
 
     TextView tv_vhle_no, tv_owner_name, tv_address, tv_maker_name, tv_engine_no, tv_chasis_no, tv_licence_details;
 
-    public static TextView tv_vehicle_details,tv_dlpoints_spotchallan_xml;
+    public static TextView tv_vehicle_details, tv_dlpoints_spotchallan_xml;
 
-    Button btn_get_details, btn_get_pending_details, btn_cancel, btn_generate_dd_Case, btn_wheler_code;
+    Button btn_get_details, btn_get_pending_details, btn_cancel, btn_generate_dd_Case, btn_wheler_code, btn_scan_dd_xml;
 
     ImageButton ibtn_capture;
     WebView wv_img_captured;
@@ -159,9 +186,9 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
     public static String details_driver_dl_no = "";
 
     public static String[] rta_details_master, Wheeler_check;
-    public static String[] licene_details_master,rtaAprroved_Master;
+    public static String[] licene_details_master, rtaAprroved_Master;
     // public static String licence_status = "1";
-    public static String licence_status = "",dl_points = "0";
+    public static String licence_status = "", dl_points = "0";
 
     public static String completeVehicle_num_send = "", regncode_send = "", regnName_send = "", vehicle_num_send = "",
             fake_veh_chasisNo = "";
@@ -169,7 +196,6 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
     public static String aadhaar;
     public static String licence_no;
 
-    // http://www.meraevents.com/event/velocity-2015-carnival
     DBHelper db;
     Cursor c_whlr;
     Cursor c_occptn;
@@ -233,8 +259,6 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
 
     public static String Current_Date;
 
-    /************************ QR CODE **********************************/
-
     public static int WHITE = 0xFFFFFFFF;
     public static int BLACK = 0xFF000000;
     public final static int width = 500;
@@ -255,19 +279,30 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
 
     public static byte[] owner_imageByteArray = null;
 
-    public static String dd_dob_DL = null,theftRemarkFlag = "N";;
+    public static String dd_dob_DL = null, theftRemarkFlag = "N";
 
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
 
-    int challantype=0,casesLimit=0,casesBooked=0;
+    int challantype = 0, casesLimit = 0, casesBooked = 0;
 
     String bookedPScode_send_from_settings, bookedPSname_send_from_settings, point_code_send_from_settings, point_name_send_from_settings,
             exact_location_send_from_settings;
 
     ImageView img_logo;
-    TextView officer_Name,officer_Cadre,officer_PS;
+    TextView officer_Name, officer_Cadre, officer_PS;
     TextView textView_header_spot_challan_xml;
+
+    BluetoothAdapter bluetoothAdapter;
+    private static final int REQUEST_ENABLE_BT = 1;
+    private ListView list_BleDevice;
+    private BleAdapter adapter;
+    private List<BleDevice> dataList = new ArrayList<>();
+    private DataSource.DataCallBack<String> callBack;
+    AlertDialog dlg_BleDevice;
+    ProgressDialog progressDialog;
+    LinearLayout lyt_DD_Details;
+    BleDevice bleDevice;
 
     @SuppressLint({"NewApi", "MissingPermission", "ObsoleteSdkInt", "SimpleDateFormat"})
     @Override
@@ -276,6 +311,21 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setContentView(R.layout.drunkdrive);
+        LoadUIComponents();
+        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        CheckBlueToothState();
+
+        bleDevice = SharedPrefsHelper.getSavedObjectFromPreference(getApplicationContext(), "mPreference", "mLoginRes", BleDevice.class);
+        if (null != bleDevice) {
+            if (!BleManager.getInstance().isConnected(bleDevice)) {
+                BleManager.getInstance().disconnect(bleDevice);
+                connect(bleDevice);
+            }
+        } else {
+            showToast("Please connect the Breath Analyzer from Settings Module !");
+        }
+        lyt_DD_Details = findViewById(R.id.lyt_DD_Details);
+        progressDialog = new ProgressDialog(this);
         dd_dobFLG = false;
         dd_dob_DL = null;
         date = (DateFormat.format("dd/MM/yyyy hh:mm:ss", new java.util.Date()).toString());
@@ -290,30 +340,29 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
         date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
         // id_date.setText(strdate1);
         Current_Date = strdate1;
-        textView_header_spot_challan_xml=(TextView)findViewById(R.id.textView_header_spot_challan_xml);
+        textView_header_spot_challan_xml = (TextView) findViewById(R.id.textView_header_spot_challan_xml);
         textView_header_spot_challan_xml.setText("Drunk drive");
-        img_logo=(ImageView)findViewById(R.id.img_logo);
-        if (MainActivity.uintCode.equals("22")){
+        img_logo = (ImageView) findViewById(R.id.img_logo);
+        if (MainActivity.uintCode.equals("22")) {
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.cyb_logo));
-        }else if (MainActivity.uintCode.equals("23")){
+        } else if (MainActivity.uintCode.equals("23")) {
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
-        }else if (MainActivity.uintCode.equals("24")){
+        } else if (MainActivity.uintCode.equals("24")) {
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
-        }else if (MainActivity.uintCode.equals("44")) { //44 Warangal
+        } else if (MainActivity.uintCode.equals("44")) { //44 Warangal
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.wgl_logo));
-        }else { //  69 Siddipet
+        } else { //  69 Siddipet
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
         }
 
-        officer_Name=(TextView)findViewById(R.id.officer_Name);
-        officer_Cadre=(TextView)findViewById(R.id.officer_cadre);
-        officer_PS=(TextView)findViewById(R.id.officer_PS);
+        officer_Name = (TextView) findViewById(R.id.officer_Name);
+        officer_Cadre = (TextView) findViewById(R.id.officer_cadre);
+        officer_PS = (TextView) findViewById(R.id.officer_PS);
 
-        officer_Name.setText(MainActivity.pidName+"("+MainActivity.cadre_name+")");
+        officer_Name.setText(MainActivity.pidName + "(" + MainActivity.cadre_name + ")");
         officer_Cadre.setText(MainActivity.cadre_name);
         officer_PS.setText(MainActivity.psName);
 
-        LoadUIComponents();
 
         // licence_status = "1";
         licence_status = "";
@@ -342,7 +391,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
         bookedPSname_send_from_settings = preferences.getString("psname_name", "psname");
         point_code_send_from_settings = preferences.getString("point_code", "0");
         point_name_send_from_settings = preferences.getString("point_name", "pointname");
-        exact_location_send_from_settings=preferences.getString("ps_res_name_code","0");
+        exact_location_send_from_settings = preferences.getString("ps_res_name_code", "0");
         //exact_location_send_from_settings = preferences.getString("exact_location", "location");
 
 
@@ -412,7 +461,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
             }
         });
 
-		/* TO GET WHEELER CODE DETAILS */
+        /* TO GET WHEELER CODE DETAILS */
         try {
             db.open();
             // WHEELER CODE
@@ -441,12 +490,35 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
 
     }
 
+    private void CheckBlueToothState() {
+        // TODO Auto-generated method stub
+        if (bluetoothAdapter == null) {
+            showToast("Bluetooth NOT support");
+        } else {
+            if (bluetoothAdapter.isEnabled()) {
+                if (bluetoothAdapter.isDiscovering()) {
+                    showToast("Bluetooth is currently in device discovery process.");
+                } else {
+                    showToast("Bluetooth is Enabled.");
+
+                }
+            } else {
+                Intent enableBtIntent = new Intent(
+                        BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+            }
+        }
+    }
+
     private void LoadUIComponents() {
 
         et_regcid = (EditText) findViewById(R.id.edt_regncid_rtadetails_xml);
         et_vchl_num = (EditText) findViewById(R.id.edt_regncidname_rtadetails_xml);
         et_last_num = (EditText) findViewById(R.id.edt_regncid_lastnum_rtadetails_xml);
-        tv_dlpoints_spotchallan_xml=(TextView)findViewById(R.id.tv_dlpoints_spotchallan_xml);
+        edt_checkslno_ = findViewById(R.id.edt_checkslno_);
+        edt_alchl_reading = findViewById(R.id.edt_alchl_reading);
+        btn_scan_dd_xml = findViewById(R.id.btn_scan_dd_xml);
+        tv_dlpoints_spotchallan_xml = (TextView) findViewById(R.id.tv_dlpoints_spotchallan_xml);
 
         offender_image = (ImageView) findViewById(R.id.offender_image);
         offender_image.setVisibility(View.GONE);
@@ -627,7 +699,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
         tv_engine_no = (TextView) findViewById(R.id.tv_engineno_rtadetails_xml);
         tv_chasis_no = (TextView) findViewById(R.id.tv_chasis_rtadetails_xml);
 
-		/* LICENCE DETAILS */
+        /* LICENCE DETAILS */
         tv_licnce_ownername = (TextView) findViewById(R.id.tvlcnceownername_rtadetails_xml);
         tv_lcnce_father_name = (TextView) findViewById(R.id.tvlcnce_fname_rtadetails_xml);
         tv_lcnce_phone_number = (TextView) findViewById(R.id.tv_lcnce_mobnum_rtadetails_xml);
@@ -635,7 +707,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
         dl_img = (ImageView) findViewById(R.id.dl_img);
         dl_no = (TextView) findViewById(R.id.dl_no);
 
-		/* AADHAR DETAILS */
+        /* AADHAR DETAILS */
         // hardcode
         et_aadharnumber = (EditText) findViewById(R.id.edt_aadharno_rtadetails_xml);
         //et_aadharnumber.setText("322847907255");
@@ -654,7 +726,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
         ll_aadhar_layout.setVisibility(View.GONE);
         tv_aadhar_header.setVisibility(View.GONE);
 
-		/* TO SHOW vehicel DETAILS AND LICENCE DETAILS FOUND OR NOT */
+        /* TO SHOW vehicel DETAILS AND LICENCE DETAILS FOUND OR NOT */
         tv_vehicle_details = (TextView) findViewById(R.id.textView_regdetails_header);
         tv_licence_details = (TextView) findViewById(R.id.textView_licence_header);
 
@@ -672,6 +744,57 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
         licene_details_master = new String[0];
 
         ll_mainsub_root = (LinearLayout) findViewById(R.id.ll_mainsub_root);
+
+        btn_scan_dd_xml.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                progressDialog
+                        .setMessage("Please wait \n BlueTooth Scan is in Process!!!");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        startScan();
+                        initView();
+                    }
+                });
+
+            }
+        });
+
+        EventBus.getDefault().register(this);
+        initBle();
+        EventManger.getInstance().receieDataCallback(this);
+        EventManger.getInstance().repeatCallback(this);
+        EventManger.getInstance().searchDataCallback(this, 10006);
+        callBack = new DataSource.DataCallBack<String>() {
+            @Override
+            public void onDataNotAvailed(int i) {
+
+            }
+
+            @Override
+            public void onDataLoaded(String s) {
+                Log.i("bleble", s);
+                if (s.equals("1")) {
+                    Toast.makeText(Drunk_Drive.this, "initDeviceInfo", Toast.LENGTH_LONG).show();
+                    Log.i("bleble0", "13");
+                    EventManger.getInstance().deviceDisplayConfiger(callBack);
+
+                } else if (s.equals("3")) {
+
+                    Log.i("bleble0", "14");
+                    EventManger.getInstance().fetchDeviceInfo(callBack);
+                } else if (s.equals("4")) {
+
+                    Log.i("bleble0", "15");
+                    EventManger.getInstance().recordFormDisplay(callBack);
+
+
+                }
+            }
+        };
 
     }
 
@@ -692,14 +815,14 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                 Fake_NO_Dialog.fake_action = null;
                 tv_vehicle_details.setText("");
                 tv_licence_details.setText("");
-                image_data_tosend=null;
+                image_data_tosend = null;
 
 
                 ServiceHelper.rc_send = "";
                 ServiceHelper.license_data = "";
                 ServiceHelper.aadhar_data = "";
-                SpotChallan.OtpStatus="";
-                SpotChallan.OtpResponseDelayTime="";
+                SpotChallan.OtpStatus = "";
+                SpotChallan.OtpResponseDelayTime = "";
 
 
                 tv_vhle_no.setText("");
@@ -748,9 +871,9 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                 if (!et_driver_lcnce_num.getText().toString().equalsIgnoreCase("") && et_driver_lcnce_num.getText().toString().length() >= 5) {
                     if (dobcheck.equalsIgnoreCase("Yes")) {
 
-                        if(isOnline()) {
+                        if (isOnline()) {
                             asyncAllsOfMethods();
-                        }else {
+                        } else {
                             showToast("Please Check Your Network Connection");
                         }
 
@@ -760,7 +883,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                 } else {
                     if (isOnline()) {
                         asyncAllsOfMethods();
-                    }else {
+                    } else {
                         showToast("Please Check Your Network Connection");
                     }
                 }
@@ -820,8 +943,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                         vehicle_num_send = ("" + (et_regcid.getText().toString().trim().toUpperCase()) + ""
                                 + (et_vchl_num.getText().toString().trim().toUpperCase()) + ""
                                 + (et_last_num.getText().toString().trim().toUpperCase()));
-                        Log.i("**VEHCILE NUM RTA DETIALS SEND***", "" + vehicle_num_send);
-                        if(isOnline()) {
+                        if (isOnline()) {
                             new Async_getPendingChallans().execute();
                         }
                     } else {
@@ -831,16 +953,16 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                 break;
 
             case R.id.btncancel_rta_details_xml:
-            /*
-             * In API level 11 or greater : use Code : if(Build.VERSION.SDK_INT
-			 * >= 11)
-			 */
+                /*
+                 * In API level 11 or greater : use Code : if(Build.VERSION.SDK_INT
+                 * >= 11)
+                 */
                 Intent launch = new Intent(Drunk_Drive.this, Dashboard.class);
                 launch.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(launch);
                 break;
 
-		/* TO MOVE TO GENERATE MOBILE TICKET */
+            /* TO MOVE TO GENERATE MOBILE TICKET */
             case R.id.btngeneratechallan_rta_details_xml:
 
 
@@ -872,18 +994,15 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                         if ((c_whlr.getCount() > 0)) {
 
                             licence_status = "";
-                            Log.i("IMAGE FROM RTA TO TICKET B4 MOVE", "" + picturePath);
 
                             if (Fake_NO_Dialog.fake_action == "not fake") {
 
                                 if (isOnline()) {
                                     Async_getApprovefromRtaforPoint async_getApprovefromRtaforPoint = new Async_getApprovefromRtaforPoint();
                                     async_getApprovefromRtaforPoint.execute();
-                                }else {
+                                } else {
                                     showToast("Please Check your Network Connectivity");
                                 }
-
-
 
 
                             } else if (Fake_NO_Dialog.fake_action == null) {
@@ -898,7 +1017,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                                 if (isOnline()) {
                                     Async_getApprovefromRtaforPoint async_getApprovefromRtaforPoint = new Async_getApprovefromRtaforPoint();
                                     async_getApprovefromRtaforPoint.execute();
-                                }else {
+                                } else {
                                     showToast("Please check Network Connectivity ");
                                 }
 
@@ -960,14 +1079,14 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                 break;
 
             case R.id.imgv_camera_capture_rta_details_xml:
-            /*
-			 * if (isDeviceSupportCamera()) {
-			 * 
-			 * Intent cameraIntent = new
-			 * Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-			 * startActivityForResult(cameraIntent, CAMERA_REQUEST); } else {
-			 * showToast("Sorry! Your device doesn't support camera"); }
-			 */
+                /*
+                 * if (isDeviceSupportCamera()) {
+                 *
+                 * Intent cameraIntent = new
+                 * Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                 * startActivityForResult(cameraIntent, CAMERA_REQUEST); } else {
+                 * showToast("Sorry! Your device doesn't support camera"); }
+                 */
                 selectImage();
                 break;
 
@@ -982,7 +1101,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
 
     private void asyncAllsOfMethods() {
 
-        if(isOnline()) {
+        if (isOnline()) {
 
             VerhoeffCheckDigit ver = new VerhoeffCheckDigit();
 
@@ -996,19 +1115,26 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                 et_last_num.setError(Html.fromHtml("<font color='black'>Enter Vehicle Number</font>"));
                 et_last_num.requestFocus();
 
+            } else if (edt_checkslno_.getText().toString().trim().isEmpty()) {
+                edt_checkslno_.setError(Html.fromHtml("<font color='black'>Enter Check serial Number !</font>"));
+                edt_checkslno_.requestFocus();
+            } else if (edt_alchl_reading.getText().toString().trim().isEmpty() ||
+                    Integer.parseInt(edt_alchl_reading.getText().toString().trim()) < 36) {
+                edt_alchl_reading.setError(Html.fromHtml("<font color='black'>Alchohal reading should be more than 36 </font>"));
+                edt_alchl_reading.requestFocus();
             } else {
                 if (isOnline()) {
                     vehicle_num_send = "";
                     vehicle_num_send = ("" + (et_regcid.getText().toString().trim().toUpperCase()) + ""
                             + (et_vchl_num.getText().toString().trim().toUpperCase()) + ""
                             + (et_last_num.getText().toString().trim().toUpperCase()));
-                    Log.i("**VEHCILE_NUM_TO_SEND***", "" + vehicle_num_send);
 
                     Dashboard.rta_details_request_from = "RTACLASS";
                     completeVehicle_num_send = ("" + et_regcid.getText().toString() + ""
                             + et_vchl_num.getText().toString() + "" + et_last_num.getText().toString());
                     if (isOnline()) {
                         new Async_getRTADetails().execute();
+                        lyt_DD_Details.setVisibility(View.VISIBLE);
                     }
 
                     if (isOnline()) {
@@ -1023,7 +1149,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                         }
                     }
 
-					/* TO GET AADHAR DETAILS */
+                    /* TO GET AADHAR DETAILS */
                     ll_aadhar_layout.setVisibility(View.GONE);
                     tv_aadhar_header.setVisibility(View.GONE);
                     img_aadhar_image.setImageResource(R.drawable.photo);
@@ -1046,7 +1172,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                     showToast("" + NETWORK_TXT);
                 }
             }
-        }else {
+        } else {
             showToast("Please Check Your Network Connection");
         }
 
@@ -1062,21 +1188,178 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
         startActivityForResult(intent, 1);*/
 
 
-
-        if (Build.VERSION.SDK_INT<=23) {
+        if (Build.VERSION.SDK_INT <= 23) {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
             intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
             startActivityForResult(intent, 1);
-        }else{
+        } else {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
             intent.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(Drunk_Drive.this,
-                    BuildConfig.APPLICATION_ID + ".provider",f));
+                    BuildConfig.APPLICATION_ID + ".provider", f));
             intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             startActivityForResult(intent, 1);
         }
 
+    }
+
+    @Override
+    public void onDataNotAvailed(int i) {
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    public void onDataLoaded(ArrayList<RecordForm> recordForms) {
+        try {
+            if (recordForms.size() > 0 && null != recordForms) {
+                edt_checkslno_.setText("" + recordForms.get(0).getRecordFormNum());
+                edt_alchl_reading.setText("" + recordForms.get(0).getRecordFormMeasureNum());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            edt_checkslno_.setText("");
+            edt_alchl_reading.setText("");
+        }
+
+    }
+
+    @Override
+    public void OnRepeatCommand(String s) {
+
+    }
+
+    private void initBle() {
+
+        BleManager.getInstance().init(getApplication());
+        BleManager.getInstance()
+                .enableLog(true)
+                .setMaxConnectCount(3)
+                .setOperateTimeout(5000);
+        BleScanRuleConfig scanRuleConfig = new BleScanRuleConfig.Builder()
+                .setScanTimeOut(6000)
+                .build();
+        BleManager.getInstance()
+                .initScanRule(scanRuleConfig);
+    }
+
+    private void initView() {
+        dlg_BleDevice = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT).create();
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.blescandevice_dialog, null);
+        dlg_BleDevice.setView(dialogView);
+        list_BleDevice = dialogView.findViewById(R.id.list_BleDevice);
+        adapter = new BleAdapter(this, dataList);
+        list_BleDevice.setAdapter(adapter);
+        progressDialog.dismiss();
+        dlg_BleDevice.show();
+        dlg_BleDevice.setCancelable(true);
+
+        list_BleDevice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                if (!BleManager.getInstance().isConnected((BleDevice) adapter.getItem(position))) {
+
+                    Log.d("DeviceBA", "" + adapter.getItem(position));
+                    BleManager.getInstance().cancelScan();
+                    connect((BleDevice) adapter.getItem(position));
+                    dlg_BleDevice.dismiss();
+                }
+            }
+        });
+    }
+
+    private void startScan() {
+        BleManager.getInstance().scan(new BleScanCallback() {
+            @Override
+            public void onScanStarted(boolean success) {
+                dataList.clear();
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onLeScan(BleDevice bleDevice) {
+                super.onLeScan(bleDevice);
+                /*if (!TextUtils.isEmpty(bleDevice.getName())) {
+                    Log.d("Ble Name",""+bleDevice.getName());
+                    adapter.add(bleDevice);
+                }*/
+
+
+            }
+
+            @Override
+            public void onScanning(BleDevice bleDevice) {
+                if (!TextUtils.isEmpty(bleDevice.getName())) {
+                    Log.d("Ble Name", "" + bleDevice.getName());
+                    adapter.add(bleDevice);
+                }
+            }
+
+            @Override
+            public void onScanFinished(List<BleDevice> scanResultList) {
+               /* adapter = new BleAdapter(MainActivity.this, scanResultList);
+                listView.setAdapter(adapter);*/
+            }
+        });
+    }
+
+    private void connect(final BleDevice bleDevice) {
+        BleManager.getInstance().connect(bleDevice, new BleGattCallback() {
+            @Override
+            public void onStartConnect() {
+
+            }
+
+            @Override
+            public void onConnectFail(BleException exception) {
+
+                Toast.makeText(Drunk_Drive.this, "fail", Toast.LENGTH_LONG).show();
+
+            }
+
+            @Override
+            public void onConnectSuccess(BleDevice bleDevice, BluetoothGatt gatt, int status) {
+                Toast.makeText(Drunk_Drive.this, "ConnectSuccess", Toast.LENGTH_LONG).show();
+                readRssi(bleDevice);
+                EventManger.getInstance()
+                        .initDeviceInfo(bleDevice, true, callBack);
+            }
+
+            @Override
+            public void onDisConnected(boolean isActiveDisConnected, BleDevice bleDevice, BluetoothGatt gatt, int status) {
+
+            }
+
+            @Override
+            public void onReConnect(BleDevice bleDevice) {
+
+            }
+        });
+    }
+
+    private void readRssi(BleDevice bleDevice) {
+        BleManager.getInstance().readRssi(bleDevice, new BleRssiCallback() {
+            @Override
+            public void onRssiFailure(BleException exception) {
+                Log.i("bleble", "onRssiFailure" + exception.toString());
+            }
+
+            @Override
+            public void onRssiSuccess(int rssi) {
+                Log.i("bleble", "onRssiSuccess: " + rssi);
+            }
+        });
+    }
+
+    @Subscribe(sticky = true)
+    public void instantRecordData(ReceiveFormDataResult receiveFormDataResult) {
+        //  TAG_INSTANT_RECEIVE=10004;
+        if (receiveFormDataResult != null && receiveFormDataResult.getTag() == 10004) {
+            Log.i("bleble5", "recordFormsReceive=" + receiveFormDataResult.getRecordFormArrayList().size());
+        }
     }
 
     public class Async_getRTADetails extends AsyncTask<Void, Void, String> {
@@ -1117,22 +1400,23 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
 
             try {
 
-                if(ServiceHelper.rta_data!=null && !ServiceHelper.rta_data.equalsIgnoreCase("NA") && !"0".equals(ServiceHelper.rta_data)) {
+                if (ServiceHelper.rta_data != null && !ServiceHelper.rta_data.equalsIgnoreCase("NA") && !"0".equals(ServiceHelper.rta_data)) {
                     if ((!ServiceHelper.rta_data.equalsIgnoreCase("0")) && (rta_details_master.length > 1)) {
                         rl_rta_details_layout.setVisibility(View.VISIBLE);
+
 
                         rtaFlG = true;
                         licFLG = false;
                         adhrFLG = false;
                         try {
                             tv_vhle_no.setText("" + completeVehicle_num_send);
-                            tv_owner_name.setText("" + rta_details_master[1]!=null?rta_details_master[1]:"");
-                            tv_address.setText("" + rta_details_master[2]!=null?rta_details_master[2]:"" + "\t" + rta_details_master[3]!=null?rta_details_master[3]:"");
-                            tv_maker_name.setText("" + rta_details_master[4]!=null?rta_details_master[4]:"" + "\t" + rta_details_master[6]!=null?rta_details_master[6]:"");
-                            tv_engine_no.setText("" + rta_details_master[7]!=null?rta_details_master[7]:"");
-                            tv_chasis_no.setText("" + rta_details_master[8]!=null?rta_details_master[8]:"");
+                            tv_owner_name.setText("" + rta_details_master[1] != null ? rta_details_master[1] : "");
+                            tv_address.setText("" + rta_details_master[2] != null ? rta_details_master[2] : "" + "\t" + rta_details_master[3] != null ? rta_details_master[3] : "");
+                            tv_maker_name.setText("" + rta_details_master[4] != null ? rta_details_master[4] : "" + "\t" + rta_details_master[6] != null ? rta_details_master[6] : "");
+                            tv_engine_no.setText("" + rta_details_master[7] != null ? rta_details_master[7] : "");
+                            tv_chasis_no.setText("" + rta_details_master[8] != null ? rta_details_master[8] : "");
 
-                            Log.i("FAKE DETAILS", "" + rta_details_master[10]!=null?rta_details_master[10]:"");
+                            Log.i("FAKE DETAILS", "" + rta_details_master[10] != null ? rta_details_master[10] : "");
 
                             tv_vehicle_details.setText("VEHICLE DETAILS");
 
@@ -1142,7 +1426,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                             rta_details_master = ServiceHelper.rta_data.split("!");
 
                             Wheeler_check = rta_details_master[0].split(":");
-                            String Wheeler_Enable_check = Wheeler_check[1].toString()!=null?Wheeler_check[1].toString():"";
+                            String Wheeler_Enable_check = Wheeler_check[1].toString() != null ? Wheeler_check[1].toString() : "";
 
                             if (!Wheeler_Enable_check.equalsIgnoreCase("NA")) {
                                 btn_wheler_code.setClickable(false);
@@ -1155,11 +1439,9 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                                     && rta_details_master[0].split("\\:")[1] != null
                                     && !"NA".equalsIgnoreCase(rta_details_master[0].split("\\:")[1].trim())) {
                                 // whlr_code_send = rta_details_master[0].split("\\:")[1];
-                                whlr_code_send = rta_details_master[9]!=null?rta_details_master[9]:"";
-                                Log.i("whlr_code_send DYNAMIC::::", whlr_code_send);
+                                whlr_code_send = rta_details_master[9] != null ? rta_details_master[9] : "";
                                 if (whlr_code_send != null) {
                                     btn_wheler_code.setText("" + whlr_code_send);
-                                    Log.i("whlr_code_send condition::::", "Called");
                                 } else {
                                     btn_wheler_code.setClickable(true);
                                 }
@@ -1167,11 +1449,10 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                                 // showToast("DD Toast !!!");
                             }
 
-                        }catch (ArrayIndexOutOfBoundsException e)
-                        {
+                        } catch (ArrayIndexOutOfBoundsException e) {
                             e.printStackTrace();
                         }
-                        if(isOnline()) {
+                        if (isOnline()) {
                             new Async_getOffenderRemarks().execute();
                         }
 
@@ -1190,14 +1471,13 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
 //                            new Async_getAadharDetails().execute();
 //                        }
 //                    }
-                }else {
+                } else {
                     tv_vehicle_details.setText("VEHICLE DETAILS NOT FOUND!");
                     rl_rta_details_layout.setVisibility(View.GONE);
                     rtaFlG = false;
                 }
 
-            }catch (Exception e)
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
                 tv_vehicle_details.setText("VEHICLE DETAILS NOT FOUND!");
                 rl_rta_details_layout.setVisibility(View.GONE);
@@ -1238,17 +1518,15 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
 
                     Drunk_Drive.offender_remarks_resp_master = ServiceHelper.offender_remarks.split("!");
 
-                    if (!offender_remarks_resp_master[10].toString().trim().equals("NA") && offender_remarks_resp_master.length>1) {
+                    if (!offender_remarks_resp_master[10].toString().trim().equals("NA") && offender_remarks_resp_master.length > 1) {
                         showDialog(FAKE_NUMBERPLATE_DIALOG);
-                    }
-                    else {
+                    } else {
                         showToast("No Remarks Found");
                     }
-                }catch (Exception e)
-                {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
-            } else{
+            } else {
                 showToast("Remarks Data Not Found");
             }
 
@@ -1323,26 +1601,24 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                             ? ServiceHelper.aadhar_details[9] : "NA").trim().toUpperCase());
 
 
-                    String date_birth="0",service_year="0";
+                    String date_birth = "0", service_year = "0";
 
 
                     try {
 
-                        date_birth = ServiceHelper.aadhar_details[10]!=null?ServiceHelper.aadhar_details[10]:"";
-                        if(date_birth!=null && !date_birth.equalsIgnoreCase(""))
-                        {
+                        date_birth = ServiceHelper.aadhar_details[10] != null ? ServiceHelper.aadhar_details[10] : "";
+                        if (date_birth != null && !date_birth.equalsIgnoreCase("")) {
                             String[] split_dob = date_birth.split("\\/");
                             service_year = "" + split_dob[2];
                         }
 
 
-                    }catch (ArrayIndexOutOfBoundsException e)
-                    {
+                    } catch (ArrayIndexOutOfBoundsException e) {
                         e.printStackTrace();
 
 
-                        service_year="0";
-                        date_birth="0";
+                        service_year = "0";
+                        date_birth = "0";
                     }
 
                     int final_age = year - Integer.parseInt(service_year);
@@ -1352,11 +1628,11 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
 
                     tv_aadhar_uid.setText("" + (!ServiceHelper.aadhar_details[11].equalsIgnoreCase("0")
                             ? ServiceHelper.aadhar_details[11] : "NA"));
-				/*
-				 * tv_aadhar_eid .setText("" +
-				 * (!ServiceHelper.aadhar_details[12] .equalsIgnoreCase("0") ?
-				 * ServiceHelper.aadhar_details[12] : "NA"));
-				 */
+                    /*
+                     * tv_aadhar_eid .setText("" +
+                     * (!ServiceHelper.aadhar_details[12] .equalsIgnoreCase("0") ?
+                     * ServiceHelper.aadhar_details[12] : "NA"));
+                     */
 
                     if (ServiceHelper.aadhar_details[13].toString().trim().equals("0")) {
 
@@ -1366,8 +1642,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                                     Base64.DEFAULT);
                             Bitmap decocebyte = BitmapFactory.decodeByteArray(decodestring, 0, decodestring.length);
                             img_aadhar_image.setImageBitmap(decocebyte);
-                        }catch (Exception e)
-                        {
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     } else {
@@ -1379,10 +1654,10 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                     }
 
 
-                    String Qrdata = "AADHAAAR NUMBER:" + " " + ServiceHelper.aadhar_details[11]!=null?ServiceHelper.aadhar_details[11]:"" + "\n" + "NAME:" + " "
-                            + ServiceHelper.aadhar_details[0]!=null?ServiceHelper.aadhar_details[0]:"" + "\n" + "FATHER NAME:" + " "
-                            + ServiceHelper.aadhar_details[1]!=null?ServiceHelper.aadhar_details[1]:"" + "\n" + "AGE:" + " " + final_age + "\n" + "GENDER:" + " "
-                            + ServiceHelper.aadhar_details[9]!=null?ServiceHelper.aadhar_details[9]:""+ "\n" + "ADDRESS:" + " " + Compleate_addr;
+                    String Qrdata = "AADHAAAR NUMBER:" + " " + ServiceHelper.aadhar_details[11] != null ? ServiceHelper.aadhar_details[11] : "" + "\n" + "NAME:" + " "
+                            + ServiceHelper.aadhar_details[0] != null ? ServiceHelper.aadhar_details[0] : "" + "\n" + "FATHER NAME:" + " "
+                            + ServiceHelper.aadhar_details[1] != null ? ServiceHelper.aadhar_details[1] : "" + "\n" + "AGE:" + " " + final_age + "\n" + "GENDER:" + " "
+                            + ServiceHelper.aadhar_details[9] != null ? ServiceHelper.aadhar_details[9] : "" + "\n" + "ADDRESS:" + " " + Compleate_addr;
                     try {
                         Bitmap bitmap = encodeAsBitmap(Qrdata);
                         qr_code.setImageBitmap(bitmap);
@@ -1390,8 +1665,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                         e.printStackTrace();
                     }
 
-                }catch (ArrayIndexOutOfBoundsException e)
-                {
+                } catch (ArrayIndexOutOfBoundsException e) {
                     e.printStackTrace();
 
                     tv_aadhar_header.setVisibility(View.VISIBLE);
@@ -1460,21 +1734,19 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
 
                         dl_points = SpotChallan.licence_details_spot_master[7] != null ? SpotChallan.licence_details_spot_master[7] : "0";
 
-                    }catch (ArrayIndexOutOfBoundsException e)
-                    {
+                    } catch (ArrayIndexOutOfBoundsException e) {
                         e.printStackTrace();
 
-                        dl_points="0";
+                        dl_points = "0";
 
                     }
 
                     if (licence_no != null && (dl_points != null && Integer.parseInt(dl_points) > 0)) {
 
-                        tv_dlpoints_spotchallan_xml.setText("TOTAL PENALTY POINTS :"+dl_points);
+                        tv_dlpoints_spotchallan_xml.setText("TOTAL PENALTY POINTS :" + dl_points);
 
-                    }
-                    else {
-                        tv_dlpoints_spotchallan_xml.setText("TOTAL PENALTY POINTS :"+"0");
+                    } else {
+                        tv_dlpoints_spotchallan_xml.setText("TOTAL PENALTY POINTS :" + "0");
                     }
 
 
@@ -1485,8 +1757,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                             Log.i("Image 2 byte[]", "" + Base64.decode(owner_image_data.trim().getBytes(), 1));
                             Bitmap bmp = BitmapFactory.decodeByteArray(owner_imageByteArray, 0, owner_imageByteArray.length);
                             dl_img.setImageBitmap(bmp);
-                        }catch (Exception e)
-                        {
+                        } catch (Exception e) {
                             e.printStackTrace();
                             dl_img.setImageDrawable(getResources().getDrawable(R.drawable.empty_profile_img));
                         }
@@ -1504,8 +1775,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                     tv_licence_details.setText("LICENCE DETAILS NOT FOUND!");
                     rl_lcnce_Details.setVisibility(View.GONE);
                 }
-            }catch (Exception e)
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
 
                 Drunk_Drive.licFLG = false;
@@ -1599,14 +1869,13 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
 
                         new DialogInterface.OnClickListener() {
 
+                            @SuppressLint("SetTextI18n")
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 // TODO Auto-generated method stub
 
                                 selected_wheller_code = which;
-                                Log.i("selected_wheller_code ::::", "" + selected_wheller_code);
                                 btn_wheler_code.setText("" + wheeler_name_arr_spot[which]);
-                                Log.i("wheeler_name_arr_spot[which] ::::", "" + wheeler_name_arr_spot[which]);
                                 removeDialog(WHEELER_CODE);
                                 whlr_code_send = wheeler_code_arr_spot[which];
                                 Log.i("****whlr_code_send***", "" + whlr_code_send);
@@ -1905,6 +2174,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
         return null;
     }
 
+    @SuppressLint("MissingPermission")
     @SuppressWarnings("unused")
     private void LocationAndIMEIValues() {
         // TODO Auto-generated method stub
@@ -1981,7 +2251,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
 
     @Override
     public void onBackPressed() {
-        showToast("Please Click on Back Button to go back");
+        super.onBackPressed();
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -1998,7 +2268,6 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
         dob_input.setText(present_date_toSend);
         Log.i("dob_input :::", "" + dob_input.getText().toString());
     }
-
 
     public class Async_getApprovefromRtaforPoint extends AsyncTask<Void, Void, String> {
         @Override
@@ -2017,23 +2286,22 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                     driverAddress = tv_aadhar_address.getText().toString() != null ? tv_aadhar_address.getText().toString() : "";
 
                 }
-            }catch (ArrayIndexOutOfBoundsException e)
-            {
+            } catch (ArrayIndexOutOfBoundsException e) {
                 e.printStackTrace();
-                driverName="";
-                driverAddress="";
-                driverCity="";
+                driverName = "";
+                driverAddress = "";
+                driverCity = "";
             }
 
 
-            String rtaApproverResponse = ServiceHelper.getApprovefromRtaforPoint("",completeVehicle_num_send!=null?completeVehicle_num_send:"NA",
-                    new DateUtil().getTodaysDate(),new DateUtil().getPresentTime(),
-                    "",Dashboard.UNIT_CODE,bookedPScode_send_from_settings,exact_location_send_from_settings,
-                    "63@W/o Documents(S 130/177)@100!33@Drunken Driving(S 185(a))@0","0",licence_no,
-                    driverName!=null?driverName.toString():"NA",driverAddress!=null?driverAddress.toString():"NA",
-                    driverCity!=null?driverCity.toString():"NA","U","",
-                    "",dd_dob_DL!=null?dd_dob_DL.toString():"NA",point_name_send_from_settings,"",bookedPSname_send_from_settings,
-                    pidName,cadre_name,whlr_code_send!=null?whlr_code_send.toString():"NA",point_code_send_from_settings,"");
+            String rtaApproverResponse = ServiceHelper.getApprovefromRtaforPoint("", completeVehicle_num_send != null ? completeVehicle_num_send : "NA",
+                    new DateUtil().getTodaysDate(), new DateUtil().getPresentTime(),
+                    "", Dashboard.UNIT_CODE, bookedPScode_send_from_settings, exact_location_send_from_settings,
+                    "63@W/o Documents(S 130/177)@100!33@Drunken Driving(S 185(a))@0", "0", licence_no,
+                    driverName != null ? driverName.toString() : "NA", driverAddress != null ? driverAddress.toString() : "NA",
+                    driverCity != null ? driverCity.toString() : "NA", "U", "",
+                    "", dd_dob_DL != null ? dd_dob_DL.toString() : "NA", point_name_send_from_settings, "", bookedPSname_send_from_settings,
+                    pidName, cadre_name, whlr_code_send != null ? whlr_code_send.toString() : "NA", point_code_send_from_settings, "");
 
             return rtaApproverResponse;
         }
@@ -2049,17 +2317,16 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
         protected void onPostExecute(String result) {
             removeDialog(PROGRESS_DIALOG);
 
-            if(ServiceHelper.rtaapproovedresponse != null &&!ServiceHelper.rtaapproovedresponse.equalsIgnoreCase("") &&
-                    !ServiceHelper.rtaapproovedresponse.equalsIgnoreCase("NA|NA|NA"))
-            {
+            if (ServiceHelper.rtaapproovedresponse != null && !ServiceHelper.rtaapproovedresponse.equalsIgnoreCase("") &&
+                    !ServiceHelper.rtaapproovedresponse.equalsIgnoreCase("NA|NA|NA")) {
 
                 try {
                     rtaAprroved_Master = new String[0];
 
                     rtaAprroved_Master = ServiceHelper.rtaapproovedresponse.split("\\|");
 
-                    SpotChallan.OtpStatus=rtaAprroved_Master[3].toString()!= null ? rtaAprroved_Master[3].toString().trim() : "N";
-                    SpotChallan.OtpResponseDelayTime=rtaAprroved_Master[4].toString()!= null ? rtaAprroved_Master[4].toString().trim(): "0";
+                    SpotChallan.OtpStatus = rtaAprroved_Master[3].toString() != null ? rtaAprroved_Master[3].toString().trim() : "N";
+                    SpotChallan.OtpResponseDelayTime = rtaAprroved_Master[4].toString() != null ? rtaAprroved_Master[4].toString().trim() : "0";
 
                     SharedPreferences sharedPreference = PreferenceManager
                             .getDefaultSharedPreferences(getApplicationContext());
@@ -2069,18 +2336,16 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                     startActivity(new Intent(Drunk_Drive.this, GenerateDrunkDriveCase.class));
 
 
-                }catch (Exception e)
-                {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-            }
-            else {
+            } else {
 
                 rtaAprroved_Master = new String[0];
 
-                SpotChallan.OtpStatus="N";
-                SpotChallan.OtpResponseDelayTime="0";
+                SpotChallan.OtpStatus = "N";
+                SpotChallan.OtpResponseDelayTime = "0";
 
                 SharedPreferences sharedPreference = PreferenceManager
                         .getDefaultSharedPreferences(getApplicationContext());

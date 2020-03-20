@@ -293,12 +293,22 @@
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
                 android:text="Bluetooth" />
 
+           <Button
+               android:id="@+id/btnscan_BreathAnalyser"
+               style="@style/naviblue_custom_style"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/tv_bluetoothState"
+               android:layout_marginStart="20dp"
+               android:layout_marginEnd="20dp"
+               android:text="Scan Breath Analyzer" />
+
             <Button
                 android:id="@+id/btnscan_settings_xml"
                 style="@style/naviblue_custom_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_bluetoothState"
+                android:layout_below="@+id/btnscan_BreathAnalyser"
                 android:layout_margin="20dp"
                 android:text="@string/scan_bluetooth" />
             
@@ -353,7 +363,7 @@
             <ListView
                 android:id="@+id/listview_devicesfound"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="300dp"
                 android:layout_below="@+id/ffd"
                 android:visibility="visible"
                 android:layout_marginTop="5dp">

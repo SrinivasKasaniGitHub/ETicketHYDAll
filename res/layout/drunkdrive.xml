@@ -76,12 +76,98 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/breathAn"
+                android:layout_below="@+id/ll_main_root"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/breath_details"
+                style="@style/navi_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Breath Analyzer Test Details :"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/ll_breath_dd_xml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/breath_details"
+                android:layout_marginTop="@dimen/header_grnt_padding_five"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <TextView
+                    style="@style/navi_text_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="Sl No."
+                    android:layout_weight="0.75" />
+
+                <EditText
+                    android:id="@+id/edt_checkslno_"
+                    style="@style/edt_custom_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/breath_details"
+                    android:layout_margin="10dp"
+                    android:inputType="number"
+                    android:maxLength="15"
+                    android:layout_weight="1.25"
+                    android:layout_marginEnd="20dp"/>
+
+                <TextView
+                    style="@style/navi_text_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="end"
+                    android:text="BAC"
+                    android:layout_weight="0.75"
+                    android:layout_marginEnd="20dp"/>
+
+                <EditText
+                    android:id="@+id/edt_alchl_reading"
+                    style="@style/edt_custom_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:inputType="number"
+                    android:layout_weight="1.25"
+                    android:maxLength="4" />
+
+                <Button
+                    android:id="@+id/btn_scan_dd_xml"
+                    style="@style/naviblue_custom_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_marginLeft="@dimen/header_grnt_padding_five"
+                    android:text="Scan"
+                    android:visibility="gone"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#A09F9F"/>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/ll_mainsub_root"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/ll_main_root"
+                android:layout_below="@+id/breathAn"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/header_grnt_padding_five" >
+                android:layout_marginTop="@dimen/_10sdp" >
 
                 <TextView
                     android:id="@+id/textView12"
@@ -278,6 +364,16 @@
                 android:layout_below="@+id/ll_adhar_rtadetails_xml"
                 android:layout_marginTop="@dimen/header_grnt_padding_ten"
                 android:text="@string/get_details" />
+
+            <LinearLayout
+                android:id="@+id/lyt_DD_Details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_below="@+id/btngetrtadetails_rtadetails_xml"
+                android:visibility="gone">
+
+
 
             <TextView
                 android:id="@+id/textView_regdetails_header"
@@ -1192,6 +1288,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/next" />
+            </LinearLayout>
+
             </LinearLayout>
 
         </RelativeLayout>

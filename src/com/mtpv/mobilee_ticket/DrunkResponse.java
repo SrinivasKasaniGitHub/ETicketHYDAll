@@ -231,7 +231,10 @@ public class DrunkResponse extends Activity implements OnClickListener {
 
                 break;
             case R.id.btnhome_res_xml:
-                startActivity(new Intent(this, Drunk_Drive.class));
+                Intent intent=new Intent(this, Drunk_Drive.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+               // startActivity(new Intent(this, Drunk_Drive.class));
                 printdata = "";
                 GenerateDrunkDriveCase.otpStatus = null;
 

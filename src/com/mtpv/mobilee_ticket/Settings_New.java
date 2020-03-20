@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGatt;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -27,8 +28,10 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.v4.content.FileProvider;
 import android.text.Html;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -44,11 +47,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mtpv.imagematch.BleAdapter;
 import com.mtpv.mobilee_ticket_services.DBHelper;
 import com.mtpv.mobilee_ticket_services.ServiceHelper;
+import com.mtpv.mobilee_ticket_services.SharedPrefsHelper;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -60,11 +67,26 @@ import java.io.OutputStream;
 import java.net.SocketException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+
+import app.justec.com.bleoperator.BleManager;
+import app.justec.com.bleoperator.callback.BleGattCallback;
+import app.justec.com.bleoperator.callback.BleRssiCallback;
+import app.justec.com.bleoperator.callback.BleScanCallback;
+import app.justec.com.bleoperator.comm.BleDevice;
+import app.justec.com.bleoperator.data.ReceiveFormDataResult;
+import app.justec.com.bleoperator.data.RecordForm;
+import app.justec.com.bleoperator.event.EventManger;
+import app.justec.com.bleoperator.exception.BleException;
+import app.justec.com.bleoperator.helper.DataSource;
+import app.justec.com.bleoperator.helper.RepeatCommand;
+import app.justec.com.bleoperator.scan.BleScanRuleConfig;
 
 @SuppressWarnings("unused")
 @SuppressLint("SdCardPath")
-public class Settings_New extends Activity implements OnClickListener {
+public class Settings_New extends Activity implements OnClickListener, DataSource.DataCallBack<ArrayList<RecordForm>>,
+		RepeatCommand {
 
 	/*String server = "192.168.11.9";*/
 	String server = null;
@@ -124,7 +146,7 @@ public class Settings_New extends Activity implements OnClickListener {
 
 	ListView lv_bt_items;
 	TextView tv_stateBluetooth;
-	Button btn_scan_bluetooth;
+	Button btn_scan_bluetooth,btnscan_BreathAnalyser;
 	EditText et_bt_address;
 
 	TextView appversion, ffd;
@@ -154,6 +176,13 @@ public class Settings_New extends Activity implements OnClickListener {
 	ImageView img_logo;
 	TextView officer_Name,officer_Cadre,officer_PS,textView_header_spot_challan_xml;
 
+	private ListView list_BleDevice;
+	private BleAdapter adapter;
+	private List<BleDevice> dataList = new ArrayList<>();
+	private DataSource.DataCallBack<String> callBack;
+	AlertDialog dlg_BleDevice;
+	ProgressDialog progressDialog;
+
 
 	@SuppressWarnings("deprecation")
 	@SuppressLint("WorldReadableFiles")
@@ -163,6 +192,7 @@ public class Settings_New extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.settings);
+		progressDialog=new ProgressDialog(this);
 
 		bluetoothFLG = false;
 		pinpadFLG = false;
@@ -378,20 +408,13 @@ public class Settings_New extends Activity implements OnClickListener {
 		lv_bt_items.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,
 									int position, long id) {
-				Log.i("bluetoothFLG and pinpadFLG********", "" + bluetoothFLG
-						+ " And " + pinpadFLG);
 
 				if (bluetoothFLG) {
-					Log.i("bluetoothFLG Bluetooth********", "" + bluetoothFLG);
-					/**
-					 * Toast.makeText(getApplicationContext(),
-					 * ""+listDevicesFound.getCount(),
-					 * Toast.LENGTH_SHORT).show();
-					 */
+
 					String selection = (String) (lv_bt_items
 							.getItemAtPosition(position));
 
-					Log.i("selection Bluetooth********", "" + selection);
+
 
 					Toast.makeText(getApplicationContext(),
 							"BLUETOOTH ADDRESS IS SAVED SUCCESSFULLY",
@@ -403,16 +426,11 @@ public class Settings_New extends Activity implements OnClickListener {
 					mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 					Alertmessage();
 				} else if (pinpadFLG) {
-					Log.i("pinpadFLG pinpadFLG********", "" + pinpadFLG);
-					/**
-					 * Toast.makeText(getApplicationContext(),
-					 * ""+listDevicesFound.getCount(),
-					 * Toast.LENGTH_SHORT).show();
-					 */
+
 					String selection = (String) (lv_bt_items
 							.getItemAtPosition(position));
 
-					Log.i("selection pinpadFLG********", "" + selection);
+
 
 					Toast.makeText(getApplicationContext(),
 							"PINPAD ADDRESS IS SAVED SUCCESSFULLY",
@@ -432,6 +450,156 @@ public class Settings_New extends Activity implements OnClickListener {
 
 	}
 
+
+	@Override
+	public void onDataNotAvailed(int i) {
+
+	}
+
+	@SuppressLint("SetTextI18n")
+	@Override
+	public void onDataLoaded(ArrayList<RecordForm> recordForms) {
+
+
+	}
+
+	@Override
+	public void OnRepeatCommand(String s) {
+
+	}
+
+	private void initBle() {
+
+		BleManager.getInstance().init(getApplication());
+		BleManager.getInstance()
+				.enableLog(true)
+				.setMaxConnectCount(3)
+				.setOperateTimeout(5000);
+		BleScanRuleConfig scanRuleConfig = new BleScanRuleConfig.Builder()
+				.setScanTimeOut(6000)
+				.build();
+		BleManager.getInstance()
+				.initScanRule(scanRuleConfig);
+	}
+
+	private void initView() {
+		dlg_BleDevice = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT).create();
+		LayoutInflater inflater = this.getLayoutInflater();
+		View dialogView = inflater.inflate(R.layout.blescandevice_dialog, null);
+		dlg_BleDevice.setView(dialogView);
+		list_BleDevice = dialogView.findViewById(R.id.list_BleDevice);
+		adapter = new BleAdapter(this, dataList);
+		list_BleDevice.setAdapter(adapter);
+		progressDialog.dismiss();
+		dlg_BleDevice.show();
+		dlg_BleDevice.setCancelable(true);
+
+		list_BleDevice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+				if (!BleManager.getInstance().isConnected((BleDevice) adapter.getItem(position))) {
+					BleManager.getInstance().cancelScan();
+					BleDevice bleDevice=(BleDevice) adapter.getItem(position);
+					SharedPrefsHelper.saveObjectToSharedPreference(getApplicationContext(), "mPreference", "mLoginRes", bleDevice);
+					connect(bleDevice);
+					dlg_BleDevice.dismiss();
+				}
+			}
+		});
+	}
+
+	private void startScan() {
+		BleManager.getInstance().scan(new BleScanCallback() {
+			@Override
+			public void onScanStarted(boolean success) {
+				dataList.clear();
+				adapter.notifyDataSetChanged();
+			}
+
+			@Override
+			public void onLeScan(BleDevice bleDevice) {
+				super.onLeScan(bleDevice);
+                /*if (!TextUtils.isEmpty(bleDevice.getName())) {
+                    Log.d("Ble Name",""+bleDevice.getName());
+                    adapter.add(bleDevice);
+                }*/
+
+
+			}
+
+			@Override
+			public void onScanning(BleDevice bleDevice) {
+				if (!TextUtils.isEmpty(bleDevice.getName())) {
+					Log.d("Ble Name", "" + bleDevice.getName());
+					adapter.add(bleDevice);
+				}
+			}
+
+			@Override
+			public void onScanFinished(List<BleDevice> scanResultList) {
+               /* adapter = new BleAdapter(MainActivity.this, scanResultList);
+                listView.setAdapter(adapter);*/
+			}
+		});
+	}
+
+	private void connect(final BleDevice bleDevice) {
+		BleManager.getInstance().connect(bleDevice, new BleGattCallback() {
+			@Override
+			public void onStartConnect() {
+
+			}
+
+			@Override
+			public void onConnectFail(BleException exception) {
+
+				Toast.makeText(Settings_New.this, "fail", Toast.LENGTH_LONG).show();
+			}
+
+			@Override
+			public void onConnectSuccess(BleDevice bleDevice, BluetoothGatt gatt, int status) {
+				Toast.makeText(Settings_New.this, "ConnectSuccess", Toast.LENGTH_LONG).show();
+				readRssi(bleDevice);
+				EventManger.getInstance()
+						.initDeviceInfo(bleDevice, true, callBack);
+			}
+
+			@Override
+			public void onDisConnected(boolean isActiveDisConnected, BleDevice bleDevice, BluetoothGatt gatt, int status) {
+
+			}
+
+			@Override
+			public void onReConnect(BleDevice bleDevice) {
+
+			}
+		});
+	}
+
+	private void readRssi(BleDevice bleDevice) {
+		BleManager.getInstance().readRssi(bleDevice, new BleRssiCallback() {
+			@Override
+			public void onRssiFailure(BleException exception) {
+				Log.i("bleble", "onRssiFailure" + exception.toString());
+			}
+
+			@Override
+			public void onRssiSuccess(int rssi) {
+				Log.i("bleble", "onRssiSuccess: " + rssi);
+			}
+		});
+	}
+
+	@Subscribe(sticky = true)
+	public void instantRecordData(ReceiveFormDataResult receiveFormDataResult) {
+		//  TAG_INSTANT_RECEIVE=10004;
+		if (receiveFormDataResult != null && receiveFormDataResult.getTag() == 10004) {
+			Log.i("bleble5", "recordFormsReceive=" + receiveFormDataResult.getRecordFormArrayList().size());
+		}
+	}
+
+
 	private void LoadUIComponents() {
 		// TODO Auto-generated method stub
 		btn_ps_name = (Button) findViewById(R.id.btnpsname_settings_xml);
@@ -443,6 +611,7 @@ public class Settings_New extends Activity implements OnClickListener {
 
 		lv_bt_items = (ListView) findViewById(R.id.listview_devicesfound);
 		btn_scan_bluetooth = (Button) findViewById(R.id.btnscan_settings_xml);
+		btnscan_BreathAnalyser=findViewById(R.id.btnscan_BreathAnalyser);
 		tv_stateBluetooth = (TextView) findViewById(R.id.tv_bluetoothState);
 		et_bt_address = (EditText) findViewById(R.id.edt_bluetoothid_settings_xml);
 		et_web_url = (EditText) findViewById(R.id.edt_weburl_settings_xml);
@@ -479,6 +648,54 @@ public class Settings_New extends Activity implements OnClickListener {
 		btn_save.setOnClickListener(this);
 		btn_scan_bluetooth.setOnClickListener(this);
 		btn_pinpadscan_xml.setOnClickListener(this);
+		btnscan_BreathAnalyser.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				progressDialog
+						.setMessage("Please wait \n BlueTooth Scan is in Process!!!");
+				progressDialog.setCancelable(false);
+				progressDialog.show();
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						startScan();
+						initView();
+					}
+				});
+			}
+		});
+		EventBus.getDefault().register(this);
+		initBle();
+		EventManger.getInstance().receieDataCallback(this);
+		EventManger.getInstance().repeatCallback(this);
+		EventManger.getInstance().searchDataCallback(this, 10006);
+		callBack = new DataSource.DataCallBack<String>() {
+			@Override
+			public void onDataNotAvailed(int i) {
+
+			}
+
+			@Override
+			public void onDataLoaded(String s) {
+				Log.i("bleble", s);
+				if (s.equals("1")) {
+					Toast.makeText(Settings_New.this, "initDeviceInfo", Toast.LENGTH_LONG).show();
+					Log.i("bleble0", "13");
+					EventManger.getInstance().deviceDisplayConfiger(callBack);
+
+				} else if (s.equals("3")) {
+
+					Log.i("bleble0", "14");
+					EventManger.getInstance().fetchDeviceInfo(callBack);
+				} else if (s.equals("4")) {
+
+					Log.i("bleble0", "15");
+					EventManger.getInstance().recordFormDisplay(callBack);
+
+
+				}
+			}
+		};
 
 		change_password.setOnClickListener(new OnClickListener() {
 
@@ -659,7 +876,7 @@ public class Settings_New extends Activity implements OnClickListener {
 								+ getResources().getString(R.string.select_ps_name))) {
 					showToast("Select PS Name");
 				} else {
-					Log.i("point by ps len b4 dialog call", ""
+					Log.i("point by", ""
 							+ pointNameBy_PsName_arr.size());
 					showDialog(PS_CODE_DIALOG);
 				}
@@ -1282,7 +1499,6 @@ public class Settings_New extends Activity implements OnClickListener {
 
 				try {
 
-					Log.i("Settings Async_getPointNameByPsName", "" + ServiceHelper.PointNamesBypsNames_master.length);
 					pointNameBYpsname_name_code_arr = new String[0][0];
 					pointNameBYpsname_name_code_arr = new String[ServiceHelper.PointNamesBypsNames_master.length][2];
 

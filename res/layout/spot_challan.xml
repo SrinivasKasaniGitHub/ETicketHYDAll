@@ -277,7 +277,7 @@
                     android:layout_weight="1"
                     android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:gravity="center"
-                    android:imeOptions="actionNext"
+                    android:cursorVisible="true"
                     android:inputType="textCapCharacters"
                     android:maxLength="4" />
 

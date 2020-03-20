@@ -19,19 +19,19 @@ public final class R {
     public static final class dimen {
         private dimen() {}
 
-        public static final int photo_crop_stroke_width = 0x7f070375;
-        public static final int photo_crop_width = 0x7f070376;
-        public static final int photo_preview_size = 0x7f070377;
+        public static final int photo_crop_stroke_width = 0x7f07037a;
+        public static final int photo_crop_width = 0x7f07037b;
+        public static final int photo_preview_size = 0x7f07037c;
     }
     public static final class string {
         private string() {}
 
         public static final int auth_failed = 0x7f0f0045;
-        public static final int generic_error = 0x7f0f00ae;
-        public static final int generic_server_down = 0x7f0f00af;
-        public static final int generic_server_timeout = 0x7f0f00b0;
-        public static final int no_internet = 0x7f0f00da;
-        public static final int no_network_connection = 0x7f0f00db;
-        public static final int parsing_failed = 0x7f0f00ef;
+        public static final int generic_error = 0x7f0f00b1;
+        public static final int generic_server_down = 0x7f0f00b2;
+        public static final int generic_server_timeout = 0x7f0f00b3;
+        public static final int no_internet = 0x7f0f00de;
+        public static final int no_network_connection = 0x7f0f00df;
+        public static final int parsing_failed = 0x7f0f00f5;
     }
 }
