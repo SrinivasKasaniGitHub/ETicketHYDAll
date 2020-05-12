@@ -175,7 +175,7 @@ public class Dashboard extends Activity implements OnClickListener {
     public static String CHALLAN_TYPE = null, CASES_LIMIT = null, CASES_BOOKED = null;
 
     AppCompatImageView img_DD, img_Spot, img_VehcleHis, img_CraneAct, img_ReleaseDoc, img_Reports, img_DuplctePrint,
-            img_DwldMasters, img_Settings, img_About;
+            img_DwldMasters, img_Settings, img_About,img_Covid;
 
     ImageView img_logo;
     TextView officer_Name, officer_Cadre, officer_PS;
@@ -556,6 +556,7 @@ public class Dashboard extends Activity implements OnClickListener {
         img_DwldMasters = (AppCompatImageView) findViewById(R.id.img_DownldMastr);
         img_Settings = (AppCompatImageView) findViewById(R.id.img_Settings);
         img_About = (AppCompatImageView) findViewById(R.id.img_About);
+        img_Covid=findViewById(R.id.img_Covid);
 
 
         ibtn_logout = (ImageButton) findViewById(R.id.imgbtn_logout_dashboard_xml);
@@ -571,6 +572,7 @@ public class Dashboard extends Activity implements OnClickListener {
         img_Settings.setOnClickListener(this);
         img_DwldMasters.setOnClickListener(this);
         img_About.setOnClickListener(this);
+        img_Covid.setOnClickListener(this);
 
 
         //tv_drunk_and_drive.setOnClickListener(this);
@@ -978,7 +980,7 @@ public class Dashboard extends Activity implements OnClickListener {
 
                 break;
 
-            case R.id.tv_special_drive:
+            case R.id.img_Covid:
 
                 if (isOnline()) {
 
@@ -1004,7 +1006,7 @@ public class Dashboard extends Activity implements OnClickListener {
                             if (isOnline()) {
 
                                 Dashboard.otpbuttoncheckinspldrive = "mtpv_SpecialDrive";
-                                startActivity(new Intent(Dashboard.this, mtpv_SpecialDrive.class));
+                                startActivity(new Intent(Dashboard.this, CovidChallanActivity.class));
                             } else {
                                 showToast("" + netwrk_info_txt);
                             }

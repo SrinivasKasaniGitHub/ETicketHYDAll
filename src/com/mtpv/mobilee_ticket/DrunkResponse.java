@@ -33,26 +33,12 @@ import com.mtpv.mobilee_ticket_services.DBHelper;
 import com.mtpv.mobilee_ticket_services.ServiceHelper;
 import com.mtpv.mobilee_ticket_services.Utils;
 
+
+
+
 @SuppressWarnings("unused")
 public class DrunkResponse extends Activity implements OnClickListener {
 
-//	TextView tv_date_time;
-//	TextView tv_eTicket;
-//	TextView tv_regno;
-//	TextView tv_breath_anlysr;
-//	TextView tv_check_sino;
-//	TextView tv_alchl_redng;
-//	// TextView tv_viloation;
-//	TextView tv_drivername;
-//	TextView tv_driver_fname;
-//	TextView tv_address;
-//	TextView tv_police_station;
-//	TextView tv_place_of_violation;
-//	TextView tv_office_code;
-//	TextView tv_officer_name;
-//	TextView tv_drvr_dl_no;
-//	TextView tv_mobile_no;
-//	TextView tv_remarks;
 
     TextView Tv_printresponse;
 
@@ -234,7 +220,7 @@ public class DrunkResponse extends Activity implements OnClickListener {
                 Intent intent=new Intent(this, Drunk_Drive.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
-               // startActivity(new Intent(this, Drunk_Drive.class));
+                // startActivity(new Intent(this, Drunk_Drive.class));
                 printdata = "";
                 GenerateDrunkDriveCase.otpStatus = null;
 

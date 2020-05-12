@@ -65,7 +65,7 @@
     <string name="pancard_no">PanCard No    </string>
     <string name="passport_no">Passport No</string>
     <string name="voter_id_no">Voter Id No      </string>
-    <string name="driver_contact_no">Enter Driver Contact No</string>
+    <string name="driver_contact_no">Enter Contact No</string>
     <string name="detained_items">Detained Items</string>
     <string name="languageselect">Select Language</string>
     <string name="detained_items_rc">RC</string>

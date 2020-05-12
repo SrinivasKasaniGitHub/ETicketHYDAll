@@ -8644,8 +8644,7 @@ public class SpotChallan extends AppCompatActivity
                 });
 
         multiSelectSearchSpinnerDlg.show(getSupportFragmentManager(), "MultiSelectDlg");
-
-
     }
 
 }
+

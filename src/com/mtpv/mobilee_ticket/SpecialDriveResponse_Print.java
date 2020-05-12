@@ -99,7 +99,7 @@ public class SpecialDriveResponse_Print extends Activity{
                 make_paymnt.setVisibility(View.GONE);
             }
         } else {
-            Log.i("SpotChallan.cardFLG   2 :", "" + SpotChallan.cardFLG);
+            Log.i("SpotChalla", "" + SpotChallan.cardFLG);
             make_paymnt.setVisibility(View.GONE);
         }
 

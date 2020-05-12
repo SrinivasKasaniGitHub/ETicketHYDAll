@@ -1672,6 +1672,7 @@ drawable capture
 drawable changepassword
 drawable checked_checkbox
 drawable checked_uncheckbox
+drawable covid
 drawable crane
 drawable custom_chec_box
 drawable custom_progressbar
@@ -1685,6 +1686,7 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable dialog_logo
+drawable divider_line_horizontal
 drawable down
 drawable drun_drive_btn_style_blue
 drawable drunkdrive
@@ -1810,6 +1812,7 @@ id ALT
 id Btn_ExtraPasCancel
 id Btn_ExtraPasSubmit
 id CTRL
+id Cancel_dialog
 id FUNCTION
 id Ll_buffer_display_spotresponse_xml
 id Ll_selectedchallans_spotresponse_xml
@@ -1861,9 +1864,15 @@ id bottom
 id breathAn
 id breath_details
 id bt_device_Address
+id btn_Dob
+id btn_Get
 id btn_ImgMatchCancel
 id btn_ImgMatchOk
+id btn_OK
+id btn_Otp
 id btn_Refsl_OK
+id btn_SlctId_CV
+id btn_Submit
 id btn_cancel
 id btn_cancel_dd3_xml
 id btn_cancel_spotchallan_xml
@@ -2006,6 +2015,8 @@ id ed_date
 id ed_engine
 id ed_time
 id edit_query
+id edtTxt_FName
+id edtTxt_Name
 id edt_Age
 id edt_Txt_ExtraPass
 id edt_aadharno_rtadetails_xml
@@ -2071,6 +2082,11 @@ id engineno_layout
 id enginetext
 id enterAlways
 id enterAlwaysCollapsed
+id et_Address
+id et_City
+id et_CntctNo
+id et_OTP
+id et_Value
 id et_chasisNo
 id et_dd_address
 id et_dd_city
@@ -2128,6 +2144,7 @@ id imgFromCapture
 id imgFromLink
 id imgMatchFrmServer
 id img_About
+id img_Covid
 id img_CraneAct
 id img_DownldMastr
 id img_DrunkDrive
@@ -2155,6 +2172,7 @@ id invert_selection
 id iss_date
 id italic
 id item_touch_helper_previous_elevation
+id kjsdhf
 id labeled
 id largeLabel
 id last_chasisNo_input
@@ -2211,6 +2229,7 @@ id ll_confirmotp_spotchallantwo_xml
 id ll_contactnum_dd_xml
 id ll_contactnum_spotchallantwo_xml
 id ll_counselling
+id ll_dOD
 id ll_dashbrd1
 id ll_detailsresponsemain_pchallans_details_xml
 id ll_detaineditems1
@@ -2248,6 +2267,7 @@ id ll_ocuptn
 id ll_offnce_date
 id ll_owner_challans
 id ll_ownername__pchallans_details_xml
+id ll_pendingchallans
 id ll_pendingchallans_spot_xml
 id ll_qlfctn
 id ll_radiotype
@@ -2268,6 +2288,7 @@ id lv_paired
 id lvpendingchallans_xml
 id lyt_Age
 id lyt_DD_Details
+id lyt_DOB
 id lyt_GetDtls
 id main_container
 id make_paymnt
@@ -2346,8 +2367,13 @@ id prompt
 id ps_name
 id qr_code
 id rBtn_FeMale
+id rBtn_LIC
 id rBtn_Male
+id rBtn_None
 id rBtn_Others
+id rBtn_RC
+id rBtn_VEH
+id rGP_Dtnd
 id radio
 id radioButton_IPAdress
 id radioButton_live
@@ -2391,6 +2417,7 @@ id rd_Telugu
 id rd_Urdu
 id rd_fake
 id rd_notfake
+id recycle_List
 id recycler_view
 id relativeLayout1
 id relativeLayout2
@@ -2400,6 +2427,7 @@ id retakebtn
 id rg_fakegroup
 id right
 id right_icon
+id right_most_action_button
 id right_side
 id rl_btns
 id rl_card_details
@@ -2474,6 +2502,7 @@ id tabMode
 id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
+id tex
 id text
 id text2
 id textSpacerNoButtons
@@ -2554,6 +2583,9 @@ id thumbnail
 id time
 id title
 id titleDividerNoCustom
+id title_
+id title_Spinner
+id title_logo
 id title_template
 id toolbar
 id top
@@ -2565,6 +2597,7 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id tv1
+id tv_Covid
 id tv_about_version
 id tv_addr_rtadetails_xml
 id tv_addr_spotchallan_xml
@@ -2590,6 +2623,7 @@ id tv_engineno_spotchallan_xml
 id tv_eticketno_cust_pend_xml
 id tv_gendername
 id tv_generateticket_dashboard_xml
+id tv_grand_totalamnt
 id tv_grand_totalamnt_spotchallan_xml
 id tv_ipsettings
 id tv_language
@@ -2606,7 +2640,9 @@ id tv_ocuptn_name
 id tv_offencedate_pchallans_details_xml
 id tv_offencedesc_pchallans_details_xml
 id tv_offencetime_pchallans_details_xml
+id tv_pendingamount
 id tv_pendingamount_spotchallan_xml
+id tv_pendingchallans
 id tv_pendingchallans_total_spotchallan_xml
 id tv_pointname_cust_pend_xml
 id tv_pointname_pchallans_details_xml
@@ -2627,6 +2663,7 @@ id tv_vchle_maincat_name
 id tv_vchle_mainsub_name
 id tv_vhclecat_name
 id tv_vhclehistory_dashboard_xml
+id tv_violtaionamnt
 id tv_violtaionamnt_spotchallan_xml
 id tvaadharname_rtadetails_xml
 id tvaadharname_spotchallan_xml
@@ -2673,10 +2710,16 @@ id two
 id txt
 id txtAge
 id txt_Age
+id txt_ClnNO
+id txt_Dtae
+id txt_ElpsdTime
+id txt_FAmnt
 id txt_FName
 id txt_FirNo
+id txt_Lctn
 id txt_MatchPer
 id txt_Name
+id txt_PSName
 id txt_otp_Hed
 id txtss
 id uniform
@@ -2686,11 +2729,13 @@ id update_aadhaar
 id update_apk
 id update_print
 id useLogo
+id value
 id vehicle_details_layout
 id vehicle_layout
 id vehicle_type
 id version_details
 id view_offset_helper
+id viewl
 id visible
 id voilation_desc
 id webView1
@@ -2782,10 +2827,13 @@ layout apk_progressbar
 layout blescandevice_dialog
 layout blutooth_list_devices
 layout camera_layout
+layout challan_dialog_layout
+layout covid_challan
 layout cust_pen_challans
 layout cust_toast
 layout custom_multi_select
 layout custom_progress_dialog
+layout cvpendindclns
 layout dashboard
 layout dashboard_pc
 layout design_bottom_navigation_item
@@ -2835,6 +2883,7 @@ layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout otp_verification
 layout pen_challans
 layout pending_challans_details
 layout pinpad_list_item_device
@@ -2845,6 +2894,8 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout settings
+layout single_text_row_item
+layout spinner_dialog_layout
 layout spinner_dropdown_item
 layout spinner_item
 layout splash
