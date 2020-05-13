@@ -46,8 +46,7 @@ public class VltnAdapter extends BaseAdapter {
 
         view = inflater.inflate(R.layout.single_text_row_item, null);
         TextView txt_Title = view.findViewById(R.id.value);
-        txt_Title.setText("" +list_VltnModel.get(i).getViolation()+"   Rs:"+
-                list_VltnModel.get(i).getFine());
+        txt_Title.setText("" +list_VltnModel.get(i).getViolation());
 
         return view;
     }

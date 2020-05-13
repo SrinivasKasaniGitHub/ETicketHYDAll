@@ -119,7 +119,7 @@ public class CovidChallanActivity extends Activity implements LocationListener {
     ImageView img_logo;
     TextView officer_Name, officer_Cadre, officer_PS, tv_pendingchallans, tv_pendingamount, tv_violtaionamnt, tv_grand_totalamnt, textView4;
     EditText et_Value, edtTxt_Name, edtTxt_FName, et_Address, et_City, edt_Age, et_driver_contact_spot;
-    Button btn_SlctId_CV, btn_Get, btn_Otp, btn_violation, btn_Submit, btn_Dob,btn_cancel;
+    Button btn_SlctId_CV, btn_Get, btn_Otp, btn_violation, btn_Submit, btn_Dob, btn_cancel;
     ImageButton ibtn_camera;
     ImageButton ibtn_gallery;
     public static ImageView offender_image;
@@ -137,9 +137,9 @@ public class CovidChallanActivity extends Activity implements LocationListener {
     JSONObject jsonObject = null;
     String otpValue = "", imei_send = "", simid_send = "", dob_DL = "";
 
-    boolean otp_VefySts = false;
+    boolean otp_VefySts = false,img_Sts=false;
     TelephonyManager telephonyManager;
-    LinearLayout lyt_DOB,ll_pendingchallans;
+    LinearLayout lyt_DOB, ll_pendingchallans;
 
     private int mYear, mMonth, mDay;
 
@@ -192,6 +192,22 @@ public class CovidChallanActivity extends Activity implements LocationListener {
             }
         });
 
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CovidChallanActivity.this, Dashboard.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
+        ibtn_gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectImagefrom_Gallery();
+            }
+        });
+
         btn_Get.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -199,14 +215,14 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                     showToast("Please Select IdProof ");
                 } else if (et_Value.getText().toString().isEmpty()) {
                     showToast("Please enter the IDProof Details ");
-                } else if ("12".equals(str_IdCode)&&((et_Value.getText().toString().trim() != null && et_Value.getText().toString().trim().length() > 1
+                } else if ("12".equals(str_IdCode) && ((et_Value.getText().toString().trim() != null && et_Value.getText().toString().trim().length() > 1
                         && et_Value.getText().toString().trim().length() != 10) ||
                         new DateUtil().allCharactersSame(et_Value.getText().toString().trim()))) {
                     et_Value
                             .setError(Html.fromHtml("<font color='black'>Enter Valid mobile number!!</font>"));
                     et_Value.requestFocus();
 
-                } else if ("12".equals(str_IdCode)&& et_Value.getText().toString().length() == 10) {
+                } else if ("12".equals(str_IdCode) && et_Value.getText().toString().length() == 10) {
                     if ((et_Value.getText().toString().charAt(0) == '7') || (et_Value.getText().toString().charAt(0) == '8')
                             || (et_Value.getText().toString().charAt(0) == '9') || (et_Value.getText().toString().charAt(0) == '6')) {
                         if (isOnline()) {
@@ -220,7 +236,7 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                         et_Value.requestFocus();
                     }
 
-                }else {
+                } else {
                     new Async_GetIdProofDetails().execute();
                 }
             }
@@ -229,9 +245,9 @@ public class CovidChallanActivity extends Activity implements LocationListener {
         ll_pendingchallans.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (challansModelList.size()>0){
-                    showVilationsDetailsDlg("Pending Challans",challansModelList);
-                }else{
+                if (challansModelList.size() > 0) {
+                    showVilationsDetailsDlg("Pending Challans", challansModelList);
+                } else {
                     showToast("No Pending Challans ");
                 }
             }
@@ -367,10 +383,10 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                 if (edtTxt_Name.getText().toString().isEmpty()) {
                     edtTxt_Name.setError(Html.fromHtml("<font color='black'>Please enter Name </font>"));
                     edtTxt_Name.requestFocus();
-                } else if (edtTxt_FName.getText().toString().isEmpty()) {
+                } /*else if (edtTxt_FName.getText().toString().isEmpty()) {
                     edtTxt_FName.setError(Html.fromHtml("<font color='black'>Please enter Father Name </font>"));
                     edtTxt_FName.requestFocus();
-                } else if (et_Address.getText().toString().isEmpty()) {
+                }*/ else if (et_Address.getText().toString().isEmpty()) {
                     et_Address.setError(Html.fromHtml("<font color='black'>Please enter the Address </font>"));
                     et_Address.requestFocus();
                 } else if (et_City.getText().toString().isEmpty()) {
@@ -388,7 +404,9 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                     showToast("Please select the violations");
                 } else if (!otp_VefySts) {
                     showToast("Please verify OTP !");
-                } else {
+                } else if (!img_Sts){
+                    showToast("Please Capture the Image ");
+                }else {
                     try {
                         jsonObject = new JSONObject();
                         jsonObject.put("CHALLAN_TYPE", "FM");
@@ -524,7 +542,7 @@ public class CovidChallanActivity extends Activity implements LocationListener {
         btn_Get = findViewById(R.id.btn_Get);
         btn_violation = findViewById(R.id.btn_violation);
         btn_Submit = findViewById(R.id.btn_Submit);
-        btn_cancel=findViewById(R.id.btn_cancel);
+        btn_cancel = findViewById(R.id.btn_cancel);
         btn_Dob = findViewById(R.id.btn_Dob);
         btn_Otp = findViewById(R.id.btn_Otp);
         et_Value = findViewById(R.id.et_Value);
@@ -539,7 +557,7 @@ public class CovidChallanActivity extends Activity implements LocationListener {
         offender_image = (ImageView) findViewById(R.id.offender_image);
         offender_image.setVisibility(View.GONE);
         lyt_DOB = findViewById(R.id.lyt_DOB);
-        ll_pendingchallans=findViewById(R.id.ll_pendingchallans);
+        ll_pendingchallans = findViewById(R.id.ll_pendingchallans);
         lyt_DOB.setVisibility(View.GONE);
     }
 
@@ -651,7 +669,7 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                     lyt_DOB.setVisibility(View.GONE);
                 }
 
-                if ("0".equals(str_IdCode)||"12".equals(str_IdCode)) {
+                if ("0".equals(str_IdCode) || "12".equals(str_IdCode)) {
                     textView4.setText("Enter Mobile NO :");
                     et_Value.setInputType(InputType.TYPE_CLASS_PHONE);
                     str_IdCode = "12";
@@ -703,17 +721,17 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                     cv_OTP_Time = Integer.parseInt(jsonObject.getString("OtpTime"));
                     pndgAmnt = Integer.parseInt(jsonObject.getString("PendingAmount"));
 
-                    JSONObject object=jsonObject.getJSONObject("PreviousChallans");
-                    JSONArray jsonArray=object.getJSONArray("Challans");
-                    challansModelList=new ArrayList<>(jsonArray.length());
-                    for (int i=0;i<jsonArray.length();i++){
-                        ChallansModel challansModel=new ChallansModel();
-                        JSONObject js=jsonArray.getJSONObject(i);
-                        challansModel.setChallanNo(""+js.getString("ChallanNo"));
-                        challansModel.setDate(""+js.getString("Date"));
-                        challansModel.setFINE(""+js.getString("FINE"));
-                        challansModel.setLocation(""+js.getString("Location"));
-                        challansModel.setPSName(""+js.getString("PSName"));
+                    JSONObject object = jsonObject.getJSONObject("PreviousChallans");
+                    JSONArray jsonArray = object.getJSONArray("Challans");
+                    challansModelList = new ArrayList<>(jsonArray.length());
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        ChallansModel challansModel = new ChallansModel();
+                        JSONObject js = jsonArray.getJSONObject(i);
+                        challansModel.setChallanNo("" + js.getString("ChallanNo"));
+                        challansModel.setDate("" + js.getString("Date"));
+                        challansModel.setFINE("" + js.getString("FINE"));
+                        challansModel.setLocation("" + js.getString("Location"));
+                        challansModel.setPSName("" + js.getString("PSName"));
                         challansModelList.add(challansModel);
                     }
 
@@ -1040,9 +1058,12 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                         byteArray = bytes.toByteArray();
                         final_image_data_tosend = Base64.encodeToString(byteArray, Base64.NO_WRAP);
                         offender_image.setVisibility(View.VISIBLE);
+                        img_Sts=true;
 
                     } else if (bitmap == null) {
                         showToast("Image Cannot be Loaded !");
+                        final_image_data_tosend=null;
+                        img_Sts=false;
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -1064,13 +1085,13 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                     Canvas canvas = new Canvas(mutableBitmap); // bmp is the
                     TextPaint paint = new TextPaint();
                     paint.setColor(Color.RED);
-                    paint.setTextSize(40);
+                    paint.setTextSize(20);
                     paint.setTextAlign(Paint.Align.LEFT);
                     paint.setStyle(Paint.Style.FILL);
                     paint.setTypeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD));
                     canvas.save();
                     canvas.drawText("Date " + new DateUtil().getPresentDateTime(), 50f, canvas.getHeight() - 150, paint);
-                    canvas.drawText("Lat " + latitude + "  Long " + longitude, 50f, canvas.getHeight() - 70, paint);
+                    canvas.drawText("" + getAddressFromLatLng(latitude, longitude), 50f, canvas.getHeight() - 70, paint);
                     canvas.restore();
 
                     offender_image.setImageBitmap(mutableBitmap);
@@ -1080,8 +1101,10 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                     byteArray = bytes.toByteArray();
                     final_image_data_tosend = Base64.encodeToString(byteArray, Base64.NO_WRAP);
                     offender_image.setVisibility(View.VISIBLE);
+                    img_Sts=true;
                 } else if (thumbnail == null) {
                     showToast("Image Cannot be Loaded !");
+                    img_Sts=false;
                 }
             }
         }
@@ -1264,7 +1287,7 @@ public class CovidChallanActivity extends Activity implements LocationListener {
         ViewGroup group = (ViewGroup) toast.getView();
         TextView messageTextView = (TextView) group.getChildAt(0);
         messageTextView.setTextSize(20);
-
+        messageTextView.setPadding(5,2,2,5);
         toastView.setBackgroundResource(R.drawable.toast_background);
         toast.show();
     }

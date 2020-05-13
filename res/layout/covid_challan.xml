@@ -218,7 +218,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
-                        android:text="Enter ID Value :" />
+                        android:text="Enter Value :" />
 
                     <EditText
                         android:id="@+id/et_Value"
@@ -380,7 +380,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.03"
-                            android:text="*"
+                            android:text=""
                             android:textColor="#ff0000"/>
 
 
