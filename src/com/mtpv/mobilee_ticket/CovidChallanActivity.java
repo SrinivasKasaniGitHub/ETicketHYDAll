@@ -94,6 +94,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -118,7 +119,7 @@ public class CovidChallanActivity extends Activity implements LocationListener {
     ImageView img_logo;
     TextView officer_Name, officer_Cadre, officer_PS, tv_pendingchallans, tv_pendingamount, tv_violtaionamnt, tv_grand_totalamnt, textView4;
     EditText et_Value, edtTxt_Name, edtTxt_FName, et_Address, et_City, edt_Age, et_driver_contact_spot;
-    Button btn_SlctId_CV, btn_Get, btn_Otp, btn_violation, btn_Submit, btn_Dob;
+    Button btn_SlctId_CV, btn_Get, btn_Otp, btn_violation, btn_Submit, btn_Dob,btn_cancel;
     ImageButton ibtn_camera;
     ImageButton ibtn_gallery;
     public static ImageView offender_image;
@@ -196,9 +197,30 @@ public class CovidChallanActivity extends Activity implements LocationListener {
             public void onClick(View v) {
                 if (btn_SlctId_CV.getText().toString().equalsIgnoreCase("SELECT ID")) {
                     showToast("Please Select IdProof ");
-                } else if (et_Value.getText().toString().isEmpty() && !"0".equals(str_IdCode)) {
+                } else if (et_Value.getText().toString().isEmpty()) {
                     showToast("Please enter the IDProof Details ");
-                } else {
+                } else if ("12".equals(str_IdCode)&&((et_Value.getText().toString().trim() != null && et_Value.getText().toString().trim().length() > 1
+                        && et_Value.getText().toString().trim().length() != 10) ||
+                        new DateUtil().allCharactersSame(et_Value.getText().toString().trim()))) {
+                    et_Value
+                            .setError(Html.fromHtml("<font color='black'>Enter Valid mobile number!!</font>"));
+                    et_Value.requestFocus();
+
+                } else if ("12".equals(str_IdCode)&& et_Value.getText().toString().length() == 10) {
+                    if ((et_Value.getText().toString().charAt(0) == '7') || (et_Value.getText().toString().charAt(0) == '8')
+                            || (et_Value.getText().toString().charAt(0) == '9') || (et_Value.getText().toString().charAt(0) == '6')) {
+                        if (isOnline()) {
+                            new Async_GetIdProofDetails().execute();
+                        } else {
+                            showToast("Please check your network connection!");
+                        }
+                    } else {
+                        et_Value
+                                .setError(Html.fromHtml("<font color='black'>Check Contact No.!!</font>"));
+                        et_Value.requestFocus();
+                    }
+
+                }else {
                     new Async_GetIdProofDetails().execute();
                 }
             }
@@ -502,6 +524,7 @@ public class CovidChallanActivity extends Activity implements LocationListener {
         btn_Get = findViewById(R.id.btn_Get);
         btn_violation = findViewById(R.id.btn_violation);
         btn_Submit = findViewById(R.id.btn_Submit);
+        btn_cancel=findViewById(R.id.btn_cancel);
         btn_Dob = findViewById(R.id.btn_Dob);
         btn_Otp = findViewById(R.id.btn_Otp);
         et_Value = findViewById(R.id.et_Value);
@@ -628,11 +651,13 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                     lyt_DOB.setVisibility(View.GONE);
                 }
 
-                if ("0".equals(str_IdCode)) {
+                if ("0".equals(str_IdCode)||"12".equals(str_IdCode)) {
                     textView4.setText("Enter Mobile NO :");
+                    et_Value.setInputType(InputType.TYPE_CLASS_PHONE);
                     str_IdCode = "12";
                 } else {
                     textView4.setText("Enter Id Value:");
+                    et_Value.setInputType(InputType.TYPE_CLASS_TEXT);
                 }
                 btn_SlctId_CV.setText("" + s_Item);
                 builder.dismiss();

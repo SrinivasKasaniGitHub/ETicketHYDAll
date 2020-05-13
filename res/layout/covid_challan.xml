@@ -345,7 +345,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.03"
-                            android:text=""
+                            android:text="*"
                             android:textColor="#ff0000"/>
 
 
@@ -380,7 +380,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.03"
-                            android:text=""
+                            android:text="*"
                             android:textColor="#ff0000"/>
 
 
@@ -406,8 +406,16 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:layout_weight=".30"
+                            android:layout_weight=".27"
                             android:text="@string/address_res" />
+                        <TextView
+                            style="@style/navi_text_style"
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.03"
+                            android:text="*"
+                            android:textColor="#ff0000"/>
 
                         <EditText
                             android:id="@+id/et_Address"
@@ -435,8 +443,16 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:layout_weight=".30"
+                            android:layout_weight=".27"
                             android:text="@string/city_or_district" />
+                        <TextView
+                            style="@style/navi_text_style"
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.03"
+                            android:text="*"
+                            android:textColor="#ff0000"/>
 
                         <EditText
                             android:id="@+id/et_City"
@@ -466,8 +482,17 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_weight=".30"
-                        android:text="@string/txt_DRName" />
+                        android:layout_weight=".27"
+                        android:text="Driver Age" />
+
+                    <TextView
+                        style="@style/navi_text_style"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.03"
+                        android:text="*"
+                        android:textColor="#ff0000"/>
 
 
                     <EditText
@@ -496,8 +521,17 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_weight=".30"
+                        android:layout_weight=".27"
                         android:text="Contact No " />
+
+                    <TextView
+                        style="@style/navi_text_style"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.03"
+                        android:text="*"
+                        android:textColor="#ff0000"/>
 
                     <LinearLayout
                         android:id="@+id/ll_contactnum_spotchallantwo_xml"
@@ -907,7 +941,7 @@
                     android:layout_marginTop="@dimen/margin_twenty">
 
                     <Button
-                        android:id="@+id/btn_cancel_spotchallan_xml"
+                        android:id="@+id/btn_cancel"
                         style="@style/naviblue_custom_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
