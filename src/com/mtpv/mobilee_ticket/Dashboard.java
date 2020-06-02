@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
@@ -26,17 +27,26 @@ import android.os.Handler;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.support.v4.content.FileProvider;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatImageView;
+import android.support.v7.widget.AppCompatTextView;
 import android.telephony.TelephonyManager;
+import android.text.Html;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,10 +69,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.SocketException;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 
 @SuppressLint("InlinedApi")
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -175,10 +187,17 @@ public class Dashboard extends Activity implements OnClickListener {
     public static String CHALLAN_TYPE = null, CASES_LIMIT = null, CASES_BOOKED = null;
 
     AppCompatImageView img_DD, img_Spot, img_VehcleHis, img_CraneAct, img_ReleaseDoc, img_Reports, img_DuplctePrint,
-            img_DwldMasters, img_Settings, img_About,img_Covid;
+            img_DwldMasters, img_Settings, img_About, img_Covid;
 
     ImageView img_logo;
     TextView officer_Name, officer_Cadre, officer_PS;
+
+    String dob_DL = "", dob_JngDate = "", gender = "";
+    private int mYear, mMonth, mDay;
+    RadioGroup radioGroup_gender;
+    RadioButton rBtn_Male, rBtn_FeMale, rBtn_Others;
+    EditText edtTxt_PId, edtTxt_Name, edtTxt_PSName, edtTxt_Cadre, et_PAddress, et_PmtAddress, edtTxt_BldGrp, et_CntctNo;
+    AlertDialog builder;
 
     @SuppressLint("NewApi")
     @Override
@@ -278,6 +297,243 @@ public class Dashboard extends Activity implements OnClickListener {
             StrictMode.setThreadPolicy(polocy);
         }
 
+        if (MainActivity.arr_logindetails.length > 20) {
+            if (MainActivity.arr_logindetails[19] == null || MainActivity.arr_logindetails[20] == null) {
+
+                showProfileSummuryDialog("Personal Information");
+            }
+        }
+        showProfileSummuryDialog("Personal Information");
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void showProfileSummuryDialog(final String title) {
+
+        builder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT).create();
+        @SuppressLint("InflateParams")
+        View view = getLayoutInflater().inflate(R.layout.profile_summury_update, null);
+
+        builder.setView(view);
+        builder.setCancelable(true);
+        AppCompatTextView title_Spinner = view.findViewById(R.id.title_Spinner);
+        title_Spinner.setText("" + title);
+
+        edtTxt_PId = view.findViewById(R.id.edtTxt_PId);
+        edtTxt_PId.setText("" + MainActivity.pidCodestatic);
+
+        edtTxt_Name = view.findViewById(R.id.edtTxt_Name);
+        edtTxt_Name.setText("" + MainActivity.pidName);
+
+        edtTxt_PSName = view.findViewById(R.id.edtTxt_PSName);
+        edtTxt_PSName.setText("" + MainActivity.psName);
+
+        edtTxt_Cadre = view.findViewById(R.id.edtTxt_Cadre);
+        edtTxt_Cadre.setText("" + MainActivity.cadre_name);
+
+        et_PAddress = view.findViewById(R.id.et_PAddress);
+        et_PmtAddress = view.findViewById(R.id.et_PmtAddress);
+        edtTxt_BldGrp = view.findViewById(R.id.edtTxt_BldGrp);
+        et_CntctNo = view.findViewById(R.id.et_CntctNo);
+
+        rBtn_Male = view.findViewById(R.id.rBtn_Male);
+        rBtn_FeMale = view.findViewById(R.id.rBtn_FeMale);
+        rBtn_Others = view.findViewById(R.id.rBtn_Others);
+        radioGroup_gender = view.findViewById(R.id.radioGroup_gender);
+
+
+        final Button btn_Jng = view.findViewById(R.id.btn_Jng);
+        btn_Jng.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(Dashboard.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @SuppressWarnings("deprecation")
+                            @SuppressLint({"SimpleDateFormat", "DefaultLocale"})
+
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                SimpleDateFormat date_format = new SimpleDateFormat("dd-MMM-yyyy");
+
+                                SimpleDateFormat date_parse = new SimpleDateFormat("dd/MM/yyyy");
+                                String dtdob = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+                                try {
+                                    dob_JngDate = date_format.format(date_parse.parse(dtdob));
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+
+                                String todaysdate = new DateUtil().getTodaysDate();
+
+                                long days = new DateUtil().DaysCalucate(dob_JngDate, todaysdate);
+
+                                int age = (int) (days / 365);
+
+
+                                //Minimum Age should be 16
+                                if (days > 5824) {
+                                    btn_Jng.setText(dob_JngDate);
+
+                                } else {
+                                    showToast("Please select Date Person Should be Age Greater Than 16");
+                                }
+                                //  dob_DL = date_format.format(dayOfMonth  + (----------------OfYear + 1) + year);
+                            }
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.show();
+            }
+        });
+
+        final Button btn_Dob = view.findViewById(R.id.btn_Dob);
+        btn_Dob.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(Dashboard.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @SuppressWarnings("deprecation")
+                            @SuppressLint({"SimpleDateFormat", "DefaultLocale"})
+
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                SimpleDateFormat date_format = new SimpleDateFormat("dd-MMM-yyyy");
+
+                                SimpleDateFormat date_parse = new SimpleDateFormat("dd/MM/yyyy");
+                                String dtdob = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+                                try {
+                                    dob_DL = date_format.format(date_parse.parse(dtdob));
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+
+                                String todaysdate = new DateUtil().getTodaysDate();
+
+                                long days = new DateUtil().DaysCalucate(dob_DL, todaysdate);
+
+                                int age = (int) (days / 365);
+
+
+                                //Minimum Age should be 16
+                                if (days > 5824) {
+                                    btn_Dob.setText(dob_DL);
+
+                                } else {
+                                    showToast("Please select Date Atleast Person Should be Age Greater Than 16");
+                                }
+                                //  dob_DL = date_format.format(dayOfMonth  + (----------------OfYear + 1) + year);
+                            }
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.show();
+            }
+        });
+
+        radioGroup_gender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                gender = "";
+                switch (checkedId) {
+
+                    case R.id.rBtn_Male:
+                        gender = "1";
+                        break;
+                    case R.id.rBtn_FeMale:
+                        gender = "0";
+                        break;
+
+                    case R.id.rBtn_Others:
+                        gender = "2";
+                        break;
+                    default:
+                        gender = "2";
+                        break;
+                }
+            }
+        });
+
+        Button btn_ProSmryupdate = view.findViewById(R.id.btn_Submit);
+        btn_ProSmryupdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String tempContactNumber = et_CntctNo.getText().toString().trim();
+               /* if (btn_Dob.getText().toString().equalsIgnoreCase("Select Date")) {
+                    showToast("Please select the DOB");
+                } else*/
+                if (et_PAddress.getText().toString().isEmpty()) {
+                    et_PAddress.setError(Html.fromHtml("<font color='black'>Please enter Present Address </font>"));
+                    et_PAddress.requestFocus();
+                } else if (et_PmtAddress.getText().toString().isEmpty()) {
+                    et_PmtAddress.setError(Html.fromHtml("<font color='black'>Please enter Permanant Address </font>"));
+                    et_PmtAddress.requestFocus();
+                } /*else if (btn_Jng.getText().toString().equalsIgnoreCase("Select Date")) {
+                    showToast("Please select the Joining Date ");
+                }*/ else if (et_CntctNo.getText().toString().isEmpty()) {
+                    et_CntctNo.setError(Html.fromHtml("<font color='black'>Please enter Contact No </font>"));
+                    et_CntctNo.requestFocus();
+                } else if ((tempContactNumber.trim() != null && tempContactNumber.trim().length() > 1
+                        && tempContactNumber.trim().length() != 10) || new DateUtil().allCharactersSame(tempContactNumber.trim())) {
+                    et_CntctNo
+                            .setError(Html.fromHtml("<font color='black'>Enter Valid mobile number!!</font>"));
+                    et_CntctNo.requestFocus();
+
+                }/* else if (edtTxt_BldGrp.getText().toString().isEmpty()) {
+                    edtTxt_BldGrp.setError(Html.fromHtml("<font color='black'>Please enter the Blood Group </font>"));
+                    edtTxt_BldGrp.requestFocus();
+                }*/ else if (!rBtn_Male.isChecked() && !rBtn_FeMale.isChecked() && !rBtn_Others.isChecked()) {
+                    showToast("Please select the Gender ");
+                } else {
+                    new Async_ProfileUpdate().execute();
+                }
+
+
+            }
+        });
+        builder.show();
+
+    }
+
+    public class Async_ProfileUpdate extends AsyncTask<Void, Void, String> {
+
+        @Override
+        protected String doInBackground(Void... params) {
+            // TODO Auto-generated method stub
+            ServiceHelper.profileUpdate("" + MainActivity.pidCodestatic, "" + dob_DL, "" + gender, "" + edtTxt_BldGrp.getText().toString().trim(),
+                    "" + et_PAddress.getText().toString().trim(), "" + et_PmtAddress.getText().toString().trim(), "" + dob_JngDate, "" + et_CntctNo.getText().toString().trim(),
+                    "", "", "");
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            // TODO Auto-generated method stub
+            super.onPreExecute();
+            showDialog(PROGRESS_DIALOG);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            removeDialog(PROGRESS_DIALOG);
+            if (!ServiceHelper.profileUpdate.equalsIgnoreCase("0") &&
+                    null != ServiceHelper.profileUpdate) {
+                Log.d("ProfileRes", "" + ServiceHelper.profileUpdate);
+                builder.dismiss();
+            } else {
+                showToast("Please check the Network and Try again ");
+            }
+        }
     }
 
     public class Async_UpdateApk extends AsyncTask<Void, Void, String> {
@@ -556,7 +812,7 @@ public class Dashboard extends Activity implements OnClickListener {
         img_DwldMasters = (AppCompatImageView) findViewById(R.id.img_DownldMastr);
         img_Settings = (AppCompatImageView) findViewById(R.id.img_Settings);
         img_About = (AppCompatImageView) findViewById(R.id.img_About);
-        img_Covid=findViewById(R.id.img_Covid);
+        img_Covid = findViewById(R.id.img_Covid);
 
 
         ibtn_logout = (ImageButton) findViewById(R.id.imgbtn_logout_dashboard_xml);

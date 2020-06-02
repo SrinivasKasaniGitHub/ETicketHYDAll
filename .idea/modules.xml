@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ETicketHYDAll.iml" filepath="$PROJECT_DIR$/ETicketHYDAll.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dsprint/dsprint.iml" filepath="$PROJECT_DIR$/dsprint/dsprint.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ETicketHYDAll.iml" filepath="$PROJECT_DIR$/ETicketHYDAll.iml" group="ETicketHYDAll" />
+      <module fileurl="file://$PROJECT_DIR$/dsprint/dsprint.iml" filepath="$PROJECT_DIR$/dsprint/dsprint.iml" group="ETicketHYDAll/dsprint" />
     </modules>
   </component>
 </project>

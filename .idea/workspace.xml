@@ -9,16 +9,13 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="face" />
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="LoginInfo" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9eb9038f-7df0-4b67-886c-fe669da3c688" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$18.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$19.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$18.dex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$19.dex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/layout/profile_summury_update.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" afterDir="false" />
@@ -27,72 +24,257 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_AnalogicsVersa3TBTPrinterAPI_jar_unspecified_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_AnalogicsVersa3TBTPrinterAPI_jar_unspecified_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_bleoperator_aar_unspecified_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_bleoperator_aar_unspecified_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_common_lang3_jar_unspecified_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_common_lang3_jar_unspecified_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_commons_net_3_5_jar_unspecified_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_commons_net_3_5_jar_unspecified_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_commons_net_examples_3_5_jar_unspecified_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_commons_net_examples_3_5_jar_unspecified_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_commons_validator_1_4_0_jar_unspecified_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_commons_validator_1_4_0_jar_unspecified_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_core_3_2_0_jar_unspecified_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_core_3_2_0_jar_unspecified_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_ftp4j_1_6_jar_unspecified_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_ftp4j_1_6_jar_unspecified_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_ksoap2_android_assembly_3_3_0_jar_with_dependencies_jar_unspecified_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_ksoap2_android_assembly_3_3_0_jar_with_dependencies_jar_unspecified_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_mail_jar_unspecified_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_mail_jar_unspecified_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_opencv_library_2_4_3_jar_unspecified_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_opencv_library_2_4_3_jar_unspecified_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_org_apache_commons_codec_jar_unspecified_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_org_apache_commons_codec_jar_unspecified_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_securityJar_jar_unspecified_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_securityJar_jar_unspecified_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_signature_jar_unspecified_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_signature_jar_unspecified_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_sun_misc_BASE64Decoder_jar_unspecified_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_sun_misc_BASE64Decoder_jar_unspecified_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_universal_image_loader_1_9_3_jar_unspecified_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__AndroidWorkSpace_ETicketHYDAll_libs_universal_image_loader_1_9_3_jar_unspecified_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__Android_Test_ETicketHYDAll_25jan_ETicketHYDAll_libs_AnalogicsVersa3TBTPrinterAPI_jar_unspecified_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__Android_Test_ETicketHYDAll_25jan_ETicketHYDAll_libs_bleoperator_aar_unspecified_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__Android_Test_ETicketHYDAll_25jan_ETicketHYDAll_libs_common_lang3_jar_unspecified_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__Android_Test_ETicketHYDAll_25jan_ETicketHYDAll_libs_commons_net_3_5_jar_unspecified_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__Android_Test_ETicketHYDAll_25jan_ETicketHYDAll_libs_commons_net_examples_3_5_jar_unspecified_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__Android_Test_ETicketHYDAll_25jan_ETicketHYDAll_libs_commons_validator_1_4_0_jar_unspecified_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__Android_Test_ETicketHYDAll_25jan_ETicketHYDAll_libs_core_3_2_0_jar_unspecified_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__Android_Test_ETicketHYDAll_25jan_ETicketHYDAll_libs_ftp4j_1_6_jar_unspecified_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__Android_Test_ETicketHYDAll_25jan_ETicketHYDAll_libs_ksoap2_android_assembly_3_3_0_jar_with_dependencies_jar_unspecified_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__Android_Test_ETicketHYDAll_25jan_ETicketHYDAll_libs_mail_jar_unspecified_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__Android_Test_ETicketHYDAll_25jan_ETicketHYDAll_libs_opencv_library_2_4_3_jar_unspecified_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__Android_Test_ETicketHYDAll_25jan_ETicketHYDAll_libs_org_apache_commons_codec_jar_unspecified_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__Android_Test_ETicketHYDAll_25jan_ETicketHYDAll_libs_securityJar_jar_unspecified_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__Android_Test_ETicketHYDAll_25jan_ETicketHYDAll_libs_signature_jar_unspecified_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__Android_Test_ETicketHYDAll_25jan_ETicketHYDAll_libs_sun_misc_BASE64Decoder_jar_unspecified_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___D__Android_Test_ETicketHYDAll_25jan_ETicketHYDAll_libs_universal_image_loader_1_9_3_jar_unspecified_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ETicketHYDAll.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ETicketHYDAll.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/asynclayoutinflater/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/asynclayoutinflater/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/compat/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/compat/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coordinatorlayout/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coordinatorlayout/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreui/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreui/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreutils/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreutils/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/customview/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/customview/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/design/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/design/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/drawerlayout/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/drawerlayout/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/fragment/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/fragment/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/graphics/drawable/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/graphics/drawable/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/loader/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/loader/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/slidingpanelayout/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/slidingpanelayout/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/swiperefreshlayout/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/swiperefreshlayout/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/transition/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/transition/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v7/appcompat/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v7/appcompat/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v7/recyclerview/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v7/recyclerview/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v7/viewpager/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v7/viewpager/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/com/bogdwellers/pinchtozoom/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/com/bogdwellers/pinchtozoom/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/com/bumptech/glide/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/com/bumptech/glide/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/com/digitsecure/dsprint/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/com/digitsecure/dsprint/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/com/intuit/sdp/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/com/intuit/sdp/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/com/mtpv/mobilee_ticket/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/com/mtpv/mobilee_ticket/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/module/justec/com/bleoperator/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/module/justec/com/bleoperator/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/ru/bartwell/exfilepicker/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/ru/bartwell/exfilepicker/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/blame/res/debug/single/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/blame/res/debug/single/debug.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/dex/debug/mergeProjectDexDebug/out/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/dex/debug/mergeProjectDexDebug/out/classes.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/incremental/mergeDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/incremental/mergeDebugResources/merger.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/iq8BWKlhxmyY05EAS4_sdyTRX_I=" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/iq8BWKlhxmyY05EAS4_sdyTRX_I=" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/instant_app_manifest/debug/processDebugManifest/instant-app-manifest/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/instant_app_manifest/debug/processDebugManifest/instant-app-manifest/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/design/R$layout.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/design/R$layout.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/v7/appcompat/R$layout.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/v7/appcompat/R$layout.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/bogdwellers/pinchtozoom/R$layout.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/bogdwellers/pinchtozoom/R$layout.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/digitsecure/dsprint/R$layout.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/digitsecure/dsprint/R$layout.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/intuit/sdp/R$layout.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/intuit/sdp/R$layout.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/covid/IDPrfAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/covid/IDPrfAdapter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/covid/VltnAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/covid/VltnAdapter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$10$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$12$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/AadhaarUpdate.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/AadhaarUpdate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Aadhaar_Update_Print.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Aadhaar_Update_Print.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/ChangePassword.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/ChangePassword.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$11.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$12.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$13.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$14.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$15.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$16.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$17.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$8.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_GetIdProofDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_GetIdProofDetails.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_GetIdProofMaster.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_GetIdProofMaster.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_GetViolationDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_GetViolationDetails.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_GgenerateCovidChallan.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_GgenerateCovidChallan.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_sendOTP_to_mobile.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_sendOTP_to_mobile.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidPrintActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidPrintActivity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/DD_Response_Print.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/DD_Response_Print.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$AsyncTask_Occupation.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$AsyncTask_Occupation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_About_Version.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_About_Version.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_BarDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_BarDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_GetTerminalDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_GetTerminalDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_getPsDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_getPsDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_getViolationDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_getViolationDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_getViolationPoint_SystemMasterData.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_getViolationPoint_SystemMasterData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_ocuptn.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_ocuptn.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_qlfctn.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_qlfctn.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_vchle_Cat.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_vchle_Cat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_vchle_mainCat.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_vchle_mainCat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_wheler_details.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_wheler_details.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$async_getIDProofsExceptionLimit.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$async_getIDProofsExceptionLimit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard_PC.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard_PC.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/DateOfBirth_Update.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/DateOfBirth_Update.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/DeviceListActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/DeviceListActivity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/DrunkResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/DrunkResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive_Fake_Dialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive_Fake_Dialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/DuplicatePrint.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/DuplicatePrint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/E_Challan.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/E_Challan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/E_Challan_Non_ContactModule.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/E_Challan_Non_ContactModule.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/ExtraPassengers.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/ExtraPassengers.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Fake_NO_Dialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Fake_NO_Dialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/IPSettings$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/IPSettings$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/IPSettings.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/IPSettings.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Login_otp.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Login_otp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$Async_UpdateApk$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$Async_UpdateApk$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$Async_UpdateApk$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$Async_UpdateApk$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$Async_UpdateApk$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$Async_UpdateApk$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$Async_UpdateApk$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$Async_UpdateApk$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$Async_UpdateApk.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$Async_UpdateApk.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$Async_task_login.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$Async_task_login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$asyn_Version_Check.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity$asyn_Version_Check.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/MainActivity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/OTP_input.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/OTP_input.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/PendingChallans$ChallanAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/PendingChallans$ChallanAdapter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/PendingChallans.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/PendingChallans.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/PopupDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/PopupDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/R$id.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/R$integer.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/R$integer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/R$interpolator.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/R$interpolator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/R$layout.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/R$layout.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/R$menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/R$menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/R$raw.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/R$raw.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/R$string.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/R$string.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/R$style.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/R$style.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/R$styleable.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/R$styleable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/R$xml.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/R$xml.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/RefusalToPly.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/RefusalToPly.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/ReleaseversionActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/ReleaseversionActivity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Respone_Print.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Respone_Print.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Settings_New.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Settings_New.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Settings_Old.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Settings_Old.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpecialDriveResponse_Print.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpecialDriveResponse_Print.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$MyAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$MyAdapter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/VehicleHistoryPendingChallans.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/VehicleHistoryPendingChallans.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/mtpv_SpecialDrive$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/mtpv_SpecialDrive$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/mtpv_SpecialDrive.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/mtpv_SpecialDrive.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket_services/ServiceHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket_services/ServiceHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/MultiSelectSearchSpinnerDlg.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/MultiSelectSearchSpinnerDlg.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/MutliSelectAdapter$MultiSelectSearchSpinnerDlgViewHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/MutliSelectAdapter$MultiSelectSearchSpinnerDlgViewHolder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/MutliSelectAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/MutliSelectAdapter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/SpotChallanActivity$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/SpotChallanActivity$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/SpotChallanActivity$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/SpotChallanActivity$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/SpotChallanActivity$MyAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/SpotChallanActivity$MyAdapter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/SpotChallanActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/SpotChallanActivity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/pinpad/mtpv/GetPinPad.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/pinpad/mtpv/GetPinPad.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/module/justec/com/bleoperator/R$layout.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/module/justec/com/bleoperator/R$layout.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/ru/bartwell/exfilepicker/R$layout.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/ru/bartwell/exfilepicker/R$layout.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/merged_manifests/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/merged_manifests/debug/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/res/merged/debug/layout_covid_challan.xml.flat" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/res/merged/debug/layout_covid_challan.xml.flat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/symbols/debug/R.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/symbols/debug/R.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/covid/IDPrfAdapter.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/covid/IDPrfAdapter.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/covid/VltnAdapter.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/covid/VltnAdapter.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$10$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$12$1.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$10.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$10.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$11.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$11.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$12.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$12.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$13.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$13.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$14.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$14.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$15.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$15.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$16.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$16.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$17.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$17.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$2.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$3.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$3.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$4.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$4.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$5.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$5.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$6.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$6.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$7.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$7.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$8.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$8.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$9.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$9.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_GetIdProofDetails.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_GetIdProofDetails.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_GetIdProofMaster.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_GetIdProofMaster.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_GetViolationDetails.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_GetViolationDetails.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_GgenerateCovidChallan.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_GgenerateCovidChallan.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_sendOTP_to_mobile.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_sendOTP_to_mobile.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$1.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$2.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$3.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$3.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$4.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$4.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$5.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$5.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$6.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$6.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$7.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$7.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$AsyncTask_Occupation.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$AsyncTask_Occupation.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_About_Version.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_About_Version.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_BarDetails.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_BarDetails.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_GetTerminalDetails.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_GetTerminalDetails.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$1$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$1$1.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$1.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$2.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$3.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$3.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_getPsDetails.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_getPsDetails.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_getViolationDetails.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_getViolationDetails.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_getViolationPoint_SystemMasterData.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_getViolationPoint_SystemMasterData.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_ocuptn.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_ocuptn.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_qlfctn.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_qlfctn.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_vchle_Cat.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_vchle_Cat.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_vchle_mainCat.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_vchle_mainCat.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_wheler_details.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_wheler_details.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$async_getIDProofsExceptionLimit.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$async_getIDProofsExceptionLimit.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/DuplicatePrint.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/DuplicatePrint.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/E_Challan.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/E_Challan.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/E_Challan_Non_ContactModule.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/E_Challan_Non_ContactModule.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$10.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$10.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$11.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$11.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$6.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$6.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$7.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$7.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$8.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$8.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$9.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$9.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$Async_UpdateApk$1$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$Async_UpdateApk$1$1.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$Async_UpdateApk$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$Async_UpdateApk$1.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$Async_UpdateApk$2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$Async_UpdateApk$2.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$Async_UpdateApk$3.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$Async_UpdateApk$3.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$Async_UpdateApk.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$Async_UpdateApk.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$Async_task_login.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$Async_task_login.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$asyn_Version_Check.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity$asyn_Version_Check.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/MainActivity.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/R$layout.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/R$layout.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/R$menu.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/R$menu.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/R$raw.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/R$raw.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/R$string.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/R$string.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/R$style.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/R$style.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/R$styleable.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/R$styleable.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/R$xml.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/R$xml.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/RefusalToPly.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/RefusalToPly.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Settings_New.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Settings_New.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Settings_Old.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Settings_Old.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotResponse.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotResponse.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/VehicleHistoryPendingChallans.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/VehicleHistoryPendingChallans.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket_services/ServiceHelper.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket_services/ServiceHelper.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/spinnermdl/SpotChallanActivity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/spinnermdl/SpotChallanActivity.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/outputs/apk/debug/ETicketHYDAll-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/outputs/apk/debug/ETicketHYDAll-debug.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/layout/covid_challan.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/layout/covid_challan.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mtpv/covid/VltnAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mtpv/covid/VltnAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/CovidChallanActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/CovidChallanActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Dashboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -100,52 +282,18 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DefaultGradleProjectSettings">
-    <option name="isMigrated" value="true" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="946e5289" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Android_Accelerated_x86_Oreo" />
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
         <projects_view />
       </state>
     </system>
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/covid_challan.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="213" column="29" selection-start-line="213" selection-start-column="29" selection-end-line="213" selection-end-column="29" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/CovidChallanActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="1276" column="9" selection-start-line="1276" selection-start-column="9" selection-end-line="1276" selection-end-column="9" />
-              <folding>
-                <element signature="e#16045#20736#0" expanded="true" />
-                <element signature="e#20735#20736#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/mtpv/covid/VltnAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="792">
-              <caret line="52" column="1" selection-start-line="52" selection-start-column="1" selection-end-line="52" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -155,110 +303,10 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>imgMatchBuilder</find>
-      <find>btn_wheller_code</find>
-      <find>SpotChallan</find>
-      <find>violation_list</find>
-      <find>totaldl_points</find>
-      <find>presentviolatedpoints</find>
-      <find>extrap</find>
-      <find>status</find>
-      <find>violation_desc_append</find>
-      <find>status = 1</find>
-      <find>showDynamicViolations</find>
-      <find>edt_checkslno_dd2_xml</find>
-      <find>et_check_sino</find>
-      <find>should</find>
-      <find>sb_detained_items</find>
-      <find>sb_detaneditems_send</find>
-      <find>multiSelectSearchSpinnerDlg</find>
-      <find>CHALLAN_NUM_FIX</find>
-      <find>detained_items_list_details</find>
-      <find>Ticket Generated Successfully</find>
-      <find>btn_sendOTPtoMobile_dd_xml</find>
-      <find>Async_sendOTP_to_mobile</find>
-      <find>dob_input</find>
-      <find>mYear</find>
-      <find>tv_pendingchallans</find>
-      <find>edtTxt_FName</find>
-      <find>btn_violation_spotchallan_xml</find>
-      <find>imgv_gallery_spotchallan_xml</find>
-      <find>final_image_data_tosend</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>SpotChallanActivity</replace>
-    </replaceStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/com/mtpv/spinnermdl/RecyclerViewEmptySupport.java" />
-        <option value="$PROJECT_DIR$/res/values/dimens.xml" />
-        <option value="$PROJECT_DIR$/res/drawable-mdpi/btnspinrbg.xml" />
-        <option value="$PROJECT_DIR$/res/drawable-mdpi/btnbg.xml" />
-        <option value="$PROJECT_DIR$/res/layout/extra_passengers_alert.xml" />
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/src/com/mtpv/spinnermdl/VltnListModel.java" />
-        <option value="$PROJECT_DIR$/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/src/com/mtpv/spinnermdl/SpotChallanActivity.java" />
-        <option value="$PROJECT_DIR$/src/com/mtpv/spinnermdl/MutliSelectAdapter.java" />
-        <option value="$PROJECT_DIR$/res/layout/multi_select_item.xml" />
-        <option value="$PROJECT_DIR$/res/layout/custom_multi_select.xml" />
-        <option value="$PROJECT_DIR$/src/com/mtpv/spinnermdl/MultiSelectSearchSpinnerDlg.java" />
-        <option value="$PROJECT_DIR$/src/com/mtpv/spinnermdl/MultiSelectModel.java" />
-        <option value="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/Utils.java" />
-        <option value="$PROJECT_DIR$/res/layout/custom_progress_dialog.xml" />
-        <option value="$PROJECT_DIR$/res/layout/generate_dd.xml" />
-        <option value="$PROJECT_DIR$/res/layout/settings.xml" />
-        <option value="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/SharedPrefsHelper.java" />
-        <option value="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Settings_New.java" />
-        <option value="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Drunk_Drive.java" />
-        <option value="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase.java" />
-        <option value="$PROJECT_DIR$/res/layout/spot_challan.xml" />
-        <option value="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java" />
-        <option value="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpecialDriveResponse_Print.java" />
-        <option value="$PROJECT_DIR$/res/layout/activity_dashboard_new.xml" />
-        <option value="$PROJECT_DIR$/res/layout/single_text_row_item.xml" />
-        <option value="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/DrunkResponse.java" />
-        <option value="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/res/layout/otp_verification.xml" />
-        <option value="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/CovidPrintActivity.java" />
-        <option value="$PROJECT_DIR$/src/com/mtpv/covid/ChallansModel.java" />
-        <option value="$PROJECT_DIR$/src/com/mtpv/covid/ChallansAdapter.java" />
-        <option value="$PROJECT_DIR$/res/layout/cvpendindclns.xml" />
-        <option value="$PROJECT_DIR$/res/layout/challan_dialog_layout.xml" />
-        <option value="$PROJECT_DIR$/res/layout/drunkdrive.xml" />
-        <option value="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/MainActivity.java" />
-        <option value="$PROJECT_DIR$/src/com/mtpv/covid/VltnAdapter.java" />
-        <option value="$PROJECT_DIR$/res/layout/covid_challan.xml" />
-        <option value="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/CovidChallanActivity.java" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="260" />
-    <option name="y" value="20" />
-    <option name="width" value="1400" />
-    <option name="height" value="1000" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
-    </panes>
-  </component>
+  <component name="ProjectId" id="1c9xIy8md2sAar2ssZYRSLNXKNe" />
   <component name="PropertiesComponent">
     <property name="DEBUGGABLE_DEVICE" value="samsung-sm_t355y-946e5289" />
     <property name="DEBUGGABLE_PROCESS" value="com.mtpv.mobilee_ticket" />
@@ -318,8 +366,6 @@
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
       <option name="DEBUGGER_TYPE" value="Java" />
@@ -396,37 +442,15 @@
       <option name="project" value="LOCAL" />
       <updated>1589353238720</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="commit latest Code on 13-May-2020 with Covid19 FaceMask Module">
+      <created>1589370927862</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1589370927862</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <layout>
-      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.34004474" visible="true" weight="0.1734694" />
-      <window_info id="Structure" order="2" sideWeight="0.65995526" side_tool="true" weight="0.1734694" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info id="Build Variants" order="4" side_tool="true" />
-      <window_info id="Image Layers" order="5" />
-      <window_info id="Designer" order="6" />
-      <window_info id="Resources Explorer" order="7" />
-      <window_info id="Capture Tool" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="0" weight="0.32997763" />
-      <window_info anchor="bottom" id="Logcat" order="1" weight="0.39261746" />
-      <window_info anchor="bottom" id="TODO" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="5" weight="0.2147651" />
-      <window_info anchor="bottom" id="Android Profiler" order="6" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="7" />
-      <window_info anchor="bottom" id="Debug" order="8" weight="0.32997763" />
-      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Gradle" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="right" id="Palette&#9;" order="4" />
-      <window_info anchor="right" id="Preview" order="5" weight="0.32975295" />
-    </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -434,20 +458,7 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
+              <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
@@ -481,134 +492,152 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase.java</url>
           <line>1214</line>
-          <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase.java</url>
           <line>1219</line>
-          <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
           <line>7764</line>
-          <properties />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java</url>
           <line>1100</line>
-          <properties />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java</url>
           <line>1112</line>
-          <properties />
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
           <line>2366</line>
-          <properties />
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
           <line>2846</line>
-          <properties />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
           <line>1186</line>
-          <properties />
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
           <line>1196</line>
-          <properties />
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java</url>
           <line>1546</line>
-          <properties />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
           <line>2864</line>
-          <properties />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
           <line>8551</line>
-          <properties />
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
           <line>4955</line>
-          <properties />
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
           <line>4984</line>
-          <properties />
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
           <line>4971</line>
-          <properties />
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
           <line>1632</line>
-          <properties />
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Drunk_Drive.java</url>
           <line>758</line>
-          <properties />
           <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Drunk_Drive.java</url>
           <line>750</line>
-          <properties />
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Drunk_Drive.java</url>
           <line>757</line>
-          <properties />
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Settings_New.java</url>
           <line>504</line>
-          <properties />
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Settings_New.java</url>
           <line>501</line>
-          <properties />
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Settings_New.java</url>
           <line>500</line>
-          <properties />
           <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/MainActivity.java</url>
+          <line>574</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/MainActivity.java</url>
+          <line>591</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/MainActivity.java</url>
+          <line>483</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java</url>
+          <line>101</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Dashboard.java</url>
+          <line>494</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Dashboard.java</url>
+          <line>509</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java</url>
+          <line>3108</line>
+          <option name="timeStamp" value="45" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -636,518 +665,6 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/VibratorUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-669">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="182" column="30" selection-start-line="182" selection-start-column="30" selection-end-line="182" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Android/SDK/sources/android-28/android/app/Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="4028" column="22" selection-start-line="4028" selection-start-column="22" selection-end-line="4028" selection-end-column="22" />
-          <folding>
-            <element signature="e#170145#170146#0" expanded="true" />
-            <element signature="e#170181#170182#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/custom_progress_dialog.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/settings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="296" column="54" selection-start-line="296" selection-start-column="32" selection-end-line="296" selection-end-column="54" />
-          <folding>
-            <element signature="e#633#2672#0" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/SharedPrefsHelper.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Settings_New.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="502" column="78" selection-start-line="502" selection-start-column="78" selection-end-line="502" selection-end-column="78" />
-          <folding>
-            <element signature="e#7238#8418#0" />
-            <element signature="e#13538#13596#0" />
-            <element signature="e#13602#13630#0" />
-            <element signature="e#14762#14871#0" />
-            <element signature="e#14150#14210#0" />
-            <element signature="e#15311#15680#0" expanded="true" />
-            <element signature="e#15679#15680#0" expanded="true" />
-            <element signature="e#15784#16916#0" />
-            <element signature="e#16922#17964#0" />
-            <element signature="e#17970#18428#0" />
-            <element signature="e#20256#20617#0" expanded="true" />
-            <element signature="e#20616#20617#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/bleoperator.aar/b0a81e34774cffadd22cd7cacf903f8b/jars/classes.jar!/app/justec/com/bleoperator/BleManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="67" column="16" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Android/SDK/sources/android-28/android/app/ActivityThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="3000" selection-start-line="3000" selection-end-line="3000" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/bleoperator.aar/b0a81e34774cffadd22cd7cacf903f8b/jars/classes.jar!/app/justec/com/bleoperator/comm/BleDevice.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/IPSettings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="113" column="32" selection-start-line="113" selection-start-column="32" selection-end-line="113" selection-end-column="32" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpecialDrive.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/mtpv_SpecialDrive.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="49896">
-          <caret line="2332" column="84" selection-start-line="2332" selection-start-column="84" selection-end-line="2332" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpecialDriveResponse_Print.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="723">
-          <caret line="103" column="9" selection-start-line="103" selection-start-column="9" selection-end-line="103" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/generate_dd.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="261" column="63" selection-start-line="261" selection-start-column="37" selection-end-line="261" selection-end-column="63" />
-          <folding>
-            <element signature="e#322#2965#0" />
-            <element signature="e#3009#3842#0" />
-            <element signature="e#3910#4135#0" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/ExtraPassengers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/activity_extra_passengers.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="4" lean-forward="true" selection-end-line="113" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/activity_otp_input.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/OTP_input.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="194" column="51" lean-forward="true" selection-start-line="194" selection-start-column="20" selection-end-line="194" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/spot_challan.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2">
-          <caret line="398" column="42" selection-start-line="398" selection-start-column="33" selection-end-line="398" selection-end-column="42" />
-          <folding>
-            <element signature="e#679#3023#0" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="53" column="18" selection-start-line="53" selection-start-column="18" selection-end-line="53" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Dashboard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="188" column="42" selection-start-line="188" selection-start-column="42" selection-end-line="188" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/activity_dashboard_new.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="37" column="15" selection-start-line="37" selection-start-column="15" selection-end-line="37" selection-end-column="15" />
-          <folding>
-            <element signature="e#457#878#0" />
-            <element signature="e#884#1365#0" />
-            <element signature="e#1345#1362#0" expanded="true" />
-            <element signature="e#1375#27307#0" />
-            <element signature="e#7586#13752#0" />
-            <element signature="e#13758#19932#0" />
-            <element signature="e#19939#27164#0" />
-            <element signature="e#27170#27495#0" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/single_text_row_item.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
-          <folding>
-            <element signature="e#180#195#0" expanded="true" />
-            <element signature="e#541#555#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11174">
-          <caret line="715" column="26" selection-start-line="715" selection-start-column="26" selection-end-line="715" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/drunk_drive_response.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="83" column="45" selection-start-line="83" selection-start-column="45" selection-end-line="83" selection-end-column="45" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/otp_verification.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="73" column="13" selection-start-line="73" selection-start-column="13" selection-end-line="73" selection-end-column="13" />
-          <folding>
-            <element signature="e#328#1445#0" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="3711" column="34" selection-start-line="3711" selection-start-column="20" selection-end-line="3711" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
-          <caret line="8624" column="25" selection-start-line="8624" selection-start-column="25" selection-end-line="8624" selection-end-column="25" />
-          <folding>
-            <element signature="e#51579#51625#0" />
-            <element signature="e#107792#108027#0" />
-            <element signature="e#108033#108981#0" />
-            <element signature="e#108987#116639#0" />
-            <element signature="e#278151#281031#0" />
-            <element signature="e#449914#449965#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="2650" column="61" selection-start-line="2650" selection-start-column="15" selection-end-line="2650" selection-end-column="61" />
-          <folding>
-            <element signature="class#21174:22044" />
-            <element signature="e#35789#36710#0" />
-            <element signature="e#36716#36800#0" />
-            <element signature="e#36806#37894#0" />
-            <element signature="e#40116#40360#0" />
-            <element signature="e#47569#48426#0" />
-            <element signature="e#48432#48490#0" />
-            <element signature="e#49197#49257#0" />
-            <element signature="e#49263#49717#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/DrunkResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="39" column="17" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/CovidPrintActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2050">
-          <caret line="142" column="67" selection-start-line="142" selection-start-column="47" selection-end-line="142" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/pen_challans.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1">
-          <folding>
-            <element signature="e#237#2192#0" />
-            <element signature="e#2198#2587#0" />
-            <element signature="e#2593#2997#0" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/cust_pen_challans.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/PendingChallans.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="206" column="57" selection-start-line="206" selection-start-column="57" selection-end-line="206" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/covid/ChallansModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="25" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="25" />
-          <folding>
-            <element signature="e#279#280#0" expanded="true" />
-            <element signature="e#311#312#0" expanded="true" />
-            <element signature="e#361#362#0" expanded="true" />
-            <element signature="e#398#399#0" expanded="true" />
-            <element signature="e#429#430#0" expanded="true" />
-            <element signature="e#456#457#0" expanded="true" />
-            <element signature="e#496#497#0" expanded="true" />
-            <element signature="e#523#524#0" expanded="true" />
-            <element signature="e#554#555#0" expanded="true" />
-            <element signature="e#581#582#0" expanded="true" />
-            <element signature="e#621#622#0" expanded="true" />
-            <element signature="e#653#654#0" expanded="true" />
-            <element signature="e#688#689#0" expanded="true" />
-            <element signature="e#719#720#0" expanded="true" />
-            <element signature="e#767#768#0" expanded="true" />
-            <element signature="e#802#803#0" expanded="true" />
-            <element signature="e#835#836#0" expanded="true" />
-            <element signature="e#864#865#0" expanded="true" />
-            <element signature="e#908#909#0" expanded="true" />
-            <element signature="e#944#945#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/pending_challans_details.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="85" column="54" lean-forward="true" selection-start-line="85" selection-start-column="23" selection-end-line="85" selection-end-column="54" />
-          <folding>
-            <element signature="e#237#2182#0" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/spinner_dialog_layout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="43" column="44" lean-forward="true" selection-end-line="49" selection-end-column="17" />
-          <folding>
-            <element signature="e#236#1411#0" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/covid/ChallansAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="14" column="28" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Android/SDK/platforms/android-28/data/res/values/attrs.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="5369" column="20" selection-start-line="5369" selection-start-column="20" selection-end-line="5369" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/cvpendindclns.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="42" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
-          <folding>
-            <element signature="e#275#289#0" expanded="true" />
-            <element signature="e#487#501#0" expanded="true" />
-            <element signature="e#494#508#0" expanded="true" />
-            <element signature="e#534#548#0" expanded="true" />
-            <element signature="e#739#753#0" expanded="true" />
-            <element signature="e#1435#2157#0" />
-            <element signature="e#1822#1836#0" expanded="true" />
-            <element signature="e#2163#2889#0" />
-            <element signature="e#2710#2724#0" expanded="true" />
-            <element signature="e#2895#3622#0" />
-            <element signature="e#3602#3616#0" expanded="true" />
-            <element signature="e#3628#4358#0" />
-            <element signature="e#4495#4509#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/challan_dialog_layout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="65" column="8" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="8" />
-          <folding>
-            <element signature="e#236#1411#0" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/drunkdrive.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="373" column="40" selection-start-line="373" selection-start-column="40" selection-end-line="373" selection-end-column="40" />
-          <folding>
-            <element signature="e#288#386#0" />
-            <element signature="e#392#1273#0" />
-            <element signature="e#1674#2790#0" />
-            <element signature="e#2804#6327#0" />
-            <element signature="e#6341#9343#0" />
-            <element signature="e#9357#11864#0" />
-            <element signature="e#11878#13135#0" />
-            <element signature="e#13149#13838#0" />
-            <element signature="e#13852#15175#0" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Drunk_Drive.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="143" selection-start-line="143" selection-end-line="143" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="74" column="61" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-393">
-          <caret line="255" column="5" selection-start-line="255" selection-start-column="5" selection-end-line="255" selection-end-column="5" />
-          <folding>
-            <element signature="e#8708#9702#0" />
-            <element signature="e#9708#10324#0" />
-            <element signature="e#10330#14585#0" />
-            <element signature="e#14591#14890#0" />
-            <element signature="e#15213#15820#0" />
-            <element signature="e#15826#20802#0" />
-            <element signature="e#20808#21747#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/covid/VltnAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="52" column="1" selection-start-line="52" selection-start-column="1" selection-end-line="52" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/covid_challan.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="213" column="29" selection-start-line="213" selection-start-column="29" selection-end-line="213" selection-end-column="29" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/CovidChallanActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="1276" column="9" selection-start-line="1276" selection-start-column="9" selection-end-line="1276" selection-end-column="9" />
-          <folding>
-            <element signature="e#16045#20736#0" expanded="true" />
-            <element signature="e#20735#20736#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
   </component>
   <component name="masterDetails">
     <states>

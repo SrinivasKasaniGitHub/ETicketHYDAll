@@ -34,7 +34,7 @@ public class ServiceHelper {
             aadhaarVehicle_resp, UpdateAadhaar_resp, aadhaarDetailsCheck_resp, changePswd_otp, changePSWDconfirm,
             version_response, offender_remarks,
             rta_data, license_data, aadhar_data, result = "", output = "", rc_send, dl_send, adhr_send,
-            versionData, getOfficerLimit, spot_finalPrintNDevice, str_imgDDInfo, str_SameChlnDuplicatePrint = "";
+            versionData, getOfficerLimit, spot_finalPrintNDevice, str_imgDDInfo, str_SameChlnDuplicatePrint = "",profileUpdate;
 
     public static Map<String, String> viodetMap = null;
     public static String rtaapproovedresponse, validregnoresponse, insertDetainItemsresponse, remarksresult, otpStatusnTime, noncontactresponse;
@@ -3098,6 +3098,46 @@ public class ServiceHelper {
         } catch (Exception E) {
             E.printStackTrace();
             transactionNo_resp = "0";
+        }
+    }
+
+    public static void profileUpdate(String pidCd, String dOB, String gENDER, String bLOOD_GRP,
+                                        String pRESENT_ADDR, String pERMANENT_ADDR, String dOJ, String sim_no, String gps_Latti, String gps_Longi,
+                                        String gps_Date) {
+        try {
+
+            SoapObject request = new SoapObject(NAMESPACE, "" + GET_TRANSACTION_NO);
+            request.addProperty("pidCd", "" + pidCd);
+            request.addProperty("dOB", "" + dOB);
+            request.addProperty("gENDER", "" + gENDER);
+            request.addProperty("bLOOD_GRP", "" + bLOOD_GRP);
+            request.addProperty("pRESENT_ADDR", "" + pRESENT_ADDR);
+            request.addProperty("pERMANENT_ADDR", "" + pERMANENT_ADDR);
+            request.addProperty("dOJ", "" + dOJ);
+            request.addProperty("simNo", "" + sim_no);
+            request.addProperty("gpsLatti", "" + gps_Latti);
+            request.addProperty("gpsLongi", "" + gps_Longi);
+            request.addProperty("gpsDate", "" + gps_Date);
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+            envelope.dotNet = true;
+            envelope.setOutputSoapObject(request);
+            HttpTransportSE androidHttpTransport = new HttpTransportSE(MainActivity.URL, timeLimit);
+            androidHttpTransport.call(SOAP_ACTION, envelope);
+            Object result = envelope.getResponse();
+            try {
+                profileUpdate = result.toString();
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                profileUpdate = "0";
+            }
+
+
+        } catch (SoapFault fault) {
+            profileUpdate = "0";
+        } catch (Exception E) {
+            E.printStackTrace();
+            profileUpdate = "0";
         }
     }
 

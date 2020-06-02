@@ -245,9 +245,8 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
         btn_submit = findViewById(R.id.btnsubmit_login_xml);
         tv_ip_settings = findViewById(R.id.tv_ipsettings);
 
-       /* et_pid.setText("2300001044");
+        et_pid.setText("2300001044");
         et_pid_pwd.setText("Sri@1044");
-*/
         btn_cancel.setOnClickListener(this);
         btn_submit.setOnClickListener(this);
         tv_ip_settings.setOnClickListener(this);
@@ -594,6 +593,8 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
             try {
 
                 if (ServiceHelper.Opdata_Chalana != null && !Objects.equals("0", ServiceHelper.Opdata_Chalana)) {
+
+                    Log.d("LoginInfo",""+ServiceHelper.Opdata_Chalana);
 
                     if (ServiceHelper.Opdata_Chalana.trim().equals("1")) {
                         showToast("Invalid Login ID");

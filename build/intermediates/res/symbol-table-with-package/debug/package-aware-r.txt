@@ -1868,6 +1868,7 @@ id btn_Dob
 id btn_Get
 id btn_ImgMatchCancel
 id btn_ImgMatchOk
+id btn_Jng
 id btn_OK
 id btn_Otp
 id btn_Refsl_OK
@@ -2015,8 +2016,12 @@ id ed_date
 id ed_engine
 id ed_time
 id edit_query
+id edtTxt_BldGrp
+id edtTxt_Cadre
 id edtTxt_FName
 id edtTxt_Name
+id edtTxt_PId
+id edtTxt_PSName
 id edt_Age
 id edt_Txt_ExtraPass
 id edt_aadharno_rtadetails_xml
@@ -2086,6 +2091,8 @@ id et_Address
 id et_City
 id et_CntctNo
 id et_OTP
+id et_PAddress
+id et_PmtAddress
 id et_Value
 id et_chasisNo
 id et_dd_address
@@ -2887,6 +2894,7 @@ layout otp_verification
 layout pen_challans
 layout pending_challans_details
 layout pinpad_list_item_device
+layout profile_summury_update
 layout refusaltofly_dialog
 layout reports
 layout sdp_example
