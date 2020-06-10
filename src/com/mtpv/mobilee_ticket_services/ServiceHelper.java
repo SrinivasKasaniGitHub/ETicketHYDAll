@@ -34,7 +34,7 @@ public class ServiceHelper {
             aadhaarVehicle_resp, UpdateAadhaar_resp, aadhaarDetailsCheck_resp, changePswd_otp, changePSWDconfirm,
             version_response, offender_remarks,
             rta_data, license_data, aadhar_data, result = "", output = "", rc_send, dl_send, adhr_send,
-            versionData, getOfficerLimit, spot_finalPrintNDevice, str_imgDDInfo, str_SameChlnDuplicatePrint = "",profileUpdate;
+            versionData, getOfficerLimit, spot_finalPrintNDevice, str_imgDDInfo, str_SameChlnDuplicatePrint = "",profileUpdate,vehCategory;
 
     public static Map<String, String> viodetMap = null;
     public static String rtaapproovedresponse, validregnoresponse, insertDetainItemsresponse, remarksresult, otpStatusnTime, noncontactresponse;
@@ -108,9 +108,10 @@ public class ServiceHelper {
             if (Opdata_Chalana == "0") {
             } else {
                 if (Opdata_Chalana != null && !Opdata_Chalana.equals("NA")) {
-                    Opdata_Chalana = Opdata_Chalana.replace("|", ":");
+                  // Opdata_Chalana = Opdata_Chalana.replace("|", ":");
+                    MainActivity.arr_logindetails = Opdata_Chalana.split("|");
                 }
-                MainActivity.arr_logindetails = Opdata_Chalana.split(":");
+
             }
 
         } catch (SoapFault fault) {
@@ -324,6 +325,47 @@ public class ServiceHelper {
             // TODO: handle exception
             Opdata_Chalana = "0";
             whlr_details_master = new String[0];
+        }
+
+    }
+
+    public static void getVehicleCategory() {
+        try {
+            SoapObject request = new SoapObject(NAMESPACE, "getVehCategoryMaster");
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+            envelope.dotNet = true;
+            envelope.setOutputSoapObject(request);
+            HttpTransportSE httpTransportSE = new HttpTransportSE(MainActivity.URL, timeLimit);
+            httpTransportSE.call(SOAP_ACTION, envelope);
+            Object result = envelope.getResponse();
+            try {
+                if (result != null) {
+                    vehCategory = result.toString();
+
+                } else {
+                    vehCategory = "0";
+                }
+
+
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                vehCategory = "0";
+            }
+
+
+        } catch (SoapFault fault) {
+            fault.printStackTrace();
+            vehCategory = "0";
+
+        } catch (SocketTimeoutException fault) {
+            fault.printStackTrace();
+            vehCategory = "0";
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            vehCategory = "0";
+
         }
 
     }
@@ -893,10 +935,11 @@ public class ServiceHelper {
                                                    String user_unitName, String cadre_Cd, String cadre_only, String imgEncoded_String, String device_imei,
                                                    String gps_Lattitude, String gps_Longitude, String mob_macId, String sim_Id, String breath_AnalyserId,
                                                    String lcnce_status, String nameOfBar_WineShop, String addressOfBar_WineShop, String occupation_Name,
-                                                   String occupation_Address) {
+                                                   String occupation_Address,String typeOfVeh) {
         Utils utils = new Utils();
         try {
             SoapObject request = new SoapObject(NAMESPACE, "" + GENERATE_DRUNK_DRIVE_CASE1_5_2);
+            request.addProperty("typeOfVeh", "" + typeOfVeh);
             request.addProperty(utils.REG_CD, "" + regn_Cd);
             request.addProperty(utils.VEH_NO, "" + vehicle_No);
             request.addProperty(utils.REG_NO, "" + regn_No);
@@ -2090,9 +2133,10 @@ public class ServiceHelper {
             SoapObject request = null;
             if (Dashboard.check_vhleHistory_or_Spot.equals("spot")) {
                 request = new SoapObject(NAMESPACE, "" + SPOT_CHALLAN_PAYMENT_NEW_15);
-                request.addProperty(utils.SPOT_VEHICLE_TYPE, "" + typeOfVeh);
+                request.addProperty("typeOfVeh", "" + typeOfVeh);
             } else if (Dashboard.check_vhleHistory_or_Spot.equals("towing")) {
                 request = new SoapObject(NAMESPACE, "" + TOWING_CPACT_METHOD_NAME);
+                request.addProperty("typeOfVeh", "" + typeOfVeh);
             }
             request.addProperty(utils.VHLE_HIST_SELECTED_PEN_CHALLANS, "" + selectedPendingChallans);
             request.addProperty(utils.SPOT_REGNCD, "" + regnCd);

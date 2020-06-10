@@ -80,11 +80,13 @@
                         android:text="Personal Details"
                         android:textStyle="bold" />
 
+
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:weightSum="1"
-                        android:layout_marginTop="@dimen/header_grnt_padding_ten"
+                        android:layout_marginTop="30dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -100,18 +102,20 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.03"
-                            android:text="*"
-                            android:textColor="#ff0000"
-                            android:visibility="invisible"/>
+                            android:text=":"
+                            android:textStyle="bold"
+                            android:textColor="#000000"
+                            android:visibility="visible"/>
 
 
-                        <EditText
+                        <TextView
                             android:id="@+id/edtTxt_PId"
-                            style="@style/edt_custom_style"
+                            style="@style/navi_text_style"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.7"
-                            android:gravity="center"
+                            android:textStyle="bold"
+
                             android:inputType="text|textCapCharacters"
                             android:enabled="false"/>
                     </LinearLayout>
@@ -121,7 +125,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:weightSum="1"
-                        android:layout_marginTop="@dimen/header_grnt_padding_ten"
+                        android:layout_marginTop="30dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -138,18 +142,19 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.03"
-                            android:text="*"
-                            android:textColor="#ff0000"
-                            android:visibility="invisible"/>
+                            android:text=":"
+                            android:textStyle="bold"
+                            android:textColor="#000000"
+                            android:visibility="visible"/>
 
 
-                        <EditText
+                        <TextView
                             android:id="@+id/edtTxt_Name"
-                            style="@style/edt_custom_style"
+                            style="@style/navi_text_style"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.7"
-                            android:gravity="center"
+                            android:textStyle="bold"
                             android:inputType="text|textCapCharacters"/>
                     </LinearLayout>
 
@@ -157,7 +162,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:weightSum="1"
-                        android:layout_marginTop="@dimen/header_grnt_padding_ten"
+                        android:layout_marginTop="30dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -174,18 +179,19 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.03"
-                            android:text="*"
-                            android:textColor="#ff0000"
-                            android:visibility="invisible"/>
+                            android:text=":"
+                            android:textStyle="bold"
+                            android:textColor="#000000"
+                            android:visibility="visible"/>
 
 
-                        <EditText
+                        <TextView
                             android:id="@+id/edtTxt_PSName"
-                            style="@style/edt_custom_style"
+                            style="@style/navi_text_style"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.7"
-                            android:gravity="center"
+                            android:textStyle="bold"
                             android:inputType="text|textCapCharacters"/>
                     </LinearLayout>
 
@@ -193,7 +199,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:weightSum="1"
-                        android:layout_marginTop="@dimen/header_grnt_padding_ten"
+                        android:layout_marginTop="30dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -210,13 +216,50 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.03"
-                            android:text="*"
-                            android:textColor="#ff0000"
-                            android:visibility="invisible"/>
+                            android:text=":"
+                            android:textStyle="bold"
+                            android:textColor="#000000"
+                            android:visibility="visible"/>
+
+
+                        <TextView
+                            android:id="@+id/edtTxt_Cadre"
+                            style="@style/navi_text_style"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.7"
+                            android:textStyle="bold"
+                            android:inputType="text|textCapCharacters"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="1"
+                        android:layout_marginTop="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/navi_text_style"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.27"
+                            android:text="Employee Id" />
+
+                        <TextView
+                            style="@style/navi_text_style"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.03"
+                            android:text=":"
+                            android:textStyle="bold"
+                            android:textColor="#000000"
+                            android:visibility="visible"/>
 
 
                         <EditText
-                            android:id="@+id/edtTxt_Cadre"
+                            android:id="@+id/edtTxt_EmpId"
                             style="@style/edt_custom_style"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -229,7 +272,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:weightSum="1"
-                        android:layout_marginTop="@dimen/header_grnt_padding_ten"
+                        android:layout_marginTop="25dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -246,9 +289,11 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.03"
-                            android:text="*"
-                            android:textColor="#ff0000"
-                            android:visibility="invisible"/>
+                            android:layout_gravity="center_vertical"
+                            android:text=":"
+                            android:textStyle="bold"
+                            android:textColor="#000000"
+                            android:visibility="visible"/>
 
                         <Button
                             android:id="@+id/btn_Dob"
@@ -504,7 +549,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:layout_weight="1"
+                            android:layout_weight="0.70"
                             android:hint="@string/driver_contact_no"
                             android:inputType="number"
                             android:maxLength="10"/>
@@ -515,9 +560,9 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/header_grnt_padding_five"
-                            android:text="OTP"
+                            android:text="SEND"
                             android:layout_weight=".30"
-                            android:visibility="gone"/>
+                            android:visibility="visible"/>
                     </LinearLayout>
 
                     <EditText
@@ -585,26 +630,26 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/ll_4_spot_challan_xml"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="@dimen/margin_twenty"
-                    android:layout_marginTop="@dimen/margin_twenty">
+                    android:layout_marginTop="@dimen/margin_twenty"
+                    android:gravity="center_horizontal">
 
                     <Button
                         android:id="@+id/btn_cancel"
                         style="@style/naviblue_custom_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/cancel" />
+                        android:text="@string/cancel"
+                        android:visibility="gone"/>
 
                     <Button
                         android:id="@+id/btn_Submit"
                         style="@style/naviblue_custom_style"
-                        android:layout_width="wrap_content"
+                        android:layout_width="250dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/header_grnt_padding_five"
-                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
                         android:text="Submit" />
                 </LinearLayout>
 

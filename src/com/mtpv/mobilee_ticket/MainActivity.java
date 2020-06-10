@@ -74,7 +74,7 @@ import mother.com.test.PidSecEncrypt;
 
 @SuppressLint({"WorldReadableFiles", "NewApi", "SimpleDateFormat"})
 public class MainActivity extends Activity implements OnClickListener, LocationListener {
-    //9502703304 e jalapathi
+
     final int SPLASH_DIALOG = 0, PROGRESS_DIALOG = 1;
     EditText et_pid, et_pid_pwd;
     Button btn_cancel, btn_submit;
@@ -94,7 +94,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
     public static String UNIT_CODE = "", UNIT_NAME = "", IMEI = "", dev_Model = "", URL = "", user_id = "", appVersion = null,
             user_pwd = "", e_user_id = null, sim_No = null, e_user_tmp = "";
     ProgressBar progress;
-    boolean isGPSEnabled = false, isNetworkEnabled = false, canGetLocation = false;
+    public static boolean isGPSEnabled = false, isNetworkEnabled = false, canGetLocation = false, profilestatus = false;
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10, MIN_TIME_BW_UPDATES = 1000 * 60;
     SharedPreferences preference;
     SharedPreferences.Editor editor;
@@ -594,7 +594,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
 
                 if (ServiceHelper.Opdata_Chalana != null && !Objects.equals("0", ServiceHelper.Opdata_Chalana)) {
 
-                    Log.d("LoginInfo",""+ServiceHelper.Opdata_Chalana);
+                    Log.d("LoginInfo", "" + ServiceHelper.Opdata_Chalana);
 
                     if (ServiceHelper.Opdata_Chalana.trim().equals("1")) {
                         showToast("Invalid Login ID");
@@ -611,9 +611,18 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                         showToast("Please Check Your Network And Try Again");
                     } else {
 
-                        MainActivity.arr_logindetails = ServiceHelper.Opdata_Chalana.split(":");
+                        MainActivity.arr_logindetails = ServiceHelper.Opdata_Chalana.split("\\|");
 
                         for (int i = 0; i < MainActivity.arr_logindetails.length; i++) {
+                        }
+
+                        if (MainActivity.arr_logindetails.length > 20) {
+                            if (MainActivity.arr_logindetails[19].equalsIgnoreCase("null") ||
+                                    MainActivity.arr_logindetails[20].equalsIgnoreCase("null")) {
+                                profilestatus = true;
+                            } else {
+                                profilestatus = false;
+                            }
                         }
 
                         try {
@@ -641,7 +650,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                             MainActivity.otpno = "" + arr_logindetails[14];
 
                             //if (arr_logindetails != null && arr_logindetails.length == 16) {
-                                officerLogin_Otp = "" + arr_logindetails[15];
+                            officerLogin_Otp = "" + arr_logindetails[15];
                             //}
 
                             editors.putString("PID_CODE", pidCode);
@@ -682,6 +691,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                 } else {
                     showToast("Please Check Your Network And Try Again Login Failed");
                 }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }

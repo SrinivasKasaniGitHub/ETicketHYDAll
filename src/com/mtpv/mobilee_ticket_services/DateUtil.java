@@ -1,5 +1,9 @@
 package com.mtpv.mobilee_ticket_services;
 
+import android.annotation.SuppressLint;
+
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -101,6 +105,21 @@ public class DateUtil {
                 return false;
 
         return true;
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    public String changeDateFormat(String date){
+        String outputDateStr="";
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-mm-dd");
+        DateFormat outputFormat = new SimpleDateFormat("dd-MMM-yyyy");
+        try {
+            Date datec = inputFormat.parse(date);
+            outputDateStr = outputFormat.format(datec);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            outputDateStr="";
+        }
+        return outputDateStr;
     }
 
 }

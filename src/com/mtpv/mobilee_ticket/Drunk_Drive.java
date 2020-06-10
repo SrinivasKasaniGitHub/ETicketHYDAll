@@ -36,6 +36,7 @@ import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
+import android.support.v7.widget.AppCompatTextView;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.Html;
@@ -82,9 +83,13 @@ import com.mtpv.mobilee_ticket_services.ServiceHelper;
 import com.mtpv.mobilee_ticket_services.SharedPrefsHelper;
 import com.mtpv.mobilee_ticket_services.Utils;
 import com.mtpv.mobilee_ticket_services.VibratorUtils;
+import com.mtpv.spinnermdl.VehCatAdapter;
+import com.mtpv.spinnermdl.VehCatModel;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -289,6 +294,8 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
     String bookedPScode_send_from_settings, bookedPSname_send_from_settings, point_code_send_from_settings, point_name_send_from_settings,
             exact_location_send_from_settings;
 
+    public static String vehCatgryCd = "9";
+
     ImageView img_logo;
     TextView officer_Name, officer_Cadre, officer_PS;
     TextView textView_header_spot_challan_xml;
@@ -303,6 +310,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
     ProgressDialog progressDialog;
     LinearLayout lyt_DD_Details;
     BleDevice bleDevice;
+    Button btn_vehCategory;
 
     @SuppressLint({"NewApi", "MissingPermission", "ObsoleteSdkInt", "SimpleDateFormat"})
     @Override
@@ -316,14 +324,14 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
         CheckBlueToothState();
 
         bleDevice = SharedPrefsHelper.getSavedObjectFromPreference(getApplicationContext(), "mPreference", "mLoginRes", BleDevice.class);
-        if (null != bleDevice) {
+       /* if (null != bleDevice) {
             if (!BleManager.getInstance().isConnected(bleDevice)) {
                 BleManager.getInstance().disconnect(bleDevice);
                 connect(bleDevice);
             }
         } else {
             showToast("Please connect the Breath Analyzer from Settings Module !");
-        }
+        }*/
         lyt_DD_Details = findViewById(R.id.lyt_DD_Details);
         progressDialog = new ProgressDialog(this);
         dd_dobFLG = false;
@@ -362,6 +370,8 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
         officer_Name.setText(MainActivity.pidName + "(" + MainActivity.cadre_name + ")");
         officer_Cadre.setText(MainActivity.cadre_name);
         officer_PS.setText(MainActivity.psName);
+        btn_vehCategory = findViewById(R.id.btn_vehCategory);
+        btn_vehCategory.setOnClickListener(this);
 
 
         // licence_status = "1";
@@ -1094,9 +1104,83 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                 showDialog(WHEELER_CODE);
                 break;
 
+            case R.id.btn_vehCategory:
+                new Async_VehicleCategory().execute();
+                break;
+
             default:
                 break;
         }
+    }
+
+    public class Async_VehicleCategory extends AsyncTask<Void, Void, String> {
+
+        @Override
+        protected String doInBackground(Void... params) {
+            // TODO Auto-generated method stub
+            ServiceHelper.getVehicleCategory();
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            // TODO Auto-generated method stub
+            super.onPreExecute();
+            showDialog(PROGRESS_DIALOG);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            removeDialog(PROGRESS_DIALOG);
+
+            if (!ServiceHelper.vehCategory.equals("0") && null != ServiceHelper.vehCategory) {
+                ArrayList<VehCatModel> vehCatModels;
+                try {
+                    JSONObject jsonObject = new JSONObject(ServiceHelper.vehCategory);
+                    JSONArray jsonArray = jsonObject.getJSONArray("VehCategoryMaster");
+                    vehCatModels = new ArrayList<>(jsonArray.length());
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject object = jsonArray.getJSONObject(i);
+                        VehCatModel vehCatModel = new VehCatModel();
+                        vehCatModel.setVehCatName("" + object.getString("VehCatName"));
+                        vehCatModel.setVehCatCode("" + object.getString("VehCatCode"));
+                        vehCatModels.add(vehCatModel);
+                    }
+                    showVehCatSpinnerDialog("Select Vehicle Category", vehCatModels);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void showVehCatSpinnerDialog(String title, final List<VehCatModel> vehCatModels) {
+
+        final AlertDialog builder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT).create();
+        @SuppressLint("InflateParams")
+        View view = getLayoutInflater().inflate(R.layout.spinner_dialog_layout, null);
+        builder.setView(view);
+        builder.setCancelable(true);
+        ListView spinner_List = view.findViewById(R.id.recycle_List);
+        AppCompatTextView title_Spinner = view.findViewById(R.id.title_Spinner);
+        title_Spinner.setText("" + title);
+        VehCatAdapter jobsAdapter = new VehCatAdapter(Drunk_Drive.this, vehCatModels);
+        spinner_List.setAdapter(jobsAdapter);
+        builder.show();
+        spinner_List.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String s_Item = vehCatModels.get(i).getVehCatName();
+                vehCatgryCd = vehCatModels.get(i).getVehCatCode();
+                btn_vehCategory.setText("" + s_Item);
+                builder.dismiss();
+            }
+        });
     }
 
     private void asyncAllsOfMethods() {

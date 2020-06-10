@@ -1911,6 +1911,7 @@ id btn_sendOTPtoMobile_spotchallantwo_xml
 id btn_submit
 id btn_vchle_maincat_dd2_xml
 id btn_vchle_mainsub_dd2_xml
+id btn_vehCategory
 id btn_vhcle_cat_dd2_xml
 id btn_view_paired
 id btn_violation
@@ -2018,6 +2019,7 @@ id ed_time
 id edit_query
 id edtTxt_BldGrp
 id edtTxt_Cadre
+id edtTxt_EmpId
 id edtTxt_FName
 id edtTxt_Name
 id edtTxt_PId
@@ -2297,6 +2299,7 @@ id lyt_Age
 id lyt_DD_Details
 id lyt_DOB
 id lyt_GetDtls
+id lyt_VehCategory
 id main_container
 id make_paymnt
 id masked

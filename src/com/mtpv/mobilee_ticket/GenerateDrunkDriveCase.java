@@ -2622,7 +2622,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                         " " + final_image_data_tosend, "" + IMEI_send, "" + latitude, "" + longitude, "" + macAddress,
                         "" + simID, "" + breath_anlysr, "" + Drunk_Drive.licence_status, "" + liquor_code + "|" + barNAME,
                         "" + liquor_Address, "" + professionCode + "|" + profession_name,
-                        "" + profession_Addres + "|" + emailID + "|" + identification_mark);
+                        "" + profession_Addres + "|" + emailID + "|" + identification_mark,Drunk_Drive.vehCatgryCd);
 
             } catch (Exception e) {
                 e.printStackTrace();

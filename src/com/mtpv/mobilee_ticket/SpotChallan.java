@@ -62,6 +62,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.webkit.WebView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -71,6 +72,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -90,7 +92,13 @@ import com.mtpv.mobilee_ticket_services.Utils;
 import com.mtpv.mobilee_ticket_services.VibratorUtils;
 import com.mtpv.spinnermdl.MultiSelectModel;
 import com.mtpv.spinnermdl.MultiSelectSearchSpinnerDlg;
+
+import com.mtpv.spinnermdl.VehCatAdapter;
+import com.mtpv.spinnermdl.VehCatModel;
 import com.mtpv.spinnermdl.VltnListModel;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -244,7 +252,7 @@ public class SpotChallan extends AppCompatActivity
     Spinner[] spinner_violation;
     TextView[] tv_dynamic_vltn_name;
     CheckBox[] check_dynamic_vltn;
-    LinearLayout ll_extra_people;
+    LinearLayout ll_extra_people, lyt_VehCategory;
     EditText et_extra_people, pass_RefsalName, pass_RefsalCtntNo;
     public static String otp_status = "", otp_msg = "", otpValue = "", vStatusConfirmationYN = "", ll_validationString = "";
     RadioGroup rg_isOwner_isDriver, nationality_status;
@@ -258,7 +266,7 @@ public class SpotChallan extends AppCompatActivity
     public static EditText et_engineNo, et_chasisNo;
     public static boolean EngneFLG = false, regNoFLG = false, chasisFLG = false, veh_HisFLG = false;
     public static int isitTr = 1, soldOut = 0, penaltypointsreachedFlag = 0;
-    public static Button btn_select_profession;
+    public static Button btn_select_profession, btn_vehCategory;
     public static EditText edt_prfession_name, edt_prfession_Address, edt_email_ID;
     String ocuptn_title = "Select Occupation";
     String[] occup_code_arr, occup_name_arr;
@@ -365,6 +373,9 @@ public class SpotChallan extends AppCompatActivity
         rBtn_Others = findViewById(R.id.rBtn_Others);
         edt_Age = findViewById(R.id.edt_Age);
         lyt_GetDtls = findViewById(R.id.lyt_GetDtls);
+        btn_vehCategory = findViewById(R.id.btn_vehCategory);
+        lyt_VehCategory = findViewById(R.id.lyt_VehCategory);
+        btn_vehCategory.setOnClickListener(this);
 
         newtimer = new CountDownTimer(1000000000, 50) {
 
@@ -382,6 +393,12 @@ public class SpotChallan extends AppCompatActivity
             public void onFinish() {
             }
         };
+        if (Dashboard.check_vhleHistory_or_Spot.equals("spot") || Dashboard.check_vhleHistory_or_Spot.equals("towing")) {
+            lyt_VehCategory.setVisibility(View.VISIBLE);
+        } else {
+            lyt_VehCategory.setVisibility(View.GONE);
+        }
+
         newtimer.start();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         pidCode = sharedPreferences.getString("PID_CODE", "");
@@ -1240,6 +1257,20 @@ public class SpotChallan extends AppCompatActivity
                 }
                 break;
 
+            case R.id.btn_vehCategory:
+                if (et_regcid_spot.getText().toString().equals("") || et_last_num_spot.getText().toString().equals("")) {
+                    showToast("Please Enter Proper Vehicle Number");
+                } else {
+                    if (isOnline()) {
+
+                        new Async_VehicleCategory().execute();
+                    } else {
+                        showToast("No Internet Connection");
+                    }
+
+                }
+                break;
+
             case R.id.btn_violation_spotchallan_xml:
                 extraPassengers = "1";
                 tv_grand_total_spot.setText("");
@@ -2019,6 +2050,77 @@ public class SpotChallan extends AppCompatActivity
         //   imgSelected = "1";
     }
 
+    public class Async_VehicleCategory extends AsyncTask<Void, Void, String> {
+
+        @Override
+        protected String doInBackground(Void... params) {
+            // TODO Auto-generated method stub
+            ServiceHelper.getVehicleCategory();
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            // TODO Auto-generated method stub
+            super.onPreExecute();
+            showDialog(PROGRESS_DIALOG);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            removeDialog(PROGRESS_DIALOG);
+
+            if (!ServiceHelper.vehCategory.equals("0") && null != ServiceHelper.vehCategory) {
+                ArrayList<VehCatModel> vehCatModels;
+                try {
+                    JSONObject jsonObject = new JSONObject(ServiceHelper.vehCategory);
+                    JSONArray jsonArray = jsonObject.getJSONArray("VehCategoryMaster");
+                    vehCatModels = new ArrayList<>(jsonArray.length());
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject object = jsonArray.getJSONObject(i);
+                        VehCatModel vehCatModel = new VehCatModel();
+                        vehCatModel.setVehCatName("" + object.getString("VehCatName"));
+                        vehCatModel.setVehCatCode("" + object.getString("VehCatCode"));
+                        vehCatModels.add(vehCatModel);
+                    }
+                    showVehCatSpinnerDialog("Select Vehicle Category", vehCatModels);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void showVehCatSpinnerDialog(String title, final List<VehCatModel> vehCatModels) {
+
+        final AlertDialog builder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT).create();
+        @SuppressLint("InflateParams")
+        View view = getLayoutInflater().inflate(R.layout.spinner_dialog_layout, null);
+        builder.setView(view);
+        builder.setCancelable(true);
+        ListView spinner_List = view.findViewById(R.id.recycle_List);
+        AppCompatTextView title_Spinner = view.findViewById(R.id.title_Spinner);
+        title_Spinner.setText("" + title);
+        VehCatAdapter jobsAdapter = new VehCatAdapter(SpotChallan.this, vehCatModels);
+        spinner_List.setAdapter(jobsAdapter);
+        builder.show();
+        spinner_List.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String s_Item = vehCatModels.get(i).getVehCatName();
+                is_govt_police = vehCatModels.get(i).getVehCatCode();
+                btn_vehCategory.setText("" + s_Item);
+                builder.dismiss();
+            }
+        });
+    }
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -2070,7 +2172,7 @@ public class SpotChallan extends AppCompatActivity
                         paint.setTypeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD));
                         canvas.save();
                         canvas.drawText("Date " + Current_Date, 50f, canvas.getHeight() - 150, paint);
-                        canvas.drawText("" + getAddressFromLatLng(latitude,longitude), 50f, canvas.getHeight() - 70, paint);
+                        canvas.drawText("" + getAddressFromLatLng(latitude, longitude), 50f, canvas.getHeight() - 70, paint);
                         canvas.restore();
 
 
@@ -2113,7 +2215,7 @@ public class SpotChallan extends AppCompatActivity
                         paint.setTypeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD));
                         canvas.save();
                         canvas.drawText("Date " + Current_Date, 50f, canvas.getHeight() - 150, paint);
-                        canvas.drawText("" + getAddressFromLatLng(latitude,longitude), 50f, canvas.getHeight() - 70, paint);
+                        canvas.drawText("" + getAddressFromLatLng(latitude, longitude), 50f, canvas.getHeight() - 70, paint);
                         canvas.restore();
 
                         /* offender_image.setVisibility(View.VISIBLE);
@@ -7283,11 +7385,11 @@ public class SpotChallan extends AppCompatActivity
                         && (!chck_detainedItems_none.isChecked())) {
                     showToast("Check Detained Items");
 
-                } else if (!et_driver_contact_spot.getText().toString().trim().isEmpty() && !Utils.isValidMobile(et_driver_contact_spot.getText().toString().trim())){
+                } else if (!et_driver_contact_spot.getText().toString().trim().isEmpty() && !Utils.isValidMobile(et_driver_contact_spot.getText().toString().trim())) {
                     et_driver_contact_spot.setError(
                             Html.fromHtml("<font color='black'>Enter Valid mobile number!!!!</font>"));
                     et_driver_contact_spot.requestFocus();
-                }else {
+                } else {
                     if (isOnline()) {
                         /* to call mobileSpotChallanPayment */
 
@@ -8552,7 +8654,7 @@ public class SpotChallan extends AppCompatActivity
                         mArrayList_SelectedVltnLst = new ArrayList<>(selectedIds.size());
                         violation_checked_violations = new ArrayList<>(selectedIds.size());
 
-                        if (selectedIds.size()>0) {
+                        if (selectedIds.size() > 0) {
 
                             for (int i = 0; i < selectedIds.size(); i++) {
                                 mArrayList_SelectedVltnLst.add(mArrayList_SecVltnNames.get(selectedIds.get(i)));
@@ -8620,7 +8722,7 @@ public class SpotChallan extends AppCompatActivity
                                 vltnListModels.add(vltnListModel);
 
                             }
-                        }else{
+                        } else {
                             btn_violation.setText(getResources().getString(R.string.select_violation));
                         }
 

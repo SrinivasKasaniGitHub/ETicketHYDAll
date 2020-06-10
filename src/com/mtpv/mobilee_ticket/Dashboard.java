@@ -22,6 +22,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.StrictMode;
@@ -192,12 +193,15 @@ public class Dashboard extends Activity implements OnClickListener {
     ImageView img_logo;
     TextView officer_Name, officer_Cadre, officer_PS;
 
-    String dob_DL = "", dob_JngDate = "", gender = "";
+    String dob_DL = "", dob_JngDate = "", gender = "", otpValue;
     private int mYear, mMonth, mDay;
     RadioGroup radioGroup_gender;
     RadioButton rBtn_Male, rBtn_FeMale, rBtn_Others;
-    EditText edtTxt_PId, edtTxt_Name, edtTxt_PSName, edtTxt_Cadre, et_PAddress, et_PmtAddress, edtTxt_BldGrp, et_CntctNo;
+    TextView edtTxt_PId, edtTxt_Name, edtTxt_PSName, edtTxt_Cadre;
+    EditText et_PAddress, et_PmtAddress, edtTxt_BldGrp, et_CntctNo, edtTxt_EmpId;
     AlertDialog builder;
+    CountDownTimer countDownTimer;
+    boolean otp_VefySts = false, profileStatus=false;
 
     @SuppressLint("NewApi")
     @Override
@@ -298,12 +302,11 @@ public class Dashboard extends Activity implements OnClickListener {
         }
 
         if (MainActivity.arr_logindetails.length > 20) {
-            if (MainActivity.arr_logindetails[19] == null || MainActivity.arr_logindetails[20] == null) {
-
-                showProfileSummuryDialog("Personal Information");
+            if (MainActivity.profilestatus ) {
+                showProfileSummuryDialog("Profile");
             }
         }
-        showProfileSummuryDialog("Personal Information");
+       // showProfileSummuryDialog("Personal Information");
 
     }
 
@@ -315,7 +318,7 @@ public class Dashboard extends Activity implements OnClickListener {
         View view = getLayoutInflater().inflate(R.layout.profile_summury_update, null);
 
         builder.setView(view);
-        builder.setCancelable(true);
+        builder.setCancelable(false);
         AppCompatTextView title_Spinner = view.findViewById(R.id.title_Spinner);
         title_Spinner.setText("" + title);
 
@@ -327,6 +330,8 @@ public class Dashboard extends Activity implements OnClickListener {
 
         edtTxt_PSName = view.findViewById(R.id.edtTxt_PSName);
         edtTxt_PSName.setText("" + MainActivity.psName);
+
+        edtTxt_EmpId = view.findViewById(R.id.edtTxt_EmpId);
 
         edtTxt_Cadre = view.findViewById(R.id.edtTxt_Cadre);
         edtTxt_Cadre.setText("" + MainActivity.cadre_name);
@@ -343,6 +348,26 @@ public class Dashboard extends Activity implements OnClickListener {
 
 
         final Button btn_Jng = view.findViewById(R.id.btn_Jng);
+        final Button btn_Dob = view.findViewById(R.id.btn_Dob);
+        final Button btn_Otp = view.findViewById(R.id.btn_Otp);
+
+        et_CntctNo.setText(!MainActivity.arr_logindetails[6].equalsIgnoreCase("null") ? MainActivity.arr_logindetails[6] : "");
+        gender = !MainActivity.arr_logindetails[17].equalsIgnoreCase("null") ? MainActivity.arr_logindetails[17] : "";
+        if ("1".equalsIgnoreCase(gender)) {
+            rBtn_Male.setChecked(true);
+        } else if ("0".equalsIgnoreCase(gender)) {
+            rBtn_FeMale.setChecked(true);
+        }
+
+        et_PAddress.setText(!MainActivity.arr_logindetails[19].equalsIgnoreCase("null") ? MainActivity.arr_logindetails[19] : "");
+        et_PmtAddress.setText(!MainActivity.arr_logindetails[20].equalsIgnoreCase("null") ? MainActivity.arr_logindetails[20] : "");
+        edtTxt_BldGrp.setText(!MainActivity.arr_logindetails[18].equalsIgnoreCase("null") ? MainActivity.arr_logindetails[18] : "");
+        edtTxt_EmpId.setText(!MainActivity.arr_logindetails[22].equalsIgnoreCase("null") ? MainActivity.arr_logindetails[22] : "");
+        dob_DL = !MainActivity.arr_logindetails[16].equalsIgnoreCase("null") ? MainActivity.arr_logindetails[16] : "";
+        dob_JngDate = !MainActivity.arr_logindetails[21].equalsIgnoreCase("null") ? MainActivity.arr_logindetails[21] : "";
+        btn_Dob.setText(!MainActivity.arr_logindetails[16].equalsIgnoreCase("null") ? MainActivity.arr_logindetails[16] : "Select Date");
+        btn_Jng.setText(!MainActivity.arr_logindetails[21].equalsIgnoreCase("null") ? MainActivity.arr_logindetails[21] : "Select Date");
+
         btn_Jng.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -391,7 +416,7 @@ public class Dashboard extends Activity implements OnClickListener {
             }
         });
 
-        final Button btn_Dob = view.findViewById(R.id.btn_Dob);
+
         btn_Dob.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -439,6 +464,54 @@ public class Dashboard extends Activity implements OnClickListener {
             }
         });
 
+        btn_Otp.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tempContactNumber = et_CntctNo.getText().toString();
+
+                if (tempContactNumber.equals("")) {
+                    et_CntctNo.setError(
+                            Html.fromHtml("<font color='black'>Enter mobile number to send OTP!!</font>"));
+                    et_CntctNo.requestFocus();
+
+                } else if ((tempContactNumber.trim() != null && tempContactNumber.trim().length() > 1
+                        && tempContactNumber.trim().length() != 10) || new DateUtil().allCharactersSame(tempContactNumber.trim())) {
+                    et_CntctNo
+                            .setError(Html.fromHtml("<font color='black'>Enter Valid mobile number!!</font>"));
+                    et_CntctNo.requestFocus();
+
+                } else if (tempContactNumber.length() == 10) {
+                    if ((tempContactNumber.charAt(0) == '7') || (tempContactNumber.charAt(0) == '8')
+                            || (tempContactNumber.charAt(0) == '9') || (tempContactNumber.charAt(0) == '6')) {
+                        if (isOnline()) {
+                            new Async_sendOTP_to_mobile().execute();
+                        } else {
+                            showToast("Please check your network connection!");
+                        }
+                    } else {
+                        et_CntctNo
+                                .setError(Html.fromHtml("<font color='black'>Check Contact No.!!</font>"));
+                        et_CntctNo.requestFocus();
+                    }
+
+                } else if (tempContactNumber.length() == 11) {
+                    if (tempContactNumber.charAt(0) == '0') {
+                        if (isOnline()) {
+
+                            new Async_sendOTP_to_mobile().execute();
+                        } else {
+                            showToast("Please check your network connection!");
+                        }
+                    } else {
+                        et_CntctNo
+                                .setError(Html.fromHtml("<font color='black'>Check Contact No.!!</font>"));
+                        et_CntctNo.requestFocus();
+                    }
+
+                }
+            }
+        });
+
         radioGroup_gender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -476,9 +549,10 @@ public class Dashboard extends Activity implements OnClickListener {
                 } else if (et_PmtAddress.getText().toString().isEmpty()) {
                     et_PmtAddress.setError(Html.fromHtml("<font color='black'>Please enter Permanant Address </font>"));
                     et_PmtAddress.requestFocus();
-                } /*else if (btn_Jng.getText().toString().equalsIgnoreCase("Select Date")) {
-                    showToast("Please select the Joining Date ");
-                }*/ else if (et_CntctNo.getText().toString().isEmpty()) {
+                } else if (edtTxt_EmpId.getText().toString().isEmpty()) {
+                    edtTxt_EmpId.setError(Html.fromHtml("<font color='black'>Please enter Employee Id </font>"));
+                    edtTxt_EmpId.requestFocus();
+                } else if (et_CntctNo.getText().toString().isEmpty()) {
                     et_CntctNo.setError(Html.fromHtml("<font color='black'>Please enter Contact No </font>"));
                     et_CntctNo.requestFocus();
                 } else if ((tempContactNumber.trim() != null && tempContactNumber.trim().length() > 1
@@ -487,10 +561,9 @@ public class Dashboard extends Activity implements OnClickListener {
                             .setError(Html.fromHtml("<font color='black'>Enter Valid mobile number!!</font>"));
                     et_CntctNo.requestFocus();
 
-                }/* else if (edtTxt_BldGrp.getText().toString().isEmpty()) {
-                    edtTxt_BldGrp.setError(Html.fromHtml("<font color='black'>Please enter the Blood Group </font>"));
-                    edtTxt_BldGrp.requestFocus();
-                }*/ else if (!rBtn_Male.isChecked() && !rBtn_FeMale.isChecked() && !rBtn_Others.isChecked()) {
+                } else if ((!et_CntctNo.getText().toString().equals(MainActivity.arr_logindetails[6]) && !otp_VefySts)) {
+                    showToast("Please verify the Contact Number with Otp   ");
+                } else if (!rBtn_Male.isChecked() && !rBtn_FeMale.isChecked() && !rBtn_Others.isChecked()) {
                     showToast("Please select the Gender ");
                 } else {
                     new Async_ProfileUpdate().execute();
@@ -503,6 +576,85 @@ public class Dashboard extends Activity implements OnClickListener {
 
     }
 
+
+    public class Async_sendOTP_to_mobile extends AsyncTask<Void, Void, String> {
+
+        @Override
+        protected String doInBackground(Void... params) {
+            // TODO Auto-generated method stub
+
+            ServiceHelper.sendOTPtoMobile(et_CntctNo.getText().toString().trim(), et_CntctNo.getText().toString().trim(),
+                    "" + new DateUtil().getTodaysDate());
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+
+            // TODO Auto-generated method stub
+            super.onPreExecute();
+            showDialog(PROGRESS_DIALOG);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            removeDialog(PROGRESS_DIALOG);
+
+            if (ServiceHelper.Opdata_Chalana.toLowerCase().equalsIgnoreCase("NA")) {
+                showToast("Please check the Network And Try again ");
+            } else {
+                showToast("OTP is sent to your mobile number");
+                otpValue = "" + ServiceHelper.Opdata_Chalana;
+                showOTPDialog(otpValue);
+            }
+
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void showOTPDialog(final String otpValue) {
+
+        final AlertDialog builder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT).create();
+        @SuppressLint("InflateParams")
+        View view = getLayoutInflater().inflate(R.layout.otp_verification, null);
+
+        builder.setView(view);
+        builder.setCancelable(false);
+        TextView otp_heading = view.findViewById(R.id.otp_heading);
+        otp_heading.setText("Enter OTP For " + et_CntctNo.getText().toString().trim());
+        final EditText edtTxt_Otp = view.findViewById(R.id.et_OTP);
+
+        Button btn_OK = view.findViewById(R.id.ok_dialog);
+        btn_OK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (edtTxt_Otp.getText().toString().isEmpty()) {
+                    showToast("Please enter the Otp ");
+                }
+                if (edtTxt_Otp.getText().toString().trim().equals(otpValue)) {
+                    otp_VefySts = true;
+                    showToast("OTP Verified Successfully");
+                    builder.dismiss();
+                } else {
+                    showToast("Entered Wrong OTP");
+                }
+
+
+            }
+        });
+
+        Button btn_Cancel = view.findViewById(R.id.Cancel_dialog);
+        btn_Cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                builder.dismiss();
+            }
+        });
+        builder.show();
+    }
+
     public class Async_ProfileUpdate extends AsyncTask<Void, Void, String> {
 
         @Override
@@ -510,7 +662,7 @@ public class Dashboard extends Activity implements OnClickListener {
             // TODO Auto-generated method stub
             ServiceHelper.profileUpdate("" + MainActivity.pidCodestatic, "" + dob_DL, "" + gender, "" + edtTxt_BldGrp.getText().toString().trim(),
                     "" + et_PAddress.getText().toString().trim(), "" + et_PmtAddress.getText().toString().trim(), "" + dob_JngDate, "" + et_CntctNo.getText().toString().trim(),
-                    "", "", "");
+                    "" + edtTxt_EmpId.getText().toString().trim(), "", "");
             return null;
         }
 
