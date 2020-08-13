@@ -79,13 +79,13 @@ public class VehicleHistoryPendingChallans extends Activity {
 
 		img_logo=(ImageView)findViewById(R.id.img_logo);
 		if (MainActivity.uintCode.equals("22")){
-			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.cyb_logo));
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
 		}else if (MainActivity.uintCode.equals("23")){
-			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
 		}else if (MainActivity.uintCode.equals("24")){
-			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
 		}else{
-			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+			img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
 		}
 		officer_Name=(TextView)findViewById(R.id.officer_Name);
 		officer_Cadre=(TextView)findViewById(R.id.officer_cadre);

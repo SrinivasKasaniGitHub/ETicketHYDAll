@@ -515,7 +515,7 @@
                 android:layout_below="@+id/btngetrtadetails_spotchallan_xml"
                 android:layout_centerHorizontal="true"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
 
                 <TextView
@@ -1558,9 +1558,8 @@
                         <TextView
                             android:id="@+id/star"
                             style="@style/navi_text_style"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.03"
                             android:text="*"
                             android:textColor="#ff0000" />
 
@@ -1571,6 +1570,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.7"
+                            android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ "
                             android:gravity="center"
                             android:inputType="text|textCapCharacters" />
                     </LinearLayout>
@@ -1595,6 +1595,7 @@
                             style="@style/edt_custom_style"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ "
                             android:layout_weight=".70"
                             android:gravity="center"
                             android:inputType="text|textCapCharacters" />
@@ -1649,6 +1650,7 @@
                             style="@style/edt_custom_style"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                             android:layout_weight=".70"
                             android:gravity="center"
                             android:inputType="textCapCharacters" />
@@ -1657,28 +1659,66 @@
                 <!-- isOD details end -->
 
                 <LinearLayout
+                    android:id="@+id/lyt_Age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ll_gender"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:id="@+id/txtAge"
+                        style="@style/navi_text_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.3"
+                        android:text="@string/txt_DRName" />
+
+
+                    <EditText
+                        android:id="@+id/edt_Age"
+                        style="@style/edt_custom_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/header_grnt_padding_five"
+                        android:layout_weight="0.7"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLength="2" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/ll_gender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/ll_isOwner_isDriver"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="@dimen/header_grnt_padding_five">
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="@dimen/header_grnt_padding_five"
+                    android:weightSum="1">
 
                     <TextView
                         android:id="@+id/tv_gendername"
                         style="@style/navi_text_style"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_weight="1"
+                        android:layout_weight="0.27"
                         android:text="@string/gender" />
-
+                    <TextView
+                        android:id="@+id/starGedr"
+                        style="@style/navi_text_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.03"
+                        android:text="*"
+                        android:textColor="#ff0000" />
                     <RadioGroup
                         android:id="@+id/radioGroup_gender"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="0.7"
                         android:orientation="horizontal">
 
                         <RadioButton
@@ -1686,7 +1726,6 @@
                             style="@style/dd_custom_radio_btn_style"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:checked="true"
                             android:paddingLeft="@dimen/header_grnt_padding_ten"
                             android:text="@string/gen_male" />
 
@@ -1708,36 +1747,7 @@
                     </RadioGroup>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/lyt_Age"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/ll_gender"
-                    android:orientation="horizontal"
-                    android:weightSum="3">
 
-                    <TextView
-                        android:id="@+id/txtAge"
-                        style="@style/navi_text_style"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1"
-                        android:text="@string/txt_DRName" />
-
-
-                    <EditText
-                        android:id="@+id/edt_Age"
-                        style="@style/edt_custom_style"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/header_grnt_padding_five"
-                        android:layout_weight="2"
-                        android:imeOptions="actionNext"
-                        android:inputType="number"
-                        android:maxLength="2" />
-
-                </LinearLayout>
 
 
                 <LinearLayout
@@ -1798,7 +1808,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Total Pending Amount" />
+                            android:text="Total pending amount in rupees" />
 
                         <TextView
                             android:id="@+id/textView_semicolon"

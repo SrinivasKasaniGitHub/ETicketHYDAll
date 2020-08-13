@@ -72,7 +72,7 @@ android {
         config {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
-            storeFile file('C:/Users/Srinivas/.android/DEBUG/debug.keystore')
+            storeFile file('C:/Users/SRI/.android/DEBUG/debug.keystore')
             storePassword 'android'
         }
     }

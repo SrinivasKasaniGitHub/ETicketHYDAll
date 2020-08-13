@@ -3278,7 +3278,11 @@ string towing_one_line
 string tsp
 string tv_age
 string tv_gender
+string txt_ContactNo
 string txt_DRName
+string txt_PermanantAddress
+string txt_PresentAddress
+string txt_ProfileId
 string txt_SlctVltn
 string uid
 string update_aadhar

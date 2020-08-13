@@ -72,13 +72,13 @@ public class Respone_Print extends Activity {
 
         img_logo = (ImageView) findViewById(R.id.img_logo);
         if (MainActivity.uintCode.equals("22")) {
-            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.cyb_logo));
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
         } else if (MainActivity.uintCode.equals("23")) {
-            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
         } else if (MainActivity.uintCode.equals("24")) {
-            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
         } else if (MainActivity.uintCode.equals("44")) { //44 Warangal
-            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.wgl_logo));
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
         } else { //  69 Siddipet
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
         }

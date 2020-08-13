@@ -17,7 +17,15 @@ public class MultiSelectModel implements Serializable{
     private int penalty_points;
     private Boolean isSelected;
     private int detainValue;
+    private int imgFlag;
 
+    public int getImgFlag() {
+        return imgFlag;
+    }
+
+    public void setImgFlag(int imgFlag) {
+        this.imgFlag = imgFlag;
+    }
 
     public int getId() {
         return id;

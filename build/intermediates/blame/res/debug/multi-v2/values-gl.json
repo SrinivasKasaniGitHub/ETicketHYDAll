@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-gl\\values-gl.xml",
+            "outputFile": "E:\\Android\\ETicketHYDAll\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-gl\\values-gl.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\7f3e525b8c5fcb50d2c46eb9139a98f8\\res\\values-gl\\values-gl.xml",
+                    "source": "C:\\Users\\SRI\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\b03c2bb3a8ae42e1f35dad0bf788a391\\res\\values-gl\\values-gl.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\85eac74e9bd87ba22eba8463f1f68559\\res\\values-gl\\values-gl.xml",
+                    "source": "C:\\Users\\SRI\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\17187c0a364c1a666d9907fa77e878fb\\res\\values-gl\\values-gl.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

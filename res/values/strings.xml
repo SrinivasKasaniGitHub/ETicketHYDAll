@@ -15,7 +15,7 @@
     <string name="towing">Crane \n41 CP ACT</string>
     <string name="towing_one_line">Crane 41 CP ACT</string>
     <string name="reports">Reports</string>
-    <string name="app_version">Version-3.1.7</string>
+    <string name="app_version">Version-3.2.0</string>
     <string name="regNo">Regn.No</string>
     <string name="engine">Engine No</string>
     <string name="chasis">Chasis No</string>
@@ -363,6 +363,12 @@
     <string name="select_all">select all</string>
     <string name="de_select_all">deselect all</string>
     <string name="txt_SlctVltn">Select Violations</string>
+
+    <string name="txt_ProfileId">Employee Id <font fgcolor="#ed0404">*</font></string>
+
+    <string name="txt_PresentAddress">Present Address <font fgcolor="#ed0404">*</font></string>
+    <string name="txt_PermanantAddress">Native Address <font fgcolor="#ed0404">*</font></string>
+    <string name="txt_ContactNo">Contact No <font fgcolor="#ed0404">*</font></string>
 
 
 </resources>

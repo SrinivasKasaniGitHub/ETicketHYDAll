@@ -228,13 +228,13 @@ public class Dashboard extends Activity implements OnClickListener {
 
         img_logo = (ImageView) findViewById(R.id.img_logo);
         if (MainActivity.uintCode.equals("22")) { //Cyberabad
-            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.cyb_logo));
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
         } else if (MainActivity.uintCode.equals("23")) { //Hyderabad
-            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.htp_left));
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
         } else if (MainActivity.uintCode.equals("24")) { //RachaKonda
-            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.rac_logo));
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
         } else if (MainActivity.uintCode.equals("44")) { //44 Warangal
-            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.wgl_logo));
+            img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
         } else {//  69 Siddipet
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
         }
@@ -306,7 +306,7 @@ public class Dashboard extends Activity implements OnClickListener {
                 showProfileSummuryDialog("Profile");
             }
         }
-       // showProfileSummuryDialog("Personal Information");
+      // showProfileSummuryDialog("Personal Information"); 6300531475
 
     }
 
@@ -391,11 +391,14 @@ public class Dashboard extends Activity implements OnClickListener {
                                 String dtdob = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
                                 try {
                                     dob_JngDate = date_format.format(date_parse.parse(dtdob));
+                                    btn_Jng.setText(dob_JngDate);
                                 } catch (ParseException e) {
                                     e.printStackTrace();
+
                                 }
 
-                                String todaysdate = new DateUtil().getTodaysDate();
+
+                              /*  String todaysdate = new DateUtil().getTodaysDate();
 
                                 long days = new DateUtil().DaysCalucate(dob_JngDate, todaysdate);
 
@@ -408,10 +411,11 @@ public class Dashboard extends Activity implements OnClickListener {
 
                                 } else {
                                     showToast("Please select Date Person Should be Age Greater Than 16");
-                                }
+                                }*/
                                 //  dob_DL = date_format.format(dayOfMonth  + (----------------OfYear + 1) + year);
                             }
                         }, mYear, mMonth, mDay);
+                datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
                 datePickerDialog.show();
             }
         });

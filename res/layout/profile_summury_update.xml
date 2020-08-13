@@ -245,7 +245,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="0.27"
-                            android:text="Employee Id" />
+                            android:text="@string/txt_ProfileId" />
 
                         <TextView
                             style="@style/navi_text_style"
@@ -360,7 +360,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_weight=".27"
-                            android:text="Present Address" />
+                            android:text="@string/txt_PresentAddress" />
                         <TextView
                             style="@style/navi_text_style"
                             android:layout_gravity="center_vertical"
@@ -400,7 +400,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_weight=".27"
-                            android:text="Permanant Address" />
+                            android:text="@string/txt_PermanantAddress" />
                         <TextView
                             style="@style/navi_text_style"
                             android:layout_gravity="center_vertical"
@@ -442,7 +442,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="0.27"
-                        android:text="Date Of Joining" />
+                        android:text="Date Of Appointment" />
 
                     <TextView
 
@@ -522,7 +522,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight=".27"
-                        android:text="Contact No " />
+                        android:text="@string/txt_ContactNo" />
 
                     <TextView
                         style="@style/navi_text_style"
