@@ -3160,7 +3160,7 @@ public class ServiceHelper {
             request.addProperty("dOJ", "" + dOJ);
             request.addProperty("simNo", "" + sim_no);
             request.addProperty("gpsLatti", "" + gps_Latti);
-            request.addProperty("gpsLongi", "" + gps_Longi);
+            request.addProperty("gpsLongi", "" + gps_Longi); // Base64 Image
             request.addProperty("gpsDate", "" + gps_Date);
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.dotNet = true;

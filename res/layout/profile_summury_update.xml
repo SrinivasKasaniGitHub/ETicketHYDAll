@@ -40,25 +40,25 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
+        android:layout_below="@id/title_"
         android:fillViewport="true"
-        android:layout_below="@id/title_">
+        android:fitsSystemWindows="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="10dp">
+            android:layout_margin="10dp"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/lyt_GetDtls"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_below="@+id/viewl"
                 android:layout_centerHorizontal="true"
-                android:visibility="visible"
-                android:layout_marginTop="@dimen/_3sdp">
+                android:layout_marginTop="@dimen/_3sdp"
+                android:orientation="vertical"
+                android:visibility="visible">
 
 
                 <!-- isOD details start -->
@@ -71,6 +71,7 @@
                     android:orientation="vertical"
                     android:visibility="visible">
 
+
                     <TextView
                         style="@style/navi_text_style"
                         android:layout_width="wrap_content"
@@ -80,14 +81,35 @@
                         android:text="Personal Details"
                         android:textStyle="bold" />
 
+                    <RelativeLayout
+
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/profile_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/profile_image_placeholder" />
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/rl_profile"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/capture"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentEnd="true"/>
+                    </RelativeLayout>
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:weightSum="1"
                         android:layout_marginTop="30dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:weightSum="1">
 
                         <TextView
                             style="@style/navi_text_style"
@@ -103,9 +125,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0.03"
                             android:text=":"
-                            android:textStyle="bold"
                             android:textColor="#000000"
-                            android:visibility="visible"/>
+                            android:textStyle="bold"
+                            android:visibility="visible" />
 
 
                         <TextView
@@ -114,19 +136,19 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.7"
-                            android:textStyle="bold"
+                            android:enabled="false"
 
                             android:inputType="text|textCapCharacters"
-                            android:enabled="false"/>
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/ll_drivername_isOD"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:weightSum="1"
                         android:layout_marginTop="30dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:weightSum="1">
 
                         <TextView
                             style="@style/navi_text_style"
@@ -143,9 +165,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0.03"
                             android:text=":"
-                            android:textStyle="bold"
                             android:textColor="#000000"
-                            android:visibility="visible"/>
+                            android:textStyle="bold"
+                            android:visibility="visible" />
 
 
                         <TextView
@@ -154,16 +176,16 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.7"
-                            android:textStyle="bold"
-                            android:inputType="text|textCapCharacters"/>
+                            android:inputType="text|textCapCharacters"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:weightSum="1"
                         android:layout_marginTop="30dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:weightSum="1">
 
                         <TextView
                             style="@style/navi_text_style"
@@ -180,9 +202,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0.03"
                             android:text=":"
-                            android:textStyle="bold"
                             android:textColor="#000000"
-                            android:visibility="visible"/>
+                            android:textStyle="bold"
+                            android:visibility="visible" />
 
 
                         <TextView
@@ -191,16 +213,16 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.7"
-                            android:textStyle="bold"
-                            android:inputType="text|textCapCharacters"/>
+                            android:inputType="text|textCapCharacters"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:weightSum="1"
                         android:layout_marginTop="30dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:weightSum="1">
 
                         <TextView
                             style="@style/navi_text_style"
@@ -217,9 +239,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0.03"
                             android:text=":"
-                            android:textStyle="bold"
                             android:textColor="#000000"
-                            android:visibility="visible"/>
+                            android:textStyle="bold"
+                            android:visibility="visible" />
 
 
                         <TextView
@@ -228,16 +250,16 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.7"
-                            android:textStyle="bold"
-                            android:inputType="text|textCapCharacters"/>
+                            android:inputType="text|textCapCharacters"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:weightSum="1"
                         android:layout_marginTop="30dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:weightSum="1">
 
                         <TextView
                             style="@style/navi_text_style"
@@ -253,9 +275,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0.03"
                             android:text=":"
-                            android:textStyle="bold"
                             android:textColor="#000000"
-                            android:visibility="visible"/>
+                            android:textStyle="bold"
+                            android:visibility="visible" />
 
 
                         <EditText
@@ -265,15 +287,15 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0.7"
                             android:gravity="center"
-                            android:inputType="text|textCapCharacters"/>
+                            android:inputType="text|textCapCharacters" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:weightSum="1"
                         android:layout_marginTop="25dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:weightSum="1">
 
                         <TextView
                             style="@style/navi_text_style"
@@ -288,12 +310,12 @@
                             style="@style/navi_text_style"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.03"
                             android:layout_gravity="center_vertical"
+                            android:layout_weight="0.03"
                             android:text=":"
-                            android:textStyle="bold"
                             android:textColor="#000000"
-                            android:visibility="visible"/>
+                            android:textStyle="bold"
+                            android:visibility="visible" />
 
                         <Button
                             android:id="@+id/btn_Dob"
@@ -303,8 +325,8 @@
                             android:layout_below="@+id/ll_driver_challans"
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
-                            android:gravity="center"
                             android:layout_weight="0.7"
+                            android:gravity="center"
                             android:text="Select Date"
                             android:textColor="#000000"
                             android:textColorHint="#000000"
@@ -316,10 +338,10 @@
                         android:id="@+id/ll_dOD"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:weightSum="1"
                         android:layout_marginTop="@dimen/header_grnt_padding_ten"
                         android:orientation="horizontal"
-                        android:visibility="gone">
+                        android:visibility="gone"
+                        android:weightSum="1">
 
                         <TextView
                             style="@style/navi_text_style"
@@ -335,7 +357,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0.03"
                             android:text=""
-                            android:textColor="#ff0000"/>
+                            android:textColor="#ff0000" />
 
 
                         <EditText
@@ -345,7 +367,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0.7"
                             android:gravity="center"
-                            android:inputType="text|textCapCharacters"/>
+                            android:inputType="text|textCapCharacters" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -361,15 +383,16 @@
                             android:layout_gravity="center_vertical"
                             android:layout_weight=".27"
                             android:text="@string/txt_PresentAddress" />
+
                         <TextView
                             style="@style/navi_text_style"
-                            android:layout_gravity="center_vertical"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
                             android:layout_weight="0.03"
                             android:text="*"
                             android:textColor="#ff0000"
-                           android:visibility="invisible" />
+                            android:visibility="invisible" />
 
                         <EditText
                             android:id="@+id/et_PAddress"
@@ -382,10 +405,9 @@
                             android:lines="8"
                             android:maxLines="10"
                             android:minLines="4"
-                            android:scrollbars="vertical"/>
+                            android:scrollbars="vertical" />
 
                     </LinearLayout>
-
 
 
                     <LinearLayout
@@ -401,15 +423,16 @@
                             android:layout_gravity="center_vertical"
                             android:layout_weight=".27"
                             android:text="@string/txt_PermanantAddress" />
+
                         <TextView
                             style="@style/navi_text_style"
-                            android:layout_gravity="center_vertical"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
                             android:layout_weight="0.03"
                             android:text="*"
                             android:textColor="#ff0000"
-                            android:visibility="invisible"/>
+                            android:visibility="invisible" />
 
                         <EditText
                             android:id="@+id/et_PmtAddress"
@@ -422,7 +445,7 @@
                             android:lines="8"
                             android:maxLines="10"
                             android:minLines="4"
-                            android:scrollbars="vertical"/>
+                            android:scrollbars="vertical" />
 
                     </LinearLayout>
 
@@ -432,9 +455,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:weightSum="1"
                     android:layout_marginTop="@dimen/header_grnt_padding_ten"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="1">
 
                     <TextView
                         style="@style/navi_text_style"
@@ -452,7 +475,7 @@
                         android:layout_weight="0.03"
                         android:text="*"
                         android:textColor="#ff0000"
-                        android:visibility="invisible"/>
+                        android:visibility="invisible" />
 
                     <Button
                         android:id="@+id/btn_Jng"
@@ -462,8 +485,8 @@
                         android:layout_below="@+id/ll_driver_challans"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:gravity="center"
                         android:layout_weight="0.7"
+                        android:gravity="center"
                         android:text="Select Date"
                         android:textColor="#000000"
                         android:textColorHint="#000000"
@@ -474,9 +497,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:weightSum="1"
                     android:layout_marginTop="@dimen/header_grnt_padding_ten"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="1">
 
                     <TextView
                         style="@style/navi_text_style"
@@ -494,7 +517,7 @@
                         android:layout_weight="0.03"
                         android:text="*"
                         android:textColor="#ff0000"
-                        android:visibility="invisible"/>
+                        android:visibility="invisible" />
 
 
                     <EditText
@@ -504,7 +527,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.7"
                         android:gravity="center"
-                        android:inputType="text|textCapCharacters"/>
+                        android:inputType="text|textCapCharacters" />
                 </LinearLayout>
 
 
@@ -526,21 +549,21 @@
 
                     <TextView
                         style="@style/navi_text_style"
-                        android:layout_gravity="center_vertical"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:layout_weight="0.03"
                         android:text="*"
                         android:textColor="#ff0000"
-                        android:visibility="invisible"/>
+                        android:visibility="invisible" />
 
                     <LinearLayout
                         android:id="@+id/ll_contactnum_spotchallantwo_xml"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/header_grnt_padding_five"
-                        android:orientation="horizontal"
                         android:layout_weight=".70"
+                        android:orientation="horizontal"
                         android:weightSum="1">
 
                         <EditText
@@ -552,7 +575,7 @@
                             android:layout_weight="0.70"
                             android:hint="@string/driver_contact_no"
                             android:inputType="number"
-                            android:maxLength="10"/>
+                            android:maxLength="10" />
 
                         <Button
                             android:id="@+id/btn_Otp"
@@ -560,9 +583,9 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/header_grnt_padding_five"
-                            android:text="SEND"
                             android:layout_weight=".30"
-                            android:visibility="visible"/>
+                            android:text="SEND"
+                            android:visibility="visible" />
                     </LinearLayout>
 
                     <EditText
@@ -572,7 +595,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight=".70"
                         android:gravity="center"
-                        android:inputType="text|textCapCharacters"/>
+                        android:inputType="text|textCapCharacters" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -581,16 +604,16 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/ll_isOwner_isDriver"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="@dimen/header_grnt_padding_five"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="@dimen/header_grnt_padding_five">
 
                     <TextView
                         android:id="@+id/tv_gendername"
                         style="@style/navi_text_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:layout_gravity="center"
+                        android:layout_weight="1"
                         android:text="@string/gender" />
 
                     <RadioGroup
@@ -623,7 +646,7 @@
                             android:layout_height="wrap_content"
                             android:paddingLeft="@dimen/header_grnt_padding_ten"
                             android:text="@string/gen_others"
-                            android:visibility="gone"/>
+                            android:visibility="gone" />
                     </RadioGroup>
                 </LinearLayout>
 
@@ -631,8 +654,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="@dimen/margin_twenty"
                     android:layout_marginTop="@dimen/margin_twenty"
+                    android:layout_marginBottom="@dimen/margin_twenty"
                     android:gravity="center_horizontal">
 
                     <Button
@@ -641,7 +664,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/cancel"
-                        android:visibility="gone"/>
+                        android:visibility="gone" />
 
                     <Button
                         android:id="@+id/btn_Submit"
@@ -654,7 +677,6 @@
                 </LinearLayout>
 
             </LinearLayout>
-
 
 
         </LinearLayout>

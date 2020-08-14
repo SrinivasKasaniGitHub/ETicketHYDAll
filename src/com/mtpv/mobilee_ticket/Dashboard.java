@@ -14,8 +14,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Typeface;
+import android.media.ExifInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -27,6 +31,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
+import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
@@ -34,6 +39,7 @@ import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
 import android.telephony.TelephonyManager;
 import android.text.Html;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -48,6 +54,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,6 +69,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -75,6 +83,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 
 @SuppressLint("InlinedApi")
@@ -201,7 +210,11 @@ public class Dashboard extends Activity implements OnClickListener {
     EditText et_PAddress, et_PmtAddress, edtTxt_BldGrp, et_CntctNo, edtTxt_EmpId;
     AlertDialog builder;
     CountDownTimer countDownTimer;
-    boolean otp_VefySts = false, profileStatus=false;
+    boolean otp_VefySts = false, profileStatus = false;
+    AppCompatImageView rl_profile;
+    String imageFilePath = "", profileImg_tosend = "";
+    byte[] image_byte_array;
+    ImageView profile_image;
 
     @SuppressLint("NewApi")
     @Override
@@ -302,11 +315,11 @@ public class Dashboard extends Activity implements OnClickListener {
         }
 
         if (MainActivity.arr_logindetails.length > 20) {
-            if (MainActivity.profilestatus ) {
+            if (MainActivity.profilestatus) {
                 showProfileSummuryDialog("Profile");
             }
         }
-      // showProfileSummuryDialog("Personal Information"); 6300531475
+        showProfileSummuryDialog("Personal Information");
 
     }
 
@@ -346,6 +359,24 @@ public class Dashboard extends Activity implements OnClickListener {
         rBtn_Others = view.findViewById(R.id.rBtn_Others);
         radioGroup_gender = view.findViewById(R.id.radioGroup_gender);
 
+        rl_profile = view.findViewById(R.id.rl_profile);
+        rl_profile.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectImage();
+            }
+        });
+        profile_image = view.findViewById(R.id.profile_image);
+        try {
+            if (MainActivity.arr_logindetails.length > 22) {
+                profileImg_tosend = !MainActivity.arr_logindetails[23].equalsIgnoreCase("null") ? MainActivity.arr_logindetails[23] : "";
+                byte[] decodedString = Base64.decode(profileImg_tosend, Base64.DEFAULT);
+                Bitmap imgBitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                profile_image.setImageBitmap(imgBitmap);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         final Button btn_Jng = view.findViewById(R.id.btn_Jng);
         final Button btn_Dob = view.findViewById(R.id.btn_Dob);
@@ -459,6 +490,7 @@ public class Dashboard extends Activity implements OnClickListener {
                                     btn_Dob.setText(dob_DL);
 
                                 } else {
+                                    dob_DL = "";
                                     showToast("Please select Date Atleast Person Should be Age Greater Than 16");
                                 }
                                 //  dob_DL = date_format.format(dayOfMonth  + (----------------OfYear + 1) + year);
@@ -580,6 +612,182 @@ public class Dashboard extends Activity implements OnClickListener {
 
     }
 
+    private void selectImage() {
+        profileImg_tosend = "";
+
+        final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(Dashboard.this);
+        builder.setTitle("Add Photo!");
+        builder.setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                if (options[item].equals("Take Photo")) {
+                    openCameraIntent();
+
+                } else if (options[item].equals("Choose from Gallery")) {
+
+                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intent, 2);
+
+                } else if (options[item].equals("Cancel")) {
+                    dialog.dismiss();
+                }
+            }
+
+        });
+        builder.show();
+    }
+
+    private void openCameraIntent() {
+        Intent pictureIntent = new Intent(
+                MediaStore.ACTION_IMAGE_CAPTURE);
+        if (pictureIntent.resolveActivity(Dashboard.this.getPackageManager()) != null) {
+            //Create a file to store the image
+            File photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (IOException ex) {
+                // Error occurred while creating the File
+
+            }
+            if (photoFile != null) {
+                Uri photoURI = FileProvider.getUriForFile(Dashboard.this.getApplicationContext(), Dashboard.this.getPackageName() + ".provider", photoFile);
+                pictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                startActivityForResult(pictureIntent, 1);
+            }
+        }
+    }
+
+    private File createImageFile() throws IOException {
+        String timeStamp =
+                new SimpleDateFormat("yyyyMMdd_HHmmss",
+                        Locale.getDefault()).format(new Date());
+        String imageFileName = "IMG_" + timeStamp + "_";
+        File storageDir =
+                Dashboard.this.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        imageFilePath = image.getAbsolutePath();
+        return image;
+    }
+
+    public String getPath(Uri uri) {
+        String result = null;
+        String[] proj = {MediaStore.Images.Media.DATA};
+        Cursor cursor = Dashboard.this.getContentResolver().query(uri, proj, null, null, null);
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                int column_index = cursor.getColumnIndexOrThrow(proj[0]);
+                result = cursor.getString(column_index);
+            }
+            cursor.close();
+        }
+        if (result == null) {
+            result = "Not found";
+        }
+        return result;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+
+            if (requestCode == 1) {
+                Matrix matrix = new Matrix();
+                try {
+                    ExifInterface exif = new ExifInterface(imageFilePath);
+                    int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, 1);
+                    switch (orientation) {
+                        case ExifInterface.ORIENTATION_ROTATE_90:
+                            matrix.postRotate(90);
+                            break;
+                        case ExifInterface.ORIENTATION_ROTATE_180:
+                            matrix.postRotate(180);
+                            break;
+                        case ExifInterface.ORIENTATION_ROTATE_270:
+                            matrix.postRotate(270);
+                            break;
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Uri selectedImage = (Uri.fromFile(new File(imageFilePath)));
+
+                InputStream imageStream = null;
+                try {
+                    imageStream = Dashboard.this.getContentResolver().openInputStream(selectedImage);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                final Bitmap imagebitmap = BitmapFactory.decodeStream(imageStream);
+                Bitmap rotatedBitmap = Bitmap.createBitmap(imagebitmap, 0, 0, imagebitmap.getWidth(), imagebitmap.getHeight(), matrix, true);
+
+                Bitmap resized = Bitmap.createScaledBitmap(rotatedBitmap, (int) (rotatedBitmap.getWidth() * 0.7), (int) (rotatedBitmap.getHeight() * 0.7), true);
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                resized.compress(Bitmap.CompressFormat.JPEG, 20, baos);
+
+                image_byte_array = baos.toByteArray();
+                profileImg_tosend = Base64.encodeToString(image_byte_array, Base64.NO_WRAP);
+                profile_image.setImageBitmap(resized);
+
+            } else if (requestCode == 2) {
+                Uri selectedImage = data.getData();
+                InputStream imageStream = null;
+                try {
+                    imageStream = Dashboard.this.getContentResolver().openInputStream(selectedImage);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                final Bitmap imagebitmap = BitmapFactory.decodeStream(imageStream);
+
+                imageFilePath = getPath(selectedImage);
+                Matrix matrix = new Matrix();
+                ExifInterface exif = null;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    try {
+                        exif = new ExifInterface(imageFilePath);
+                        int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, 1);
+                        switch (orientation) {
+                            case ExifInterface.ORIENTATION_ROTATE_90:
+                                matrix.postRotate(90);
+                                break;
+                            case ExifInterface.ORIENTATION_ROTATE_180:
+                                matrix.postRotate(180);
+                                break;
+                            case ExifInterface.ORIENTATION_ROTATE_270:
+                                matrix.postRotate(270);
+                                break;
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                Bitmap rotatedBitmap = Bitmap.createBitmap(imagebitmap, 0, 0, imagebitmap.getWidth(), imagebitmap.getHeight(), matrix, true);
+
+
+                Bitmap resized = Bitmap.createScaledBitmap(rotatedBitmap, (int) (rotatedBitmap.getWidth() * 0.5), (int) (rotatedBitmap.getHeight() * 0.5), true);
+
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                resized.compress(Bitmap.CompressFormat.JPEG, 20, baos);
+
+                image_byte_array = baos.toByteArray();
+                profileImg_tosend = Base64.encodeToString(image_byte_array, Base64.NO_WRAP);
+                profile_image.setImageBitmap(resized);
+            }
+
+        }
+
+    }
+
 
     public class Async_sendOTP_to_mobile extends AsyncTask<Void, Void, String> {
 
@@ -666,7 +874,7 @@ public class Dashboard extends Activity implements OnClickListener {
             // TODO Auto-generated method stub
             ServiceHelper.profileUpdate("" + MainActivity.pidCodestatic, "" + dob_DL, "" + gender, "" + edtTxt_BldGrp.getText().toString().trim(),
                     "" + et_PAddress.getText().toString().trim(), "" + et_PmtAddress.getText().toString().trim(), "" + dob_JngDate, "" + et_CntctNo.getText().toString().trim(),
-                    "" + edtTxt_EmpId.getText().toString().trim(), "", "");
+                    "" + edtTxt_EmpId.getText().toString().trim(), "" + profileImg_tosend, "");
             return null;
         }
 
