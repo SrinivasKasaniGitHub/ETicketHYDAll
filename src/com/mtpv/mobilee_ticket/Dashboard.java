@@ -319,7 +319,7 @@ public class Dashboard extends Activity implements OnClickListener {
                 showProfileSummuryDialog("Profile");
             }
         }
-        showProfileSummuryDialog("Personal Information");
+     //   showProfileSummuryDialog("Personal Information");
 
     }
 
@@ -1708,7 +1708,7 @@ public class Dashboard extends Activity implements OnClickListener {
     private void getSimImeiNo() {
         // TODO Auto-generated method stub
         telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-        imei_send = telephonyManager.getDeviceId();// TO GET IMEI NUMBER
+        imei_send = MainActivity.IMEI;//telephonyManager.getDeviceId();// TO GET IMEI NUMBER
         if (telephonyManager.getSimState() != TelephonyManager.SIM_STATE_ABSENT) {
             simid_send = "" + telephonyManager.getSimSerialNumber();
         } else {

@@ -1869,6 +1869,7 @@ id bottom
 id breathAn
 id breath_details
 id bt_device_Address
+id btn_Copy
 id btn_Dob
 id btn_Get
 id btn_ImgMatchCancel
@@ -2024,6 +2025,7 @@ id ed_time
 id edit_query
 id edtTxt_BldGrp
 id edtTxt_Cadre
+id edtTxt_DevceId
 id edtTxt_EmpId
 id edtTxt_FName
 id edtTxt_Name
@@ -2868,6 +2870,7 @@ layout design_navigation_item_subheader
 layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
+layout device_id
 layout dp_example
 layout drunk__drive__fake__dialog
 layout drunk_drive_response

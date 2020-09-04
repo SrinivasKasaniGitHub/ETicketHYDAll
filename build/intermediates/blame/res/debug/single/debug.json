@@ -1096,6 +1096,10 @@
         "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-2\\files-2.1\\4e5b70efe267a354477d214988f07078\\res\\drawable-mdpi-v4\\efp_light__ic_action_deselect.png"
     },
     {
+        "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout_device_id.xml.flat",
+        "source": "D:\\AndroidWorkSpace\\ETicketHYDAll\\res\\layout\\device_id.xml"
+    },
+    {
         "merged": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\res\\merged\\debug\\layout_activity_pin_pad_list.xml.flat",
         "source": "D:\\AndroidWorkSpace\\ETicketHYDAll\\res\\layout\\activity_pin_pad_list.xml"
     },

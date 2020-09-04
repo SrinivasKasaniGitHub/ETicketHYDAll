@@ -6,6 +6,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -341,9 +343,14 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
         }
 
         TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-        IMEI = getDeviceID(telephonyManager);
+        if (Build.VERSION.SDK_INT < 29) {
+            IMEI = getDeviceID(telephonyManager);
+        } else {
+            IMEI = Settings.Secure.getString(getContentResolver(),
+                    Settings.Secure.ANDROID_ID);
+        }
         dev_Model = android.os.Build.MODEL;
-        Log.d("Device Model", "" + dev_Model);
+        Log.d("Device Model", "" + IMEI);
 
         if (telephonyManager.getSimState() != TelephonyManager.SIM_STATE_ABSENT) {
             sim_No = "" + telephonyManager.getSimSerialNumber();
@@ -464,7 +471,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
 
                             try {
                                 e_user_id = PidSecEncrypt.encryptmd5(user_id);
-                                e_user_tmp = PidSecEncrypt.encryptmd5(user_pwd);
+                                e_user_tmp = PidSecEncrypt.encryptSHA(user_pwd);
 
                             } catch (Exception e) {
                                 // TODO Auto-generated catch block
@@ -479,8 +486,6 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 
                             if (isOnline()) {
-
-
                                 new Async_task_login().execute();
                             } else {
                                 showToast("Please check your network connection !");
@@ -601,7 +606,11 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                     } else if (ServiceHelper.Opdata_Chalana.trim().equals("2")) {
                         showToast("Invalid Password");
                     } else if (ServiceHelper.Opdata_Chalana.trim().equals("3")) {
-                        showToast("Unauthorized Device");
+                        if (Build.VERSION.SDK_INT < 29) {
+                            showToast("Unauthorized Device");
+                        } else {
+                           deviceId_Dlg();
+                        }
                     } else if (ServiceHelper.Opdata_Chalana.trim().equals("4")) {
                         showToast("Error, Please Contact E Challan Team at 040-27852721");
                     } else if (ServiceHelper.Opdata_Chalana.trim().equals("5")) {
@@ -697,6 +706,41 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
             }
         }
     }
+
+    private void deviceId_Dlg() {
+        final AlertDialog alertDialog = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT).create();
+        @SuppressLint("InflateParams")
+        View view = getLayoutInflater().inflate(R.layout.device_id, null);
+        final EditText edtTxt_DevceId = view.findViewById(R.id.edtTxt_DevceId);
+        Button btn_Copy = view.findViewById(R.id.btn_Copy);
+        try {
+            @SuppressLint("HardwareIds")
+            String IMEI = Settings.Secure.getString(getContentResolver(),
+                    Settings.Secure.ANDROID_ID);
+            Log.d("Device Model", "" + IMEI);
+            edtTxt_DevceId.setEnabled(false);
+            edtTxt_DevceId.setText(IMEI);
+        } catch (Exception e) {
+            e.printStackTrace();
+            edtTxt_DevceId.setEnabled(false);
+            edtTxt_DevceId.setText("");
+        }
+        btn_Copy.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("key", edtTxt_DevceId.getText().toString());
+                clipboardManager.setPrimaryClip(clipData);
+                Toast.makeText(getApplicationContext(), "DeviceId Copied", Toast.LENGTH_SHORT).show();*/
+                alertDialog.dismiss();
+            }
+        });
+
+        alertDialog.setView(view);
+        alertDialog.setCancelable(false);
+        alertDialog.show();
+    }
+
 
     @SuppressWarnings("deprecation")
     @Override

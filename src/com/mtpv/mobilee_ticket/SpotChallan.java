@@ -1103,7 +1103,7 @@ public class SpotChallan extends AppCompatActivity
                 refsal_Info = "";
                 refsal_CntctNo = "";
                 vioDetainCheckFlag = "0";
-                imageFlag="0";
+                imageFlag = "0";
                 str_Gender = "";
 
                 pointsreachedviolation = new StringBuffer("");
@@ -1299,7 +1299,7 @@ public class SpotChallan extends AppCompatActivity
                         vioCodeDescMap.clear();
 
                         vioDetainCheckFlag = "0";
-                        imageFlag="0";
+                        imageFlag = "0";
 
                         vioDetainFlags = new HashMap<String, String>();
                         vioDetainFlags.clear();
@@ -2770,7 +2770,7 @@ public class SpotChallan extends AppCompatActivity
                         }
                     }
                     tv_total_pending_challans.setText("" + ServiceHelper.pending_challans_details.length);
-                    tv_toal_amount_pending_challans.setText("" + total_amount+"0");
+                    tv_toal_amount_pending_challans.setText("" + total_amount + "0");
                     Double total = 0.0;
                     total = total_amount + grand_total;
 
@@ -3000,7 +3000,7 @@ public class SpotChallan extends AppCompatActivity
                         mselectModel.setImgFlag(Integer.parseInt("" + ServiceHelper.violation_detailed_views[i][9].toString().trim()));
                         String vilatnText = "(" + Integer.valueOf(ServiceHelper.violation_detailed_views[i][0].trim())
                                 + ") " + ServiceHelper.violation_detailed_views[i][2].toString().trim() +
-                                "("+ServiceHelper.violation_detailed_views[i][1].toString().trim() + ")  " +
+                                "(" + ServiceHelper.violation_detailed_views[i][1].toString().trim() + ")  " +
                                 "Rs: " + ServiceHelper.violation_detailed_views[i][4].toString().trim();
 
                         mselectModel.setVltnSecName("" + vilatnText);
@@ -6531,7 +6531,7 @@ public class SpotChallan extends AppCompatActivity
         }
 
         telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-        imei_send = telephonyManager.getDeviceId();// TO GET IMEI NUMBER
+        imei_send = MainActivity.IMEI; //telephonyManager.getDeviceId();// TO GET IMEI NUMBER
         if (telephonyManager.getSimState() != TelephonyManager.SIM_STATE_ABSENT) {
             simid_send = "" + telephonyManager.getSimSerialNumber();
         } else {
@@ -8066,9 +8066,9 @@ public class SpotChallan extends AppCompatActivity
         } else */
         if ("0".equals(imgSelected) && vioDetainCheckFlag.equals("1")) {
             showToast("Please Take Driver's Photo !");
-        }else  if ("0".equals(imgSelected) && imageFlag.equals("1")) {
+        } else if ("0".equals(imgSelected) && imageFlag.equals("1")) {
             showToast("Please Take Driver's Photo !");
-        }else if (et_regcid_spot.getText().toString().trim().equals("")) {
+        } else if (et_regcid_spot.getText().toString().trim().equals("")) {
             System.out.println(">>>>>>>>2");
             et_regcid_spot.setError(Html.fromHtml("<font color='black'>Enter Registration Code</font>"));
 
@@ -8084,7 +8084,7 @@ public class SpotChallan extends AppCompatActivity
                 && !Dashboard.check_vhleHistory_or_Spot.equals("towing")) {
             ShowMessage("\n Please Enter Driver Name...! \n");
 
-        }else if (str_Gender.equals("")
+        } else if (str_Gender.equals("")
                 && !Dashboard.check_vhleHistory_or_Spot.equals("towing")) {
             showToast("Please select the Gender ");
 
@@ -8690,8 +8690,8 @@ public class SpotChallan extends AppCompatActivity
                                     total = 0.0;
                                     total = grand_total
                                             + VehicleHistoryPendingChallans.total_amount_selected_challans;
-                                    tv_violation_amnt.setText("Rs : " + grand_total+"0");
-                                    tv_grand_total_spot.setText("Rs : " + total+"0");
+                                    tv_violation_amnt.setText("Rs : " + grand_total + "0");
+                                    tv_grand_total_spot.setText("Rs : " + total + "0");
                                 } else {
                                     passngerFLG = false;
                                     grand_total = grand_total
@@ -8699,8 +8699,8 @@ public class SpotChallan extends AppCompatActivity
                                     total = 0.00;
                                     total = grand_total
                                             + VehicleHistoryPendingChallans.total_amount_selected_challans;
-                                    tv_violation_amnt.setText("Rs : " + grand_total+"0");
-                                    tv_grand_total_spot.setText("Rs : " + total+"0");
+                                    tv_violation_amnt.setText("Rs : " + grand_total + "0");
+                                    tv_grand_total_spot.setText("Rs : " + total + "0");
                                 }
 
                                 if (mArrayList_SelectedVltnLst.get(i).getDetainValue() == 1) {

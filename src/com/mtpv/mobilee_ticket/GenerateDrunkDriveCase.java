@@ -987,7 +987,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                 // for ActivityCompat#requestPermissions for more details.
                 return;
             }
-            IMEI_send = telephonyManager.getDeviceId();// TO GET IMEI NUMBER
+            IMEI_send = MainActivity.IMEI;//telephonyManager.getDeviceId();// TO GET IMEI NUMBER
             if (telephonyManager.getSimState() != TelephonyManager.SIM_STATE_ABSENT) {
                 simID = "" + telephonyManager.getSimSerialNumber();
             } else {

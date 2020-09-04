@@ -515,7 +515,7 @@
                 android:layout_below="@+id/btngetrtadetails_spotchallan_xml"
                 android:layout_centerHorizontal="true"
                 android:orientation="vertical"
-                android:visibility="visible">
+                android:visibility="gone">
 
 
                 <TextView
@@ -1558,8 +1558,9 @@
                         <TextView
                             android:id="@+id/star"
                             style="@style/navi_text_style"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="0.03"
                             android:text="*"
                             android:textColor="#ff0000" />
 
