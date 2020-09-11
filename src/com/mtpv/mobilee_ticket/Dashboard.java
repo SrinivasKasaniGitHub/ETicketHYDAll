@@ -216,7 +216,7 @@ public class Dashboard extends Activity implements OnClickListener {
     byte[] image_byte_array;
     ImageView profile_image;
 
-    @SuppressLint("NewApi")
+    @SuppressLint({"NewApi", "SetTextI18n"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -248,7 +248,7 @@ public class Dashboard extends Activity implements OnClickListener {
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
         } else if (MainActivity.uintCode.equals("44")) { //44 Warangal
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
-        } else {//  69 Siddipet
+        } else { //  69 Siddipet
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
         }
         officer_Name = (TextView) findViewById(R.id.officer_Name);
@@ -319,7 +319,8 @@ public class Dashboard extends Activity implements OnClickListener {
                 showProfileSummuryDialog("Profile");
             }
         }
-     //   showProfileSummuryDialog("Personal Information");
+
+        //   showProfileSummuryDialog("Personal Information");
 
     }
 
@@ -1976,7 +1977,6 @@ public class Dashboard extends Activity implements OnClickListener {
         }
         return super.onCreateDialog(id);
     }
-
 
     public class Async_getViolationPoint_SystemMasterData extends AsyncTask<Void, Void, String> {
         @Override

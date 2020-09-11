@@ -36,6 +36,7 @@ import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatTextView;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
@@ -85,6 +86,7 @@ import com.mtpv.mobilee_ticket_services.Utils;
 import com.mtpv.mobilee_ticket_services.VibratorUtils;
 import com.mtpv.spinnermdl.VehCatAdapter;
 import com.mtpv.spinnermdl.VehCatModel;
+import com.shagi.materialdatepicker.date.DatePickerFragmentDialog;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -121,9 +123,9 @@ import app.justec.com.bleoperator.scan.BleScanRuleConfig;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 @SuppressLint("DefaultLocale")
-public class Drunk_Drive extends Activity implements OnClickListener, LocationListener,
+public class Drunk_Drive extends AppCompatActivity implements OnClickListener, LocationListener,
         DataSource.DataCallBack<ArrayList<RecordForm>>,
-        RepeatCommand {
+        RepeatCommand, DatePickerFragmentDialog.OnDateSetListener {
 
     @SuppressWarnings("unused")
     private String HALLOWEEN_ORANGE = "#FF7F27";
@@ -311,6 +313,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
     LinearLayout lyt_DD_Details;
     BleDevice bleDevice;
     Button btn_vehCategory;
+    DatePickerFragmentDialog datePickerDialog;
 
     @SuppressLint({"NewApi", "MissingPermission", "ObsoleteSdkInt", "SimpleDateFormat"})
     @Override
@@ -645,12 +648,16 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                         @Override
                         public void onClick(View v) {
                             {
-                                final Calendar c = Calendar.getInstance();
-                                mYear = c.get(Calendar.YEAR);
-                                mMonth = c.get(Calendar.MONTH);
-                                mDay = c.get(Calendar.DAY_OF_MONTH);
+                                final Calendar calendar = Calendar.getInstance();
+                                mYear = calendar.get(Calendar.YEAR);
+                                mMonth = calendar.get(Calendar.MONTH);
+                                mDay = calendar.get(Calendar.DAY_OF_MONTH);
+                                datePickerDialog = new DatePickerFragmentDialog();
+                                datePickerDialog = DatePickerFragmentDialog.newInstance(Drunk_Drive.this,
+                                        calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+                                datePickerDialog.show(getSupportFragmentManager(), "DatePicker");
 
-                                DatePickerDialog datePickerDialog = new DatePickerDialog(Drunk_Drive.this,
+                                /*DatePickerDialog datePickerDialog = new DatePickerDialog(Drunk_Drive.this,
                                         new DatePickerDialog.OnDateSetListener() {
 
                                             @Override
@@ -668,7 +675,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                                                 dob_input.setText(dd_dob_DL);
                                             }
                                         }, mYear, mMonth, mDay);
-                                datePickerDialog.show();
+                                datePickerDialog.show();*/
                                 dobcheck = "Yes";
                             }
                         }
@@ -806,6 +813,33 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
             }
         };
 
+    }
+
+    @Override
+    public void onDateSet(DatePickerFragmentDialog view, int year, int monthOfYear, int dayOfMonth) {
+
+        SimpleDateFormat date_format = new SimpleDateFormat("dd-MMM-yyyy");
+
+        SimpleDateFormat date_parse = new SimpleDateFormat("dd/MM/yyyy");
+        String dtdob = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+        try {
+            dd_dob_DL = date_format.format(date_parse.parse(dtdob));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        String todaysdate = new DateUtil().getTodaysDate();
+
+        long days = new DateUtil().DaysCalucate(dd_dob_DL, todaysdate);
+
+        //Minimum Age should be 16
+        if (days > 5824) {
+            dob_input.setText(dd_dob_DL);
+
+        } else {
+            showToast("Please enter the correct Date of Birth ");
+        }
+        dobcheck = "Yes";
     }
 
     public Boolean isOnline() {
@@ -1191,20 +1225,20 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
 
             if (et_regcid.getText().toString().trim().equals("")) {
                 // utils.showError(et_regcid, "Enter Registration Code");
-                et_regcid.setError(Html.fromHtml("<font color='black'>Enter Registration Code</font>"));
+                et_regcid.setError(Html.fromHtml("<font color='white'>Enter Registration Code</font>"));
                 et_regcid.requestFocus();
 
             } else if (et_last_num.getText().toString().trim().equals("")) {
                 // utils.showError(et_last_num, "");
-                et_last_num.setError(Html.fromHtml("<font color='black'>Enter Vehicle Number</font>"));
+                et_last_num.setError(Html.fromHtml("<font color='white'>Enter Vehicle Number</font>"));
                 et_last_num.requestFocus();
 
             } else if (edt_checkslno_.getText().toString().trim().isEmpty()) {
-                edt_checkslno_.setError(Html.fromHtml("<font color='black'>Enter Check serial Number !</font>"));
+                edt_checkslno_.setError(Html.fromHtml("<font color='white'>Enter Check serial Number !</font>"));
                 edt_checkslno_.requestFocus();
             } else if (edt_alchl_reading.getText().toString().trim().isEmpty() ||
                     Integer.parseInt(edt_alchl_reading.getText().toString().trim()) < 36) {
-                edt_alchl_reading.setError(Html.fromHtml("<font color='black'>Alchohal reading should be more than 36 </font>"));
+                edt_alchl_reading.setError(Html.fromHtml("<font color='white'>Alchohal reading should be more than 36 </font>"));
                 edt_alchl_reading.requestFocus();
             } else {
                 if (isOnline()) {
@@ -1242,7 +1276,7 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                             && (!ver.isValid(et_aadharnumber.getText().toString()))) {
                         showToast("Please Enter Valid Adhaar Number");
                         et_aadharnumber
-                                .setError(Html.fromHtml("<font color='black'>Please Enter Valid Adhaar Number</font>"));
+                                .setError(Html.fromHtml("<font color='white'>Please Enter Valid Adhaar Number</font>"));
                     } else if ((et_aadharnumber.getText().toString().trim().length() == 12)
                             || (et_aadharnumber.getText().toString().trim().length() == 28)) {
 
@@ -1270,7 +1304,6 @@ public class Drunk_Drive extends Activity implements OnClickListener, LocationLi
                 BuildConfig.APPLICATION_ID + ".provider",f));
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
         startActivityForResult(intent, 1);*/
-
 
         if (Build.VERSION.SDK_INT <= 23) {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);

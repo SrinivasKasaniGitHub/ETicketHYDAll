@@ -4,6 +4,25 @@
             "outputFile": "D:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
             "map": [
                 {
+                    "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-2\\files-2.1\\282cb06408c8b37c77b3fcbacaae7446\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2,3,6,9",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,153,286,405",
+                        "endLines": "2,5,8,11",
+                        "endColumns": "97,12,12,12",
+                        "endOffsets": "148,281,400,517"
+                    },
+                    "to": {
+                        "startLines": "3,8,11,14",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "121,392,525,644",
+                        "endLines": "3,10,13,16",
+                        "endColumns": "97,12,12,12",
+                        "endOffsets": "214,520,639,756"
+                    }
+                },
+                {
                     "source": "C:\\Users\\srinivas\\.gradle\\caches\\transforms-2\\files-2.1\\de52765f47f878cab033b34ea4def6d2\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
@@ -14,12 +33,12 @@
                         "endOffsets": "223"
                     },
                     "to": {
-                        "startLines": "3",
+                        "startLines": "4",
                         "startColumns": "4",
-                        "startOffsets": "121",
-                        "endLines": "6",
+                        "startOffsets": "219",
+                        "endLines": "7",
                         "endColumns": "12",
-                        "endOffsets": "289"
+                        "endOffsets": "387"
                     }
                 },
                 {

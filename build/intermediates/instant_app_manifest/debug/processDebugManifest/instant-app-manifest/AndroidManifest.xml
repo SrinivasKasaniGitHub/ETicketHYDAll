@@ -107,8 +107,8 @@
         </activity>
         <activity
             android:name="com.mtpv.mobilee_ticket.Drunk_Drive"
-            android:excludeFromRecents="true"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:windowSoftInputMode="adjustPan" >
 
             <!--  -->

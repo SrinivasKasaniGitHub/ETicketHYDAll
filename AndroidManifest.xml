@@ -107,7 +107,7 @@
         </activity>
         <activity
             android:name=".Drunk_Drive"
-            android:excludeFromRecents="true"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
 

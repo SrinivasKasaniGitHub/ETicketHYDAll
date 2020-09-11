@@ -190,7 +190,7 @@
                         android:gravity="center"
                         android:imeOptions="actionNext"
                         android:inputType="textCapCharacters"
-                        android:maxLength="4"></EditText>
+                        android:maxLength="4" />
 
                     <EditText
                         android:id="@+id/edt_regncidname_rtadetails_xml"
@@ -347,7 +347,7 @@
                     android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:gravity="center"
                     android:inputType="number"
-                    android:maxLength="12"></EditText>
+                    android:maxLength="12"/>
             </LinearLayout>
 
             <Button

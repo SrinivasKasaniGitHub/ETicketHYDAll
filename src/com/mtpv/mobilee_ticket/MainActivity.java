@@ -247,8 +247,8 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
         btn_submit = findViewById(R.id.btnsubmit_login_xml);
         tv_ip_settings = findViewById(R.id.tv_ipsettings);
 
-       /* et_pid.setText("2300001044");
-        et_pid_pwd.setText("Sri@1044");*/
+        et_pid.setText("2300001044");
+        et_pid_pwd.setText("Sri@1044");
         btn_cancel.setOnClickListener(this);
         btn_submit.setOnClickListener(this);
         tv_ip_settings.setOnClickListener(this);
@@ -471,7 +471,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
 
                             try {
                                 e_user_id = PidSecEncrypt.encryptmd5(user_id);
-                                e_user_tmp = PidSecEncrypt.encryptSHA(user_pwd);
+                                e_user_tmp = PidSecEncrypt.encryptmd5(user_pwd);
 
                             } catch (Exception e) {
                                 // TODO Auto-generated catch block

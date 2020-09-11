@@ -96,6 +96,7 @@ import com.mtpv.spinnermdl.MultiSelectSearchSpinnerDlg;
 import com.mtpv.spinnermdl.VehCatAdapter;
 import com.mtpv.spinnermdl.VehCatModel;
 import com.mtpv.spinnermdl.VltnListModel;
+import com.shagi.materialdatepicker.date.DatePickerFragmentDialog;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -132,7 +133,8 @@ import mother.com.test.PidSecEncrypt;
 @SuppressWarnings("deprecation")
 @SuppressLint({"DefaultLocale", "WorldReadableFiles", "SetJavaScriptEnabled", "SimpleDateFormat", "InflateParams"})
 public class SpotChallan extends AppCompatActivity
-        implements OnClickListener, LocationListener, android.widget.CompoundButton.OnCheckedChangeListener {
+        implements OnClickListener, LocationListener, android.widget.CompoundButton.OnCheckedChangeListener,
+        DatePickerFragmentDialog.OnDateSetListener {
 
     public static String dl_points = "0", spot_Lic_Flag = "", imgSelected = "0", is_govt_police = "9",
             extraPassengers = "1", aadhaar, licence_no, otp_number = "", driver_mobileNo = "",
@@ -330,6 +332,7 @@ public class SpotChallan extends AppCompatActivity
     MultiSelectSearchSpinnerDlg multiSelectSearchSpinnerDlg;
     ArrayList<VltnListModel> vltnListModels = new ArrayList<>();
     VltnListModel vltnListModel;
+    DatePickerFragmentDialog datePickerDialog;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -355,7 +358,7 @@ public class SpotChallan extends AppCompatActivity
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
         } else if (MainActivity.uintCode.equals("24")) {
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
-        } else if (MainActivity.uintCode.equals("44")) { //44 Warangal
+        } else if (MainActivity.uintCode.equals("44")) { // 44 Warangal
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
         } else {//  69 Siddipet
             img_logo.setImageDrawable(getResources().getDrawable(R.drawable.logo));
@@ -696,9 +699,13 @@ public class SpotChallan extends AppCompatActivity
                                 mYear = c.get(Calendar.YEAR);
                                 mMonth = c.get(Calendar.MONTH);
                                 mDay = c.get(Calendar.DAY_OF_MONTH);
+                                calendar = Calendar.getInstance();
+                                datePickerDialog = new DatePickerFragmentDialog();
+                                datePickerDialog = DatePickerFragmentDialog.newInstance(SpotChallan.this,
+                                        calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+                                datePickerDialog.show(getSupportFragmentManager(), "DatePicker");
 
-
-                                DatePickerDialog datePickerDialog = new DatePickerDialog(SpotChallan.this,
+                                /*DatePickerDialog datePickerDialog = new DatePickerDialog(SpotChallan.this,
                                         new DatePickerDialog.OnDateSetListener() {
                                             @SuppressWarnings("deprecation")
                                             @SuppressLint({"SimpleDateFormat", "DefaultLocale"})
@@ -734,7 +741,7 @@ public class SpotChallan extends AppCompatActivity
                                                 //  dob_DL = date_format.format(dayOfMonth  + (----------------OfYear + 1) + year);
                                             }
                                         }, mYear, mMonth, mDay);
-                                datePickerDialog.show();
+                                datePickerDialog.show();*/
                                 dobcheck = "Yes";
                             }
                         }
@@ -1071,6 +1078,36 @@ public class SpotChallan extends AppCompatActivity
             }
 
         }
+    }
+    @Override
+    public void onDateSet(DatePickerFragmentDialog view, int year, int monthOfYear, int dayOfMonth) {
+
+        SimpleDateFormat date_format = new SimpleDateFormat("dd-MMM-yyyy");
+
+        SimpleDateFormat date_parse = new SimpleDateFormat("dd/MM/yyyy");
+        String dtdob = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+        try {
+            dob_DL = date_format.format(date_parse.parse(dtdob));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        String todaysdate = new DateUtil().getTodaysDate();
+
+        long days = new DateUtil().DaysCalucate(dob_DL, todaysdate);
+
+        age = (int) (days / 365);
+
+        Log.d("Age is : ", "" + String.valueOf(age));
+
+        //Minimum Age should be 16
+        if (days > 5824) {
+            dob_input.setText(dob_DL);
+
+        } else {
+            ShowMessageDateAlert("Please enter the correct Date of Birth ");
+        }
+        dobcheck = "Yes";
     }
 
     public Boolean isOnline() {
@@ -2053,6 +2090,8 @@ public class SpotChallan extends AppCompatActivity
         //   imgSelected = "1";
     }
 
+
+
     public class Async_VehicleCategory extends AsyncTask<Void, Void, String> {
 
         @Override
@@ -2122,7 +2161,6 @@ public class SpotChallan extends AppCompatActivity
             }
         });
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
