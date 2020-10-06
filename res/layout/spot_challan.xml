@@ -1673,8 +1673,18 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_weight="0.3"
+                        android:layout_weight="0.27"
                         android:text="@string/txt_DRName" />
+
+                    <TextView
+                        android:id="@+id/starAge"
+                        style="@style/navi_text_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.03"
+                        android:text="*"
+                        android:visibility="invisible"
+                        android:textColor="#ff0000" />
 
 
                     <EditText
@@ -1714,6 +1724,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.03"
                         android:text="*"
+                        android:visibility="invisible"
                         android:textColor="#ff0000" />
                     <RadioGroup
                         android:id="@+id/radioGroup_gender"

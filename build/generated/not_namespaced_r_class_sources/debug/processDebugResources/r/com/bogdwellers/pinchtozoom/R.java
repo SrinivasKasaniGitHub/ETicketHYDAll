@@ -636,23 +636,23 @@ public final class R {
         public static final int src_atop = 0x7f0902c5;
         public static final int src_in = 0x7f0902c6;
         public static final int src_over = 0x7f0902c7;
-        public static final int submenuarrow = 0x7f0902cc;
-        public static final int submit_area = 0x7f0902ce;
-        public static final int tabMode = 0x7f0902cf;
-        public static final int text = 0x7f0902d4;
-        public static final int text2 = 0x7f0902d5;
-        public static final int textSpacerNoButtons = 0x7f0902d6;
-        public static final int textSpacerNoTitle = 0x7f0902d7;
-        public static final int time = 0x7f090321;
-        public static final int title = 0x7f090322;
-        public static final int titleDividerNoCustom = 0x7f090323;
-        public static final int title_template = 0x7f090327;
-        public static final int top = 0x7f090329;
-        public static final int topPanel = 0x7f09032a;
-        public static final int up = 0x7f0903b1;
-        public static final int useLogo = 0x7f0903b5;
-        public static final int withText = 0x7f0903c1;
-        public static final int wrap_content = 0x7f0903c2;
+        public static final int submenuarrow = 0x7f0902cd;
+        public static final int submit_area = 0x7f0902cf;
+        public static final int tabMode = 0x7f0902d0;
+        public static final int text = 0x7f0902d5;
+        public static final int text2 = 0x7f0902d6;
+        public static final int textSpacerNoButtons = 0x7f0902d7;
+        public static final int textSpacerNoTitle = 0x7f0902d8;
+        public static final int time = 0x7f090322;
+        public static final int title = 0x7f090323;
+        public static final int titleDividerNoCustom = 0x7f090324;
+        public static final int title_template = 0x7f090328;
+        public static final int top = 0x7f09032a;
+        public static final int topPanel = 0x7f09032b;
+        public static final int up = 0x7f0903b2;
+        public static final int useLogo = 0x7f0903b6;
+        public static final int withText = 0x7f0903c2;
+        public static final int wrap_content = 0x7f0903c3;
     }
     public static final class integer {
         private integer() {}

@@ -145,7 +145,7 @@ public class SpotChallan extends AppCompatActivity
             edt_regncid_lastnum_spotchallanMAX_LENGTH = 4, selected_ocuptn = -1;
 
     public static Double total = 0.0;
-    TextView star;
+    TextView star, starGedr, starAge;
     Context context;
 
     public static String[] temp_violations_ids;
@@ -852,6 +852,8 @@ public class SpotChallan extends AppCompatActivity
         ibtn_gallery = (ImageButton) findViewById(R.id.imgv_gallery_spotchallan_xml);
         wv_generate = (WebView) findViewById(R.id.webView_image_spotchallan_xml);
         star = (TextView) findViewById(R.id.star);
+        starGedr = findViewById(R.id.starGedr);
+        starAge = findViewById(R.id.starAge);
 
         /* VEHICLE HISTORY */
         ll_camera_gallery = (LinearLayout) findViewById(R.id.ll_main_root_spotchallan_xml);
@@ -969,6 +971,7 @@ public class SpotChallan extends AppCompatActivity
             ll_drivertype_rgbtn.setVisibility(View.GONE);
 
             star.setVisibility(View.INVISIBLE);
+            starGedr.setVisibility(View.INVISIBLE);
 
             if (Dashboard.check_vhleHistory_or_Spot.equals("vehiclehistory")) {
                 tv_spot_or_vhclehistory_header.setText("" + getResources().getString(R.string.vehicle_history));
@@ -979,7 +982,7 @@ public class SpotChallan extends AppCompatActivity
                         .setText("" + getResources().getString(R.string.release_documents_one_line));
                 et_regcid_spot.requestFocus();
                 passport_layout.setVisibility(View.GONE);
-                nationality_status.setVisibility(View.VISIBLE);
+                nationality_status.setVisibility(View.GONE);
                 rb_indian.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
                     @Override
@@ -1013,6 +1016,8 @@ public class SpotChallan extends AppCompatActivity
             btn_violation.setVisibility(View.VISIBLE);
             ll_grand_total.setVisibility(View.VISIBLE);
             ll_camera_gallery.setVisibility(View.VISIBLE);
+            starGedr.setVisibility(View.VISIBLE);
+            starAge.setVisibility(View.VISIBLE);
 
             tv_spot_or_vhclehistory_header.setText("" + getResources().getString(R.string.spot_challan));
 
@@ -1025,6 +1030,7 @@ public class SpotChallan extends AppCompatActivity
             challan_Type = "TC";
 
             star.setVisibility(View.INVISIBLE);
+            starGedr.setVisibility(View.INVISIBLE);
             btn_wheller_code.setVisibility(View.VISIBLE);
             btn_violation.setVisibility(View.VISIBLE);
             ll_grand_total.setVisibility(View.VISIBLE);
@@ -1044,6 +1050,7 @@ public class SpotChallan extends AppCompatActivity
             ll_drivertype_rgbtn.setVisibility(View.GONE);
 
             star.setVisibility(View.INVISIBLE);
+            starGedr.setVisibility(View.INVISIBLE);
 
             if (Dashboard_PC.check_vhleHistory_or_Spot.equals("vehiclehistory")) {
                 tv_spot_or_vhclehistory_header.setText("" + getResources().getString(R.string.vehicle_history));
@@ -1079,6 +1086,7 @@ public class SpotChallan extends AppCompatActivity
 
         }
     }
+
     @Override
     public void onDateSet(DatePickerFragmentDialog view, int year, int monthOfYear, int dayOfMonth) {
 
@@ -1357,7 +1365,7 @@ public class SpotChallan extends AppCompatActivity
                         violationCodes.delete(0, violationCodes.length());
 
                         removeDialog(DYNAMIC_VIOLATIONS);
-                        // showDialog(DYNAMIC_VIOLATIONS);
+                        //showDialog(DYNAMIC_VIOLATIONS);
 
                         showDynamicViolations();
 
@@ -2089,8 +2097,6 @@ public class SpotChallan extends AppCompatActivity
         }
         //   imgSelected = "1";
     }
-
-
 
     public class Async_VehicleCategory extends AsyncTask<Void, Void, String> {
 
@@ -3819,7 +3825,7 @@ public class SpotChallan extends AppCompatActivity
                             rl_detained_items.setVisibility(View.VISIBLE);
                             ll_detained_items_root.setVisibility(View.VISIBLE);
                             ll_detained_itemlist_layout.setVisibility(View.VISIBLE);
-                            ll_cash_or_card.setVisibility(View.VISIBLE);
+                            ll_cash_or_card.setVisibility(View.GONE);
                         }
 
                     } else if (!vehicle_split.equals("AP") || !vehicle_split.equals("TS")) {
@@ -4047,7 +4053,7 @@ public class SpotChallan extends AppCompatActivity
                             rl_detained_items.setVisibility(View.VISIBLE);
                             ll_detained_items_root.setVisibility(View.VISIBLE);
                             ll_detained_itemlist_layout.setVisibility(View.VISIBLE);
-                            ll_cash_or_card.setVisibility(View.VISIBLE);
+                            ll_cash_or_card.setVisibility(View.GONE);
                         }
 
                     } else if (!vehicle_split.equals("AP") || !vehicle_split.equals("TS")) {
@@ -4276,7 +4282,7 @@ public class SpotChallan extends AppCompatActivity
 
                     tv_spotChallanTwo_header.setText("" + getResources().getString(R.string.vehicle_history));
 
-                    ll_cash_or_card.setVisibility(View.VISIBLE);
+                    ll_cash_or_card.setVisibility(View.GONE);
                     ll_detained_items_root.setVisibility(View.VISIBLE);
 
                     proffession_layout.setVisibility(View.GONE);
@@ -4303,7 +4309,7 @@ public class SpotChallan extends AppCompatActivity
                                 rl_detained_items.setVisibility(View.VISIBLE);
                                 ll_detained_items_root.setVisibility(View.VISIBLE);
                                 ll_detained_itemlist_layout.setVisibility(View.VISIBLE);
-                                ll_cash_or_card.setVisibility(View.VISIBLE);
+                                ll_cash_or_card.setVisibility(View.GONE);
                             }
 
                         } else {
@@ -4414,7 +4420,7 @@ public class SpotChallan extends AppCompatActivity
                     rl_detained_items.setVisibility(View.VISIBLE);
                     tv_spotChallanTwo_header.setText("" + getResources().getString(R.string.vehicle_history));
 
-                    ll_cash_or_card.setVisibility(View.VISIBLE);
+                    ll_cash_or_card.setVisibility(View.GONE);
                     ll_detained_items_root.setVisibility(View.VISIBLE);
 
                     proffession_layout.setVisibility(View.GONE);
@@ -4441,7 +4447,7 @@ public class SpotChallan extends AppCompatActivity
                                 rl_detained_items.setVisibility(View.VISIBLE);
                                 ll_detained_items_root.setVisibility(View.VISIBLE);
                                 ll_detained_itemlist_layout.setVisibility(View.VISIBLE);
-                                ll_cash_or_card.setVisibility(View.VISIBLE);
+                                ll_cash_or_card.setVisibility(View.GONE);
                             }
 
                         } else {
@@ -4557,7 +4563,7 @@ public class SpotChallan extends AppCompatActivity
                     public void onClick(View v) {
                         // TODO Auto-generated method stub
                         is_it_spot_send = "1";
-                        ll_cash_or_card.setVisibility(View.VISIBLE);
+                        ll_cash_or_card.setVisibility(View.GONE);
 
                         if ((Dashboard.check_vhleHistory_or_Spot.equals("vehiclehistory"))
                                 || (Dashboard.check_vhleHistory_or_Spot.equals("spot"))
@@ -8090,7 +8096,7 @@ public class SpotChallan extends AppCompatActivity
                 for (String vio : selvio) {
 
                     String[] violations = vio.split("\\@");
-                    if (64 == Integer.parseInt(violations[0].trim()) || 123 == Integer.parseInt(violations[0].trim())) {
+                    if (64 == Integer.parseInt(violations[0].trim()) || 123 == Integer.parseInt(violations[0].trim()) || 30 == Integer.parseInt(violations[0].trim())) {
                         dlCheck = "1";
 
                     }

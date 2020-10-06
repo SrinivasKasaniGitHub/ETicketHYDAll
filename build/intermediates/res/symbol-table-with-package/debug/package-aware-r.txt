@@ -2587,6 +2587,7 @@ id src_atop
 id src_in
 id src_over
 id star
+id starAge
 id starGedr
 id start
 id stretch

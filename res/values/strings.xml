@@ -51,7 +51,7 @@
     <string name="driver_dl_no">Enter Driver DL No      </string>
     <string name="driver_name">Enter Driver Name</string>
     <string name="driver_name_only">Driver\'s Name    </string>
-    <string name="txt_DRName">Driver Age<font fgcolor="#ed0404">*</font></string>
+    <string name="txt_DRName">Driver Age</string>
     <string name="driver_details">DRIVER DETAILS</string>
     <string name="driver_father_name">Driver\'s Father Name</string>
     <string name="aadhar_no">Aadhar No    </string>
