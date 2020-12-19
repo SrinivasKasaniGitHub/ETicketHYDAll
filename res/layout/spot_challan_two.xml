@@ -126,8 +126,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/header_grnt_padding_five"
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
+                android:layout_marginBottom="@dimen/header_grnt_padding_five"
                 android:visibility="gone">
 
                 <TextView
@@ -170,8 +170,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ll_is_spotpayment_spotchallan_two_xml"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/header_grnt_padding_five"
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
+                android:layout_marginBottom="@dimen/header_grnt_padding_five"
                 android:visibility="gone">
 
                 <RadioGroup
@@ -222,8 +222,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_cardtype_name"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="@dimen/header_grnt_padding_five"
-                    android:layout_marginTop="@dimen/header_grnt_padding_five">
+                    android:layout_marginTop="@dimen/header_grnt_padding_five"
+                    android:layout_marginBottom="@dimen/header_grnt_padding_five">
 
                     <RadioGroup
                         android:id="@+id/radioGroup_card_type"
@@ -267,8 +267,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rl_card_details"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/header_grnt_padding_five"
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
+                android:layout_marginBottom="@dimen/header_grnt_padding_five"
                 android:hint="@string/enter_pin"
                 android:inputType="textPassword"
                 android:visibility="gone"></EditText>
@@ -287,8 +287,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="@dimen/header_grnt_padding_five"
-                    android:layout_marginTop="@dimen/header_grnt_padding_five">
+                    android:layout_marginTop="@dimen/header_grnt_padding_five"
+                    android:layout_marginBottom="@dimen/header_grnt_padding_five">
 
                     <TextView
                         android:id="@+id/tv_gendername"
@@ -346,8 +346,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:layout_marginBottom="@dimen/header_grnt_padding_five"
                     android:layout_marginTop="@dimen/header_grnt_padding_five"
+                    android:layout_marginBottom="@dimen/header_grnt_padding_five"
                     android:text="@string/detained_items" />
 
                 <LinearLayout
@@ -371,8 +371,8 @@
                         style="@style/dd_custom_check_box_style"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/detained_items_vhcle"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1"
+                        android:text="@string/detained_items_vhcle" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -397,16 +397,16 @@
                         style="@style/dd_custom_check_box_style"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/detained_items_permit"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1"
+                        android:text="@string/detained_items_permit" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/ll_detaineditems3_spotchallantwo_xml"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
                     android:layout_below="@+id/ll_detaineditems2_spotchallantwo_xml"
+                    android:layout_alignParentLeft="true"
                     android:layout_marginTop="@dimen/header_grnt_padding_five">
 
                     <CheckBox
@@ -442,28 +442,54 @@
                 android:layout_below="@+id/rl_detaineditems_spotchallantwo_xml"
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:weightSum="5">
 
                 <EditText
                     android:id="@+id/edt_drvr_cnctno_spotchallantwo_xml"
                     style="@style/edt_custom_style"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
+                    android:layout_weight="3.5"
                     android:hint="@string/driver_contact_no"
                     android:inputType="number"
-                    android:maxLength="10"
-                    ></EditText>
+                    android:maxLength="10" />
 
                 <Button
-                    android:id="@+id/btn_sendOTPtoMobile_spotchallantwo_xml"
+                    android:id="@+id/btn_sendOTPtoMobile_spotchallantwo_xmltrt"
                     style="@style/naviblue_custom_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/header_grnt_padding_five"
+                    android:layout_weight="2"
                     android:text="@string/send_otp"
-                    android:layout_weight="2"/>
+                    android:visibility="gone"/>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="end"
+                    android:layout_marginEnd="15dp">
+
+                    <Button
+                        android:id="@+id/btn_sendOTPtoMobile_spotchallantwo_xml"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:gravity="start"
+                        android:layout_marginLeft="@dimen/header_grnt_padding_five"
+                        android:background="@drawable/otpmsg" />
+
+                    <Button
+                        android:id="@+id/btn_sendOTPtoMobileCall"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:gravity="end"
+                        android:layout_marginLeft="25dp"
+                        android:background="@drawable/otpcall" />
+                </LinearLayout>
             </LinearLayout>
 
 
@@ -473,8 +499,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ll_contactnum_spotchallantwo_xml"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/header_grnt_padding_five"
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
+                android:layout_marginBottom="@dimen/header_grnt_padding_five"
                 android:visibility="gone">
 
                 <TextView
@@ -483,8 +509,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:layout_marginBottom="@dimen/header_grnt_padding_five"
                     android:layout_marginTop="@dimen/header_grnt_padding_five"
+                    android:layout_marginBottom="@dimen/header_grnt_padding_five"
                     android:text="@string/languageselect" />
 
                 <RadioGroup
@@ -661,8 +687,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/edt_remarks_spotchallantwo_xml"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/margin_twenty"
-                android:layout_marginTop="@dimen/margin_twenty">
+                android:layout_marginTop="@dimen/margin_twenty"
+                android:layout_marginBottom="@dimen/margin_twenty">
 
                 <Button
                     android:id="@+id/btn_cancel_spotchallantwo_xml"

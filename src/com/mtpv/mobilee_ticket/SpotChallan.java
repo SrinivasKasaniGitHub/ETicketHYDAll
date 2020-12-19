@@ -169,7 +169,7 @@ public class SpotChallan extends AppCompatActivity
     String dlcheckflag = "0";
     ImageView img_aadhar_image, qr_code;
     public static Button btn_wheller_code, btn_violation, btn_get_details_spot, btn_first_tosecond_spot, btn_first_cancel_spot,
-            btn_id_proof_spot, btn_move_to_first, btn_final_submit, btn_send_otp_to_mobile;
+            btn_id_proof_spot, btn_move_to_first, btn_final_submit, btn_send_otp_to_mobile, btn_sendOTPtoMobileCall;
     byte[] byteArray;
     long start = 0, end = 0;
     public static String OtpStatus, OtpResponseDelayTime;
@@ -333,6 +333,7 @@ public class SpotChallan extends AppCompatActivity
     ArrayList<VltnListModel> vltnListModels = new ArrayList<>();
     VltnListModel vltnListModel;
     DatePickerFragmentDialog datePickerDialog;
+    public boolean smsMsgCall = true;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -3633,14 +3634,17 @@ public class SpotChallan extends AppCompatActivity
 
                 et_driver_contact_spot = (EditText) dg_scond.findViewById(R.id.edt_drvr_cnctno_spotchallantwo_xml);
                 btn_send_otp_to_mobile = (Button) dg_scond.findViewById(R.id.btn_sendOTPtoMobile_spotchallantwo_xml);
+                btn_sendOTPtoMobileCall = dg_scond.findViewById(R.id.btn_sendOTPtoMobileCall);
                 detained_Txt = (AppCompatTextView) dg_scond.findViewById(R.id.detained_Txt);
                 detained_Txt.setVisibility(View.GONE);
 
 
                 if (SpotChallan.OtpStatus.equalsIgnoreCase("Y")) {
                     btn_send_otp_to_mobile.setVisibility(View.VISIBLE);
+                    btn_sendOTPtoMobileCall.setVisibility(View.VISIBLE);
                 } else {
                     btn_send_otp_to_mobile.setVisibility(View.GONE);
+                    btn_sendOTPtoMobileCall.setVisibility(View.GONE);
                 }
 
                 /* ID PROOF */
@@ -3740,6 +3744,7 @@ public class SpotChallan extends AppCompatActivity
 
                     rl_detained_items.setVisibility(View.VISIBLE);
                     btn_send_otp_to_mobile.setVisibility(View.GONE);
+                    btn_sendOTPtoMobileCall.setVisibility(View.GONE);
                     tv_spotChallanTwo_header.setText("" + getResources().getString(R.string.towing_one_line));
 
                     String vehicle_split = et_regcid_spot.getText().toString().trim().substring(0, 2);
@@ -4478,9 +4483,67 @@ public class SpotChallan extends AppCompatActivity
 
                     @Override
                     public void onClick(View v) {
+
+                        smsMsgCall = true;
                         // TODO Auto-generated method stub
 
                         // TODO Auto-generated method stub
+                        String tempContactNumber = et_driver_contact_spot.getText().toString();
+
+                        if (tempContactNumber.equals("")) {
+                            et_driver_contact_spot.setError(
+                                    Html.fromHtml("<font color='black'>Enter mobile number to send OTP!!</font>"));
+                            et_driver_contact_spot.requestFocus();
+
+                        } else if ((tempContactNumber.trim() != null && tempContactNumber.trim().length() > 1
+                                && tempContactNumber.trim().length() != 10) || new DateUtil().allCharactersSame(tempContactNumber.trim())) {
+                            et_driver_contact_spot
+                                    .setError(Html.fromHtml("<font color='black'>Enter Valid mobile number!!</font>"));
+                            et_driver_contact_spot.requestFocus();
+
+                        } else if (tempContactNumber.length() == 10) {
+                            if ((tempContactNumber.charAt(0) == '7') || (tempContactNumber.charAt(0) == '8')
+                                    || (tempContactNumber.charAt(0) == '9') || (tempContactNumber.charAt(0) == '6')) {
+                                if (isOnline()) {
+                                    otp_status = "send";
+                                    SpotChallan.mobilenumber = "";
+                                    SpotChallan.mobilenumber = tempContactNumber;
+                                    new Async_sendOTP_to_mobile().execute();
+                                } else {
+                                    showToast("Please check your network connection!");
+                                }
+                            } else {
+                                et_driver_contact_spot
+                                        .setError(Html.fromHtml("<font color='black'>Check Contact No.!!</font>"));
+                                et_driver_contact_spot.requestFocus();
+                            }
+
+                        } else if (tempContactNumber.length() == 11) {
+                            if (tempContactNumber.charAt(0) == '0') {
+                                if (isOnline()) {
+                                    otp_status = "send";
+
+                                    SpotChallan.mobilenumber = "";
+                                    SpotChallan.mobilenumber = tempContactNumber;
+                                    new Async_sendOTP_to_mobile().execute();
+                                } else {
+                                    showToast("Please check your network connection!");
+                                }
+                            } else {
+                                et_driver_contact_spot
+                                        .setError(Html.fromHtml("<font color='black'>Check Contact No.!!</font>"));
+                                et_driver_contact_spot.requestFocus();
+                            }
+
+                        }
+                    }
+                });
+
+
+                btn_sendOTPtoMobileCall.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        smsMsgCall = false;
                         String tempContactNumber = et_driver_contact_spot.getText().toString();
 
                         if (tempContactNumber.equals("")) {
@@ -5385,10 +5448,16 @@ public class SpotChallan extends AppCompatActivity
 
         @Override
         protected String doInBackground(Void... params) {
+
+            String smsMode = "";
+            if (smsMsgCall) {
+                smsMode = "1";
+            } else {
+                smsMode = "2";
+            }
             // TODO Auto-generated method stub
             try {
                 otp_status = "send";
-
                 date_format2 = new SimpleDateFormat("dd-MMM-yyyy");
                 present_date_toSend = date_format2.format(new Date(present_year - 1900, present_month, present_date));
             } catch (Exception e) {
@@ -5399,7 +5468,7 @@ public class SpotChallan extends AppCompatActivity
             }
 
             ServiceHelper.sendOTPtoMobile(completeVehicle_num_send, et_driver_contact_spot.getText().toString().trim(),
-                    "" + getDate().toUpperCase());
+                    "" + getDate().toUpperCase(), "" + smsMode);
             return null;
         }
 
@@ -5441,8 +5510,8 @@ public class SpotChallan extends AppCompatActivity
                     dialogbox.putExtra("MobileNo", et_driver_contact_spot.getText().toString().trim());
                     dialogbox.putExtra("otp_date", "" + getDate().toUpperCase());
                     dialogbox.putExtra("OTP_value", otpValue);
-
                     startActivity(dialogbox);
+
                       /*  }
 
                         @Override

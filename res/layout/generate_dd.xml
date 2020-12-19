@@ -245,27 +245,45 @@
                 android:layout_below="@+id/edt_identification_mark"
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:weightSum="5">
 
                 <EditText
                     android:id="@+id/edt_drvr_cnctno_dd_xml"
                     style="@style/edt_custom_style"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
                     android:hint="@string/driver_contact_no"
                     android:inputType="number"
+                    android:layout_weight="3.5"
                     android:maxLength="10" />
 
-                <Button
-                    android:id="@+id/btn_sendOTPtoMobile_dd_xml"
-                    style="@style/naviblue_custom_style"
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/header_grnt_padding_five"
-                    android:text="@string/send_otp"
-                    android:layout_weight="2"/>
+                    android:layout_weight="1.5"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="end"
+                    android:layout_marginEnd="15dp">
+
+                    <Button
+                        android:id="@+id/btn_sendOTPtoMobile_dd_xml"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:gravity="start"
+                        android:layout_marginLeft="@dimen/header_grnt_padding_five"
+                        android:background="@drawable/otpmsg" />
+
+                    <Button
+                        android:id="@+id/btn_sendOTPtoMobileCall"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:gravity="end"
+                        android:layout_marginLeft="25dp"
+                        android:background="@drawable/otpcall" />
+                </LinearLayout>
+
+
             </LinearLayout>
 
             <!--  <RelativeLayout

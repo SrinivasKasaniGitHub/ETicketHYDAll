@@ -214,7 +214,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
     Button btn_next;
     Button btn_cancel_final;
     Button btn_final_submittion;
-    public static Button btn_send_otp_to_mobile;
+    public static Button btn_send_otp_to_mobile, btn_sendOTPtoMobileCall;
     Button btn_verify_otp_from_mobile, btn_scan_dd_xml;
 
     String[] id_proof_arr = {"Aadhar Number", "Pancard Number", "Passport Number", "VoterId Number", "None"};
@@ -410,6 +410,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
     private List<BleDevice> dataList = new ArrayList<>();
     private DataSource.DataCallBack<String> callBack;
     AlertDialog dlg_BleDevice;
+    public boolean smsMsgCall = true;
 
 
     @SuppressLint({"NewApi", "WorldReadableFiles"})
@@ -640,6 +641,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         btn_offence_date = (Button) findViewById(R.id.btn_offence_date_dd_xml);
         btn_offence_time = (Button) findViewById(R.id.btn_offence_time_dd_xml);
         btn_send_otp_to_mobile = (Button) findViewById(R.id.btn_sendOTPtoMobile_dd_xml);
+        btn_sendOTPtoMobileCall = findViewById(R.id.btn_sendOTPtoMobileCall);
 
         if (!SpotChallan.OtpStatus.trim().equals(null) && !SpotChallan.OtpStatus.trim().equals("") && "Y".equals(SpotChallan.OtpStatus.trim().toUpperCase())) {
             btn_send_otp_to_mobile.setVisibility(View.VISIBLE);
@@ -746,6 +748,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         btn_final_submittion.setOnClickListener(this);
         btn_send_otp_to_mobile.setOnClickListener(this);
         btn_verify_otp_from_mobile.setOnClickListener(this);
+        btn_sendOTPtoMobileCall.setOnClickListener(this);
         /* second screen */
         btn_cancel_final.setOnClickListener(this);
         // btn_counselling_date.setOnClickListener(this);
@@ -1111,8 +1114,59 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                 break;
             case R.id.btn_sendOTPtoMobile_dd_xml:
 
+                smsMsgCall = true;
+
                 /*---------------------------------------------------------*/
                 String tempContactNumber = et_driver_contact_no.getText().toString().trim();
+                if (tempContactNumber.equals("")) {
+                    et_driver_contact_no
+                            .setError(Html.fromHtml("<font color='black'>Enter mobile number to send OTP!!</font>"));
+                } else if (tempContactNumber.trim() != null && tempContactNumber.trim().length() > 1
+                        && tempContactNumber.trim().length() != 10 || new DateUtil().allCharactersSame(tempContactNumber.trim())) {
+                    et_driver_contact_no
+                            .setError(Html.fromHtml("<font color='black'>Enter Valid mobile number to send OTP!!</font>"));
+                } else if (tempContactNumber.length() == 10) {
+                    if ((tempContactNumber.charAt(0) == '7') || (tempContactNumber.charAt(0) == '8')
+                            || (tempContactNumber.charAt(0) == '9') || (tempContactNumber.charAt(0) == '6')) {
+                        if (isOnline()) {
+                            otp_status = "send";
+                            if (isOnline()) {
+                                SpotChallan.mobilenumber = "";
+                                SpotChallan.mobilenumber = tempContactNumber;
+
+                                new Async_sendOTP_to_mobile().execute();
+                            }
+                        } else {
+                            showToast("Please check your network connection!");
+                        }
+                    } else {
+                        showError(et_driver_contact_no, "Check Contact No.");
+                        et_driver_contact_no.setError(Html.fromHtml("<font color='black'>Check Contact No.!</font>"));
+                    }
+                } else if (tempContactNumber.length() == 11) {
+                    if (tempContactNumber.charAt(0) == '0') {
+                        if (isOnline()) {
+                            otp_status = "send";
+                            if (isOnline()) {
+                                SpotChallan.mobilenumber = "";
+                                SpotChallan.mobilenumber = tempContactNumber;
+                                new Async_sendOTP_to_mobile().execute();
+                            }
+                        } else {
+                            showToast("Please check your network connection!");
+                        }
+                    } else {
+                        showError(et_driver_contact_no, "Check Contact No.");
+                        et_driver_contact_no.setError(Html.fromHtml("<font color='black'>Check Contact Number!</font>"));
+                    }
+                }
+                /*-------------------------------------------------------------*/
+                break;
+
+            case R.id.btn_sendOTPtoMobileCall:
+                smsMsgCall = false;
+                /*---------------------------------------------------------*/
+                tempContactNumber = et_driver_contact_no.getText().toString().trim();
                 if (tempContactNumber.equals("")) {
                     et_driver_contact_no
                             .setError(Html.fromHtml("<font color='black'>Enter mobile number to send OTP!!</font>"));
@@ -1211,7 +1265,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
     @Override
     public void onDataLoaded(ArrayList<RecordForm> recordForms) {
         try {
-            if (recordForms.size() > 0 && null!=recordForms) {
+            if (recordForms.size() > 0 && null != recordForms) {
                 et_check_sino.setText("" + recordForms.get(0).getRecordFormNum());
                 et_alcohol_reading.setText("" + recordForms.get(0).getRecordFormMeasureNum());
                 // Log.d("DataFromDevice", "" + recordForms.get(0).getRecordFormMeasureNum() + "Serial Number" + recordForms.get(0).getRecordFormNum());
@@ -1364,6 +1418,12 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         @Override
         protected String doInBackground(Void... params) {
             // TODO Auto-generated method stub
+            String smsMode="";
+            if (smsMsgCall){
+                smsMode="1";
+            }else{
+                smsMode="2";
+            }
 
             otp_status = "send";
 
@@ -1371,7 +1431,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     + et_regn_cid_name.getText().toString().trim() + et_regn_last_num.getText().toString().trim();
 
             ServiceHelper.sendOTPtoMobile(completeVehicle_num_send, et_driver_contact_no.getText().toString().trim(),
-                    "" + btn_offence_date.getText().toString().toUpperCase());
+                    "" + btn_offence_date.getText().toString().toUpperCase(), ""+smsMode);
 
             return null;
         }
@@ -2622,7 +2682,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                         " " + final_image_data_tosend, "" + IMEI_send, "" + latitude, "" + longitude, "" + macAddress,
                         "" + simID, "" + breath_anlysr, "" + Drunk_Drive.licence_status, "" + liquor_code + "|" + barNAME,
                         "" + liquor_Address, "" + professionCode + "|" + profession_name,
-                        "" + profession_Addres + "|" + emailID + "|" + identification_mark,Drunk_Drive.vehCatgryCd);
+                        "" + profession_Addres + "|" + emailID + "|" + identification_mark, Drunk_Drive.vehCatgryCd);
 
             } catch (Exception e) {
                 e.printStackTrace();

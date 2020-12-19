@@ -66,7 +66,7 @@ public class OTP_input extends Activity {
 		otp_heading.setText("Enter OTP For "+SpotChallan.mobilenumber);
 
 		Intent get  = getIntent();
-
+		SpotChallan.OtpResponseDelayTime="90";//
 		new CountDownTimer(TimeUnit.SECONDS.toMillis(Long.parseLong(SpotChallan.OtpResponseDelayTime!=null?SpotChallan.OtpResponseDelayTime:"0")), 1000) {
 
 			public void onTick(long millisUntilFinished) {
@@ -200,7 +200,7 @@ public class OTP_input extends Activity {
 					OTP_status = ""+ServiceHelper.Opdata_Chalana ;
 
 					if(!Dashboard.otpbuttoncheckinspldrive.equals(null) && Dashboard.otpbuttoncheckinspldrive.equalsIgnoreCase("Spot")){
-						SpotChallan.btn_send_otp_to_mobile.setVisibility(View.GONE);
+						//SpotChallan.btn_send_otp_to_mobile.setVisibility(View.GONE);
 
 					}
 					else if(!Dashboard.otpbuttoncheckinspldrive.equals(null) && Dashboard.otpbuttoncheckinspldrive.equalsIgnoreCase("mtpv_SpecialDrive"))
@@ -209,7 +209,7 @@ public class OTP_input extends Activity {
 					}
 					else if(!Dashboard.otpbuttoncheckinspldrive.equals(null) && Dashboard.otpbuttoncheckinspldrive.equalsIgnoreCase("dd"))
 					{
-						GenerateDrunkDriveCase.btn_send_otp_to_mobile.setVisibility(View.GONE);
+						//GenerateDrunkDriveCase.btn_send_otp_to_mobile.setVisibility(View.GONE);
 					}
 
 					GenerateDrunkDriveCase.otpStatus = OTP_status;
@@ -222,7 +222,7 @@ public class OTP_input extends Activity {
 					GenerateDrunkDriveCase.otpStatus = OTP_status;
 
 					if(!Dashboard.otpbuttoncheckinspldrive.equals(null) && Dashboard.otpbuttoncheckinspldrive.equalsIgnoreCase("Spot")){
-						SpotChallan.btn_send_otp_to_mobile.setVisibility(View.GONE);
+						//SpotChallan.btn_send_otp_to_mobile.setVisibility(View.GONE);
 
 					}
 					else if(!Dashboard.otpbuttoncheckinspldrive.equals(null) && Dashboard.otpbuttoncheckinspldrive.equalsIgnoreCase("mtpv_SpecialDrive"))
@@ -231,7 +231,7 @@ public class OTP_input extends Activity {
 					}
 					else if(!Dashboard.otpbuttoncheckinspldrive.equals(null) && Dashboard.otpbuttoncheckinspldrive.equalsIgnoreCase("dd"))
 					{
-						GenerateDrunkDriveCase.btn_send_otp_to_mobile.setVisibility(View.GONE);
+						//GenerateDrunkDriveCase.btn_send_otp_to_mobile.setVisibility(View.GONE);
 					}
 					finish();
 
@@ -241,7 +241,7 @@ public class OTP_input extends Activity {
 					GenerateDrunkDriveCase.otpStatus = OTP_status;
 
 					if(!Dashboard.otpbuttoncheckinspldrive.equals(null) && Dashboard.otpbuttoncheckinspldrive.equalsIgnoreCase("Spot")){
-						SpotChallan.btn_send_otp_to_mobile.setVisibility(View.GONE);
+						//SpotChallan.btn_send_otp_to_mobile.setVisibility(View.GONE);
 
 					}
 					else if(!Dashboard.otpbuttoncheckinspldrive.equals(null) && Dashboard.otpbuttoncheckinspldrive.equalsIgnoreCase("mtpv_SpecialDrive"))
@@ -250,7 +250,7 @@ public class OTP_input extends Activity {
 					}
 					else if(!Dashboard.otpbuttoncheckinspldrive.equals(null) && Dashboard.otpbuttoncheckinspldrive.equalsIgnoreCase("dd"))
 					{
-						GenerateDrunkDriveCase.btn_send_otp_to_mobile.setVisibility(View.GONE);
+						//GenerateDrunkDriveCase.btn_send_otp_to_mobile.setVisibility(View.GONE);
 					}
 					finish();
 				}
@@ -406,7 +406,7 @@ public class OTP_input extends Activity {
 					alertDialogBuilder.setIcon(R.drawable.dialog_logo);
 
 
-					alertDialogBuilder.setMessage("\nOtp Session Expired Please Click Ok to Generate Challan\n");
+					alertDialogBuilder.setMessage("\nIf OTP is not received, Please send OTP by Voice call\n");
 
 
 					alertDialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {

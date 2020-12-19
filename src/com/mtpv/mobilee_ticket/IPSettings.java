@@ -32,7 +32,7 @@ public class IPSettings extends Activity implements OnClickListener {
     //  private String local_network_url = "http://192.168.11.4/eTicketMobileHyd";
     //  private String local_network_url = "http://192.168.11.10:8080/TSeTicketMobile/";
     //  Connecting_sunilsys
-    private String local_network_url="http://125.16.1.70:8080/TSeTicketMobile";
+    private String local_network_url="http://125.16.1.70:8080/TSeTicketMobileS";
     private String ip_network_url="https://www.echallan.org/TSeTicketMobile";
 
     //  url for test purpose
@@ -59,7 +59,7 @@ public class IPSettings extends Activity implements OnClickListener {
         editor = preference.edit();
 
         //This is main varible to set ipsettings defaultly if we change to live then ipsettings live set default one
-        SERVICE_TYPE_PREf = preference.getString("servicetype", "live");
+        SERVICE_TYPE_PREf = preference.getString("servicetype", "test");
         SERVICE_URL_PREF = preference.getString("serviceurl", "url1");
         FTP_URL_PREF = preference.getString("ftpurl", "url2");
         rbtn_live = (RadioButton) findViewById(R.id.radioButton_live);

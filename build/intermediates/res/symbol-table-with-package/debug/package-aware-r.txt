@@ -1833,6 +1833,8 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable offline
+drawable otpcall
+drawable otpmsg
 drawable photo
 drawable print
 drawable profile_image_placeholder
@@ -1987,8 +1989,10 @@ id btn_select_bar
 id btn_select_idproff_dd_xml
 id btn_select_idproff_spotchallantwo_xml
 id btn_select_profession
+id btn_sendOTPtoMobileCall
 id btn_sendOTPtoMobile_dd_xml
 id btn_sendOTPtoMobile_spotchallantwo_xml
+id btn_sendOTPtoMobile_spotchallantwo_xmltrt
 id btn_submit
 id btn_vchle_maincat_dd2_xml
 id btn_vchle_mainsub_dd2_xml

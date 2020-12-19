@@ -127,89 +127,65 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
         DataSource.DataCallBack<ArrayList<RecordForm>>,
         RepeatCommand, DatePickerFragmentDialog.OnDateSetListener {
 
+
+
     @SuppressWarnings("unused")
     private String HALLOWEEN_ORANGE = "#FF7F27";
-
     public static boolean dd_dobFLG = false;
-
     Button dob_input;
     public static boolean rtaFlG = false, licFLG = false, adhrFLG = false;
-
     public static LinearLayout vehicle_type;
     public static CheckBox police_vehcle, govt_vehcle;
-
     public static EditText et_regcid, et_vchl_num, et_last_num, edt_checkslno_, edt_alchl_reading;
-
     public static EditText et_driver_lcnce_num, et_aadharnumber;
-
     TextView dl_no, tv_lcnce_address, tv_licnce_ownername, tv_lcnce_phone_number, tv_lcnce_father_name, tv_aadhar_header, tv_aadhar_user_name, tv_aadhar_care_off, tv_aadhar_mobile_number, tv_aadhar_gender, tv_aadhar_uid;
     ImageView dl_img;
-
     public static String[] offender_remarks_resp_master;
-
     private int mYear, mMonth, mDay;
-
     public static TextView tv_aadhar_address, tv_aadhar_dob;
     ImageView img_aadhar_image;
-
     String driverName = null, driverAddress = null, driverCity = null;
     LinearLayout ll_aadhar_layout;
-
     RelativeLayout rl_rta_details_layout, rl_lcnce_Details;
-
     TextView tv_vhle_no, tv_owner_name, tv_address, tv_maker_name, tv_engine_no, tv_chasis_no, tv_licence_details;
-
     public static TextView tv_vehicle_details, tv_dlpoints_spotchallan_xml;
-
     Button btn_get_details, btn_get_pending_details, btn_cancel, btn_generate_dd_Case, btn_wheler_code, btn_scan_dd_xml;
-
     ImageButton ibtn_capture;
     WebView wv_img_captured;
-
     Utils utils;
-
     String NETWORK_TXT = "";
     String imei_send = "";
     String simid_send = "";
-
     final int PROGRESS_DIALOG = 0;
     final int WHEELER_CODE = 1;
     final int FAKE_NUMBERPLATE_DIALOG = 2;
     String fake_plate_details;
-
     TelephonyManager telephonyManager;
-
     LocationManager m_locationlistner;
     android.location.Location location;
     double latitude = 0.0;
     double longitude = 0.0;
     String provider = "";
-
     /* to pass to generate challan */
     public static String details_regncid = "";
     public static String details_regncid_name = "";
     public static String details_regn_last_num = "";
     public static String details_owner_dl_no = "";
     public static String details_driver_dl_no = "";
-
     public static String[] rta_details_master, Wheeler_check;
     public static String[] licene_details_master, rtaAprroved_Master;
     // public static String licence_status = "1";
     public static String licence_status = "", dl_points = "0";
-
     public static String completeVehicle_num_send = "", regncode_send = "", regnName_send = "", vehicle_num_send = "",
             fake_veh_chasisNo = "";
-
     public static String aadhaar;
     public static String licence_no;
-
     DBHelper db;
     Cursor c_whlr;
     Cursor c_occptn;
     Cursor c_qlfctn;
     Cursor c_vchle_cat;
     Cursor c_vhcle_main;
-
     String dobcheck = "No";
 
     private static final int CAMERA_REQUEST = 1888;
@@ -327,14 +303,14 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
         CheckBlueToothState();
 
         bleDevice = SharedPrefsHelper.getSavedObjectFromPreference(getApplicationContext(), "mPreference", "mLoginRes", BleDevice.class);
-       /* if (null != bleDevice) {
+        if (null != bleDevice) {
             if (!BleManager.getInstance().isConnected(bleDevice)) {
                 BleManager.getInstance().disconnect(bleDevice);
                 connect(bleDevice);
             }
         } else {
             showToast("Please connect the Breath Analyzer from Settings Module !");
-        }*/
+        }
         lyt_DD_Details = findViewById(R.id.lyt_DD_Details);
         progressDialog = new ProgressDialog(this);
         dd_dobFLG = false;
