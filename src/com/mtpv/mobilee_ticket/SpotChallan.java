@@ -3638,10 +3638,9 @@ public class SpotChallan extends AppCompatActivity
                 detained_Txt = (AppCompatTextView) dg_scond.findViewById(R.id.detained_Txt);
                 detained_Txt.setVisibility(View.GONE);
 
-
                 if (SpotChallan.OtpStatus.equalsIgnoreCase("Y")) {
                     btn_send_otp_to_mobile.setVisibility(View.VISIBLE);
-                    btn_sendOTPtoMobileCall.setVisibility(View.VISIBLE);
+                    btn_sendOTPtoMobileCall.setVisibility(View.GONE);
                 } else {
                     btn_send_otp_to_mobile.setVisibility(View.GONE);
                     btn_sendOTPtoMobileCall.setVisibility(View.GONE);
@@ -5468,7 +5467,7 @@ public class SpotChallan extends AppCompatActivity
             }
 
             ServiceHelper.sendOTPtoMobile(completeVehicle_num_send, et_driver_contact_spot.getText().toString().trim(),
-                    "" + getDate().toUpperCase(), "" + smsMode);
+                    "" + getDate().toUpperCase());
             return null;
         }
 

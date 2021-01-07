@@ -2616,7 +2616,7 @@ public class mtpv_SpecialDrive extends Activity implements View.OnClickListener,
             }
 
             ServiceHelper.sendOTPtoMobile(completeVehicle_num_send, et_driver_contact_spot.getText().toString().trim(),
-                    "" + getDate().toUpperCase(),"1");
+                    "" + getDate().toUpperCase());
             return null;
         }
 

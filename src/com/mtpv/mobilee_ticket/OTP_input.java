@@ -66,7 +66,7 @@ public class OTP_input extends Activity {
 		otp_heading.setText("Enter OTP For "+SpotChallan.mobilenumber);
 
 		Intent get  = getIntent();
-		SpotChallan.OtpResponseDelayTime="90";//
+		//SpotChallan.OtpResponseDelayTime="90";//
 		new CountDownTimer(TimeUnit.SECONDS.toMillis(Long.parseLong(SpotChallan.OtpResponseDelayTime!=null?SpotChallan.OtpResponseDelayTime:"0")), 1000) {
 
 			public void onTick(long millisUntilFinished) {
@@ -406,7 +406,7 @@ public class OTP_input extends Activity {
 					alertDialogBuilder.setIcon(R.drawable.dialog_logo);
 
 
-					alertDialogBuilder.setMessage("\nIf OTP is not received, Please send OTP by Voice call\n");
+					alertDialogBuilder.setMessage("\nIf OTP is not received, Please skip and generate the challan \n");
 
 
 					alertDialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {

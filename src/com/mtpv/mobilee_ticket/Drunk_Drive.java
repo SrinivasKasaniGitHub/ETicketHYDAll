@@ -128,7 +128,6 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
         RepeatCommand, DatePickerFragmentDialog.OnDateSetListener {
 
 
-
     @SuppressWarnings("unused")
     private String HALLOWEEN_ORANGE = "#FF7F27";
     public static boolean dd_dobFLG = false;
@@ -149,7 +148,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
     RelativeLayout rl_rta_details_layout, rl_lcnce_Details;
     TextView tv_vhle_no, tv_owner_name, tv_address, tv_maker_name, tv_engine_no, tv_chasis_no, tv_licence_details;
     public static TextView tv_vehicle_details, tv_dlpoints_spotchallan_xml;
-    Button btn_get_details, btn_get_pending_details, btn_cancel, btn_generate_dd_Case, btn_wheler_code, btn_scan_dd_xml;
+    Button btn_get_details, btn_get_pending_details, btn_cancel, btn_generate_dd_Case, btn_wheler_code, btn_bacOldData;
     ImageButton ibtn_capture;
     WebView wv_img_captured;
     Utils utils;
@@ -290,6 +289,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
     BleDevice bleDevice;
     Button btn_vehCategory;
     DatePickerFragmentDialog datePickerDialog;
+    public static String bt_ID="";
 
     @SuppressLint({"NewApi", "MissingPermission", "ObsoleteSdkInt", "SimpleDateFormat"})
     @Override
@@ -506,7 +506,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
         et_last_num = (EditText) findViewById(R.id.edt_regncid_lastnum_rtadetails_xml);
         edt_checkslno_ = findViewById(R.id.edt_checkslno_);
         edt_alchl_reading = findViewById(R.id.edt_alchl_reading);
-        btn_scan_dd_xml = findViewById(R.id.btn_scan_dd_xml);
+        btn_bacOldData = findViewById(R.id.btn_bacOldData);
         tv_dlpoints_spotchallan_xml = (TextView) findViewById(R.id.tv_dlpoints_spotchallan_xml);
 
         offender_image = (ImageView) findViewById(R.id.offender_image);
@@ -738,21 +738,23 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
 
         ll_mainsub_root = (LinearLayout) findViewById(R.id.ll_mainsub_root);
 
-        btn_scan_dd_xml.setOnClickListener(new OnClickListener() {
+        btn_bacOldData.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog
-                        .setMessage("Please wait \n BlueTooth Scan is in Process!!!");
-                progressDialog.setCancelable(false);
-                progressDialog.show();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        startScan();
-                        initView();
-                    }
-                });
 
+                if (edt_checkslno_.getText().toString().trim().isEmpty()) {
+                    edt_checkslno_.setError(Html.fromHtml("<font color='white'>Enter Check serial Number !</font>"));
+                    edt_checkslno_.requestFocus();
+                } else {
+
+                    try {
+                        String startNum = edt_checkslno_.getText().toString().trim();
+
+                        EventManger.getInstance().comandForRecordForm(startNum, startNum, EventManger.getInstance().TAG_SERRCH);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
             }
         });
 
@@ -832,6 +834,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
 
             case R.id.btngetrtadetails_rtadetails_xml:
 
+
                 Fake_NO_Dialog.fake_action = null;
                 tv_vehicle_details.setText("");
                 tv_licence_details.setText("");
@@ -872,19 +875,6 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
                 tv_aadhar_header.setVisibility(View.GONE);
                 rl_lcnce_Details.setVisibility(View.GONE);
 
-
-                //    if(Dashboard.check_vhleHistory_or_Spot.equalsIgnoreCase("drunkdrive")) {
-
-
-
-  /*                  if ((et_driver_lcnce_num.getText().toString().trim().equals(""))
-                            && (et_aadharnumber.getText().toString().trim().equals(""))) {
-
-                        ShowMessage("Please Enter Driver License No / Aadhar Number To Continue");
-                    }
-
-                    else {*/
-
                 String dateofbirthbut = dob_input.getText().toString();
 
 
@@ -909,38 +899,6 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
                 }
 
 
-
-
-               /* }else if(Dashboard.check_vhleHistory_or_Spot.equalsIgnoreCase("drunkdrive_withourDlAadhar"))
-                {
-
-                  if(casesBooked<casesLimit) {
-
-                      if (et_driver_lcnce_num.getText().toString() != null && !et_driver_lcnce_num.getText().toString().equalsIgnoreCase("") &&
-                              et_driver_lcnce_num.getText().toString().length() >= 5) {
-                          if (dobcheck.equalsIgnoreCase("Yes")) {
-
-                              if (isOnline()) {
-                                  asyncAllsOfMethods();
-                              } else {
-                                  showToast("Please Check Your Network Connection");
-                              }
-
-                          } else {
-                              showToast("Please Select Date Of Birth !");
-                          }
-                      } else {
-
-                          if (isOnline()) {
-                              asyncAllsOfMethods();
-                          } else {
-                              showToast("Please Check Your Network Connection");
-                          }
-                      }
-                  }else {
-                      showToast("Your Limit Of Without DL and Aadhar Cases Completed Please Contact Echallan to Enhance the Limit Or Please Enforce With Normal DD Module");
-                  }
-                }*/
                 break;
 
             case R.id.btn_pendingchallans_rtadetails_xml:
@@ -1299,6 +1257,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
 
     @Override
     public void onDataNotAvailed(int i) {
+        Log.d("NotAvailable",""+i);
 
     }
 
@@ -1309,11 +1268,13 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
             if (recordForms.size() > 0 && null != recordForms) {
                 edt_checkslno_.setText("" + recordForms.get(0).getRecordFormNum());
                 edt_alchl_reading.setText("" + recordForms.get(0).getRecordFormMeasureNum());
+                bt_ID=""+recordForms.get(0).getRecordFormDeviceNum();
             }
         } catch (Exception e) {
             e.printStackTrace();
             edt_checkslno_.setText("");
             edt_alchl_reading.setText("");
+            bt_ID="";
         }
 
     }
@@ -1454,6 +1415,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
             Log.i("bleble5", "recordFormsReceive=" + receiveFormDataResult.getRecordFormArrayList().size());
         }
     }
+
 
     public class Async_getRTADetails extends AsyncTask<Void, Void, String> {
 

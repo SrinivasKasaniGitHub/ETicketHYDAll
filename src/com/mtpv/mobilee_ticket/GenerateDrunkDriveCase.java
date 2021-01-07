@@ -413,6 +413,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
     public boolean smsMsgCall = true;
 
 
+
     @SuppressLint({"NewApi", "WorldReadableFiles"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -1268,7 +1269,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
             if (recordForms.size() > 0 && null != recordForms) {
                 et_check_sino.setText("" + recordForms.get(0).getRecordFormNum());
                 et_alcohol_reading.setText("" + recordForms.get(0).getRecordFormMeasureNum());
-                // Log.d("DataFromDevice", "" + recordForms.get(0).getRecordFormMeasureNum() + "Serial Number" + recordForms.get(0).getRecordFormNum());
+
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -1430,8 +1431,11 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
             String completeVehicle_num_send = et_regn_cid.getText().toString().trim()
                     + et_regn_cid_name.getText().toString().trim() + et_regn_last_num.getText().toString().trim();
 
+           /* ServiceHelper.sendOTPtoMobile(completeVehicle_num_send, et_driver_contact_no.getText().toString().trim(),
+                    "" + btn_offence_date.getText().toString().toUpperCase(), ""+smsMode);*/
+
             ServiceHelper.sendOTPtoMobile(completeVehicle_num_send, et_driver_contact_no.getText().toString().trim(),
-                    "" + btn_offence_date.getText().toString().toUpperCase(), ""+smsMode);
+                    "" + btn_offence_date.getText().toString().toUpperCase());
 
             return null;
         }
@@ -2587,6 +2591,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
 
             try {
+                anlyser_id_send=""+Drunk_Drive.bt_ID;
 
                 String emailID = (edt_email_ID.getText() != null && edt_email_ID.getText().toString().trim().length() > 0)
                         ? edt_email_ID.getText().toString().trim() : "NA";
@@ -2680,7 +2685,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                         "" + et_address.getText().toString().trim(), "" + et_city.getText().toString().trim(),
                         "" + Dashboard.UNIT_CODE, "" + Dashboard.UNIT_NAME, "" + cadreCd, "" + cadre,
                         " " + final_image_data_tosend, "" + IMEI_send, "" + latitude, "" + longitude, "" + macAddress,
-                        "" + simID, "" + breath_anlysr, "" + Drunk_Drive.licence_status, "" + liquor_code + "|" + barNAME,
+                        "" + simID, "" + anlyser_id_send, "" + Drunk_Drive.licence_status, "" + liquor_code + "|" + barNAME,
                         "" + liquor_Address, "" + professionCode + "|" + profession_name,
                         "" + profession_Addres + "|" + emailID + "|" + identification_mark, Drunk_Drive.vehCatgryCd);
 

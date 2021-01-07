@@ -97,7 +97,7 @@
                     android:layout_below="@+id/breath_details"
                     android:layout_marginTop="@dimen/header_grnt_padding_five"
                     android:orientation="horizontal"
-                    android:weightSum="4">
+                    android:weightSum="5">
 
                     <TextView
                         style="@style/navi_text_style"
@@ -140,15 +140,17 @@
                         android:maxLength="4" />
 
                     <Button
-                        android:id="@+id/btn_scan_dd_xml"
+                        android:id="@+id/btn_bacOldData"
                         style="@style/naviblue_custom_style"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:layout_gravity="center"
                         android:layout_marginLeft="@dimen/header_grnt_padding_five"
                         android:layout_weight="1"
-                        android:text="Scan"
-                        android:visibility="gone" />
+                        android:textSize="12sp"
+                        android:text="OLD BAC"
+                        android:visibility="visible" />
                 </LinearLayout>
 
                 <View

@@ -193,13 +193,13 @@ public class ServiceHelper {
         return getOfficerLimit;
     }
 
-    public static void sendOTPtoMobile(String regn_no, String mobileNo, String date,String smsMode) {
+    public static void sendOTPtoMobile(String regn_no, String mobileNo, String date) {
         try {
             SoapObject request = new SoapObject(NAMESPACE, SEND_OTP_TO_MOBILE_METHOD_NAME);
             request.addProperty("regn_no", regn_no);
             request.addProperty("mobileNo", mobileNo);
             request.addProperty("date", date);
-            request.addProperty("smsMode", smsMode);
+           // request.addProperty("smsMode", smsMode);
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.dotNet = true;
             envelope.setOutputSoapObject(request);

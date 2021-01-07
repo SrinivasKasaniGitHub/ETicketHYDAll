@@ -5194,7 +5194,7 @@ public class SpotChallanActivity extends Activity
             }
 
             ServiceHelper.sendOTPtoMobile(completeVehicle_num_send, et_driver_contact_spot.getText().toString().trim(),
-                    "" + getDate().toUpperCase(),"1");
+                    "" + getDate().toUpperCase());
             return null;
         }
 
