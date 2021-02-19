@@ -1410,12 +1410,15 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
 
     @Subscribe(sticky = true)
     public void instantRecordData(ReceiveFormDataResult receiveFormDataResult) {
-        //  TAG_INSTANT_RECEIVE=10004;
-        if (receiveFormDataResult != null && receiveFormDataResult.getTag() == 10004) {
-            Log.i("bleble5", "recordFormsReceive=" + receiveFormDataResult.getRecordFormArrayList().size());
+        try {
+            //  TAG_INSTANT_RECEIVE=10004;
+            if (receiveFormDataResult != null && receiveFormDataResult.getTag() == 10004) {
+                Log.i("bleble5", "recordFormsReceive=" + receiveFormDataResult.getRecordFormArrayList().size());
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
-
 
     public class Async_getRTADetails extends AsyncTask<Void, Void, String> {
 

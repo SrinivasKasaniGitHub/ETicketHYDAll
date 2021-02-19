@@ -3640,7 +3640,7 @@ public class SpotChallan extends AppCompatActivity
 
                 if (SpotChallan.OtpStatus.equalsIgnoreCase("Y")) {
                     btn_send_otp_to_mobile.setVisibility(View.VISIBLE);
-                    btn_sendOTPtoMobileCall.setVisibility(View.GONE);
+                    btn_sendOTPtoMobileCall.setVisibility(View.VISIBLE);
                 } else {
                     btn_send_otp_to_mobile.setVisibility(View.GONE);
                     btn_sendOTPtoMobileCall.setVisibility(View.GONE);
@@ -4004,7 +4004,7 @@ public class SpotChallan extends AppCompatActivity
 
                     }
 
-                  /*  runOnUiThread(new Runnable() {
+                    /*  runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             if (licence_no != null && (totaldl_points != 0 && totaldl_points > 0)) {
@@ -4013,8 +4013,7 @@ public class SpotChallan extends AppCompatActivity
                         }
                     });*/
 
-
-//                    if (violation_checked_violations.contains("64") || violation_checked_violations.contains("6")
+                    //                    if (violation_checked_violations.contains("64") || violation_checked_violations.contains("6")
 //                            || ServiceHelper.pending_challans_details.length >= 10) {
 //
 //                        btn_send_otp_to_mobile.setVisibility(View.VISIBLE);
@@ -4291,7 +4290,7 @@ public class SpotChallan extends AppCompatActivity
 
                     proffession_layout.setVisibility(View.GONE);
 
-                    is_it_spot_send = "1";
+                    is_it_spot_send = "0";//
 
                     String vehicle_split = et_regcid_spot.getText().toString().trim().substring(0, 2);
                     if (radioGroupButton_spotpaymentNo.isChecked()) {
@@ -4429,7 +4428,7 @@ public class SpotChallan extends AppCompatActivity
 
                     proffession_layout.setVisibility(View.GONE);
 
-                    is_it_spot_send = "1";
+                    is_it_spot_send = "0";//
 
                     String vehicle_split = et_regcid_spot.getText().toString().trim().substring(0, 2);
                     if (radioGroupButton_spotpaymentNo.isChecked()) {
@@ -5467,7 +5466,7 @@ public class SpotChallan extends AppCompatActivity
             }
 
             ServiceHelper.sendOTPtoMobile(completeVehicle_num_send, et_driver_contact_spot.getText().toString().trim(),
-                    "" + getDate().toUpperCase());
+                    "" + getDate().toUpperCase(),smsMode);
             return null;
         }
 

@@ -799,7 +799,7 @@ public class CovidChallanActivity extends Activity implements LocationListener {
             // TODO Auto-generated method stub
 
             ServiceHelper.sendOTPtoMobile(et_driver_contact_spot.getText().toString().trim(), et_driver_contact_spot.getText().toString().trim(),
-                    "" + new DateUtil().getTodaysDate());
+                    "" + new DateUtil().getTodaysDate(),"");
             return null;
         }
 

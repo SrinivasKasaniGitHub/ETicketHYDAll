@@ -32,7 +32,7 @@ public class IPSettings extends Activity implements OnClickListener {
     //  private String local_network_url = "http://192.168.11.4/eTicketMobileHyd";
     //  private String local_network_url = "http://192.168.11.10:8080/TSeTicketMobile/";
     //  Connecting_sunilsys
-    private String local_network_url="http://125.16.1.70:8080/TSeTicketMobileS";
+    private String local_network_url="http://125.16.1.70:8080/TSeTicketMobile";
     private String ip_network_url="https://www.echallan.org/TSeTicketMobile";
 
     //  url for test purpose
@@ -45,6 +45,7 @@ public class IPSettings extends Activity implements OnClickListener {
     public static String ftp_fix = "192.168.11.9";
     public static String open_ftp_fix = "125.16.1.69";
     String service_type = "";
+
     @SuppressWarnings("deprecation")
     @SuppressLint("WorldReadableFiles")
     @Override

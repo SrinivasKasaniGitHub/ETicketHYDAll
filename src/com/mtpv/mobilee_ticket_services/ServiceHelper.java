@@ -193,13 +193,13 @@ public class ServiceHelper {
         return getOfficerLimit;
     }
 
-    public static void sendOTPtoMobile(String regn_no, String mobileNo, String date) {
+    public static void sendOTPtoMobile(String regn_no, String mobileNo, String date,String smsMode) {
         try {
             SoapObject request = new SoapObject(NAMESPACE, SEND_OTP_TO_MOBILE_METHOD_NAME);
             request.addProperty("regn_no", regn_no);
             request.addProperty("mobileNo", mobileNo);
             request.addProperty("date", date);
-           // request.addProperty("smsMode", smsMode);
+            request.addProperty("smsMode", smsMode);
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.dotNet = true;
             envelope.setOutputSoapObject(request);
@@ -3151,7 +3151,7 @@ public class ServiceHelper {
                                         String gps_Date) {
         try {
 
-            SoapObject request = new SoapObject(NAMESPACE, "" + GET_TRANSACTION_NO);
+            SoapObject request = new SoapObject(NAMESPACE, "profileUpdate"); //GET_TRANSACTION_NO
             request.addProperty("pidCd", "" + pidCd);
             request.addProperty("dOB", "" + dOB);
             request.addProperty("gENDER", "" + gENDER);

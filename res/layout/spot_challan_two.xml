@@ -442,20 +442,20 @@
                 android:layout_below="@+id/rl_detaineditems_spotchallantwo_xml"
                 android:layout_marginTop="@dimen/header_grnt_padding_five"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:weightSum="5">
 
                 <EditText
                     android:id="@+id/edt_drvr_cnctno_spotchallantwo_xml"
                     style="@style/edt_custom_style"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
+                    android:layout_weight="3.5"
                     android:hint="@string/driver_contact_no"
                     android:inputType="number"
                     android:maxLength="10" />
 
-                <Button
+               <!-- <Button
                     android:id="@+id/btn_sendOTPtoMobile_spotchallantwo_xml"
                     style="@style/naviblue_custom_style"
                     android:layout_width="match_parent"
@@ -463,7 +463,7 @@
                     android:layout_marginLeft="@dimen/header_grnt_padding_five"
                     android:layout_weight="2"
                     android:text="@string/send_otp"
-                    android:visibility="visible"/>
+                    android:visibility="visible"/>-->
 
 
                 <LinearLayout
@@ -473,10 +473,10 @@
                     android:layout_gravity="center_vertical"
                     android:gravity="end"
                     android:layout_marginEnd="15dp"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <Button
-                        android:id="@+id/btn_sendOTPtoMobile_spotchallantwo_xmltt"
+                        android:id="@+id/btn_sendOTPtoMobile_spotchallantwo_xml"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:gravity="start"
@@ -490,7 +490,7 @@
                         android:gravity="end"
                         android:layout_marginLeft="25dp"
                         android:background="@drawable/otpcall"
-                        android:visibility="gone"/>
+                        android:visibility="visible"/>
                 </LinearLayout>
             </LinearLayout>
 

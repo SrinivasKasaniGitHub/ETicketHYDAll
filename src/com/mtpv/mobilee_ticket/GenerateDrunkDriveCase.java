@@ -202,6 +202,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
     EditText et_dd_address;
     EditText et_dd_city;
     RadioGroup radiogrp_gender;
+    RadioButton rBtn_Male, rBtn_FeMale, rBtn_Others;
     RadioButton radio_male_female;
     CheckBox chck_detainedItems_rc;
     CheckBox chck_detainedItems_vhcle;
@@ -413,7 +414,6 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
     public boolean smsMsgCall = true;
 
 
-
     @SuppressLint({"NewApi", "WorldReadableFiles"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -581,6 +581,26 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
             }
         });
+
+        radiogrp_gender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.rBtn_Male:
+                        gender_send = "M";
+                        break;
+                    case R.id.rBtn_FeMale:
+                        gender_send = "F";
+                        break;
+                    case R.id.rBtn_Others:
+                        gender_send = "O";
+                        break;
+                    default:
+                        gender_send = "";
+                        break;
+                }
+            }
+        });
         EventBus.getDefault().register(this);
         initBle();
         EventManger.getInstance().receieDataCallback(this);
@@ -636,7 +656,10 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
         // radiogrp_finedBy = (RadioGroup)
         // findViewById(R.id.radioGroup_finedby);
-        radiogrp_gender = (RadioGroup) findViewById(R.id.radioGroup_gender);
+        radiogrp_gender = findViewById(R.id.radioGroup_gender);
+        rBtn_Male = findViewById(R.id.rBtn_Male);
+        rBtn_FeMale = findViewById(R.id.rBtn_FeMale);
+        rBtn_Others = findViewById(R.id.rBtn_Others);
 
         btn_idproof = (Button) findViewById(R.id.btn_select_idproff_dd_xml);
         btn_offence_date = (Button) findViewById(R.id.btn_offence_date_dd_xml);
@@ -1419,11 +1442,11 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         @Override
         protected String doInBackground(Void... params) {
             // TODO Auto-generated method stub
-            String smsMode="";
-            if (smsMsgCall){
-                smsMode="1";
-            }else{
-                smsMode="2";
+            String smsMode = "";
+            if (smsMsgCall) {
+                smsMode = "1";
+            } else {
+                smsMode = "2";
             }
 
             otp_status = "send";
@@ -1435,7 +1458,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     "" + btn_offence_date.getText().toString().toUpperCase(), ""+smsMode);*/
 
             ServiceHelper.sendOTPtoMobile(completeVehicle_num_send, et_driver_contact_no.getText().toString().trim(),
-                    "" + btn_offence_date.getText().toString().toUpperCase());
+                    "" + btn_offence_date.getText().toString().toUpperCase(), smsMode);
 
             return null;
         }
@@ -2591,7 +2614,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
 
             try {
-                anlyser_id_send=""+Drunk_Drive.bt_ID;
+                anlyser_id_send = "" + Drunk_Drive.bt_ID;
 
                 String emailID = (edt_email_ID.getText() != null && edt_email_ID.getText().toString().trim().length() > 0)
                         ? edt_email_ID.getText().toString().trim() : "NA";
@@ -3194,9 +3217,6 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
         if ((ps_name.equals("psname")) && (point_name.equals("pointname"))) {
             showToast("Set PS Details in Settings!");
         } else {
-            val_gender = radiogrp_gender.getCheckedRadioButtonId();
-            radio_male_female = (RadioButton) findViewById(val_gender);
-            Log.i("GENDER", "" + radio_male_female.getText().toString().trim());
             driver_fname = "";
             if (et_driver_fname.getText().toString().trim().equals("")) {
                 driver_fname = "";
@@ -3241,16 +3261,6 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                 }
             }
 
-            if (radio_male_female.getText().toString().trim()
-                    .equals("" + getResources().getString(R.string.gen_male))) {
-                gender_send = "1";
-            } else if (radio_male_female.getText().toString().trim()
-                    .equals("" + getResources().getString(R.string.gen_female))) {
-                gender_send = "2";
-            } else if (radio_male_female.getText().toString().trim()
-                    .equals("" + getResources().getString(R.string.gen_others))) {
-                gender_send = "3";
-            }
 
             /* SCECOND SCREEN VALUES */
             sb_detaneditems_send = new StringBuilder();
@@ -3321,7 +3331,10 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     et_driver_contact_no.requestFocus();
                     et_driver_contact_no
                             .setError(Html.fromHtml("<font color='black'>Enter Valid Contact No.</font>"));
-                } /*else if (et_alcohol_reading.getText().toString().trim().equals("")) {
+                } else if ("".equalsIgnoreCase(gender_send)) {
+                    showToast("Please select gender ! ");
+                }
+                    /*else if (et_alcohol_reading.getText().toString().trim().equals("")) {
                     et_alcohol_reading.requestFocus();
                     et_alcohol_reading.setError(Html.fromHtml("<font color='black'>Enter Alcohol Reading</font>"));
                 } else if (et_alcohol_reading.getText() != null
@@ -3368,7 +3381,8 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     btn1.setTextColor(Color.WHITE);
                     btn1.setTypeface(title.getTypeface(), Typeface.BOLD);
                     btn1.setBackgroundColor(Color.RED);
-                }*/ else if (et_age.getText().toString().trim().equals("")) {
+                }*/
+                else if (et_age.getText().toString().trim().equals("")) {
                     Log.i("Calling ", "In Age Validation");
                     et_age.requestFocus();
                     et_age.setError(Html.fromHtml("<font color='black'>Enter Age</font>"));

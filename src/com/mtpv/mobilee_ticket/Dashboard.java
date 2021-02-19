@@ -320,7 +320,8 @@ public class Dashboard extends Activity implements OnClickListener {
             }
         }
 
-        //   showProfileSummuryDialog("Personal Information");
+
+          // showProfileSummuryDialog("Profile");
 
     }
 
@@ -797,7 +798,7 @@ public class Dashboard extends Activity implements OnClickListener {
             // TODO Auto-generated method stub
 
             ServiceHelper.sendOTPtoMobile(et_CntctNo.getText().toString().trim(), et_CntctNo.getText().toString().trim(),
-                    "" + new DateUtil().getTodaysDate());
+                    "" + new DateUtil().getTodaysDate(),"1");
             return null;
         }
 

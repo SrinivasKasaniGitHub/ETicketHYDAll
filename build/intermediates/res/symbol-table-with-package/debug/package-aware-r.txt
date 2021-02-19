@@ -1993,7 +1993,6 @@ id btn_select_profession
 id btn_sendOTPtoMobileCall
 id btn_sendOTPtoMobile_dd_xml
 id btn_sendOTPtoMobile_spotchallantwo_xml
-id btn_sendOTPtoMobile_spotchallantwo_xmltt
 id btn_submit
 id btn_vchle_maincat_dd2_xml
 id btn_vchle_mainsub_dd2_xml
@@ -2485,9 +2484,6 @@ id radioGroupButton_chasisNo
 id radioGroupButton_detaineditems_no
 id radioGroupButton_detaineditems_yes
 id radioGroupButton_engineNo
-id radioGroupButton_gender0
-id radioGroupButton_gender1
-id radioGroupButton_gender2
 id radioGroupButton_isDriver
 id radioGroupButton_isOwner
 id radioGroupButton_licenceno
