@@ -289,7 +289,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
     BleDevice bleDevice;
     Button btn_vehCategory;
     DatePickerFragmentDialog datePickerDialog;
-    public static String bt_ID="";
+    public static String bt_ID = "";
 
     @SuppressLint({"NewApi", "MissingPermission", "ObsoleteSdkInt", "SimpleDateFormat"})
     @Override
@@ -301,16 +301,23 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
         LoadUIComponents();
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         CheckBlueToothState();
-
-        bleDevice = SharedPrefsHelper.getSavedObjectFromPreference(getApplicationContext(), "mPreference", "mLoginRes", BleDevice.class);
-        if (null != bleDevice) {
-            if (!BleManager.getInstance().isConnected(bleDevice)) {
-                BleManager.getInstance().disconnect(bleDevice);
-                connect(bleDevice);
+        try {
+            bleDevice = SharedPrefsHelper.getSavedObjectFromPreference(getApplicationContext(), "mPreference", "mLoginRes", BleDevice.class);
+            if (null != bleDevice) {
+                bt_ID = bleDevice.getName();
+                if (!BleManager.getInstance().isConnected(bleDevice)) {
+                    BleManager.getInstance().disconnect(bleDevice);
+                    connect(bleDevice);
+                }
+            } else {
+                showToast("Please connect the Breath Analyzer from Settings Module !");
             }
-        } else {
-            showToast("Please connect the Breath Analyzer from Settings Module !");
+        } catch (Exception e) {
+            e.printStackTrace();
+            bt_ID = "";
         }
+
+
         lyt_DD_Details = findViewById(R.id.lyt_DD_Details);
         progressDialog = new ProgressDialog(this);
         dd_dobFLG = false;
@@ -751,7 +758,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
                         String startNum = edt_checkslno_.getText().toString().trim();
 
                         EventManger.getInstance().comandForRecordForm(startNum, startNum, EventManger.getInstance().TAG_SERRCH);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
@@ -877,24 +884,31 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
 
                 String dateofbirthbut = dob_input.getText().toString();
 
+                if ("0000".equalsIgnoreCase(et_vchl_num.getText().toString().trim()) ||
+                        "0000".equalsIgnoreCase(et_last_num.getText().toString().trim())) {
+                    showToast("   Please enter valid Registration No !   ");
 
-                if (!et_driver_lcnce_num.getText().toString().equalsIgnoreCase("") && et_driver_lcnce_num.getText().toString().length() >= 5) {
-                    if (dobcheck.equalsIgnoreCase("Yes")) {
+                } else {
 
+
+                    if (!et_driver_lcnce_num.getText().toString().equalsIgnoreCase("") && et_driver_lcnce_num.getText().toString().length() >= 5) {
+                        if (dobcheck.equalsIgnoreCase("Yes")) {
+
+                            if (isOnline()) {
+                                asyncAllsOfMethods();
+                            } else {
+                                showToast("Please Check Your Network Connection");
+                            }
+
+                        } else {
+                            showToast("Please Select Date Of Birth !");
+                        }
+                    } else {
                         if (isOnline()) {
                             asyncAllsOfMethods();
                         } else {
                             showToast("Please Check Your Network Connection");
                         }
-
-                    } else {
-                        showToast("Please Select Date Of Birth !");
-                    }
-                } else {
-                    if (isOnline()) {
-                        asyncAllsOfMethods();
-                    } else {
-                        showToast("Please Check Your Network Connection");
                     }
                 }
 
@@ -1257,7 +1271,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
 
     @Override
     public void onDataNotAvailed(int i) {
-        Log.d("NotAvailable",""+i);
+        Log.d("NotAvailable", "" + i);
 
     }
 
@@ -1268,16 +1282,17 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
             if (recordForms.size() > 0 && null != recordForms) {
                 edt_checkslno_.setText("" + recordForms.get(0).getRecordFormNum());
                 edt_alchl_reading.setText("" + recordForms.get(0).getRecordFormMeasureNum());
-                bt_ID=""+recordForms.get(0).getRecordFormDeviceNum();
+                //  bt_ID = "" + recordForms.get(0).getRecordFormDeviceNum();
             }
         } catch (Exception e) {
             e.printStackTrace();
             edt_checkslno_.setText("");
             edt_alchl_reading.setText("");
-            bt_ID="";
+            bt_ID = "";
         }
 
     }
+
 
     @Override
     public void OnRepeatCommand(String s) {
@@ -1415,7 +1430,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
             if (receiveFormDataResult != null && receiveFormDataResult.getTag() == 10004) {
                 Log.i("bleble5", "recordFormsReceive=" + receiveFormDataResult.getRecordFormArrayList().size());
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

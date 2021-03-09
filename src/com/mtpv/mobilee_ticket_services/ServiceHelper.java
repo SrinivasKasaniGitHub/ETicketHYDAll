@@ -34,7 +34,8 @@ public class ServiceHelper {
             aadhaarVehicle_resp, UpdateAadhaar_resp, aadhaarDetailsCheck_resp, changePswd_otp, changePSWDconfirm,
             version_response, offender_remarks,
             rta_data, license_data, aadhar_data, result = "", output = "", rc_send, dl_send, adhr_send,
-            versionData, getOfficerLimit, spot_finalPrintNDevice, str_imgDDInfo, str_SameChlnDuplicatePrint = "",profileUpdate,vehCategory;
+            versionData, getOfficerLimit, spot_finalPrintNDevice, str_imgDDInfo, str_SameChlnDuplicatePrint = "",
+            profileUpdate,vehCategory,str_TopVltns_List="";
 
     public static Map<String, String> viodetMap = null;
     public static String rtaapproovedresponse, validregnoresponse, insertDetainItemsresponse, remarksresult, otpStatusnTime, noncontactresponse;
@@ -3612,6 +3613,41 @@ public class ServiceHelper {
         }
 
         return otpStatusnTime;
+    }
+
+
+    public static void getCourtTopVioCasesInfo(String pidCode, String offenceFrDT, String offenceToDT)  {
+
+        try {
+            SoapObject request = new SoapObject(NAMESPACE, "getTopVioCasesInfo");
+            request.addProperty("pidCode", pidCode);
+            request.addProperty("offenceFrDT", offenceFrDT);
+            request.addProperty("offenceToDT", offenceToDT);
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+            envelope.dotNet = true;
+            envelope.setOutputSoapObject(request);
+            HttpTransportSE androidHttpTransport = new HttpTransportSE(MainActivity.URL);
+            androidHttpTransport.call(SOAP_ACTION, envelope);
+            Object result = envelope.getResponse();
+            try {
+                if (result != null) {
+                    str_TopVltns_List = result.toString().trim();
+                } else {
+                    str_TopVltns_List = "NA";
+                }
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                str_TopVltns_List = "NA";
+            }
+        } catch (SoapFault fault) {
+            fault.printStackTrace();
+            str_TopVltns_List = "NA";
+        } catch (Exception E) {
+            E.printStackTrace();
+            str_TopVltns_List = "NA";
+        }
+
     }
 
     public static void getIDprrofMaster() {

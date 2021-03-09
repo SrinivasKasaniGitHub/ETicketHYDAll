@@ -276,11 +276,25 @@
             android:label="@string/title_activity_drunk__drive__fake__dialog" >
         </activity>
 
-        <activity android:name=".mtpv_SpecialDrive"></activity>
-        <activity android:name=".SpecialDriveResponse_Print"></activity>
-        <activity android:name=".E_Challan_Non_ContactModule"></activity>
+        <activity android:name=".mtpv_SpecialDrive"/>
+        <activity android:name=".SpecialDriveResponse_Print"/>
+        <activity android:name=".E_Challan_Non_ContactModule"/>
+        <activity
+            android:name=".TopViolatorsActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            tools:ignore="LockedOrientationActivity">
+        </activity>
 
-
+        <activity
+            android:name=".TopVio_ListActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            tools:ignore="LockedOrientationActivity">
+        </activity>
 
 
         <meta-data

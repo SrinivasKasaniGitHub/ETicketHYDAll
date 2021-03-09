@@ -1241,27 +1241,30 @@ public class SpotChallan extends AppCompatActivity
 
                 String dateofbirthbut = dob_input.getText().toString();
 
+                if ("0000".equalsIgnoreCase(regnName_send) || "0000".equalsIgnoreCase(vehicle_num_send)){
+                    showToast("   Please enter valid Registration No !   ");
+                }else {
+                    if (!et_driver_lcnce_num_spot.getText().toString().equalsIgnoreCase("") && et_driver_lcnce_num_spot.getText().toString().length() >= 5) {
 
-                if (!et_driver_lcnce_num_spot.getText().toString().equalsIgnoreCase("") && et_driver_lcnce_num_spot.getText().toString().length() >= 5) {
+                        if (isValidDL(et_driver_lcnce_num_spot.getText().toString().trim())) {
 
-                    if (isValidDL(et_driver_lcnce_num_spot.getText().toString().trim())) {
-
-                        if (dobcheck.equalsIgnoreCase("Yes")) {
-                            edt_Age.setText("" + age);
-                            edt_Age.setEnabled(false);
-                            Asyncallsofmethods();
+                            if (dobcheck.equalsIgnoreCase("Yes")) {
+                                edt_Age.setText("" + age);
+                                edt_Age.setEnabled(false);
+                                Asyncallsofmethods();
+                            } else {
+                                showToast("Please Select Date Of Birth !");
+                            }
                         } else {
-                            showToast("Please Select Date Of Birth !");
+                            ShowMessage("Please Enter Valid DL !");
                         }
                     } else {
-                        ShowMessage("Please Enter Valid DL !");
-                    }
-                } else {
-                    edt_Age.setText("");
-                    edt_Age.setEnabled(true);
-                    Asyncallsofmethods();
-                    et_driver_lcnce_num_spot.setText("");
+                        edt_Age.setText("");
+                        edt_Age.setEnabled(true);
+                        Asyncallsofmethods();
+                        et_driver_lcnce_num_spot.setText("");
 
+                    }
                 }
                 break;
 

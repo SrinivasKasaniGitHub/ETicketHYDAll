@@ -197,7 +197,7 @@ public class Dashboard extends Activity implements OnClickListener {
     public static String CHALLAN_TYPE = null, CASES_LIMIT = null, CASES_BOOKED = null;
 
     AppCompatImageView img_DD, img_Spot, img_VehcleHis, img_CraneAct, img_ReleaseDoc, img_Reports, img_DuplctePrint,
-            img_DwldMasters, img_Settings, img_About, img_Covid;
+            img_DwldMasters, img_Settings, img_About, img_Covid,img_TopVltrs;
 
     ImageView img_logo;
     TextView officer_Name, officer_Cadre, officer_PS;
@@ -1179,6 +1179,7 @@ public class Dashboard extends Activity implements OnClickListener {
         img_Settings = (AppCompatImageView) findViewById(R.id.img_Settings);
         img_About = (AppCompatImageView) findViewById(R.id.img_About);
         img_Covid = findViewById(R.id.img_Covid);
+        img_TopVltrs=findViewById(R.id.img_TopVltrs);
 
 
         ibtn_logout = (ImageButton) findViewById(R.id.imgbtn_logout_dashboard_xml);
@@ -1195,6 +1196,7 @@ public class Dashboard extends Activity implements OnClickListener {
         img_DwldMasters.setOnClickListener(this);
         img_About.setOnClickListener(this);
         img_Covid.setOnClickListener(this);
+        img_TopVltrs.setOnClickListener(this);
 
 
         //tv_drunk_and_drive.setOnClickListener(this);
@@ -1649,7 +1651,53 @@ public class Dashboard extends Activity implements OnClickListener {
                     showToast("" + netwrk_info_txt);
                 }
                 break;
+            case R.id.img_TopVltrs:
 
+                if (isOnline()) {
+
+                    getPreferenceValues();
+
+                    preferences = getSharedPreferences("preferences", MODE_PRIVATE);
+                    editor = preferences.edit();
+                    address_spot = preferences.getString("btaddress", "btaddr");
+
+                    try {
+                        db.open();
+                        cursor_psnames = DBHelper.db.rawQuery("select * from " + db.psName_table, null);
+
+                        c_whlr_details = DBHelper.db.rawQuery("select * from " + DBHelper.wheelercode_table, null);
+
+                        if ((cursor_psnames.getCount() == 0) && (c_whlr_details.getCount() == 0)) {
+                            showToast("Please download master's !");
+                        } else if ((psname_settings.equals("psname")) && (pointnameBycode_settings.equals("pointname"))) {
+                            showToast("Configure Settings!");
+                        } else if (address_spot.trim() != null && address_spot.trim().length() < 15) {
+                            showToast("Configure BlueTooth Settings!");
+                        } else {
+                            if (isOnline()) {
+
+                               // Dashboard.otpbuttoncheckinspldrive = "mtpv_SpecialDrive";
+                                startActivity(new Intent(Dashboard.this, TopViolatorsActivity.class));
+                            } else {
+                                showToast("" + netwrk_info_txt);
+                            }
+                        }
+
+                    } catch (SQLException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                        c_whlr_details.close();
+                        cursor_psnames.close();
+                        db.close();
+                    }
+                    c_whlr_details.close();
+                    cursor_psnames.close();
+                    db.close();
+
+                } else {
+                    showToast("" + netwrk_info_txt);
+                }
+                break;
 
             case R.id.echallan:
 

@@ -1,8 +1,8 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:2:1-294:12
-INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:2:1-294:12
-INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:2:1-294:12
+ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:2:1-308:12
+INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:2:1-308:12
+INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:2:1-308:12
 MERGED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:2:1-27:12
 MERGED from [com.android.support:design:28.0.0] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\6d25463e704cca4422684b53a08e3eac\AndroidManifest.xml:17:1-24:12
 MERGED from [ru.bartwell:exfilepicker:2.1] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\4e5b70efe267a354477d214988f07078\AndroidManifest.xml:2:1-20:12
@@ -48,8 +48,8 @@ MERGED from [com.android.support:interpolator:28.0.0] C:\Users\srinivas\.gradle\
 MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\bf8ffa2a87b69739d1b09fc6ef91032b\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\f994233654a21ad0c8d2fcae719c2226\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\19c13233d7b6b455d7d9caecf4d71a78\AndroidManifest.xml:17:1-22:12
-INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:2:1-294:12
-INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:2:1-294:12
+INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:2:1-308:12
+INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:2:1-308:12
 	package
 		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:4:5-38
 	android:versionName
@@ -179,7 +179,7 @@ ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:29:5-30:47
 	android:name
 		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:29:22-71
 application
-ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:32:5-292:19
+ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:32:5-306:19
 MERGED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:23:5-25:19
 MERGED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:23:5-25:19
 MERGED from [com.android.support:design:28.0.0] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\6d25463e704cca4422684b53a08e3eac\AndroidManifest.xml:22:5-20
@@ -602,27 +602,53 @@ ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:274:9-277:20
 	android:name
 		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:275:13-52
 activity#com.mtpv.mobilee_ticket.mtpv_SpecialDrive
-ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:279:9-64
+ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:279:9-54
 	android:name
 		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:279:19-52
 activity#com.mtpv.mobilee_ticket.SpecialDriveResponse_Print
-ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:280:9-73
+ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:280:9-63
 	android:name
 		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:280:19-61
 activity#com.mtpv.mobilee_ticket.E_Challan_Non_ContactModule
-ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:281:9-74
+ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:281:9-64
 	android:name
 		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:281:19-62
+activity#com.mtpv.mobilee_ticket.TopViolatorsActivity
+ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:282:9-288:20
+	android:screenOrientation
+		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:285:13-49
+	android:excludeFromRecents
+		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:284:13-46
+	android:windowSoftInputMode
+		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:286:13-52
+	tools:ignore
+		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:287:13-53
+	android:name
+		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:283:13-49
+activity#com.mtpv.mobilee_ticket.TopVio_ListActivity
+ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:290:9-297:20
+	android:screenOrientation
+		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:294:13-49
+	android:excludeFromRecents
+		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:293:13-46
+	android:windowSoftInputMode
+		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:295:13-52
+	tools:ignore
+		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:296:13-53
+	android:theme
+		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:292:13-72
+	android:name
+		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:291:13-48
 meta-data#io.fabric.ApiKey
-ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:286:9-288:72
+ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:300:9-302:72
 	android:value
-		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:288:13-69
+		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:302:13-69
 	android:name
-		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:287:13-44
+		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:301:13-44
 service#com.mtpv.mobilee_ticket_services.RingToneService
-ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:291:9-84
+ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:305:9-84
 	android:name
-		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:291:18-81
+		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:305:18-81
 uses-sdk
 INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml

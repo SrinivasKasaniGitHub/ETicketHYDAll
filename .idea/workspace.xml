@@ -9,14 +9,16 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="TopVltnsList" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9eb9038f-7df0-4b67-886c-fe669da3c688" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$27.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$27.dex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/layout/top_violators.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/layout/top_violators_list.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/TopVio_ListActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/TopViolatorsActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" afterDir="false" />
@@ -25,8 +27,9 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ETicketHYDAll.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ETicketHYDAll.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/asynclayoutinflater/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/asynclayoutinflater/R.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/compat/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/compat/R.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coordinatorlayout/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coordinatorlayout/R.java" afterDir="false" />
@@ -54,15 +57,13 @@
       <change beforePath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/ru/bartwell/exfilepicker/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/ru/bartwell/exfilepicker/R.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/blame/res/debug/multi-v2/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/blame/res/debug/multi-v2/debug.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/blame/res/debug/multi-v2/values.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/blame/res/debug/multi-v2/values.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/blame/res/debug/single/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/blame/res/debug/single/debug.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/dex/debug/mergeProjectDexDebug/out/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/dex/debug/mergeProjectDexDebug/out/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/incremental/debug-mergeJavaRes/merge-state" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/incremental/debug-mergeJavaRes/merge-state" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/incremental/debug-mergeJniLibs/merge-state" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/incremental/debug-mergeJniLibs/merge-state" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/incremental/mergeDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/incremental/mergeDebugResources/merger.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/incremental/packageDebug/tmp/debug/file-input-save-data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/incremental/packageDebug/tmp/debug/file-input-save-data.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/Wh6dMfcymWRQFeXX80OqLHL7ieQ=" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/Wh6dMfcymWRQFeXX80OqLHL7ieQ=" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/iq8BWKlhxmyY05EAS4_sdyTRX_I=" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/iq8BWKlhxmyY05EAS4_sdyTRX_I=" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/instant_app_manifest/debug/processDebugManifest/instant-app-manifest/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/instant_app_manifest/debug/processDebugManifest/instant-app-manifest/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/asynclayoutinflater/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/android/support/asynclayoutinflater/R$id.class" afterDir="false" />
@@ -95,11 +96,9 @@
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/ChangePassword.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/ChangePassword.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$10.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_sendOTP_to_mobile.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_sendOTP_to_mobile.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidChallanActivity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidPrintActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/CovidPrintActivity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/DD_Response_Print.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/DD_Response_Print.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$10.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$11.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$12.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$13$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$13$1.class" afterDir="false" />
@@ -107,32 +106,16 @@
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$14.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$15.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$16.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$3$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$4$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$4$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$5.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$9.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$AsyncTask_Occupation.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$AsyncTask_Occupation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_About_Version.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_About_Version.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_BarDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_BarDetails.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_GetTerminalDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_GetTerminalDetails.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_ProfileUpdate.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_ProfileUpdate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_getPsDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_getPsDetails.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_getViolationDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_getViolationDetails.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_getViolationPoint_SystemMasterData.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_getViolationPoint_SystemMasterData.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_ocuptn.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_ocuptn.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_qlfctn.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_qlfctn.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_sendOTP_to_mobile.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_sendOTP_to_mobile.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_vchle_Cat.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_vchle_Cat.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_vchle_mainCat.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_vchle_mainCat.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_wheler_details.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Dashboard$Async_wheler_details.class" afterDir="false" />
@@ -144,10 +127,26 @@
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/DeviceListAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/DeviceListAdapter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/DrunkResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/DrunkResponse.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$14.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$15.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$16.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$17.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$18$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$18$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$18.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$7$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$7$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$Async_VehicleCategory.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$Async_VehicleCategory.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$Async_getAadharDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$Async_getAadharDetails.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$Async_getApprovefromRtaforPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$Async_getApprovefromRtaforPoint.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$Async_getLicenceDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Drunk_Drive$Async_getLicenceDetails.class" afterDir="false" />
@@ -162,38 +161,7 @@
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/E_Challan_Reports.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/E_Challan_Reports.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/ExtraPassengers.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/ExtraPassengers.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Fake_NO_Dialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/Fake_NO_Dialog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$11.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$12.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$13.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$14.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$15.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$16.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$17.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$18.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$19.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$19.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$20.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$20.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$21.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$21.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$22.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$22.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$23.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$23.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$24.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$24.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$25.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$25.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$26.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$26.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_VerifyDuplicateChallan.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_VerifyDuplicateChallan.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_generate_dd_case.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_generate_dd_case.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_getPrevFRSInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_getPrevFRSInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_getSameChlnDuplicatePrint.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_getSameChlnDuplicatePrint.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_sendOTP_to_mobile.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_sendOTP_to_mobile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_vchle_subCat.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_vchle_subCat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$MyTransferListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$MyTransferListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/IPSettings$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/IPSettings$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/IPSettings.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/IPSettings.class" afterDir="false" />
@@ -222,7 +190,13 @@
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/ShowToast.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/ShowToast.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpecialDriveResponse_Print.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpecialDriveResponse_Print.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$16.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$17.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$18.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$19.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$19.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$20.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$20.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$21.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$21.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$22.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$22.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$23.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$23.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$24.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$24.class" afterDir="false" />
@@ -259,21 +233,30 @@
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$52.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$52.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$53.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$53.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$54.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$54.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_VehicleCategory.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_VehicleCategory.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_VerifyDuplicateChallan.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_VerifyDuplicateChallan.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_VerifyOTP.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_VerifyOTP.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_getAadharDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_getAadharDetails.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_getApprovefromRtaforPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_getApprovefromRtaforPoint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_getDetainedItems.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_getDetainedItems.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_getLicenceDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_getLicenceDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_getOffenderRemarks.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_getOffenderRemarks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_getPendingChallans.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_getPendingChallans.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_getRTADetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_getRTADetails.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_getSameChlnDuplicatePrint.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_getSameChlnDuplicatePrint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_getViolations.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_getViolations.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_sendOTP_to_mobile.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_sendOTP_to_mobile.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_spot_challan.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_spot_challan.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_spot_challan_1_5_2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_spot_challan_1_5_2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_vhcleHistory.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$Async_vhcleHistory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$LogOutTimerTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$LogOutTimerTask.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$MyAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$MyAdapter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$MyTransferListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$MyTransferListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$getOffenceDetailsbyWheelerChallanType.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan$getOffenceDetailsbyWheelerChallanType.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotChallan.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/SpotResponse.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/VehicleHistoryPendingChallans.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/VehicleHistoryPendingChallans.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/mtpv_SpecialDrive$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/mtpv_SpecialDrive$11.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/mtpv_SpecialDrive$Async_sendOTP_to_mobile.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/mtpv_SpecialDrive$Async_sendOTP_to_mobile.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/mtpv_SpecialDrive.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket/mtpv_SpecialDrive.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket_services/ServiceHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/mobilee_ticket_services/ServiceHelper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/MultiSelectSearchSpinnerDlg.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/MultiSelectSearchSpinnerDlg.class" afterDir="false" />
@@ -281,7 +264,6 @@
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/MutliSelectAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/MutliSelectAdapter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/SpotChallanActivity$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/SpotChallanActivity$11.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/SpotChallanActivity$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/SpotChallanActivity$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/SpotChallanActivity$Async_sendOTP_to_mobile.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/SpotChallanActivity$Async_sendOTP_to_mobile.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/SpotChallanActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/SpotChallanActivity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/VehCatAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/mtpv/spinnermdl/VehCatAdapter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/pinpad/mtpv/GetPinPad.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/pinpad/mtpv/GetPinPad.class" afterDir="false" />
@@ -290,8 +272,8 @@
       <change beforePath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/ru/bartwell/exfilepicker/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/ru/bartwell/exfilepicker/R$id.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/merged_manifests/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/merged_manifests/debug/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/res/merged/debug/layout_generate_dd.xml.flat" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/res/merged/debug/layout_generate_dd.xml.flat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/res/merged/debug/layout_spot_challan_two.xml.flat" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/res/merged/debug/layout_spot_challan_two.xml.flat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/res/merged/debug/layout_activity_dashboard_new.xml.flat" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/res/merged/debug/layout_activity_dashboard_new.xml.flat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/res/merged/debug/values_values.arsc.flat" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/res/merged/debug/values_values.arsc.flat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/symbols/debug/R.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/symbols/debug/R.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/android/support/asynclayoutinflater/R$id.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/android/support/asynclayoutinflater/R$id.dex" afterDir="false" />
@@ -324,11 +306,9 @@
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/ChangePassword.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/ChangePassword.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$10.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$10.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$9.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$9.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_sendOTP_to_mobile.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity$Async_sendOTP_to_mobile.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidChallanActivity.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidPrintActivity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/CovidPrintActivity.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/DD_Response_Print.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/DD_Response_Print.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$10.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$10.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$11.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$11.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$12.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$12.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$13$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$13$1.dex" afterDir="false" />
@@ -336,32 +316,16 @@
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$14.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$14.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$15.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$15.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$16.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$16.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$2.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$3$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$3$1.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$3.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$3.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$4$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$4$1.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$4.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$4.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$5.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$5.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$6.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$6.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$7.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$7.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$8.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$8.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$9.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$9.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$AsyncTask_Occupation.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$AsyncTask_Occupation.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_About_Version.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_About_Version.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_BarDetails.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_BarDetails.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_GetTerminalDetails.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_GetTerminalDetails.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_ProfileUpdate.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_ProfileUpdate.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$1$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$1$1.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$1.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$2.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$3.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk$3.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_UpdateApk.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_getPsDetails.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_getPsDetails.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_getViolationDetails.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_getViolationDetails.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_getViolationPoint_SystemMasterData.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_getViolationPoint_SystemMasterData.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_ocuptn.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_ocuptn.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_qlfctn.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_qlfctn.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_sendOTP_to_mobile.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_sendOTP_to_mobile.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_vchle_Cat.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_vchle_Cat.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_vchle_mainCat.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_vchle_mainCat.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_wheler_details.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Dashboard$Async_wheler_details.dex" afterDir="false" />
@@ -373,10 +337,26 @@
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/DeviceListAdapter.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/DeviceListAdapter.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/DrunkResponse.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/DrunkResponse.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$1.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$10.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$10.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$11.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$11.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$12.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$12.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$13.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$13.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$14.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$14.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$15.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$15.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$16.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$16.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$17.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$17.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$18$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$18$1.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$18.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$18.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$2.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$3.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$3.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$4.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$4.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$5.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$5.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$6.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$6.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$7$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$7$1.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$7.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$7.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$8.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$8.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$9.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$9.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$Async_VehicleCategory.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$Async_VehicleCategory.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$Async_getAadharDetails.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$Async_getAadharDetails.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$Async_getApprovefromRtaforPoint.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$Async_getApprovefromRtaforPoint.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$Async_getLicenceDetails.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Drunk_Drive$Async_getLicenceDetails.dex" afterDir="false" />
@@ -391,38 +371,7 @@
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/E_Challan_Reports.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/E_Challan_Reports.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/ExtraPassengers.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/ExtraPassengers.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Fake_NO_Dialog.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/Fake_NO_Dialog.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$10.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$10.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$11.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$11.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$12.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$12.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$13.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$13.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$14.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$14.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$15.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$15.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$16.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$16.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$17.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$17.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$18.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$18.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$19.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$19.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$2.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$20.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$20.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$21.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$21.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$22.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$22.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$23.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$23.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$24.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$24.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$25.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$25.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$26.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$26.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$3.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$3.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$4.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$4.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$5.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$5.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$6.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$6.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$7.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$7.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$8.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$8.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$9.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$9.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_VerifyDuplicateChallan.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_VerifyDuplicateChallan.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_generate_dd_case.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_generate_dd_case.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_getPrevFRSInfo.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_getPrevFRSInfo.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_getSameChlnDuplicatePrint.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_getSameChlnDuplicatePrint.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_sendOTP_to_mobile.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_sendOTP_to_mobile.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_vchle_subCat.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$Async_vchle_subCat.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$MyTransferListener.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase$MyTransferListener.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/IPSettings$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/IPSettings$1.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/IPSettings.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/IPSettings.dex" afterDir="false" />
@@ -451,7 +400,13 @@
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/ShowToast.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/ShowToast.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpecialDriveResponse_Print.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpecialDriveResponse_Print.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$11.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$11.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$16.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$16.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$17.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$17.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$18.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$18.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$19.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$19.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$2.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$20.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$20.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$21.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$21.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$22.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$22.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$23.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$23.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$24.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$24.dex" afterDir="false" />
@@ -488,21 +443,30 @@
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$52.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$52.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$53.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$53.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$54.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$54.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_VehicleCategory.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_VehicleCategory.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_VerifyDuplicateChallan.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_VerifyDuplicateChallan.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_VerifyOTP.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_VerifyOTP.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_getAadharDetails.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_getAadharDetails.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_getApprovefromRtaforPoint.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_getApprovefromRtaforPoint.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_getDetainedItems.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_getDetainedItems.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_getLicenceDetails.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_getLicenceDetails.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_getOffenderRemarks.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_getOffenderRemarks.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_getPendingChallans.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_getPendingChallans.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_getRTADetails.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_getRTADetails.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_getSameChlnDuplicatePrint.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_getSameChlnDuplicatePrint.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_getViolations.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_getViolations.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_sendOTP_to_mobile.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_sendOTP_to_mobile.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_spot_challan.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_spot_challan.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_spot_challan_1_5_2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_spot_challan_1_5_2.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_vhcleHistory.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$Async_vhcleHistory.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$LogOutTimerTask.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$LogOutTimerTask.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$MyAdapter.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$MyAdapter.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$MyTransferListener.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$MyTransferListener.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$getOffenceDetailsbyWheelerChallanType.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan$getOffenceDetailsbyWheelerChallanType.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotChallan.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotResponse.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/SpotResponse.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/VehicleHistoryPendingChallans.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/VehicleHistoryPendingChallans.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/mtpv_SpecialDrive$11.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/mtpv_SpecialDrive$11.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/mtpv_SpecialDrive$Async_sendOTP_to_mobile.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/mtpv_SpecialDrive$Async_sendOTP_to_mobile.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/mtpv_SpecialDrive.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket/mtpv_SpecialDrive.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket_services/ServiceHelper.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/mobilee_ticket_services/ServiceHelper.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/spinnermdl/MultiSelectSearchSpinnerDlg.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/spinnermdl/MultiSelectSearchSpinnerDlg.dex" afterDir="false" />
@@ -510,28 +474,21 @@
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/spinnermdl/MutliSelectAdapter.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/spinnermdl/MutliSelectAdapter.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/spinnermdl/SpotChallanActivity$11.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/spinnermdl/SpotChallanActivity$11.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/spinnermdl/SpotChallanActivity$2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/spinnermdl/SpotChallanActivity$2.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/spinnermdl/SpotChallanActivity$Async_sendOTP_to_mobile.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/spinnermdl/SpotChallanActivity$Async_sendOTP_to_mobile.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/spinnermdl/SpotChallanActivity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/spinnermdl/SpotChallanActivity.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/spinnermdl/VehCatAdapter.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/mtpv/spinnermdl/VehCatAdapter.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/pinpad/mtpv/GetPinPad.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/pinpad/mtpv/GetPinPad.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/shagi/materialdatepicker/R$id.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/com/shagi/materialdatepicker/R$id.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/module/justec/com/bleoperator/R$id.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/module/justec/com/bleoperator/R$id.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/ru/bartwell/exfilepicker/R$id.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/dexBuilder/debug/0/ru/bartwell/exfilepicker/R$id.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/mergeJavaRes/debug/0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/mergeJavaRes/debug/0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/mergeJavaRes/debug/__content__.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/mergeJavaRes/debug/__content__.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/transforms/mergeJniLibs/debug/__content__.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/transforms/mergeJniLibs/debug/__content__.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/outputs/apk/debug/ETicketHYDAll-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/outputs/apk/debug/ETicketHYDAll-debug.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/layout/generate_dd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/layout/generate_dd.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/layout/spot_challan_two.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/layout/spot_challan_two.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/CovidChallanActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/CovidChallanActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/outputs/logs/manifest-merger-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/outputs/logs/manifest-merger-debug-report.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/layout/activity_dashboard_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/layout/activity_dashboard_new.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/values/styles.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Dashboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Drunk_Drive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Drunk_Drive.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/GenerateDrunkDriveCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/IPSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/IPSettings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/mtpv_SpecialDrive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/mtpv_SpecialDrive.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mtpv/spinnermdl/SpotChallanActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mtpv/spinnermdl/SpotChallanActivity.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -565,7 +522,7 @@
   </component>
   <component name="ProjectId" id="1c9xIy8md2sAar2ssZYRSLNXKNe" />
   <component name="PropertiesComponent">
-    <property name="DEBUGGABLE_DEVICE" value="samsung-sm_t355y-946e5289" />
+    <property name="DEBUGGABLE_DEVICE" value="samsung-sm_t385-dd9c8f94" />
     <property name="DEBUGGABLE_PROCESS" value="com.mtpv.mobilee_ticket" />
     <property name="DEBUGGER_ID" value="Java" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -579,6 +536,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.mtpv.mobilee_ticket" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.mtpv.mobilee_ticket_services" />
       <recent name="com.mtpv.spinnermdl" />
@@ -757,7 +717,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610009116527</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="commited latest Code on 19-Feb-2021 with version call Msg 3.2.1">
+      <created>1613721849044</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1613721849044</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -799,7 +766,8 @@
     <MESSAGE value="commited latest Code on 06-Oct-2020 with Minor driving Issuse fixed" />
     <MESSAGE value="commited latest Code on 19-Dec-2020 with OTP with Call" />
     <MESSAGE value="commited latest Code on 07-Jan-2021 with Breath Analyser Updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="commited latest Code on 07-Jan-2021 with Breath Analyser Updated" />
+    <MESSAGE value="commited latest Code on 19-Feb-2021 with version call Msg 3.2.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="commited latest Code on 19-Feb-2021 with version call Msg 3.2.1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -816,77 +784,77 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>8082</line>
+          <line>8085</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java</url>
-          <line>1187</line>
+          <line>1188</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java</url>
-          <line>1199</line>
+          <line>1200</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>2618</line>
+          <line>2621</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>3098</line>
+          <line>3101</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>1268</line>
+          <line>1271</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>1278</line>
+          <line>1281</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java</url>
-          <line>1633</line>
+          <line>1634</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>3116</line>
+          <line>3119</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>5267</line>
+          <line>5270</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>1743</line>
+          <line>1746</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java</url>
-          <line>101</line>
+          <line>102</line>
           <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Dashboard.java</url>
-          <line>1190</line>
+          <line>1191</line>
           <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Dashboard.java</url>
-          <line>1284</line>
+          <line>1286</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java</url>
-          <line>3237</line>
+          <line>3238</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -896,47 +864,47 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>5985</line>
+          <line>5988</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java</url>
-          <line>2185</line>
+          <line>2186</line>
           <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java</url>
-          <line>2177</line>
+          <line>2178</line>
           <option name="timeStamp" value="49" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java</url>
-          <line>2271</line>
+          <line>2272</line>
           <option name="timeStamp" value="50" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java</url>
-          <line>2229</line>
+          <line>2230</line>
           <option name="timeStamp" value="51" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java</url>
-          <line>2261</line>
+          <line>2262</line>
           <option name="timeStamp" value="52" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>1344</line>
+          <line>1347</line>
           <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>2207</line>
+          <line>2210</line>
           <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java</url>
-          <line>376</line>
+          <line>377</line>
           <option name="timeStamp" value="55" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -961,37 +929,37 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java</url>
-          <line>3738</line>
+          <line>3774</line>
           <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java</url>
-          <line>3750</line>
+          <line>3786</line>
           <option name="timeStamp" value="61" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java</url>
-          <line>3748</line>
+          <line>3784</line>
           <option name="timeStamp" value="62" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>2996</line>
+          <line>2999</line>
           <option name="timeStamp" value="63" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>2516</line>
+          <line>2519</line>
           <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>3014</line>
+          <line>3017</line>
           <option name="timeStamp" value="68" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>3023</line>
+          <line>3026</line>
           <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -1006,7 +974,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java</url>
-          <line>3153</line>
+          <line>3154</line>
           <option name="timeStamp" value="72" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -1021,107 +989,107 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>8758</line>
+          <line>8761</line>
           <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>8773</line>
+          <line>8776</line>
           <option name="timeStamp" value="77" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>8780</line>
+          <line>8783</line>
           <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>1813</line>
+          <line>1816</line>
           <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>1821</line>
+          <line>1824</line>
           <option name="timeStamp" value="80" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>1838</line>
+          <line>1841</line>
           <option name="timeStamp" value="81" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>8156</line>
+          <line>8159</line>
           <option name="timeStamp" value="82" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>1848</line>
+          <line>1851</line>
           <option name="timeStamp" value="83" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>1368</line>
+          <line>1371</line>
           <option name="timeStamp" value="84" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>5060</line>
+          <line>5063</line>
           <option name="timeStamp" value="85" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>5077</line>
+          <line>5080</line>
           <option name="timeStamp" value="86" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>5114</line>
+          <line>5117</line>
           <option name="timeStamp" value="87" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>5140</line>
+          <line>5143</line>
           <option name="timeStamp" value="88" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>5142</line>
+          <line>5145</line>
           <option name="timeStamp" value="89" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>5194</line>
+          <line>5197</line>
           <option name="timeStamp" value="90" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/SpotChallan.java</url>
-          <line>5201</line>
+          <line>5204</line>
           <option name="timeStamp" value="91" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Drunk_Drive.java</url>
-          <line>1267</line>
+          <line>1281</line>
           <option name="timeStamp" value="93" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Drunk_Drive.java</url>
-          <line>1259</line>
+          <line>1273</line>
           <option name="timeStamp" value="94" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Drunk_Drive.java</url>
-          <line>760</line>
+          <line>767</line>
           <option name="timeStamp" value="95" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Drunk_Drive.java</url>
-          <line>765</line>
+          <line>772</line>
           <option name="timeStamp" value="96" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Drunk_Drive.java</url>
-          <line>761</line>
+          <line>768</line>
           <option name="timeStamp" value="97" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -1131,23 +1099,43 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Drunk_Drive.java</url>
-          <line>1379</line>
+          <line>1394</line>
           <option name="timeStamp" value="99" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Drunk_Drive.java</url>
-          <line>777</line>
+          <line>784</line>
           <option name="timeStamp" value="100" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Drunk_Drive.java</url>
-          <line>308</line>
+          <line>309</line>
           <option name="timeStamp" value="101" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Drunk_Drive.java</url>
-          <line>1363</line>
+          <line>1378</line>
           <option name="timeStamp" value="102" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/Settings_New.java</url>
+          <line>501</line>
+          <option name="timeStamp" value="103" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket/TopVio_ListActivity.java</url>
+          <line>150</line>
+          <option name="timeStamp" value="104" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java</url>
+          <line>3621</line>
+          <option name="timeStamp" value="107" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/mtpv/mobilee_ticket_services/ServiceHelper.java</url>
+          <line>3633</line>
+          <option name="timeStamp" value="108" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
