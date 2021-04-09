@@ -69,6 +69,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
+import java.util.UUID;
 
 import io.fabric.sdk.android.BuildConfig;
 import io.fabric.sdk.android.Fabric;
@@ -219,6 +220,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
             result = false;
         }
         return result;
+
     }
 
     private void addShortcut() {
@@ -247,8 +249,9 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
         btn_submit = findViewById(R.id.btnsubmit_login_xml);
         tv_ip_settings = findViewById(R.id.tv_ipsettings);
 
-       /* et_pid.setText("2300001044");
+        /* et_pid.setText("2300001044");
         et_pid_pwd.setText("Sri@1044");*/
+
         btn_cancel.setOnClickListener(this);
         btn_submit.setOnClickListener(this);
         tv_ip_settings.setOnClickListener(this);
@@ -562,6 +565,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
         et_pid_pwd.setText("");
     }
 
+    @SuppressLint("StaticFieldLeak")
     public class Async_task_login extends AsyncTask<Void, Void, String> {
 
         @Override
@@ -708,15 +712,22 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
     }
 
     private void deviceId_Dlg() {
+
         final AlertDialog alertDialog = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT).create();
         @SuppressLint("InflateParams")
         View view = getLayoutInflater().inflate(R.layout.device_id, null);
         final EditText edtTxt_DevceId = view.findViewById(R.id.edtTxt_DevceId);
         Button btn_Copy = view.findViewById(R.id.btn_Copy);
+
         try {
             @SuppressLint("HardwareIds")
             String IMEI = Settings.Secure.getString(getContentResolver(),
                     Settings.Secure.ANDROID_ID);
+            String pseudoId = ""+Build.BOARD.length() % 10 +"" + Build.BRAND.length() % 10 +"" + Build.DEVICE.length() % 10 +"" + Build.DISPLAY.length() % 10 +"" +
+                    Build.HOST.length() % 10 +"" + Build.ID.length() % 10 +"" + Build.MANUFACTURER.length() % 10 +"" + Build.MODEL.length() % 10 +"" +
+                    Build.PRODUCT.length() % 10+"" + Build.TAGS.length() % 10 +"" + Build.USER.length() % 10;
+
+            Log.d("Device Model", "" + pseudoId);
             Log.d("Device Model", "" + IMEI);
             edtTxt_DevceId.setEnabled(false);
             edtTxt_DevceId.setText(IMEI);
@@ -725,6 +736,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
             edtTxt_DevceId.setEnabled(false);
             edtTxt_DevceId.setText("");
         }
+
         btn_Copy.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -739,6 +751,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
         alertDialog.setView(view);
         alertDialog.setCancelable(false);
         alertDialog.show();
+
     }
 
     @SuppressWarnings("deprecation")

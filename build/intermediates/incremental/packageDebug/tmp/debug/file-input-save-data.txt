@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Feb 11 12:44:00 IST 2021
+#Tue Apr 06 13:46:57 IST 2021
 2.base=D\:\\AndroidWorkSpace\\ETicketHYDAll\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\0
 5.set=DEX
 0.path=lib/armeabi-v7a/libDSDemo.so

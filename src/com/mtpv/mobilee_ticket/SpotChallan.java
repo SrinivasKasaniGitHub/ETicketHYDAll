@@ -273,6 +273,7 @@ public class SpotChallan extends AppCompatActivity
     String ocuptn_title = "Select Occupation";
     String[] occup_code_arr, occup_name_arr;
     LinearLayout proffession_layout, lyt_GetDtls;
+    ImageView img_Rejected;
     String violation_code_value;
     int presentviolatedpoints = 0;
     public static String profession_code = "";
@@ -377,6 +378,7 @@ public class SpotChallan extends AppCompatActivity
         rBtn_Others = findViewById(R.id.rBtn_Others);
         edt_Age = findViewById(R.id.edt_Age);
         lyt_GetDtls = findViewById(R.id.lyt_GetDtls);
+        img_Rejected=findViewById(R.id.img_Rejected);
         btn_vehCategory = findViewById(R.id.btn_vehCategory);
         lyt_VehCategory = findViewById(R.id.lyt_VehCategory);
         btn_vehCategory.setOnClickListener(this);
@@ -2740,11 +2742,13 @@ public class SpotChallan extends AppCompatActivity
                             et_driver_lcnce_num_spot.setText("");
                             dob_input.setText("Select Date of Birth");
                             lyt_GetDtls.setVisibility(View.VISIBLE);
+                            img_Rejected.setVisibility(View.VISIBLE);
                         } else if ("E".equals(DLvalidFLG)) {
                             ShowMessage("\n Driving Licence has Expired \n Please Add Without DL Violation\n ");
                             et_driver_lcnce_num_spot.setText("");
                             dob_input.setText("Select Date of Birth");
                             lyt_GetDtls.setVisibility(View.VISIBLE);
+                            img_Rejected.setVisibility(View.VISIBLE);
                         }
                     }
 

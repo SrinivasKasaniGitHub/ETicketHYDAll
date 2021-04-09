@@ -3,7 +3,6 @@ manifest
 ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:2:1-308:12
 INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:2:1-308:12
 INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:2:1-308:12
-MERGED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:2:1-27:12
 MERGED from [com.android.support:design:28.0.0] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\6d25463e704cca4422684b53a08e3eac\AndroidManifest.xml:17:1-24:12
 MERGED from [ru.bartwell:exfilepicker:2.1] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\4e5b70efe267a354477d214988f07078\AndroidManifest.xml:2:1-20:12
 MERGED from [com.bogdwellers:pinchtozoom:0.1] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\49e5abee37f77ed8e7ff686a31d2051d\AndroidManifest.xml:2:1-17:12
@@ -78,8 +77,6 @@ ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:10:5-11:47
 		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:10:22-70
 uses-permission#android.permission.INTERNET
 ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:12:5-67
-MERGED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:15:5-67
-MERGED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:15:5-67
 MERGED from [com.crashlytics.sdk.android:crashlytics:2.6.8] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\74fed0b5e494c9a07fdd89d971b90cc8\AndroidManifest.xml:9:5-67
 MERGED from [com.crashlytics.sdk.android:crashlytics:2.6.8] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\74fed0b5e494c9a07fdd89d971b90cc8\AndroidManifest.xml:9:5-67
 MERGED from [com.crashlytics.sdk.android:beta:1.2.5] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\e15f3c334ae33b20ab4db3b5c2109199\AndroidManifest.xml:9:5-67
@@ -94,14 +91,10 @@ MERGED from [io.fabric.sdk.android:fabric:1.3.17] C:\Users\srinivas\.gradle\cach
 		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:12:22-64
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
 ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:13:5-81
-MERGED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:20:5-81
-MERGED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:20:5-81
 	android:name
 		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:13:22-78
 uses-permission#android.permission.ACCESS_FINE_LOCATION
 ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:14:5-79
-MERGED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:21:5-79
-MERGED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:21:5-79
 	android:name
 		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:14:22-76
 uses-permission#android.permission.ACCESS_NETWORK_STATE
@@ -110,8 +103,6 @@ ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:15:5-79
 		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:15:22-76
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:16:5-81
-MERGED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:16:5-81
-MERGED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:16:5-81
 MERGED from [ru.bartwell:exfilepicker:2.1] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\4e5b70efe267a354477d214988f07078\AndroidManifest.xml:12:5-81
 MERGED from [ru.bartwell:exfilepicker:2.1] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\4e5b70efe267a354477d214988f07078\AndroidManifest.xml:12:5-81
 MERGED from [:dsprint] D:\AndroidWorkSpace\ETicketHYDAll\dsprint\build\.transforms\3af2bf79c69cd4eebb333229c9bfb4cc\AndroidManifest.xml:15:5-81
@@ -142,14 +133,10 @@ ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:20:5-76
 		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:20:22-73
 uses-permission#android.permission.BLUETOOTH
 ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:21:5-68
-MERGED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:12:5-68
-MERGED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:12:5-68
 	android:name
 		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:21:22-65
 uses-permission#android.permission.BLUETOOTH_ADMIN
 ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:22:5-74
-MERGED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:13:5-74
-MERGED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:13:5-74
 	android:name
 		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:22:22-71
 uses-permission#com.android.launcher.permission.INSTALL_SHORTCUT
@@ -180,8 +167,6 @@ ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:29:5-30:47
 		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:29:22-71
 application
 ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml:32:5-306:19
-MERGED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:23:5-25:19
-MERGED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:23:5-25:19
 MERGED from [com.android.support:design:28.0.0] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\6d25463e704cca4422684b53a08e3eac\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:28.0.0] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\6d25463e704cca4422684b53a08e3eac\AndroidManifest.xml:22:5-20
 MERGED from [ru.bartwell:exfilepicker:2.1] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\4e5b70efe267a354477d214988f07078\AndroidManifest.xml:14:5-18:19
@@ -653,8 +638,6 @@ uses-sdk
 INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml
 INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml
-MERGED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:8:5-10:41
-MERGED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:8:5-10:41
 MERGED from [com.android.support:design:28.0.0] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\6d25463e704cca4422684b53a08e3eac\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:design:28.0.0] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\6d25463e704cca4422684b53a08e3eac\AndroidManifest.xml:20:5-44
 MERGED from [ru.bartwell:exfilepicker:2.1] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\4e5b70efe267a354477d214988f07078\AndroidManifest.xml:7:5-9:41
@@ -753,16 +736,6 @@ INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml
 		INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml
 		ADDED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml
 		INJECTED from D:\AndroidWorkSpace\ETicketHYDAll\AndroidManifest.xml
-uses-permission#android.permission.BLUETOOTH_PRIVILEGED
-ADDED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:17:5-19:47
-	tools:ignore
-		ADDED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:19:9-44
-	android:name
-		ADDED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:18:9-63
-activity#app.justec.com.bleoperator.view.OperatorInitialActivity
-ADDED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:24:9-92
-	android:name
-		ADDED from [bleoperator.aar] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\c5f71a35a1322fc888062a0cf6594f8d\AndroidManifest.xml:24:19-89
 activity#ru.bartwell.exfilepicker.ui.activity.ExFilePickerActivity
 ADDED from [ru.bartwell:exfilepicker:2.1] C:\Users\srinivas\.gradle\caches\transforms-2\files-2.1\4e5b70efe267a354477d214988f07078\AndroidManifest.xml:15:9-17:61
 	android:theme

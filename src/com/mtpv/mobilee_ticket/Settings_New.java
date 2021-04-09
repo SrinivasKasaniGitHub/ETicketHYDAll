@@ -474,7 +474,7 @@ public class Settings_New extends Activity implements OnClickListener, DataSourc
 		BleManager.getInstance()
 				.enableLog(true)
 				.setMaxConnectCount(3)
-				.setOperateTimeout(5000);
+				.setOperateTimeout(1500);
 		BleScanRuleConfig scanRuleConfig = new BleScanRuleConfig.Builder()
 				.setScanTimeOut(6000)
 				.build();

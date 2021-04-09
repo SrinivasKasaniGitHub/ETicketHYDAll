@@ -1575,6 +1575,12 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
             case OFFENCE_DATE:
                 DatePickerDialog dp_offence_date = new DatePickerDialog(this, md1, offnce_year, offnce_month, offnce_day);
                 dp_offence_date.getDatePicker().setMaxDate(System.currentTimeMillis());
+                Calendar calendar = Calendar.getInstance();
+                calendar.add(Calendar.DATE, -30);
+                /*dp_offence_date.getDatePicker().setSpinnersShown(false);
+                dp_offence_date.getDatePicker().setCalendarViewShown(true);*/
+                dp_offence_date.getDatePicker().setMinDate(calendar.getTimeInMillis());
+               // dp_offence_date.getDatePicker().setMinDate();
                 return dp_offence_date;
             case OFFENCE_TIME_PICKER:
 

@@ -494,7 +494,7 @@
                     android:layout_weight="1.00"
                     android:gravity="center"
                     android:inputType="textCapCharacters"
-                    android:maxLength="12"/>
+                    android:maxLength="12" />
             </LinearLayout>
 
             <Button
@@ -843,7 +843,7 @@
                     android:layout_below="@+id/textView_licence_header_spotchallan_xml"
                     android:layout_marginTop="5dp"
                     android:orientation="vertical"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <LinearLayout
                         android:id="@+id/ll_dl_details"
@@ -899,143 +899,141 @@
 
                         </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:background="#ffffff"
-                            android:orientation="vertical">
 
-                            <TextView
-                                android:id="@+id/dl_no"
-                                style="@style/TextColor"
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginRight="10dp"
-                                android:gravity="center"
-                                android:text=""
-                                android:textColor="#ff0000"
-                                android:textStyle="bold" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
                             <LinearLayout
                                 android:layout_width="fill_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:weightSum="1">
-
-                                <LinearLayout
-                                    android:layout_width="fill_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginRight="10dp"
-                                    android:layout_marginBottom="10dp"
-                                    android:layout_weight="0.4"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:id="@+id/tvlcnceownername_spotchallan_xml"
-                                        style="@style/TextColor"
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_marginTop="5dp"
-                                        android:layout_marginRight="10dp"
-                                        android:text=""
-                                        android:textColor="#000000"
-                                        android:textStyle="normal" />
-
-                                    <TextView
-                                        android:id="@+id/tvlcnce_fname_spotchallan_xml"
-                                        style="@style/TextColor"
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_marginTop="5dp"
-                                        android:layout_marginRight="10dp"
-                                        android:text=""
-                                        android:textColor="#000000"
-                                        android:textStyle="normal" />
-
-                                    <TextView
-                                        android:id="@+id/tv_lcnce_Address_spotchallan_xml"
-                                        style="@style/TextColor"
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_marginTop="5dp"
-                                        android:layout_marginRight="10dp"
-                                        android:text=""
-                                        android:textColor="#000000"
-                                        android:textStyle="normal" />
-
-                                    <TextView
-                                        android:id="@+id/tv_lcnce_mobnum_spotchallan_xml"
-                                        style="@style/TextColor"
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_marginTop="5dp"
-                                        android:layout_marginRight="10dp"
-                                        android:layout_weight="0.3"
-                                        android:text=""
-                                        android:textColor="#000000"
-                                        android:textStyle="normal" />
-
-                                    <TextView
-                                        android:id="@+id/tv_dlpoints_spotchallan_xml"
-                                        style="@style/TextColor"
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_marginTop="5dp"
-                                        android:layout_marginRight="10dp"
-                                        android:layout_weight="0.3"
-                                        android:text=""
-                                        android:textColor="#ff0000"
-                                        android:textStyle="bold" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="fill_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginRight="50dp"
-                                    android:layout_weight="0.6"
-                                    android:orientation="vertical">
-
-                                    <ImageView
-                                        android:id="@+id/imgv_licence_spotchallan_xml"
-                                        android:layout_width="@dimen/_100sdp"
-                                        android:layout_height="@dimen/_80sdp"
-                                        android:layout_marginLeft="15dp"
-                                        android:layout_marginRight="15dp"
-                                        android:src="@drawable/empty_profile_img" />
-                                </LinearLayout>
-
-
-                            </LinearLayout>
-
-                            <!-- sign layout -->
-
-                            <LinearLayout
-                                android:id="@+id/sign"
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
                                 android:layout_marginTop="10dp"
-                                android:layout_marginRight="20dp"
-                                android:orientation="horizontal"
-                                android:weightSum="1">
+                                android:background="#ffffff"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/dl_no"
+                                    style="@style/TextColor"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:gravity="center"
+                                    android:text=""
+                                    android:textColor="#ff0000"
+                                    android:textStyle="bold" />
 
                                 <LinearLayout
                                     android:layout_width="fill_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="0.5"
-                                    android:orientation="vertical">
+                                    android:orientation="horizontal"
+                                    android:weightSum="1">
+
+                                    <LinearLayout
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_weight="0.4"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/tvlcnceownername_spotchallan_xml"
+                                            style="@style/TextColor"
+                                            android:layout_width="fill_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="10dp"
+                                            android:text=""
+                                            android:textColor="#000000"
+                                            android:textStyle="normal" />
+
+                                        <TextView
+                                            android:id="@+id/tvlcnce_fname_spotchallan_xml"
+                                            style="@style/TextColor"
+                                            android:layout_width="fill_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="10dp"
+                                            android:text=""
+                                            android:textColor="#000000"
+                                            android:textStyle="normal" />
+
+                                        <TextView
+                                            android:id="@+id/tv_lcnce_Address_spotchallan_xml"
+                                            style="@style/TextColor"
+                                            android:layout_width="fill_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="10dp"
+                                            android:text=""
+                                            android:textColor="#000000"
+                                            android:textStyle="normal" />
+
+                                        <TextView
+                                            android:id="@+id/tv_lcnce_mobnum_spotchallan_xml"
+                                            style="@style/TextColor"
+                                            android:layout_width="fill_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="10dp"
+                                            android:layout_weight="0.3"
+                                            android:text=""
+                                            android:textColor="#000000"
+                                            android:textStyle="normal" />
+
+                                        <TextView
+                                            android:id="@+id/tv_dlpoints_spotchallan_xml"
+                                            style="@style/TextColor"
+                                            android:layout_width="fill_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="10dp"
+                                            android:layout_weight="0.3"
+                                            android:text=""
+                                            android:textColor="#ff0000"
+                                            android:textStyle="bold" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginRight="50dp"
+                                        android:layout_weight="0.6"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/imgv_licence_spotchallan_xml"
+                                            android:layout_width="@dimen/_100sdp"
+                                            android:layout_height="@dimen/_80sdp"
+                                            android:layout_marginLeft="15dp"
+                                            android:layout_marginRight="15dp"
+                                            android:src="@drawable/empty_profile_img" />
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/sign"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="20dp"
+                                    android:orientation="horizontal"
+                                    android:weightSum="1">
 
                                     <LinearLayout
                                         android:layout_width="fill_parent"
@@ -1043,59 +1041,74 @@
                                         android:layout_weight="0.5"
                                         android:orientation="vertical">
 
-                                        <TextView
+                                        <LinearLayout
                                             android:layout_width="fill_parent"
                                             android:layout_height="wrap_content"
-                                            android:layout_marginLeft="10dp"
-                                            android:text="Issued on:" />
+                                            android:layout_weight="0.5"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:layout_width="fill_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="10dp"
+                                                android:text="Issued on:" />
+
+                                            <TextView
+                                                android:id="@+id/iss_date"
+                                                android:layout_width="fill_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="20dp"
+                                                android:layout_marginRight="5dp"
+                                                android:text=""
+                                                android:textColor="#000000"
+                                                android:textSize="15sp" />
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="0.5"
+                                        android:orientation="vertical">
+
 
                                         <TextView
-                                            android:id="@+id/iss_date"
+                                            style="@style/TextColor"
                                             android:layout_width="fill_parent"
                                             android:layout_height="wrap_content"
-                                            android:layout_marginLeft="20dp"
-                                            android:layout_marginRight="5dp"
+                                            android:layout_marginLeft="40dp"
+                                            android:text="Licencing Authority"
+                                            android:textColor="#e51616" />
+
+                                        <TextView
+                                            android:id="@+id/rta_name"
+                                            style="@style/TextColor"
+                                            android:layout_width="fill_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="40dp"
                                             android:text=""
-                                            android:textColor="#000000"
-                                            android:textSize="15sp" />
+                                            android:textColor="#000000" />
                                     </LinearLayout>
                                 </LinearLayout>
 
-                                <LinearLayout
-                                    android:layout_width="fill_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="0.5"
-                                    android:orientation="vertical">
 
-
-                                    <TextView
-                                        style="@style/TextColor"
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="40dp"
-                                        android:text="Licencing Authority"
-                                        android:textColor="#e51616" />
-
-                                    <TextView
-                                        android:id="@+id/rta_name"
-                                        style="@style/TextColor"
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="40dp"
-                                        android:text=""
-                                        android:textColor="#000000" />
-                                </LinearLayout>
                             </LinearLayout>
 
-                            <!--
-       <View
-       android:layout_width="fill_parent"
-       android:layout_height="4dp"
-       android:layout_margin="10dp"
-       android:background="#000000"/>
-                            -->
 
-                        </LinearLayout>
+
+                                <ImageView
+                                    android:id="@+id/img_Rejected"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_100sdp"
+                                    android:src="@drawable/reject"
+                                    android:layout_centerInParent="true"
+                                    android:visibility="gone"/>
+
+
+
+                        </RelativeLayout>
+
+
                     </LinearLayout>
 
                     <!--
@@ -1596,8 +1609,8 @@
                             style="@style/edt_custom_style"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ "
                             android:layout_weight=".70"
+                            android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ "
                             android:gravity="center"
                             android:inputType="text|textCapCharacters" />
                     </LinearLayout>
@@ -1651,8 +1664,8 @@
                             style="@style/edt_custom_style"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                             android:layout_weight=".70"
+                            android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                             android:gravity="center"
                             android:inputType="textCapCharacters" />
                     </LinearLayout>
@@ -1683,8 +1696,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.03"
                         android:text="*"
-                        android:visibility="invisible"
-                        android:textColor="#ff0000" />
+                        android:textColor="#ff0000"
+                        android:visibility="invisible" />
 
 
                     <EditText
@@ -1717,6 +1730,7 @@
                         android:layout_gravity="center"
                         android:layout_weight="0.27"
                         android:text="@string/gender" />
+
                     <TextView
                         android:id="@+id/starGedr"
                         style="@style/navi_text_style"
@@ -1724,8 +1738,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.03"
                         android:text="*"
-                        android:visibility="invisible"
-                        android:textColor="#ff0000" />
+                        android:textColor="#ff0000"
+                        android:visibility="invisible" />
+
                     <RadioGroup
                         android:id="@+id/radioGroup_gender"
                         android:layout_width="0dp"
@@ -1758,8 +1773,6 @@
                             android:text="@string/gen_others" />
                     </RadioGroup>
                 </LinearLayout>
-
-
 
 
                 <LinearLayout
@@ -1846,8 +1859,8 @@
                     android:layout_below="@+id/ll_pendingchallans_spot_xml"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:weightSum="1"
-                    android:visibility="gone">
+                    android:visibility="gone"
+                    android:weightSum="1">
 
                     <CheckBox
                         android:id="@+id/police_vehcle"
@@ -1894,8 +1907,8 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="@dimen/header_grnt_padding_ten"
                         android:clickable="false"
-                        android:textAllCaps="true"
                         android:text="Private vehicle"
+                        android:textAllCaps="true"
                         android:textSize="22dp" />
                 </LinearLayout>
 

@@ -8,6 +8,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothGatt;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -88,6 +89,7 @@ import com.mtpv.spinnermdl.VehCatAdapter;
 import com.mtpv.spinnermdl.VehCatModel;
 import com.shagi.materialdatepicker.date.DatePickerFragmentDialog;
 
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.json.JSONArray;
@@ -113,13 +115,17 @@ import app.justec.com.bleoperator.callback.BleGattCallback;
 import app.justec.com.bleoperator.callback.BleRssiCallback;
 import app.justec.com.bleoperator.callback.BleScanCallback;
 import app.justec.com.bleoperator.comm.BleDevice;
+import app.justec.com.bleoperator.data.CommandProgress;
+import app.justec.com.bleoperator.data.Device;
 import app.justec.com.bleoperator.data.ReceiveFormDataResult;
 import app.justec.com.bleoperator.data.RecordForm;
 import app.justec.com.bleoperator.event.EventManger;
+import app.justec.com.bleoperator.event.EventOperator;
 import app.justec.com.bleoperator.exception.BleException;
 import app.justec.com.bleoperator.helper.DataSource;
 import app.justec.com.bleoperator.helper.RepeatCommand;
 import app.justec.com.bleoperator.scan.BleScanRuleConfig;
+
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 @SuppressLint("DefaultLocale")
@@ -305,6 +311,8 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
             bleDevice = SharedPrefsHelper.getSavedObjectFromPreference(getApplicationContext(), "mPreference", "mLoginRes", BleDevice.class);
             if (null != bleDevice) {
                 bt_ID = bleDevice.getName();
+                Device device = EventOperator.getDevice();
+
                 if (!BleManager.getInstance().isConnected(bleDevice)) {
                     BleManager.getInstance().disconnect(bleDevice);
                     connect(bleDevice);
@@ -757,7 +765,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
                     try {
                         String startNum = edt_checkslno_.getText().toString().trim();
 
-                        EventManger.getInstance().comandForRecordForm(startNum, startNum, EventManger.getInstance().TAG_SERRCH);
+                        EventManger.getInstance().comandForRecordForm(startNum, startNum, EventManger.getInstance().TAG_SEARCH);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -770,6 +778,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
         EventManger.getInstance().receieDataCallback(this);
         EventManger.getInstance().repeatCallback(this);
         EventManger.getInstance().searchDataCallback(this, 10006);
+
         callBack = new DataSource.DataCallBack<String>() {
             @Override
             public void onDataNotAvailed(int i) {
@@ -1278,6 +1287,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
     @SuppressLint("SetTextI18n")
     @Override
     public void onDataLoaded(ArrayList<RecordForm> recordForms) {
+        Log.d("onDataLoaded", "onDataLoaded" );
         try {
             if (recordForms.size() > 0 && null != recordForms) {
                 edt_checkslno_.setText("" + recordForms.get(0).getRecordFormNum());
@@ -1293,7 +1303,6 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
 
     }
 
-
     @Override
     public void OnRepeatCommand(String s) {
 
@@ -1305,7 +1314,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
         BleManager.getInstance()
                 .enableLog(true)
                 .setMaxConnectCount(3)
-                .setOperateTimeout(5000);
+                .setOperateTimeout(1500);
         BleScanRuleConfig scanRuleConfig = new BleScanRuleConfig.Builder()
                 .setScanTimeOut(6000)
                 .build();
@@ -1379,7 +1388,10 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
         BleManager.getInstance().connect(bleDevice, new BleGattCallback() {
             @Override
             public void onStartConnect() {
-
+                Toast.makeText(Drunk_Drive.this, "onStartConnect", Toast.LENGTH_LONG).show();
+                readRssi(bleDevice);
+                EventManger.getInstance()
+                        .initDeviceInfo(bleDevice, true, callBack);
             }
 
             @Override
@@ -1399,12 +1411,12 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
 
             @Override
             public void onDisConnected(boolean isActiveDisConnected, BleDevice bleDevice, BluetoothGatt gatt, int status) {
-
+                Toast.makeText(Drunk_Drive.this, "onDisConnected", Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onReConnect(BleDevice bleDevice) {
-
+                Toast.makeText(Drunk_Drive.this, "onReConnect(", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -1425,13 +1437,47 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
 
     @Subscribe(sticky = true)
     public void instantRecordData(ReceiveFormDataResult receiveFormDataResult) {
-        try {
-            //  TAG_INSTANT_RECEIVE=10004;
-            if (receiveFormDataResult != null && receiveFormDataResult.getTag() == 10004) {
-                Log.i("bleble5", "recordFormsReceive=" + receiveFormDataResult.getRecordFormArrayList().size());
+        //  TAG_INSTANT_RECEIVE=10004;
+        if (receiveFormDataResult != null && receiveFormDataResult.getTag() == EventManger.getInstance().TAG_INSTANT_RECEIVE) {
+            Log.i("bleble5", "recordFormsReceive=" + receiveFormDataResult.getRecordFormArrayList().size());
+            ArrayList<RecordForm> recordForms = receiveFormDataResult.getRecordFormArrayList();
+            //这里是通过eventBus接受的具体数据
+            //This is the detail data received through eventBus
+            for (int i = 0; i < receiveFormDataResult.getRecordFormArrayList().size(); i++) {
+                Log.i("blebleRecordForm", "RecordFormNum:" + recordForms.get(i).getRecordFormNum());
+                Log.i("blebleRecordForm", "RecordFormDate:" + recordForms.get(i).getRecordFormDate());
+                Log.i("blebleRecordForm", "RecordFormTime:" + recordForms.get(i).getRecordFormTime());
+                Log.i("blebleRecordForm", "RecordFormDeviceNum:" + recordForms.get(i).getRecordFormDeviceNum());//device model
+                Log.i("blebleRecordForm", "RecordFormSerialNum:" + recordForms.get(i).getRecordFormSerialNum());//serial number
+                Log.i("blebleRecordForm", "RecordFormMeasureMode:" + recordForms.get(i).getRecordFormMeasureMode());
+                Log.i("blebleRecordForm", "RecordFormMeasureNum:" + recordForms.get(i).getRecordFormMeasureNum());
+                Log.i("blebleRecordForm", "RecordFormCarNum:" + recordForms.get(i).getRecordFormCarNum());
+                Log.i("blebleRecordForm", "RecordFormPoliceNum:" + recordForms.get(i).getRecordFormPoliceNum());
+                Log.i("blebleRecordForm", "RecordFormCarLicense:" + recordForms.get(i).getRecordFormCarLicense());
+                Log.i("blebleRecordForm", "RecordFormEditor:" + recordForms.get(i).getRecordFormEditor());
+                Log.i("blebleRecordForm", "RecordFormAddress:" + recordForms.get(i).getRecordFormAddress());
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        }
+    }
+
+    @Subscribe(sticky = true)
+    public void sendComamandProgress(CommandProgress commandProgress) {
+        int count = 0;
+        ArrayList<String> arrayList = null;
+        if (commandProgress != null) {
+            if (commandProgress.isSearch()) {
+                count = commandProgress.getCurrentCount();
+                arrayList = commandProgress.getRecordCommand();
+                if (count <= arrayList.size() - 1) {
+                    //Send the next command when the search is greater than 20
+                    EventManger.getInstance().searchResultFormProgress(arrayList.get(count));
+                    Log.i("sendComamandProgress", "count = "+count);
+                } else {
+                    Log.i("sendComamandProgress", "search finished");
+                    Toast.makeText(Drunk_Drive.this, "Search Record Success,reference demo log", Toast.LENGTH_LONG).show();
+                    //TODO
+                }
+            }
         }
     }
 

@@ -515,7 +515,7 @@
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
