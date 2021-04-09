@@ -2637,6 +2637,7 @@ public class SpotChallan extends AppCompatActivity
                 if (ServiceHelper.license_data != null && !ServiceHelper.license_data.equals("0") &&
                         (SpotChallan.licence_details_spot_master != null && SpotChallan.licence_details_spot_master.length > 0)) {
 
+
                     ll_validationString = ServiceHelper.license_data;
                     if ("INVALID".equalsIgnoreCase(ServiceHelper.license_data)) {
                         ShowMessage("Entered DL is : " + licence_no + "\n Invalid Driving Licence !");
