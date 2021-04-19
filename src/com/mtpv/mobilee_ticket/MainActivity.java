@@ -944,7 +944,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
     }
 
     public void onPermissionsGranted(final int requestCode) {
-        Toast.makeText(this, "Permissions Received.", Toast.LENGTH_LONG).show();
+      //  Toast.makeText(this, "Permissions Received.", Toast.LENGTH_LONG).show();
     }
 
     public boolean hasPermissions(String... permissions) {

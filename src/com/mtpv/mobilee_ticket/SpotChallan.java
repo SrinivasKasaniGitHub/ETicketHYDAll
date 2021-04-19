@@ -2623,6 +2623,7 @@ public class SpotChallan extends AppCompatActivity
             showDialog(PROGRESS_DIALOG);
         }
 
+        @SuppressLint("SetTextI18n")
         @SuppressWarnings("unused")
         @Override
         protected void onPostExecute(String result) {
@@ -2645,6 +2646,7 @@ public class SpotChallan extends AppCompatActivity
 
                     } else {
                         rl_licence_details_layout.setVisibility(View.VISIBLE);
+                        img_Rejected.setVisibility(View.GONE);
 
                         try {
 
@@ -2741,6 +2743,8 @@ public class SpotChallan extends AppCompatActivity
                             ShowMessage("\n Driving Licence has been Cancelled or Suspended \n Please Add Without DL Violation\n ");
                             et_driver_lcnce_num_spot.setText("");
                             dob_input.setText("Select Date of Birth");
+                            tv_dlpoints_spotchallan_xml.setText("TOTAL PENALTY POINTS :" + dl_points+"\n\n"+"" +
+                                    " ** DL SUSPENDED/CANCELLED **");
                             lyt_GetDtls.setVisibility(View.VISIBLE);
                             img_Rejected.setVisibility(View.VISIBLE);
                         } else if ("E".equals(DLvalidFLG)) {
@@ -2749,6 +2753,8 @@ public class SpotChallan extends AppCompatActivity
                             dob_input.setText("Select Date of Birth");
                             lyt_GetDtls.setVisibility(View.VISIBLE);
                             img_Rejected.setVisibility(View.VISIBLE);
+                            tv_dlpoints_spotchallan_xml.setText("TOTAL PENALTY POINTS :" + dl_points+"\n\n"+"" +
+                                    " ** DL EXPIRED **");
                         }
                     }
 

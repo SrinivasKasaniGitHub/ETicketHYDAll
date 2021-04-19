@@ -318,7 +318,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
                     connect(bleDevice);
                 }
             } else {
-                showToast("Please connect the Breath Analyzer from Settings Module !");
+               // showToast("Please connect the Breath Analyzer from Settings Module !");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -789,7 +789,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
             public void onDataLoaded(String s) {
                 Log.i("bleble", s);
                 if (s.equals("1")) {
-                    Toast.makeText(Drunk_Drive.this, "initDeviceInfo", Toast.LENGTH_LONG).show();
+                  //  Toast.makeText(Drunk_Drive.this, "initDeviceInfo", Toast.LENGTH_LONG).show();
                     Log.i("bleble0", "13");
                     EventManger.getInstance().deviceDisplayConfiger(callBack);
 
@@ -976,12 +976,14 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
                 } else if (btn_wheler_code.getText().toString().trim()
                         .equals("" + getResources().getString(R.string.select_wheeler_code))) {
                     showToast("Select wheeler code");
-                } /*else if (!et_driver_lcnce_num.getText().toString().trim().equals("")
-                        && et_driver_lcnce_num.getText().toString().trim().length() >= 3 && dd_dobFLG == false) {
-                    startActivity(new Intent(getApplicationContext(), DateOfBirth_Update.class));
-                    dd_dobFLG = true;
-
-                }*/ else {
+                }else if (edt_checkslno_.getText().toString().trim().isEmpty()) {
+                    edt_checkslno_.setError(Html.fromHtml("<font color='white'>Enter Check serial Number !</font>"));
+                    edt_checkslno_.requestFocus();
+                } else if (edt_alchl_reading.getText().toString().trim().isEmpty() ||
+                        Integer.parseInt(edt_alchl_reading.getText().toString().trim()) < 36) {
+                    edt_alchl_reading.setError(Html.fromHtml("<font color='white'>Alchohal reading should be more than 36 </font>"));
+                    edt_alchl_reading.requestFocus();
+                } else {
                     details_regncid = et_regcid.getText().toString().trim();
                     details_regncid_name = et_vchl_num.getText().toString().trim();
                     details_regn_last_num = et_last_num.getText().toString().trim();
@@ -1388,7 +1390,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
         BleManager.getInstance().connect(bleDevice, new BleGattCallback() {
             @Override
             public void onStartConnect() {
-                Toast.makeText(Drunk_Drive.this, "onStartConnect", Toast.LENGTH_LONG).show();
+              //  Toast.makeText(Drunk_Drive.this, "onStartConnect", Toast.LENGTH_LONG).show();
                 readRssi(bleDevice);
                 EventManger.getInstance()
                         .initDeviceInfo(bleDevice, true, callBack);
@@ -1397,13 +1399,13 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
             @Override
             public void onConnectFail(BleException exception) {
 
-                Toast.makeText(Drunk_Drive.this, "fail", Toast.LENGTH_LONG).show();
+             //   Toast.makeText(Drunk_Drive.this, "fail", Toast.LENGTH_LONG).show();
 
             }
 
             @Override
             public void onConnectSuccess(BleDevice bleDevice, BluetoothGatt gatt, int status) {
-                Toast.makeText(Drunk_Drive.this, "ConnectSuccess", Toast.LENGTH_LONG).show();
+              //  Toast.makeText(Drunk_Drive.this, "ConnectSuccess", Toast.LENGTH_LONG).show();
                 readRssi(bleDevice);
                 EventManger.getInstance()
                         .initDeviceInfo(bleDevice, true, callBack);
@@ -1411,12 +1413,12 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
 
             @Override
             public void onDisConnected(boolean isActiveDisConnected, BleDevice bleDevice, BluetoothGatt gatt, int status) {
-                Toast.makeText(Drunk_Drive.this, "onDisConnected", Toast.LENGTH_LONG).show();
+               // Toast.makeText(Drunk_Drive.this, "onDisConnected", Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onReConnect(BleDevice bleDevice) {
-                Toast.makeText(Drunk_Drive.this, "onReConnect(", Toast.LENGTH_LONG).show();
+              //  Toast.makeText(Drunk_Drive.this, "onReConnect(", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -1474,7 +1476,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
                     Log.i("sendComamandProgress", "count = "+count);
                 } else {
                     Log.i("sendComamandProgress", "search finished");
-                    Toast.makeText(Drunk_Drive.this, "Search Record Success,reference demo log", Toast.LENGTH_LONG).show();
+                  //  Toast.makeText(Drunk_Drive.this, "Search Record Success,reference demo log", Toast.LENGTH_LONG).show();
                     //TODO
                 }
             }

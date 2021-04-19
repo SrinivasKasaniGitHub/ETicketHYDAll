@@ -44,10 +44,12 @@ import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatTextView;
 import android.telephony.TelephonyManager;
+import android.text.Editable;
 import android.text.Html;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextPaint;
+import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
@@ -119,7 +121,7 @@ public class CovidChallanActivity extends Activity implements LocationListener {
     ImageView img_logo;
     TextView officer_Name, officer_Cadre, officer_PS, tv_pendingchallans, tv_pendingamount, tv_violtaionamnt, tv_grand_totalamnt, textView4;
     EditText et_Value, edtTxt_Name, edtTxt_FName, et_Address, et_City, edt_Age, et_driver_contact_spot;
-    Button btn_SlctId_CV, btn_Get, btn_Otp, btn_violation, btn_Submit, btn_Dob, btn_cancel;
+    Button btn_SlctId_CV, btn_Get, btn_Otp, btn_OtpCall, btn_violation, btn_Submit, btn_Dob, btn_cancel;
     ImageButton ibtn_camera;
     ImageButton ibtn_gallery;
     public static ImageView offender_image;
@@ -137,7 +139,7 @@ public class CovidChallanActivity extends Activity implements LocationListener {
     JSONObject jsonObject = null;
     String otpValue = "", imei_send = "", simid_send = "", dob_DL = "";
 
-    boolean otp_VefySts = false,img_Sts=false;
+    boolean otp_VefySts = false, img_Sts = false;
     TelephonyManager telephonyManager;
     LinearLayout lyt_DOB, ll_pendingchallans;
 
@@ -149,6 +151,7 @@ public class CovidChallanActivity extends Activity implements LocationListener {
     TextView txt_ElpsdTime;
 
     public ArrayList<ChallansModel> challansModelList;
+    public boolean smsMsgCall = true;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -198,6 +201,23 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                 Intent intent = new Intent(CovidChallanActivity.this, Dashboard.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
+            }
+        });
+
+        et_Value.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                lyt_GetDtls.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
@@ -257,6 +277,56 @@ public class CovidChallanActivity extends Activity implements LocationListener {
             @Override
             public void onClick(View v) {
                 String tempContactNumber = et_driver_contact_spot.getText().toString();
+                smsMsgCall = true;
+
+                if (tempContactNumber.equals("")) {
+                    et_driver_contact_spot.setError(
+                            Html.fromHtml("<font color='black'>Enter mobile number to send OTP!!</font>"));
+                    et_driver_contact_spot.requestFocus();
+
+                } else if ((tempContactNumber.trim() != null && tempContactNumber.trim().length() > 1
+                        && tempContactNumber.trim().length() != 10) || new DateUtil().allCharactersSame(tempContactNumber.trim())) {
+                    et_driver_contact_spot
+                            .setError(Html.fromHtml("<font color='black'>Enter Valid mobile number!!</font>"));
+                    et_driver_contact_spot.requestFocus();
+
+                } else if (tempContactNumber.length() == 10) {
+                    if ((tempContactNumber.charAt(0) == '7') || (tempContactNumber.charAt(0) == '8')
+                            || (tempContactNumber.charAt(0) == '9') || (tempContactNumber.charAt(0) == '6')) {
+                        if (isOnline()) {
+                            new Async_sendOTP_to_mobile().execute();
+                        } else {
+                            showToast("Please check your network connection!");
+                        }
+                    } else {
+                        et_driver_contact_spot
+                                .setError(Html.fromHtml("<font color='black'>Check Contact No.!!</font>"));
+                        et_driver_contact_spot.requestFocus();
+                    }
+
+                } else if (tempContactNumber.length() == 11) {
+                    if (tempContactNumber.charAt(0) == '0') {
+                        if (isOnline()) {
+
+                            new Async_sendOTP_to_mobile().execute();
+                        } else {
+                            showToast("Please check your network connection!");
+                        }
+                    } else {
+                        et_driver_contact_spot
+                                .setError(Html.fromHtml("<font color='black'>Check Contact No.!!</font>"));
+                        et_driver_contact_spot.requestFocus();
+                    }
+
+                }
+            }
+        });
+
+        btn_OtpCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tempContactNumber = et_driver_contact_spot.getText().toString();
+                smsMsgCall = false;
 
                 if (tempContactNumber.equals("")) {
                     et_driver_contact_spot.setError(
@@ -404,9 +474,9 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                     showToast("Please select the violations");
                 } else if (!otp_VefySts) {
                     showToast("Please verify OTP !");
-                } else if (!img_Sts){
+                } else if (!img_Sts) {
                     showToast("Please Capture the Image ");
-                }else {
+                } else {
                     try {
                         jsonObject = new JSONObject();
                         jsonObject.put("CHALLAN_TYPE", "FM");
@@ -521,8 +591,8 @@ public class CovidChallanActivity extends Activity implements LocationListener {
             public void onFinish() {
                 txt_ElpsdTime.setText("Time's Up!");
                 builder.dismiss();
-                otp_VefySts = true;
-                showToast("OTP Time Expired !");
+                otp_VefySts = false;
+                showToast(" Please Resend Otp !");
             }
         }.start();
     }
@@ -545,6 +615,7 @@ public class CovidChallanActivity extends Activity implements LocationListener {
         btn_cancel = findViewById(R.id.btn_cancel);
         btn_Dob = findViewById(R.id.btn_Dob);
         btn_Otp = findViewById(R.id.btn_Otp);
+        btn_OtpCall = findViewById(R.id.btn_OtpCall);
         et_Value = findViewById(R.id.et_Value);
         edtTxt_Name = findViewById(R.id.edtTxt_Name);
         edtTxt_FName = findViewById(R.id.edtTxt_FName);
@@ -665,17 +736,21 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                 str_IdCode = courseTypeList.get(i).getIdCode();
                 if ("2".equals(str_IdCode)) {
                     lyt_DOB.setVisibility(View.VISIBLE);
+                    et_Value.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+                    et_Value.setText("");
                 } else {
                     lyt_DOB.setVisibility(View.GONE);
                 }
 
                 if ("0".equals(str_IdCode) || "12".equals(str_IdCode)) {
                     textView4.setText("Enter Mobile NO :");
-                    et_Value.setInputType(InputType.TYPE_CLASS_PHONE);
+                    et_Value.setInputType(InputType.TYPE_CLASS_NUMBER);
                     str_IdCode = "12";
+                    et_Value.setText("");
                 } else {
                     textView4.setText("Enter Id Value:");
-                    et_Value.setInputType(InputType.TYPE_CLASS_TEXT);
+                    et_Value.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+                    et_Value.setText("");
                 }
                 btn_SlctId_CV.setText("" + s_Item);
                 builder.dismiss();
@@ -716,11 +791,13 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                     et_Address.setText("" + jsonObject.getString("Address"));
                     et_City.setText("" + jsonObject.getString("City"));
                     et_driver_contact_spot.setText("" + jsonObject.getString("MobileNo"));
+                    et_driver_contact_spot.setEnabled(false);
                     tv_pendingchallans.setText("" + jsonObject.getString("PendingChallans"));
                     tv_pendingamount.setText("" + jsonObject.getString("PendingAmount"));
                     cv_OTP_Time = Integer.parseInt(jsonObject.getString("OtpTime"));
                     pndgAmnt = Integer.parseInt(jsonObject.getString("PendingAmount"));
-
+                    tv_violtaionamnt.setText("0");
+                    tv_grand_totalamnt.setText("0");
                     JSONObject object = jsonObject.getJSONObject("PreviousChallans");
                     JSONArray jsonArray = object.getJSONArray("Challans");
                     challansModelList = new ArrayList<>(jsonArray.length());
@@ -797,9 +874,14 @@ public class CovidChallanActivity extends Activity implements LocationListener {
         @Override
         protected String doInBackground(Void... params) {
             // TODO Auto-generated method stub
-
+            String smsMode = "";
+            if (smsMsgCall) {
+                smsMode = "1";
+            } else {
+                smsMode = "2";
+            }
             ServiceHelper.sendOTPtoMobile(et_driver_contact_spot.getText().toString().trim(), et_driver_contact_spot.getText().toString().trim(),
-                    "" + new DateUtil().getTodaysDate(),"");
+                    "" + new DateUtil().getTodaysDate(), smsMode);
             return null;
         }
 
@@ -1058,12 +1140,12 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                         byteArray = bytes.toByteArray();
                         final_image_data_tosend = Base64.encodeToString(byteArray, Base64.NO_WRAP);
                         offender_image.setVisibility(View.VISIBLE);
-                        img_Sts=true;
+                        img_Sts = true;
 
                     } else if (bitmap == null) {
                         showToast("Image Cannot be Loaded !");
-                        final_image_data_tosend=null;
-                        img_Sts=false;
+                        final_image_data_tosend = null;
+                        img_Sts = false;
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -1101,10 +1183,10 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                     byteArray = bytes.toByteArray();
                     final_image_data_tosend = Base64.encodeToString(byteArray, Base64.NO_WRAP);
                     offender_image.setVisibility(View.VISIBLE);
-                    img_Sts=true;
+                    img_Sts = true;
                 } else if (thumbnail == null) {
                     showToast("Image Cannot be Loaded !");
-                    img_Sts=false;
+                    img_Sts = false;
                 }
             }
         }
@@ -1287,7 +1369,7 @@ public class CovidChallanActivity extends Activity implements LocationListener {
         ViewGroup group = (ViewGroup) toast.getView();
         TextView messageTextView = (TextView) group.getChildAt(0);
         messageTextView.setTextSize(20);
-        messageTextView.setPadding(5,2,2,5);
+        messageTextView.setPadding(5, 2, 2, 5);
         toastView.setBackgroundResource(R.drawable.toast_background);
         toast.show();
     }
