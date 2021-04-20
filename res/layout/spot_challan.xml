@@ -1098,8 +1098,8 @@
 
                                 <ImageView
                                     android:id="@+id/img_Rejected"
-                                    android:layout_width="@dimen/_80sdp"
-                                    android:layout_height="@dimen/_80sdp"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_100sdp"
                                     android:src="@drawable/reject"
                                     android:layout_alignParentEnd="true"
                                     android:layout_margin="@dimen/_10sdp"

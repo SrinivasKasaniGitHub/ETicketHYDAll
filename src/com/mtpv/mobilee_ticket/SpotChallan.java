@@ -139,7 +139,7 @@ public class SpotChallan extends AppCompatActivity
     public static String dl_points = "0", spot_Lic_Flag = "", imgSelected = "0", is_govt_police = "9",
             extraPassengers = "1", aadhaar, licence_no, otp_number = "", driver_mobileNo = "",
             minor_valueCode = "", violation_code,
-            Current_Date, final_image_data_tosend = null, DLvalidFLG = "V";
+            Current_Date, final_image_data_tosend = null, DLvalidFLG = "V", dl_Sus_Info = "";
 
     public int edt_regncid_spotchallanMAX_LENGTH = 4, edt_regncidname_spotchallanLENGTH = 4,
             edt_regncid_lastnum_spotchallanMAX_LENGTH = 4, selected_ocuptn = -1;
@@ -378,7 +378,7 @@ public class SpotChallan extends AppCompatActivity
         rBtn_Others = findViewById(R.id.rBtn_Others);
         edt_Age = findViewById(R.id.edt_Age);
         lyt_GetDtls = findViewById(R.id.lyt_GetDtls);
-        img_Rejected=findViewById(R.id.img_Rejected);
+        img_Rejected = findViewById(R.id.img_Rejected);
         btn_vehCategory = findViewById(R.id.btn_vehCategory);
         lyt_VehCategory = findViewById(R.id.lyt_VehCategory);
         btn_vehCategory.setOnClickListener(this);
@@ -1243,9 +1243,9 @@ public class SpotChallan extends AppCompatActivity
 
                 String dateofbirthbut = dob_input.getText().toString();
 
-                if ("0000".equalsIgnoreCase(regnName_send) || "0000".equalsIgnoreCase(vehicle_num_send)){
+                if ("0000".equalsIgnoreCase(regnName_send) || "0000".equalsIgnoreCase(vehicle_num_send)) {
                     showToast("   Please enter valid Registration No !   ");
-                }else {
+                } else {
                     if (!et_driver_lcnce_num_spot.getText().toString().equalsIgnoreCase("") && et_driver_lcnce_num_spot.getText().toString().length() >= 5) {
 
                         if (isValidDL(et_driver_lcnce_num_spot.getText().toString().trim())) {
@@ -2632,6 +2632,7 @@ public class SpotChallan extends AppCompatActivity
             removeDialog(PROGRESS_DIALOG);
 
             try {
+                dl_Sus_Info = "";
                 String threeWheeler = tv_vhle_no_spot.getText() != null ? tv_vhle_no_spot.getText().toString().trim() : "";
                 tv_licence_details_header_spot.setVisibility(View.VISIBLE);
 
@@ -2688,8 +2689,13 @@ public class SpotChallan extends AppCompatActivity
 
                             dl_no.setText("" + et_driver_lcnce_num_spot.getText().toString().trim());
                             tv_licence_details_header_spot.setText("LICENCE DETAILS");
-
-                            DLvalidFLG = "" + licence_details_spot_master[6] != null ? licence_details_spot_master[6] : "";
+                            try {
+                                DLvalidFLG = "" + licence_details_spot_master[6] != null ? licence_details_spot_master[6] : "";
+                                dl_Sus_Info = "" + licence_details_spot_master[8] != null ? licence_details_spot_master[8] : "";
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                dl_Sus_Info="";
+                            }
 
 
                             if (licence_details_spot_master.length != 0) {
@@ -2739,22 +2745,30 @@ public class SpotChallan extends AppCompatActivity
                             e.printStackTrace();
                         }
 
-                        if (("C".equals(DLvalidFLG)) || ("S".equals(DLvalidFLG))) {
-                            ShowMessage("\n Driving Licence has been Cancelled or Suspended \n Please Add Without DL Violation\n ");
+                        if (("C".equals(DLvalidFLG))) {
+                            ShowMessage("\n Driving Licence has been Cancelled  \n Please Add Without DL Violation\n ");
                             et_driver_lcnce_num_spot.setText("");
                             dob_input.setText("Select Date of Birth");
-                            tv_dlpoints_spotchallan_xml.setText("TOTAL PENALTY POINTS :" + dl_points+"\n\n"+"" +
-                                    " ** DL SUSPENDED/CANCELLED **");
+                            tv_dlpoints_spotchallan_xml.setText("TOTAL PENALTY POINTS :" + dl_points + "\n\n" + "" + dl_Sus_Info);
                             lyt_GetDtls.setVisibility(View.VISIBLE);
+                            img_Rejected.setImageResource(R.drawable.dlcanceled);
+                            img_Rejected.setVisibility(View.VISIBLE);
+                        } else if ("S".equals(DLvalidFLG)) {
+                            ShowMessage("\n Driving Licence has been Suspended \n Please Add Without DL Violation\n ");
+                            et_driver_lcnce_num_spot.setText("");
+                            dob_input.setText("Select Date of Birth");
+                            tv_dlpoints_spotchallan_xml.setText("TOTAL PENALTY POINTS :" + dl_points + "\n\n" + "" + dl_Sus_Info);
+                            lyt_GetDtls.setVisibility(View.VISIBLE);
+                            img_Rejected.setImageResource(R.drawable.dlsuspend);
                             img_Rejected.setVisibility(View.VISIBLE);
                         } else if ("E".equals(DLvalidFLG)) {
                             ShowMessage("\n Driving Licence has Expired \n Please Add Without DL Violation\n ");
                             et_driver_lcnce_num_spot.setText("");
                             dob_input.setText("Select Date of Birth");
                             lyt_GetDtls.setVisibility(View.VISIBLE);
+                            img_Rejected.setImageResource(R.drawable.dlexpred);
                             img_Rejected.setVisibility(View.VISIBLE);
-                            tv_dlpoints_spotchallan_xml.setText("TOTAL PENALTY POINTS :" + dl_points+"\n\n"+"" +
-                                    " ** DL EXPIRED **");
+                            tv_dlpoints_spotchallan_xml.setText("TOTAL PENALTY POINTS :" + dl_points + "\n\n" + "" + dl_Sus_Info);
                         }
                     }
 
@@ -5479,7 +5493,7 @@ public class SpotChallan extends AppCompatActivity
             }
 
             ServiceHelper.sendOTPtoMobile(completeVehicle_num_send, et_driver_contact_spot.getText().toString().trim(),
-                    "" + getDate().toUpperCase(),smsMode);
+                    "" + getDate().toUpperCase(), smsMode);
             return null;
         }
 

@@ -197,7 +197,7 @@ public class Dashboard extends Activity implements OnClickListener {
     public static String CHALLAN_TYPE = null, CASES_LIMIT = null, CASES_BOOKED = null;
 
     AppCompatImageView img_DD, img_Spot, img_VehcleHis, img_CraneAct, img_ReleaseDoc, img_Reports, img_DuplctePrint,
-            img_DwldMasters, img_Settings, img_About, img_Covid,img_TopVltrs;
+            img_DwldMasters, img_Settings, img_About, img_Covid, img_TopVltrs;
 
     ImageView img_logo;
     TextView officer_Name, officer_Cadre, officer_PS;
@@ -210,7 +210,7 @@ public class Dashboard extends Activity implements OnClickListener {
     EditText et_PAddress, et_PmtAddress, edtTxt_BldGrp, et_CntctNo, edtTxt_EmpId;
     AlertDialog builder;
     CountDownTimer countDownTimer;
-    boolean otp_VefySts = false, profileStatus = false;
+    boolean otp_VefySts = false, profileStatus = false, isOnlyCovidEnable = false;
     AppCompatImageView rl_profile;
     String imageFilePath = "", profileImg_tosend = "";
     byte[] image_byte_array;
@@ -320,10 +320,64 @@ public class Dashboard extends Activity implements OnClickListener {
             }
         }
 
+        if (MainActivity.arr_logindetails.length > 23) {
+            String moduleEnble = !MainActivity.arr_logindetails[24].equalsIgnoreCase("null") ? MainActivity.arr_logindetails[24] : "";
+            if (moduleEnble.equalsIgnoreCase("2")) {
+                isOnlyCovidEnable = true;
+            }
 
-          // showProfileSummuryDialog("Profile");
+        }
+
+
+        // showProfileSummuryDialog("Profile");
 
     }
+
+    private void showModuleAuthDlg() {
+        TextView title = new TextView(this);
+        title.setText("Hyderabad E-Ticket");
+        title.setBackgroundColor(Color.RED);
+        title.setGravity(Gravity.CENTER);
+        title.setTextColor(Color.WHITE);
+        title.setTextSize(26);
+        title.setTypeface(title.getTypeface(), Typeface.BOLD);
+        title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dialog_logo, 0, R.drawable.dialog_logo, 0);
+        title.setPadding(20, 0, 20, 0);
+        title.setHeight(70);
+
+        String otp_message = "\n You are not authorised to this Module ...! \n";
+
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Dashboard.this,
+                AlertDialog.THEME_HOLO_LIGHT);
+        alertDialogBuilder.setCustomTitle(title);
+        alertDialogBuilder.setIcon(R.drawable.dialog_logo);
+        alertDialogBuilder.setMessage(otp_message);
+        alertDialogBuilder.setCancelable(false);
+        alertDialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                alertDialogBuilder.create().dismiss();
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+
+        alertDialog.getWindow().getAttributes();
+
+        TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+        textView.setTextSize(28);
+        textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
+        textView.setGravity(Gravity.CENTER);
+
+        Button btn = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        btn.setTextSize(22);
+        btn.setTextColor(Color.WHITE);
+        btn.setTypeface(btn.getTypeface(), Typeface.BOLD);
+        btn.setBackgroundColor(Color.RED);
+    }
+
 
     @SuppressLint("SetTextI18n")
     private void showProfileSummuryDialog(final String title) {
@@ -798,7 +852,7 @@ public class Dashboard extends Activity implements OnClickListener {
             // TODO Auto-generated method stub
 
             ServiceHelper.sendOTPtoMobile(et_CntctNo.getText().toString().trim(), et_CntctNo.getText().toString().trim(),
-                    "" + new DateUtil().getTodaysDate(),"1");
+                    "" + new DateUtil().getTodaysDate(), "1");
             return null;
         }
 
@@ -1179,7 +1233,7 @@ public class Dashboard extends Activity implements OnClickListener {
         img_Settings = (AppCompatImageView) findViewById(R.id.img_Settings);
         img_About = (AppCompatImageView) findViewById(R.id.img_About);
         img_Covid = findViewById(R.id.img_Covid);
-        img_TopVltrs=findViewById(R.id.img_TopVltrs);
+        img_TopVltrs = findViewById(R.id.img_TopVltrs);
 
 
         ibtn_logout = (ImageButton) findViewById(R.id.imgbtn_logout_dashboard_xml);
@@ -1236,10 +1290,13 @@ public class Dashboard extends Activity implements OnClickListener {
         // TODO Auto-generated method stub
         switch (v.getId()) {
             case R.id.img_DrunkDrive:
-
-                check_vhleHistory_or_Spot = "drunkdrive";
-                Dashboard.otpbuttoncheckinspldrive = "dd";
-                ddCommonMethod();
+                if (isOnlyCovidEnable) {
+                    showModuleAuthDlg();
+                }else {
+                    check_vhleHistory_or_Spot = "drunkdrive";
+                    Dashboard.otpbuttoncheckinspldrive = "dd";
+                    ddCommonMethod();
+                }
 
                 break;
 
@@ -1383,173 +1440,191 @@ public class Dashboard extends Activity implements OnClickListener {
                 break;
 
             case R.id.img_Spot:
-                rtaFLG = true;
-                check_vhleHistory_or_Spot = "spot";
-                getPreferenceValues();
+                if (isOnlyCovidEnable) {
+                    showModuleAuthDlg();
+                }else {
+                    rtaFLG = true;
+                    check_vhleHistory_or_Spot = "spot";
+                    getPreferenceValues();
 
-                preferences = getSharedPreferences("preferences", MODE_PRIVATE);
-                editor = preferences.edit();
-                address_spot = preferences.getString("btaddress", "btaddr");
+                    preferences = getSharedPreferences("preferences", MODE_PRIVATE);
+                    editor = preferences.edit();
+                    address_spot = preferences.getString("btaddress", "btaddr");
 
-                try {
+                    try {
 
 
-                    db.open();
-                    cursor_psnames = DBHelper.db.rawQuery("select * from " + db.psName_table, null);
+                        db.open();
+                        cursor_psnames = DBHelper.db.rawQuery("select * from " + db.psName_table, null);
 
-                    c_whlr_details = DBHelper.db.rawQuery("select * from " + DBHelper.wheelercode_table, null);
+                        c_whlr_details = DBHelper.db.rawQuery("select * from " + DBHelper.wheelercode_table, null);
 
-                    if ((cursor_psnames.getCount() == 0) && (c_whlr_details.getCount() == 0)) {
-                        showToast("Please download master's !");
-                    } else if ((psname_settings.equals("psname")) && (pointnameBycode_settings.equals("pointname"))) {
-                        showToast("Configure Settings!");
-                    }
+                        if ((cursor_psnames.getCount() == 0) && (c_whlr_details.getCount() == 0)) {
+                            showToast("Please download master's !");
+                        } else if ((psname_settings.equals("psname")) && (pointnameBycode_settings.equals("pointname"))) {
+                            showToast("Configure Settings!");
+                        }
                    /* else if(Settings_New.btn_ResponsiblePSName.getText().toString().equals("Responsible PS Name")){
                         showToast("Configure Settings!");
                     }*/
-                    else if (address_spot.trim() != null && address_spot.trim().length() < 15) {
-                        showToast("Configure BlueTooth Settings!");
-                    } else {
-                        if (isOnline()) {
-                            Dashboard.otpbuttoncheckinspldrive = "Spot";
-                            startActivity(new Intent(Dashboard.this, SpotChallan.class));
+                        else if (address_spot.trim() != null && address_spot.trim().length() < 15) {
+                            showToast("Configure BlueTooth Settings!");
                         } else {
-                            showToast("" + netwrk_info_txt);
+                            if (isOnline()) {
+                                Dashboard.otpbuttoncheckinspldrive = "Spot";
+                                startActivity(new Intent(Dashboard.this, SpotChallan.class));
+                            } else {
+                                showToast("" + netwrk_info_txt);
+                            }
                         }
-                    }
 
-                } catch (SQLException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+                    } catch (SQLException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                        c_whlr_details.close();
+                        cursor_psnames.close();
+                        db.close();
+                    }
                     c_whlr_details.close();
                     cursor_psnames.close();
                     db.close();
                 }
-                c_whlr_details.close();
-                cursor_psnames.close();
-                db.close();
                 break;
 
             case R.id.img_VehicleHistory:
-                check_vhleHistory_or_Spot = "vehiclehistory";
-                getPreferenceValues();
 
-                preferences = getSharedPreferences("preferences", MODE_PRIVATE);
-                editor = preferences.edit();
-                address_spot = preferences.getString("btaddress", "btaddr");
+                if (isOnlyCovidEnable) {
+                    showModuleAuthDlg();
+                }else {
+                    check_vhleHistory_or_Spot = "vehiclehistory";
+                    getPreferenceValues();
 
-                try {
+                    preferences = getSharedPreferences("preferences", MODE_PRIVATE);
+                    editor = preferences.edit();
+                    address_spot = preferences.getString("btaddress", "btaddr");
 
-                    db.open();
-                    cursor_psnames = DBHelper.db.rawQuery("select * from " + db.psName_table, null);
+                    try {
 
-                    c_whlr_details = DBHelper.db.rawQuery("select * from " + DBHelper.wheelercode_table, null);
-                    if ((cursor_psnames.getCount() == 0) && (c_whlr_details.getCount() == 0)) {
-                        showToast("Please download master's !");
-                    } else if ((psname_settings.equals("psname")) && (pointnameBycode_settings.equals("pointname"))) {
-                        showToast("Configure Settings!");
-                    } else if (address_spot.trim() != null && address_spot.trim().length() < 15) {
-                        showToast("Configure BlueTooth Settings!");
-                    } else {
-                        if (isOnline()) {
-                            startActivity(new Intent(Dashboard.this, SpotChallan.class));
+                        db.open();
+                        cursor_psnames = DBHelper.db.rawQuery("select * from " + db.psName_table, null);
+
+                        c_whlr_details = DBHelper.db.rawQuery("select * from " + DBHelper.wheelercode_table, null);
+                        if ((cursor_psnames.getCount() == 0) && (c_whlr_details.getCount() == 0)) {
+                            showToast("Please download master's !");
+                        } else if ((psname_settings.equals("psname")) && (pointnameBycode_settings.equals("pointname"))) {
+                            showToast("Configure Settings!");
+                        } else if (address_spot.trim() != null && address_spot.trim().length() < 15) {
+                            showToast("Configure BlueTooth Settings!");
                         } else {
-                            showToast("" + netwrk_info_txt);
+                            if (isOnline()) {
+                                startActivity(new Intent(Dashboard.this, SpotChallan.class));
+                            } else {
+                                showToast("" + netwrk_info_txt);
+                            }
                         }
-                    }
 
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                        c_whlr_details.close();
+                        cursor_psnames.close();
+                        db.close();
+                    }
                     c_whlr_details.close();
                     cursor_psnames.close();
                     db.close();
                 }
-                c_whlr_details.close();
-                cursor_psnames.close();
-                db.close();
                 break;
 
             case R.id.img_CraneAct:
-                check_vhleHistory_or_Spot = "towing";
-                getPreferenceValues();
 
-                preferences = getSharedPreferences("preferences", MODE_PRIVATE);
-                editor = preferences.edit();
-                address_spot = preferences.getString("btaddress", "btaddr");
+                if (isOnlyCovidEnable) {
+                    showModuleAuthDlg();
+                }else {
+                    check_vhleHistory_or_Spot = "towing";
+                    getPreferenceValues();
 
-                try {
+                    preferences = getSharedPreferences("preferences", MODE_PRIVATE);
+                    editor = preferences.edit();
+                    address_spot = preferences.getString("btaddress", "btaddr");
+
+                    try {
 
 
-                    db.open();
-                    cursor_psnames = DBHelper.db.rawQuery("select * from " + db.psName_table, null);
-                    c_whlr_details = DBHelper.db.rawQuery("select * from " + DBHelper.wheelercode_table, null);
+                        db.open();
+                        cursor_psnames = DBHelper.db.rawQuery("select * from " + db.psName_table, null);
+                        c_whlr_details = DBHelper.db.rawQuery("select * from " + DBHelper.wheelercode_table, null);
 
-                    if ((cursor_psnames.getCount() == 0) && (c_whlr_details.getCount() == 0)) {
-                        showToast("Please download master's !");
-                    } else if ((psname_settings.equals("psname")) && (pointnameBycode_settings.equals("pointname"))) {
-                        showToast("Configure Settings!");
-                    } else if (address_spot.trim() != null && address_spot.trim().length() < 15) {
-                        showToast("Configure BlueTooth Settings!");
-                    } else {
-                        if (isOnline()) {
-                            startActivity(new Intent(Dashboard.this, SpotChallan.class));
+                        if ((cursor_psnames.getCount() == 0) && (c_whlr_details.getCount() == 0)) {
+                            showToast("Please download master's !");
+                        } else if ((psname_settings.equals("psname")) && (pointnameBycode_settings.equals("pointname"))) {
+                            showToast("Configure Settings!");
+                        } else if (address_spot.trim() != null && address_spot.trim().length() < 15) {
+                            showToast("Configure BlueTooth Settings!");
                         } else {
-                            showToast("" + netwrk_info_txt);
+                            if (isOnline()) {
+                                startActivity(new Intent(Dashboard.this, SpotChallan.class));
+                            } else {
+                                showToast("" + netwrk_info_txt);
+                            }
                         }
-                    }
 
-                } catch (SQLException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+                    } catch (SQLException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                        c_whlr_details.close();
+                        cursor_psnames.close();
+                        db.close();
+                    }
                     c_whlr_details.close();
                     cursor_psnames.close();
                     db.close();
                 }
-                c_whlr_details.close();
-                cursor_psnames.close();
-                db.close();
                 break;
 
             case R.id.img_ReleaseDoc:
-                check_vhleHistory_or_Spot = "releasedocuments";
 
-                getPreferenceValues();
+                if (isOnlyCovidEnable) {
+                    showModuleAuthDlg();
+                }else {
+                    check_vhleHistory_or_Spot = "releasedocuments";
 
-                preferences = getSharedPreferences("preferences", MODE_PRIVATE);
-                editor = preferences.edit();
-                address_spot = preferences.getString("btaddress", "btaddr");
+                    getPreferenceValues();
 
-                try {
+                    preferences = getSharedPreferences("preferences", MODE_PRIVATE);
+                    editor = preferences.edit();
+                    address_spot = preferences.getString("btaddress", "btaddr");
 
-                    db.open();
-                    cursor_psnames = DBHelper.db.rawQuery("select * from " + db.psName_table, null);
-                    c_whlr_details = DBHelper.db.rawQuery("select * from " + DBHelper.wheelercode_table, null);
+                    try {
 
-                    if ((cursor_psnames.getCount() == 0) && (c_whlr_details.getCount() == 0)) {
-                        showToast("Please download master's !");
-                    } else if ((psname_settings.equals("psname")) && (pointnameBycode_settings.equals("pointname"))) {
-                        showToast("Configure Settings!");
-                    } else if (address_spot.trim() != null && address_spot.trim().length() < 15) {
-                        showToast("Configure BlueTooth Settings!");
-                    } else {
-                        if (isOnline()) {
-                            startActivity(new Intent(Dashboard.this, SpotChallan.class));
+                        db.open();
+                        cursor_psnames = DBHelper.db.rawQuery("select * from " + db.psName_table, null);
+                        c_whlr_details = DBHelper.db.rawQuery("select * from " + DBHelper.wheelercode_table, null);
+
+                        if ((cursor_psnames.getCount() == 0) && (c_whlr_details.getCount() == 0)) {
+                            showToast("Please download master's !");
+                        } else if ((psname_settings.equals("psname")) && (pointnameBycode_settings.equals("pointname"))) {
+                            showToast("Configure Settings!");
+                        } else if (address_spot.trim() != null && address_spot.trim().length() < 15) {
+                            showToast("Configure BlueTooth Settings!");
                         } else {
-                            showToast("" + netwrk_info_txt);
+                            if (isOnline()) {
+                                startActivity(new Intent(Dashboard.this, SpotChallan.class));
+                            } else {
+                                showToast("" + netwrk_info_txt);
+                            }
                         }
-                    }
 
-                } catch (SQLException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+                    } catch (SQLException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                        c_whlr_details.close();
+                        cursor_psnames.close();
+                        db.close();
+                    }
                     c_whlr_details.close();
                     cursor_psnames.close();
                     db.close();
                 }
-                c_whlr_details.close();
-                cursor_psnames.close();
-                db.close();
-
                 break;
 
             case R.id.img_Reports:
@@ -1676,7 +1751,7 @@ public class Dashboard extends Activity implements OnClickListener {
                         } else {
                             if (isOnline()) {
 
-                               // Dashboard.otpbuttoncheckinspldrive = "mtpv_SpecialDrive";
+                                // Dashboard.otpbuttoncheckinspldrive = "mtpv_SpecialDrive";
                                 startActivity(new Intent(Dashboard.this, TopViolatorsActivity.class));
                             } else {
                                 showToast("" + netwrk_info_txt);

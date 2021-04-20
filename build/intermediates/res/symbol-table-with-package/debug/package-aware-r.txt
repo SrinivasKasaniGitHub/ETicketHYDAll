@@ -1752,6 +1752,9 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable dialog_logo
 drawable divider_line_horizontal
+drawable dlcanceled
+drawable dlexpred
+drawable dlsuspend
 drawable down
 drawable drun_drive_btn_style_blue
 drawable drunkdrive
