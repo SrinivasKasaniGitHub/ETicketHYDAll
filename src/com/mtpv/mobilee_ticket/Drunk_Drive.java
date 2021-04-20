@@ -318,7 +318,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
                     connect(bleDevice);
                 }
             } else {
-               // showToast("Please connect the Breath Analyzer from Settings Module !");
+                // showToast("Please connect the Breath Analyzer from Settings Module !");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -779,6 +779,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
         EventManger.getInstance().repeatCallback(this);
         EventManger.getInstance().searchDataCallback(this, 10006);
 
+
         callBack = new DataSource.DataCallBack<String>() {
             @Override
             public void onDataNotAvailed(int i) {
@@ -788,22 +789,38 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
             @Override
             public void onDataLoaded(String s) {
                 Log.i("bleble", s);
-                if (s.equals("1")) {
-                  //  Toast.makeText(Drunk_Drive.this, "initDeviceInfo", Toast.LENGTH_LONG).show();
+                if (s.equals("1")){
+                    Toast.makeText(Drunk_Drive.this, "initDeviceInfo", Toast.LENGTH_LONG).show();
+                    //初始化设备成功之后需要去初始化一些设备信息
+                    //After successfully initializing the device, you need to initialize some device information
+
+                    //获取仪器用到的字符显示配置信息 连接成功callback返回3
+                    //Get configure information of font show on the device.if connection is ok,the return of callback is 3
                     Log.i("bleble0", "13");
                     EventManger.getInstance().deviceDisplayConfiger(callBack);
 
-                } else if (s.equals("3")) {
-
+                }else if (s.equals("3")){
+                    //获取仪器信息 连接成功callback返回4
+                    // Get device information,if connection is ok,the return of callback is 4
                     Log.i("bleble0", "14");
                     EventManger.getInstance().fetchDeviceInfo(callBack);
-                } else if (s.equals("4")) {
-
+                }else if (s.equals("4")){
+                    //获取仪器记录信息列表头 callback返回5
+                    // Get the header of the record list,if connection is ok,the return of callback is 5
                     Log.i("bleble0", "15");
                     EventManger.getInstance().recordFormDisplay(callBack);
 
-
+                    //现在你可以调用comandForRecordForm()方法来获取记录了
+                    //Now you can call the comandForRecordForm ()  to get the record
+                }else if (s.equals("5")){
+                    //第一次初始化连接获取最新记录
+                    //Initialize the connection for the first time to get the latest record
+                  /*  if (Integer.valueOf(EventManger.getInstance().getMaxStartNum()) > 0) {
+                        EventManger.getInstance().comandForRecordForm(EventManger.getInstance().getMaxStartNum()
+                                , EventManger.getInstance().getMaxStartNum(), EventManger.getInstance().TAG_INSTANT_RECEIVE);
+                    }*/
                 }
+
             }
         };
 
@@ -976,7 +993,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
                 } else if (btn_wheler_code.getText().toString().trim()
                         .equals("" + getResources().getString(R.string.select_wheeler_code))) {
                     showToast("Select wheeler code");
-                }else if (edt_checkslno_.getText().toString().trim().isEmpty()) {
+                } else if (edt_checkslno_.getText().toString().trim().isEmpty()) {
                     edt_checkslno_.setError(Html.fromHtml("<font color='white'>Enter Check serial Number !</font>"));
                     edt_checkslno_.requestFocus();
                 } else if (edt_alchl_reading.getText().toString().trim().isEmpty() ||
@@ -1289,7 +1306,12 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
     @SuppressLint("SetTextI18n")
     @Override
     public void onDataLoaded(ArrayList<RecordForm> recordForms) {
-        Log.d("onDataLoaded", "onDataLoaded" );
+
+        Log.d("blebleRecordForm", "" + recordForms.size());
+        Log.i("blebleRecordForm", "RecordFormNum:" + recordForms.get(0).getRecordFormNum());
+        Log.i("blebleRecordForm", "RecordFormDate:" + recordForms.get(0).getRecordFormDate());
+        Log.i("blebleRecordForm", "RecordFormDeviceNum:" + recordForms.get(0).getRecordFormDeviceNum());//device model
+        Log.i("blebleRecordForm", "RecordFormSerialNum:" + recordForms.get(0).getRecordFormSerialNum());//serial number
         try {
             if (recordForms.size() > 0 && null != recordForms) {
                 edt_checkslno_.setText("" + recordForms.get(0).getRecordFormNum());
@@ -1309,6 +1331,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
     public void OnRepeatCommand(String s) {
 
     }
+
 
     private void initBle() {
 
@@ -1390,7 +1413,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
         BleManager.getInstance().connect(bleDevice, new BleGattCallback() {
             @Override
             public void onStartConnect() {
-              //  Toast.makeText(Drunk_Drive.this, "onStartConnect", Toast.LENGTH_LONG).show();
+                //  Toast.makeText(Drunk_Drive.this, "onStartConnect", Toast.LENGTH_LONG).show();
                 readRssi(bleDevice);
                 EventManger.getInstance()
                         .initDeviceInfo(bleDevice, true, callBack);
@@ -1399,13 +1422,13 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
             @Override
             public void onConnectFail(BleException exception) {
 
-             //   Toast.makeText(Drunk_Drive.this, "fail", Toast.LENGTH_LONG).show();
+                //   Toast.makeText(Drunk_Drive.this, "fail", Toast.LENGTH_LONG).show();
 
             }
 
             @Override
             public void onConnectSuccess(BleDevice bleDevice, BluetoothGatt gatt, int status) {
-              //  Toast.makeText(Drunk_Drive.this, "ConnectSuccess", Toast.LENGTH_LONG).show();
+                //  Toast.makeText(Drunk_Drive.this, "ConnectSuccess", Toast.LENGTH_LONG).show();
                 readRssi(bleDevice);
                 EventManger.getInstance()
                         .initDeviceInfo(bleDevice, true, callBack);
@@ -1413,12 +1436,12 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
 
             @Override
             public void onDisConnected(boolean isActiveDisConnected, BleDevice bleDevice, BluetoothGatt gatt, int status) {
-               // Toast.makeText(Drunk_Drive.this, "onDisConnected", Toast.LENGTH_LONG).show();
+                // Toast.makeText(Drunk_Drive.this, "onDisConnected", Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onReConnect(BleDevice bleDevice) {
-              //  Toast.makeText(Drunk_Drive.this, "onReConnect(", Toast.LENGTH_LONG).show();
+                //  Toast.makeText(Drunk_Drive.this, "onReConnect(", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -1473,10 +1496,10 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
                 if (count <= arrayList.size() - 1) {
                     //Send the next command when the search is greater than 20
                     EventManger.getInstance().searchResultFormProgress(arrayList.get(count));
-                    Log.i("sendComamandProgress", "count = "+count);
+                    Log.i("sendComamandProgress", "count = " + count);
                 } else {
                     Log.i("sendComamandProgress", "search finished");
-                  //  Toast.makeText(Drunk_Drive.this, "Search Record Success,reference demo log", Toast.LENGTH_LONG).show();
+                    //  Toast.makeText(Drunk_Drive.this, "Search Record Success,reference demo log", Toast.LENGTH_LONG).show();
                     //TODO
                 }
             }
