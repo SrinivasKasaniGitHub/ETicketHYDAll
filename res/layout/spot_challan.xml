@@ -990,18 +990,7 @@
                                             android:textColor="#000000"
                                             android:textStyle="normal" />
 
-                                        <TextView
-                                            android:id="@+id/tv_dlpoints_spotchallan_xml"
-                                            style="@style/TextColor"
-                                            android:layout_width="fill_parent"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginLeft="10dp"
-                                            android:layout_marginTop="5dp"
-                                            android:layout_marginRight="10dp"
-                                            android:layout_weight="0.3"
-                                            android:text=""
-                                            android:textColor="#ff0000"
-                                            android:textStyle="bold" />
+
                                     </LinearLayout>
 
                                     <LinearLayout
@@ -1022,8 +1011,20 @@
                                             android:src="@drawable/empty_profile_img" />
                                     </LinearLayout>
 
-
                                 </LinearLayout>
+
+                                <TextView
+                                    android:id="@+id/tv_dlpoints_spotchallan_xml"
+                                    style="@style/TextColor"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_weight="0.3"
+                                    android:text=""
+                                    android:textColor="#ff0000"
+                                    android:textStyle="bold" />
 
                                 <LinearLayout
                                     android:id="@+id/sign"
@@ -1098,8 +1099,8 @@
 
                                 <ImageView
                                     android:id="@+id/img_Rejected"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_100sdp"
+                                    android:layout_width="@dimen/_120sdp"
+                                    android:layout_height="@dimen/_120sdp"
                                     android:src="@drawable/reject"
                                     android:layout_alignParentEnd="true"
                                     android:layout_margin="@dimen/_10sdp"

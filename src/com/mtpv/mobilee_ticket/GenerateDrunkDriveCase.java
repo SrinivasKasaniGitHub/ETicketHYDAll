@@ -1458,7 +1458,7 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
                     "" + btn_offence_date.getText().toString().toUpperCase(), ""+smsMode);*/
 
             ServiceHelper.sendOTPtoMobile(completeVehicle_num_send, et_driver_contact_no.getText().toString().trim(),
-                    "" + btn_offence_date.getText().toString().toUpperCase(), smsMode);
+                    "" + btn_offence_date.getText().toString().toUpperCase(), smsMode,"TD");
 
             return null;
         }
@@ -2948,8 +2948,9 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
 
     }
 
+    @SuppressLint("UnsupportedChromeOsCameraSystemFeature")
     private boolean isDeviceSupportCamera() {
-        if (getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
+        if (getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) {
             // this device has a camera
             return true;
         } else {

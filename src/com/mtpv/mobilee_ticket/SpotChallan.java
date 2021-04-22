@@ -790,7 +790,7 @@ public class SpotChallan extends AppCompatActivity
         btn_first_cancel_spot = (Button) findViewById(R.id.btn_cancel_spotchallan_xml);
         tv_spot_or_vhclehistory_header = (TextView) findViewById(R.id.textView_header_spot_challan_xml);
 
-        /* TO SHOW vehicel DETAILS AND LICENCE DETAILS FOUND OR NOT */
+        //* TO SHOW vehicel DETAILS AND LICENCE DETAILS FOUND OR NOT *
         tv_vehicle_details_header_spot = (TextView) findViewById(R.id.textView_regdetails_header_spotchallan_xml);
         tv_licence_details_header_spot = (TextView) findViewById(R.id.textView_licence_header_spotchallan_xml);
 
@@ -5493,7 +5493,7 @@ public class SpotChallan extends AppCompatActivity
             }
 
             ServiceHelper.sendOTPtoMobile(completeVehicle_num_send, et_driver_contact_spot.getText().toString().trim(),
-                    "" + getDate().toUpperCase(), smsMode);
+                    "" + getDate().toUpperCase(), smsMode,challan_Type);
             return null;
         }
 

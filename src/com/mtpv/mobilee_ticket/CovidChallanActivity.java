@@ -659,6 +659,8 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                     if (ServiceHelper.strCV_Responce.split("\\^")[0].equals("0")) {
                         Intent print = new Intent(getApplicationContext(), CovidPrintActivity.class);
                         startActivity(print);
+                    } else if (ServiceHelper.strCV_Responce.split("\\^")[0].equals("4")) {
+                        showToast("Challan Already Generated for today ! ");
                     } else {
                         showToast("Ticket generation Failed and Try again ");
                     }
@@ -881,7 +883,7 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                 smsMode = "2";
             }
             ServiceHelper.sendOTPtoMobile(et_driver_contact_spot.getText().toString().trim(), et_driver_contact_spot.getText().toString().trim(),
-                    "" + new DateUtil().getTodaysDate(), smsMode);
+                    "" + new DateUtil().getTodaysDate(), smsMode, "FM");
             return null;
         }
 

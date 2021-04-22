@@ -852,7 +852,7 @@ public class Dashboard extends Activity implements OnClickListener {
             // TODO Auto-generated method stub
 
             ServiceHelper.sendOTPtoMobile(et_CntctNo.getText().toString().trim(), et_CntctNo.getText().toString().trim(),
-                    "" + new DateUtil().getTodaysDate(), "1");
+                    "" + new DateUtil().getTodaysDate(), "1","TE");
             return null;
         }
 
