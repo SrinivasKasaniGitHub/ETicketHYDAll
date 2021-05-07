@@ -815,10 +815,10 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
                 }else if (s.equals("5")){
                     //第一次初始化连接获取最新记录
                     //Initialize the connection for the first time to get the latest record
-                  /*  if (Integer.valueOf(EventManger.getInstance().getMaxStartNum()) > 0) {
+                    if (Integer.valueOf(EventManger.getInstance().getMaxStartNum()) > 0) {
                         EventManger.getInstance().comandForRecordForm(EventManger.getInstance().getMaxStartNum()
                                 , EventManger.getInstance().getMaxStartNum(), EventManger.getInstance().TAG_INSTANT_RECEIVE);
-                    }*/
+                    }
                 }
 
             }

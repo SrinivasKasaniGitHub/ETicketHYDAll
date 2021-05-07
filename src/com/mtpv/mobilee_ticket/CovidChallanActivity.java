@@ -85,6 +85,8 @@ import com.mtpv.mobilee_ticket_services.DBHelper;
 import com.mtpv.mobilee_ticket_services.DateUtil;
 import com.mtpv.mobilee_ticket_services.ServiceHelper;
 import com.mtpv.mobilee_ticket_services.VibratorUtils;
+import com.mtpv.spinnermdl.VehCatAdapter;
+import com.mtpv.spinnermdl.VehCatModel;
 import com.mtpv.spinnermdl.VltnListModel;
 
 import org.json.JSONArray;
@@ -121,7 +123,7 @@ public class CovidChallanActivity extends Activity implements LocationListener {
     ImageView img_logo;
     TextView officer_Name, officer_Cadre, officer_PS, tv_pendingchallans, tv_pendingamount, tv_violtaionamnt, tv_grand_totalamnt, textView4;
     EditText et_Value, edtTxt_Name, edtTxt_FName, et_Address, et_City, edt_Age, et_driver_contact_spot;
-    Button btn_SlctId_CV, btn_Get, btn_Otp, btn_OtpCall, btn_violation, btn_Submit, btn_Dob, btn_cancel;
+    Button btn_SlctId_CV, btn_Get, btn_Otp, btn_OtpCall, btn_SlctLocality, btn_violation, btn_Submit, btn_Dob, btn_cancel;
     ImageButton ibtn_camera;
     ImageButton ibtn_gallery;
     public static ImageView offender_image;
@@ -137,7 +139,7 @@ public class CovidChallanActivity extends Activity implements LocationListener {
     RadioGroup rGP_Dtnd, radioGroup_gender;
     RadioButton rBtn_RC, rBtn_VEH, rBtn_LIC, rBtn_None, rBtn_Male, rBtn_FeMale, rBtn_Others;
     JSONObject jsonObject = null;
-    String otpValue = "", imei_send = "", simid_send = "", dob_DL = "";
+    String otpValue = "", imei_send = "", simid_send = "", dob_DL = "", str_Loc_Code = "";
 
     boolean otp_VefySts = false, img_Sts = false;
     TelephonyManager telephonyManager;
@@ -186,7 +188,15 @@ public class CovidChallanActivity extends Activity implements LocationListener {
         officer_Cadre.setText(MainActivity.cadre_name);
         officer_PS.setText(MainActivity.psName);
         lyt_GetDtls.setVisibility(View.GONE);
+        btn_SlctLocality = findViewById(R.id.btn_SlctLocality);
         getLocation();
+
+        btn_SlctLocality.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Async_LocalityMaster().execute();
+            }
+        });
 
         btn_SlctId_CV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -470,6 +480,8 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                     et_driver_contact_spot.requestFocus();
                 } else if (!rBtn_Male.isChecked() && !rBtn_FeMale.isChecked() && !rBtn_Others.isChecked()) {
                     showToast("Please select the Gender ");
+                } else if (btn_SlctLocality.getText().toString().equalsIgnoreCase("Select Location")) {
+                    showToast("Please select the Location");
                 } else if (btn_violation.getText().toString().equalsIgnoreCase("Select Violation")) {
                     showToast("Please select the violations");
                 } else if (!otp_VefySts) {
@@ -508,6 +520,7 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                         jsonObject.put("CITY", "" + et_City.getText().toString().trim());
                         jsonObject.put(" DETAINED_DT", "" + new DateUtil().getPresentDateTime());
                         jsonObject.put("CMD_AMT", "" + str_Fine);
+                        jsonObject.put("LOCALITY", str_Loc_Code);
                         Log.d("JSONOBJ", "" + jsonObject.toString());
                         new Async_GgenerateCovidChallan().execute();
                     } catch (Exception e) {
@@ -716,6 +729,79 @@ public class CovidChallanActivity extends Activity implements LocationListener {
             }
         }
     }
+
+    public class Async_LocalityMaster extends AsyncTask<Void, Void, String> {
+
+        @Override
+        protected String doInBackground(Void... params) {
+            // TODO Auto-generated method stub
+            ServiceHelper.getLocalityMaster();
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            // TODO Auto-generated method stub
+            super.onPreExecute();
+            showDialog(PROGRESS_DIALOG);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            removeDialog(PROGRESS_DIALOG);
+
+            Log.d("LocalityMaster", ServiceHelper.getLocalityMaster);
+
+            if (!ServiceHelper.getLocalityMaster.equals("0") && null != ServiceHelper.getLocalityMaster) {
+                ArrayList<VehCatModel> vehCatModels;
+                try {
+                    JSONObject jsonObject = new JSONObject(ServiceHelper.getLocalityMaster);
+                    JSONArray jsonArray = jsonObject.getJSONArray("LocalityMaster");
+                    vehCatModels = new ArrayList<>(jsonArray.length());
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject object = jsonArray.getJSONObject(i);
+                        VehCatModel vehCatModel = new VehCatModel();
+                        vehCatModel.setVehCatName("" + object.getString("LocalityName"));
+                        vehCatModel.setVehCatCode("" + object.getString("LocalityCode"));
+                        vehCatModels.add(vehCatModel);
+                    }
+                    showLocalityMasterDialog("Select Location", vehCatModels);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void showLocalityMasterDialog(String title, final List<VehCatModel> vehCatModels) {
+
+        final AlertDialog builder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT).create();
+        @SuppressLint("InflateParams")
+        View view = getLayoutInflater().inflate(R.layout.spinner_dialog_layout, null);
+        builder.setView(view);
+        builder.setCancelable(true);
+        ListView spinner_List = view.findViewById(R.id.recycle_List);
+        AppCompatTextView title_Spinner = view.findViewById(R.id.title_Spinner);
+        title_Spinner.setText("" + title);
+        VehCatAdapter jobsAdapter = new VehCatAdapter(CovidChallanActivity.this, vehCatModels);
+        spinner_List.setAdapter(jobsAdapter);
+        builder.show();
+        spinner_List.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String s_Item = vehCatModels.get(i).getVehCatName();
+                str_Loc_Code = vehCatModels.get(i).getVehCatCode();
+                btn_SlctLocality.setText("" + s_Item);
+                builder.dismiss();
+            }
+        });
+    }
+
 
     @SuppressLint("SetTextI18n")
     private void showIDProofsSpinnerDialog(String title, final List<IDProofs> courseTypeList) {

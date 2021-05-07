@@ -35,7 +35,7 @@ public class ServiceHelper {
             version_response, offender_remarks,
             rta_data, license_data, aadhar_data, result = "", output = "", rc_send, dl_send, adhr_send,
             versionData, getOfficerLimit, spot_finalPrintNDevice, str_imgDDInfo, str_SameChlnDuplicatePrint = "",
-            profileUpdate,vehCategory,str_TopVltns_List="";
+            profileUpdate,vehCategory,str_TopVltns_List="",getLocalityMaster="";
 
     public static Map<String, String> viodetMap = null;
     public static String rtaapproovedresponse, validregnoresponse, insertDetainItemsresponse, remarksresult, otpStatusnTime, noncontactresponse;
@@ -368,6 +368,47 @@ public class ServiceHelper {
         } catch (Exception e) {
             // TODO: handle exception
             vehCategory = "0";
+
+        }
+
+    }
+
+    public static void getLocalityMaster() {
+        try {
+            SoapObject request = new SoapObject(NAMESPACE, "getLocalityMaster");
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+            envelope.dotNet = true;
+            envelope.setOutputSoapObject(request);
+            HttpTransportSE httpTransportSE = new HttpTransportSE(MainActivity.URL, timeLimit);
+            httpTransportSE.call(SOAP_ACTION, envelope);
+            Object result = envelope.getResponse();
+            try {
+                if (result != null) {
+                    getLocalityMaster = result.toString();
+
+                } else {
+                    getLocalityMaster = "0";
+                }
+
+
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                getLocalityMaster = "0";
+            }
+
+
+        } catch (SoapFault fault) {
+            fault.printStackTrace();
+            getLocalityMaster = "0";
+
+        } catch (SocketTimeoutException fault) {
+            fault.printStackTrace();
+            getLocalityMaster = "0";
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            getLocalityMaster = "0";
 
         }
 

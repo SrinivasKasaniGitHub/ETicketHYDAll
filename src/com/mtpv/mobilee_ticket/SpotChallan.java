@@ -274,14 +274,14 @@ public class SpotChallan extends AppCompatActivity
     String[] occup_code_arr, occup_name_arr;
     LinearLayout proffession_layout, lyt_GetDtls;
     ImageView img_Rejected;
-    String violation_code_value;
+    String violation_code_value, str_Loc_Code = "";
     int presentviolatedpoints = 0;
     public static String profession_code = "";
     VerhoeffCheckDigit ver;
     public static String dob_DL = null, pending_challans_amount;
     public static int INVOKE_LASTMILE_PAY = 20;
     private CountDownTimer countDownTimer;
-    public boolean timerStopped;
+    public boolean timerStopped, isSlctLocation = false;
     public String google_MapKey;
     Button btn_Refsl_OK;
 
@@ -309,7 +309,7 @@ public class SpotChallan extends AppCompatActivity
     private int day, month, year;
 
     String dobcheck = "No";
-    Button dob_input;
+    Button dob_input, btn_SlctLctn;
     public String challan_Type = "TE";
     ImageView img_logo;
     TextView officer_Name, officer_Cadre, officer_PS;
@@ -381,7 +381,9 @@ public class SpotChallan extends AppCompatActivity
         img_Rejected = findViewById(R.id.img_Rejected);
         btn_vehCategory = findViewById(R.id.btn_vehCategory);
         lyt_VehCategory = findViewById(R.id.lyt_VehCategory);
+        btn_SlctLctn = findViewById(R.id.btn_SlctLctn);
         btn_vehCategory.setOnClickListener(this);
+        btn_SlctLctn.setOnClickListener(this);
 
         newtimer = new CountDownTimer(1000000000, 50) {
 
@@ -1310,6 +1312,20 @@ public class SpotChallan extends AppCompatActivity
                 }
                 break;
 
+            case R.id.btn_SlctLctn:
+                if (et_regcid_spot.getText().toString().equals("") || et_last_num_spot.getText().toString().equals("")) {
+                    showToast("Please Enter Proper Vehicle Number");
+                } else {
+                    if (isOnline()) {
+
+                        new Async_LocalityMaster().execute();
+                    } else {
+                        showToast("No Internet Connection");
+                    }
+
+                }
+                break;
+
             case R.id.btn_vehCategory:
                 if (et_regcid_spot.getText().toString().equals("") || et_last_num_spot.getText().toString().equals("")) {
                     showToast("Please Enter Proper Vehicle Number");
@@ -2174,6 +2190,78 @@ public class SpotChallan extends AppCompatActivity
         });
     }
 
+    public class Async_LocalityMaster extends AsyncTask<Void, Void, String> {
+
+        @Override
+        protected String doInBackground(Void... params) {
+            // TODO Auto-generated method stub
+            ServiceHelper.getLocalityMaster();
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            // TODO Auto-generated method stub
+            super.onPreExecute();
+            showDialog(PROGRESS_DIALOG);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            removeDialog(PROGRESS_DIALOG);
+
+            Log.d("LocalityMaster", ServiceHelper.getLocalityMaster);
+
+            if (!ServiceHelper.getLocalityMaster.equals("0") && null != ServiceHelper.getLocalityMaster) {
+                ArrayList<VehCatModel> vehCatModels;
+                try {
+                    JSONObject jsonObject = new JSONObject(ServiceHelper.getLocalityMaster);
+                    JSONArray jsonArray = jsonObject.getJSONArray("LocalityMaster");
+                    vehCatModels = new ArrayList<>(jsonArray.length());
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject object = jsonArray.getJSONObject(i);
+                        VehCatModel vehCatModel = new VehCatModel();
+                        vehCatModel.setVehCatName("" + object.getString("LocalityName"));
+                        vehCatModel.setVehCatCode("" + object.getString("LocalityCode"));
+                        vehCatModels.add(vehCatModel);
+                    }
+                    showLocalityMasterDialog("Select Location", vehCatModels);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void showLocalityMasterDialog(String title, final List<VehCatModel> vehCatModels) {
+
+        final AlertDialog builder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT).create();
+        @SuppressLint("InflateParams")
+        View view = getLayoutInflater().inflate(R.layout.spinner_dialog_layout, null);
+        builder.setView(view);
+        builder.setCancelable(true);
+        ListView spinner_List = view.findViewById(R.id.recycle_List);
+        AppCompatTextView title_Spinner = view.findViewById(R.id.title_Spinner);
+        title_Spinner.setText("" + title);
+        VehCatAdapter jobsAdapter = new VehCatAdapter(SpotChallan.this, vehCatModels);
+        spinner_List.setAdapter(jobsAdapter);
+        builder.show();
+        spinner_List.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String s_Item = vehCatModels.get(i).getVehCatName();
+                str_Loc_Code = vehCatModels.get(i).getVehCatCode();
+                btn_SlctLctn.setText("" + s_Item);
+                builder.dismiss();
+            }
+        });
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -2694,7 +2782,7 @@ public class SpotChallan extends AppCompatActivity
                                 dl_Sus_Info = "" + licence_details_spot_master[8] != null ? licence_details_spot_master[8] : "";
                             } catch (Exception e) {
                                 e.printStackTrace();
-                                dl_Sus_Info="";
+                                dl_Sus_Info = "";
                             }
 
 
@@ -5493,7 +5581,7 @@ public class SpotChallan extends AppCompatActivity
             }
 
             ServiceHelper.sendOTPtoMobile(completeVehicle_num_send, et_driver_contact_spot.getText().toString().trim(),
-                    "" + getDate().toUpperCase(), smsMode,challan_Type);
+                    "" + getDate().toUpperCase(), smsMode, challan_Type);
             return null;
         }
 
@@ -5923,7 +6011,7 @@ public class SpotChallan extends AppCompatActivity
                     "" + SERVICE_CODE_FIX, "" + edt_Age.getText().toString().trim() + "$" + str_Gender, "" +
                             et_driver_lcnce_num_spot.getText().toString() != null ? et_driver_lcnce_num_spot.getText().toString() : "",
                     "" + pswd, "" + final_image_data_tosend, "", "",
-                    "" + exact_location_send_from_settings, "" + refsal_Info,
+                    "" + str_Loc_Code, "" + refsal_Info,
                     "" + pancard_to_send, "" + aadhar_no, "" + VoterId_to_send, "" + passport_to_send,
                     "" + emailId_to_send, "" + et_driver_contact_spot.getText().toString(), "" + is_it_spot_send,
                     "" + present_date_toSend.toUpperCase(), "" + present_time_toSend, "" + DLvalidFLG,
@@ -8218,6 +8306,10 @@ public class SpotChallan extends AppCompatActivity
                 .equals("" + getString(R.string.select_wheeler_code))) {
             showToast("Select Wheeler Code");
 
+        } else if (btn_SlctLctn.getText().toString().trim()
+                .equals("Select Location") && isSlctLocation) {
+            showToast("  Select Location !  ");
+
         } else if (et_drivername_iOD.getText().toString().trim().equals("")
                 && !Dashboard.check_vhleHistory_or_Spot.equals("towing")) {
             ShowMessage("\n Please Enter Driver Name...! \n");
@@ -8782,6 +8874,7 @@ public class SpotChallan extends AppCompatActivity
     }
 
     public void showDynamicViolations() {
+        isSlctLocation = false;
 
         mArrayList_SelectedVltnLst = new ArrayList<>();
 
@@ -8818,6 +8911,10 @@ public class SpotChallan extends AppCompatActivity
                                                     "\nWith out DL Section is not allowed when Offender had Driving License !\n");
                                         }
                                     }
+                                }
+
+                                if (of_CD == 108) {
+                                    isSlctLocation = true;
                                 }
 
                                 if (of_CD == 7 || of_CD == 9) {

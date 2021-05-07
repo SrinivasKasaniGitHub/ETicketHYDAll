@@ -757,15 +757,15 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/btn_whlr_code_spotchallan_xml"
+                    android:id="@+id/btn_SlctLocality"
                     style="@style/dd_custom_blue_btn_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/lyt_Age"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/header_grnt_padding_five"
-                    android:text="@string/select_wheeler_code"
-                    android:visibility="gone" />
+                    android:text="Select Location"
+                    android:visibility="visible" />
 
                 <Button
                     android:id="@+id/btn_violation"

@@ -1960,6 +1960,8 @@ id btn_OtpCall
 id btn_Refsl_OK
 id btn_SlctFDate
 id btn_SlctId_CV
+id btn_SlctLctn
+id btn_SlctLocality
 id btn_SlctTDate
 id btn_Submit
 id btn_bacOldData
@@ -2212,6 +2214,7 @@ id fueltype_layout
 id full_pending_layout
 id get_aadhaar
 id get_details
+id ghk
 id ghost_view
 id give_us_a_review_landmine_button
 id give_us_a_review_landmine_main_layout
