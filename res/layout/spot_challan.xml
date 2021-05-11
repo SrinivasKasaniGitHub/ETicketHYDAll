@@ -515,7 +515,7 @@
                 android:layout_below="@+id/btngetrtadetails_spotchallan_xml"
                 android:layout_centerHorizontal="true"
                 android:orientation="vertical"
-                android:visibility="visible">
+                android:visibility="gone">
 
 
                 <TextView
