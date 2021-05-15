@@ -1281,7 +1281,7 @@
     <string name="amdp_year_picker_description">Year list</string>
     <string name="amnt">Amount</string>
     <string name="app_name">TS-eTicket</string>
-    <string name="app_version">Version-3.2.4</string>
+    <string name="app_version">Version-3.2.5</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="auth_failed" translatable="false">Authentication Failure</string>
     <string name="back">Back</string>

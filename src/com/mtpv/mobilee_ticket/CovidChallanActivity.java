@@ -85,6 +85,8 @@ import com.mtpv.mobilee_ticket_services.DBHelper;
 import com.mtpv.mobilee_ticket_services.DateUtil;
 import com.mtpv.mobilee_ticket_services.ServiceHelper;
 import com.mtpv.mobilee_ticket_services.VibratorUtils;
+import com.mtpv.spinnermdl.MultiSelectModel;
+import com.mtpv.spinnermdl.MultiSelectSearchSpinnerDlg;
 import com.mtpv.spinnermdl.VehCatAdapter;
 import com.mtpv.spinnermdl.VehCatModel;
 import com.mtpv.spinnermdl.VltnListModel;
@@ -110,7 +112,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
-public class CovidChallanActivity extends Activity implements LocationListener {
+public class CovidChallanActivity extends AppCompatActivity implements LocationListener {
 
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
@@ -154,6 +156,16 @@ public class CovidChallanActivity extends Activity implements LocationListener {
 
     public ArrayList<ChallansModel> challansModelList;
     public boolean smsMsgCall = true;
+
+    MultiSelectModel mselectModel;
+    ArrayList<MultiSelectModel> mArrayList_SecVltnNames = new ArrayList<>();
+    ArrayList<MultiSelectModel> mArrayList_SelectedVltnLst = new ArrayList<>();
+    MultiSelectSearchSpinnerDlg multiSelectSearchSpinnerDlg;
+    ArrayList<VltnListModel> vltnListModels = new ArrayList<>();
+    VltnListModel vltnListModel;
+    StringBuffer violation_desc_append;
+    JSONArray jsonArray = null;
+
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -261,8 +273,7 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                             showToast("Please check your network connection!");
                         }
                     } else {
-                        et_Value
-                                .setError(Html.fromHtml("<font color='black'>Check Contact No.!!</font>"));
+                        et_Value.setError(Html.fromHtml("<font color='black'>Check Contact No.!!</font>"));
                         et_Value.requestFocus();
                     }
 
@@ -385,6 +396,9 @@ public class CovidChallanActivity extends Activity implements LocationListener {
         btn_violation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                violation_desc_append = new StringBuffer();
+                mArrayList_SecVltnNames = new ArrayList<>();
+                mArrayList_SelectedVltnLst = new ArrayList<>();
                 new Async_GetViolationDetails().execute();
             }
         });
@@ -521,6 +535,7 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                         jsonObject.put(" DETAINED_DT", "" + new DateUtil().getPresentDateTime());
                         jsonObject.put("CMD_AMT", "" + str_Fine);
                         jsonObject.put("LOCALITY", str_Loc_Code);
+                        jsonObject.put("vioList", jsonArray);
                         Log.d("JSONOBJ", "" + jsonObject.toString());
                         new Async_GgenerateCovidChallan().execute();
                     } catch (Exception e) {
@@ -673,7 +688,13 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                         Intent print = new Intent(getApplicationContext(), CovidPrintActivity.class);
                         startActivity(print);
                     } else if (ServiceHelper.strCV_Responce.split("\\^")[0].equals("4")) {
-                        showToast("Challan Already Generated for today ! ");
+                        try {
+                            showToast("Challan Already Generated for today !  \n \n " +
+                                    ServiceHelper.strCV_Responce.split("\\^")[1]);
+                        }catch (Exception e){
+                            e.printStackTrace();
+                            showToast("Challan Already Generated for today ! ");
+                        }
                     } else {
                         showToast("Ticket generation Failed and Try again ");
                     }
@@ -937,17 +958,25 @@ public class CovidChallanActivity extends Activity implements LocationListener {
                 try {
                     JSONObject jsonObject = new JSONObject(ServiceHelper.strCV_VltnsList);
                     JSONArray jsonArray = jsonObject.getJSONArray("getViolationMaster");
-                    List<VltnModel> vltnModelList = new ArrayList<>(jsonArray.length());
+                    mArrayList_SecVltnNames = new ArrayList<>(jsonArray.length());
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject object = jsonArray.getJSONObject(i);
-                        VltnModel vltnModel = new VltnModel();
-                        vltnModel.setOffenceCode("" + object.getString("OffenceCode"));
-                        vltnModel.setSection("" + object.getString("Section"));
-                        vltnModel.setViolation("" + object.getString("Violation"));
-                        vltnModel.setFine("" + object.getString("Fine"));
-                        vltnModelList.add(vltnModel);
+                        mselectModel = new MultiSelectModel();
+                        mselectModel.setId(i);
+                        mselectModel.setOffence_cd(Integer.valueOf("" + object.getString("OffenceCode")));
+                        mselectModel.setVltnSec("" + object.getString("Section"));
+                        mselectModel.setVltnDis("" + object.getString("Violation"));
+                        String vilatnText = "(" + object.getString("OffenceCode")
+                                + ") " + object.getString("Violation") +
+                                "(" + object.getString("Section") + ")  " +
+                                "Rs: " + object.getString("Fine");
+
+                        mselectModel.setVltnSecName("" + vilatnText);
+                        mselectModel.setFine_max(Integer.parseInt("" + object.getString("Fine")));
+                        mArrayList_SecVltnNames.add(mselectModel);
                     }
-                    showVilationsSpinnerDialog("Select Violation", vltnModelList);
+                    showDynamicViolations();
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -956,6 +985,84 @@ public class CovidChallanActivity extends Activity implements LocationListener {
             }
         }
     }
+
+    public void showDynamicViolations() {
+
+        mArrayList_SelectedVltnLst = new ArrayList<>();
+
+        multiSelectSearchSpinnerDlg = new MultiSelectSearchSpinnerDlg()
+                .title(getResources().getString(R.string.txt_SlctVltn))
+                .titleSize(25)
+                .positiveText("Done")
+                .negativeText("Cancel")
+                .setMinSelectionLimit(0)
+                .setMaxSelectionLimit(mArrayList_SecVltnNames.size())
+                // List of ids that you need to be selected
+                .multiSelectList(mArrayList_SecVltnNames) // the multi select model list with ids and name
+                .onSubmit(new MultiSelectSearchSpinnerDlg.SubmitCallbackListener() {
+                    @SuppressLint("SetTextI18n")
+                    @Override
+                    public void onSelected(final ArrayList<Integer> selectedIds, ArrayList<String> selectedNames, String dataString) {
+                        mArrayList_SelectedVltnLst = new ArrayList<>(selectedIds.size());
+                        if (selectedIds.size() > 0) {
+                            int vAmnt = 0;
+
+                            for (int i = 0; i < selectedIds.size(); i++) {
+                                mArrayList_SelectedVltnLst.add(mArrayList_SecVltnNames.get(selectedIds.get(i)));
+                                int of_CD = mArrayList_SelectedVltnLst.get(i).getOffence_cd();
+                                vAmnt = vAmnt + mArrayList_SelectedVltnLst.get(i).getFine_max();
+                                violation_desc_append.append("").append(mArrayList_SelectedVltnLst.get(i).getVltnDis()).append("(").append(mArrayList_SelectedVltnLst.get(i).getVltnSec()).append(")");
+                                violation_desc_append.append(",");
+                            }
+
+                            tv_violtaionamnt.setText("" + vAmnt);
+                            int tot_Amnt = pndgAmnt + vAmnt;
+                            tv_grand_totalamnt.setText("" + tot_Amnt);
+
+                            btn_violation.setText(violation_desc_append);
+
+                            vltnListModels = new ArrayList<>(mArrayList_SelectedVltnLst.size());
+                            jsonArray=new JSONArray();
+
+                            for (int i = 0; i < mArrayList_SelectedVltnLst.size(); i++) {
+
+                                try {
+                                    JSONObject object = new JSONObject();
+                                    object.put("offCD", "" + mArrayList_SelectedVltnLst.get(i).getOffence_cd());
+                                    object.put("cmdAmt", "" + mArrayList_SelectedVltnLst.get(i).getFine_max());
+                                    object.put("hdesc","" + mArrayList_SelectedVltnLst.get(i).getVltnDis());
+                                    jsonArray.put(object);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        } else {
+                            btn_violation.setText(getResources().getString(R.string.select_violation));
+                        }
+
+                       /* for (VltnListModel msmodel : vltnListModels) {
+                            for (VltnListModel msmdl : mArrayList_DetainRules) {
+                                if (Objects.equals(msmodel.getOffence_cd(), msmdl.getOffence_cd())) {
+                                    detainedStatus = "1";
+                                    break;
+                                }
+                            }
+                        }
+*/
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        Log.d("Spot", "Dialog cancelled");
+
+
+                    }
+                });
+
+        multiSelectSearchSpinnerDlg.show(getSupportFragmentManager(), "MultiSelectDlg");
+    }
+
 
     public class Async_sendOTP_to_mobile extends AsyncTask<Void, Void, String> {
 
