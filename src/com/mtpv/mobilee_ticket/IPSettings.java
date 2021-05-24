@@ -24,7 +24,7 @@ public class IPSettings extends Activity implements OnClickListener {
     EditText et_service_url, et_ftp_url;
     Button btn_back_ip, btn_save;
     RadioGroup rg_live_test;
-    RadioButton rbtn_live, rbtn_test,radioButton_IPAdress;
+    RadioButton rbtn_live, rbtn_test, radioButton_IPAdress;
     SharedPreferences preference;
     SharedPreferences.Editor editor;
     String SERVICE_URL_PREF = "", FTP_URL_PREF = "", SERVICE_TYPE_PREf = "";
@@ -32,8 +32,8 @@ public class IPSettings extends Activity implements OnClickListener {
     //  private String local_network_url = "http://192.168.11.4/eTicketMobileHyd";
     //  private String local_network_url = "http://192.168.11.10:8080/TSeTicketMobile/";
     //  Connecting_sunilsys
-    private String local_network_url="http://125.16.1.70:8080/TSeTicketMobile";
-    private String ip_network_url="https://www.echallan.org/TSeTicketMobile";
+    private String local_network_url = "http://125.16.1.70:8080/TSeTicketMobile";
+    private String ip_network_url = "https://www.echallan.org/TSeTicketMobile";
 
     //  url for test purpose
     //  private String local_network_url="http://192.168.11.4/Test_eTicketMobileHyd";
@@ -65,7 +65,7 @@ public class IPSettings extends Activity implements OnClickListener {
         FTP_URL_PREF = preference.getString("ftpurl", "url2");
         rbtn_live = (RadioButton) findViewById(R.id.radioButton_live);
         rbtn_test = (RadioButton) findViewById(R.id.radioButton_test);
-        radioButton_IPAdress=findViewById(R.id.radioButton_IPAdress);
+        radioButton_IPAdress = findViewById(R.id.radioButton_IPAdress);
         rbtn_test.setChecked(true);
         // rbtn_live.setChecked(true);
         if (SERVICE_TYPE_PREf.equals("live")) {
@@ -82,7 +82,7 @@ public class IPSettings extends Activity implements OnClickListener {
             et_ftp_url.setText(ftp_fix);
             rbtn_test.setChecked(true);
             service_type = "test";
-        }else if (SERVICE_TYPE_PREf.equals("IPAddress")) {
+        } else if (SERVICE_TYPE_PREf.equals("IPAddress")) {
             et_service_url.setText("" + ip_network_url);
             et_ftp_url.setText("");
             et_ftp_url.setText(ftp_fix);
@@ -182,6 +182,9 @@ public class IPSettings extends Activity implements OnClickListener {
                     editor.putString("servicetype", "" + service_type);
                     editor.commit();
                     showToast("Successfully Saved!");
+                    /*Intent intent = new Intent(IPSettings.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);*/
                     finish();
                 }
                 break;

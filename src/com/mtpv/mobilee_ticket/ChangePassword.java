@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -23,156 +24,174 @@ import com.mtpv.mobilee_ticket_services.ServiceHelper;
 
 public class ChangePassword extends Activity {
 
-	EditText old_pswd, new_pswd, otp_received;
-	Button cancel, ok;
-	final int PROGRESS_DIALOG = 2;
+    EditText old_pswd, new_pswd, otp_received;
+    Button cancel, ok;
+    TextView otp_heading;
+    final int PROGRESS_DIALOG = 2;
+    String contact_no;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setContentView(R.layout.activity_change_password);
-		this.setFinishOnTouchOutside(false);
-		
-		old_pswd = (EditText) findViewById(R.id.old_password);
-		new_pswd = (EditText) findViewById(R.id.new_password);
-		otp_received = (EditText) findViewById(R.id.otp_number);
-		
-		
-		cancel = (Button) findViewById(R.id.cancel_dialog);
-		ok = (Button) findViewById(R.id.ok_dialog);
-		
-		cancel.setOnClickListener(new OnClickListener() {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.activity_change_password);
+        this.setFinishOnTouchOutside(false);
 
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		});
+        Intent intent = getIntent();
+        if (intent != null) {
+            contact_no = intent.getStringExtra("CntNo");
+        }
 
-		ok.setOnClickListener(new OnClickListener() {
+        old_pswd = (EditText) findViewById(R.id.old_password);
+        new_pswd = (EditText) findViewById(R.id.new_password);
+        otp_received = (EditText) findViewById(R.id.otp_number);
+        otp_heading = findViewById(R.id.otp_heading);
+        otp_heading.setText("OTP has been sent to your register Mobile No " + contact_no);
 
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				// finish();
-				if (old_pswd.getText().toString().trim().equals("")) {
-					showToast("Please enter Previous Password");
 
-				} else if (new_pswd.getText().toString().trim().equals("")) {
+        cancel = (Button) findViewById(R.id.cancel_dialog);
+        ok = (Button) findViewById(R.id.ok_dialog);
 
-					showToast("Please enter New Password");
-				} else if (otp_received.getText().toString().trim().equals("")) {
+        cancel.setOnClickListener(new OnClickListener() {
 
-					showToast("Please enter Your OTP");
-				} else {
-					new Async_submitted_changedPSWD().execute();
-				}
+            @Override
+            public void onClick(View arg0) {
+                // TODO Auto-generated method stub
+                finish();
+            }
+        });
 
-				// showToast("Your Password Changed Successully!!!");
-			}
-		});
+        ok.setOnClickListener(new OnClickListener() {
 
-	}
+            @Override
+            public void onClick(View arg0) {
+                // TODO Auto-generated method stub
+                // finish();
+                if (old_pswd.getText().toString().trim().equals("")) {
+                    showToast("Please enter Previous Password");
 
-	public class Async_submitted_changedPSWD extends
-			AsyncTask<Void, Void, String> {
+                } else if (new_pswd.getText().toString().trim().equals("")) {
+                    showToast("Please enter New Password");
+                }else if (new_pswd.getText().toString().trim().equalsIgnoreCase(old_pswd.getText().toString().trim())) {
+                    showToast("Old and New passwords should not be same ");
+                } else if (otp_received.getText().toString().trim().equals("")) {
 
-		@Override
-		protected String doInBackground(Void... params) {
-			// TODO Auto-generated method stub
-			try {
+                    showToast("Please enter Your OTP");
+                } else {
+                    new Async_submitted_changedPSWD().execute();
+                }
 
-				SharedPreferences sharedPreference = PreferenceManager
-						.getDefaultSharedPreferences(getApplicationContext());
-				String pid_code = sharedPreference.getString("PID_CODE", "");
-				String security_code = sharedPreference.getString("PASS_WORD",
-						"");
-				String contact_no = sharedPreference.getString("OFF_PHONE_NO",
-						"");
-				String otp_no = "" + otp_received.getText().toString().trim();
-				String new_password = "" + new_pswd.getText().toString().trim();
+                // showToast("Your Password Changed Successully!!!");
+            }
+        });
 
-				String otpflg = "N";
+    }
 
-				if (otp_no.trim().equals(Settings_New.changepwdotpresp.trim())) {
-					otpflg = "Y";
-				}
-				ServiceHelper.updateChange_PWD("" + pid_code, ""
-						+ security_code, "" + contact_no, "" + otpflg, ""
-						+ new_password);
-				Log.i("ServiceHelper.changePSWDconfirm*********", ""
-						+ ServiceHelper.changePSWDconfirm.toString().trim());
-				// if(ServiceHelper.changePSWDconfirm!=null &&
-				// ServiceHelper.changePSWDconfirm.trim().length()==1){
+    public class Async_submitted_changedPSWD extends
+            AsyncTask<Void, Void, String> {
 
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return null;
-		}
+        @Override
+        protected String doInBackground(Void... params) {
+            // TODO Auto-generated method stub
+            try {
 
-		@SuppressWarnings("deprecation")
-		@Override
-		protected void onPreExecute() {
-			// TODO Auto-generated method stub
-			super.onPreExecute();
-			showDialog(PROGRESS_DIALOG);
-		}
+                SharedPreferences sharedPreference = PreferenceManager
+                        .getDefaultSharedPreferences(getApplicationContext());
+                String pid_code = sharedPreference.getString("PID_CODE", "");
+                String security_code = sharedPreference.getString("PASS_WORD",
+                        "");
+                String contact_no = sharedPreference.getString("OFF_PHONE_NO",
+                        "");
+                String otp_no = "" + otp_received.getText().toString().trim();
+                String new_password = "" + new_pswd.getText().toString().trim();
 
-		@SuppressWarnings("deprecation")
-		@Override
-		protected void onPostExecute(String result) {
-			// TODO Auto-generated method stub
-			super.onPostExecute(result);
-			removeDialog(PROGRESS_DIALOG);
+                String otpflg = "N";
 
-			if ("Y".equals(ServiceHelper.changePSWDconfirm.toString().trim())) {
-				showToast("Your Password Changed Successully!!!");
-				finish();
-			} else {
-				showToast("New Password Update Failed.Please try Again !!");
-			}
+                if (otp_no.trim().equals(Settings_New.changepwdotpresp.trim())) {
+                    otpflg = "Y";
+                }
+                ServiceHelper.updateChange_PWD("" + pid_code, ""
+                        + security_code, "" + contact_no, "" + otpflg, ""
+                        + new_password);
+                Log.i("ServiceHelper.changePSWDconfirm*********", ""
+                        + ServiceHelper.changePSWDconfirm.toString().trim());
+                // if(ServiceHelper.changePSWDconfirm!=null &&
+                // ServiceHelper.changePSWDconfirm.trim().length()==1){
 
-		}
-	}
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
 
-	@SuppressWarnings("deprecation")
-	@SuppressLint("NewApi")
-	@Override
-	protected Dialog onCreateDialog(int id) {
-		// TODO Auto-generated method stub
-		switch (id) {
+        @SuppressWarnings("deprecation")
+        @Override
+        protected void onPreExecute() {
+            // TODO Auto-generated method stub
+            super.onPreExecute();
+            showDialog(PROGRESS_DIALOG);
+        }
 
-		case PROGRESS_DIALOG:
-			ProgressDialog pd = ProgressDialog.show(this, "", "", true);
-			pd.setContentView(R.layout.custom_progress_dialog);
-			pd.setCancelable(false);
+        @SuppressWarnings("deprecation")
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            removeDialog(PROGRESS_DIALOG);
 
-			return pd;
+            if ("Y".equals(ServiceHelper.changePSWDconfirm.toString().trim())) {
+                showToast(" Your Password Changed Successully!!! ");
+                finish();
+            }else if ("I".equals(ServiceHelper.changePSWDconfirm.toString().trim())){
+                showToast(" Invalid password. Please try new Password  ");
+            }else {
+                showToast(" New Password Update Failed.Please contact support Team  ");
+            }
 
-		default:
-			break;
-		}
-		return super.onCreateDialog(id);
-	}
+        }
+    }
 
-	private void showToast(String msg) {
-		// TODO Auto-generated method stub
-		// Toast.makeText(getApplicationContext(), "" + msg,
-		// Toast.LENGTH_SHORT).show();
-		Toast toast = Toast.makeText(getApplicationContext(), "" + msg,
-				Toast.LENGTH_SHORT);
-		toast.setGravity(Gravity.CENTER, 0, 0);
-		View toastView = toast.getView();
+    @SuppressWarnings("deprecation")
+    @SuppressLint("NewApi")
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        // TODO Auto-generated method stub
+        switch (id) {
 
-		ViewGroup group = (ViewGroup) toast.getView();
-		TextView messageTextView = (TextView) group.getChildAt(0);
-		messageTextView.setTextSize(24);
+            case PROGRESS_DIALOG:
+                ProgressDialog pd = ProgressDialog.show(this, "", "", true);
+                pd.setContentView(R.layout.custom_progress_dialog);
+                pd.setCancelable(false);
 
-		toastView.setBackgroundResource(R.drawable.toast_background);
-		toast.show();
+                return pd;
 
-	}
+            default:
+                break;
+        }
+        return super.onCreateDialog(id);
+    }
+
+    private void showToast(String msg) {
+        // TODO Auto-generated method stub
+        // Toast.makeText(getApplicationContext(), "" + msg,
+        // Toast.LENGTH_SHORT).show();
+        Toast toast = Toast.makeText(getApplicationContext(), "" + msg,
+                Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        View toastView = toast.getView();
+
+        ViewGroup group = (ViewGroup) toast.getView();
+        TextView messageTextView = (TextView) group.getChildAt(0);
+        messageTextView.setTextSize(24);
+
+        toastView.setBackgroundResource(R.drawable.toast_background);
+        toast.show();
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        showToast("  Please change your Password  ");
+    }
 }

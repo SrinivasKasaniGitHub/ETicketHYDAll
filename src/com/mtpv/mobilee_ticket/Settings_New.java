@@ -183,6 +183,8 @@ public class Settings_New extends Activity implements OnClickListener, DataSourc
 	AlertDialog dlg_BleDevice;
 	ProgressDialog progressDialog;
 
+	String contact_no;
+
 
 	@SuppressWarnings("deprecation")
 	@SuppressLint("WorldReadableFiles")
@@ -705,7 +707,7 @@ public class Settings_New extends Activity implements OnClickListener, DataSourc
 
 				SharedPreferences sharedPreference = PreferenceManager
 						.getDefaultSharedPreferences(getApplicationContext());
-				String contact_no = sharedPreference.getString("OFF_PHONE_NO",
+				contact_no = sharedPreference.getString("OFF_PHONE_NO",
 						"");
 				if (contact_no != null && contact_no.trim().length() == 10) {
 					new Async_sendOTP_to_mobile().execute();
@@ -762,6 +764,7 @@ public class Settings_New extends Activity implements OnClickListener, DataSourc
 			super.onPostExecute(result);
 			removeDialog(PROGRESS_DIALOG);
 			Intent i = new Intent(Settings_New.this, ChangePassword.class);
+			i.putExtra("CntNo",""+ contact_no);
 			startActivity(i);
 		}
 	}

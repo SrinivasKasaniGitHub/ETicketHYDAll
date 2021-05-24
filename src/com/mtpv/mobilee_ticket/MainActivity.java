@@ -92,7 +92,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
     public static String[] arr_logindetails;
     LocationManager m_locationlistner;
     android.location.Location location;
-    String officerLogin_Otp = null;
+    String officerLogin_Otp = null, isChangePWD = "", isLiveTrace = "";
     public static double latitude = 0.0, longitude = 0.0;
     public static String UNIT_CODE = "", UNIT_NAME = "", IMEI = "", dev_Model = "", URL = "", user_id = "", appVersion = null,
             user_pwd = "", e_user_id = null, sim_No = null, e_user_tmp = "";
@@ -129,6 +129,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
     private String ip_url = "https://www.echallan.org/TSeTicketMobile"; // Two years from 09-09-2019
     private String live_url = "https://echallan.tspolice.gov.in/TSeTicketMobile";
     boolean isLive = false;
+    String contact_no;
 
     @SuppressWarnings("deprecation")
     @SuppressLint("NewApi")
@@ -429,6 +430,27 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
 
             case R.id.btnsubmit_login_xml:
 
+                preference = getSharedPreferences("preferences", Context.MODE_PRIVATE);
+                service_type = preference.getString("servicetype", "test");
+                services_url = preference.getString("serviceurl", "url1");
+                ftps_url = preference.getString("ftpurl", "url2");
+
+                SharedPreferences prefs = getSharedPreferences("ShortCutPrefs", MODE_PRIVATE);
+                if (!prefs.getBoolean("isFirstTime", false)) {
+                    addShortcut();
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putBoolean("isFirstTime", true);
+                    editor.commit();
+                }
+
+                if ((!services_url.equals("url1") && (service_type.equals("live")))) {
+                    URL = "" + services_url + "" + url_to_fix;
+                    isLive = true;
+                } else if ((!services_url.equals("url1") && (service_type.equals("test")))) {
+                    URL = "" + services_url + "" + url_to_fix;
+                    isLive = false;
+                }
+
                 String pidcode = et_pid.getText().toString();
                 String password = et_pid_pwd.getText().toString();
 
@@ -489,6 +511,9 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 
                             if (isOnline()) {
+
+                                isChangePWD = "";
+                                isLiveTrace = "";
                                 new Async_task_login().execute();
                             } else {
                                 showToast("Please check your network connection !");
@@ -613,7 +638,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                         if (Build.VERSION.SDK_INT < 29) {
                             showToast("Unauthorized Device");
                         } else {
-                           deviceId_Dlg();
+                            deviceId_Dlg();
                         }
                     } else if (ServiceHelper.Opdata_Chalana.trim().equals("4")) {
                         showToast("Error, Please Contact E Challan Team at 040-27852721");
@@ -664,6 +689,9 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
 
                             //if (arr_logindetails != null && arr_logindetails.length == 16) {
                             officerLogin_Otp = "" + arr_logindetails[15];
+                            isChangePWD = "" + arr_logindetails[25];
+                            isLiveTrace = "" + arr_logindetails[26];
+
                             //}
 
                             editors.putString("PID_CODE", pidCode);
@@ -688,11 +716,16 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                             e.printStackTrace();
                         }
 
+
                         if (!"null".equals(officerLogin_Otp) && officerLogin_Otp.equalsIgnoreCase("Y")) {
 
                             Intent i = new Intent(MainActivity.this, Login_otp.class);
                             startActivity(i);
 
+                        } else if (!isLive && "L".equalsIgnoreCase(isLiveTrace)) {
+                            ipsetingsDlg();
+                        } else if ("Y".equalsIgnoreCase(isChangePWD)) {
+                            new Async_sendOTP_to_mobile().execute();
                         } else {
 
                             startActivity(new Intent(getApplicationContext(), Dashboard.class));
@@ -723,9 +756,9 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
             @SuppressLint("HardwareIds")
             String IMEI = Settings.Secure.getString(getContentResolver(),
                     Settings.Secure.ANDROID_ID);
-            String pseudoId = ""+Build.BOARD.length() % 10 +"" + Build.BRAND.length() % 10 +"" + Build.DEVICE.length() % 10 +"" + Build.DISPLAY.length() % 10 +"" +
-                    Build.HOST.length() % 10 +"" + Build.ID.length() % 10 +"" + Build.MANUFACTURER.length() % 10 +"" + Build.MODEL.length() % 10 +"" +
-                    Build.PRODUCT.length() % 10+"" + Build.TAGS.length() % 10 +"" + Build.USER.length() % 10;
+            String pseudoId = "" + Build.BOARD.length() % 10 + "" + Build.BRAND.length() % 10 + "" + Build.DEVICE.length() % 10 + "" + Build.DISPLAY.length() % 10 + "" +
+                    Build.HOST.length() % 10 + "" + Build.ID.length() % 10 + "" + Build.MANUFACTURER.length() % 10 + "" + Build.MODEL.length() % 10 + "" +
+                    Build.PRODUCT.length() % 10 + "" + Build.TAGS.length() % 10 + "" + Build.USER.length() % 10;
 
             Log.d("Device Model", "" + pseudoId);
             Log.d("Device Model", "" + IMEI);
@@ -753,6 +786,44 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
         alertDialog.show();
 
     }
+
+    public class Async_sendOTP_to_mobile extends AsyncTask<Void, Void, String> {
+
+        @Override
+        protected String doInBackground(Void... params) {
+            // TODO Auto-generated method stub
+            SharedPreferences sharedPreference = PreferenceManager
+                    .getDefaultSharedPreferences(getApplicationContext());
+            String pid_code = sharedPreference.getString("PID_CODE", "");
+            String security_code = sharedPreference.getString("PASS_WORD", "");
+
+            contact_no = sharedPreference.getString("OFF_PHONE_NO", "");
+
+            ServiceHelper.getChange_PWDotp("" + pid_code, "" + security_code,
+                    "" + contact_no);
+            return null;
+        }
+
+        @SuppressWarnings("deprecation")
+        @Override
+        protected void onPreExecute() {
+            // TODO Auto-generated method stub
+            super.onPreExecute();
+            showDialog(PROGRESS_DIALOG);
+        }
+
+        @SuppressWarnings("deprecation")
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            removeDialog(PROGRESS_DIALOG);
+            Intent i = new Intent(MainActivity.this, ChangePassword.class);
+            i.putExtra("CntNo", contact_no);
+            startActivity(i);
+        }
+    }
+
 
     @SuppressWarnings("deprecation")
     @Override
@@ -828,7 +899,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
     public void onBackPressed() {
         // TODO Auto-generated method stub
         TextView title = new TextView(this);
-        title.setText("Hyderabad E-Ticket");
+        title.setText("Telangana E-Ticket");
         title.setBackgroundColor(Color.RED);
         title.setGravity(Gravity.CENTER);
         title.setTextColor(Color.WHITE);
@@ -854,6 +925,66 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
                 Intent intent = new Intent(Intent.ACTION_MAIN);
                 intent.addCategory(Intent.CATEGORY_HOME);
                 startActivity(intent);
+            }
+        });
+
+        alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+
+        alertDialog.getWindow().getAttributes();
+
+        TextView textView = alertDialog.findViewById(android.R.id.message);
+        textView.setTextSize(28);
+        textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
+        textView.setGravity(Gravity.CENTER);
+
+        Button btn1 = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        btn1.setTextSize(22);
+        btn1.setTextColor(Color.WHITE);
+        btn1.setTypeface(btn1.getTypeface(), Typeface.BOLD);
+        btn1.setBackgroundColor(Color.RED);
+
+        Button btn2 = alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+        btn2.setTextSize(22);
+        btn2.setTextColor(Color.WHITE);
+        btn2.setTypeface(btn2.getTypeface(), Typeface.BOLD);
+        btn2.setBackgroundColor(Color.RED);
+    }
+
+    private void ipsetingsDlg() {
+        TextView title = new TextView(this);
+        title.setText("Telangana E-Ticket");
+        title.setBackgroundColor(Color.RED);
+        title.setGravity(Gravity.CENTER);
+        title.setTextColor(Color.WHITE);
+        title.setTextSize(26);
+        title.setTypeface(title.getTypeface(), Typeface.BOLD);
+        title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dialog_logo, 0, R.drawable.dialog_logo, 0);
+        title.setPadding(20, 0, 20, 0);
+        title.setHeight(70);
+
+        String otp_message = "\n Please go to IpSettings Screen \n and set to Live \n";
+
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this,
+                AlertDialog.THEME_HOLO_LIGHT);
+        alertDialogBuilder.setCustomTitle(title);
+        alertDialogBuilder.setIcon(R.drawable.dialog_logo);
+        alertDialogBuilder.setMessage(otp_message);
+        alertDialogBuilder.setCancelable(false);
+        alertDialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+                alertDialogBuilder.create().dismiss();
             }
         });
 
@@ -944,7 +1075,7 @@ public class MainActivity extends Activity implements OnClickListener, LocationL
     }
 
     public void onPermissionsGranted(final int requestCode) {
-      //  Toast.makeText(this, "Permissions Received.", Toast.LENGTH_LONG).show();
+        //  Toast.makeText(this, "Permissions Received.", Toast.LENGTH_LONG).show();
     }
 
     public boolean hasPermissions(String... permissions) {

@@ -125,7 +125,7 @@ public class CovidChallanActivity extends AppCompatActivity implements LocationL
     ImageView img_logo;
     TextView officer_Name, officer_Cadre, officer_PS, tv_pendingchallans, tv_pendingamount, tv_violtaionamnt, tv_grand_totalamnt, textView4;
     EditText et_Value, edtTxt_Name, edtTxt_FName, et_Address, et_City, edt_Age, et_driver_contact_spot;
-    Button btn_SlctId_CV, btn_Get, btn_Otp, btn_OtpCall, btn_SlctLocality, btn_violation, btn_Submit, btn_Dob, btn_cancel;
+    Button btn_SlctId_CV, btn_Get, btn_Otp, btn_OtpCall, btn_vehCategory, btn_SlctLocality, btn_violation, btn_Submit, btn_Dob, btn_cancel;
     ImageButton ibtn_camera;
     ImageButton ibtn_gallery;
     public static ImageView offender_image;
@@ -141,16 +141,17 @@ public class CovidChallanActivity extends AppCompatActivity implements LocationL
     RadioGroup rGP_Dtnd, radioGroup_gender;
     RadioButton rBtn_RC, rBtn_VEH, rBtn_LIC, rBtn_None, rBtn_Male, rBtn_FeMale, rBtn_Others;
     JSONObject jsonObject = null;
-    String otpValue = "", imei_send = "", simid_send = "", dob_DL = "", str_Loc_Code = "";
+    String otpValue = "", imei_send = "", simid_send = "", dob_DL = "", str_vehCatgryCD = "9", str_Loc_Code = "";
 
     boolean otp_VefySts = false, img_Sts = false;
     TelephonyManager telephonyManager;
     LinearLayout lyt_DOB, ll_pendingchallans;
+    RelativeLayout lyt_Dtnd;
 
     private int mYear, mMonth, mDay;
 
     int pendingChlns = 0, pndgAmnt = 0, cv_OTP_Time = 0;
-    AlertDialog builder;
+    AlertDialog alertDialog;
     CountDownTimer countDownTimer;
     TextView txt_ElpsdTime;
 
@@ -201,12 +202,20 @@ public class CovidChallanActivity extends AppCompatActivity implements LocationL
         officer_PS.setText(MainActivity.psName);
         lyt_GetDtls.setVisibility(View.GONE);
         btn_SlctLocality = findViewById(R.id.btn_SlctLocality);
+        btn_vehCategory = findViewById(R.id.btn_vehCategory);
         getLocation();
 
         btn_SlctLocality.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new Async_LocalityMaster().execute();
+            }
+        });
+
+        btn_vehCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Async_VehicleCategory().execute();
             }
         });
 
@@ -535,7 +544,10 @@ public class CovidChallanActivity extends AppCompatActivity implements LocationL
                         jsonObject.put(" DETAINED_DT", "" + new DateUtil().getPresentDateTime());
                         jsonObject.put("CMD_AMT", "" + str_Fine);
                         jsonObject.put("LOCALITY", str_Loc_Code);
+                        jsonObject.put("DetainCD", dtnd_Cd);
+                        jsonObject.put("DetainName", dtnd_Name);
                         jsonObject.put("vioList", jsonArray);
+                        jsonObject.put("vehCatgryCD", str_vehCatgryCD);
                         Log.d("JSONOBJ", "" + jsonObject.toString());
                         new Async_GgenerateCovidChallan().execute();
                     } catch (Exception e) {
@@ -607,23 +619,42 @@ public class CovidChallanActivity extends AppCompatActivity implements LocationL
     public void countTimer(final int time) {
 
         countDownTimer = new CountDownTimer(time, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                txt_ElpsdTime.setText("Elapsed Time 00:" + (TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))) + "");
+
+            }
+
+            @Override
+            public void onFinish() {
+                Log.d("Timer", "Finish");
+                alertDialog.dismiss();
+            }
+        }.start();
+    }
+
+    public void countTimerTest(final int time) {
+
+        countDownTimer = new CountDownTimer(TimeUnit.SECONDS.toMillis(time), 1000) {
             @SuppressLint("SetTextI18n")
             @Override
             public void onTick(long millisUntilFinished) {
-                ;
                 txt_ElpsdTime.setText("Elapsed Time 00:" + (TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))) + "");
+
             }
 
             @SuppressLint("SetTextI18n")
             @Override
             public void onFinish() {
                 txt_ElpsdTime.setText("Time's Up!");
-                builder.dismiss();
+                alertDialog.dismiss();
+                countDownTimer.cancel();
                 otp_VefySts = false;
                 showToast(" Please Resend Otp !");
             }
         }.start();
     }
+
 
     private void initview() {
         rGP_Dtnd = findViewById(R.id.rGP_Dtnd);
@@ -658,6 +689,8 @@ public class CovidChallanActivity extends AppCompatActivity implements LocationL
         lyt_DOB = findViewById(R.id.lyt_DOB);
         ll_pendingchallans = findViewById(R.id.ll_pendingchallans);
         lyt_DOB.setVisibility(View.GONE);
+        lyt_Dtnd = findViewById(R.id.lyt_Dtnd);
+        lyt_Dtnd.setVisibility(View.GONE);
     }
 
     public class Async_GgenerateCovidChallan extends AsyncTask<Void, Void, String> {
@@ -691,7 +724,7 @@ public class CovidChallanActivity extends AppCompatActivity implements LocationL
                         try {
                             showToast("Challan Already Generated for today !  \n \n " +
                                     ServiceHelper.strCV_Responce.split("\\^")[1]);
-                        }catch (Exception e){
+                        } catch (Exception e) {
                             e.printStackTrace();
                             showToast("Challan Already Generated for today ! ");
                         }
@@ -856,10 +889,17 @@ public class CovidChallanActivity extends AppCompatActivity implements LocationL
                     et_Value.setInputType(InputType.TYPE_CLASS_NUMBER);
                     str_IdCode = "12";
                     et_Value.setText("");
-                } else {
-                    textView4.setText("Enter Id Value:");
+                    lyt_Dtnd.setVisibility(View.GONE);
+                } else if ("11".equals(str_IdCode)) {
+                    textView4.setText("Enter  Vehicle No :");
                     et_Value.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
                     et_Value.setText("");
+                    lyt_Dtnd.setVisibility(View.VISIBLE);
+                } else {
+                    textView4.setText("Enter  " + s_Item + ":");
+                    et_Value.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+                    et_Value.setText("");
+                    lyt_Dtnd.setVisibility(View.VISIBLE);
                 }
                 btn_SlctId_CV.setText("" + s_Item);
                 builder.dismiss();
@@ -900,7 +940,6 @@ public class CovidChallanActivity extends AppCompatActivity implements LocationL
                     et_Address.setText("" + jsonObject.getString("Address"));
                     et_City.setText("" + jsonObject.getString("City"));
                     et_driver_contact_spot.setText("" + jsonObject.getString("MobileNo"));
-                    et_driver_contact_spot.setEnabled(false);
                     tv_pendingchallans.setText("" + jsonObject.getString("PendingChallans"));
                     tv_pendingamount.setText("" + jsonObject.getString("PendingAmount"));
                     cv_OTP_Time = Integer.parseInt(jsonObject.getString("OtpTime"));
@@ -1022,7 +1061,7 @@ public class CovidChallanActivity extends AppCompatActivity implements LocationL
                             btn_violation.setText(violation_desc_append);
 
                             vltnListModels = new ArrayList<>(mArrayList_SelectedVltnLst.size());
-                            jsonArray=new JSONArray();
+                            jsonArray = new JSONArray();
 
                             for (int i = 0; i < mArrayList_SelectedVltnLst.size(); i++) {
 
@@ -1030,7 +1069,7 @@ public class CovidChallanActivity extends AppCompatActivity implements LocationL
                                     JSONObject object = new JSONObject();
                                     object.put("offCD", "" + mArrayList_SelectedVltnLst.get(i).getOffence_cd());
                                     object.put("cmdAmt", "" + mArrayList_SelectedVltnLst.get(i).getFine_max());
-                                    object.put("hdesc","" + mArrayList_SelectedVltnLst.get(i).getVltnDis());
+                                    object.put("hdesc", "" + mArrayList_SelectedVltnLst.get(i).getVltnDis());
                                     jsonArray.put(object);
                                 } catch (Exception e) {
                                     e.printStackTrace();
@@ -1061,6 +1100,76 @@ public class CovidChallanActivity extends AppCompatActivity implements LocationL
                 });
 
         multiSelectSearchSpinnerDlg.show(getSupportFragmentManager(), "MultiSelectDlg");
+    }
+
+    public class Async_VehicleCategory extends AsyncTask<Void, Void, String> {
+
+        @Override
+        protected String doInBackground(Void... params) {
+            // TODO Auto-generated method stub
+            ServiceHelper.getVehicleCategory();
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            // TODO Auto-generated method stub
+            super.onPreExecute();
+            showDialog(PROGRESS_DIALOG);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            removeDialog(PROGRESS_DIALOG);
+
+            if (!ServiceHelper.vehCategory.equals("0") && null != ServiceHelper.vehCategory) {
+                ArrayList<VehCatModel> vehCatModels;
+                try {
+                    JSONObject jsonObject = new JSONObject(ServiceHelper.vehCategory);
+                    JSONArray jsonArray = jsonObject.getJSONArray("VehCategoryMaster");
+                    vehCatModels = new ArrayList<>(jsonArray.length());
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject object = jsonArray.getJSONObject(i);
+                        VehCatModel vehCatModel = new VehCatModel();
+                        vehCatModel.setVehCatName("" + object.getString("VehCatName"));
+                        vehCatModel.setVehCatCode("" + object.getString("VehCatCode"));
+                        vehCatModels.add(vehCatModel);
+                    }
+                    showVehCatSpinnerDialog("Select Vehicle Category", vehCatModels);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void showVehCatSpinnerDialog(String title, final List<VehCatModel> vehCatModels) {
+
+        final AlertDialog builder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT).create();
+        @SuppressLint("InflateParams")
+        View view = getLayoutInflater().inflate(R.layout.spinner_dialog_layout, null);
+        builder.setView(view);
+        builder.setCancelable(true);
+        ListView spinner_List = view.findViewById(R.id.recycle_List);
+        AppCompatTextView title_Spinner = view.findViewById(R.id.title_Spinner);
+        title_Spinner.setText("" + title);
+        VehCatAdapter jobsAdapter = new VehCatAdapter(CovidChallanActivity.this, vehCatModels);
+        spinner_List.setAdapter(jobsAdapter);
+        builder.show();
+        spinner_List.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String s_Item = vehCatModels.get(i).getVehCatName();
+                str_vehCatgryCD = vehCatModels.get(i).getVehCatCode();
+                btn_vehCategory.setText("" + s_Item);
+                builder.dismiss();
+            }
+        });
     }
 
 
@@ -1162,12 +1271,14 @@ public class CovidChallanActivity extends AppCompatActivity implements LocationL
     @SuppressLint("SetTextI18n")
     private void showOTPDialog(final String otpValue) {
 
-        builder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT).create();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT);
         @SuppressLint("InflateParams")
         View view = getLayoutInflater().inflate(R.layout.otp_verification, null);
 
         builder.setView(view);
         builder.setCancelable(false);
+        alertDialog = builder.create();
+        alertDialog.show();
         TextView otp_heading = view.findViewById(R.id.otp_heading);
         txt_ElpsdTime = view.findViewById(R.id.txt_ElpsdTime);
         otp_heading.setText("Enter OTP For " + et_driver_contact_spot.getText().toString().trim());
@@ -1183,7 +1294,7 @@ public class CovidChallanActivity extends AppCompatActivity implements LocationL
                 if (edtTxt_Otp.getText().toString().trim().equals(otpValue)) {
                     otp_VefySts = true;
                     showToast("OTP Verified Successfully");
-                    builder.dismiss();
+                    alertDialog.dismiss();
                     countDownTimer.cancel();
                 } else {
                     showToast("Entered Wrong OTP");
@@ -1197,10 +1308,15 @@ public class CovidChallanActivity extends AppCompatActivity implements LocationL
         btn_Cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                builder.dismiss();
+                alertDialog.dismiss();
             }
         });
-        builder.show();
+        alertDialog.show();
+
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+            countDownTimer = null;
+        }
         countTimer(cv_OTP_Time * 1000);
 
     }

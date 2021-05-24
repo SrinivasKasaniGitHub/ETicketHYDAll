@@ -1583,9 +1583,9 @@ public class Dashboard extends Activity implements OnClickListener {
 
             case R.id.img_ReleaseDoc:
 
-                if (isOnlyCovidEnable) {
+              /*  if (isOnlyCovidEnable) {
                     showModuleAuthDlg();
-                }else {
+                }else {*/
                     check_vhleHistory_or_Spot = "releasedocuments";
 
                     getPreferenceValues();
@@ -1624,7 +1624,7 @@ public class Dashboard extends Activity implements OnClickListener {
                     c_whlr_details.close();
                     cursor_psnames.close();
                     db.close();
-                }
+                //}
                 break;
 
             case R.id.img_Reports:

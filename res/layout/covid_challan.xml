@@ -353,9 +353,9 @@
                             android:id="@+id/edtTxt_Name"
                             style="@style/edt_custom_style"
                             android:layout_width="0dp"
-                            android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.7"
+                            android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                             android:gravity="center"
                             android:inputType="text|textCapCharacters" />
                     </LinearLayout>
@@ -389,9 +389,9 @@
                             android:id="@+id/edtTxt_FName"
                             style="@style/edt_custom_style"
                             android:layout_width="0dp"
-                            android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.7"
+                            android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                             android:gravity="center"
                             android:inputType="text|textCapCharacters" />
                     </LinearLayout>
@@ -462,9 +462,9 @@
                             android:id="@+id/et_City"
                             style="@style/edt_custom_style"
                             android:layout_width="0dp"
-                            android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                             android:layout_height="wrap_content"
                             android:layout_weight=".70"
+                            android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                             android:gravity="center"
                             android:inputType="textCapCharacters" />
                     </LinearLayout>
@@ -592,9 +592,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:textSize="12sp"
                     android:layout_marginEnd="30dp"
-                    android:text="Note :Please verify Mobile No with OTP ! "/>
+                    android:text="Note :Please verify Mobile No with OTP ! "
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:id="@+id/ll_gender"
@@ -756,6 +756,35 @@
                         android:text="Government Vehicle" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/lyt_VehCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/selected_pointName"
+                        style="@style/navi_text_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/btnpointby_psname_settings_xml"
+                        android:layout_margin="5dp"
+                        android:text="Vehicle Category"
+                        android:textSize="20dp" />
+
+
+                    <Button
+                        android:id="@+id/btn_vehCategory"
+                        style="@style/dd_custom_blue_btn_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/selected_pointName"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/header_grnt_padding_ten"
+                        android:text="Private vehicle" />
+                </LinearLayout>
+
+
                 <Button
                     android:id="@+id/btn_SlctLocality"
                     style="@style/dd_custom_blue_btn_style"
@@ -889,11 +918,11 @@
                         android:background="#000000" />
 
                     <RelativeLayout
-                        android:id="@+id/rl_detaineditems_spotchallantwo_xml"
+                        android:id="@+id/lyt_Dtnd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_3sdp"
-                        android:visibility="gone">
+                        android:visibility="visible">
 
                         <TextView
                             android:id="@+id/tv_detaineditems_name_spotchallantwo_xml"
@@ -903,6 +932,8 @@
                             android:layout_alignParentTop="true"
                             android:layout_marginTop="@dimen/header_grnt_padding_five"
                             android:layout_marginBottom="@dimen/header_grnt_padding_five"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/_12sdp"
                             android:text="@string/detained_items" />
 
                         <RadioGroup
@@ -915,21 +946,23 @@
                             android:weightSum="4">
 
                             <RadioButton
+                                android:id="@+id/rBtn_VEH"
+                                style="@style/dd_custom_radio_btn_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text=" Vehicle" />
+
+                            <RadioButton
                                 android:id="@+id/rBtn_RC"
                                 style="@style/dd_custom_radio_btn_style"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:paddingStart="@dimen/_1sdp"
-                                android:text="Rc" />
+                                android:text=" RC" />
 
-                            <RadioButton
-                                android:id="@+id/rBtn_VEH"
-                                style="@style/dd_custom_radio_btn_style"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Vehicle" />
+
 
                             <RadioButton
                                 android:id="@+id/rBtn_LIC"
@@ -937,7 +970,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Licence" />
+                                android:text=" DL" />
 
                             <RadioButton
                                 android:id="@+id/rBtn_None"
@@ -946,12 +979,13 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:checked="true"
-                                android:text="None" />
+                                android:text=" None" />
                         </RadioGroup>
 
 
                     </RelativeLayout>
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
