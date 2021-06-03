@@ -352,6 +352,7 @@ public class SpotChallan extends AppCompatActivity
         pendChlnsDetain_Flag = "0";
         mArrayList_SecVltnNames = new ArrayList<>();
         mArrayList_SelectedVltnLst = new ArrayList<>();
+        is_govt_police = "9";
 
         img_logo = findViewById(R.id.img_logo);
         if (MainActivity.uintCode.equals("22")) {
@@ -3665,11 +3666,11 @@ public class SpotChallan extends AppCompatActivity
 
             case SECOND_SPOTSCREEN_DIALOG:
 
-                if (police_vehcle.isChecked()) {
+                /*if (police_vehcle.isChecked()) {
                     is_govt_police = "2";
                 } else if (govt_vehcle.isChecked()) {
                     is_govt_police = "4";
-                }
+                }*/
                 otp_status = "send";
 
                 Dialog dg_scond = new Dialog(this, android.R.style.Theme_Black_NoTitleBar);
@@ -7511,11 +7512,11 @@ public class SpotChallan extends AppCompatActivity
                         if ((tempContactNumber.charAt(0) == '7') || (tempContactNumber.charAt(0) == '8')
                                 || (tempContactNumber.charAt(0) == '9') || (tempContactNumber.charAt(0) == '6')) {
                             if (isOnline()) {
-                                if (police_vehcle.isChecked()) {
+                               /* if (police_vehcle.isChecked()) {
                                     is_govt_police = "2";
                                 } else if (govt_vehcle.isChecked()) {
                                     is_govt_police = "4";
-                                }
+                                }*/
                                 String vehicle_split2 = et_regcid_spot.getText().toString().trim().substring(0, 2);
                                 if ((vehicle_split2.equals("AP") || vehicle_split2.equals("TS"))
                                         && chck_detainedItems_none.isChecked()
@@ -7545,11 +7546,11 @@ public class SpotChallan extends AppCompatActivity
                         if (tempContactNumber.charAt(0) == '0') {
                             if (isOnline()) {
                                 /* to call mobileSpotChallanPayment */
-                                if (police_vehcle.isChecked()) {
+                                /*if (police_vehcle.isChecked()) {
                                     is_govt_police = "2";
                                 } else if (govt_vehcle.isChecked()) {
                                     is_govt_police = "4";
-                                }
+                                }*/
                                 if ("Y".equals(SpotChallan.OtpStatus.trim())
                                         && (!Dashboard.check_vhleHistory_or_Spot.equals("towing"))
                                         && otp_status != "verify") {
