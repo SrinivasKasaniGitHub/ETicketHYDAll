@@ -596,8 +596,28 @@ public class Settings_New extends Activity implements OnClickListener, DataSourc
 	@Subscribe(sticky = true)
 	public void instantRecordData(ReceiveFormDataResult receiveFormDataResult) {
 		//  TAG_INSTANT_RECEIVE=10004;
-		if (receiveFormDataResult != null && receiveFormDataResult.getTag() == 10004) {
+		if (receiveFormDataResult != null && receiveFormDataResult.getTag() == EventManger.getInstance().TAG_INSTANT_RECEIVE) {
 			Log.i("bleble5", "recordFormsReceive=" + receiveFormDataResult.getRecordFormArrayList().size());
+			ArrayList<RecordForm> recordForms = receiveFormDataResult.getRecordFormArrayList();
+			//这里是通过eventBus接受的具体数据
+			//This is the detail data received through eventBus
+			for (int i = 0; i < receiveFormDataResult.getRecordFormArrayList().size(); i++) {
+				Log.i("blebleRecordData", "RecordFormNum:" + recordForms.get(i).getRecordFormNum());
+				Log.i("blebleRecordData", "RecordFormDate:" + recordForms.get(i).getRecordFormDate());
+				Log.i("blebleRecordData", "RecordFormTime:" + recordForms.get(i).getRecordFormTime());
+				Log.i("blebleRecordData", "RecordFormDeviceNum:" + recordForms.get(i).getRecordFormDeviceNum());//device model
+				Log.i("blebleRecordData", "RecordFormSerialNum:" + recordForms.get(i).getRecordFormSerialNum());//serial number
+				Log.i("blebleRecordData", "RecordFormMeasureMode:" + recordForms.get(i).getRecordFormMeasureMode());
+				Log.i("blebleRecordData", "RecordFormMeasureNum:" + recordForms.get(i).getRecordFormMeasureNum());
+				Log.i("blebleRecordData", "RecordFormCarNum:" + recordForms.get(i).getRecordFormCarNum());
+				Log.i("blebleRecordData", "RecordFormPoliceNum:" + recordForms.get(i).getRecordFormPoliceNum());
+				Log.i("blebleRecordData", "RecordFormCarLicense:" + recordForms.get(i).getRecordFormCarLicense());
+				Log.i("blebleRecordData", "RecordFormEditor:" + recordForms.get(i).getRecordFormEditor());
+				Log.i("blebleRecordData", "RecordFormAddress:" + recordForms.get(i).getRecordFormAddress());
+			}
+			if (EventManger.getInstance().isInitFinsh){
+
+			}
 		}
 	}
 
@@ -662,12 +682,14 @@ public class Settings_New extends Activity implements OnClickListener, DataSourc
 					public void run() {
 						startScan();
 						initView();
+
 					}
 				});
 			}
 		});
 		EventBus.getDefault().register(this);
 		initBle();
+
 		EventManger.getInstance().receieDataCallback(this);
 		EventManger.getInstance().repeatCallback(this);
 		EventManger.getInstance().searchDataCallback(this, 10006);
@@ -680,22 +702,40 @@ public class Settings_New extends Activity implements OnClickListener, DataSourc
 			@Override
 			public void onDataLoaded(String s) {
 				Log.i("bleble", s);
-				if (s.equals("1")) {
+				if (s.equals("1")){
 					Toast.makeText(Settings_New.this, "initDeviceInfo", Toast.LENGTH_LONG).show();
+					//初始化设备成功之后需要去初始化一些设备信息
+					//After successfully initializing the device, you need to initialize some device information
+
+					//获取仪器用到的字符显示配置信息 连接成功callback返回3
+					//Get configure information of font show on the device.if connection is ok,the return of callback is 3
 					Log.i("bleble0", "13");
 					EventManger.getInstance().deviceDisplayConfiger(callBack);
 
-				} else if (s.equals("3")) {
-
+				}else if (s.equals("3")){
+					//获取仪器信息 连接成功callback返回4
+					// Get device information,if connection is ok,the return of callback is 4
 					Log.i("bleble0", "14");
 					EventManger.getInstance().fetchDeviceInfo(callBack);
-				} else if (s.equals("4")) {
-
+				}else if (s.equals("4")){
+					//获取仪器记录信息列表头 callback返回5
+					// Get the header of the record list,if connection is ok,the return of callback is 5
 					Log.i("bleble0", "15");
 					EventManger.getInstance().recordFormDisplay(callBack);
 
+					//现在你可以调用comandForRecordForm()方法来获取记录了
+					//Now you can call the comandForRecordForm ()  to get the record
+				}else if (s.equals("5")){
+					//第一次初始化连接获取最新记录
+					//Initialize the connection for the first time to get the latest record
 
+
+					if (Integer.valueOf(EventManger.getInstance().getMaxStartNum()) > 0) {
+						EventManger.getInstance().comandForRecordForm(EventManger.getInstance().getMaxStartNum()
+								, EventManger.getInstance().getMaxStartNum(), EventManger.getInstance().TAG_INSTANT_RECEIVE);
+					}
 				}
+
 			}
 		};
 

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: artifacts:dsprint:unspecified">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dsprint/build/.transforms/3af2bf79c69cd4eebb333229c9bfb4cc/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/dsprint/build/.transforms/3af2bf79c69cd4eebb333229c9bfb4cc/res" />
+      <root url="file://$PROJECT_DIR$/dsprint/build/.transforms/3af2bf79c69cd4eebb333229c9bfb4cc/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

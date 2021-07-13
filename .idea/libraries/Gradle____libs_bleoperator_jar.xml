@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: ./libs/bleoperator.jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/bleoperator.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

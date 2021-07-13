@@ -3303,11 +3303,11 @@ public class GenerateDrunkDriveCase extends Activity implements OnClickListener,
             }
 
             /* FOR CHECKING THE PREF VALUES TO PUSH */
-            if (breath_anlysr == 0) {
+            /*if (breath_anlysr == 0) {
                 anlyser_id_send = "";
             } else {
                 anlyser_id_send = Long.toString(preferences.getLong("analyser_id", 0));
-            }
+            }*/
 
 
             if (isOnline()) {

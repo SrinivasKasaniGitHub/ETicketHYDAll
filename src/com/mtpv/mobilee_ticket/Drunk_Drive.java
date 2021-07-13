@@ -309,16 +309,16 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
         CheckBlueToothState();
         try {
             bleDevice = SharedPrefsHelper.getSavedObjectFromPreference(getApplicationContext(), "mPreference", "mLoginRes", BleDevice.class);
-            if (null != bleDevice) {
-                bt_ID = bleDevice.getName();
-                Device device = EventOperator.getDevice();
-
+            if (!BleManager.getInstance().isConnected(bleDevice)) {
                 if (!BleManager.getInstance().isConnected(bleDevice)) {
                     BleManager.getInstance().disconnect(bleDevice);
                     connect(bleDevice);
+//                    bt_ID = bleDevice.getName();
+                } else {
+                    showToast("Please connect the Breath Analyzer from Settings Module !");
                 }
             } else {
-                // showToast("Please connect the Breath Analyzer from Settings Module !");
+                showToast("Please connect the Breath Analyzer from Settings Module !");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -789,7 +789,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
             @Override
             public void onDataLoaded(String s) {
                 Log.i("bleble", s);
-                if (s.equals("1")){
+                if (s.equals("1")) {
                     Toast.makeText(Drunk_Drive.this, "initDeviceInfo", Toast.LENGTH_LONG).show();
                     //初始化设备成功之后需要去初始化一些设备信息
                     //After successfully initializing the device, you need to initialize some device information
@@ -799,12 +799,12 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
                     Log.i("bleble0", "13");
                     EventManger.getInstance().deviceDisplayConfiger(callBack);
 
-                }else if (s.equals("3")){
+                } else if (s.equals("3")) {
                     //获取仪器信息 连接成功callback返回4
                     // Get device information,if connection is ok,the return of callback is 4
                     Log.i("bleble0", "14");
                     EventManger.getInstance().fetchDeviceInfo(callBack);
-                }else if (s.equals("4")){
+                } else if (s.equals("4")) {
                     //获取仪器记录信息列表头 callback返回5
                     // Get the header of the record list,if connection is ok,the return of callback is 5
                     Log.i("bleble0", "15");
@@ -812,7 +812,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
 
                     //现在你可以调用comandForRecordForm()方法来获取记录了
                     //Now you can call the comandForRecordForm ()  to get the record
-                }else if (s.equals("5")){
+                } else if (s.equals("5")) {
                     //第一次初始化连接获取最新记录
                     //Initialize the connection for the first time to get the latest record
                     if (Integer.valueOf(EventManger.getInstance().getMaxStartNum()) > 0) {
@@ -1316,7 +1316,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
             if (recordForms.size() > 0 && null != recordForms) {
                 edt_checkslno_.setText("" + recordForms.get(0).getRecordFormNum());
                 edt_alchl_reading.setText("" + recordForms.get(0).getRecordFormMeasureNum());
-                //  bt_ID = "" + recordForms.get(0).getRecordFormDeviceNum();
+                bt_ID = "" + recordForms.get(0).getRecordFormSerialNum();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -1428,7 +1428,7 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
 
             @Override
             public void onConnectSuccess(BleDevice bleDevice, BluetoothGatt gatt, int status) {
-                //  Toast.makeText(Drunk_Drive.this, "ConnectSuccess", Toast.LENGTH_LONG).show();
+                Toast.makeText(Drunk_Drive.this, "ConnectSuccess", Toast.LENGTH_LONG).show();
                 readRssi(bleDevice);
                 EventManger.getInstance()
                         .initDeviceInfo(bleDevice, true, callBack);
@@ -1469,18 +1469,18 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
             //这里是通过eventBus接受的具体数据
             //This is the detail data received through eventBus
             for (int i = 0; i < receiveFormDataResult.getRecordFormArrayList().size(); i++) {
-                Log.i("blebleRecordForm", "RecordFormNum:" + recordForms.get(i).getRecordFormNum());
-                Log.i("blebleRecordForm", "RecordFormDate:" + recordForms.get(i).getRecordFormDate());
-                Log.i("blebleRecordForm", "RecordFormTime:" + recordForms.get(i).getRecordFormTime());
-                Log.i("blebleRecordForm", "RecordFormDeviceNum:" + recordForms.get(i).getRecordFormDeviceNum());//device model
-                Log.i("blebleRecordForm", "RecordFormSerialNum:" + recordForms.get(i).getRecordFormSerialNum());//serial number
-                Log.i("blebleRecordForm", "RecordFormMeasureMode:" + recordForms.get(i).getRecordFormMeasureMode());
-                Log.i("blebleRecordForm", "RecordFormMeasureNum:" + recordForms.get(i).getRecordFormMeasureNum());
-                Log.i("blebleRecordForm", "RecordFormCarNum:" + recordForms.get(i).getRecordFormCarNum());
-                Log.i("blebleRecordForm", "RecordFormPoliceNum:" + recordForms.get(i).getRecordFormPoliceNum());
-                Log.i("blebleRecordForm", "RecordFormCarLicense:" + recordForms.get(i).getRecordFormCarLicense());
-                Log.i("blebleRecordForm", "RecordFormEditor:" + recordForms.get(i).getRecordFormEditor());
-                Log.i("blebleRecordForm", "RecordFormAddress:" + recordForms.get(i).getRecordFormAddress());
+                Log.i("blebleRecordData", "RecordFormNum:" + recordForms.get(i).getRecordFormNum());
+                Log.i("blebleRecordData", "RecordFormDate:" + recordForms.get(i).getRecordFormDate());
+                Log.i("blebleRecordData", "RecordFormTime:" + recordForms.get(i).getRecordFormTime());
+                Log.i("blebleRecordData", "RecordFormDeviceNum:" + recordForms.get(i).getRecordFormDeviceNum());//device model
+                Log.i("blebleRecordData", "RecordFormSerialNum:" + recordForms.get(i).getRecordFormSerialNum());//serial number
+                Log.i("blebleRecordData", "RecordFormMeasureMode:" + recordForms.get(i).getRecordFormMeasureMode());
+                Log.i("blebleRecordData", "RecordFormMeasureNum:" + recordForms.get(i).getRecordFormMeasureNum());
+                Log.i("blebleRecordData", "RecordFormCarNum:" + recordForms.get(i).getRecordFormCarNum());
+                Log.i("blebleRecordData", "RecordFormPoliceNum:" + recordForms.get(i).getRecordFormPoliceNum());
+                Log.i("blebleRecordData", "RecordFormCarLicense:" + recordForms.get(i).getRecordFormCarLicense());
+                Log.i("blebleRecordData", "RecordFormEditor:" + recordForms.get(i).getRecordFormEditor());
+                Log.i("blebleRecordData", "RecordFormAddress:" + recordForms.get(i).getRecordFormAddress());
             }
         }
     }
