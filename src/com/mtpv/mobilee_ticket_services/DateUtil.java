@@ -110,7 +110,7 @@ public class DateUtil {
     @SuppressLint("SimpleDateFormat")
     public String changeDateFormat(String date){
         String outputDateStr="";
-        DateFormat inputFormat = new SimpleDateFormat("yyyy-mm-dd");
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
         DateFormat outputFormat = new SimpleDateFormat("dd-MMM-yyyy");
         try {
             Date datec = inputFormat.parse(date);

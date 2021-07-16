@@ -307,6 +307,8 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
         LoadUIComponents();
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         CheckBlueToothState();
+
+
         try {
             bleDevice = SharedPrefsHelper.getSavedObjectFromPreference(getApplicationContext(), "mPreference", "mLoginRes", BleDevice.class);
             if (!BleManager.getInstance().isConnected(bleDevice)) {
@@ -315,10 +317,10 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
                     connect(bleDevice);
 //                    bt_ID = bleDevice.getName();
                 } else {
-                    showToast("Please connect the Breath Analyzer from Settings Module !");
+                    // showToast("Please connect the Breath Analyzer from Settings Module !");
                 }
             } else {
-                showToast("Please connect the Breath Analyzer from Settings Module !");
+                // showToast("Please connect the Breath Analyzer from Settings Module !");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -1314,9 +1316,26 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
         Log.i("blebleRecordForm", "RecordFormSerialNum:" + recordForms.get(0).getRecordFormSerialNum());//serial number
         try {
             if (recordForms.size() > 0 && null != recordForms) {
-                edt_checkslno_.setText("" + recordForms.get(0).getRecordFormNum());
-                edt_alchl_reading.setText("" + recordForms.get(0).getRecordFormMeasureNum());
-                bt_ID = "" + recordForms.get(0).getRecordFormSerialNum();
+                Device device = EventOperator.getDevice();
+                String calTime = device.getLastDate();
+                Log.d("Date", calTime);
+                String date = "";
+                int year = Integer.parseInt(hexToDec("" + calTime.substring(0, 2))) + 1;
+                date = date + "20" + year;
+                date = date + "-" + hexToDec("" + calTime.substring(2, 4));
+                date = date + "-" + hexToDec("" + calTime.substring(4, 6));
+                String calDate = new DateUtil().changeDateFormat(date);
+                Log.d("calDate", calDate);
+                String todayDate = new DateUtil().getTodaysDate();
+                if (compareDates(calDate, todayDate)) {
+                    edt_checkslno_.setText("" + recordForms.get(0).getRecordFormNum());
+                    edt_alchl_reading.setText("" + recordForms.get(0).getRecordFormMeasureNum());
+                    bt_ID = "" + recordForms.get(0).getRecordFormSerialNum();
+                } else {
+                    ShowMessage("Dear officer \n Breath Analyser calibration Time has been Expired");
+                }
+
+
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -1325,6 +1344,48 @@ public class Drunk_Drive extends AppCompatActivity implements OnClickListener, L
             bt_ID = "";
         }
 
+    }
+
+    public boolean compareDates(String d1, String d2) {
+        boolean status = false;
+        try {
+
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
+            Date date1 = sdf.parse(d1);
+            Date date2 = sdf.parse(d2);
+
+            System.out.println("Date1" + sdf.format(date1));
+            System.out.println("Date2" + sdf.format(date2));
+            if (date1.after(date2)) {
+                status = true;
+            }
+            // before() will return true if and only if date1 is before date2
+            if (date1.before(date2)) {
+                status = false;
+            }
+
+            //equals() returns true if both the dates are equal
+            if (date1.equals(date2)) {
+                status = false;
+            }
+
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+            status = false;
+        }
+        return status;
+    }
+
+
+    public static String hexToDec(String hex) {
+        final String HEX_DIGITS = "0123456789ABCDEF";
+        char[] sources = hex.toCharArray();
+        int dec = 0;
+        for (int i = 0; i < sources.length; i++) {
+            int digit = HEX_DIGITS.indexOf(Character.toUpperCase(sources[i]));
+            dec += digit * Math.pow(16, (sources.length - (i + 1)));
+        }
+        return String.valueOf(dec);
     }
 
     @Override
